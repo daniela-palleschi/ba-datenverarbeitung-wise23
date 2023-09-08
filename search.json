@@ -42,31 +42,38 @@
     "text": "Woche\n      Datum\n      Thema\n      Vorbereitung\n    \n  \n  \n    1\n2023-10-18\nIntro to R\n\n[📚 R4DS - Ch 1 (Introduction) \n📚 R4DS - Ch 3 (Workflow: Basics)](https://r4ds.hadley.nz/intro \nhttps://r4ds.hadley.nz/workflow-basics)\n\n    2\n2023-10-25\nData Viz 1: Distributions and comparing groups\n\nR4DS - Ch. 1 (Introduction) \n📚 R4DS - Ch. 3 (Workflow: Basics)\n\n    3\n2023-11-01\nWrangling 1: Transforming data\n\n📚 R4DS - Chp 6\n\n    4\n2023-11-08\nDynamic reports with Quarto\n\n📚 ggplot2-book - Chp 5\n\n    5\n2023-11-15\nRegular Expressions\n\n📚 R4DS - Chp 21\n\n    6\n2023-11-22\nBericht 1\n\n📚 fdv - Chp 14\n\n    7\n2023-11-29\nDescriptive Stats\n\n📚 fdv - Chp 29\n\n    8\n2023-12-06\nReading in data\n\n📃 Six part series on W.E.B. Du Bois’ legacy\n\n    9\n2023-12-13\nWrangling 2: Tidying data\n\n📚 fdv - Chp 10\n\n    10\n2023-12-20\nData Viz 2: Visual summaries\n\n\n    Vorlesungsfrei\n2023-12-27\n☃️\n\n🎿\n\n    Vorlesungsfrei\n2024-01-03\n☃️\n\n🎿\n\n    11\n2024-01-10\nBericht 2\n\n📃 The case against diverging stacked bars \n📃 On Likert Scales In R\n\n    12\n2024-01-17\nWriting functions\n\n📃 sf vgnette 1 +\n📃 sf vgnette 2 + \n📃 sf vgnette 3 +\n📃 sf vgnette 4 + \n📃 sf vgnette 5\n\n    13\n2024-01-24\nInferential statistics\n\n📚 fdv - Chp 19 \n📚 fdv - Chp 4\n\n    14\n2024-01-31\nData Viz 3: visualising your model\n\n📃 gganimate vignette\n\n    15\n2024-02-07\nBericht 3\n\n\n    16\n2024-02-14\nOpen session: Q&A"
   },
   {
+    "objectID": "mats/01-intro_r.html#ziele-.unnumbered-unlisted",
+    "href": "mats/01-intro_r.html#ziele-.unnumbered-unlisted",
+    "title": "1  Intro to R",
+    "section": "1.1 Ziele {.unnumbered unlisted}",
+    "text": "1.1 Ziele {.unnumbered unlisted}"
+  },
+  {
     "objectID": "mats/01-intro_r.html#what-is-r",
     "href": "mats/01-intro_r.html#what-is-r",
     "title": "1  Intro to R",
-    "section": "1.1 What is R?",
-    "text": "1.1 What is R?\nWe can do simple math.\n5 + 5\nOr print strings.\nprint(\"Hello world!\")\nOr do more complicated math using functions."
+    "section": "1.2 What is R?",
+    "text": "1.2 What is R?\nWe can do simple math.\n5 + 5\nOr print strings.\nprint(\"Hello world!\")\nOr do more complicated math using functions."
   },
   {
     "objectID": "mats/01-intro_r.html#why-r",
     "href": "mats/01-intro_r.html#why-r",
     "title": "1  Intro to R",
-    "section": "1.2 Why R?",
-    "text": "1.2 Why R?"
+    "section": "1.3 Why R?",
+    "text": "1.3 Why R?"
   },
   {
     "objectID": "mats/01-intro_r.html#when-to-use-r",
     "href": "mats/01-intro_r.html#when-to-use-r",
     "title": "1  Intro to R",
-    "section": "1.3 When to use R",
-    "text": "1.3 When to use R"
+    "section": "1.4 When to use R",
+    "text": "1.4 When to use R"
   },
   {
     "objectID": "mats/01-intro_r.html#how-to-use-r",
     "href": "mats/01-intro_r.html#how-to-use-r",
     "title": "1  Intro to R",
-    "section": "1.4 How to use R",
-    "text": "1.4 How to use R\n\n1.4.1 RStudio\n\n\n1.4.2 RProjects\n\n\n1.4.3 Rmarkdown and Quarto\n\n\n1.4.4 Posit Cloud"
+    "section": "1.5 How to use R",
+    "text": "1.5 How to use R\n\n1.5.1 RStudio\n\n\n1.5.2 RProjects\n\n\n1.5.3 Rmarkdown and Quarto\n\n\n1.5.4 Posit Cloud"
   }
 ]
