@@ -39,7 +39,7 @@
     "href": "mats/00-kursuebersicht.html",
     "title": "2  Kursübersicht",
     "section": "",
-    "text": "3 Moodle\nMoodle: “Angewandte Datenverarbeitung und Visualisierung”\nSchlüssel: SpassMitR"
+    "text": "3 Moodle\nMoodle: “Angewandte Datenverarbeitung und Visualisierung”\nSchlüssel: SpassMitR\ndplyr::tribble(\n  ~\"Werte\", ~\"Assignment\",\n  \"1LP\", \"Hochladen des 8 wöchentlichen Programmierungsskripts (8 Wochen Ihrer Wahl)\",\n  \"2LP\", \"drei EDAs\",\n  \"2LP (Module Exam)\", \"Presentation oder anweisungsfreie EDA mit neuen Daten\"\n)\n\n# A tibble: 3 × 2\n  Werte             Assignment                                                  \n  &lt;chr&gt;             &lt;chr&gt;                                                       \n1 1LP               Hochladen des 8 wöchentlichen Programmierungsskripts (8 Woc…\n2 2LP               drei EDAs                                                   \n3 2LP (Module Exam) Presentation oder anweisungsfreie EDA mit neuen Daten"
   },
   {
     "objectID": "mats/00-kursuebersicht.html#moodle-1",
