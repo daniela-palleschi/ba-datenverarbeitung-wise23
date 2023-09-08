@@ -1,0 +1,5 @@
+---
+date: "11/08/2023"
+---
+
+# Dynamic reports with Quarto

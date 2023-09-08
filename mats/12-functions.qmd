@@ -1,0 +1,5 @@
+---
+date: "01/17/2024"
+---
+
+# Writing a function

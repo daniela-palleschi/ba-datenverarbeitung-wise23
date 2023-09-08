@@ -1,0 +1,21 @@
+---
+date: "10/18/2023"
+---
+
+# Intro to R
+
+## What is R?
+
+## Why R?
+
+## When to use R
+
+## How to use R
+
+### RStudio
+
+### RProjects
+
+### Rmarkdown and Quarto
+
+### Posit Cloud

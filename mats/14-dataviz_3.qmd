@@ -1,0 +1,25 @@
+---
+title: "Data Viz 3"
+subtitle: "Angewandte Datenverarbeitung und Visualisierung"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+lang: de
+date: "`r Sys.Date()`"
+format:
+  html:
+    # output-file: kursuebersicht_blatt.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+  pdf:
+    # output-file: kursuebersicht.pdf
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+bibliography: references.bib
+csl: apa.csl
+---
