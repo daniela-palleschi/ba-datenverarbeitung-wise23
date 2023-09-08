@@ -4,14 +4,21 @@
     "href": "index.html",
     "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
     "section": "",
-    "text": "Preface\nThis is the course website for “Angewandte Datenverarbeitung und Visualisierung” at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik. Winter (2019)"
+    "text": "Course Overview\nThis is the course website for “Angewandte Datenverarbeitung und Visualisierung” at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik."
   },
   {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
+    "objectID": "index.html#description-on-agnes",
+    "href": "index.html#description-on-agnes",
     "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
-    "section": "Course Description",
-    "text": "Course Description\nDies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten."
+    "section": "Description on AGNES",
+    "text": "Description on AGNES\n\nDies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten."
+  },
+  {
+    "objectID": "index.html#course-aims",
+    "href": "index.html#course-aims",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Course Aims",
+    "text": "Course Aims\nThe main aim of this course is to develop the knowledge and skills required to implement an “Exploratory Data Analysis (EDA)”. EDA is not a formal process with specific rules, but is rather “a state of mind” (Wickham et al., o. J., Ch. 11). The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R."
   },
   {
     "objectID": "index.html#wieso-r",
@@ -25,14 +32,14 @@
     "href": "index.html#resources",
     "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
     "section": "Resources",
-    "text": "Resources\nMost of our materials are based on the book “R for Data Science” by Hadley Wickham (2nd Edition). Where possible I’ve replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.\n\n\n\n\n\n\nWinter, B. (2019). Statistics for Linguists: An Introduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
+    "text": "Resources\nMost of our materials are based on the book “R for Data Science” by Hadley Wickham (2nd Edition). Where possible I’ve replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.\n\n\n\n\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (o. J.). R for Data Science (2. Aufl.). https://r4ds.hadley.nz/"
   },
   {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "The main aim of this course is to develop the knowledge and skills required to implement an “Exploratory Data Analysis (EDA)”. EDA is not a formal process with specific rules, but is rather “a state of mind” (Wickham et al., o. J., Ch. 11). The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R.\n\n\n\n\n\n\n  \n    \n    \n    \n    \n  \n  \n    \n    \n      Woche\n      Datum\n      Thema\n      Vorbereitung\n    \n  \n  \n    1\n2023-10-18\nIntro to R\n\n[📚 R4DS - Ch 1 (Introduction) \n📚 R4DS - Ch 3 (Workflow: Basics)](https://r4ds.hadley.nz/intro \nhttps://r4ds.hadley.nz/workflow-basics)\n\n    2\n2023-10-25\nData Viz 1: Distributions and comparing groups\n\nR4DS - Ch. 1 (Introduction) \n📚 R4DS - Ch. 3 (Workflow: Basics)\n\n    3\n2023-11-01\nWrangling 1: Transforming data\n\n📚 R4DS - Chp 6\n\n    4\n2023-11-08\nDynamic reports with Quarto\n\n📚 ggplot2-book - Chp 5\n\n    5\n2023-11-15\nRegular Expressions\n\n📚 R4DS - Chp 21\n\n    6\n2023-11-22\nBericht 1\n\n📚 fdv - Chp 14\n\n    7\n2023-11-29\nDescriptive Stats\n\n📚 fdv - Chp 29\n\n    8\n2023-12-06\nReading in data\n\n📃 Six part series on W.E.B. Du Bois’ legacy\n\n    9\n2023-12-13\nWrangling 2: Tidying data\n\n📚 fdv - Chp 10\n\n    10\n2023-12-20\nData Viz 2: Visual summaries\n\n\n    Vorlesungsfrei\n2023-12-27\n☃️\n\n🎿\n\n    Vorlesungsfrei\n2024-01-03\n☃️\n\n🎿\n\n    11\n2024-01-10\nBericht 2\n\n📃 The case against diverging stacked bars \n📃 On Likert Scales In R\n\n    12\n2024-01-17\nWriting functions\n\n📃 sf vgnette 1 +\n📃 sf vgnette 2 + \n📃 sf vgnette 3 +\n📃 sf vgnette 4 + \n📃 sf vgnette 5\n\n    13\n2024-01-24\nInferential statistics\n\n📚 fdv - Chp 19 \n📚 fdv - Chp 4\n\n    14\n2024-01-31\nData Viz 3: visualising your model\n\n📃 gganimate vignette\n\n    15\n2024-02-07\nBericht 3\n\n\n    16\n2024-02-14\nOpen session: Q&A\n\n\n  \n  \n  \n\n\n\n\n\n\n\n\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (o. J.). R for Data Science (2. Aufl.). https://r4ds.hadley.nz/"
+    "text": "Woche\n      Datum\n      Thema\n      Vorbereitung\n    \n  \n  \n    1\n2023-10-18\nIntro to R\n\n[📚 R4DS - Ch 1 (Introduction) \n📚 R4DS - Ch 3 (Workflow: Basics)](https://r4ds.hadley.nz/intro \nhttps://r4ds.hadley.nz/workflow-basics)\n\n    2\n2023-10-25\nData Viz 1: Distributions and comparing groups\n\nR4DS - Ch. 1 (Introduction) \n📚 R4DS - Ch. 3 (Workflow: Basics)\n\n    3\n2023-11-01\nWrangling 1: Transforming data\n\n📚 R4DS - Chp 6\n\n    4\n2023-11-08\nDynamic reports with Quarto\n\n📚 ggplot2-book - Chp 5\n\n    5\n2023-11-15\nRegular Expressions\n\n📚 R4DS - Chp 21\n\n    6\n2023-11-22\nBericht 1\n\n📚 fdv - Chp 14\n\n    7\n2023-11-29\nDescriptive Stats\n\n📚 fdv - Chp 29\n\n    8\n2023-12-06\nReading in data\n\n📃 Six part series on W.E.B. Du Bois’ legacy\n\n    9\n2023-12-13\nWrangling 2: Tidying data\n\n📚 fdv - Chp 10\n\n    10\n2023-12-20\nData Viz 2: Visual summaries\n\n\n    Vorlesungsfrei\n2023-12-27\n☃️\n\n🎿\n\n    Vorlesungsfrei\n2024-01-03\n☃️\n\n🎿\n\n    11\n2024-01-10\nBericht 2\n\n📃 The case against diverging stacked bars \n📃 On Likert Scales In R\n\n    12\n2024-01-17\nWriting functions\n\n📃 sf vgnette 1 +\n📃 sf vgnette 2 + \n📃 sf vgnette 3 +\n📃 sf vgnette 4 + \n📃 sf vgnette 5\n\n    13\n2024-01-24\nInferential statistics\n\n📚 fdv - Chp 19 \n📚 fdv - Chp 4\n\n    14\n2024-01-31\nData Viz 3: visualising your model\n\n📃 gganimate vignette\n\n    15\n2024-02-07\nBericht 3\n\n\n    16\n2024-02-14\nOpen session: Q&A"
   },
   {
     "objectID": "mats/01-intro_r.html#what-is-r",
@@ -61,12 +68,5 @@
     "title": "1  Intro to R",
     "section": "1.4 How to use R",
     "text": "1.4 How to use R\n\n1.4.1 RStudio\n\n\n1.4.2 RProjects\n\n\n1.4.3 Rmarkdown and Quarto\n\n\n1.4.4 Posit Cloud"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (n.d.). R for\nData Science (2nd ed.). https://r4ds.hadley.nz/"
   }
 ]
