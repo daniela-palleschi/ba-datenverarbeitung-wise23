@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "",
+    "text": "Preface\nThis is the course website for “Angewandte Datenverarbeitung und Visualisierung” at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Syllabus",
+    "section": "",
+    "text": "The main aim of this course is to develop the knowledge and skills required to implement an “Exploratory Data Analysis (EDA)”. EDA is not a formal process with specific rules, but is rather “a state of mind” (wickham_r_nodate?, Ch. 11). The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R.\n\n\n\n\n\n\n  \n    \n    \n      Woche\n      Datum\n      Topic\n      Materials\n    \n  \n  \n    1\n2023-10-18\nIntro to R\n@wickham_r_nodate, Ch. 1 & 3\n    2\n2023-10-25\nData Viz 1\n\n    3\n2023-11-01\nWrangling 1\n\n    4\n2023-11-08\nDynamic Reports with Quarto\n\n    5\n2023-11-15\nDescriptive statistics\n\n    6\n2023-11-22\nWorkflow 1\n\n    7\n2023-11-29\nBericht 1\n\n    8\n2023-12-06\nDateneinlesung\n\n    9\n2023-12-13\nWrangling 2\n\n    10\n2023-12-20\nData Viz 2\n\n    Vorlesungsfrei\n2023-12-27\n\n\n    Vorlesungsfrei\n2024-01-03\n\n\n    11\n2024-01-10\nBericht 2\n\n    12\n2024-01-17\n\n\n    13\n2024-01-24\n\n\n    14\n2024-01-31\nBericht 3\n\n    15\n2024-02-07\n\n\n    16\n2024-02-14"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "3  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html",
+    "href": "mats/kursuebersicht_blatt.html",
+    "title": "2  Kursübersicht",
+    "section": "",
+    "text": "3 Moodle\nMoodle: “Angewandte Datenverarbeitung und Visualisierung”\nSchlüssel: SpassMitR"
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html#moodle-1",
+    "href": "mats/kursuebersicht_blatt.html#moodle-1",
+    "title": "2  Kursübersicht",
+    "section": "Moodle",
+    "text": "Moodle\n\nUnterrichtsmaterialien (z. B. meine Folien/Vortragsnotizen) werden kurz vor Beginn des Unterrichts zur Verfügung stehen\nDie Folien/Vortragsnotizen sind in drei Formate verfügbar:\n\nFolien (endend mit _folien.html)\nHTML (endend mit _blatt.html)\nPDF (endend mit .pdf)"
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html#kursziele",
+    "href": "mats/kursuebersicht_blatt.html#kursziele",
+    "title": "2  Kursübersicht",
+    "section": "4.1 Kursziele",
+    "text": "4.1 Kursziele\n\nim Großen und Ganzen werden Sie lernen, wie man mit einem Datensatz arbeitet und ihn beschreibt\nes wird vorausgesetzt, dass Sie keine Erfahrung mit Programmierung oder Datenanalyse haben\n\n\n4.1.1 Was werden Sie lernen?\n\nProgrammieren\nDatenimport\nDaten bereinigen\n\nDaten angemessen zu strukturieren\n\nDatenvisualisierung\n\nWie man verschiedene Arten von Daten darstellt\n\nDatenkommunikation\n\nbeschreiben\n\n\n\n\n4.1.2 Was werden Sie nicht lernen?\n\nWir werden nicht auf die Inferenzstatistik eingehen (d.h. Hypothesentests)\nBig Data\nandere Programmiersprachen wie Python, Julia\n\naber Sie können sie in RStudio verwenden"
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html#r-installieren",
+    "href": "mats/kursuebersicht_blatt.html#r-installieren",
+    "title": "2  Kursübersicht",
+    "section": "5.1 R installieren",
+    "text": "5.1 R installieren\n\nwir brauchen die kostenlose und quelloffene Statistiksoftware R, um unsere Daten zu analysieren\nherunterladen und installieren R: https://www.r-project.org"
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html#rstudio-installieren",
+    "href": "mats/kursuebersicht_blatt.html#rstudio-installieren",
+    "title": "2  Kursübersicht",
+    "section": "5.2 RStudio installieren",
+    "text": "5.2 RStudio installieren\n\nwir brauchen RStudio, um einfacher mit R arbeiten zu können\nRStudio herunterladen und installieren: https://rstudio.com\nes kann hilfreich sein, Englisch als Sprache in RStudio beizubehalten\n\nWir werden mehr hilfreiche Informationen finden, wenn wir Fehlermeldungen auf Englisch im Internet suchen\n\nWenn Sie Probleme bei der Installation von R oder RStudio haben, sehen Sie sich diese Hilfeseite an (auf Deutsch): http://methods-berlin.com/wp-content/uploads/Installation.html"
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html#latex-installieren",
+    "href": "mats/kursuebersicht_blatt.html#latex-installieren",
+    "title": "2  Kursübersicht",
+    "section": "5.3 LaTeX installieren",
+    "text": "5.3 LaTeX installieren\n\nwir werden nicht direkt mit LaTeX arbeiten, aber es wird im Hintergrund benötigt\nLaTeX herunterladen und installieren: https://www.latex-project.org/get/"
+  },
+  {
+    "objectID": "mats/kursuebersicht_blatt.html#fehlersuche-en-troubleshooting",
+    "href": "mats/kursuebersicht_blatt.html#fehlersuche-en-troubleshooting",
+    "title": "2  Kursübersicht",
+    "section": "6.1 Fehlersuche (EN: Troubleshooting)",
+    "text": "6.1 Fehlersuche (EN: Troubleshooting)\n\nFehlermeldungen sind in der Programmierung sehr häufig, und zwar auf allen Niveaus.\nWie man Lösungen für diese Fehlermeldungen findet, ist eine Kunst für sich\nGoogle ist Ihr Freund! Wenn möglich, googeln auf Englisch, um mehr Informationen zu erhalten"
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Course Description",
+    "text": "Course Description\nDies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten."
+  },
+  {
+    "objectID": "index.html#wieso-r",
+    "href": "index.html#wieso-r",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Wieso R?",
+    "text": "Wieso R?"
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Resources",
+    "text": "Resources\nMost of our materials are based on the book “R for Data Science” by Hadley Wickham (2nd Edition; (wickham_r_nodate?)). Where possible I’ve replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R."
+  }
+]
