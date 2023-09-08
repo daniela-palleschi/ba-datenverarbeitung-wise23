@@ -1,6 +1,16 @@
+---
+lang: de
+bibliography: references.bib
+csl: apa.csl
+---
+
+```{r, eval = T, cache = F}
+rbbt::bbt_update_bib("index.qmd")
+```
+
 # Preface {.unnumbered}
 
-This is the course website for "Angewandte Datenverarbeitung und Visualisierung" at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik.
+This is the course website for "Angewandte Datenverarbeitung und Visualisierung" at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik. @winter_statistics_2019
 
 ## Course Description
 
@@ -10,5 +20,5 @@ Dies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / ü
 
 ## Resources
 
-Most of our materials are based on the book "R for Data Science" by Hadley Wickham (2nd Edition; @wickham_r_nodate). Where possible I've replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.
+Most of our materials are based on the book "R for Data Science" by Hadley Wickham (2nd Edition). Where possible I've replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.
 

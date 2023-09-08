@@ -10,10 +10,32 @@ book:
   twitter-card: true
   downloads: [pdf, epub]
   chapters:
-    - index.qmd
-    - intro.qmd
-    - 'mats/00-kursuebersicht.qmd'
-    - summary.qmd
+    - part: "Overview"
+      chapters:
+        - index.qmd
+        - syllabus.qmd
+        - 'mats/00-kursuebersicht.qmd'
+    - part: "Course mats"
+      chapters:
+        - 'mats/01-intro_r.qmd'
+        - 'mats/02-dataviz_1.qmd'
+        - 'mats/03-wrangling_1.qmd'
+        - 'mats/04-quarto_1.qmd'
+        # - 'mats/05-regex.qmd'
+        # - 'mats/07-desc_stats.qmd'
+        # - 'mats/08-dateneinlesung.qmd'
+        # - 'mats/09-wrangling_2.qmd'
+        # - 'mats/10-dataviz_2.qmd'
+        # - 'mats/12-functions.qmd'
+        # - 'mats/13-infer_stats_1.qmd'
+        # - 'mats/14-dataviz_3.qmd'
+        # - 'mats/16-qna.qmd'
+    - part: "Reports"
+      chapters:
+        - 'mats/06-bericht_1.qmd'
+        - 'mats/11-bericht_2.qmd'
+        - 'mats/15-bericht_3.qmd'
+        
     - references.qmd
 
 
@@ -51,6 +73,11 @@ format:
       message: false
       warning: false
       echo: false
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
 
 
 
