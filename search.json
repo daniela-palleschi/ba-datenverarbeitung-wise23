@@ -44,120 +44,78 @@
   {
     "objectID": "setup/setup.html",
     "href": "setup/setup.html",
-    "title": "\n1  Setting up R and RStudio\n",
+    "title": "Erforderliche Software",
     "section": "",
-    "text": "2 R und RStudio\nUm an diesem Kurs teilnehmen zu können, müssen Sie R und RStudio installieren.\nR ist eine statistische Programmiersprache, die für statistische Berechnungen und grafische Darstellungen verwendet wird. Am häufigsten wird sie zur Analyse und Visualisierung von Daten verwendet, beides werden wir in diesem Semester tun. RStudio ist eine IDE (integrierte Entwicklungsumgebung) für R und andere Sprachen. RStudio macht die Analyse und Visualisierung von Daten in R viel einfacher (glauben Sie mir, als ich mit R anfing, gab es kein RStudio!).\nSie müssen R herunterladen, bevor Sie RStudio herunterladen können.\nIm weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir tinytex installieren. Es gibt verschiedene Möglichkeiten, dies zu tun:\nSie können diesen Schritt vorerst überspringen, falls Sie Probleme haben."
+    "text": "R und RStudio\nUm an diesem Kurs teilnehmen zu können, müssen Sie R und RStudio installieren.\nR ist eine statistische Programmiersprache, die für statistische Berechnungen und grafische Darstellungen verwendet wird. Am häufigsten wird sie zur Analyse und Visualisierung von Daten verwendet, beides werden wir in diesem Semester tun. RStudio ist eine IDE (integrierte Entwicklungsumgebung) für R und andere Sprachen. RStudio macht die Analyse und Visualisierung von Daten in R viel einfacher (glauben Sie mir, als ich mit R anfing, gab es kein RStudio!).\nSie müssen R herunterladen, bevor Sie RStudio herunterladen können.\nIm weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir tinytex installieren. Es gibt verschiedene Möglichkeiten, dies zu tun:\nSie können diesen Schritt vorerst überspringen, falls Sie Probleme haben."
   },
   {
     "objectID": "setup/setup.html#sec-packages",
     "href": "setup/setup.html#sec-packages",
-    "title": "\n1  Setting up R and RStudio\n",
-    "section": "\n2.1 Pakete",
-    "text": "2.1 Pakete\nR-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl install.packages(\"packageName\") installiert werden. Einige Pakete, die wir brauchen werden, sind:\n\n\nhere Paket (here-package?)\n\n\ntidyverse-Paketfamilie (tidyverse-package?)\n\nenthält automatisch Pakete, die wir brauchen, wie dplyr und ggplot2\n\n\n\n\nlanguageR-Paket (languageR-package?)\n\n\nUm mehrere Pakete auf einmal herunterzuladen, verwenden Sie die ‘concatenate’-Funktion in r (c()) innerhalb von install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
+    "title": "Erforderliche Software",
+    "section": "Pakete",
+    "text": "Pakete\nR-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl install.packages(\"packageName\") installiert werden. Einige Pakete, die wir brauchen werden, sind:\n\n\nhere Paket (here-package?)\n\n\ntidyverse-Paketfamilie (tidyverse-package?)\n\nenthält automatisch Pakete, die wir brauchen, wie dplyr und ggplot2\n\n\n\n\nlanguageR-Paket (languageR-package?)\n\n\nUm mehrere Pakete auf einmal herunterzuladen, verwenden Sie die ‘concatenate’-Funktion in r (c()) innerhalb von install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
   },
   {
     "objectID": "setup/setup.html#rstudio-globale-optionen-optional",
     "href": "setup/setup.html#rstudio-globale-optionen-optional",
-    "title": "\n1  Setting up R and RStudio\n",
-    "section": "\n2.2 RStudio Globale Optionen (optional)",
-    "text": "2.2 RStudio Globale Optionen (optional)\nHier sind meine bevorzugten globalen Optionen (RStudio &gt; Werkzeuge &gt; Globale Optionen). Ich empfehle dringend, die Einstellungen für “Arbeitsbereich” und “R-Sitzungen” zu befolgen, um die Reproduzierbarkeit zu gewährleisten. Mit den anderen Einstellungen können Sie herumspielen, um herauszufinden, was Ihnen gefällt.\n\nAllgemein &gt; Grundeinstellungen\n\n\nArbeitsbereich (für reproduzierbare Arbeitsabläufe!!!)\n\nDeaktivieren Sie das Kontrollkästchen “.RData beim Starten in Arbeitsbereich wiederherstellen”.\nArbeitsbereich beim Beenden in .RData speichern: Niemals\n\n\n\n\nR-Sitzungen\n\nDeaktivieren Sie das Kontrollkästchen “Zuvor geöffnete Quelldokumente beim Start wiederherstellen”.\n\n\n\n\nCode &gt; Anzeige\n\nAllgemein\n\nLeerzeichen anzeigen\nScrollen über das Ende des Dokuments hinaus zulassen\nAusgewählte Zeile hervorheben\n\n\n\n\nErscheinungsbild\n\nEditor-Thema: Kobalt"
+    "title": "Erforderliche Software",
+    "section": "RStudio Globale Optionen (optional)",
+    "text": "RStudio Globale Optionen (optional)\nHier sind meine bevorzugten globalen Optionen (RStudio &gt; Werkzeuge &gt; Globale Optionen). Ich empfehle dringend, die Einstellungen für “Arbeitsbereich” und “R-Sitzungen” zu befolgen, um die Reproduzierbarkeit zu gewährleisten. Mit den anderen Einstellungen können Sie herumspielen, um herauszufinden, was Ihnen gefällt.\n\nAllgemein &gt; Grundeinstellungen\n\n\nArbeitsbereich (für reproduzierbare Arbeitsabläufe!!!)\n\nDeaktivieren Sie das Kontrollkästchen “.RData beim Starten in Arbeitsbereich wiederherstellen”.\nArbeitsbereich beim Beenden in .RData speichern: Niemals\n\n\n\n\nR-Sitzungen\n\nDeaktivieren Sie das Kontrollkästchen “Zuvor geöffnete Quelldokumente beim Start wiederherstellen”.\n\n\n\n\nCode &gt; Anzeige\n\nAllgemein\n\nLeerzeichen anzeigen\nScrollen über das Ende des Dokuments hinaus zulassen\nAusgewählte Zeile hervorheben\n\n\n\n\nErscheinungsbild\n\nEditor-Thema: Kobalt"
   },
   {
-    "objectID": "mats/rstudio_blatt.html",
-    "href": "mats/rstudio_blatt.html",
-    "title": "2  Einführung in R und RStudio",
-    "section": "",
-    "text": "Heutige Ziele\n# R version\nR.version.string\n\n[1] \"R version 4.3.0 (2023-04-21)\"\n\n# R version name\nR.version$nickname\n\n[1] \"Already Tomorrow\"\n# RStudio version\nRStudio.Version()$version\n# RStudio version name\nRStudio.Version()$release_name\n# alle Paketeversionen\nsessionInfo()"
+    "objectID": "mats/rstudio_blatt.html#heutige-ziele",
+    "href": "mats/rstudio_blatt.html#heutige-ziele",
+    "title": "1  Einführung in R und RStudio",
+    "section": "Heutige Ziele",
+    "text": "Heutige Ziele\n\nR und RStudio installieren\nin der Lage sein, Zusatzpakete zu installieren\nin der Lage sein, Hilfe für Pakete und Funktionen zu erhalten\nin der Lage sein, Objekte in der Konsole zu erstellen"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#erweitungspakete",
-    "href": "mats/rstudio_blatt.html#erweitungspakete",
-    "title": "2  Einführung in R und RStudio",
-    "section": "3.1 Erweitungspakete",
-    "text": "3.1 Erweitungspakete\n\nR hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können\n\nähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind\n\nJeder kann Zusatzpakete für R erstellen, z.B.,\n\nfür Datenvisualisierung\nDatenverarbeitung\n\nDies ist ähnlich wie bei Handy-Apps, die von jedem erstellt und auf Ihr Gerät heruntergeladen werden können\n\naber Pakete sind immer kostenlos\n\nEs gibt 2 Schritte, um ein Paket zu verwenden:\n\nInstallieren des Pakets (einmalig)\nLaden Sie das Paket (zu Beginn jeder Sitzung)\n\n\n\n3.1.1 Paket-Installation\n\nerfolgt mit der Funktion install.packages()\n\nSie machen dies nur einmal (wie das Herunterladen einer App)\n\ndas Paket tidyverse ist sehr hilfreich für Datenverarbeitung und Visualisierung\n\nInstallieren wir es jetzt\n\n\n\n\nPaket-Installation\n\ninstallieren Sie die Pakete tidyverse und beepr\n\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"beepr\")\n\n\n\n\n\n\n\nPakete in der Konsole installieren\n\n\n\nInstallieren Sie Pakete immer über die Konsole, nicht über ein Skript!\nSie können auch die Registerkarte “Pakete” in der unteren rechten Box verwenden (Pakete &gt; Installieren)\n\n\n\n\n3.1.2 tinytex\n\nwir brauchen auch LaTeX und tinytex (Xie, 2023), um PDF-Dokumente zu erstellen\nführen Sie diesen Code aus, um tinytex zu installieren\n\n\n# run this in the console\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\n\nSie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: https://www.latex-project.org/get/"
+    "objectID": "mats/rstudio_blatt.html#r-in-rstudio",
+    "href": "mats/rstudio_blatt.html#r-in-rstudio",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.1 R in RStudio",
+    "text": "1.1 R in RStudio\n\nÖffnen Sie RStudio\nklicken Sie auf File &gt; New File &gt; R Script\n\n\nsehen Sie nun vier Quadrate:\n\nTexteditor - oben Links\n\nwo wir unseren Code schreiben werden\n\nR-Konsole (EN: Console) - unten links\n\nwo wir die Ausgabe unseres Codes und Warn-/Fehlermeldungen sehen werden\n\nArbeitsumgebung (EN: Environment) - oben rechts\n\nwo unsere Daten und Objekte nach dem Laden gespeichert werden\n\nDateien und Grafikausgabe - unten links\n\nwo wir unsere Dateien und die von uns erstellten Grafiken sehen oder Hilfe bekommen können\n\n\n\n\n1.1.1 Erweitungspakete\n\nR hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können\n\nähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind\n\nJeder kann Zusatzpakete für R erstellen, z.B.,\n\nfür Datenvisualisierung\nDatenverarbeitung\n\nDies ist ähnlich wie bei Handy-Apps, die von jedem erstellt und auf Ihr Gerät heruntergeladen werden können\n\naber Pakete sind immer kostenlos\n\nEs gibt 2 Schritte, um ein Paket zu verwenden:\n\nInstallieren des Pakets (einmalig)\nLaden Sie das Paket (zu Beginn jeder Sitzung)\n\n\n\nPaket-Installation\n\nerfolgt mit der Funktion install.packages()\n\nSie machen dies nur einmal (wie das Herunterladen einer App)\n\ndas Paket tidyverse ist sehr hilfreich für Datenverarbeitung und Visualisierung\n\nInstallieren wir es jetzt\n\n\n\n\nPaket-Installation\n\ninstallieren Sie die Pakete tidyverse und beepr\n\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"beepr\")\n\n\n\n\n\n\n\nPakete in der Konsole installieren\n\n\n\nInstallieren Sie Pakete immer über die Konsole, nicht über ein Skript!\nSie können auch die Registerkarte “Pakete” in der unteren rechten Box verwenden (Pakete &gt; Installieren)\n\n\n\n\ntinytex\n\nwir brauchen auch LaTeX und tinytex (Xie, 2023), um PDF-Dokumente zu erstellen\nführen Sie diesen Code aus, um tinytex zu installieren\n\n\n## run this in the console\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\n\nSie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: https://www.latex-project.org/get/\n\n\n\n\n1.1.2 Laden eines Pakets\n\nder Befehl library() lädt ein Paket in Ihre Umgebung\ndies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können\n\n\nlibrary(beepr)\n\n\nVerwendung einer Funktion\n\nSobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen\nZum Beispiel hat das Paket beepr eine Funktion beep(), probieren wir sie aus\n\n\n\n\nin der Konsole laufen\n\nbeep()\n\n\n\n\nFunktionsargumente\n\nArgumente enthalten optionale Informationen, die an eine Funktion übergeben werden\n\nDie Funktion beep() hat das Argument sound, das einen numerischen Wert von 1:11 annimmt.\nVersuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?\n\n\n\n\n\nin der Konsole laufen\n\nbeep(sound = 5)\n\n\n\n\nFunktionsargumente\n\n\n\n\n\n\n?help\n\n\n\nSie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. ?beep). Versuchen Sie, ?beep auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von sound = 5 schreiben kannst, um denselben Ton zu erzeugen?\n\n\n\n\n\n1.1.3 Aufgabe\n\n\n\n\n\n\nAufgabe\n\n\n\nWir brauchen auch das here-Package. Installieren Sie dieses.\nNachdem Sie das Paket installiert haben, führen Sie den Befehl here() aus. Was geschieht?"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#laden-eines-pakets",
-    "href": "mats/rstudio_blatt.html#laden-eines-pakets",
-    "title": "2  Einführung in R und RStudio",
-    "section": "3.2 Laden eines Pakets",
-    "text": "3.2 Laden eines Pakets\n\nder Befehl library() lädt ein Paket in Ihre Umgebung\ndies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können\n\n\nlibrary(beepr)\n\n\n3.2.1 Verwendung einer Funktion\n\nSobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen\nZum Beispiel hat das Paket beepr eine Funktion beep(), probieren wir sie aus\n\n\n\n\nin der Konsole laufen\n\nbeep()\n\n\n\n\n3.2.2 Funktionsargumente\n\nArgumente enthalten optionale Informationen, die an eine Funktion übergeben werden\n\nDie Funktion beep() hat das Argument sound, das einen numerischen Wert von 1:11 annimmt.\nVersuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?\n\n\n\n\n\nin der Konsole laufen\n\nbeep(sound = 5)\n\n\n\n\nFunktionsargumente\n\n\n\n\n\n\n?help\n\n\n\nSie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. ?beep). Versuchen Sie, ?beep auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von sound = 5 schreiben kannst, um denselben Ton zu erzeugen?"
+    "objectID": "mats/rstudio_blatt.html#reproduzierbarkeit",
+    "href": "mats/rstudio_blatt.html#reproduzierbarkeit",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.2 Reproduzierbarkeit",
+    "text": "1.2 Reproduzierbarkeit\n\nin diesem Kurs werden wir lernen, wie man reproduzierbare Berichte erstellt\n\nDas bedeutet, dass unser Code später noch einmal ausgeführt werden kann und immer noch die gleichen Ergebnisse liefert\n\nwenn Ihre Arbeit reproduzierbar ist, können andere Leute (und Sie selbst) Ihre Arbeit verstehen und überprüfen\n\nFür Kursaufgaben werden Sie Berichte sowie den Quellcode einreichen, die ich auf meinem Rechner ausführen können sollte\n\n\n\n1.2.1 RStudio-Einstellungen\n\nwir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten\n\nWir wollen auch niemals unseren Arbeitsbereich für später speichern\nwir wollen nur unseren Code (und die Ausgabeberichte) speichern\n\nGehen Sie zu Tools &gt; Global Options\n\nDeaktivieren Sie das Kontrollkästchen Restore .RData into workspace at startup\nSetzen Sie Save workspace to .RData on exit: to Never\n\n\n\n\nRStudio-Einstellungen\n\n\nRStudio: Tools &gt; Global Options:\n\nRestore .RData into workspace at startup\n\nnein\n\nSave workspace to .RData on exit:\n\nNever\n\n\n\n\n\n\n\n\n\nIhre ‘Global Options’ sollten wie folgt aussehen\n\n\n\n\n\n\nRStudio-Einstellungen\n\nKlicken Sie auf Appearance (linke Spalte)\n\nÖffnen Sie die Optionen “Editor Theme” und wählen Sie ein Farbschema, das Ihnen gefällt\nSie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen\n\n\n\n\n1.2.2 R-Projekte\n\nBevor wir fortfahren, müssen Sie ein R-Projekt für diesen Kurs einrichten:\n\nin RStudio: File &gt; New Project &gt; New Directory &gt; New Project &gt; Create Project\nBenennen Sie das Projekt für diesen Kurs\n\n\n\n\n\n\n\nTipp\n\n\n\nNavigieren Sie im Dateimanager Ihres Computers zum Projektordner: Klicken Sie auf die Datei .RProj\n\n\n\nDadurch wird RStudio geöffnet\nErstellen Sie einen neuen Ordner mit dem Namen daten\nErstellen Sie einen neuen Ordner, in dem Sie Ihre Kursnotizen/Übungen speichern werden (nennen Sie ihn, wie Sie wollen)\n\n\n\nProjektordnerstruktur\n\nNeue Ordner (EN: New Folder)\n\ndaten (genau so genannt)\nnotizen (oder wie immer Sie es nennen wollen)\nErstellen Sie im Ordner ‘notizen’ einen weiteren Ordner mit dem Namen ‘01-rstudio’.\n\nDies ist der Ordner, der das heutige Skript enthält.\n\n\n\n\n\n\n\n\nIhre ‘Files’ (unten rechts) sollten so aussehen\n\n\n\n\n\n\n\n1.2.3 Aufgabe\n\n\nin RStudio: File &gt; New File &gt; R Script\n\nwenn sich oben links ein neues Fenster öffnet: “Datei &gt; Speichern unter…”.\n\nspeichern Sie es in Ihrem 01-rstudio-Ordner\n\nschreiben Sie oben in das Skript: ## Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)\n\n\n\n\n\n\n\n\nIhre Skript (oben links) sollten so aussehen"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#aufgabe",
-    "href": "mats/rstudio_blatt.html#aufgabe",
-    "title": "2  Einführung in R und RStudio",
-    "section": "3.3 Aufgabe",
-    "text": "3.3 Aufgabe\n\n\n\n\n\n\nAufgabe\n\n\n\nWir brauchen auch das here-Package. Installieren Sie dieses.\nNachdem Sie das Paket installiert haben, führen Sie den Befehl here() aus. Was geschieht?"
+    "objectID": "mats/rstudio_blatt.html#rechnen-in-r",
+    "href": "mats/rstudio_blatt.html#rechnen-in-r",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.3 Rechnen in R",
+    "text": "1.3 Rechnen in R\n\nkönnen wir Berechnungen in R durchführen\nwir können addieren (+), subtrahieren (-), multiplizieren (*) und dividieren (/)"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#rstudio-einstellungen",
-    "href": "mats/rstudio_blatt.html#rstudio-einstellungen",
-    "title": "2  Einführung in R und RStudio",
-    "section": "4.1 RStudio-Einstellungen",
-    "text": "4.1 RStudio-Einstellungen\n\nwir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten\n\nWir wollen auch niemals unseren Arbeitsbereich für später speichern\nwir wollen nur unseren Code (und die Ausgabeberichte) speichern\n\nGehen Sie zu Tools &gt; Global Options\n\nDeaktivieren Sie das Kontrollkästchen Restore .RData into workspace at startup\nSetzen Sie Save workspace to .RData on exit: to Never"
+    "objectID": "mats/rstudio_blatt.html#rechnen-in-r-1",
+    "href": "mats/rstudio_blatt.html#rechnen-in-r-1",
+    "title": "1  Einführung in R und RStudio",
+    "section": "Rechnen in R",
+    "text": "Rechnen in R\n\n\n\n\n\n\nAufgabe\n\n\n\n\nVersuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:\n\n\n\n## Addition\n16+32\n\n[1] 48\n\n\n\n## Multiplikation\n16*32\n\n[1] 512\n\n\n\n\n\n## Subtraktion\n16-32\n\n[1] -16\n\n\n\n## Division\n16/32\n\n[1] 0.5\n\n\n\nschreiben Sie diese Berechnungen in Ihr Skript, und drücken Sie Cmd/Strg-Enter, um sie auszuführen\n\n\nWas passiert?\n\n\n\n\n\n1.3.1 Objekte\n\nwir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind\n\n\nx &lt;- 16\ny &lt;- 32\n\n\n\n\n\n\n\nAssignment operator\n\n\n\nDas Symbol &lt;- ist ein sogenannter assignment operator. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: “Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite”.\n\n\n\n\n1.3.2 Rechnen mit Funktionen\n\nes gibt auch eingebaute Funktionen für komplexere Berechnungen\nz.B., mean() (DE: Durchschnitt), sum() (DE: Summe)\nwas passiert, wenn wir folgendes ausführen?\n\n\nsum(6,10)\n\n[1] 16\n\n\n\n6+10\n\n[1] 16\n\n\n\nmean(6,10)\n\n[1] 6\n\n\n\n(6+10)/2\n\n[1] 8\n\n\n\n\nRechnen mit Funktionen\n\ndie Funktion mean() nimmt nur ein Argument an; alles andere wird ignoriert\n\ndas Komma in 6,10 listet 2 Argumente auf, also wird alles nach dem Komma ignoriert\n\nwenn wir mehr als ein Objekt in ein Argument einschließen wollen, müssen wir die “concatenate”-Funktion c() verwenden\n\n“concatenate” bedeutet zusammenfügen oder kombinieren\n\n\n\nmean(c(6,10))\n\n[1] 8\n\n\n\n\nRechnen mit Funktionen\n\nSie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben\n\n\n\n\n\n\n\nAufgabe\n\n\n\n\nVersuchen Sie, die Funktion mean() mit Ihren gespeicherten Variablen (x und y) als “verkettete” Argumente auszuführen\nMachen Sie dasselbe mit der Funktion sum(). Was passiert, wenn Sie c() nicht verwenden?"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#rstudio-einstellungen-1",
-    "href": "mats/rstudio_blatt.html#rstudio-einstellungen-1",
-    "title": "2  Einführung in R und RStudio",
-    "section": "RStudio-Einstellungen",
-    "text": "RStudio-Einstellungen\n\n\nRStudio: Tools &gt; Global Options:\n\nRestore .RData into workspace at startup\n\nnein\n\nSave workspace to .RData on exit:\n\nNever\n\n\n\n\n\n\n\n\n\nIhre ‘Global Options’ sollten wie folgt aussehen"
+    "objectID": "mats/rstudio_blatt.html#endergebnis",
+    "href": "mats/rstudio_blatt.html#endergebnis",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.4 Endergebnis",
+    "text": "1.4 Endergebnis\n\nSpeichern Sie Ihr R-Skript (File &gt; Save, oder Cmd/Strg-S)\nSie sollten nun einen RProject-Ordner für diesen Kurs, der Folgendes enthält:\n\nKurs_name.RProj\neinen Ordner namens Daten\neinen Ordner namens notes, der Folgendes enthält\n\neinen Ordner namens 01-rstudio, der Folgendes enthält\n\neine .R-Datei mit der heutigen Arbeit\n\n\n\nSie wissen jetzt, wie man\n\neinfache Berechnungen in R durchführen\nObjekte in Ihrer Arbeitsumgebung zu speichern\neinfache mathematische Berechnungen mit Ihren gespeicherten Objekten durchführen"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#rstudio-einstellungen-2",
-    "href": "mats/rstudio_blatt.html#rstudio-einstellungen-2",
-    "title": "2  Einführung in R und RStudio",
-    "section": "RStudio-Einstellungen",
-    "text": "RStudio-Einstellungen\n\nKlicken Sie auf Appearance (linke Spalte)\n\nÖffnen Sie die Optionen “Editor Theme” und wählen Sie ein Farbschema, das Ihnen gefällt\nSie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen"
+    "objectID": "mats/rstudio_blatt.html#session-info",
+    "href": "mats/rstudio_blatt.html#session-info",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.5 Session Info",
+    "text": "1.5 Session Info\n\nUm die Reproduzierbarkeit zu verbessern, ist es nützlich, die Version von R, RStudio und die verwendeten Pakete zu verfolgen\n\nZu diesem Zweck können Sie die folgenden Befehle ausführen:\n\n\n\n## R version\nR.version.string\n\n[1] \"R version 4.3.0 (2023-04-21)\"\n\n## R version name\nR.version$nickname\n\n[1] \"Already Tomorrow\"\n\n\n\n## RStudio version\nRStudio.Version()$version\n## RStudio version name\nRStudio.Version()$release_name\n\n\n## alle Paketeversionen\nsessionInfo()\n\n\nSession Info\nHergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.3.0.386 (Cherry Blosson).\n\nsessionInfo()\n\nR version 4.3.0 (2023-04-21)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Ventura 13.2.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Berlin\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] magick_2.7.4 beepr_1.3   \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.33     fastmap_1.1.1     xfun_0.39         magrittr_2.0.3   \n [5] glue_1.6.2        stringr_1.5.0     audio_0.1-10      knitr_1.43       \n [9] htmltools_0.5.5   png_0.1-8         rmarkdown_2.22    lifecycle_1.0.3  \n[13] cli_3.6.1         compiler_4.3.0    rprojroot_2.0.3   here_1.0.1       \n[17] rstudioapi_0.14   tools_4.3.0       evaluate_0.21     Rcpp_1.0.11      \n[21] yaml_2.3.7        rlang_1.1.1       jsonlite_1.8.7    htmlwidgets_1.6.2\n[25] stringi_1.7.12"
   },
   {
-    "objectID": "mats/rstudio_blatt.html#r-projekte",
-    "href": "mats/rstudio_blatt.html#r-projekte",
-    "title": "2  Einführung in R und RStudio",
-    "section": "4.2 R-Projekte",
-    "text": "4.2 R-Projekte\n\nBevor wir fortfahren, müssen Sie ein R-Projekt für diesen Kurs einrichten:\n\nin RStudio: File &gt; New Project &gt; New Directory &gt; New Project &gt; Create Project\nBenennen Sie das Projekt für diesen Kurs\n\n\n\n\n\n\n\nTipp\n\n\n\nNavigieren Sie im Dateimanager Ihres Computers zum Projektordner: Klicken Sie auf die Datei .RProj\n\n\n\nDadurch wird RStudio geöffnet\nErstellen Sie einen neuen Ordner mit dem Namen daten\nErstellen Sie einen neuen Ordner, in dem Sie Ihre Kursnotizen/Übungen speichern werden (nennen Sie ihn, wie Sie wollen)\n\n\n\n4.2.1 Projektordnerstruktur\n\nNeue Ordner (EN: New Folder)\n\ndaten (genau so genannt)\nnotizen (oder wie immer Sie es nennen wollen)\nErstellen Sie im Ordner ‘notizen’ einen weiteren Ordner mit dem Namen ‘01-rstudio’.\n\nDies ist der Ordner, der das heutige Skript enthält.\n\n\n\n\n\n\n\n\nIhre ‘Files’ (unten rechts) sollten so aussehen"
-  },
-  {
-    "objectID": "mats/rstudio_blatt.html#aufgabe-2",
-    "href": "mats/rstudio_blatt.html#aufgabe-2",
-    "title": "2  Einführung in R und RStudio",
-    "section": "4.3 Aufgabe",
-    "text": "4.3 Aufgabe\n\n\nin RStudio: File &gt; New File &gt; R Script\n\nwenn sich oben links ein neues Fenster öffnet: “Datei &gt; Speichern unter…”.\n\nspeichern Sie es in Ihrem 01-rstudio-Ordner\n\nschreiben Sie oben in das Skript: # Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)\n\n\n\n\n\n\n\n\nIhre Skript (oben links) sollten so aussehen"
-  },
-  {
-    "objectID": "mats/rstudio_blatt.html#objekte",
-    "href": "mats/rstudio_blatt.html#objekte",
-    "title": "2  Einführung in R und RStudio",
-    "section": "5.1 Objekte",
-    "text": "5.1 Objekte\n\nwir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind\n\n\nx &lt;- 16\ny &lt;- 32\n\n\n\n\n\n\n\nAssignment operator\n\n\n\nDas Symbol &lt;- ist ein sogenannter assignment operator. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: “Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite”."
-  },
-  {
-    "objectID": "mats/rstudio_blatt.html#rechnen-mit-funktionen",
-    "href": "mats/rstudio_blatt.html#rechnen-mit-funktionen",
-    "title": "2  Einführung in R und RStudio",
-    "section": "5.2 Rechnen mit Funktionen",
-    "text": "5.2 Rechnen mit Funktionen\n\nes gibt auch eingebaute Funktionen für komplexere Berechnungen\nz.B., mean() (DE: Durchschnitt), sum() (DE: Summe)\nwas passiert, wenn wir folgendes ausführen?\n\n\nsum(6,10)\n\n[1] 16\n\n\n\n6+10\n\n[1] 16\n\n\n\nmean(6,10)\n\n[1] 6\n\n\n\n(6+10)/2\n\n[1] 8"
-  },
-  {
-    "objectID": "mats/rstudio_blatt.html#rechnen-mit-funktionen-1",
-    "href": "mats/rstudio_blatt.html#rechnen-mit-funktionen-1",
-    "title": "2  Einführung in R und RStudio",
-    "section": "Rechnen mit Funktionen",
-    "text": "Rechnen mit Funktionen\n\ndie Funktion mean() nimmt nur ein Argument an; alles andere wird ignoriert\n\ndas Komma in 6,10 listet 2 Argumente auf, also wird alles nach dem Komma ignoriert\n\nwenn wir mehr als ein Objekt in ein Argument einschließen wollen, müssen wir die “concatenate”-Funktion c() verwenden\n\n“concatenate” bedeutet zusammenfügen oder kombinieren\n\n\n\nmean(c(6,10))\n\n[1] 8"
-  },
-  {
-    "objectID": "mats/rstudio_blatt.html#rechnen-mit-funktionen-2",
-    "href": "mats/rstudio_blatt.html#rechnen-mit-funktionen-2",
-    "title": "2  Einführung in R und RStudio",
-    "section": "Rechnen mit Funktionen",
-    "text": "Rechnen mit Funktionen\n\nSie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben\n\n\n\n\n\n\n\nAufgabe\n\n\n\n\nVersuchen Sie, die Funktion mean() mit Ihren gespeicherten Variablen (x und y) als “verkettete” Argumente auszuführen\nMachen Sie dasselbe mit der Funktion sum(). Was passiert, wenn Sie c() nicht verwenden?"
-  },
-  {
-    "objectID": "mats/rstudio_blatt.html#session-info-1",
-    "href": "mats/rstudio_blatt.html#session-info-1",
-    "title": "2  Einführung in R und RStudio",
-    "section": "Session Info",
-    "text": "Session Info\nHergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.3.0.386 (Cherry Blosson).\n\nsessionInfo()\n\nR version 4.3.0 (2023-04-21)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Ventura 13.2.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Berlin\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] magick_2.7.4 beepr_1.3   \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.33     fastmap_1.1.1     xfun_0.39         magrittr_2.0.3   \n [5] glue_1.6.2        stringr_1.5.0     audio_0.1-10      knitr_1.43       \n [9] htmltools_0.5.5   png_0.1-8         rmarkdown_2.22    lifecycle_1.0.3  \n[13] cli_3.6.1         compiler_4.3.0    rprojroot_2.0.3   here_1.0.1       \n[17] rstudioapi_0.14   tools_4.3.0       evaluate_0.21     Rcpp_1.0.11      \n[21] yaml_2.3.7        rlang_1.1.1       jsonlite_1.8.7    htmlwidgets_1.6.2\n[25] stringi_1.7.12"
+    "objectID": "mats/rstudio_blatt.html#literaturverzeichnis",
+    "href": "mats/rstudio_blatt.html#literaturverzeichnis",
+    "title": "1  Einführung in R und RStudio",
+    "section": "Literaturverzeichnis",
+    "text": "Literaturverzeichnis"
   }
 ]
