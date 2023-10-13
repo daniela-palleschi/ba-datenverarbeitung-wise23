@@ -18,7 +18,7 @@
     "href": "index.html#course-aims",
     "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
     "section": "Course Aims",
-    "text": "Course Aims\nThe main aim of this course is to develop the knowledge and skills required to implement an “Exploratory Data Analysis (EDA)”. EDA is not a formal process with specific rules, but is rather “a state of mind” (Wickham et al., o. J., Ch. 11). The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R."
+    "text": "Course Aims\nThe main aim of this course is to develop the knowledge and skills required to implement an “Exploratory Data Analysis (EDA)”. EDA is not a formal process with specific rules, but is rather “a state of mind” (wickham_r_nodate?, Ch. 11). The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R."
   },
   {
     "objectID": "index.html#wieso-r",
@@ -32,7 +32,7 @@
     "href": "index.html#resources",
     "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
     "section": "Resources",
-    "text": "Resources\nMost of our materials are based on the book “R for Data Science” by Hadley Wickham (2nd Edition). Where possible I’ve replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.\n\n\n\n\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (o. J.). R for Data Science (2. Aufl.). https://r4ds.hadley.nz/"
+    "text": "Resources\nMost of our materials are based on the book “R for Data Science” by Hadley Wickham (2nd Edition). Where possible I’ve replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R."
   },
   {
     "objectID": "syllabus.html",
@@ -42,38 +42,129 @@
     "text": "Woche\n      Datum\n      Thema\n      Vorbereitung\n    \n  \n  \n    1\n2023-10-18\nIntro to R\n\n[📚 R4DS - Ch 1 (Introduction) \n📚 R4DS - Ch 3 (Workflow: Basics)](https://r4ds.hadley.nz/intro \nhttps://r4ds.hadley.nz/workflow-basics)\n\n    2\n2023-10-25\nData Viz 1: Distributions and comparing groups\n\nR4DS - Ch. 1 (Introduction) \n📚 R4DS - Ch. 3 (Workflow: Basics)\n\n    3\n2023-11-01\nWrangling 1: Transforming data\n\n📚 R4DS - Chp 6\n\n    4\n2023-11-08\nDynamic reports with Quarto\n\n📚 ggplot2-book - Chp 5\n\n    5\n2023-11-15\nRegular Expressions\n\n📚 R4DS - Chp 21\n\n    6\n2023-11-22\nBericht 1\n\n📚 fdv - Chp 14\n\n    7\n2023-11-29\nDescriptive Stats\n\n📚 fdv - Chp 29\n\n    8\n2023-12-06\nReading in data\n\n📃 Six part series on W.E.B. Du Bois’ legacy\n\n    9\n2023-12-13\nWrangling 2: Tidying data\n\n📚 fdv - Chp 10\n\n    10\n2023-12-20\nData Viz 2: Visual summaries\n\n\n    Vorlesungsfrei\n2023-12-27\n☃️\n\n🎿\n\n    Vorlesungsfrei\n2024-01-03\n☃️\n\n🎿\n\n    11\n2024-01-10\nBericht 2\n\n📃 The case against diverging stacked bars \n📃 On Likert Scales In R\n\n    12\n2024-01-17\nWriting functions\n\n📃 sf vgnette 1 +\n📃 sf vgnette 2 + \n📃 sf vgnette 3 +\n📃 sf vgnette 4 + \n📃 sf vgnette 5\n\n    13\n2024-01-24\nInferential statistics\n\n📚 fdv - Chp 19 \n📚 fdv - Chp 4\n\n    14\n2024-01-31\nData Viz 3: visualising your model\n\n📃 gganimate vignette\n\n    15\n2024-02-07\nBericht 3\n\n\n    16\n2024-02-14\nOpen session: Q&A"
   },
   {
-    "objectID": "mats/01-intro_r.html#ziele-.unnumbered-unlisted",
-    "href": "mats/01-intro_r.html#ziele-.unnumbered-unlisted",
-    "title": "1  Intro to R",
-    "section": "1.1 Ziele {.unnumbered unlisted}",
-    "text": "1.1 Ziele {.unnumbered unlisted}"
+    "objectID": "setup/sheet-setup.html",
+    "href": "setup/sheet-setup.html",
+    "title": "\n1  Setting up R and RStudio\n",
+    "section": "",
+    "text": "2 R and RStudio\nDownload R here.\nDownload RStudio here.\nYou must first download R, then RStudio.\nTo render PDF documents with LaTeX under the hood, we need to install tinytex. There are different ways to do this:\nIn the Terminal:\nquarto add coatless/quarto-webr\nThen add WebR filter to slides in the YAML:\nformat: revealjs\nfilters:\n  - webr\ne.g., for the as_tribble() function\nremotes::install_github('lukaswallrich/timesaveR')\nhttps://debruine.github.io/glossary/\ninstall.packages(\"glossary\")"
   },
   {
-    "objectID": "mats/01-intro_r.html#what-is-r",
-    "href": "mats/01-intro_r.html#what-is-r",
-    "title": "1  Intro to R",
-    "section": "1.2 What is R?",
-    "text": "1.2 What is R?\nWe can do simple math.\n5 + 5\nOr print strings.\nprint(\"Hello world!\")\nOr do more complicated math using functions."
+    "objectID": "setup/sheet-setup.html#sec-packages",
+    "href": "setup/sheet-setup.html#sec-packages",
+    "title": "\n1  Setting up R and RStudio\n",
+    "section": "\n2.1 Packages",
+    "text": "2.1 Packages\nR packages available on the Comprehensive R Archive Network, commonly known as CRAN repository, can be easily installed using the command isntall.packages(\"packageName\"). Some packages we will be needing are:\n\n\nhere package\n\ntidyverse family of packages\n\nwill automatically include packages we need, like dplyr and ggplot2\n\n\n\n\nTo download multiple packages at once, use the ‘concatenate’ function in r (c()) inside install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
   },
   {
-    "objectID": "mats/01-intro_r.html#why-r",
-    "href": "mats/01-intro_r.html#why-r",
-    "title": "1  Intro to R",
-    "section": "1.3 Why R?",
-    "text": "1.3 Why R?"
+    "objectID": "setup/sheet-setup.html#developer-packages-optional",
+    "href": "setup/sheet-setup.html#developer-packages-optional",
+    "title": "\n1  Setting up R and RStudio\n",
+    "section": "\n2.2 Developer packages (optional)",
+    "text": "2.2 Developer packages (optional)\nNot all packages are available on CRAN. You will need to install them directly through the developer. Two packages that are commonly used to do this are remotes and devools. Let’s try installing remotes and then installing the rbbt, an addin for Zotero (discussed below).\n\nif(!requireNamespace(\"remotes\", quietly = TRUE)) install.packages(\"remotes\")\n\n\nremotes::install_github(\"paleolimbot/rbbt\")\n\n\n2.2.1 kableExtra for table formatting\n\nremotes::install_github(\"haozhu233/kableExtra\")\n\n\n2.2.2 quartoExtra\n\nFor dark/light mode toggle: https://debruine.github.io/quarto_demo/quartoExtra.html\n\ndevtools::install_github(\"debruine/quartoExtra\")"
   },
   {
-    "objectID": "mats/01-intro_r.html#when-to-use-r",
-    "href": "mats/01-intro_r.html#when-to-use-r",
-    "title": "1  Intro to R",
-    "section": "1.4 When to use R",
-    "text": "1.4 When to use R"
+    "objectID": "setup/sheet-setup.html#rstudio-global-options-optional",
+    "href": "setup/sheet-setup.html#rstudio-global-options-optional",
+    "title": "\n1  Setting up R and RStudio\n",
+    "section": "\n2.3 RStudio Global options (optional)",
+    "text": "2.3 RStudio Global options (optional)\nHere are my preferred global options (RStudio &gt; Tools &gt; Global options). I highly recommend following the settings for ‘workspace’ and ‘R Sessions’ to ensure reproducibility. The other settings you can play around with to find what you like.\n\nGeneral &gt; Basic\n\n\nWorkspace (for reproducibile workflow!!!)\n\nuncheck ‘Restore .RData into workshapce at startup’\nSave workspace to .RData on exit: Never\n\n\n\n\nR Sessions\n\nuncheck ‘Restore previously open source documents at startup’\n\n\n\n\nCode &gt; Display\n\nGeneral\n\nShow white space characters\nAllow scroll past end of document\nhighlight selected line\n\n\n\n\nAppearance\n\nEditor theme: Cobalt"
   },
   {
-    "objectID": "mats/01-intro_r.html#how-to-use-r",
-    "href": "mats/01-intro_r.html#how-to-use-r",
-    "title": "1  Intro to R",
-    "section": "1.5 How to use R",
-    "text": "1.5 How to use R\n\n1.5.1 RStudio\n\n\n1.5.2 RProjects\n\n\n1.5.3 Rmarkdown and Quarto\n\n\n1.5.4 Posit Cloud"
+    "objectID": "mats/rstudio_blatt.html",
+    "href": "mats/rstudio_blatt.html",
+    "title": "2  Einführung in R und RStudio",
+    "section": "",
+    "text": "Heutige Ziele\n# R version\nR.version.string\n\n[1] \"R version 4.3.0 (2023-04-21)\"\n\n# R version name\nR.version$nickname\n\n[1] \"Already Tomorrow\"\n# RStudio version\nRStudio.Version()$version\n# RStudio version name\nRStudio.Version()$release_name\n# alle Paketeversionen\nsessionInfo()"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#erweitungspakete",
+    "href": "mats/rstudio_blatt.html#erweitungspakete",
+    "title": "2  Einführung in R und RStudio",
+    "section": "3.1 Erweitungspakete",
+    "text": "3.1 Erweitungspakete\n\nR hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können\n\nähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind\n\nJeder kann Zusatzpakete für R erstellen, z.B.,\n\nfür Datenvisualisierung\nDatenverarbeitung\n\nDies ist ähnlich wie bei Handy-Apps, die von jedem erstellt und auf Ihr Gerät heruntergeladen werden können\n\naber Pakete sind immer kostenlos\n\nEs gibt 2 Schritte, um ein Paket zu verwenden:\n\nInstallieren des Pakets (einmalig)\nLaden Sie das Paket (zu Beginn jeder Sitzung)\n\n\n\n3.1.1 Paket-Installation\n\nerfolgt mit der Funktion install.packages()\n\nSie machen dies nur einmal (wie das Herunterladen einer App)\n\ndas Paket tidyverse ist sehr hilfreich für Datenverarbeitung und Visualisierung\n\nInstallieren wir es jetzt\n\n\n\n\nPaket-Installation\n\ninstallieren Sie die Pakete tidyverse und beepr\n\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"beepr\")\n\n\n\n\n\n\n\nPakete in der Konsole installieren\n\n\n\nInstallieren Sie Pakete immer über die Konsole, nicht über ein Skript!\nSie können auch die Registerkarte “Pakete” in der unteren rechten Box verwenden (Pakete &gt; Installieren)\n\n\n\n\n3.1.2 tinytex\n\nwir brauchen auch LaTeX und tinytex (Xie, 2023), um PDF-Dokumente zu erstellen\nführen Sie diesen Code aus, um tinytex zu installieren\n\n\n# run this in the console\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\n\nSie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: https://www.latex-project.org/get/"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#laden-eines-pakets",
+    "href": "mats/rstudio_blatt.html#laden-eines-pakets",
+    "title": "2  Einführung in R und RStudio",
+    "section": "3.2 Laden eines Pakets",
+    "text": "3.2 Laden eines Pakets\n\nder Befehl library() lädt ein Paket in Ihre Umgebung\ndies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können\n\n\nlibrary(beepr)\n\n\n3.2.1 Verwendung einer Funktion\n\nSobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen\nZum Beispiel hat das Paket beepr eine Funktion beep(), probieren wir sie aus\n\n\n\n\nin der Konsole laufen\n\nbeep()\n\n\n\n\n3.2.2 Funktionsargumente\n\nArgumente enthalten optionale Informationen, die an eine Funktion übergeben werden\n\nDie Funktion beep() hat das Argument sound, das einen numerischen Wert von 1:11 annimmt.\nVersuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?\n\n\n\n\n\nin der Konsole laufen\n\nbeep(sound = 5)\n\n\n\n\nFunktionsargumente\n\n\n\n\n\n\n?help\n\n\n\nSie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. ?beep). Versuchen Sie, ?beep auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von sound = 5 schreiben kannst, um denselben Ton zu erzeugen?"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#aufgabe",
+    "href": "mats/rstudio_blatt.html#aufgabe",
+    "title": "2  Einführung in R und RStudio",
+    "section": "3.3 Aufgabe",
+    "text": "3.3 Aufgabe\n\n\n\n\n\n\nAufgabe\n\n\n\nWir brauchen auch das here-Package. Installieren Sie dieses.\nNachdem Sie das Paket installiert haben, führen Sie den Befehl here() aus. Was geschieht?"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#rstudio-einstellungen",
+    "href": "mats/rstudio_blatt.html#rstudio-einstellungen",
+    "title": "2  Einführung in R und RStudio",
+    "section": "4.1 RStudio-Einstellungen",
+    "text": "4.1 RStudio-Einstellungen\n\nwir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten\n\nWir wollen auch niemals unseren Arbeitsbereich für später speichern\nwir wollen nur unseren Code (und die Ausgabeberichte) speichern\n\nGehen Sie zu Tools &gt; Global Options\n\nDeaktivieren Sie das Kontrollkästchen Restore .RData into workspace at startup\nSetzen Sie Save workspace to .RData on exit: to Never"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#rstudio-einstellungen-1",
+    "href": "mats/rstudio_blatt.html#rstudio-einstellungen-1",
+    "title": "2  Einführung in R und RStudio",
+    "section": "RStudio-Einstellungen",
+    "text": "RStudio-Einstellungen\n\n\nRStudio: Tools &gt; Global Options:\n\nRestore .RData into workspace at startup\n\nnein\n\nSave workspace to .RData on exit:\n\nNever\n\n\n\n\n\n\n\n\n\nIhre ‘Global Options’ sollten wie folgt aussehen"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#rstudio-einstellungen-2",
+    "href": "mats/rstudio_blatt.html#rstudio-einstellungen-2",
+    "title": "2  Einführung in R und RStudio",
+    "section": "RStudio-Einstellungen",
+    "text": "RStudio-Einstellungen\n\nKlicken Sie auf Appearance (linke Spalte)\n\nÖffnen Sie die Optionen “Editor Theme” und wählen Sie ein Farbschema, das Ihnen gefällt\nSie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#r-projekte",
+    "href": "mats/rstudio_blatt.html#r-projekte",
+    "title": "2  Einführung in R und RStudio",
+    "section": "4.2 R-Projekte",
+    "text": "4.2 R-Projekte\n\nBevor wir fortfahren, müssen Sie ein R-Projekt für diesen Kurs einrichten:\n\nin RStudio: File &gt; New Project &gt; New Directory &gt; New Project &gt; Create Project\nBenennen Sie das Projekt für diesen Kurs\n\n\n\n\n\n\n\nTipp\n\n\n\nNavigieren Sie im Dateimanager Ihres Computers zum Projektordner: Klicken Sie auf die Datei .RProj\n\n\n\nDadurch wird RStudio geöffnet\nErstellen Sie einen neuen Ordner mit dem Namen daten\nErstellen Sie einen neuen Ordner, in dem Sie Ihre Kursnotizen/Übungen speichern werden (nennen Sie ihn, wie Sie wollen)\n\n\n\n4.2.1 Projektordnerstruktur\n\nNeue Ordner (EN: New Folder)\n\ndaten (genau so genannt)\nnotizen (oder wie immer Sie es nennen wollen)\nErstellen Sie im Ordner ‘notizen’ einen weiteren Ordner mit dem Namen ‘01-rstudio’.\n\nDies ist der Ordner, der das heutige Skript enthält.\n\n\n\n\n\n\n\n\nIhre ‘Files’ (unten rechts) sollten so aussehen"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#aufgabe-2",
+    "href": "mats/rstudio_blatt.html#aufgabe-2",
+    "title": "2  Einführung in R und RStudio",
+    "section": "4.3 Aufgabe",
+    "text": "4.3 Aufgabe\n\n\nin RStudio: File &gt; New File &gt; R Script\n\nwenn sich oben links ein neues Fenster öffnet: “Datei &gt; Speichern unter…”.\n\nspeichern Sie es in Ihrem 01-rstudio-Ordner\n\nschreiben Sie oben in das Skript: # Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)\n\n\n\n\n\n\n\n\nIhre Skript (oben links) sollten so aussehen"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#objekte",
+    "href": "mats/rstudio_blatt.html#objekte",
+    "title": "2  Einführung in R und RStudio",
+    "section": "5.1 Objekte",
+    "text": "5.1 Objekte\n\nwir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind\n\n\nx &lt;- 16\ny &lt;- 32\n\n\n\n\n\n\n\nAssignment operator\n\n\n\nDas Symbol &lt;- ist ein sogenannter assignment operator. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: “Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite”."
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#rechnen-mit-funktionen",
+    "href": "mats/rstudio_blatt.html#rechnen-mit-funktionen",
+    "title": "2  Einführung in R und RStudio",
+    "section": "5.2 Rechnen mit Funktionen",
+    "text": "5.2 Rechnen mit Funktionen\n\nes gibt auch eingebaute Funktionen für komplexere Berechnungen\nz.B., mean() (DE: Durchschnitt), sum() (DE: Summe)\nwas passiert, wenn wir folgendes ausführen?\n\n\nsum(6,10)\n\n[1] 16\n\n\n\n6+10\n\n[1] 16\n\n\n\nmean(6,10)\n\n[1] 6\n\n\n\n(6+10)/2\n\n[1] 8"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#rechnen-mit-funktionen-1",
+    "href": "mats/rstudio_blatt.html#rechnen-mit-funktionen-1",
+    "title": "2  Einführung in R und RStudio",
+    "section": "Rechnen mit Funktionen",
+    "text": "Rechnen mit Funktionen\n\ndie Funktion mean() nimmt nur ein Argument an; alles andere wird ignoriert\n\ndas Komma in 6,10 listet 2 Argumente auf, also wird alles nach dem Komma ignoriert\n\nwenn wir mehr als ein Objekt in ein Argument einschließen wollen, müssen wir die “concatenate”-Funktion c() verwenden\n\n“concatenate” bedeutet zusammenfügen oder kombinieren\n\n\n\nmean(c(6,10))\n\n[1] 8"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#rechnen-mit-funktionen-2",
+    "href": "mats/rstudio_blatt.html#rechnen-mit-funktionen-2",
+    "title": "2  Einführung in R und RStudio",
+    "section": "Rechnen mit Funktionen",
+    "text": "Rechnen mit Funktionen\n\nSie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben\n\n\n\n\n\n\n\nAufgabe\n\n\n\n\nVersuchen Sie, die Funktion mean() mit Ihren gespeicherten Variablen (x und y) als “verkettete” Argumente auszuführen\nMachen Sie dasselbe mit der Funktion sum(). Was passiert, wenn Sie c() nicht verwenden?"
+  },
+  {
+    "objectID": "mats/rstudio_blatt.html#session-info-1",
+    "href": "mats/rstudio_blatt.html#session-info-1",
+    "title": "2  Einführung in R und RStudio",
+    "section": "Session Info",
+    "text": "Session Info\nHergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.3.0.386 (Cherry Blosson).\n\nsessionInfo()\n\nR version 4.3.0 (2023-04-21)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Ventura 13.2.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Berlin\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] magick_2.7.4 beepr_1.3   \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.33     fastmap_1.1.1     xfun_0.39         magrittr_2.0.3   \n [5] glue_1.6.2        stringr_1.5.0     audio_0.1-10      knitr_1.43       \n [9] htmltools_0.5.5   png_0.1-8         rmarkdown_2.22    lifecycle_1.0.3  \n[13] cli_3.6.1         compiler_4.3.0    rprojroot_2.0.3   here_1.0.1       \n[17] rstudioapi_0.14   tools_4.3.0       evaluate_0.21     Rcpp_1.0.11      \n[21] yaml_2.3.7        rlang_1.1.1       jsonlite_1.8.7    htmlwidgets_1.6.2\n[25] stringi_1.7.12"
   }
 ]
