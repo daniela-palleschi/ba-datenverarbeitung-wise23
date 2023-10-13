@@ -6,7 +6,6 @@ lang: en
 date: 2023-04-12
 format:
   html:
-    output-file: sheet-setup.html
     toc: true
     toc-depth: 2
     toc-title: 'Overview'
@@ -33,27 +32,30 @@ knitr::opts_chunk$set(eval = F, # evaluate = T for REPRODUCIBLE analyses
                       warning = F) # print warnings?
 ```
 
-This document outlines the steps required to set up our reproducible workflow. @sec-R provides an overview of installing R, RStudio, and required packages. These steps are required. @sec-tinytex describes how to install TinyTex, which is required to render LaTeX-style documents (i.e., PDFs) in R.
+Dieses Dokument beschreibt die Schritte, die erforderlich sind, um unseren reproduzierbaren Arbeitsablauf für den Kurs 'Angewandte Datenanalyse und -visualisierung' einzurichten. @sec-R gibt einen Überblick über die Installation von R, RStudio und der erforderlichen Pakete. Diese Schritte sind erforderlich. @sec-tinytex beschreibt die Installation von TinyTex, das benötigt wird, um Dokumente im LaTeX-Stil (z.B. PDFs) in R darzustellen.
 
-@sec-zotero provides tips on installing Zotero and related addins for integrations with R and RStudio. This is optional, and slightly more advanced.
+# R und RStudio {#sec-R}
 
-# R and RStudio {#sec-R}
+Um an diesem Kurs teilnehmen zu können, müssen Sie R und RStudio installieren.
 
-Download R [here](https://cran.r-project.org/).
+[R](https://www.r-project.org/about.html) ist eine statistische Programmiersprache, die für statistische Berechnungen und grafische Darstellungen verwendet wird. Am häufigsten wird sie zur Analyse und Visualisierung von Daten verwendet, beides werden wir in diesem Semester tun. [RStudio](https://posit.co/download/rstudio-desktop/) ist eine IDE (integrierte Entwicklungsumgebung) für R und andere Sprachen. RStudio macht die Analyse und Visualisierung von Daten in R viel einfacher (glauben Sie mir, als ich mit R anfing, gab es kein RStudio!).
 
-Download RStudio [here](https://www.rstudio.com/products/rstudio/download/).
+Sie müssen R herunterladen, bevor Sie RStudio herunterladen können.
 
-You must first download R, then RStudio.
+1. [R herunterladen](https://cran.r-project.org/)
 
-## Packages {#sec-packages}
+2. [RStudio herunterladen](https://www.rstudio.com/products/rstudio/download/)
 
-R packages available on the Comprehensive R Archive Network, commonly known as CRAN repository, can be easily installed using the command `isntall.packages("packageName")`. Some packages we will be needing are:
+## Pakete {#sec-packages}
 
-- `here` package
-- `tidyverse` family of packages
-  -  will automatically include packages we need, like `dplyr` and `ggplot2`
+R-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl `install.packages("packageName")` installiert werden. Einige Pakete, die wir brauchen werden, sind:
+
+- `here` Paket [@here-package]
+- `tidyverse`-Paketfamilie [@tidyverse-package]
+  - enthält automatisch Pakete, die wir brauchen, wie `dplyr` und `ggplot2`
+- `languageR`-Paket [@languageR-package]
   
-To download multiple packages at once, use the 'concatenate' function in r (`c()`) inside `install.packages()`:
+Um mehrere Pakete auf einmal herunterzuladen, verwenden Sie die 'concatenate'-Funktion in r (`c()`) innerhalb von `install.packages()`:
 
 ```{r, eval = F}
 install.packages(c("here", 
@@ -61,90 +63,29 @@ install.packages(c("here",
                    "pacman"))
 ```
 
-## Developer packages (optional)
+## RStudio Globale Optionen (optional)
 
-Not all packages are available on CRAN. You will need to install them directly through the developer. Two packages that are commonly used to do this are `remotes` and `devools`. Let's try installing `remotes` and then installing the `rbbt`, an addin for Zotero (discussed below).
+Hier sind meine bevorzugten globalen Optionen (RStudio > Werkzeuge > Globale Optionen). Ich empfehle dringend, die Einstellungen für "Arbeitsbereich" und "R-Sitzungen" zu befolgen, um die Reproduzierbarkeit zu gewährleisten. Mit den anderen Einstellungen können Sie herumspielen, um herauszufinden, was Ihnen gefällt.
 
-```{r}
-if(!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
-```
+  - Allgemein > Grundeinstellungen
+    - **Arbeitsbereich** (für reproduzierbare Arbeitsabläufe!!!)
+        + Deaktivieren Sie das Kontrollkästchen ".RData beim Starten in Arbeitsbereich wiederherstellen".
+        + Arbeitsbereich beim Beenden in .RData speichern: ***Niemals***
+    - **R-Sitzungen**
+        + Deaktivieren Sie das Kontrollkästchen "Zuvor geöffnete Quelldokumente beim Start wiederherstellen".
+  - Code > Anzeige
+    - Allgemein
+      + Leerzeichen anzeigen
+      + Scrollen über das Ende des Dokuments hinaus zulassen
+      + Ausgewählte Zeile hervorheben
+  - Erscheinungsbild
+    - Editor-Thema: Kobalt
 
-```{r}
-remotes::install_github("paleolimbot/rbbt")
-```
+# tinyTex (optional) {#sec-tinytex}
 
-### `kableExtra` for table formatting
+Im weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir [tinytex](https://yihui.org/tinytex/) installieren. Es gibt verschiedene Möglichkeiten, dies zu tun:
 
-```{r}
-remotes::install_github("haozhu233/kableExtra")
-```
+- Führen Sie folgendes im *Terminal* aus: `quarto install tinytex`
+- oder in der Konsole: `tinytex::install_tinytex()`
 
-### `quartoExtra`
-
-For dark/light mode toggle: https://debruine.github.io/quarto_demo/quartoExtra.html
-
-```{r}
-devtools::install_github("debruine/quartoExtra")
-```
-
-
-## RStudio Global options (optional)
-
-Here are my preferred global options (RStudio > Tools > Global options). I highly recommend following the settings for 'workspace' and 'R Sessions' to ensure reproducibility. The other settings you can play around with to find what you like.
-
-  - General > Basic
-    - **Workspace** (for reproducibile workflow!!!)
-        + uncheck 'Restore .RData into workshapce at startup'
-        + Save workspace to .RData on exit: ***Never***
-    - **R Sessions**
-        + uncheck 'Restore previously open source documents at startup'
-  - Code > Display
-    - General
-      + Show white space characters
-      + Allow scroll past end of document
-      + highlight selected line
-  - Appearance
-    - Editor theme: Cobalt
-
-# tinyTex {#sec-tinytex}
-
-To render PDF documents with LaTeX under the hood, we need to install [tinytex](https://yihui.org/tinytex/). There are different ways to do this:
-
-- run the following in the *terminal*: `quarto install tinytex`
-- or in the console: `tinytex::install_tinytex()`
-
-# webR
-
-In the Terminal:
-
-```{r}
-#| eval: false
-quarto add coatless/quarto-webr
-```
-
-Then add WebR filter to slides in the YAML:
-
-```{r}
-#| eval: false
-format: revealjs
-filters:
-  - webr
-```
-
-# timesaveR
-
-e.g., for the `as_tribble()` function
-
-```{r}
-#| eval: false
-remotes::install_github('lukaswallrich/timesaveR')
-```
-
-# glossary
-
-https://debruine.github.io/glossary/
-
-```{r}
-install.packages("glossary")
-```
-
+Sie können diesen Schritt vorerst überspringen, falls Sie Probleme haben.
