@@ -4,17 +4,17 @@ bibliography: references.bib
 csl: apa.csl
 ---
 
-```{r, eval = T, cache = F}
-rbbt::bbt_update_bib("index.qmd")
-```
+# Course Overview {.unnumbered}
 
-# Preface {.unnumbered}
+This is the course website for "Angewandte Datenverarbeitung und Visualisierung" at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik. 
 
-This is the course website for "Angewandte Datenverarbeitung und Visualisierung" at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik. @winter_statistics_2019
+## Description on AGNES
 
-## Course Description
+> Dies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten.
 
-Dies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten.
+## Course Aims
+
+The main aim of this course is to develop the knowledge and skills required to implement an "Exploratory Data Analysis (EDA)". EDA is not a formal process with specific rules, but is rather "a state of mind" [@wickham_r_nodate, Ch. 11]. The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R.
 
 ## Wieso R?
 

@@ -1,10 +1,33 @@
 ---
 date: "10/18/2023"
+format: revealjs
+filters:
+  - webr
 ---
 
 # Intro to R
 
+## Ziele {.unnumbered unlisted}
+
+- 
+
 ## What is R?
+
+We can do simple math.
+
+```{web-r}
+5 + 5
+```
+
+Or print strings.
+
+```{web-r}
+print("Hello world!")
+```
+
+Or do more complicated math using functions.
+
+
 
 ## Why R?
 
@@ -17,5 +40,3 @@ date: "10/18/2023"
 ### RProjects
 
 ### Rmarkdown and Quarto
-
-### Posit Cloud

@@ -2,4 +2,4 @@
 date: "02/07/2024"
 ---
 
-# Bericht 3: 
+# Bericht 3 {.unnumbered}

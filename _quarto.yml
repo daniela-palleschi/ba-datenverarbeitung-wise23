@@ -14,27 +14,28 @@ book:
       chapters:
         - index.qmd
         - syllabus.qmd
-        - 'mats/00-kursuebersicht.qmd'
+        - mats/00-kursuebersicht.qmd
+        - setup/setup.qmd
     - part: "Course mats"
       chapters:
-        - 'mats/01-intro_r.qmd'
-        - 'mats/02-dataviz_1.qmd'
-        - 'mats/03-wrangling_1.qmd'
-        - 'mats/04-quarto_1.qmd'
-        # - 'mats/05-regex.qmd'
-        # - 'mats/07-desc_stats.qmd'
-        # - 'mats/08-dateneinlesung.qmd'
-        # - 'mats/09-wrangling_2.qmd'
-        # - 'mats/10-dataviz_2.qmd'
-        # - 'mats/12-functions.qmd'
-        # - 'mats/13-infer_stats_1.qmd'
-        # - 'mats/14-dataviz_3.qmd'
-        # - 'mats/16-qna.qmd'
+        - mats/_rstudio.qmd
+        # - mats/02-dataviz_1.qmd
+        # - mats/03-wrangling_1.qmd
+        # - mats/04-quarto_1.qmd
+        # - mats/05-regex.qmd
+        # - mats/07-desc_stats.qmd
+        # - mats/08-dateneinlesung.qmd
+        # - mats/09-wrangling_2.qmd
+        # - mats/10-dataviz_2.qmd
+        # - mats/12-functions.qmd
+        # - mats/13-infer_stats_1.qmd
+        # - mats/14-dataviz_3.qmd
+        # - mats/16-qna.qmd
     - part: "Reports"
       chapters:
-        - 'mats/06-bericht_1.qmd'
-        - 'mats/11-bericht_2.qmd'
-        - 'mats/15-bericht_3.qmd'
+        - mats/06-bericht_1.qmd
+        - mats/11-bericht_2.qmd
+        - mats/15-bericht_3.qmd
         
     - references.qmd
 
@@ -45,7 +46,7 @@ book:
         href: https://daniela-palleschi.github.io/
         text: D. Palleschi
       - icon: github
-        href: https://github.com/daniela-palleschi/ba-datenverarbeitung-wise23
+        href: https://github.com/daniela-palleschi/r4ling
         aria-label: Source Code
       - icon: life-preserver
         href: https://moodle.hu-berlin.de/course/view.php?id=119097
@@ -73,11 +74,11 @@ format:
       message: false
       warning: false
       echo: false
-  pdf:
-    toc: true
-    number-sections: true
-    colorlinks: true
-    code-overflow: wrap
+  # pdf:
+  #   toc: true
+  #   number-sections: true
+  #   colorlinks: true
+  #   code-overflow: wrap
 
 
 
