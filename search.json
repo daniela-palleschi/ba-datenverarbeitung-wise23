@@ -42,32 +42,25 @@
     "text": "Woche\n      Datum\n      Thema\n      Vorbereitung\n    \n  \n  \n    1\n2023-10-18\nIntro to R\n\n[📚 R4DS - Ch 1 (Introduction) \n📚 R4DS - Ch 3 (Workflow: Basics)](https://r4ds.hadley.nz/intro \nhttps://r4ds.hadley.nz/workflow-basics)\n\n    2\n2023-10-25\nData Viz 1: Distributions and comparing groups\n\nR4DS - Ch. 1 (Introduction) \n📚 R4DS - Ch. 3 (Workflow: Basics)\n\n    3\n2023-11-01\nWrangling 1: Transforming data\n\n📚 R4DS - Chp 6\n\n    4\n2023-11-08\nDynamic reports with Quarto\n\n📚 ggplot2-book - Chp 5\n\n    5\n2023-11-15\nRegular Expressions\n\n📚 R4DS - Chp 21\n\n    6\n2023-11-22\nBericht 1\n\n📚 fdv - Chp 14\n\n    7\n2023-11-29\nDescriptive Stats\n\n📚 fdv - Chp 29\n\n    8\n2023-12-06\nReading in data\n\n📃 Six part series on W.E.B. Du Bois’ legacy\n\n    9\n2023-12-13\nWrangling 2: Tidying data\n\n📚 fdv - Chp 10\n\n    10\n2023-12-20\nData Viz 2: Visual summaries\n\n\n    Vorlesungsfrei\n2023-12-27\n☃️\n\n🎿\n\n    Vorlesungsfrei\n2024-01-03\n☃️\n\n🎿\n\n    11\n2024-01-10\nBericht 2\n\n📃 The case against diverging stacked bars \n📃 On Likert Scales In R\n\n    12\n2024-01-17\nWriting functions\n\n📃 sf vgnette 1 +\n📃 sf vgnette 2 + \n📃 sf vgnette 3 +\n📃 sf vgnette 4 + \n📃 sf vgnette 5\n\n    13\n2024-01-24\nInferential statistics\n\n📚 fdv - Chp 19 \n📚 fdv - Chp 4\n\n    14\n2024-01-31\nData Viz 3: visualising your model\n\n📃 gganimate vignette\n\n    15\n2024-02-07\nBericht 3\n\n\n    16\n2024-02-14\nOpen session: Q&A"
   },
   {
-    "objectID": "setup/sheet-setup.html",
-    "href": "setup/sheet-setup.html",
+    "objectID": "setup/setup.html",
+    "href": "setup/setup.html",
     "title": "\n1  Setting up R and RStudio\n",
     "section": "",
-    "text": "2 R and RStudio\nDownload R here.\nDownload RStudio here.\nYou must first download R, then RStudio.\nTo render PDF documents with LaTeX under the hood, we need to install tinytex. There are different ways to do this:\nIn the Terminal:\nquarto add coatless/quarto-webr\nThen add WebR filter to slides in the YAML:\nformat: revealjs\nfilters:\n  - webr\ne.g., for the as_tribble() function\nremotes::install_github('lukaswallrich/timesaveR')\nhttps://debruine.github.io/glossary/\ninstall.packages(\"glossary\")"
+    "text": "2 R und RStudio\nUm an diesem Kurs teilnehmen zu können, müssen Sie R und RStudio installieren.\nR ist eine statistische Programmiersprache, die für statistische Berechnungen und grafische Darstellungen verwendet wird. Am häufigsten wird sie zur Analyse und Visualisierung von Daten verwendet, beides werden wir in diesem Semester tun. RStudio ist eine IDE (integrierte Entwicklungsumgebung) für R und andere Sprachen. RStudio macht die Analyse und Visualisierung von Daten in R viel einfacher (glauben Sie mir, als ich mit R anfing, gab es kein RStudio!).\nSie müssen R herunterladen, bevor Sie RStudio herunterladen können.\nIm weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir tinytex installieren. Es gibt verschiedene Möglichkeiten, dies zu tun:\nSie können diesen Schritt vorerst überspringen, falls Sie Probleme haben."
   },
   {
-    "objectID": "setup/sheet-setup.html#sec-packages",
-    "href": "setup/sheet-setup.html#sec-packages",
+    "objectID": "setup/setup.html#sec-packages",
+    "href": "setup/setup.html#sec-packages",
     "title": "\n1  Setting up R and RStudio\n",
-    "section": "\n2.1 Packages",
-    "text": "2.1 Packages\nR packages available on the Comprehensive R Archive Network, commonly known as CRAN repository, can be easily installed using the command isntall.packages(\"packageName\"). Some packages we will be needing are:\n\n\nhere package\n\ntidyverse family of packages\n\nwill automatically include packages we need, like dplyr and ggplot2\n\n\n\n\nTo download multiple packages at once, use the ‘concatenate’ function in r (c()) inside install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
+    "section": "\n2.1 Pakete",
+    "text": "2.1 Pakete\nR-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl install.packages(\"packageName\") installiert werden. Einige Pakete, die wir brauchen werden, sind:\n\n\nhere Paket (here-package?)\n\n\ntidyverse-Paketfamilie (tidyverse-package?)\n\nenthält automatisch Pakete, die wir brauchen, wie dplyr und ggplot2\n\n\n\n\nlanguageR-Paket (languageR-package?)\n\n\nUm mehrere Pakete auf einmal herunterzuladen, verwenden Sie die ‘concatenate’-Funktion in r (c()) innerhalb von install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
   },
   {
-    "objectID": "setup/sheet-setup.html#developer-packages-optional",
-    "href": "setup/sheet-setup.html#developer-packages-optional",
+    "objectID": "setup/setup.html#rstudio-globale-optionen-optional",
+    "href": "setup/setup.html#rstudio-globale-optionen-optional",
     "title": "\n1  Setting up R and RStudio\n",
-    "section": "\n2.2 Developer packages (optional)",
-    "text": "2.2 Developer packages (optional)\nNot all packages are available on CRAN. You will need to install them directly through the developer. Two packages that are commonly used to do this are remotes and devools. Let’s try installing remotes and then installing the rbbt, an addin for Zotero (discussed below).\n\nif(!requireNamespace(\"remotes\", quietly = TRUE)) install.packages(\"remotes\")\n\n\nremotes::install_github(\"paleolimbot/rbbt\")\n\n\n2.2.1 kableExtra for table formatting\n\nremotes::install_github(\"haozhu233/kableExtra\")\n\n\n2.2.2 quartoExtra\n\nFor dark/light mode toggle: https://debruine.github.io/quarto_demo/quartoExtra.html\n\ndevtools::install_github(\"debruine/quartoExtra\")"
-  },
-  {
-    "objectID": "setup/sheet-setup.html#rstudio-global-options-optional",
-    "href": "setup/sheet-setup.html#rstudio-global-options-optional",
-    "title": "\n1  Setting up R and RStudio\n",
-    "section": "\n2.3 RStudio Global options (optional)",
-    "text": "2.3 RStudio Global options (optional)\nHere are my preferred global options (RStudio &gt; Tools &gt; Global options). I highly recommend following the settings for ‘workspace’ and ‘R Sessions’ to ensure reproducibility. The other settings you can play around with to find what you like.\n\nGeneral &gt; Basic\n\n\nWorkspace (for reproducibile workflow!!!)\n\nuncheck ‘Restore .RData into workshapce at startup’\nSave workspace to .RData on exit: Never\n\n\n\n\nR Sessions\n\nuncheck ‘Restore previously open source documents at startup’\n\n\n\n\nCode &gt; Display\n\nGeneral\n\nShow white space characters\nAllow scroll past end of document\nhighlight selected line\n\n\n\n\nAppearance\n\nEditor theme: Cobalt"
+    "section": "\n2.2 RStudio Globale Optionen (optional)",
+    "text": "2.2 RStudio Globale Optionen (optional)\nHier sind meine bevorzugten globalen Optionen (RStudio &gt; Werkzeuge &gt; Globale Optionen). Ich empfehle dringend, die Einstellungen für “Arbeitsbereich” und “R-Sitzungen” zu befolgen, um die Reproduzierbarkeit zu gewährleisten. Mit den anderen Einstellungen können Sie herumspielen, um herauszufinden, was Ihnen gefällt.\n\nAllgemein &gt; Grundeinstellungen\n\n\nArbeitsbereich (für reproduzierbare Arbeitsabläufe!!!)\n\nDeaktivieren Sie das Kontrollkästchen “.RData beim Starten in Arbeitsbereich wiederherstellen”.\nArbeitsbereich beim Beenden in .RData speichern: Niemals\n\n\n\n\nR-Sitzungen\n\nDeaktivieren Sie das Kontrollkästchen “Zuvor geöffnete Quelldokumente beim Start wiederherstellen”.\n\n\n\n\nCode &gt; Anzeige\n\nAllgemein\n\nLeerzeichen anzeigen\nScrollen über das Ende des Dokuments hinaus zulassen\nAusgewählte Zeile hervorheben\n\n\n\n\nErscheinungsbild\n\nEditor-Thema: Kobalt"
   },
   {
     "objectID": "mats/rstudio_blatt.html",
