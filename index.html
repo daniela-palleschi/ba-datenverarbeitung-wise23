@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}</style>
 
 
 <script>const headroomChanged = new CustomEvent("quarto-hrChanged", {
@@ -4544,7 +4563,7 @@ vertical-align: -.125em;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Overview</a></li><li class="breadcrumb-item"><a href="./index.html">Course Overview</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Overview</a></li><li class="breadcrumb-item"><a href="./index.html">Kursübersicht</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -4576,19 +4595,13 @@ vertical-align: -.125em;
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Course Overview</span></a>
+ <span class="menu-text">Kursübersicht</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mats/00-kursuebersicht.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Kursübersicht</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4610,8 +4623,14 @@ vertical-align: -.125em;
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mats/rstudio_blatt.html" class="sidebar-item-text sidebar-link">
+  <a href="./mats/01-intro_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einführung in R und RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mats/02-quarto_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic reports with Quarto</span></span></a>
   </div>
 </li>
       </ul>
@@ -4619,7 +4638,7 @@ vertical-align: -.125em;
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Reports</span></a>
+ <span class="menu-text">Berichte</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -4627,19 +4646,19 @@ vertical-align: -.125em;
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mats/06-bericht_1.html" class="sidebar-item-text sidebar-link">
+  <a href="./berichte/bericht_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bericht 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mats/11-bericht_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./berichte/bericht_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bericht 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mats/15-bericht_3.html" class="sidebar-item-text sidebar-link">
+  <a href="./berichte/bericht_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bericht 3</span></a>
   </div>
 </li>
@@ -4661,12 +4680,11 @@ vertical-align: -.125em;
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#course-overview" id="toc-course-overview" class="nav-link active" data-scroll-target="#course-overview">Course Overview</a>
+  <li><a href="#kursübersicht" id="toc-kursübersicht" class="nav-link active" data-scroll-target="#kursübersicht">Kursübersicht</a>
   <ul class="collapse">
-  <li><a href="#description-on-agnes" id="toc-description-on-agnes" class="nav-link" data-scroll-target="#description-on-agnes">Description on AGNES</a></li>
-  <li><a href="#course-aims" id="toc-course-aims" class="nav-link" data-scroll-target="#course-aims">Course Aims</a></li>
-  <li><a href="#wieso-r" id="toc-wieso-r" class="nav-link" data-scroll-target="#wieso-r">Wieso R?</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#kursbeschreibung-auf-agnes" id="toc-kursbeschreibung-auf-agnes" class="nav-link" data-scroll-target="#kursbeschreibung-auf-agnes">Kursbeschreibung auf AGNES</a></li>
+  <li><a href="#ziele-des-kurses" id="toc-ziele-des-kurses" class="nav-link" data-scroll-target="#ziele-des-kurses">Ziele des Kurses</a></li>
+  <li><a href="#ressourcen" id="toc-ressourcen" class="nav-link" data-scroll-target="#ressourcen">Ressourcen</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4694,7 +4712,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Vorle0ung 07/09/23</p>
+      <p class="date">7. September 2023</p>
     </div>
   </div>
   
@@ -4704,29 +4722,38 @@ vertical-align: -.125em;
 
 </header>
 
-<section id="course-overview" class="level1 unnumbered">
-<h1 class="unnumbered">Course Overview</h1>
-<p>This is the course website for “Angewandte Datenverarbeitung und Visualisierung” at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik.</p>
-<section id="description-on-agnes" class="level2">
-<h2 class="anchored" data-anchor-id="description-on-agnes">Description on AGNES</h2>
+<section id="kursübersicht" class="level1 unnumbered">
+<h1 class="unnumbered">Kursübersicht</h1>
+<p>Dies ist die Webseite der Lehrveranstaltung “Angewandte Datenverarbeitung und Visualisierung” an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle <a href="https://moodle.hu-berlin.de/course/view.php?id=124123">hier</a> (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).</p>
+<section id="kursbeschreibung-auf-agnes" class="level2">
+<h2 class="anchored" data-anchor-id="kursbeschreibung-auf-agnes">Kursbeschreibung auf AGNES</h2>
 <blockquote class="blockquote">
 <p>Dies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten.</p>
 </blockquote>
 </section>
-<section id="course-aims" class="level2">
-<h2 class="anchored" data-anchor-id="course-aims">Course Aims</h2>
-<p>The main aim of this course is to develop the knowledge and skills required to implement an “Exploratory Data Analysis (EDA)”. EDA is not a formal process with specific rules, but is rather “a state of mind” <span class="citation" data-cites="wickham_r_nodate">(<a href="mats/rstudio_blatt.html#ref-wickham_r_nodate" role="doc-biblioref"><strong>wickham_r_nodate?</strong></a>, Ch. 11)</span>. The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R.</p>
+<section id="ziele-des-kurses" class="level2">
+<h2 class="anchored" data-anchor-id="ziele-des-kurses">Ziele des Kurses</h2>
+<p>Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer “Explorativen Datenanalyse (EDA)” erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr “a state of mind” <span class="citation" data-cites="wickham_r_2023">(<a href="mats/01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">Wickham et al., 2023, Kapitel 11</a>)</span>. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.</p>
 </section>
-<section id="wieso-r" class="level2">
-<h2 class="anchored" data-anchor-id="wieso-r">Wieso R?</h2>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p>Most of our materials are based on the book “R for Data Science” by Hadley Wickham (2nd Edition). Where possible I’ve replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.</p>
+<section id="ressourcen" class="level2">
+<h2 class="anchored" data-anchor-id="ressourcen">Ressourcen</h2>
+<p>Die meisten unserer Materialien basieren auf dem Buch “R for Data Science” von Hadley Wickham (2. Auflage), das Sie <a href="https://r4ds.hadley.nz/">hier</a> vollständig online einsehen können. Wo es möglich war, habe ich die in diesem Buch verwendeten Daten durch linguistische Datensätze ersetzt, damit Sie sich ein Bild davon machen können, wie Linguisten R verwenden könnten.</p>
+<p>Einige andere Ressourcen, die wir von Zeit zu Zeit verwenden werden oder die Sie vielleicht selbst erkunden möchten, sind das E-book <em>Data visualisation using R, for researchers who don’t use R</em> <span class="citation" data-cites="nordmann_data_2022">(<a href="mats/01-intro_r.html#ref-nordmann_data_2022" role="doc-biblioref">Nordmann et al., 2022</a>)</span> und das Lehrbuch <em>Statistics for Linguists: An Introduction Using R</em> by Bodo Winter [<span class="citation" data-cites="winter_statistics_2019">Winter (<a href="mats/01-intro_r.html#ref-winter_statistics_2019" role="doc-biblioref">2019</a>)</span>; PDF erhältlich über das Grimm Zentrum].</p>
 
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-nordmann_data_2022" class="csl-entry" role="listitem">
+Nordmann, E., McAleer, P., Toivo, W., Paterson, H., &amp; DeBruine, L. M. (2022). Data <span>Visualization Using R</span> for <span>Researchers Who Do Not Use R</span>. <em>Advances in Methods and Practices in Psychological Science</em>, <em>5</em>(2), 251524592210746. <a href="https://doi.org/10.1177/25152459221074654">https://doi.org/10.1177/25152459221074654</a>
+</div>
+<div id="ref-wickham_r_2023" class="csl-entry" role="listitem">
+Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R for <span>Data Science</span></em> (2. Aufl.).
+</div>
+<div id="ref-winter_statistics_2019" class="csl-entry" role="listitem">
+Winter, B. (2019). Statistics for <span>Linguists</span>: <span>An Introduction Using R</span>. In <em>Statistics for Linguists: An Introduction Using R</em>. <span>Routledge</span>. <a href="https://doi.org/10.4324/9781315165547">https://doi.org/10.4324/9781315165547</a>
+</div>
+</div>
 </section>
 </section>
 
@@ -5153,23 +5180,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> apa.csl</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Course Overview {.unnumbered}</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Kursübersicht {.unnumbered}</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>This is the course website for "Angewandte Datenverarbeitung und Visualisierung" at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik. </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Visualisierung" an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle <span class="co">[</span><span class="ot">hier</span><span class="co">](https://moodle.hu-berlin.de/course/view.php?id=124123)</span> (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Description on AGNES</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Kursbeschreibung auf AGNES</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Dies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten.</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Course Aims</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ziele des Kurses</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>The main aim of this course is to develop the knowledge and skills required to implement an "Exploratory Data Analysis (EDA)". EDA is not a formal process with specific rules, but is rather "a state of mind" <span class="co">[</span><span class="ot">@wickham_r_nodate, Ch. 11</span><span class="co">]</span>. The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer "Explorativen Datenanalyse (EDA)" erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr "a state of mind" <span class="co">[</span><span class="ot">@wickham_r_2023, Kap. 11</span><span class="co">]</span>. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Wieso R?</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ressourcen</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Die meisten unserer Materialien basieren auf dem Buch "R for Data Science" von Hadley Wickham (2. Auflage), das Sie <span class="co">[</span><span class="ot">hier</span><span class="co">](https://r4ds.hadley.nz/)</span> vollständig online einsehen können. Wo es möglich war, habe ich die in diesem Buch verwendeten Daten durch linguistische Datensätze ersetzt, damit Sie sich ein Bild davon machen können, wie Linguisten R verwenden könnten.</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Most of our materials are based on the book "R for Data Science" by Hadley Wickham (2nd Edition). Where possible I've replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Einige andere Ressourcen, die wir von Zeit zu Zeit verwenden werden oder die Sie vielleicht selbst erkunden möchten, sind das E-book *Data visualisation using R, for researchers who don’t use R* [@nordmann_data_2022] und das Lehrbuch *Statistics for Linguists: An Introduction Using R* by Bodo Winter <span class="co">[</span><span class="ot">@winter_statistics_2019; PDF erhältlich über das Grimm Zentrum</span><span class="co">]</span>.</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
