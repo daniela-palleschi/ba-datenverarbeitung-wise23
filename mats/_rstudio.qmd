@@ -1,6 +1,6 @@
 ---
 title: "Einführung in R und RStudio"
-# subtitle: ""
+## subtitle: ""
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 footer: "Woche 1 - R und RStudio"
@@ -22,16 +22,16 @@ format:
     width: 1600
     height: 900
     progress: true
-    # smaller: true
+    ## smaller: true
     scrollable: true
     slide-number: c/t
     code-link: true
     code-overflow: wrap
     code-tools: true
-    # logo: logos/hu_logo.png
-    # css: logo.css
+    ## logo: logos/hu_logo.png
+    ## css: logo.css
     incremental: true
-    # number-sections: true
+    ## number-sections: true
     toc: true
     toc-depth: 1
     toc-title: 'Überblick'
@@ -43,7 +43,7 @@ format:
     font-size: 0.6em
     slide-level: 4
     self-contained: true
-    # chalkboard: true
+    ## chalkboard: true
     title-slide-attributes: 
       data-background-image: logos/logos.tif
       data-background-size: 15%
@@ -60,23 +60,40 @@ csl: references/apa.csl
 
 ```{r}
 #| echo: false
-knitr::opts_chunk$set(eval = T, # evaluate chunks
-                      echo = T, # 'print code chunk?'
-                      message = F, # 'print messages (e.g., warnings)?'
-                      error = F, # stop when error encountered
-                      warning = F) # don't print warnings
+knitr::opts_chunk$set(eval = T, ## evaluate chunks
+                      echo = T, ## 'print code chunk?'
+                      message = F, ## 'print messages (e.g., warnings)?'
+                      error = F, ## stop when error encountered
+                      warning = F) ## don't print warnings
 ```
 
-# Heutige Ziele {-}
+## Heutige Ziele {-}
 
 -   R und RStudio installieren
 -   in der Lage sein, Zusatzpakete zu installieren
 -   in der Lage sein, Hilfe für Pakete und Funktionen zu erhalten
 -   in der Lage sein, Objekte in der Konsole zu erstellen
 
-# R in RStudio
+## Kursordner herunterladen
 
-1.  Öffnen Sie RStudio
+- Um meinem Code folgen zu können, müssen Sie die gleiche Ordnerstruktur wie ich haben
+  + Ich habe für Sie einen Basisordner erstellt, mit dem Sie beginnen können
+
+- um den Kursordner herunterzuladen:
+  + Gehen Sie zu https://github.com/daniela-palleschi/r4ling_student
+  + Klicken Sie auf die grüne Schaltfläche "<> Code".
+  + wähle `ZIP herunterladen`
+  + speichern Sie das komprimierte ZIP lokal
+  + Navigieren Sie zu dem Ordner, der Ihr ZIP enthält, und dekomprimieren Sie die Datei
+  
+- **wichtig!!** verschieben oder benennen Sie den Ordner `data/` nicht um
+  + Sie müssen denselben Dateipfad zu den Datensätzen haben, um meinen Code in den nächsten Wochen nahtlos verwenden zu können.
+  
+## R in RStudio
+
+1.  Doppelklick auf `r4ling_student.Rproj` um RStudio zu öffnen
+
+1.  Double click `r4ling_student.Rproj` to open RStudio
 2.  klicken Sie auf `File > New File > R Script`
 
 -   sehen Sie nun vier Quadrate:
@@ -89,7 +106,7 @@ knitr::opts_chunk$set(eval = T, # evaluate chunks
     -   Dateien und Grafikausgabe - unten links
         -   wo wir unsere Dateien und die von uns erstellten Grafiken sehen oder Hilfe bekommen können
 
-## Erweitungspakete
+### Erweitungspakete
 
 -   R hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können
     -   ähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind
@@ -102,14 +119,14 @@ knitr::opts_chunk$set(eval = T, # evaluate chunks
     1.  Installieren des Pakets (einmalig)
     2.  Laden Sie das Paket (zu Beginn jeder Sitzung)
 
-### Paket-Installation
+#### Paket-Installation
 
 -   erfolgt mit der Funktion `install.packages()`
     -   Sie machen dies nur einmal (wie das Herunterladen einer App)
 -   das Paket `tidyverse` ist sehr hilfreich für Datenverarbeitung und Visualisierung
     -   Installieren wir es jetzt
 
-### Paket-Installation {.unlisted .unnumbered}
+#### Paket-Installation {.unlisted .unnumbered}
 
 -   installieren Sie die Pakete `tidyverse` und `beepr`
 
@@ -120,28 +137,28 @@ install.packages("beepr")
 ```
 
 ::: callout-important
-## Pakete in der Konsole installieren
+### Pakete in der Konsole installieren
 
 Installieren Sie Pakete immer über die Konsole, nicht über ein Skript!
 
 Sie können auch die Registerkarte "Pakete" in der unteren rechten Box verwenden (Pakete \> Installieren)
 :::
 
-### `tinytex`
+#### `tinytex`
 
 -   wir brauchen auch LaTeX und `tinytex` [@xie_tinytex_2023], um PDF-Dokumente zu erstellen
 -   führen Sie diesen Code aus, um `tinytex` zu installieren
 
 ```{r}
 #| eval: false
-# run this in the console
+## run this in the console
 install.packages("tinytex")
 tinytex::install_tinytex()
 ```
 
 -   Sie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: <https://www.latex-project.org/get/>
 
-## Laden eines Pakets
+### Laden eines Pakets
 
 - der Befehl `library()` lädt ein Paket in Ihre Umgebung
 - dies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können
@@ -150,7 +167,7 @@ tinytex::install_tinytex()
 library(beepr)
 ```
 
-### Verwendung einer Funktion
+#### Verwendung einer Funktion
 
 - Sobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen
 - Zum Beispiel hat das Paket `beepr` eine Funktion `beep()`, probieren wir sie aus
@@ -159,7 +176,7 @@ library(beepr)
 beep()
 ```
 
-### Funktionsargumente
+#### Funktionsargumente
 
 - Argumente enthalten optionale Informationen, die an eine Funktion übergeben werden
   + Die Funktion `beep()` hat das Argument `sound`, das einen numerischen Wert von 1:11 annimmt.
@@ -169,31 +186,31 @@ beep()
 beep(sound = 5)
 ```
 
-### Funktionsargumente {.unlisted .unnumbered}
+#### Funktionsargumente {.unlisted .unnumbered}
 
 ::: callout-note
-### `?help`
+#### `?help`
 Sie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. `?beep`). Versuchen Sie, `?beep` auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von `sound = 5` schreiben kannst, um denselben Ton zu erzeugen?
 :::
 
-## Aufgabe
+### Aufgabe
 
 ::: callout-tip
-## Aufgabe
+### Aufgabe
 
 Wir brauchen auch das `here`-Package. Installieren Sie dieses.
 
 Nachdem Sie das Paket installiert haben, führen Sie den Befehl `here()` aus. Was geschieht?
 :::
 
-# Reproduzierbarkeit
+## Reproduzierbarkeit
 
 -   in diesem Kurs werden wir lernen, wie man *reproduzierbare Berichte* erstellt
     -   Das bedeutet, dass unser Code später noch einmal ausgeführt werden kann und immer noch die gleichen Ergebnisse liefert
 -   wenn Ihre Arbeit reproduzierbar ist, können andere Leute (und Sie selbst) Ihre Arbeit verstehen und überprüfen
     -   Für Kursaufgaben werden Sie Berichte sowie den Quellcode einreichen, die ich auf meinem Rechner ausführen können sollte
 
-## RStudio-Einstellungen
+### RStudio-Einstellungen
 
 -   wir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten
     -   Wir wollen auch niemals unseren Arbeitsbereich für später speichern
@@ -202,7 +219,7 @@ Nachdem Sie das Paket installiert haben, führen Sie den Befehl `here()` aus. Wa
     -   Deaktivieren Sie das Kontrollkästchen `Restore .RData into workspace at startup`
     -   Setzen Sie `Save workspace to .RData on exit:` to `Never`
 
-## RStudio-Einstellungen {.unlisted .unnumbered}
+### RStudio-Einstellungen {.unlisted .unnumbered}
 
 :::: columns
 ::: {.column width="50%"}
@@ -248,13 +265,13 @@ magick::image_read(here::here("media/RStudio_global-options.png"))
 :::
 :::
 
-## RStudio-Einstellungen {.unlisted .unnumbered}
+### RStudio-Einstellungen {.unlisted .unnumbered}
 
 -   Klicken Sie auf `Appearance` (linke Spalte)
     -   Öffnen Sie die Optionen "Editor Theme" und wählen Sie ein Farbschema, das Ihnen gefällt
     -   Sie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen
 
-## R-Projekte
+### R-Projekte
 
 -   Bevor wir fortfahren, müssen Sie ein R-Projekt für diesen Kurs einrichten:
     -   in RStudio: `File > New Project > New Directory > New Project > Create Project`
@@ -268,7 +285,7 @@ magick::image_read(here::here("media/RStudio_global-options.png"))
     -   Erstellen Sie einen neuen Ordner mit dem Namen `daten`
     -   Erstellen Sie einen neuen Ordner, in dem Sie Ihre Kursnotizen/Übungen speichern werden (nennen Sie ihn, wie Sie wollen)
 
-### Projektordnerstruktur
+#### Projektordnerstruktur
 
 ::: {.column width="30%"}
 Neue Ordner (EN: New Folder)
@@ -301,14 +318,14 @@ magick::image_read(here::here("media/RProj_folders.png"))
 :::
 
 
-## Aufgabe {.smaller}
+### Aufgabe {.smaller}
 
 ::: {.column width="40%"}
 
 - in RStudio: `File > New File > R Script`
   + wenn sich oben links ein neues Fenster öffnet: "Datei > Speichern unter...".
     + speichern Sie es in Ihrem 01-rstudio-Ordner
-  + schreiben Sie oben in das Skript: `# Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)`
+  + schreiben Sie oben in das Skript: `## Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)`
   
 :::
 
@@ -333,15 +350,15 @@ magick::image_read(here::here("media/Rscript_day1.png"))
 :::
 
 
-# Rechnen in R
+## Rechnen in R
 
 -   können wir Berechnungen in R durchführen
 -   wir können addieren (`+`), subtrahieren (`-`), multiplizieren (`*`) und dividieren (`/`)
 
-# Rechnen in R {.unlisted .unnumbered}
+## Rechnen in R {.unlisted .unnumbered}
 
 ::: callout-tip
-### Aufgabe
+#### Aufgabe
 
 1. Versuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:
 
@@ -349,14 +366,14 @@ magick::image_read(here::here("media/Rscript_day1.png"))
 ```{r}
 #| output-location: column-fragment
 #| code-line-numbers: false
-# Addition
+## Addition
 16+32
 ```
 
 ```{r}
 #| output-location: column-fragment
 #| code-line-numbers: false
-# Multiplikation
+## Multiplikation
 16*32
 ```
 :::
@@ -365,14 +382,14 @@ magick::image_read(here::here("media/Rscript_day1.png"))
 ```{r}
 #| output-location: column-fragment
 #| code-line-numbers: false
-# Subtraktion
+## Subtraktion
 16-32
 ```
 
 ```{r}
 #| output-location: column-fragment
 #| code-line-numbers: false
-# Division
+## Division
 16/32
 ```
 
@@ -383,7 +400,7 @@ magick::image_read(here::here("media/Rscript_day1.png"))
 :::
 
 
-## Objekte
+### Objekte
 
 - wir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind
 
@@ -393,12 +410,12 @@ y <- 32
 ```
 
 ::: callout-note
-## Assignment operator
+### Assignment operator
 
 Das Symbol `<-` ist ein sogenannter *assignment operator*. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: "Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite".
 :::
 
-## Rechnen mit Funktionen
+### Rechnen mit Funktionen
 
 -   es gibt auch eingebaute Funktionen für komplexere Berechnungen
   + z.B., `mean()` (DE: Durchschnitt), `sum()` (DE: Summe)
@@ -424,7 +441,7 @@ mean(6,10)
 (6+10)/2
 ```
 
-## Rechnen mit Funktionen {.unlisted .unnumbered}
+### Rechnen mit Funktionen {.unlisted .unnumbered}
 
 - die Funktion `mean()` nimmt nur ein Argument an; alles andere wird ignoriert
   + das Komma in `6,10` listet 2 Argumente auf, also wird alles nach dem Komma ignoriert
@@ -436,18 +453,18 @@ mean(6,10)
 mean(c(6,10))
 ```
 
-## Rechnen mit Funktionen {.unlisted .unnumbered}
+### Rechnen mit Funktionen {.unlisted .unnumbered}
 
 - Sie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben
 
 ::: callout-tip
-## Aufgabe
+### Aufgabe
 
 1. Versuchen Sie, die Funktion `mean()` mit Ihren gespeicherten Variablen (`x` und `y`) als "verkettete" Argumente auszuführen
 2. Machen Sie dasselbe mit der Funktion `sum()`. Was passiert, wenn Sie `c()` nicht verwenden?
 :::
 
-# Endergebnis
+## Endergebnis
 
 - Speichern Sie Ihr R-Skript (`File > Save`, oder `Cmd/Strg-S`)
 
@@ -462,29 +479,29 @@ mean(c(6,10))
   + *Objekte* in Ihrer Arbeitsumgebung zu speichern
   + einfache mathematische Berechnungen mit Ihren gespeicherten Objekten durchführen
 
-# Session Info
+## Session Info
 
 - Um die Reproduzierbarkeit zu verbessern, ist es nützlich, die Version von R, RStudio und die verwendeten Pakete zu verfolgen
   + Zu diesem Zweck können Sie die folgenden Befehle ausführen:
 
 ```{r}
-# R version
+## R version
 R.version.string
-# R version name
+## R version name
 R.version$nickname
 ```
 
 ```{r}
 #| eval: false
-# RStudio version
+## RStudio version
 RStudio.Version()$version
-# RStudio version name
+## RStudio version name
 RStudio.Version()$release_name
 ```
 
 ```{r}
 #| eval: false
-# alle Paketeversionen
+## alle Paketeversionen
 sessionInfo()
 ```
 
@@ -492,20 +509,20 @@ sessionInfo()
 ```{r}
 #| eval: false
 #| echo: false
-# N.B., RStudio.Version can also be called using
+## N.B., RStudio.Version can also be called using
 rstudioapi::versionInfo()
-# but neither will run during a knit/render; so manually run and update inline text
+## but neither will run during a knit/render; so manually run and update inline text
 ```
 
 
-## Session Info {-}
+### Session Info {-}
 
 ```{r}
 #| eval: false
 #| echo: false
-# RStudio version
+## RStudio version
 RStudio.Version()$version
-# RStudio version name
+## RStudio version name
 RStudio.Version()$release_name
 ```
 
@@ -515,7 +532,7 @@ Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion
 sessionInfo()
 ```
 
-# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
 
 ::: {#refs custom-style="Bibliography"}
 :::

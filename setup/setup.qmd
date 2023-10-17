@@ -1,9 +1,8 @@
 ---
-title: "Setting up R and RStudio"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-lang: en
-date: 2023-04-12
+lang: de
+date: "`r Sys.Date()`"
 format:
   html:
     toc: true
@@ -31,6 +30,8 @@ knitr::opts_chunk$set(eval = F, # evaluate = T for REPRODUCIBLE analyses
                       error = F, # render even if errors encountered?
                       warning = F) # print warnings?
 ```
+
+# Erforderliche Software {.unnumbered}
 
 Dieses Dokument beschreibt die Schritte, die erforderlich sind, um unseren reproduzierbaren Arbeitsablauf für den Kurs 'Angewandte Datenanalyse und -visualisierung' einzurichten. @sec-R gibt einen Überblick über die Installation von R, RStudio und der erforderlichen Pakete. Diese Schritte sind erforderlich. @sec-tinytex beschreibt die Installation von TinyTex, das benötigt wird, um Dokumente im LaTeX-Stil (z.B. PDFs) in R darzustellen.
 

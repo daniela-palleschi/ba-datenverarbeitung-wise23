@@ -6,7 +6,7 @@ csl: apa.csl
 
 # Course Overview {.unnumbered}
 
-This is the course website for "Angewandte Datenverarbeitung und Visualisierung" at the Humboldt-Universität zu Berlin, Institut der deutsche Sprache und Linguistik. 
+Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Visualisierung" an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle [hier](https://moodle.hu-berlin.de/course/view.php?id=124123) (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).
 
 ## Description on AGNES
 
@@ -14,11 +14,9 @@ This is the course website for "Angewandte Datenverarbeitung und Visualisierung"
 
 ## Course Aims
 
-The main aim of this course is to develop the knowledge and skills required to implement an "Exploratory Data Analysis (EDA)". EDA is not a formal process with specific rules, but is rather "a state of mind" [@wickham_r_nodate, Ch. 11]. The knowledge required to carry out an EDA is simply understanding your data and how to explore its structure to get an understanding for its distribution and patterns. The skills required to carry out an EDA are specific to the language used to conduct your EDA, which in our case is R.
-
-## Wieso R?
+Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer "Explorativen Datenanalyse (EDA)" erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr "a state of mind" [@wickham_r_nodate, Kap. 11]. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.
 
 ## Resources
 
-Most of our materials are based on the book "R for Data Science" by Hadley Wickham (2nd Edition). Where possible I've replaced the data used in this book with linguistic datasets so that you can get an idea of how linguists might use R.
+Die meisten unserer Materialien basieren auf dem Buch "R for Data Science" von Hadley Wickham (2. Auflage), das Sie [hier](https://r4ds.hadley.nz/) vollständig online einsehen können. Wo es möglich war, habe ich die in diesem Buch verwendeten Daten durch linguistische Datensätze ersetzt, damit Sie sich ein Bild davon machen können, wie Linguisten R verwenden könnten.
 
