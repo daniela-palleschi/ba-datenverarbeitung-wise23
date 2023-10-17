@@ -14,7 +14,7 @@ Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Vi
 
 ## Ziele des Kurses
 
-Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer "Explorativen Datenanalyse (EDA)" erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr "a state of mind" [@wickham_r_nodate, Kap. 11]. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.
+Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer "Explorativen Datenanalyse (EDA)" erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr "a state of mind" [@wickham_r_2023, Kap. 11]. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.
 
 ## Ressourcen
 

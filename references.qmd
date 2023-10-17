@@ -5,5 +5,5 @@ csl: apa.csl
 
 # References {.unnumbered}
 
-::: {#refs custom-style="Bibliography"}
+::: {#refs}
 :::

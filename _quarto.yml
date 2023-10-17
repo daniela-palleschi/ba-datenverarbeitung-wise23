@@ -21,9 +21,9 @@ book:
       chapters:
         - mats/01-intro_r.qmd
         - mats/02-quarto_1.qmd
-        - mats/03-dataviz_1.qmd
-        - mats/04-wrangling_1.qmd
-        - mats/05-code_stil.qmd
+        # - mats/03-dataviz_1.qmd
+        # - mats/04-wrangling_1.qmd
+        # - mats/05-code_stil.qmd
         # - mats/07-desc_stats.qmd
         # - mats/08-dateneinlesung.qmd
         # - mats/09-wrangling_2.qmd
