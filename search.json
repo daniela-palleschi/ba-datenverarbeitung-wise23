@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
     "section": "",
-    "text": "Kursübersicht\nDies ist die Webseite der Lehrveranstaltung “Angewandte Datenverarbeitung und Visualisierung” an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle hier (Moodle-Schlüssel wird in der Vorlesung bereitgestellt)."
+    "text": "Kursübersicht\nDies ist die Webseite der Lehrveranstaltung “Angewandte Datenverarbeitung und Visualisierung” an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle hier (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).\nJedes Kapitel entspricht einer Vorlesung von einer Woche. Vorerst werden die Materialien auf dieser Website im Bullet-Point-Format erscheinen und genau denselben Inhalt wie die Kursfolien enthalten. Ich plane, die Aufzählungspunkte später in Prosa umzuwandeln und die einzelnen Themen zu vertiefen."
   },
   {
     "objectID": "index.html#kursbeschreibung-auf-agnes",
@@ -46,7 +46,7 @@
     "href": "setup/setup.html#sec-packages",
     "title": "Erforderliche Software",
     "section": "Pakete",
-    "text": "Pakete\nR-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl install.packages(\"packageName\") installiert werden. Einige Pakete, die wir brauchen werden, sind:\n\n\nhere Paket (here-package?)\n\n\ntidyverse-Paketfamilie (tidyverse-package?)\n\nenthält automatisch Pakete, die wir brauchen, wie dplyr und ggplot2\n\n\n\n\nlanguageR-Paket (languageR-package?)\n\n\nUm mehrere Pakete auf einmal herunterzuladen, verwenden Sie die ‘concatenate’-Funktion in r (c()) innerhalb von install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
+    "text": "Pakete\nR-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl install.packages(\"packageName\") installiert werden. Einige Pakete, die wir brauchen werden, sind:\n\n\nhere Paket (Müller 2020)\n\n\ntidyverse-Paketfamilie (Wickham u. a. 2019)\n\nenthält automatisch Pakete, die wir brauchen, wie dplyr und ggplot2\n\n\n\n\nlanguageR-Paket (Baayen und Shafaei-Bajestan 2019)\n\n\nUm mehrere Pakete auf einmal herunterzuladen, verwenden Sie die ‘concatenate’-Funktion in r (c()) innerhalb von install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
   },
   {
     "objectID": "setup/setup.html#rstudio-globale-optionen-optional",
@@ -137,12 +137,19 @@
     "href": "mats/01-intro_r.html#literaturverzeichnis",
     "title": "1  Einführung in R und RStudio",
     "section": "Literaturverzeichnis",
-    "text": "Literaturverzeichnis\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L.\nM. (2022). Data Visualization Using R for Researchers\nWho Do Not Use R. Advances in Methods and Practices in\nPsychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for\nData Science (2nd ed.).\n\n\nWinter, B. (2019). Statistics for Linguists: An\nIntroduction Using R. In Statistics for Linguists: An\nIntroduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
+    "text": "Literaturverzeichnis\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR:\nAnalyzing linguistic data: A practical introduction to statistics.\nhttps://CRAN.R-project.org/package=languageR\n\n\nMüller, K. (2020). Here: A simpler way to find your files. https://CRAN.R-project.org/package=here\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L.\nM. (2022). Data Visualization Using R for Researchers\nWho Do Not Use R. Advances in Methods and Practices in\nPsychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,\nFrançois, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M.,\nPedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J.,\nRobinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to\nthe tidyverse. Journal of Open Source\nSoftware, 4(43), 1686. https://doi.org/10.21105/joss.01686\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for\nData Science (2nd ed.).\n\n\nWinter, B. (2019). Statistics for Linguists: An\nIntroduction Using R. In Statistics for Linguists: An\nIntroduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
   },
   {
     "objectID": "mats/02-quarto_1.html",
     "href": "mats/02-quarto_1.html",
     "title": "2  Dynamic reports with Quarto",
+    "section": "",
+    "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
+  },
+  {
+    "objectID": "mats/03-dataviz_1.html",
+    "href": "mats/03-dataviz_1.html",
+    "title": "3  Data Viz 1: Verteilungen und Vergleich von Gruppen",
     "section": "",
     "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
   },
