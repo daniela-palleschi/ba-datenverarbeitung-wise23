@@ -1,6 +1,9 @@
+lang: de
+
 project:
   type: book
 
+  
 book:
   title: "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)"
   subtitle: "WiSe23/24"
@@ -14,8 +17,8 @@ book:
       chapters:
         - index.qmd
         - syllabus.qmd
-        - mats/00-kursuebersicht.qmd
         - setup/setup.qmd
+        - mats/00-kursuebersicht.qmd
     - part: "Course mats"
       chapters:
         - mats/_rstudio.qmd
