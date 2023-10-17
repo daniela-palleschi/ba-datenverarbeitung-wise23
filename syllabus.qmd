@@ -6,11 +6,9 @@ bibliography: references.bib
 csl: apa.csl
 ---
 
-```{r, eval = T, cache = F}
-rbbt::bbt_update_bib("syllabus.qmd")
-```
-
 # Syllabus {.unnumbered}
+
+Die vorgeschlagene Lektüre erleichtert die Arbeit mit dem Material für jede Woche. Die Lektüre umfasst Kapitel oder Abschnitte aus @nordmann_data_2022 (web tutorial), @wickham_r_2023 (E-book), and @winter_statistics_2019 (PDF verfügbar über die Grimm-Bibliothek).
 
 ```{r}
 pacman::p_load(dplyr,
@@ -49,7 +47,8 @@ syllabus <-
   mutate(class = ifelse(Datum %in% holidays, "Vorlesungsfrei", "class")) |> 
   mutate(Woche = 1:length(Datum), .by = class, .before = Datum) |> 
   mutate(Woche = ifelse(Datum %in% holidays, "Vorlesungsfrei", Woche)) |> 
-  select(-class)
+  select(-class) |> 
+  mutate(Datum = format(as.Date(Datum, '%Y-%m-%d'), "%d.%m.%Y"))
 ```
 
 ```{r}
@@ -57,12 +56,14 @@ syllabus <-
 content <- 
   googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1zg0Rb5S8p4oggjWxMU60zC8aFTJIblx3pAuI0SON4AY/edit?usp=sharing") |> 
   mutate(Woche = as.character(Woche),
-         Thema = ifelse(is.na(topic_link), topic,
+         topic_link = paste0(topic_number, topic_link),
+         Thema = ifelse(is.na(topic_link), topic_de,
                         paste0(
-                          "[",topic,"]",
-                          "(","https://daniela-palleschi.github.io/ba-datenverarbeitung-wise23/",topic_link,")")), 
-         Vorbereitung = ifelse(is.na(prepare_link), prepare,
-                               paste0("[",prepare,"]","(",prepare_link,")"))) |> 
+                          "[",topic_de,"]",
+                          "(","https://daniela-palleschi.github.io/r4ling/",topic_link,")")),
+         # Vorbereitung = ifelse(is.na(prepare_link), prepare,
+                               # paste0("[",prepare,"]","(",prepare_link,")"))) |> 
+         Vorbereitung = prepare) |> 
   select(Woche, Thema, Vorbereitung)
 ```
 

@@ -4,19 +4,20 @@ bibliography: references.bib
 csl: apa.csl
 ---
 
-# Course Overview {.unnumbered}
+# Kursübersicht {.unnumbered}
 
 Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Visualisierung" an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle [hier](https://moodle.hu-berlin.de/course/view.php?id=124123) (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).
 
-## Description on AGNES
+## Kursbeschreibung auf AGNES
 
 > Dies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten.
 
-## Course Aims
+## Ziele des Kurses
 
 Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer "Explorativen Datenanalyse (EDA)" erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr "a state of mind" [@wickham_r_nodate, Kap. 11]. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.
 
-## Resources
+## Ressourcen
 
 Die meisten unserer Materialien basieren auf dem Buch "R for Data Science" von Hadley Wickham (2. Auflage), das Sie [hier](https://r4ds.hadley.nz/) vollständig online einsehen können. Wo es möglich war, habe ich die in diesem Buch verwendeten Daten durch linguistische Datensätze ersetzt, damit Sie sich ein Bild davon machen können, wie Linguisten R verwenden könnten.
 
+Einige andere Ressourcen, die wir von Zeit zu Zeit verwenden werden oder die Sie vielleicht selbst erkunden möchten, sind das E-book *Data visualisation using R, for researchers who don’t use R* [@nordmann_data_2022] und das Lehrbuch *Statistics for Linguists: An Introduction Using R* by Bodo Winter [@winter_statistics_2019; PDF erhältlich über das Grimm Zentrum].

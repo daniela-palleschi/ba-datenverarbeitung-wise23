@@ -9,7 +9,6 @@ book:
   subtitle: "WiSe23/24"
   author: "Daniela Palleschi"
   date: "9/7/2023"
-  date-format: "Vorlesung DD/MM/YY"
   twitter-card: true
   downloads: [pdf, epub]
   chapters:
@@ -18,14 +17,13 @@ book:
         - index.qmd
         - syllabus.qmd
         - setup/setup.qmd
-        - mats/00-kursuebersicht.qmd
     - part: "Course mats"
       chapters:
-        - mats/_rstudio.qmd
-        # - mats/02-dataviz_1.qmd
-        # - mats/03-wrangling_1.qmd
-        # - mats/04-quarto_1.qmd
-        # - mats/05-regex.qmd
+        - mats/01-intro_r.qmd
+        - mats/02-quarto_1.qmd
+        - mats/03-dataviz_1.qmd
+        - mats/04-wrangling_1.qmd
+        - mats/05-code_stil.qmd
         # - mats/07-desc_stats.qmd
         # - mats/08-dateneinlesung.qmd
         # - mats/09-wrangling_2.qmd
@@ -34,11 +32,11 @@ book:
         # - mats/13-infer_stats_1.qmd
         # - mats/14-dataviz_3.qmd
         # - mats/16-qna.qmd
-    - part: "Reports"
+    - part: "Berichte"
       chapters:
-        - mats/06-bericht_1.qmd
-        - mats/11-bericht_2.qmd
-        - mats/15-bericht_3.qmd
+        - berichte/bericht_1.qmd
+        - berichte/bericht_2.qmd
+        - berichte/bericht_3.qmd
         
     - references.qmd
 

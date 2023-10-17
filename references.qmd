@@ -1,4 +1,9 @@
+---
+bibliography: references.bib
+csl: apa.csl
+---
+
 # References {.unnumbered}
 
-::: {#refs}
+::: {#refs custom-style="Bibliography"}
 :::

@@ -1,0 +1,11 @@
+---
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+date: "01/10/2024"
+date-format: "Vorle[s]ung ddd [d]en DD.MM.YYYY"
+# date-modified: last-modified
+---
+
+# Bericht 2 {.unnumbered}
+
+Die Anweisungen werden am Tag der Vorlesung veröffentlicht.
