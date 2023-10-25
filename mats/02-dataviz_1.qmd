@@ -1,6 +1,6 @@
 ---
 title: "Data Viz 1: Verteilungen und Vergleich von Gruppen"
-### subtitle: ""
+#### subtitle: ""
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 footer: "Woche 3 - Data Viz 1"
@@ -16,7 +16,8 @@ format:
     toc-title: "heutige Themen"
     code-overflow: wrap
     code-tools: true
-    self-contained: true
+    # self-contained: true
+    embed-resources: false
   pdf:
     toc: true
     number-sections: true
@@ -25,7 +26,6 @@ format:
 bibliography: ../references.bib
 csl: references/apa.csl
 ---
-
 
 ```{r}
 #| echo: false
@@ -58,9 +58,9 @@ y <- sum(1,2,3)
 - Was enthalten die Vektoren `x` und `y`?
 
 - Das Objekt `x` enthält `` `r 
-x` ``.
-- Das Objekt "y" enthält "r 
-y` ``.
+x` ``
+- Das Objekt `y` enthält ` `r 
+y` ``
 
 ## Heutige Ziele {.unnumbered}
 
@@ -117,9 +117,9 @@ In Ihrem RProject-Ordner...
 - öffne ein neues `.R` Skript
     + speichere es in dem neuen Ordner 
 
-#### Packages
+#### Pakete
 
--   Pakete (installiert und) ladt
+-   Pakete laden (und installieren)
     -   `tidyverse`
     -   `languageR`
     -   `ggthemes`
@@ -167,8 +167,6 @@ pacman::p_load(
   
 ### Sprechen über Datensätze
 
-- Wenn wir über unsere Daten sprechen, verwenden wir bestimmte Wörter, um uns auf verschiedene Teile zu beziehen:
-
 - eine **Variable**: eine Menge, Qualität oder Eigenschaft, die man messen kann
 - ein **Wert**: der Zustand einer Variablen, wenn man sie misst
 - eine **Beobachtung**: eine Reihe von Messungen, die unter ähnlichen Bedingungen durchgeführt werden
@@ -187,7 +185,6 @@ pacman::p_load(
     - und es sinnvoll wäre, zu addieren, zu subtrahieren, den Mittelwert zu berechnen usw.
     - kann *kontinuierlich* sein (Dezimalpunkte sind sinnvoll, z. B. 1,5 cm)
     - oder *diskret* (Dezimalpunkte sind *nicht* sinnvoll, z. B. 1,5 Kinder sind nicht sinnvoll)
-    + Alter, Größe, Reaktionszeiten, Formathäufigkeiten
 
 - wir erstellen verschiedene Diagramme, je nachdem, welche Art von Variablen wir visualisieren wollen
 
@@ -229,7 +226,7 @@ magick::image_read(here::here("media/lexical_decision_task_testabledotorg.png"))
 - Die üblichen Variablen, die in einem Experiment zur lexikalischen Entscheidungsaufgabe erhoben werden, sind:
   + Reaktionszeit
   + Genauigkeit (richtig/falsch)
-  + Wortkategorie (z. B. real/pseudo, Substantiv/Verb)
+  + Wortkategorie (z. B. real/pseudo, Nomen/Verb)
   + Worthäufigkeit
 
 - Zusätzliche Variablen, die erhoben werden könnten, sind:
@@ -249,7 +246,7 @@ magick::image_read(here::here("media/lexical_decision_task_testabledotorg.png"))
 
 ```{r}
 #| label: tbl-lexdec
-#| tbl-cap: "Data dictionary for `df_lexdec`: Lexical decision latencies elicited from 21 subjects for 79 English concrete nouns, with variables linked to subject or word."
+#| tbl-cap: "Datenwörterbuch für `df_lexdec`: Lexikalische Entscheidungslatenzen, die von 21 Probanden für 79 konkrete englische Substantive erhoben wurden, mit Variablen, die mit dem Subjekt oder dem Wort verknüpft sind."
 #| echo: false
 
 ## dput(names(df_lexdec))
@@ -330,7 +327,6 @@ Um herauszufinden, wofür die anderen Variablen stehen, führen Sie `?lexdec` in
 
 ### `ggplot2` Schichten {.unlisted .unnumbered}
 
-
 ```{r}
 #| echo: false
 #| label: fig-layers
@@ -390,13 +386,14 @@ ggplot(data = df_lexdec)
 
 ### Ebene 2: Ästhetik der Darstellung
 
-- Als nächstes teilen wir `ggplot()` mit, wie wir unsere Variablen visuell darstellen wollen
-    - Wir verwenden das Argument `Mapping` von `ggplot()`, um zu definieren, wie die Variablen auf visuelle Eigenschaften (*Ästhetik*) *gemappt* werden
-- Für unser erstes Diagramm wollen wir die Reaktionszeiten (RT) auf der X-Achse (dem unteren Teil des Diagramms) abbilden.
-    - Wir verpacken die protokollierte "RT" in die Funktion "exp()", um die "RT" in Millisekunden zu erhalten (aus Gründen, die wir nicht diskutieren werden).
+- als nächstes teilen wir `ggplot()` mit, wie unsere Variablen visuell dargestellt werden sollen
+    - Wir fügen das "+" am Ende unserer Codezeile ein und verwenden in einer neuen Codezeile die Funktion "aes()", um unsere *Ästhetik* zu definieren.
+- Unsere erste Ästhetik bildet die Reaktionszeiten (RT) auf der x-Achse ab (der untere Teil der Grafik)
+    - wir wickeln die protokollierte `RT` in die Funktion `exp()` ein, um RTs in Millisekunden zu erhalten (aus Gründen, die wir nicht diskutieren werden)
+
 
 ```{r}
-#| output-location: column-fragment
+#| output-location: slide
 ggplot(data = df_lexdec) +
   aes(x = exp(RT))
 ```
@@ -416,7 +413,7 @@ Add the x-axis aesthetic.
 - wir sehen keine Beobachtungen (d.h. die Balken) in der Grafik, warum nicht?
     - wir haben `ggplot()` nicht gesagt, wie sie dargestellt werden sollen
 - wir müssen ein **Geom** definieren: das *geom*etrische Objekt, das ein Diagramm verwendet, um Daten darzustellen
-    - in `ggplot2` beginnen die Geom-Funktionen mit `Geom_`
+    - in `ggplot2` beginnen die Geom-Funktionen mit `geom_`
     - wir beschreiben Diagramme oft in Bezug auf die Arten von Geomen, die sie verwenden, z.B. verwenden Balkendiagramme Balkengeome (`geom_bar()`), Liniendiagramme Liniengeome (`geom_line()`), Punktdiagramme ein Punktgeom (`geom_point()`), usw.
 
 ::: {.content-visible when-format="revealjs"}
@@ -500,6 +497,13 @@ ggplot(
 
 ggplot(
   data = df_lexdec,
+  aes(x = exp(RT))
+) +
+  labs(title = "No grouping") +
+  geom_histogram() + 
+
+ggplot(
+  data = df_lexdec,
   aes(x = exp(RT), fill = NativeLanguage)
 ) +
   labs(title = "Stacked") +
@@ -551,7 +555,7 @@ ggplot(
 ### Anpassen unseres Plots
 
 - wir können unsere Achsen- und Legendenbeschriftungen verbessern und auch Titel hinzufügen, indem wir die Funktion `labs()` verwenden
-- Wir können auch die Funktion "scale_fill_colorblind()" aus dem Paket "ggthemes" verwenden.
+- Wir können auch die Funktion `scale_fill_colorblind()` aus dem Paket `ggthemes` verwenden.
     - dies erzeugt farbenblind-sichere Farben
 - Wir werden auch die Funktion `theme_minimal()` aus dem Paket `ggplot2` verwenden; was bewirkt diese Funktion?
 
@@ -620,16 +624,16 @@ fig_lexdec_rt <-
 
 ### Balkendiagramme
 
-- Kopieren Sie den Code für Ihr Histogramm
-- Nehmen Sie die folgenden Änderungen vor, um unser Balkendiagramm darzustellen
-  + Entfernen Sie die Namenszuweisung (`fig_lexdec_rt`)
-  + auf der x-Achse wollen wir `NativeLanguage`
-  + Ersetzen Sie `geom_histogram()` durch `geom_bar()`
-    + Entfernen Sie die Argumente für das Histogramm (nicht Position oder Alpha)
-  + ändern Sie die Beschriftungen entsprechend
-  + Speichern Sie das Diagramm als Objekt mit einem aussagekräftigen Namen (z.B. `fig_lexdec_l1`)
- 
-### {.unnumbered .uncounted}
+1. Kopieren Sie den Code für Ihr Histogramm
+2. Nehmen Sie die folgenden Änderungen vor, um unser Balkendiagramm darzustellen
+    + Entfernen Sie die Namenszuweisung (`fig_lexdec_rt`)
+    + auf der x-Achse wollen wir `NativeLanguage`
+    + Ersetzen Sie `geom_histogram()` durch `geom_bar()`
+      + Entfernen Sie die Argumente für das Histogramm (kein `position` oder `alpha`)
+    + ändern Sie die Beschriftungen entsprechend
+3. Speichern Sie das Diagramm als Objekt mit einem aussagekräftigen Namen (z.B. `fig_lexdec_l1`)
+
+### 
 
 - sollte das Diagramm in etwa so aussehen:
 
@@ -670,7 +674,7 @@ fig_lexdec_rt + fig_lexdec_l1
 fig_lexdec_rt / fig_lexdec_l1
 ```
 
-## Entscheidung für ein Geom
+## Entscheidung für ein Geom {.smaller}
 
 - Warum verwenden wir ein Histogramm für die Reaktionszeit und ein Balkendiagramm für die Muttersprache?
 - Um welche Arten von Variablen handelt es sich?
@@ -687,10 +691,10 @@ Diese Übungen sollten auch in Ihrem Skript enthalten sein, wenn Sie es auf Mood
 
 1. Reproduzieren Sie unser Histogramm als *Dichte-Diagramm*, indem Sie `geom_histogram()` durch `geom_density()` ersetzen.
     + Was zeigt diese Art der Darstellung?
-
+    
 2. Erstellen Sie ein Balkendiagramm, das die Anzahl der Beobachtungen pro Wortklasse zeigt (Hinweis: Sie benötigen die Variable `Class` aus unserem Datensatz).
 
-## {.unnumbered .uncounted}
+##
 
 3. Drucken Sie Ihren Dichteplot und Ihren Klassen-Balkenplot übereinander mit Hilfe des `patchwork` Pakets
 

@@ -16,7 +16,8 @@ format:
     toc-title: "heutige Themen"
     code-overflow: wrap
     code-tools: true
-    self-contained: true
+    # self-contained: true
+    embed-resources: false
   pdf:
     toc: true
     number-sections: true
