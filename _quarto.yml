@@ -20,8 +20,8 @@ book:
     - part: "Course mats"
       chapters:
         - mats/01-intro_r.qmd
-        - mats/02-quarto_1.qmd
-        - mats/03-dataviz_1.qmd
+        - mats/02-dataviz_1.qmd
+        - mats/03-quarto_1.qmd
         # - mats/04-wrangling_1.qmd
         # - mats/05-code_stil.qmd
         # - mats/07-desc_stats.qmd
