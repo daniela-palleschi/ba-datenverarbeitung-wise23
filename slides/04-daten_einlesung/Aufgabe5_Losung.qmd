@@ -1,0 +1,121 @@
+---
+title: "Datenimport - Aufgabe 5 Lösung"
+subtitle: "Einlesen von Datendateien"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 4 - Datenimport" 
+lang: de
+date: "`r Sys.Date()`"
+format: 
+  html:
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+---
+
+# Packages
+
+```{r}
+# load packages
+pacman::p_load("tidyverse", # wrangling
+               "janitor", # wrangling
+               "here", # relative file paths
+               "patchwork" # plot layout
+               )
+```
+
+# Aufgabe 5
+
+Hier findet ihr einige vertiefende Übungen.
+
+## Import/Export
+
+::: nonincremental
+1. Ladet den eingebauten `starwars`-Datensatz, der Informationen über Star Wars Charaktere enthält.
+2. Exportiert die Daten als `csv` Datei mit dem Namen `starwars` in euren `daten` Ordner.
+3. Importiere die `starwars.csv` Datei mit `read_csv()`.
+:::
+
+```{r}
+data(starwars) # 1
+write_csv(starwars, here("daten","starwars.csv")) # 2
+starwars <- read_csv(here("daten", "starwars.csv")) # 3
+```
+
+## Spaltentypen konvertieren
+
+::: nonincremental
+1. Konvertiere die folgenden Variablen in Faktoren:
+    + `hair_color`
+    + `skin_color`
+    + `eye_color`
+    + `sex`
+    + `gender`
+    + `homeworld`
+    + `species`
+:::
+
+```{r}
+starwars$hair_color <- as_factor(starwars$hair_color)
+starwars$skin_color <- as_factor(starwars$skin_color)
+starwars$eye_color <- as_factor(starwars$eye_color)
+starwars$sex <- as_factor(starwars$sex)
+starwars$gender <- as_factor(starwars$gender)
+starwars$homeworld <- as_factor(starwars$homeworld)
+starwars$species <- as_factor(starwars$species)
+```
+
+## Plots
+
+1. Erstellt die folgenden drei Diagramme und beschreibt kurz, was sie zeigen und welche Schlussfolgerungen daraus gezogen werden können.
+
+2. Erstellt ein weiteres Diagramm eurer Wahl aus dem "Starwars"-Datensatz. Fügt sie in das Diagrammgitter ein (ihr müsst die Syntax anpassen). Beschreibt was sie zeigt.
+
+```{r}
+#| eval: true
+fig_sw_height <- ggplot(starwars, aes(height)) +
+  geom_histogram(binwidth = 25, colour = "black", alpha = .3) +
+  scale_x_continuous(breaks = seq(from = 50, to = 300, by = 25)) +
+  labs(title = "Height (cm) distribution") +
+  theme_classic()
+
+fig_sw_height_mass <- ggplot(starwars, aes(height, mass)) +
+  geom_point() +
+  labs(title = "Mass (kg) by height (cm) distribution") +
+  scale_x_continuous(breaks = seq(from = 0, to = 300, by = 50)) +
+  scale_y_continuous(breaks = seq(from = 0, to = 2000, by = 100)) +
+  coord_cartesian(xlim = c(0, 300)) +
+  theme_minimal()
+
+fig_sw_gender <- ggplot(starwars, aes(x = gender, fill = gender)) +
+  geom_bar(show.legend = FALSE, colour = "black") +
+  scale_x_discrete(name = "Gender of character", labels = (c("Masculine", "Feminine", "Missing"))) +
+  scale_fill_brewer(palette = 2) +
+  labs(title = "Gender of SW characters") +
+  theme_bw()
+
+my_plot <- ggplot(starwars, aes(height, mass, colour = gender, shape = gender)) +
+  geom_point() +
+  labs(title = "Mass (kg) by height (cm) by gender") +
+  scale_x_continuous(breaks = seq(from = 0, to = 300, by = 50)) +
+  scale_y_continuous(breaks = seq(from = 0, to = 2000, by = 100)) +
+  coord_cartesian(xlim = c(0, 300)) +
+  theme_minimal()
+```
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+#| fig-pos: centre
+(fig_sw_height + fig_sw_gender) /
+  fig_sw_height_mass / my_plot +
+  plot_layout(nrow = 3) +
+  plot_annotation(
+    title = "Some plots using the `starwars` dataset",
+    subtitle = "Each plot visualises different variables",
+    tag_levels = "A")
+```

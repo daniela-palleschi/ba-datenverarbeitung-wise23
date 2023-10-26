@@ -1,0 +1,1282 @@
+---
+title: "Datenvisualisierung 2"
+subtitle: "Darstellung der zusammenfassenden Statistik"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 10 - Datenvisualisierung 2" 
+lang: de
+date: "`r Sys.Date()`"
+format: 
+  html:
+    output-file: data_viz2_blatt_DE.html
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+    execute:
+      fig-width: 6
+      fig-asp: .618
+      fig-align: centre
+  revealjs: 
+    output-file: data_viz2_folien_DE.html
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: false
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+    execute:
+      fig-width: 6
+      fig-asp: .618
+      fig-align: centre
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+    execute:
+      out-width: "80%"
+      fig-asp: .618
+      fig-align: centre
+bibliography: references/references.bib
+csl: references/apa.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, # evaluate chunks
+                      echo = T, # 'print code chunk?'
+                      message = F, # 'print messages (e.g., warnings)?'
+                      error = F, # stop when error encountered
+                      warning = F) # don't print warnings
+```
+
+```{r, eval = T, cache = F}
+#| echo: false
+# Create references.json file based on the citations in this script
+# make sure you have 'bibliography: references.json' in the YAML
+# rbbt::bbt_update_bib("_dataviz2_DE.qmd")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+addTaskCallback(function(...) { system("say -v Kathy Your script is done"); TRUE }, name = "announce when done")
+```
+
+# Wiederholung {.unnumbered}
+
+Letzte Woche haben wir...
+
+- Maße der zentralen Tendenz (neu) kennengelernt ✅
+- Maße der Streuungsmaßen kennengelernt ✅
+- gelernt, wie man die Funktion `summarise()` von `dplyr` benutzt ✅
+- gelernt, wie man Zusammenfassungen nach (`.by =`) Gruppen erstellt ✅
+
+::: {.content-hidden when-format="pdf"}
+## Gleichungen {.unnumbered}
+
+:::: columns
+::: {.column width="50%"}
+- Wofür sind diese Gleichungen gedacht?
+- Wofür steht jedes Symbol?
+
+- Lösen wir für $\mu$ und $\sigma$, wenn $x$ gleich ist:
+  + $x = 12, 35, 15, 20$
+
+:::
+::: {.column width="50%"}
+\begin{align}
+
+\mu &= \frac{\sum{x}}
+           {N}      \\ 
+      \\    
+\sigma &= \frac{\sum{(x_i - \mu)}}
+           {N-1}
+           
+\end{align}
+:::
+::::
+:::
+
+# Heutige Ziele {.unnumbered}
+
+Diese Woche werden wir lernen, wie man...
+
+- mehr als drei Variablen mit `facet_wrap()` darstellt
+- zusammenfassende Statistiken visualisiert
+- mehrteilige Diagramme erstellt (z. B. Verteilungen mit zusammenfassenden Statistiken)
+
+## Lust auf mehr? {.unnumbered}
+
+- Section 2.5 ([Visualising relationsips](https://r4ds.hadley.nz/data-visualize.html#visualizing-relationships)) in @wickham_r_nodate
+
+- Ch. 4 ([Representing summary statistics](https://psyteachr.github.io/introdataviz/representing-summary-statistics.html)) in @nordmann_data_2022
+
+# Einrichtung
+
+```{r}
+# turn off scientific notation
+options(scipen = 999)
+```
+
+
+```{r}
+pacman::p_load(tidyverse,
+               palmerpenguins,
+               ggthemes,
+               patchwork)
+```
+
+```{r}
+#| echo: false
+# load magick for the slides
+pacman::p_load(magick)
+```
+
+
+```{r}
+df_penguins <- palmerpenguins::penguins %>% 
+  drop_na()
+```
+
+
+
+# Rückblick: Visualisierung von Verteilungen
+
+- Wir haben dies in Woche 3 anhand von
+  + Histogramme (1 numerische Variable)
+  + Dichteplots (1 numerische Variable)
+  + Streudiagramme (2 numerische Variablen)
+  + Balkendiagramme (kategorische Variablen)
+  
+---
+
+```{r}
+#| echo: false
+fig_hist <-
+  df_penguins %>% 
+  ggplot(aes(x = body_mass_g, fill = species)) +
+  geom_histogram(binwidth = 200) +
+  labs(
+       x = "Body mass (g)",
+       y = "Count",
+    fill = "Species") +
+  scale_color_colorblind() +
+  scale_fill_colorblind() +
+  theme_minimal()
+
+fig_dens <-
+  df_penguins %>% 
+  ggplot(aes(x = body_mass_g, fill = species, colour = species)) +
+  geom_density(alpha=.2) +
+  labs(
+       x = "Body mass (g)",
+       y = "Density",
+    color = "Species",
+    fill = "Species") +
+  scale_color_colorblind() +
+  scale_fill_colorblind() +
+  theme_minimal()
+
+fig_scat <-
+  df_penguins %>% 
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point(aes(color = species, shape = species), alpha = .3) +
+  labs(
+    x = "Body mass (g)",
+    y = "Flipper length (mm)",
+    color = "Species",
+    shape = "Species"
+  ) +
+  scale_color_colorblind() +
+  theme_minimal()
+
+fig_bar <-
+  df_penguins %>% 
+  ggplot(
+       aes(x = species, fill = sex)) +
+  geom_bar() +
+    labs(
+    x = "Species",
+    y = "Count",
+    fill = "Sex"
+  ) +
+  scale_fill_colorblind() +
+  theme_minimal()
+
+fig_bar_dodge <-
+  df_penguins %>% 
+  ggplot(
+       aes(x = species, fill = sex)) +
+  geom_bar(position="dodge") +
+    labs(
+    x = "Species",
+    y = "Count",
+    fill = "Sex"
+  ) +
+  scale_fill_colorblind() +
+  theme_minimal()
+```
+
+- Wie viele Variablen werden in jeder Abbildung in @fig-distributions dargestellt?
+  + Welche *Typen* von Variablen werden in den einzelnen Diagrammtypen dargestellt?
+
+```{r}
+#| echo: false
+#| label: fig-distributions
+#| fig-cap: "Different plots types to visualise distribution of raw data: histogram (A), density plot (B), scatterplot (C), stacked barplot (D), and dodged barplot (E)"
+#| fig-width: 8
+#| fig-asp: .5
+
+(fig_hist + fig_dens) /
+  (plot_spacer() + fig_scat + plot_spacer() + plot_layout(widths = c(1,2,1))) /
+  (fig_bar + fig_bar_dodge) +
+  plot_annotation(tag_levels = "A") +
+  theme(plot.title = element_blank()) 
+```
+
+## Geigenplots
+
+- Wir können auch Violinplots verwenden, die derzeit ziemlich angesagt sind
+  + im Grunde ein doppelseitiges/gespiegeltes Dichte-Diagramm
+- Violinplots gelten als einfacher zu lesen
+  + wie wir später sehen werden, lassen sie sich auch leicht mit anderen Plots überlagern
+
+```{r}
+#| code-fold: true
+#| label: fig-violin1
+#| fig-cap: "Violin plot: a mirrored density plot"
+#| output-location: column-fragment
+#| code-line-numbers: "3"
+#| fig-width: 6
+#| fig-asp: .6
+
+  df_penguins %>% 
+  ggplot(aes(x = species, y = body_mass_g, fill = species)) +
+  geom_violin(alpha = .2) +
+  labs(title = "Violin plot",
+       x = "Body mass (g)",
+       y = "Count",
+    fill = "Species") +
+  scale_color_colorblind() +
+  scale_fill_colorblind() +
+  theme_minimal()
+```
+
+---
+
+::: {.callout-tip}
+
+## Gespiegelte Dichtekurve
+
+Was bedeutet "gespiegeltes" Dichteplot? Geigenplots sind buchstäblich nur ein doppelseitiger Dichteplot. Vergleichen Sie @fig-density2 mit @fig-violin2. Sie zeigen dieselben Daten und dieselbe Verteilung, aber die Geigen-Darstellung ist einfach eine beidseitige Dichte-Darstellung, aber ohne die entlang der Achse gedruckten "Dichte"-Werte.
+
+:::: columns
+
+::: {.column width="50%"}
+```{r}
+#| code-fold: true
+#| label: fig-density2
+#| fig-cap: "Density plot: same violin plot"
+#| fig-width: 4
+#| fig-asp: .9
+  df_penguins %>% 
+  ggplot(aes(y = body_mass_g, fill = species)) +
+  facet_grid(~species) +
+  geom_density(alpha = .2) +
+  labs(title = "Density plot"
+       ) +
+  scale_fill_colorblind() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| code-fold: true
+#| label: fig-violin2
+#| fig-cap: "Violin plot: a mirrored density plot"
+#| fig-width: 6
+#| fig-asp: .6
+
+  df_penguins %>% 
+  ggplot(aes(x = species, y = body_mass_g, fill = species)) +
+  geom_violin(alpha = .2) +
+  labs(title = "Violin plot",
+       x = "Body mass (g)",
+       y = "Count",
+    fill = "Species") +
+  scale_fill_colorblind() +
+  theme_minimal()
+```
+:::
+::::
+
+:::
+
+# Visualisierung von 3 oder mehr Variablen
+
+- Wie wir wissen, können wir mehr Variablen einbeziehen, indem wir sie auf die Ästhetik abbilden (z. B. `colour`, `fill` oder `shape`) 
+- @fig-distributions hat dies getan, indem es `colour` (alle Diagramme) und `shape` (Scatterplot) verwendet hat, um `species` oder `sex` zusätzlich zu dem zu visualisieren, was entlang der x- und y-Achse abgebildet wurde
+
+---
+
+- das Hinzufügen von zu vielen Variablen zu einer einzigen Darstellung kann die Lesbarkeit erschweren
+- Wie viele Variablen werden zum Beispiel im folgenden Code abgebildet?
+
+```{r}
+#| ouput-location: column-fragment
+#| code-line-numbers: "|2|3|2,3"
+#| label: fig-cluttered
+#| output-location: column-fragment
+#| fig-cap: A cluttered scatterplot with 4 variables
+
+df_penguins %>% 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = island)) +
+  labs(
+    x = "Flipper length (mm)",
+    y = "Body mass (g)",
+    color = "Species",
+    shape = "Island"
+  ) +
+  scale_color_colorblind() +
+  theme_minimal()
+```
+
+- vier: `flipper_length_mm` (x-Achse), `body_mass_g` (y-Achse), `species` (Farbe), `island` (Form)
+  - das ist optisch etwas unübersichtlich!
+
+## `facet_wrap()`
+
+- eine gute Möglichkeit, unsere Daten in verschiedene Panels aufzuteilen, ist die Verwendung von `facet_wrap()`
+  + kann verwendet werden, um ein unübersichtliches Diagramm in separate Panels zu unterteilen
+
+---
+
+- Versuchen wir, @fig-cluttered mit `facet_wrap()` in drei Panels zu unterteilen, und zwar nach `island`.
+
+```{r}
+#| code-line-numbers: "|3"
+#| label: fig-facet_wrap
+#| fig-cap: A less cluttered scatterplot with `facet_wrap()`
+#| fig-width: 8
+#| fig-asp: .5
+#| output-location: column-fragment
+
+df_penguins %>% 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  facet_wrap(~island) +
+  geom_point(aes(color = species, shape = species)) +
+  labs(
+    x = "Flipper length (mm)",
+    y = "Body mass (g)",
+    color = "Species",
+    shape = "Species"
+  ) +
+  scale_color_colorblind() +
+  theme_bw()
+```
+
+```{r}
+df_penguins %>%
+  summarise(
+    m = mean(body_mass_g),
+    sd = sd(body_mass_g),
+    .by = c(species, sex)
+  )
+```
+
+
+
+
+
+- Welche Art von Variablen kann `facet_wrap()` als Argument(e) annehmen?
+  + kategorisch! Jede 'Kategorie' erhält ihr eigenes Panel
+---
+
+::: callout-note
+### `facet_grid()`
+
+`facet_wrap()` ist verwandt mit `facet_grid()`, das zwei kategoriale Variablen, eine in Spalten und eine in Zeilen, annehmen kann. Das Argument für `facet_grid()` ist eine Gleichung: `row~column`. Wenn wir also `facet_grid(sex~island)` zu unserem Diagramm hinzufügen, sollten wir die Daten in Diagrammen sehen, die nach `sex` in Zeilen (eine Zeile für `female`, eine Zeile für `male`) und nach `island` in Spalten (eine Spalte für jedes `island`) gruppiert sind.
+
+```{r}
+#| code-line-numbers: "|3"
+#| label: fig-facet_grid
+#| fig-cap: "facet_grid(sex~species)"
+#| output-location: column
+#| fig.width: 7
+#| fig.asp: .6
+
+df_penguins %>% 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  facet_grid(sex~island) +
+  geom_point(aes(color = species, shape = species)) +
+  labs(
+    x = "Flipper length (mm)",
+    y = "Body mass (g)",
+    color = "Species",
+    shape = "Species"
+  ) +
+  scale_color_colorblind() +
+  theme_bw()
+```
+
+:::
+
+# Darstellung von zusammenfassenden Statistiken
+
+- Letzte Woche haben wir über zusammenfassende Statistiken gesprochen
+  + Maße der zentralen Tendenz und Maße der Streuung
+- jetzt werden wir lernen, wie man einige dieser Statistiken visualisiert
+  + und lernen einige neue Statistiken kennen
+
+## Boxplot {.smaller}
+
+:::: columns
+
+::: {.column width="60%"}
+- Boxplots (manchmal auch Box-and-Whisker-Plots genannt) enthalten:
+  + eine **Box** mit einer **Linie in der Mitte**
+  + **Linien, die aus dem oberen und unteren Rand der Box herausragen** (die Whisker)
+- die darstellen:
+  + **dicke Linie**: den Median, auch Q2 genannt (2. Quartil; der mittlere Wert, über/unter dem 50% der Daten liegen)
+  + **Box**: der Interquartilsbereich (IQR; der Wertebereich zwischen den mittleren 50% der Daten), mit den Grenzen:
+    + Q1 (1. Quartil, unter dem 25% der Daten liegen)
+    + Q3 (3. Quartil, oberhalb dessen 25% der Daten liegen)
+  + **Whiskers**: 1,5*IQR von Q1 (unterer Whisker) oder Q3 (oberer Whisker)
+    + aber nur bis zur letzten Beobachtung in diesem Bereich
+  + **Punkte**: Ausreißer (außerhalb des IQR)
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| ouput-location: column-fragment
+#| echo: false
+#| code-line-numbers: "|4"
+#| label: fig-boxplot
+#| fig-cap: "Boxplot of `df_penguins` (body mass by sex)"
+
+df_penguins %>% 
+  ggplot(aes(x = sex, y = body_mass_g, colour = sex)) +
+  geom_boxplot() +
+  labs(title = "Boxplot",
+    x = "Sex",
+    y = "Body mass (g)",
+    color = "Sex"
+  ) +
+  scale_color_colorblind() +
+  theme_minimal() +
+  theme(
+    legend.position = "none"
+  )
+```
+:::
+::::
+
+
+::: {.content-visible when-format="revealjs"}
+::: notes
+whiskers: 1.5*IQR from Q1 (lower whisker) or Q3 (upper whisker)
+outliers: outside that range
+:::
+:::
+
+---
+
+::: {.callout-tip}
+
+### Whisker length
+
+Die Whisker *können* so lang sein wie Q3+(IQR\*1,5) und Q1-(IQR\*1,5), enden aber an der letzten Beobachtung, die in diesen Bereich fällt. Betrachten wir beispielsweise @fig-boxplot2: Wenn die Whisker das 1,5-fache des IQR sein sollen, müssten sie länger sein als die Box, aber das scheinen sie nicht zu sein. Woran liegt das? Konzentrieren wir uns auf den unteren Whisker für weibliche Pinguine (den unteren linken Whisker). Er sollte nur so weit nach unten reichen wie die niedrigste Beobachtung innerhalb des Bereichs von Q1 minus IQR\*1,5, aber was sind diese Werte? Berechnen wir mit `R` Q1, Q3, IQR, den oberen und unteren Bereich, den die Whisker haben können (also die Höchst-/Minimalwerte, die die Whisker haben *können*), und schließlich den Mindestwert einer Beobachtung innerhalb dieses Bereichs (also die Mindestwerte, die der untere Whisker haben *wird*).
+
+:::: columns
+
+::: {.column width="60%"}
+
+```{r}
+#| output-location: column
+
+df_penguins %>% 
+  filter(sex == "female") %>% 
+  select(body_mass_g) %>% 
+  summary()
+```
+
+```{r}
+#| output-location: column
+q1 <- 3350
+q3 <- 4550
+```
+
+
+```{r}
+#| output-location: column
+iqr <-
+  df_penguins %>% 
+  filter(sex == "female") %>% 
+  pull(body_mass_g) %>% 
+  IQR()
+```
+
+```{r}
+#| output-location: column
+q3 - q1
+```
+
+```{r}
+#| output-location: column
+iqr
+```
+
+```{r}
+#| output-location: column
+iqr*1.5
+```
+
+```{r}
+#| output-location: column
+
+upper <- q3 + iqr
+lower <- q1 - iqr
+```
+
+```{r}
+#| output-location: column
+upper
+```
+
+```{r}
+#| output-location: column
+lower
+```
+
+```{r}
+#| output-location: column
+df_penguins %>% 
+  filter(body_mass_g < q1 & 
+           body_mass_g > lower &
+           sex == "female") %>% 
+  select(body_mass_g) %>% 
+  min()
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| ouput-location: column-fragment
+#| echo: false
+#| code-line-numbers: "|4"
+#| label: fig-boxplot2
+#| fig-cap: "Boxplot of body mass (g) with horizontal lines representing quartiles and whisker ranges for female penguins, with observations (scatterplot)."
+lower_min <- df_penguins %>% 
+  filter(body_mass_g < q1 & 
+           body_mass_g > lower &
+           sex == "female") %>% 
+  select(body_mass_g) %>% 
+  min()
+
+upper_max <-  df_penguins %>% 
+  filter(body_mass_g > q3 & 
+           body_mass_g < upper &
+           sex == "female") %>% 
+  select(body_mass_g) %>% 
+  max()
+
+df_penguins %>% 
+  ggplot(aes(x = sex, y = body_mass_g, colour = sex)) +
+  geom_point(position = position_jitterdodge(), alpha = .3) +
+  geom_boxplot(alpha = 0) +
+  labs(title = "Quartiles and whisker ranges for female penguins",
+    x = "Sex",
+    y = "Body mass (g)",
+    color = "Sex"
+  ) +
+annotate("text", x=.5, y = q1+ 100, label= "Q1") +
+annotate("text", x=.5, y = q3+ 100, label= "Q3") +
+annotate("text", x=1.05, y = lower_min- 100, label= "Min observation in lower whisker range") +
+annotate("text", x=1.05, y = upper_max+ 100, label= "Max observation in upper whisker range") +
+annotate("text", x=.65, y = q1-(iqr*1.5) + 100, label= "Q1 - IQR*1.5") +
+annotate("text", x=.65, y = q3+(iqr*1.5)+ 100, label= "Q3 + IQR*1.5") +
+    geom_hline(yintercept = q1, linetype = "dotted") +
+  geom_hline(yintercept = q1, linetype = "dotted") +
+      geom_hline(yintercept = lower_min, linetype = "dotted") +
+  geom_hline(yintercept = upper_max, linetype = "dotted") +
+  geom_hline(yintercept = q3, linetype = "dotted") +
+  geom_hline(yintercept = q1-(iqr*1.5), linetype = "dashed") +
+  geom_hline(yintercept = q3+(iqr*1.5), linetype = "dashed") +
+  scale_color_colorblind() +
+  theme_minimal() +
+  theme(
+    legend.position = "none"
+  )
+```
+:::
+::::
+
+:::
+
+---
+
+
+::: {.content-visible when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"
+#| fig-cap-location: bottom
+
+# invert colours for dark mode in slides
+library(magick)
+magick::image_negate(magick::image_read(here::here("media/Winter_2019_boxplot.png")))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"
+#| fig-cap-location: bottom
+magick::image_read(here::here("media/Winter_2019_boxplot.png"))
+```
+:::
+
+---
+
+Oder, anders ausgedrückt:
+
+::: {.content-visible when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @wickham_r_nodate (all rights reserved)"
+#| fig-cap-location: bottom
+
+# invert colours for dark mode in slides
+y <- magick::image_read(here::here("media/Wickham_boxplot.png"))
+
+magick::image_negate(y)
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @wickham_r_nodate (all rights reserved)"
+#| fig-cap-location: bottom
+magick::image_read(here::here("media/Wickham_boxplot.png"))
+```
+:::
+
+### `geom_boxplot()`
+
+- können wir Boxplots mit `geom_boxplot()` erstellen
+
+```{r}
+#| code-line-numbers: "|3"
+#| label: fig-geom-boxplot
+#| fig-cap: "`geom_boxplot()`"
+#| output-location: column
+#| fig-asp: .618
+df_penguins %>% 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+- Wie viele/welche Variablentypen nimmt `geom_boxplot()`?
+  - 2 Variablen: 1 kontinuierlich (`body_mass_g`), 1 kategorisch (`species`)
+
+### Gruppierter Boxplot
+
+- Wie ein Balkendiagramm können wir gruppierte Boxplots erstellen, um mehr Variablen zu visualisieren
+  + einfach eine neue Variable mit `colour` oder `fill` ästhetisch zuordnen
+
+```{r}
+#| output-location: column-fragment
+#| fig-width: 7
+#| label: df_boxplot_group
+#| fig-cap: A grouped boxplot
+df_penguins %>% 
+  ggplot(aes(x = species, y = body_mass_g, 
+             colour = sex)) +
+  geom_boxplot() +
+  labs(
+    x = "Species",
+    y = "Body mass (g)",
+    color = "Species",
+    shape = "Species"
+  ) +
+  scale_colour_colorblind() +
+  theme_bw()
+```
+
+
+# Visualisierung des Mittelwerts
+
+- Boxplots zeigen ein Maß für die zentrale Tendenz und mehrere Maße für die Streuung
+  + Median, IQR (Q1 und Q3), 1,5*IQR (Whiskers) und Ausreißer (Punkte)
+- In der Regel möchten wir jedoch den Mittelwert und die Standardabweichung beschreiben, wenn wir Schlussfolgerungen über Unterschiede zwischen Gruppen ziehen.
+- Wie können wir dies tun?
+
+## Fehlerbalkenplots
+
+:::: columns
+
+::: {.column width="60%"}
+- Wir können den Mittelwert und die Standardabweichung mit Fehlerbalkenplots visualisieren
+  + manchmal auch Interaktionsdiagramme genannt
+- Diese Darstellungen bestehen aus 2 Teilen:
+  + den Mittelwert, visualisiert mit `geom_point()`
+  + die Standardabweichung, visualisiert mit `geom_errorbar()`
+- die Fehlerbalken stellen den Bereich von 1 Standardabweichung über und unter dem Mittelwert dar (Mittelwert +/- 1SD)
+:::
+
+::: {.column width="30%"}
+```{r}
+#| ouput-location: column-fragment
+#| echo: false
+#| label: fig-errorbar
+#| out-width: "100%"
+#| fig-cap: "Errorbar plot of `df_penguins` (body mass by sex)"
+
+df_penguins %>% 
+  summarise(mean = mean(body_mass_g),
+            sd = sd(body_mass_g),
+            N = n(),
+            .by = c(sex)) %>% 
+  ggplot(aes(x = sex, y = mean, colour = sex)) +
+  # geom_point(data = df_penguins, alpha = .4, position = position_jitterdodge(.5), aes(x = sex, y = body_mass_g)) +
+  geom_point(size = 3) +
+  geom_errorbar(width = .5, aes(ymin=mean-sd, ymax=mean+sd)) +
+  labs(title = "Mean body mass (g) by sex (w/ +/-1SD)",
+    x = "Sex",
+    y = "Body mass (g)",
+    color = "Sex"
+  ) +
+  scale_color_colorblind() +
+  theme_minimal() +
+  theme(
+    legend.position = "none"
+  )
+```
+
+:::
+::::
+
+---
+
+::: {.callout-tip}
+### Errorbars: standard deviation
+
+In wissenschaftlichen Veröffentlichungen stehen sie in der Regel für Konfidenzintervalle (EN: confience intervals), Standardfehler (EN: standard error) oder glaubwürdige Intervalle (in der Bayes-Statistik; EN: credible interval), die eine *Inferenzstatistik* darstellen, die, einfach ausgedrückt, versucht, Ergebnisse aus einer Stichprobenpopulation auf die Population als Ganzes zu verallgemeinern. In diesem Kurs werden wir uns auf die Standardabweichung beschränken, da wir nur versuchen, etwas über die uns vorliegenden Daten zu sagen.
+
+Aus diesem Grund sollten wir immer angeben, was unsere Fehlerbalken darstellen, z. B. indem wir "(w/ +/-1SD)" in den Titel oder die Beschriftung der Grafik aufnehmen.
+
+:::
+
+#### Berechnung der zusammenfassenden Statistik
+
+- Zunächst müssen wir den Mittelwert und die Standardabweichung berechnen, gruppiert nach den Variablen, die wir visualisieren wollen
+  + Bleiben wir bei `body_mass_g` nach `species` und `sex`
+  + Wie können wir den Mittelwert und die Standardabweichung von "body_mass_g" nach `species` und `sex` berechnen?
+  
+```{r}
+#| output-location: column-fragment
+#| code-fold: true
+#| code-line-numbers: "2,3,4,5"
+df_penguins %>% 
+  summarise(mean = mean(body_mass_g),
+            sd = sd(body_mass_g),
+            N = n(),
+            .by = c(species,sex)) %>% 
+  arrange(species, sex) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 30)
+```
+
+---
+
+- wir müssen diese Zusammenfassung in `ggplot2` einspeisen
+  + ***ohne*** die Tabellenformatierung von `knitr` und `kableExtra`!!!!
+  + Wir können dies tun, indem wir die Zusammenfassung als neues Objekt speichern, oder die Zusammenfassung direkt mit einer Pipe in ggplot einspeisen
+
+::: {.panel-tabset}
+#### Neues Objekt
+```{r}
+#| output-location: column-fragment
+# Create new object with summaries
+sum_penguins <- df_penguins %>% 
+  summarise(mean = mean(body_mass_g),
+            sd = sd(body_mass_g),
+            upper = mean+sd,
+            lower = mean-sd,
+            N = n(),
+            .by = c(species,sex)) %>% 
+  arrange(species, sex)
+
+Feed new object into ggplot
+sum_penguins %>% 
+  ggplot(aes(x = sex, y = mean, colour = species)) 
+```
+
+#### Mit einem Pipe
+
+```{r}
+#| output-location: column-fragment
+df_penguins %>% 
+  summarise(mean = mean(body_mass_g),
+            sd = sd(body_mass_g),
+            upper = mean+sd,
+            lower = mean-sd,
+            N = n(),
+            .by = c(species,sex)) %>% 
+  arrange(species, sex) %>% 
+  ggplot(aes(x = sex, y = mean, colour = species)) 
+```
+
+:::
+
+#### Mittelwert aufzeichnen
+
+- wir tun dies mit `geom_point()`
+
+```{r}
+#| output-location: column-fragment
+sum_penguins %>% 
+  ggplot(aes(x = sex, y = mean, 
+             colour = species, shape = species)) +
+  geom_point()
+```
+
+#### Hinzufügen von Fehlerbalken {.smaller}
+
+:::: columns
+::: {.column width="50%"}
+- wir tun dies mit `geom_errorbar()`
+
+- wir müssen die Abbildungsästhetik für die oberen und unteren Grenzen des Fehlerbalkens hinzufügen
+  + `geom_errorbar(aes(ymin = mean-sd, ymax = mean+sd))`
+  + Wir haben summarise benutzt, um `mean-sd` (`lower`) und `mean+sd` (`upper`) für jede Gruppe zu berechnen.
+  
+```{r}
+#| output-location: fragment
+sum_penguins %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: fragment
+sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=lower,ymax=upper)) 
+```
+:::
+::::
+---
+
+::: {.callout-warning}
+
+## Balkendiagramm des Mittelwerts: Finger weg!
+
+Ich flehe Sie an, *nicht* Mittelwerte mit Fehlerbalken darzustellen! Sie werden sehr oft Balkendiagramme von Mittelwerten sehen, und andere unterrichten dies vielleicht sogar in anderen Kursen, aber es gibt viele Gründe, warum dies eine schlechte Idee ist!!!
+
+Erstens können sie sehr irreführend sein. Sie beginnen bei 0 und vermitteln den Eindruck, dass die Daten beim Mittelwert enden, obwohl etwa die Hälfte der Daten (normalerweise) über dem Mittelwert liegt.
+
+:::: columns
+
+::: {.column width="50%"}
+- Erinnern Sie sich an das Paket `datasauRus`, das Datensätze mit ähnlichen Mittelwerten, Standardabweichungen und Anzahl der Beobachtungen enthält
+  + aber *sehr* unterschiedliche Verteilungen
+- @fig-dino-barplot zeigt die Verteilung von 5 dieser Datensätze (oberste Zeile), und den Mittelwert, die Standardabweichung und die Anzahl der Beobachtungen für die Variablen `x` und `y`
+  + Sie werden sehen, dass die Verteilungen sehr unterschiedlich aussehen.
+- Aus diesem Grund ist es ein guter Grund, die Rohdatenpunkte *immer* zu visualisieren, unabhängig davon, welche zusammenfassende Darstellung Sie erstellen (z. B. verbergen Fehlerbalken-Diagramme auch eine Menge Daten)
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+fig_datasaurus_scatter <- datasauRus::datasaurus_dozen %>% 
+  filter(dataset %in% c("away", "bullseye", "circle", "dino", "star")) %>% 
+ggplot(aes(x = x, y = y, colour = dataset))+
+  geom_point() +
+  theme_minimal() +
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol = 5)
+
+fig_datasaurus_bar <-
+  datasauRus::datasaurus_dozen %>% 
+  filter(dataset %in% c("away", "bullseye", "circle", "dino", "star")) %>% 
+  pivot_longer(cols = c(x,y),
+               names_to = "variable",
+               values_to = "value") %>% 
+  summarise(mean = mean(value),
+            sd = sd(value),
+            n = n(),
+            .by = c(dataset, variable)) %>% 
+  pivot_wider(
+    id_cols = dataset,
+    names_from = variable,
+    values_from = c(mean,sd,n)
+  ) %>% 
+    pivot_longer(
+      cols = c(2:7),
+      names_to = "measure",
+      values_to = "value"
+    ) %>% 
+ggplot(aes(x = measure, y = value, fill = dataset)) +
+  facet_grid(~dataset) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  
+
+```
+
+```{r}
+#| fig-width: 8
+#| fig-asp: .6
+#| label: fig-dino-barplot
+#| fig-cap: Datasets with the same means, sds, and Ns, but very different distributions
+#| echo: false
+
+fig_datasaurus_scatter / fig_datasaurus_bar
+```
+
+:::
+
+::::
+
+:::
+
+### Anpassen von
+
+- Welche Anpassungen sehen Sie im Code und in der Darstellung?
+
+```{r}
+#| output-location: column-fragment
+sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  geom_point(position = position_dodge(0.3),
+             size = 3) +
+  geom_errorbar(aes(ymin=lower,ymax=upper),
+                position = position_dodge(0.3), 
+                width = .3) +
+  scale_colour_colorblind() +
+  theme_minimal()
+```
+
+---
+
+- `position = posiiton_dodge(0.3)` sagt `ggplot2` wie Objekte zu positionieren sind
+  + `position_dodge()` bedeutet: überlappende Objekte horizontal verschieben
+  + Wichtig ist, dass Sie `position_dodge()` für *jedes* `Geom_` verwenden, das sich an der gleichen Stelle und mit dem gleichen Wert befinden soll, sonst werden sie nicht ausgerichtet
+- `geom_point(size = 3)`: passt die Größe der Punkte an
+- `geom_errorbar(width = .3)`: passt die Breite der Fehlerbalken an
+  + Tipp: Ich gebe immer den gleichen Wert für `position_dodge()` und `geom_errorbar(width = )` ein, so dass die Fehlerbalken immer die 'mittlere' Linie berühren (probieren Sie, beide Werte zu ändern, um zu sehen, was ich meine)
+- `scale_colour_colorblind()`: verwendet ein farbenblindenfreundliches Farbschema
+- `theme_minimal()`: räumt die Darstellung auf (wir haben auch `theme_bw()` gesehen, mehr über Themes [hier](https://ggplot2.tidyverse.org/reference/ggtheme.html))
+
+# Mehrteilige Diagramme
+
+- Wir können verschiedene Arten von Diagrammen kombinieren, um unsere Daten zusammenzufassen, aber auch die Verteilung darzustellen.
+  + Dies ist am einfachsten, wenn sie die gleichen zugrunde liegenden Daten verwenden, wie z. B. Violinplots und Boxplots.
+
+```{r}
+#| output-location: slide
+#| code-line-numbers: "4,5"
+#| label: fig-violin-boxplot
+#| fig-cap: "A violin-boxplot"
+df_penguins %>% 
+  ggplot(aes(x = species, y = body_mass_g, 
+             colour = sex, shape = sex)) +
+  geom_violin(aes(fill = sex), alpha = .1, position = position_dodge(.9)) +
+  geom_boxplot(width = .2, position = position_dodge(.9)) +
+  scale_colour_colorblind() +
+  scale_fill_colorblind() +
+  theme_minimal()
+```
+
+## Plotten verschiedener Daten
+
+- dies ist schwieriger, wenn wir Zusammenfassungen (wie Fehlerbalken) *und* Verteilungen darstellen wollen
+  + Fehlerbalkenplots nehmen Datenzusammenfassungen (Mittelwert, Sd)
+  + Violine, Boxplot und Scatterplots nehmen alle die Rohdaten auf (jede Zeile = Beobachtung)
+
+---
+
+- Lassen Sie uns versuchen, ein Streudiagramm zu unserem Fehlerbalkenplot hinzuzufügen
+  + Dies kann auf verschiedene Weise geschehen, z.B., 
+    + man nimmt ein Streudiagramm und fügt den Mittelwert und den Fehlerbalken `Geom` hinzu
+    + oder man nimmt die Fehlerbalkengrafik und fügt eine Streuungsgrafik "Geom" hinzu
+- Letzteres ist etwas einfacher, also probieren wir das aus
+
+---
+
+### Streudiagramm zur Fehlerleiste hinzufügen
+
+- `geom_point()` mit den erforderlichen `data` und `aes()` verwenden
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "4,5"
+#| label: fig-errorbar-scatter1
+#| fig-cap: "Scatterplot with errorbar"
+sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  geom_point(data = df_penguins, 
+             aes(x = species, y = body_mass_g)) +
+  geom_point(position = position_dodge(0.3),
+             size = 3) +
+  geom_errorbar(aes(ymin=lower,ymax=upper),
+                position = position_dodge(0.3), 
+                width = .3) +
+  scale_colour_colorblind() +
+  theme_minimal()
+```
+
+### Streudiagramm anpassen
+
+- mit `position_dodge()`
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "6"
+#| label: fig-errorbar-scatter2
+#| fig-cap: "Scatterplot with errorbar"
+sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  geom_point(data = df_penguins, 
+             aes(x = species, y = body_mass_g),
+             position = position_dodge(0.3)) +
+  geom_point(position = position_dodge(0.3),
+             size = 3) +
+  geom_errorbar(aes(ymin=lower,ymax=upper),
+                position = position_dodge(0.3), 
+                width = .3) +
+  scale_colour_colorblind() +
+  theme_minimal()
+```
+
+### Wert `alpha` hinzufügen
+
+- damit wir überlappende Werte unterscheiden können
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "7"
+#| label: fig-errorbar-scatter3
+#| fig-cap: "Scatterplot with errorbar"
+sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  geom_point(data = df_penguins, 
+             aes(x = species, y = body_mass_g),
+             position = position_dodge(0.3),
+             alpha = .4) +
+  geom_point(position = position_dodge(0.3),
+             size = 3) +
+  geom_errorbar(aes(ymin=lower,ymax=upper),
+                position = position_dodge(0.3), 
+                width = .3) +
+  scale_colour_colorblind() +
+  theme_minimal()
+```
+
+### Position ändern {.smaller}
+
+- `position_jitterdodge()` verschiebt Objekte so, dass sie sich nicht überlappen
+  + wir können `dodge.width = .3` setzen, um `position_dodge()` von errorbars zu entsprechen
+  + und `jitter.width = ` um anzugeben, wie stark die Punkte zittern sollen
+- und `geom_errorbar(size = 1)` macht die Linien der Fehlerbalken dicker
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "|6,7,14"
+#| label: fig-errorbar-scatter4
+#| fig-cap: "Scatterplot with errorbar"
+sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  geom_point(data = df_penguins, 
+             aes(y = body_mass_g),
+             position = position_jitterdodge(dodge.width = .3, 
+                                  jitter.width = 0.3),
+             alpha = .4) +
+  geom_point(position = position_dodge(width =0.3),
+             size = 3) +
+  geom_errorbar(aes(ymin=lower,ymax=upper),
+                position = position_dodge(0.3), 
+                width = .3,
+                size = 1) +
+  scale_colour_colorblind() +
+  theme_minimal()
+```
+
+# Heutige Ziele 🏁 {.unnumbered .unlisted}
+
+Heute haben wir gelernt, wie man...
+
+- mehr als drei Variablen mit `facet_wrap()` darstellt ✅
+- zusammenfassende Statistiken visualisiert ✅
+- mehrteilige Diagramme erstellt (z. B. Verteilungen mit zusammenfassenden Statistiken) ✅
+
+# Aufgaben
+
+## Boxplot with facet
+
+::: nonincremental
+1. Erstelle einen Boxplot der `df_penguins` Daten, mit:
+    + Geschlecht" auf der `x`-Achse und mit `colour` *oder* `fill` (wähle eine)
+    + Flipper_Länge_mm" auf der y-Achse aufgetragen
+    + Insel" in drei Feldern unter Verwendung von "facet_wrap()" aufgetragen
+    + die von Ihnen gewählte `theme_`-Einstellung (z.B. `theme_bw()`; für weitere Optionen siehe [hier](https://ggplot2.tidyverse.org/reference/ggtheme.html))
+:::
+  
+## Code chunk options
+
+::: nonincremental
+2. Fügen Sie der Abbildung eine Beschriftung (`fig-...`) und eine Überschrift (`fig-cap: `) hinzu. Beschreiben Sie die Grafik kurz und verwenden Sie einen Querverweis (*`@fig-...` zeigt, dass...*).
+:::
+
+## Multi-layered plot
+
+::: nonincremental
+3. Versuchen Sie, @fig-violin-box-scatterplot zu reproduzieren. Hinweis: Sie müssen @fig-violin-boxplot ein `geom_` und einige Beschriftungen hinzufügen (und ein paar Formatierungsanpassungen, wenn Sie wollen, dass es genau so aussieht).
+:::
+```{r}
+#| echo: false
+#| label: fig-violin-box-scatterplot
+#| fig-cap: "A multi-layered plot"
+df_penguins %>% 
+  ggplot(aes(x = species, y = body_mass_g, 
+             colour = sex, shape = sex)) +
+  labs(title = "Body mass (g) species and sex",
+       x = "Sex",
+       y = "Body mass (g)") +
+  geom_point(alpha = .3, position = position_jitterdodge(dodge.width=.9, jitter.width = .4), size = 2) +
+  geom_violin(aes(fill = sex), alpha = .1, position = position_dodge(.9)) +
+  geom_boxplot(alpha = .3, width = .5, position = position_dodge(.9)) +
+  scale_colour_colorblind() +
+  scale_fill_colorblind() +
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+## Patchwork {.smaller}
+
+::: nonincremental
+4. Verwenden Sie das Paket `patchwork` (siehe Anmerkungen zu Woche 3) und stellen Sie Ihren Boxplot und Ihre Fehlerbalken/Violin-Plots nebeneinander dar. Es sollte ungefähr so aussehen wie @fig-patchwork.
+    + Hinweis: Wenn Sie die `tag_levels` ("A" und "B") hinzufügen möchten, müssen Sie `+ plot_annotation(tag_level = "A")` aus `patchwork` hinzufügen.
+:::
+```{r}
+#| echo: false
+
+fig_aufgabe1 <- df_penguins %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm, 
+             colour = sex, shape = sex)) +
+  facet_wrap(~island) +
+  labs(title = "Boxplot",
+       y = "Flipper length (mm)",
+       colour = "Sex",
+       shape = "Sex") +
+  geom_boxplot(position = position_dodge(width =0.4)) +
+  scale_colour_colorblind() +
+  theme_bw() +
+  theme(legend.position = "none")
+
+fig_aufgabe2 <- sum_penguins %>% 
+  ggplot(aes(x = species, y = mean, 
+             colour = sex, shape = sex)) +
+  labs(title = "Errorbar with scatterplot",
+       x = "Species",
+       y = "Body mass (g)",
+       colour = "Sex",
+       shape = "Sex") +
+  geom_point(data = df_penguins,
+             aes(y = body_mass_g),
+             position = position_jitterdodge(dodge.width=.5,
+                                             jitter.width=.3),
+             alpha = .2) +
+  geom_point(position = position_dodge(width =0.5),
+             size = 3) +
+  geom_errorbar(aes(ymin=lower,ymax=upper),
+                position = position_dodge(0.5), 
+                width = .3, size = 1) +
+  scale_colour_colorblind() +
+  theme_bw()
+```
+
+```{r}
+#| label: fig-patchwork
+#| fig-cap: Combined plots with `patchwork`
+#| echo: false
+#| fig-width: 8
+#| fig-asp: .5
+fig_aufgabe1 + fig_aufgabe2 + plot_annotation(tag_levels = "A")
+```
+
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
+
+```{r}
+print(sessionInfo(),locale = F)
+```
+
+# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

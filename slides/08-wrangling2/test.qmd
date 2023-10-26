@@ -1,0 +1,42 @@
+---
+title: "Untitled"
+format: html
+---
+
+```{r}
+pacman::p_load(tidyverse,
+               here)
+```
+
+```{r}
+df_tb <- read_csv(here("daten", "table1.csv"))
+df_billboard <- read_csv(here("daten", "df_billboard.csv"))
+df_cms <- read_csv(here("daten", "cms_patient_experience.csv"))
+```
+
+```{r}
+df_tb %>% 
+  mutate(rate = cases/population*10000)
+```
+
+```{r}
+df_billboard %>% 
+  head(n = 5) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+```{r}
+df_billboard %>% 
+  pivot_longer(
+    cols = starts_with("wk"), 
+    names_to = "week", 
+    values_to = "rank"
+  ) %>% 
+  head(n = 10) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+
+

@@ -1,0 +1,910 @@
+---
+title: "Deskriptive Statistik"
+subtitle: "Maße der zentralen Tendenz und Streuung"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 9 - Deskriptive Statistik" 
+lang: de
+date: "`r Sys.Date()`"
+format: 
+  html:
+    output-file: descr_stats_blatt_DE.html
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+  revealjs: 
+    output-file: descr_stats_folien_DE.html
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+    execute:
+      fig-out: 6
+      fig-asp: .618
+  pdf:
+    output-file: descr_stats_DE.pdf
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+bibliography: references/references.bib
+csl: references/apa.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, # evaluate chunks
+                      echo = T, # 'print code chunk?'
+                      message = F, # 'print messages (e.g., warnings)?'
+                      error = F, # stop when error encountered
+                      warning = F) # don't print warnings
+```
+
+```{r, eval = T, cache = F}
+#| echo: false
+# Create references.json file based on the citations in this script
+# make sure you have 'bibliography: references.json' in the YAML
+# rbbt::bbt_update_bib("_descr_stats_DE.qmd")
+```
+
+# Wiederholung {.unnumbered}
+
+Letzte Woche haben wir...
+
+- etwas über breite und lange Daten gelernt ✅
+- breite Daten länger gemacht ✅
+- lange Daten breiter gemacht ✅
+
+## Überprüfung
+
+```{r}
+pacman::p_load(tidyverse,
+               here)
+```
+
+```{r}
+df_biondo <- read_csv(here("daten", "biondo_etal_2021_tidy.csv"))
+df_billboard <- read_csv(here("daten", "billboard.csv"))
+```
+
+:::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: fragment
+#| eval: false
+#| code-annotations: below
+df_biondo %>% # <1>
+  head(n = 5) %>% # <2>
+  knitr::kable() %>% # <3>
+  kableExtra::kable_styling(font_size = 20) # <4>
+```
+1. Nehmen Sie den Datenrahmen `df_biondo`, und dann
+2. nimm nur die ersten 5 Zeilen, und dann
+3. erstelle eine hübsche `knitr`-Tabelle, und dann
+4. mache die Tabelle noch schöner mit `kableExtra`, mit Schriftgröße 20
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| code-annotations: none
+#| output-location: fragment
+df_biondo %>% # <1>
+  head(n = 5) %>% # <2>
+  knitr::kable() %>% # <3>
+  kableExtra::kable_styling(font_size = 20) # <4>
+```
+:::
+::::
+
+- wir wollen normalerweise die Ausgabe von `head()`, `knitr::kable()` und `kableExtra::kable_styling()` nicht als Objekt speichern
+  + und schon gar nicht als ein Objekt, das mit `df_` beginnt, was für `dataframe` steht
+
+---
+
+::: {.panel-tabset}
+## Problem
+
+Zwei Beispiele für dasselbe Problem
+
+```{r}
+df_biondo_long <- df_biondo %>% 
+  pivot_longer(
+    cols = ("rt" | "tt"),
+    names_to = "maß",
+    values_to = "ms") %>% 
+  head(n = 10) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+```{r}
+#| eval: true
+df_biondo_long <- df_biondo %>%
+  pivot_longer(
+    cols = c(contains("rt"), contains("tt"))
+  ) %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling(font_size = 20)
+```
+
+## Lösung 1
+
+Speichern Sie keine `knitr`-Tabelle, wenn Sie wirklich einen `Datenrahmen` (d.h., `df_`...) speichern wollen. Speichern Sie stattdessen zuerst die `df`, und geben Sie die `df` in einem anderen Codeabschnitt als formatierte Tabelle aus.
+
+```{r}
+#| code-line-numbers: "|2"
+# save longer dataframe
+df_biondo_long <- df_biondo %>% 
+  pivot_longer(
+    cols = ("rt" | "tt"),
+    names_to = "maß",
+    values_to = "ms")
+```
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "|2"
+# print table of longer df
+df_biondo_long %>% 
+  head(n = 10) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20)
+```
+
+## Lösung 2
+
+Obwohl `pivot_longer()` funktionierte, waren die Argumente für `cols =` nicht ganz richtig. Wir wollen hier `c()` verwenden, um die relevanten Spalten aufzulisten (und nicht eine Bedingung verwenden). Außerdem müssen die Spaltennamen nicht in Anführungszeichen gesetzt werden, da sie bereits bekannte Entitäten sind.
+
+```{r}
+#| code-line-numbers: "4"
+# save longer dataframe
+df_biondo_long <- df_biondo %>% 
+  pivot_longer(
+    cols = c(rt,tt),
+    names_to = "maß",
+    values_to = "ms")
+```
+:::
+
+---
+
+::: {.panel-tabset}
+## Problem
+
+Einrichtung:
+```{r}
+df_billboard_tidy <- df_billboard %>% 
+  pivot_longer(
+    cols = starts_with("wk"), 
+    names_to = "week", 
+    values_to = "rank",
+    values_drop_na = TRUE
+  ) %>% 
+  mutate(week = parse_number(week))
+```
+
+> Warum wird mein Titel (Last Resort von Papa Roach) nicht gefunden? 
+
+```{r}
+#| eval: false
+#| code-line-numbers: "|2"
+df_billboard_tidy %>%
+  select(contains("Resort"))
+```
+
+```{r}
+#| eval: false
+#| code-line-numbers: "|2,4"
+ggplot(data = df_billboard_tidy,
+  aes(x = week, y = rank)) +
+  labs(title = "'Last Resort' by Papa Roach",
+       x = "Number of weeks", y = "Rank") +
+  geom_density()
+```
+
+## Lösung 1
+
+Wir wollen Zeilen `filtern()`, nicht Spalten auswählen (i.e., `select()`). 
+
+```{r}
+#| code-line-numbers: "2,7"
+#| output-location: fragment
+df_billboard_tidy %>%
+  filter(track == "Last Resort") %>% 
+  head()
+```
+
+## Lösung 2
+
+Die Funktion `geom_density()` erfordert, dass es kein ästhetisches `y` gibt (weil dies immer die Dichte ist). Wir wollen `geom_line()`.
+
+```{r}
+#| code-line-numbers: "7"
+#| output-location: column-fragment
+df_billboard_tidy %>%
+  filter(track == "Last Resort") %>% 
+ggplot(
+  aes(x = week, y = rank)) +
+  labs(title = "'Last Resort' by Papa Roach",
+       x = "Number of weeks", y = "Rank") +
+  geom_line()
+```
+:::
+
+
+# Heutige Ziele {.unnumbered}
+
+Heute werden wir...
+
+- die Maße der zentralen Tendenz (wieder) kennenlernen
+- Streuungsmaße (neu) kennenlernen
+- lernen, wie man die Funktion `summarise()` von `dplyr` benutzt
+- lernen, wie man Zusammenfassungen `.by` Gruppe erstellt
+
+## Lust auf mehr? {.unnumbered}
+
+Ch.4, Section 4.5 [Groups](https://r4ds.hadley.nz/data-transform.html#groups) in @wickham_r_nodate
+
+# Einrichtung
+
+`Session > Restart R` um mit einer neuen Umgebung zu beginnen.
+
+```{r}
+pacman::p_load(tidyverse,
+               here)
+```
+
+
+```{r}
+df_flights <- read_csv(here("daten", "flights.csv"))
+```
+
+
+# Deskriptive Statistik
+
+- Die deskriptive Statistik beschreibt die zentrale Tendenz, die Variabilität und die Verteilung der Daten.
+
+- manchmal auch "zusammenfassende" Statistik genannt, weil sie die beobachteten Daten *zusammenfasst*.
+
+## Anzahl der Werte ($n$)
+
+- wichtige Informationen bei der Zusammenfassung von Daten
+  + Wenn wir mehr Daten haben (höher $n$), haben wir mehr Vertrauen in die Schlussfolgerungen, die wir aus unseren Daten ziehen, weil wir mehr Beweise haben.
+  + wird auch zur Berechnung einiger deskriptiver Statistiken verwendet
+  
+```{r}
+#| output-location: fragment
+values <- c(3,1,2)
+length(values)
+```
+
+---
+
+::: callout-note
+### `length()` versus `nrow()` and `n()`
+- die Funktion "Länge()" gibt an, wie viele (horizontale) Werte ein Objekt enthält
+  + Wenn das Objekt ein Datenrahmen ist (statt eines Vektors wie "Werte"), sagt sie uns, wie viele *Spalten* wir haben.
+
+```{r}
+#| output-location: fragment
+length(df_flights)
+```
+
+- Um die Anzahl der Werte (d.h. Beobachtungen/Zeilen) in einem Datenrahmen zu zählen, können wir verwenden
+  + `nrow()` (Basis-R-Syntax), oder
+  + `n()` (`dplyr`-Syntax), das werden wir später noch sehen
+  
+```{r}
+#| output-location: fragment
+nrow(df_flights)
+```
+:::
+
+## Maße der zentralen Tendenz
+
+- ziemlich genau das, was wir für *numerische* Variablen mit der Funktion `summary()` erhalten
+
+```{r}
+#| output-location: column-fragment
+df_flights %>% 
+  select(air_time, distance) %>% 
+  summary() %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 30)
+```
+
+### Durchschnitt ($\mu$)
+
+- `mean` = Mittelwert, Durchschnitt
+- die Summe aller Werte geteilt durch die Anzahl der Werte
+
+$$
+\mu = \frac{Summe\;der\;Werte}
+           {n}
+$$
+
+---
+
+- Wir können den Mittelwert leicht von Hand berechnen, wenn wir nur wenige Werte haben
+
+```{r}
+#| output-location: fragment
+(3+1+2)/3
+```
+
+- wir können die Werte auch als Vektor (eine Liste von Werten derselben Klasse) speichern
+- und dann die Funktion `mean()` verwenden, um ihren Mittelwert zu berechnen
+
+```{r}
+#| output-location: fragment
+values <- c(3,1,2)
+mean(values)
+```
+
+- oder wir können die Funktion `mean()` auf eine Variable in einem Datenrahmen anwenden
+  + Verwendung des Zeichens `$`, um anzugeben, dass eine Spalte aus einem Datenrahmen ausgewählt werden soll
+  
+```{r}
+#| output-location: fragment
+mean(df_flights$distance)
+```
+
+- `df_flights$distance` ist vergleichbar mit `df_flights %>% select(distance)`
+
+### Median
+
+- `median` = Median, mediane Wert; der Wert in der Mitte des Datensatzes
+- Wenn Sie alle Ihre Werte in aufsteigender (oder absteigender) Reihenfolge aneinanderreihen, ist der mittlere Wert der Median
+  + Wenn Sie z. B. 5 Werte haben, ist der 3. Wert der Median
+  + bei 6 Werten ist der Mittelwert aus dem 3. und 4. Wert der Median
+- 50% der Daten liegen unter diesem Wert, 50% darüber
+
+```{r}
+#| output-location: fragment
+median(df_flights$distance)
+```
+
+### Modalwert
+
+- `mode` = Modalwert; der Wert, der am häufigsten in einem Datensatz vorkommt
+- Es gibt keine R-Funktion zur Bestimmung des "Modus", aber wir können ihn mit einem Histogramm visualisieren
+
+```{r}
+#| output-location: column-fragment
+df_flights %>% 
+  ggplot(aes(x = distance)) +
+  geom_histogram() +
+  theme_minimal() 
+```
+
+## Maße der Streuung
+
+- Maße der zentralen Tendenz beschreiben die Mitte der Daten (normalerweise)
+- Streuungsmaße beschreiben die Verteilung der Datenpunkte
+
+### Wertebereich
+
+- `range` = Wertebereich
+  + kann sich auf den höchsten und den niedrigsten Wert beziehen, oder
+  + die Differenz zwischen höchstem und niedrigstem Wert
+
+--- 
+
+- `max()` und `min()` den höchsten und den niedrigsten Wert ausdrucken
+
+```{r}
+#| output-location: fragment
+max(values)
+```
+
+```{r}
+#| output-location: fragment
+min(values)
+```
+
+- `range()` druckt den niedrigsten und den höchsten Wert
+
+```{r}
+#| output-location: fragment
+range(values)
+```
+
+- können wir die Differenz zwischen diesen Werten berechnen:
+
+```{r}
+#| output-location: fragment
+max(values) - min(values)
+```
+
+### Standardabweichung (`sd` or $\sigma$)
+
+- ein Maß dafür, wie gestreut die Daten *im Verhältnis zum Mittelwert* sind
+  - eine niedrige Standardabweichung bedeutet, dass die Daten um den Mittelwert herum gruppiert sind (d. h. es gibt eine geringere Streuung)
+  - eine hohe Standardabweichung bedeutet, dass die Daten stärker gestreut sind
+
+- Die Standardabweichung wird sehr oft angegeben, wenn der Mittelwert angegeben wird.
+
+- um `sd` zu berechnen
+  + die Quadratwurzel ($\sqrt{}$) der Summe der quadrierten Wertabweichungen vom Mittelwert ($(x - \mu)^2$) geteilt durch die Anzahl der Beobachtungen minus 1 ($n-1$) 
+
+```{r}
+#| output-location: fragment
+sd(values)
+```
+
+---
+
+:::: columns
+
+::: {.column width="40%"}
+
+ - unsere Werte ($x$) sind:
+
+```{r}
+#| output-location: column-fragment
+values
+```
+
+- der Mittelwert ($\mu$) ist:
+
+```{r}
+#| output-location: column-fragment
+mean(values)
+```
+
+- die Anzahl der Werte ($n$) ist:
+
+```{r}
+#| output-location: column-fragment
+length(values)
+```
+
+- die Standardabweichung ($\sigma$) ist:
+
+```{r}
+#| output-location: column-fragment
+sd(values)
+```
+
+:::
+
+::: {.column width="60%"}
+
+\begin{align}
+
+\sigma & = \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + (x_3-\mu)^2}{N-1}}
+\\
+& = \sqrt{\frac{(3-\mu)^2 + (1-\mu)^2 + (2-\mu)^2}{N-1}}
+\\
+& = \sqrt{\frac{(3-2)^2 + (1-2)^2 + (2-2)^2}{3-1}}
+\\
+& = \sqrt{\frac{(1)^2 + (-1)^2 + (0)^2}{2}}
+\\
+& = \sqrt{\frac{1 + 1 + 0}{2}}
+\\
+& = \sqrt{\frac{2}{2}} = \sqrt{1} = 1
+
+\end{align}
+
+:::
+
+::::
+
+---
+
+- Inwiefern ist die Standardabweichung hilfreich?
+  + Sie gibt uns ein Maß dafür, wie "eng" die beobachteten Werte am Mittelwert liegen.
+
+- Verschiedene Datensätze können zum Beispiel denselben Mittelwert haben:
+
+
+```{r}
+values2 <- c(55,55,55,55,55,57,57,57,57,57)
+values3 <- c(1,1,1,1,100,100,100,100,100)
+```
+
+```{r}
+#| output-location: column-fragment
+mean(values2)
+```
+
+```{r}
+#| output-location: column-fragment
+mean(values3)
+```
+
+- `values2` und `values3` haben den gleichen Mittelwert
+  + Wenn wir nur den Mittelwert berechnen würden, könnten wir zu dem Schluss kommen, dass die Daten ähnlich sind.
+
+- aber ihre Standardabweichungen werden sich unterscheiden, weil die beobachteten Werte alle unterschiedlich weit vom Mittelwert abweichen
+- Welcher Vektor wird Ihrer Meinung nach die *geringste* Standardabweichung haben? Und warum?
+
+```{r}
+#| output-location: column-fragment
+sd(values2)
+```
+
+```{r}
+#| output-location: column-fragment
+sd(values3)
+```
+
+
+---
+
+::: callout-note
+#### CBerechnung der Standardabweichung
+::: nonincremental
+- Berechnen Sie zunächst die Abweichung jedes Wertes vom Mittelwert
+  + und quadriere diesen Wert
+- addiere alle diese quadrierten Abweichungswerte
+  + dividiere durch die Anzahl der Beobachtungen *bis auf eine* ($n-1$)
+- dies ist nun die *Varianz*, um die Standardabweichung der Population zu erhalten, berechnet man die Quadratwurzel dieses Wertes
+
+
+\begin{align}
+
+\sigma & = \sqrt\frac{(56-1)^2 + (56-1)^2 + (56-1)^2 + (56-1)^2 + (56-100)^2 +
+        (56-100)^2 + (56-100)^2 + (56-100)^2 + (56-100)^2 + (56-100)^2}{n-1}
+\\
+& = \sqrt{\frac{3025 + 3025 + 3025 + 3025 + 1936 + 1936 + 1936 + 1936 + 1936}{9-1}}
+\\
+& = \sqrt{\frac{21780}{8}}
+\\
+& = \sqrt{2722.5}
+\\
+& = 52.17758
+
+\end{align}
+
+
+- Da wir durch die Anzahl der Beobachtungen (minus 1) dividieren, wird die Standardabweichung kleiner sein, wenn wir *mehr* Beobachtungen haben (und daher durch eine größere Zahl dividieren) (denn wenn wir durch eine große Zahl dividieren, ist das Produkt viel kleiner)
+
+- Beispiel: Wenn wir 100 durch die Zahl 2 teilen, ist das Ergebnis 50. Wenn wir 100 durch eine größere Zahl, wie 50, teilen, ist das Ergebnis (2) kleiner.
+:::
+:::
+
+
+# `dplyr::summarise()`
+
+- berechnet Zusammenfassungen von Daten
+  + aber wir müssen ihm sagen, *was* es berechnen soll und für welche Variable(n)
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  summarise(N = n())
+```
+
+---
+
+- wir können auch mehrere Berechnungen auf einmal durchführen
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  summarise(mean_distance = mean(distance, na.rm=T),
+            sd_distance = sd(distance, na.rm = T),
+            N = n()) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+---
+
+- und wir können Berechnungen angeben
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  summarise(range_distance = max(distance) - min(distance))
+```
+
+## Fehlende Werte
+
+- einige Berechnungen sind bei fehlenden Werten nicht möglich
+  + die Variable "air_time" hat einige fehlende Werte
+
+```{r}
+#| output-location: column-fragment
+df_flights %>% 
+  select(air_time, distance) %>% 
+  summary()
+```
+
+```{r}
+#| output-location: column-fragment
+df_flights %>% 
+  summarise(mean_air_time = mean(air_time))
+```
+
+---
+
+- Bei der Arbeit mit realen Daten ist es nicht trivial, wie man mit fehlenden Werten umgeht.
+  + z.B. könnten wir alle "N"-Werte in "0" umwandeln, wenn wir wollen, dass sie zur Berechnung des "Mittelwerts" beitragen
+  + aber in den meisten Fällen wollen wir sie einfach entfernen (wie wir es schon oft getan haben)
+
+- Wir können dies leicht mit dem `dplyr`-Verb `drop_na()` tun
+
+```{r}
+df_flights %>% 
+  drop_na() %>% 
+  summarise(mean = mean(air_time))
+```
+
+# Gruppierung von Variablen
+
+- Wir wollen nicht immer nur die zusammenfassenden Statistiken für einen gesamten Datensatz kennen, aber
+  + Wir wollen in der Regel bestimmte Gruppen *vergleichen* (z. B. den Vergleich von "Flugzeit" zwischen Fluggesellschaften).
+
+## `.by =`
+
+- das brandneue Argument `.by =` in `summarise()` berechnet unsere Berechnungen auf gruppierten Teilmengen der Daten (erst ein paar Monate alt!)
+  + Es nimmt eine "Variable" (d.h. einen Spaltennamen) und gruppiert nach den Ebenen dieser Variable
+---
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  drop_na() %>% 
+  summarise(mean_air_time = mean(air_time),
+            mean_distance = mean(distance),
+            N = n(),
+            .by = month) %>% 
+  arrange(mean_air_time)
+```
+
+## Gruppieren nach mehreren Variablen
+
+- Wir können auch nach mehreren Variablen gruppieren
+  + Dazu benötigen wir `concatenate` (`c()`)
+
+- wir filtern, um nur ein paar Träger zu haben, damit unsere Ausgabe nicht zu lang wird
+
+---
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "7"
+df_flights %>% 
+  drop_na() %>%
+  filter(carrier %in% c("UA", "AA")) %>% 
+  summarise(mean_air_time = mean(air_time),
+            mean_distance = mean(distance),
+            N = n(),
+            .by = c(month, carrier)) %>% 
+  arrange(month, carrier) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20)
+```
+
+---
+
+::: callout-note
+## `group_by()`
+
+- vor `.by()` haben wir das `dplyr`-Verb `group_by()` und `ungroup()` verwendet
+  + Ich bevorzuge das neue `.by`, weil es die Gruppierung lokal hält (keine Notwendigkeit für `ungroup()`)
+  + Behalten Sie dies im Hinterkopf, Sie könnten `group_by()` in freier Wildbahn sehen
+
+```{r}
+#| code-line-numbers: "4,9"
+df_flights %>% 
+  drop_na() %>%
+  filter(carrier %in% c("UA", "AA")) %>% 
+  group_by(month, carrier) %>% 
+  summarise(mean_air_time = mean(air_time),
+            mean_distance = mean(distance),
+            N = n()) %>% 
+  ungroup() %>% 
+  arrange(month, carrier) %>% 
+  head(n = 10) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20) 
+```
+
+
+:::
+
+# Anscombe's Quartet
+
+- Francis Anscombe erstellte 1973 4 Datensätze, um zu zeigen, wie wichtig es ist, Daten zu visualisieren, bevor man sie analysiert und ein Modell erstellt
+  + Diese vier Diagramme stellen 4 Datensätze dar, die alle einen nahezu identischen Mittelwert und eine Standardabweichung, aber sehr unterschiedliche Verteilungen aufweisen
+
+```{r}
+#| echo: false
+# https://michael-franke.github.io/intro-data-analysis/Chap-02-04-Anscombe-example.html
+data("anscombe")
+tidy_anscombe <- anscombe %>% 
+  pivot_longer(
+    everything(),
+    names_pattern = "(.)(.)",      
+    names_to = c(".value", "grp")  
+  ) %>% 
+  mutate(grp = paste0("Group ", grp))
+```
+
+```{r}
+#| label: tbl-anscombe
+#| tbl-cap: Summary stats of Anscombe's quratet datasets
+#| echo: false
+tidy_anscombe %>% 
+  group_by(grp) %>% 
+  summarise(
+    mean_x    = mean(x),
+    mean_y    = mean(y),
+    min_x     = min(x),
+    min_y     = min(y),
+    max_x     = max(x),
+    max_y     = max(y),
+    crrltn    = cor(x, y)
+  ) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size=20)
+```
+
+---
+
+```{r}
+#| label: fig-anscombe
+#| fig-cap: Plots of Anscombe's quratet distributions
+#| echo: false
+tidy_anscombe %>% 
+  ggplot(aes(x, y)) +
+    geom_smooth(method = lm, se = F, color = "darkorange") +
+    geom_point(size = 2) +
+    scale_y_continuous(breaks = scales::pretty_breaks()) +
+    scale_x_continuous(breaks = scales::pretty_breaks()) +
+    labs(
+      title = "Anscombe's Quartet", x = NULL, y = NULL,
+      subtitle = bquote(y == 0.5 * x + 3 ~ (r %~~% .82) ~ "for all groups")
+    ) +
+    facet_wrap(~grp, ncol = 2, scales = "free_x") +
+    theme(strip.background = element_rect(fill = "#f2f2f2", colour = "white")) +
+  theme_minimal()
+```
+
+## DatasaurRus
+
+- das Paket `datasaurRus` enthält einige weitere Datensätze, die ähnliche Mittelwerte und SD, aber unterschiedliche Verteilungen aufweisen
+
+```{r}
+pacman::p_load("datasauRus")
+```
+
+```{r}
+#| label: tbl-datasauRus
+#| tbl-cap: Summary stats of datasauRus datasets
+#| output-location: column-fragment
+datasaurus_dozen %>% 
+    group_by(dataset) %>% 
+    summarize(
+      mean_x    = mean(x),
+      mean_y    = mean(y),
+      std_dev_x = sd(x),
+      std_dev_y = sd(y),
+      corr_x_y  = cor(x, y)
+    ) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20)
+```
+
+---
+
+- Wenn wir die Datensätze grafisch darstellen, sehen sie alle sehr unterschiedlich aus!
+
+```{r}
+#| label: fig-datasauRus
+#| fig-cap: Plots of datasauRus dataset distributions
+#| out-width: "60%"
+#| fig-asp: .618
+#| echo: false
+ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+  geom_point() +
+  theme_minimal() +
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol = 5)
+```
+
+---
+
+Stellen Sie Ihre Daten also immer grafisch dar und betrachten Sie nicht nur die beschreibenden Statistiken!!! Beides ist sehr wichtig für das Verständnis Ihrer Daten.
+
+# Heutige Ziele 🏁 {.unnumbered .unlisted}
+
+Heute haben wir...
+
+- Maße der zentralen Tendenz (neu) kennengelernt ✅
+- (Wieder-)Erlernen von Streuungsmaßen ✅
+- gelernt, wie man die Funktion `summarise()` von `dplyr` benutzt ✅
+- gelernt, wie man Zusammenfassungen "nach" Gruppen erstellt ✅
+
+# Aufgaben
+
+::: nonincremental
+
+1. Berechnen Sie die Standardabweichung der Werte `152, 19, 1398, 67, 2111`, ohne die Funktion `sd()` zu benutzen.
+    + zeige deine Arbeit. Die folgende R-Syntax könnte nützlich sein (je nachdem, wie Sie es machen wollen):
+      + `c()`
+      + `Mittelwert()`
+      + `x^2` berechnet das Quadrat eines Wertes (hier, `x`) 
+      + `sqrt()` berechnet die Quadratwurzel
+      + `Länge()`
+      
+```{r}
+#| echo: false
+#| eval: false
+x <- c(152, 19, 1398, 67, 2111)
+sqrt((sum((x-mean(x))^2))/(length(x)-1))
+```
+
+:::
+
+---
+
+::: nonincremental
+
+2. Benutze die Funktion `sd()`, um die Standardabweichung der obigen Werte zu drucken. Haben Sie es richtig gemacht?
+3. Benutze `summarise`, um den Mittelwert, die Standardabweichung und die Anzahl der Beobachtungen für `dep_delay` zu drucken.
+    + Hinweis: Müssen Sie fehlende Werte (`NA`) entfernen?
+4. Machen Sie dasselbe, aber fügen Sie das Argument `.by()` hinzu, um die Abfahrtsverzögerung (`dep_delay`) pro Monat zu finden
+    + Ordnen Sie die Ausgabe nach der mittleren Abflugverspätung an.
+5. Drucke die Ausgabe mit einer schön formatierten Tabelle unter Verwendung von `knitr::kable()` und `kableExtra::kable_styling())`
+    + eine Tabellenbeschriftung (`#| label: tbl-...`) und eine Tabellenüberschrift (`#| tbl-cap: `) einfügen
+    + eine Beschreibung der Tabellenergebnisse, einschließlich eines Querverweises auf die Tabelle (`@tbl-...`)
+
+:::
+
+# Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
+
+```{r}
+sessionInfo()
+```
+
+# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

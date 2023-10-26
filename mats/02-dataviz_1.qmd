@@ -1,10 +1,9 @@
 ---
-title: "Data Viz 1: Verteilungen und Vergleich von Gruppen"
-#### subtitle: ""
+title: "Datenvisualiserung 1"
+subtitle: "Visualisierung von Verteilungen"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-footer: "Woche 3 - Data Viz 1"
-lang: de
+footer: "Woche 2 - Datenvisualisierung 1" 
 date: "11/01/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
@@ -633,7 +632,7 @@ fig_lexdec_rt <-
     + ändern Sie die Beschriftungen entsprechend
 3. Speichern Sie das Diagramm als Objekt mit einem aussagekräftigen Namen (z.B. `fig_lexdec_l1`)
 
-### 
+### {.uncounted .unnumbered}
 
 - sollte das Diagramm in etwa so aussehen:
 
@@ -694,7 +693,7 @@ Diese Übungen sollten auch in Ihrem Skript enthalten sein, wenn Sie es auf Mood
     
 2. Erstellen Sie ein Balkendiagramm, das die Anzahl der Beobachtungen pro Wortklasse zeigt (Hinweis: Sie benötigen die Variable `Class` aus unserem Datensatz).
 
-##
+## {.uncounted .unnumbered}
 
 3. Drucken Sie Ihren Dichteplot und Ihren Klassen-Balkenplot übereinander mit Hilfe des `patchwork` Pakets
 

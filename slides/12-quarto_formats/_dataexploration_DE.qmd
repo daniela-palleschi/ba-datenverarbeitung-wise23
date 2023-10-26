@@ -1,0 +1,455 @@
+---
+title: "Freie Datenexploration"
+subtitle: "lexikalische Entscheidungsaufgabe"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Datenexploration" 
+lang: de
+date: "`r Sys.Date()`"
+format: 
+  pptx:
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+    number-sections: true
+  html:
+    output-file: data_exploration_DE.html
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+    execute:
+      fig-width: 6
+      fig-asp: .618
+      fig-align: centre
+  revealjs: 
+    output-file: data_exploration_DE_folien_EN.html
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: false
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+    execute:
+      fig-width: 6
+      fig-asp: .618
+      fig-align: centre
+bibliography: references/references.bib
+csl: references/apa.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, # evaluate chunks
+                      echo = T, # 'print code chunk?'
+                      message = F, # 'print messages (e.g., warnings)?'
+                      error = F, # stop when error encountered
+                      warning = F) # don't print warnings
+```
+
+```{r, eval = T, cache = F}
+#| echo: false
+# Create references.json file based on the citations in this script
+# make sure you have 'bibliography: references.json' in the YAML
+# rbbt::bbt_update_bib("_dataexploration_DE.qmd")
+```
+
+# Heutige Ziele {.unnumbered}
+
+Diese Woche werden wir...
+
+- die Aufgaben für Bericht 2 durchgehen
+- einige Daten frei erkunden
+- verschiedene Quarto-Ausgabeformate besprechen (wenn Sie Zeit haben)
+
+## Lust auf mehr?
+
+- Section 30 ([Visualising relationsips](https://r4ds.hadley.nz/data-visualize.html#visualizing-relationships)) in @wickham_r_nodate
+
+- Ch. 4 ([Representing summary statistics](https://psyteachr.github.io/introdataviz/representing-summary-statistics.html)) in @nordmann_data_2022
+
+# Bericht Feedback
+
+## Mentimeter 1
+
+Gehen Sie auf menti.com und geben Sie den Code 1643 4313 ein, oder scannen Sie den QR-Code:
+
+::: {.content-visible when-format="revealjs"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/mentimeter_qr_code_bericht2_1.png"))
+```
+:::
+
+
+::: {.content-visible when-format="pdf"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/mentimeter_qr_code_bericht2_1.png"))
+```
+
+:::
+
+
+::: {.content-hidden when-format="revealjs"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/mentimeter_qr_code_bericht2_1.png"))
+```
+:::
+
+## Mentimeter 2
+
+Gehen Sie auf menti.com und geben Sie den Code 4154 0840 ein, oder scannen Sie den QR-Code:
+
+::: {.content-visible when-format="revealjs"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/mentimeter_qr_code_bericht2_2.png"))
+```
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/mentimeter_qr_code_bericht2_2.png"))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/mentimeter_qr_code_bericht2_2.png"))
+```
+:::
+
+
+# Einrichtung
+
+## Pakete
+
+```{r}
+#| eval: true
+pacman::p_load(tidyverse,
+               here,
+               knitr,
+               kableExtra,
+               languageR)
+```
+
+## Daten
+
+
+```{r}
+df_lexdec <- languageR::lexdec %>% 
+  mutate(RT = exp(RT)) # back-transform log RTs to milliseconds
+```
+
+# Wiederholung: Bericht 2
+
+```{r}
+library(introdataviz)
+```
+
+```{r}
+df_biondo <- read_csv(here("daten", "Biondo_etal_2021_bericht2.csv")) %>% 
+  janitor::clean_names()
+```
+
+```{r}
+df_biondo_long <- 
+  df_biondo %>% 
+  pivot_longer(
+    cols = c(first_pass, regression_path, total_time),
+    names_to = "measure",
+    values_to = "time"
+  ) %>% 
+  relocate(measure, time, .after=gramm)
+```
+
+## Erzeugen einer zusammenfassenden Tabelle
+
+- versuchen, @tbl-biondo zu reproduzieren
+
+```{r}
+#| code-fold: true
+#| label: tbl-biondo
+#| tbl-cap: "Summary table from @biondo_yesterday_2022"
+df_biondo %>% 
+  drop_na() %>%  
+  filter(region == "verb", adverb_time != "none") %>% 
+  summarise(N = n(),
+            mean = mean(total_time),
+            sd = sd(total_time),
+            .by = c(region, adverb_time,verb_tense)) %>% 
+  arrange(region, adverb_time) %>% 
+  kable(col.names = c(
+    "Region", "Adverb time", "Verb tense", "N", "Mean total reading time", "SD"
+  ))
+```
+
+
+## Rekonstruieren einer Handlung
+
+- Was wird benötigt, um diese Darstellung zu reproduzieren?
+  + Welche Variable(n) sind auf den Achsen abgebildet?
+  + Welche Variable(n) befinden sich in der Legende?
+  
+
+```{r}
+#| label: fig-split-violin
+#| fig-cap: A split-violin boxplot
+#| echo: false
+
+df_biondo_long %>% 
+  ggplot(aes(x = verb_tense, y = time, colour = as_factor(gramm), shape = as_factor(gramm), fill = as_factor(gramm))) +
+  facet_wrap(~measure) +
+  labs(title = "Distribution of eye-tracking during reading measures per condition",
+       x = "Verb Tense",
+       y = "Reading time (ms)",
+       colour = "Grammaticality",
+       shape = "Grammaticality",
+       fill = "Grammaticality") +
+  geom_boxplot(alpha = .4, aes(shape = as_factor(gramm)), fill = "white") +
+  geom_split_violin(alpha = .2) +
+  theme_bw()
+```
+
+# lexikalische Entscheidungsaufgabe
+
+- Teilnehmer entscheiden, ob ein Wort ein echtes Wort oder ein Unwort ist
+
+::: {.content-visible when-format="revealjs"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/lexical_decision_task_testabledotorg.png"))
+```
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center", fig.cap="Source: https://www.testable.org/wp-content/uploads/2022/11/Lexical_decision_task-1024x576.png"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/lexical_decision_task_testabledotorg.png"))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r eval = T, fig.env = "figure", out.width="100%", fig.align = "center"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/lexical_decision_task_testabledotorg.png"))
+```
+:::
+
+# `languageR`
+
+- ein Begleitpaket für das Lehrbuch @baayen_analyzing_2008
+  + enthält Spielzeugdatensätze aus linguistischen 
+
+## `lexdec` Datenrahmen
+
+- der `lexdec`-Datensatz enthält Antworten (Variable `Correct`) für eine lexikalische Entscheidungsaufgabe in Englisch
+- lexikalische Entscheidungsaufgabe: dem Teilnehmer wird ein einzelnes Wort präsentiert, und er gibt durch Tastendruck an, ob das Wort ein echtes Wort oder ein Nicht-Wort ist
+
+---
+
+- eine Liste einiger der Variablen ist in @tbl-lexdec enthalten
+
+```{r}
+#| label: tbl-lexdec
+#| tbl-cap: "Data dictionary for `df_lexdec`: Lexical decision latencies elicited from 21 subjects for 79 English concrete nouns, with variables linked to subject or word."
+#| echo: false
+
+# dput(names(df_lexdec))
+
+tribble(
+  ~"variable", ~"description",
+  "Subject", "a factor for the subjects",
+  "RT", "a numeric vector for reaction times in milliseconds",
+  "Trial", "a numeric vector for the rank of the trial in the experimental list.",
+  "Sex", "a factor with levels F (female) and M (male).",
+  "NativeLanguage", "a factor with levels English and Other, distinguishing between native and nonnative speakers of English",
+  "Correct", "a factor with levels correct and incorrect coding whether the word was correctly responded to as a word rather than a nonword.",
+  "PrevType", "a factor with levels nonword and word coding whether the item presented at the preceding trial was a word or a nonword.",
+  "PrevCorrect", "a factor with levels correct and incorrect coding whether the preceding item elicited a correct response.",
+  "Word", "a factor with 79 words as levels.",
+  "Frequency", "a numeric vector with logarithmically transformed lemma frequencies as available in the CELEX lexical database.",
+  "Length", "a numeric vector for the word's length in letters.",
+  "Class", "a factor for the semantic category of the word's referent, with levels animal and plant.",
+  "Complex","a factor coding morphological complexity with levels complex and simplex.",
+  "meanRT","a numeric vector for the by-item mean reaction time averaged over subjects.",
+  "BNCcRatio","a numeric vector with the log of the ratio of the (absolute) frequencies in the context-governed and written parts of the British National Corpus, normalized for the differences in corpus size.",
+  "BNCdRatio","a numeric vector with the log of the ratio of the (absolute) frequencies in the demographic and written parts of the British National Corpus, normalized for the differences in corpus size."
+) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+## Aufgabe
+
+1. Stellen Sie sich vor, Sie hätten die Daten von `lexdec` gesammelt
+    a. Wie würde Ihre Ergebnisvariable lauten (das, was Sie messen wollen)?
+    b. Welche Vorhersagen könnten Sie für diese Variable treffen (z. B. würden Sie Unterschiede in Ihrer Ergebnisvariable zwischen zwei Gruppen von Personen erwarten? zwischen verschiedenen Wortarten?)
+  
+2. Untersuchen Sie die Daten.
+    a. Fassen Sie die Daten auf der Grundlage Ihrer Vorhersagen aus 1b zusammen.
+    b. Erstellen Sie Diagramme der Daten, um den Vergleich, der Sie interessiert, zu visualisieren.
+    c. Versuchen Sie, die Daten zu interpretieren, um zu sehen, ob Ihre Vorhersagen zutreffen.
+
+# Ausgabeformate
+
+- Wir erinnern daran, dass Quarto verschiedene Dateiformate ausgeben kann
+
+- Dokumente
+  + html
+  + PDF
+  + MS Word
+- Folien
+  + html-Folien
+  + PowerPoint-Folien
+  + Beamer (LaTeX)
+
+# Dokumente
+
+## MS Word
+
+- Lassen Sie uns zunächst versuchen, ein MS Word-Dokument zu erstellen
+
+1. Ändern Sie `format` in `docx`
+
+```{r}
+#| eval: false
+title: "Datenvisualisierung 2"
+subtitle: "Darstellung der zusammenfassenden Statistik"
+author: "Daniela Palleschi"
+date: "`r Sys.Date()`"
+format:
+  docx:
+    toc: true
+    number-sections: true
+```
+
+---
+
+2. Rendern und prüfen
+
+# Folien
+
+- Folien werden mit einem Hashtag `#` gekennzeichnet
+  + Während dies in einem Dokument eine neue Überschrift einleiten würde, würde es in einer Präsentation eine neue Folie einleiten.
+
+## revealjs
+
+- let's try first creating a HTML slides with `revealjs`
+
+1. change `format:` to `revealjs`
+
+```{r}
+#| eval: false
+title: "Datenvisualisierung 2"
+subtitle: "Darstellung der zusammenfassenden Statistik"
+author: "Daniela Palleschi"
+date: "`r Sys.Date()`"
+format:
+  revealjs:
+    toc: true
+    number-sections: true
+```
+
+---
+
+2. Rendern und prüfen
+
+## PowerPoint
+
+- Lassen Sie uns zunächst versuchen, eine HTML-Folie mit PowerPoint zu erstellen
+
+1. Ändern Sie `format:` in `pptx`
+
+```{r}
+#| eval: false
+title: "Datenvisualisierung 2"
+subtitle: "Darstellung der zusammenfassenden Statistik"
+author: "Daniela Palleschi"
+date: "`r Sys.Date()`"
+format:
+  pptx:
+    toc: true
+    number-sections: true
+```
+
+---
+
+2. Rendern und prüfen
+
+# Aufgabe
+
+1. Wählen Sie Ihr bevorzugtes Ausgabeformat (oder eines, das Sie üben möchten). 
+2. Versuchen Sie, einen Bericht über die `lexdec`-Daten in diesem Format zu erstellen (es gibt hier keine Erwartungen, versuchen Sie, was immer Sie wollen).
+
+# Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
+
+```{r}
+print(sessionInfo(),locale = F)
+```
+
+# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

@@ -1,0 +1,889 @@
+---
+title: "Datenimport"
+subtitle: "Einlesen von Datendateien"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 4 - Datenimport" 
+lang: de
+date: "`r Sys.Date()`"
+format: 
+  html:
+    output-file: data_import_DE_blatt.html
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+  revealjs: 
+    output-file: data_import_DE_folien.html
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+  pdf:
+    output-file: data_import_DE.pdf
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+bibliography: references/references.bib
+csl: references/apa.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, # evaluate chunks
+                      echo = T, # 'print code chunk?'
+                      message = F, # 'print messages (e.g., warnings)?'
+                      error = F, # stop when error encountered
+                      warning = F) # don't print warnings
+```
+
+```{r, eval = T, cache = F}
+#| echo: false
+# Create references.json file based on the citations in this script
+# make sure you have 'bibliography: references.json' in the YAML
+# rbbt::bbt_update_bib("_data_import_EN.qmd")
+```
+
+# Wiederholung {.unnumbered .unlisted}
+
+Letzte Woche haben wir...
+
+- den Unterschied zwischen numerischen und kategorialen Datentypen gelernt
+- haben wir unsere ersten Diagramme mit `ggplot2` erstellt
+- gelernt, welche Diagramme für verschiedene Datentypen geeignet sind
+
+# Heutige Ziele {.unnumbered .unlisted}
+
+Heute werden wir...
+
+- lernen, wie man einen neuen Datensatz in Augenschein nimmt
+- lernen, wie man verschiedene Datentypen importiert
+- lernen, wie man Daten von Hand eingibt
+- einen neuen Datensatz visualisieren
+
+## Lust auf mehr? {.unnumbered .unlisted}
+
+- [Ch. 8](https://r4ds.hadley.nz/data-import.html) in @wickham_r_nodate
+- [Ch. 4](https://psyteachr.github.io/ads-v2/04-data.html) in @nordmann_applied_2022
+
+# Daten erforschen
+
+- letzte Woche haben wir mit Daten aus dem R-Paket `palmerpenguings` gearbeitet
+  + Daten aus Paketen sind ein guter Weg, um Data Science Tools zu lernen
++ aber ihr werdet irgendwann mit euren eigenen Daten arbeiten wollen
+- Heute lernen wir die Grundlagen des Einlesens von Datendateien in R
+
+## Pakete
+
+:::: columns
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: false
+# install new packages IN THE CONSOLE!
+install.packages("pacman")
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+# load packages
+pacman::p_load("tidyverse", # wrangling
+               "janitor", # wrangling
+               "here", # relative file paths
+               "patchwork" # plot layout
+               )
+```
+
+:::
+
+::::
+
+
+- wir werden mit dem Paket `pacman` beginnen
+  - die Funktion `p_load()` nimmt Paketnamen als Argumente
+  - sie prüft dann, ob wir das Paket installiert haben
+    + wenn ja, dann lädt sie das Paket
+    + wenn nicht, wird das Paket installiert und geladen
+- dies erspart uns, jedes Mal neue Pakete zu installieren
+
+- wir haben jetzt `tidyverse` und `patchwork` geladen und die neuen Pakete `janitor` und `here` installiert und geladen
+
+## Dateien
+
+- Speichert die Dateien unter 'daten' in den Moodle-Materialien für diese Woche
+- Speichert die Dateien im Ordner `daten` in eurem .RProj für diesen Kurs!
+
+
+::: {.column width="100%"}
+::: {.content-visible when-format="revealjs"}
+
+```{r}
+#| echo: false
+#| out-width: "70%"
+#| fig-cap: "'data' file path"
+knitr::include_graphics(here::here("media/daten_ordner.jpeg"))
+```
+:::
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap="'data' file path"}
+knitr::include_graphics(here::here("media/daten_ordner.jpeg"))
+```
+:::
+
+
+## Eingebaute Daten
+
+- Lasst uns zunächst einige eingebaute Daten untersuchen: den `iris`-Datensatz
+  + wie viele *Variablen* gibt es?
+  + wie viele *Beobachtungen*?
+
+:::: columns
+::: {.column width="30%"}
+```{r}
+# load tidyverse
+library(tidyverse)
+# read-in iris dataset
+data("iris")
+```
+
+- iris = Iris
+- petal = Blumenblatt
+- sepal = Kelchblatt
+:::
+
+::: {.column width="70%"}
+```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source:](https://www.analyticsvidhya.com/blog/2022/06/iris-flowers-classification-using-machine-learning/) Analytics Vidhya (all rights reserved)"}
+knitr::include_graphics(here::here("media", "iris.png"))
+```
+:::
+::::
+
+## Einen Datensatz erforschen
+
+- `view()`: Datensatz öffnen
+  + Führt dies nur **in der Konsole** aus! Euer Dokument wird nicht gerendert, wenn ihr es in eurem Skript habt
+- die Funktion `head()` gibt die ersten 6 Zeilen der Daten aus
+
+```{r}
+# print dataset (first 6 rows)
+head(iris)
+```
+
+### `glimpse()` {.smaller}
+
+::: {.column width="100%"}
+- EN: glimpse = DE: Einblick
+- aus dem Paket `tibble`
+- gibt eine seitliche Vorschau des Datenrahmens
+:::
+
+:::: columns
+::: {.column width="60%"}
+```{r}
+glimpse(iris)
+```
+:::
+
+::: {.column width="40%"}
+```{r}
+# print dataset (first 6 rows)
+head(iris)
+```
+:::
+:::: 
+
+### `summary()`
+
+- druckt eine Zusammenfassung für jede Variable
+  + Minimum, Maximum, Mittelwert von numerischen Variablen
+  + Anzahl der Beobachtungen pro Stufe einer kategorischen Variable
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-table1]: `table1`
+::: {#exm-table1 .custom}
+::: nonincremental
+1.  Versuch, den eingebauten Datensatz `table1` zu laden
+2.  Untersuche den Datensatz mit den Funktionen, die wir gerade gelernt haben
+3.  Gibt es irgendetwas Komisches in der Zusammenfassung? Wie könnten wir das beheben?
+
+```{r}
+#| eval: false
+#| echo: false
+
+data(table1)
+summary(table1) # population is in scientific notation
+
+options(scipen=999)
+summary(table1)
+```
+
+:::
+:::
+:::
+
+# Daten importieren
+
+- wir wollen normalerweise mit unseren *eigenen* Daten arbeiten, nicht mit eingebauten Spielzeugdaten
+- wir konzentrieren uns nur auf *rechteckige* Daten (d. h. aufgeräumte Daten)
+- Es gibt viele verschiedene Dateitypen, die Daten annehmen können, z. B. `.xlsx`, `.txt`, `.csv`, `.tsv`
+
+- `csv` ist der am häufigsten verwendete Dateityp: Kommagetrennte Werte (EN: `C`omma `S`eparated `V`alue)
+  + Versucht, `.xlsx` zu vermeiden; wenn ihr einen Excel-Datensatz habt, versucht, ihn als `.csv` zu speichern, bevor ihr ihn in R lest
+
+::: {.content-visible when-format="revealjs"}
+# Daten importieren {.unlisted .unnumbered}
+:::
+
+- So sieht eine einfache CSV-Datei aus
+
+```{r}
+#| echo: false
+#| output-location: fragment
+#| message: false
+#| comment: ""
+
+read_lines(here::here("daten", "students.csv")) |> cat(sep = "\n")
+```
+
+- die erste Zeile (die "Kopfzeile") enthält die Spaltennamen
+- die folgenden Zeilen enthalten die Daten
+
+- Wie viele Variablen gibt es? Wie viele Beobachtungen?
+
+## `readr` Paket
+
+- dieselben Daten können als Tabelle angezeigt werden, so wie wir es mit `penguins` und `iris` gemacht haben
+  + aber zuerst müssen wir die Daten *einlesen*
+- das `readr` Paket (Teil von `tidyverse`) kann die meisten Datentypen einlesen
+
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+
+read_csv(here::here("daten", "students.csv"))
+```
+
+
+::: {.content-hidden when-format="revealjs"}
+```{r}
+#| label: tbl-students-table2
+#| echo: false
+#| message: false
+#| tbl-cap: Data from the students.csv file as a table.
+
+read_csv(here::here("daten", "students.csv")) |>
+  knitr::kable()
+```
+:::
+
+::: {.content-visible when-format="revealjs"}
+```{r}
+#| label: tbl-students-table
+#| echo: false
+#| message: false
+#| tbl-cap: Data from the students.csv file as a table.
+library(kableExtra)
+
+read_csv(here::here("daten", "students.csv")) |>
+  knitr::kable() %>%
+  kable_styling(font_size = 20)
+```
+:::
+
+
+## `here` Paket
+
+- Woher weiß R genau, wo der Ordner "Daten" zu finden ist?
+- unser *Arbeitsverzeichnis* ist auf den Ort unseres RProjekts auf unserem Computer festgelegt
+- Wann immer wir auf Daten in unserem RProjekt zugreifen wollen, sollten wir `here::here()` verwenden.
+- um zu sehen, von wo aus `here()` startet, führt `here()` aus
+
+```{r}
+#| output-location: fragment
+here()
+```
+
+- dies wird auf allen unseren Rechnern anders aussehen
+  + Was jedoch *gleich* sein sollte, ist unsere Ordnerstruktur innerhalb unserer Projekte (z. B. `daten/students.csv`).
+
+::: {.content-visible when-format="revealjs"}
+## `here` Paket {.unlisted .unnumbered}
+
+```{r echo = F, fig.env = "figure",out.width="70%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}
+knitr::include_graphics(here::here("media", "Horst_here.png"))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}
+knitr::include_graphics(here::here("media", "Horst_here.png"))
+```
+:::
+
+::: {.content-visible when-format="revealjs"}
+## `here` Paket {.unlisted .unnumbered}
+:::
+
+::: callout-note
+
+### `here` Paket
+::: nonincremental
+Vor dem `here`-Paket mussten wir R explizit mitteilen, wo sich eine Datei auf unserem Computer befindet (z.B., `/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten/daten/students.csv`), oder die Funktion `setwd()` (set Working Directory) benutzen, um R mitzuteilen, wo alle Dateien zu finden sind (z.B. `setwd(/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten)`). Glücklicherweise brauchen wir diese absoluten Dateipfade oder `setwd()` nie zu verwenden!
+
+Aus der [`here`-Paketdokumentation](https://here.r-lib.org/): 
+
+> The goal of the here package is to enable easy file referencing in project-oriented workflows. In contrast to using `setwd()`, which is fragile and dependent on the way you organize your files, here uses the top-level directory of a project to easily build paths to files.
+
+Das bedeutet, dass wir nun den ***großen*** Vorteil haben, dass wir unseren Projektordner überall hin verschieben können und unser Dateipfad immer noch relativ zu dem Ort ist, an den wir unseren Projektordner verschoben haben. Das bedeutet, dass das Projekt unabhängig davon läuft, wo es sich auf eurem Computer befindet. Ihr könnt auch jemandem den Projektordner schicken, und alles sollte auf dessen Rechner laufen!
+
+:::
+:::
+
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-students]: `table1`
+::: {#exm-students .custom}
+::: nonincremental
+1.  Importiert den Datensatz `students.csv` und speichert ihn als Objekt mit dem Namen `df_students`.
+    - `df_` ist die Abkürzung für DataFrame; es ist eine gute Idee, ein Präfix vor Objektnamen zu verwenden, damit wir wissen, was jedes Objekt enthält.
+2.  Beim Importieren von Daten mit `read_csv` werden einige Informationen in der Konsole ausgegeben. Was wird gedruckt?
+2.  Untersucht den Datensatz mit den Funktionen, die wir gerade gelernt haben
+3.  Fällt Ihnen etwas Ungewöhnliches auf?
+:::
+:::
+:::
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_students <- read_csv(here::here("daten", "students.csv"))
+head(df_students) # missing data points
+```
+
+
+## Fehlende Werte {.smaller}
+
+- Die Datentransformation bezieht sich auf die "Korrektur" unserer Daten, wenn sie nicht "ordentlich" sind.
+- in unserem `df_students` Datenrahmen habt ihr vielleicht einige `NA` oder `N/A` Werte bemerkt
+  + `N/A` wurde als Text geschrieben und wird daher von R als solcher gelesen.
+  + `NA` in R bezieht sich auf fehlende Daten (EN: `N`ot `A`vailable = DE:  "Nicht verfügbar")
+- letzte Woche haben wir einige Warnmeldungen gesehen, als wir unsere Streudiagramme erstellt haben
+  + Diese Warnungen informierten uns über fehlende Werte (`NA`s), die nicht geplottet wurden
+- Echte fehlende Werte sind völlig leer, so dass die Angabe `N/A` in unseren `df_students`-Daten nicht wirklich als fehlender Wert gelesen wird.
+- Um dies zu beheben, können wir das Argument `na =` für die Funktion `read_csv()` verwenden
+  + Dieses Argument teilt `read_csv()` mit, welche Werte mit fehlenden Werten gleichgesetzt werden sollen.
+
+::: {.content-visible when-format="revealjs"}
+## Fehlende Werte {.unlisted .unnumbered}
+:::
+
+```{r}
+#| output-location: fragment
+
+df_students <- read_csv(here::here("daten", "students.csv"),
+                        na = "N/A")
+head(df_students)
+```
+
+- jetzt wird der Wert, der vorher `N/A` war, als `NA` gelesen
+  + aber was ist mit der leeren Zelle?
+- Wir haben jetzt überschrieben, dass `read_csv()` leere Zellen als `NA` liest.
+  + Wie können wir `read_csv()` anweisen, *mehr als eine* Art von Eingabe als `NA` zu lesen?
+  + d.h. wir wollen, dass es `""` *und* `"N/A"`x als `NA` liest
+
+::: {.content-visible when-format="revealjs"}
+## Fehlende Werte {.unlisted .unnumbered}
+:::
+
+```{r}
+#| output-location: fragment
+
+df_students <- read_csv(here::here("daten", "students.csv"),
+                        na = c("N/A",""))
+head(df_students)
+```
+
+## Spaltennamen {.smaller}
+
+- Wenn wir `df_students` in der Konsole ausgeben, werden wir sehen, dass die ersten beiden Spaltennamen von Backticks umgeben sind (z.B. `` `Student ID` ``)
+  + Das liegt daran, dass sie ein Leerzeichen enthalten, das syntaktisch nicht gültig ist (Variablennamen müssen mit einem Buchstaben beginnen und dürfen keine Leer- oder Sonderzeichen enthalten).
+- eine schnelle Lösung ist die Funktion `clean_names()` aus dem Paket `janitor`
+
+```{r}
+#| output-location: fragment
+janitor::clean_names(df_students)
+```
+
+- Das sieht besser aus!
+  - aber wenn wir jetzt `head(df_students)` ausführen, sehen wir dann die bereinigten Spaltennamen?
+
+::: {.content-visible when-format="revealjs"}
+## Spaltennamen {.unlisted .unnumbered}
+:::
+
+- Wenn wir ein Objekt durch eine Funktion übergeben, wird das Objekt nicht "aktualisiert".
+  + so müssen wir das Objekt erneut zuweisen
+
+```{r}
+df_students <- janitor::clean_names(df_students)
+```
+
+- aber wir wissen oft, dass wir mehrere Funktionen (`read_csv()`, `clean_names()`) auf demselben Objekt ausführen wollen
+  - können wir das mit Pipes tun
+
+## Pipes {.smaller}
+
+- Pipes werden am Ende eines Funktionsaufrufs gesetzt, wenn das Ergebnis dieser Funktion durch eine nachfolgende Funktion weitergegeben werden soll
+  + sie können als "und dann..." gelesen werden
+
+```{r}
+#| output-location: fragment
+read_csv(here::here("daten", "students.csv")) %>%
+  head()
+```
+
+- Es gibt derzeit 2 Pipes, die in R verwendet werden können
+    1. die `magrittr`-Paket-Pipe: `%>%`
+    2. die neue native R-Pipe: `|>`
+- Bis jetzt habe ich noch keinen großen Unterschied zwischen den beiden entdeckt, aber im Moment bleibe ich bei `%>%`
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-pipes]: pipes
+::: {#exm-pipes .custom}
+::: nonincremental
+1.    Ladet den `students.csv`-Datensatz erneut mit festen `NA`s *und dann*
+        + Benutze eine Pipe, um `clean_names()` auf dem Datensatz aufzurufen, *und dann*
+        + Ruft man die Funktion `head()` auf
+2.    Ladet den Datensatz `students.csv` erneut mit festen `NA`s und speichert ihn als Objekt `df_students`, *und dann*
+      + Verwendet eine Pipe, um `clean_names()` auf den Datensatz anzuwenden
+4.    Warum sollte man nicht eine Pipe und die Funktion `head()` verwenden, wenn man den Datensatz als Objekt speichert?
+
+```{r}
+#| eval: false
+#| echo: false
+
+# 1
+read_csv(here("daten", "students.csv"), na = c("","N/A")) %>%
+  clean_names() %>%
+  head()
+
+# 2
+df_students <- read_csv(here("daten", "students.csv"), na = c("","N/A")) %>%
+  clean_names()
+
+# 3: cause then it'll save the output of head(), i.e., just the first 6 rows
+```
+
+:::
+:::
+:::
+
+## Andere Dateitypen
+
+- Sobald wir mit `read_csv()` vertraut sind, sind die anderen Funktionen von `readr` einfach zu benutzen
+  + man muss nur wissen, wann man welche benutzt
+  
+- `read_csv2()` liest Semikolon-getrennte Dateien
+  + Diese verwenden `;` anstelle von `,` zur Trennung von Feldern und sind in Ländern üblich, die `,` als Dezimalzeichen verwenden
+- `read_tsv()` liest Tabulator-getrennte Dateien
+- `read_delim()` liest Dateien mit beliebigen Begrenzungszeichen ein
+  + versucht, das Trennzeichen zu erraten
+  + es sei denn, ihr gebt es mit dem Argument `delim =` an (z. B. `read_delim("students.csv", delim = ",")`)
+
+::: {.content-visible when-format="revealjs"}
+## Andere Dateitypen {.unlisted .unnumbered}
+:::
+
+Andere habe ich noch nicht gebraucht:
+
+- `read_fwf()` liest Dateien mit fester Breite
+- `read_table()` liest eine gängige Variante von Dateien mit fester Breite, bei der die Spalten durch Leerzeichen getrennt sind
+- `read_log()` liest Log-Dateien im Apache-Stil
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-filetypes]: filetypes
+::: {#exm-filetypes .custom}
+::: nonincremental
+1.  Welche Funktion wird verwendet, um eine Datei zu lesen, deren Felder durch `|` getrennt sind?
+2.  Welche Argumente haben `read_csv()` und `read_tsv()` gemeinsam?
+3.  Wie würdet ihr einen Datensatz mit einem Semikolon als Begrenzungszeichen einlesen?
+3.  Ladet den Datensatz `nettle_1999_climate.csv` ein
+    + wie viele Variablen gibt es?
+3.  Ladet den Datensatz `nettle_1999_climate2.csv` ein
+    + Wie viele Variablen gibt es? Ist das richtig?
+3.  Ladet den Datensatz `nettle_1999_climate3.csv` ein
+    + wie viele Variablen sind vorhanden? Ist dies richtig?
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_nettle <- read_csv(here("daten", "nettle_1999_climate.csv"))
+df_nettle2 <- read_csv2(here("daten", "nettle_1999_climate2.csv"))
+df_nettle3 <- read_tsv(here("daten", "nettle_1999_climate3.csv"))
+```
+
+:::
+:::
+:::
+
+# Dateneingabe
+
+- wenn wir kleine Datenmengen sammeln, möchten wir sie vielleicht von Hand in R eingeben
+  - Es gibt zwei nützliche Funktionen, die uns dabei helfen, gesammelte Daten zu nehmen und ein "Tibble" zu erstellen
+- `tibble`s sind *moderne* Datenrahmen, macht euch noch keine Gedanken über die Definition eines Tibbles
+
+- Sammeln wir die Initialen, die Körpergröße (cm) und das Geburtsdatum (ttmm) von allen
+
+```{r}
+i <- "DP" # a "string"
+h <- 171 # a number
+m <- 05 # a number
+d <- 07
+```
+
+## `tibble()`
+
+```{r}
+tibble(
+  initial = i,
+  height = h,
+  month = "Mai",
+  day = 7)
+```
+
+## `tribble()`
+
+- es könnte einfacher sein, die Daten Zeile für Zeile einzugeben
+  + dies ist mit einem *transponierten* Tibble (`Tribble`) möglich
+
+```{r}
+tribble(
+  ~initial, ~height, ~month, ~day,
+  "DP", 171, 07, 05
+)
+```
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-tibble]: tibbles
+::: {#exm-tibble .custom}
+::: nonincremental
+1.    Speichert das Tibble (d.h. den Datenrahmen) als das Objekt `df_wir`.
+2.    Den Datensatz untersuchen (z.B. Zusammenfassungen drucken)
+3.    Was kommt Ihnen seltsam vor?
+
+```{r}
+#| eval: true
+#| echo: false
+
+# first question
+df_wir <- tribble(
+  ~initial, ~height, ~month, ~ day,
+  "DP", 171, 05, 07
+)
+summary(df_wir)
+```
+
+:::
+:::
+:::
+
+# Arbeiten mit Variablen
+
+- In einem Datenrahmen sind die Variablen in Spalten organisiert
+
+## Variablentypen
+
+- `readr` errät den Typ der Daten, die jede Spalte enthält
+  + Die wichtigsten Spaltentypen, die man kennen sollte, sind `numerisch` und `kategorisch` (= `factor`).
+- `factor`s enthalten *Kategorien* oder *Gruppen* von Daten, können aber manchmal wie `numerische` Daten *aussehen*. 
+  + Unsere Spalte `month` enthält zum Beispiel Zahlen, aber sie kann auch den Namen jedes Monats enthalten.
+  + Es ist sinnvoll, den Mittelwert einer `numerischen` Variable zu berechnen, aber nicht den eines `factor`s.
+    + Es ist sinnvoll, den Mittelwert der Körpergröße zu berechnen, aber nicht den Mittelwert des Geburtsmonats.
+
+```{r}
+df_wir$month <- as_factor(df_wir$month)
+```
+
+## Indizierung
+
+- manchmal wollen wir auf eine bestimmte Variable (Spalte) in einem Datenrahmen zugreifen
+  + Bei Verwendung von Base R tun wir das mit `$`: `Datenrahmen$Variable`
+
+```{r}
+df_wir$height
+```
+
+- und wir können dies als Argument für eine Funktion verwenden
+  + Versuche, die minimale und maximale Höhe in unserer Gruppe zu finden.
+  + die Summe (EN: `sum`) unserer Höhen berechnen
+
+```{r}
+#| echo: false
+#| eval: false
+
+min(df_wir$height)
+max(df_wir$height)
+```
+
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-tibble]: tibbles
+::: {#exm-tibble .custom}
+::: nonincremental
+1.    Umrechnung von `df_wir$month` in einen Faktor
+3.    Berechne unsere mittlere Höhe mit der Funktion `mean()` und der Indizierung
+4.    Berechne die Summe unserer Höhen.
+
+```{r}
+#| eval: false
+#| echo: false
+
+# first question
+df_wir <- tribble(
+  ~initial, ~height, ~month, ~ day,
+  "DP", 171, 05, 07
+)
+summary(df_wir)
+
+mean(c(df_wir$height,df_wir$month))
+
+c(df_wir$month,df_wir$day)
+```
+
+:::
+:::
+:::
+
+
+## In Datei schreiben
+
+- wir können unseren Datenrahmen auch speichern, so dass wir später darauf zurückkommen können mit `write_csv(object_name, "desired_filename.csv")`
+  + oder, mit `here`:  `write_csv(object_name, here::here("ordner", "desired_filename.csv"))`
+- Seid ***sehr vorsichtig***! Wenn ihr einen existierenden Dateinamen verwendet, könnt ihr einen bereits existierenden Datensatz überschreiben
+
+```{r}
+write_csv(df_wir, file = here("daten", "wir.csv"))
+```
+
+# Übungen
+
+Hier findet ihr einige vertiefende Übungen.
+
+## Import/Export
+
+::: nonincremental
+1. Ladet den eingebauten `starwars`-Datensatz, der Informationen über Star Wars Charaktere enthält.
+2. Exportiert die Daten als `csv` Datei mit dem Namen `starwars` in euren `daten` Ordner.
+3. Importiere die `starwars.csv` Datei mit `read_csv()`.
+:::
+
+```{r}
+#| eval: false
+#| echo: false
+
+data(starwars)
+write_csv(starwars, here("daten","starwars.csv"))
+starwars <- read_csv(here("daten", "starwars.csv"))
+```
+
+## Spaltentypen konvertieren
+
+::: nonincremental
+1. Konvertiere die folgenden Variablen in Faktoren:
+    + `hair_color`
+    + `skin_color`
+    + `eye_color`
+    + `sex`
+    + `gender`
+    + `homeworld`
+    + `species`
+:::
+
+```{r}
+#| eval: true
+#| echo: false
+#| results: hide
+starwars$hair_color <- as_factor(starwars$hair_color)
+starwars$skin_color <- as_factor(starwars$skin_color)
+starwars$eye_color <- as_factor(starwars$eye_color)
+starwars$sex <- as_factor(starwars$sex)
+starwars$gender <- as_factor(starwars$gender)
+starwars$homeworld <- as_factor(starwars$homeworld)
+starwars$species <- as_factor(starwars$species)
+spec(starwars)
+```
+
+## Plots
+
+:::: columns
+
+::: {.column width="60%"}
+
+1. Erstellt die folgenden drei Diagramme und beschreibt kurz, was sie zeigen und welche Schlussfolgerungen daraus gezogen werden können.
+
+
+2. Erstellt ein weiteres Diagramm eurer Wahl aus dem "Starwars"-Datensatz. Fügt sie in das Diagrammgitter ein (ihr müsst die Syntax anpassen). Beschreibt was sie zeigt.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| eval: true
+#| echo: false
+fig_sw_height <- ggplot(starwars, aes(height)) +
+  geom_histogram(binwidth = 25, colour = "black", alpha = .3) +
+  scale_x_continuous(breaks = seq(from = 50, to = 300, by = 25)) +
+  labs(title = "Height (cm) distribution") +
+  theme_classic()
+
+fig_sw_height_mass <- ggplot(starwars, aes(height, mass)) +
+  geom_point() +
+  labs(title = "Mass (kg) by height (cm) distribution") +
+  scale_x_continuous(breaks = seq(from = 0, to = 300, by = 50)) +
+  scale_y_continuous(breaks = seq(from = 0, to = 2000, by = 100)) +
+  coord_cartesian(xlim = c(0, 300)) +
+  theme_minimal()
+
+fig_sw_gender <- ggplot(starwars, aes(x = gender, fill = gender)) +
+  geom_bar(show.legend = FALSE, colour = "black") +
+  scale_x_discrete(name = "Gender of character", labels = (c("Masculine", "Feminine", "Missing"))) +
+  scale_fill_brewer(palette = 2) +
+  labs(title = "Gender of SW characters") +
+  theme_bw()
+```
+
+::: {.content-hidden when-format="pdf"}
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+#| fig-pos: centre
+(fig_sw_height + fig_sw_gender) /
+  fig_sw_height_mass +
+  plot_layout(nrow = 2,  heights = c(.4,.6)) +
+  plot_annotation(
+    title = "Some plots using the `starwars` dataset",
+    subtitle = "Each plot visualises different variables",
+    tag_levels = "A")
+```
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r}
+#| fig-height: 5
+(fig_sw_height + fig_sw_gender) /
+  fig_sw_height_mass +
+  plot_layout(nrow = 2,  heights = c(.4,.6)) +
+  plot_annotation(
+    title = "Some plots using the `starwars` dataset",
+    subtitle = "Each plot visualises different variables",
+    tag_levels = "A")
+```
+:::
+
+:::
+
+::::
+
+
+# Heutige Ziele 🏁 {.unnumbered .unlisted}
+
+Heute haben wir...
+
+- gelernt, wie man einen neuen Datensatz in Augenschein nimmt ✅
+- gelernt, wie man verschiedene Datentypen importiert ✅
+- gelernt, wie man Daten von Hand eingibt ✅
+- einen neuen Datensatz visualisiert ✅
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
+
+```{r}
+sessionInfo()
+```
+
+# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

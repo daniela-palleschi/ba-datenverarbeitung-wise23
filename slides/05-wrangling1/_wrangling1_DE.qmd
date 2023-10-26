@@ -1,0 +1,833 @@
+---
+title: "Datatransformation"
+subtitle: "Zeilen und Spalten ändern"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 5 - Datatransformation" 
+lang: de
+date: "`r Sys.Date()`"
+format: 
+  html:
+    output-file: wrangling1_blatt_DE.html
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+  revealjs: 
+    output-file: wrangling1_folien_DE.html
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+  pdf:
+    output-file: wrangling1_DE.pdf
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+bibliography: references/references.bib
+csl: references/apa.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, # evaluate chunks
+                      echo = T, # 'print code chunk?'
+                      message = F, # 'print messages (e.g., warnings)?'
+                      error = F, # stop when error encountered
+                      warning = F) # don't print warnings
+```
+
+```{r, eval = T, cache = F}
+#| echo: false
+# Create references.json file based on the citations in this script
+# make sure you have 'bibliography: references.json' in the YAML
+# rbbt::bbt_update_bib("_wrangling1_DE.qmd")
+```
+
+# Wiederholung {.unnumbered}
+
+Letze Woche haben wir...
+
+- gelernt, wie man einen neuen Datensatz in Augenschein nimmt
+- gelernt, wie man verschiedene Datentypen importiert
+- gelernt, wie man Daten von Hand eingibt
+- einen neuen Datensatz visualisiert
+
+# Heutige Ziele {.unnumbered}
+
+Heute werden wir...
+
+- lernen, wie man Daten mit dem Paket `dplyr` aus dem `tidyverse` verarbeitet
+- lernen, wie man die `pipe` (` %>% `) benutzt, um das Ergebnis einer Funktion in eine andere Funktion zu übertragen
+- Funktionen kennenlernen, die auf Zeilen operieren
+- Funktionen kennenlernen, die mit Spalten arbeiten
+- lernen, wie man `dplyr`-Funktionen mit Plots von `ggplot2` kombiniert
+
+## Lust auf mehr? {.unnumbered .unlisted}
+
+- [Ch. 4](https://r4ds.hadley.nz/data-transform.html) in @wickham_r_nodate
+- [Ch. 9](https://psyteachr.github.io/ads-v2/09-wrangle.html) in @nordmann_applied_2022
+
+# Pre-requisites
+
+1. Frisches Quarto-Dokument
+    - ein neues Quarto-Dokument für den heutigen Unterricht erstellen
+      - Datei > Neues Dokument > Quarto Dokument, mit dem Namen `04-wrangling`
+    - YAML einrichten: Titel, Ihr Name, ein `toc` hinzufügen
+
+```{r}
+#| eval: false
+#| code-line-numbers: false
+title: "Datatransformation"
+subtitle: "Woche 5"
+author: "Your name here"
+lang: de
+format: 
+  html:
+    toc: true
+```
+
+::: {.content-visible when-format="revealjs"}
+## Einrichtung {.unlisted .unnumbered}
+:::
+
+2. Pakete
+    - Die heutigen Pakete sind:
+      - `tidyverse`: zum Verarbeiten (`dplyr`) und Plotten (`ggplot2`)
+
+```{r}
+pacman::p_load("tidyverse")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+# just need this to create flights.csv
+library(nycflights13)
+```
+
+3. Datensatz
+    - Speichern Sie den Datensatz aus Moodle in Ihrem Ordner `daten`:
+      - `flights.csv`
+
+::: {.content-visible when-format="revealjs"}
+##  {.unlisted .unnumbered}
+
+::: {.callout-important appearance="simple"}
+### Renderprüfung!
+::: nonincremental
+Nehmt euch einen Moment Zeit, um euer Dokument zu rendern. Wurde es gerendert?
+
+- Hat es einen Titel?
+- Steht Ihr Name drin?
+- Hat es eine Überschrift für 'Pakete'?
+- Fügen Sie eine Überschrift für 'Data Wrangling' hinzu
+
+:::
+
+:::
+
+:::
+
+# Data Wrangling (hadern, rangeln, zanken)
+
+- Im Englischen bezieht sich "wrangling" auf einen langen, schwierigen Prozess, oder auf einen Streif
+- Es gibt zwei Hauptbestandteile des Wrangling
+  + *Transformieren*: Sortieren oder Erstellen neuer Variablen (was wir heute tun werden)
+  + *Aufräumen*: Umformung oder Strukturierung Ihrer Daten (dies werden wir in einigen Wochen tun)
+- Sowohl das Aufräumen als auch das Transformieren von Daten erfordern das Paket `dplyr` aus dem `tidyverse`.
+  + `dplyr` Funktionen werden oft als Verben bezeichnet, weil sie etwas *tun*
+
+## `nycflights13`
+
+- we will use the `flights.csv` dataset to explore the basic `dplyr` verbs
+  + this dataset is originally from the `nycflights13` package, but I've saved it as a CSV
+
+- die Daten enthalten Informationen über Flüge, die im Jahr 2013 von New York City aus gestartet sind
+  + sie stammen vom Bureau of Transportation Statistics
+  + um mehr darüber zu erfahren, rufen Sie die Hilfeseite mit `?df_flights` auf
+
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_flights <- nycflights13::flights
+write_csv(df_flights, here::here("daten", "flights.csv"))
+```
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-df_flights]: `nycflights13`
+::: {#exm-df_flights .custom}
+::: nonincremental
+1. Ladet den Datensatz `flights.csv` und speichert ihn als `df_flights`.
+    + Wie viele Beobachtungen sind vorhanden?
+    + Wie viele Variablen gibt es?
+2. den Datensatz untersuchen (z. B. `summary()`, `glimpse()`, usw.)
+
+```{r}
+#| eval: true
+#| echo: false
+#| results: hide
+
+df_flights <- read_csv(here::here("daten", "flights.csv"))
+head(df_flights)
+summary(df_flights)
+glimpse(df_flights)
+```
+
+:::
+:::
+:::
+
+
+## `dplyr` Grundlagen
+
+- heute lernen wir einige der wichtigsten `dplyr`-Verben (Funktionen) kennen, mit denen wir die meisten unserer Datenmanipulationsprobleme lösen können
+  + Ich verwende diese Verben mehrfach in wahrscheinlich jedem Analyseskript
+- Die `dplyr`-Verben haben einige Dinge gemeinsam:
+    1. das erste Argument ist immer ein Datenrahmen
+    2. die folgenden Argumente beschreiben in der Regel die zu bearbeitenden Spalten, wobei der Variablenname (ohne Anführungszeichen) verwendet wird
+    3. die Ausgabe ist immer ein neuer Datenrahmen
+
+
+## `dplyr` Grundlagen: Pipe
+
+:::: columns
+::: {.column width="60%"}
+- Die Verben sind alle für eine Sache gut geeignet, so dass wir oft mehrere Verben auf einmal verwenden wollen.
+  + Wir benutzen die Pipe, um dies zu tun (`%>%` oder `|>`)
+  + Denkt daran, dass wir die Pipe als `(und) dann` lesen können
+:::
+
+::: {.content-hidden when-format="pdf"}
+::: {.column width="40%"}
+```{r echo = F, fig.env = "figure",out.width="60%", fig.align = "center", set.cap.width=T, fig.cap="Image source: [magrittr documentation](https://magrittr.tidyverse.org/reference/pipe.html#:~:text=The%20magrittr%20pipe%20operators%20use,to%20the%20left%2Dhand%20side.) (all rights reserved)"}
+# larger image for html and revealjs
+knitr::include_graphics(here::here("media/magrittr_badge.png"))
+```
+:::
+:::
+::::
+
+::: {.content-visible when-format="pdf"}
+```{r echo = F, fig.env = "figure",out.width="30%", fig.align = "center", set.cap.width=T, fig.cap="Image source: [magrittr documentation](https://magrittr.tidyverse.org/reference/pipe.html#:~:text=The%20magrittr%20pipe%20operators%20use,to%20the%20left%2Dhand%20side.) (all rights reserved)"}
+# larger image for html and revealjs
+knitr::include_graphics(here::here("media/magrittr_badge.png"))
+```
+:::
+
+::: {.content-visible when-format="revealjs"}
+## `dplyr` Grundlagen
+:::
+
+- im folgenden Code identifizieren
+  + den Datenrahmen
+  + "dplyr"-Verben
+  + die Variablennamen
+- Kannst du versuchen, herauszulesen (zu erraten), was der folgende Code macht?
+
+```{r}
+#| eval: false
+df_flights %>% 
+  filter(dest == "IAH") %>% 
+  select(year, month, day) %>% 
+  relocate(year, .after = day)
+```
+
+::: {.content-visible when-format="revealjs"}
+##  {.unlisted .unnumbered}
+
+::: {.callout-important appearance="simple"}
+### Renderprüfung!
+::: nonincremental
+Nehmt euch einen Moment Zeit, um euer Dokument zu rendern. Wird es gerendert?
+
+Könnte man das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?
+
+:::
+
+:::
+
+:::
+
+# Zeilen
+
+- In aufgeräumten Daten stellen die Zeilen Beobachtungen dar.
+
+- die wichtigsten Verben für Zeilen sind:
+  + `filter()`: ändert, welche Zeilen vorhanden sind
+  + `arrange()`: ändert die Reihenfolge der Zeilen
+- Wir besprechen auch
+  + `distinct()`: findet Zeilen mit unterschiedlichen Werten auf der Grundlage einer Variablen (Spalte)
+
+## `filter()`
+
+- ändert, welche Zeilen vorhanden sind, ohne ihre Reihenfolge zu ändern
+- nimmt den Datenrahmen als erstes Argument
+  + Die folgenden Argumente sind Bedingungen, die `TRUE` sein müssen, damit die Zeile erhalten bleibt
+  
+::: {.content-visible when-format="revealjs"}
+## `filter()` {.unlisted .unnumbered}
+:::
+  
+- alle Flüge zu finden, die mit mehr als 120 Minuten Verspätung abfliegen:
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  filter(dep_delay > 120)
+```
+
+::: {.content-visible when-format="revealjs"}
+## `filter()` {.unlisted .unnumbered}
+:::
+
+- wenn man die gefilterten Daten speichern will, ist es in der Regel ratsam, sie unter einem *neuen* Objektnamen zu speichern
+  + wenn man nicht die vorgefilterte Version überschreiben will, ist ein neuer Name notwendig
+
+```{r}
+df_delay_120 <- df_flights %>% 
+  filter(dep_delay > 120)
+```
+
+::: {.content-visible when-format="revealjs"}
+## Logical operators {.unlisted .unnumbered}
+:::
+
+::: callout-note
+
+### Logical operators
+::: nonincremental
+- Symbole, die zur Beschreibung einer logischen Bedingung verwendet werden
+  - `==` *ist identisch* (`1 == 1`)
+  - `!=` *ist nicht identisch* (`1 != 2`)
+  - `>` *ist größer als* (`2 > 1`)
+  - `<` *ist kleiner als* (`1 < 2`)
+- um Bedingungen zu kombinieren
+  - `&` oder `,` *und auch* (für mehrere Bedingungen)
+  - `|` *oder* (für mehrere Bedingungen)
+
+- es gibt eine nette Abkürzung für die Kombination von `==` und `|`: `%in%`
+  + behält Zeilen, in denen die Variable gleich einem der Werte auf der rechten Seite ist
+
+::: panel-tabset
+### `==` and `|`
+```{r}
+df_flights %>% 
+  filter(month == 1 | month == 2)
+```
+
+### `%in%`
+```{r}
+df_flights %>% 
+  filter(month %in% c(1, 2))
+```
+:::
+:::
+:::
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-filter]: `filter()`
+::: {#exm-filter .custom}
+::: nonincremental
+1. Filtert die Daten so, dass sie Zeilen von Ihrem Geburtstag enthalten.
+2. Wie viele Flüge sind 2013 an deinem Geburtstag von NYC abgeflogen?
+:::
+:::
+:::
+
+```{r}
+#| eval: false
+#| echo: false
+
+# 1, 2
+df_flights %>% 
+  filter(month == 5,
+         day == 7) %>% 
+  count()
+```
+
+
+## `arrange()`
+
+- ändert die Reihenfolge der Zeilen auf der Grundlage eines Wertes in einer oder mehreren Spalten
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  arrange(arr_time)
+```
+
+::: {.content-visible when-format="revealjs"}
+## `arrange()` {.unlisted .unnumbered}
+:::
+
+- wir können `desc()` innerhalb von `arrange()` hinzufügen, um eine absteigende Reihenfolge (von groß nach klein) anstelle der standardmäßigen aufsteigenden Reihenfolge zu verwenden
+  + `desc` ist die Abkürzung für *descending* im Englischen (= absteigend)
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  arrange(desc(dep_delay))
+```
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-arrange]: `arrange()`
+::: {#exm-arrange .custom}
+::: nonincremental
+1. Ordne die Daten nach Jahr, Monat, Tag und Abfahrtszeit (`dep_time`)
+2. Filtere die Daten so, dass sie Beobachtungen aus deinem Geburtsmonat und dem Geburtsmonat, der 6 Monate nach deinem Geburtsmonat liegt, enthalten, *dann*
+    - ordne die Daten nach Tag und absteigender Ankunftszeit (`arr_time`)
+  
+```{r}
+#| eval: false
+#| echo: false
+
+df_flights %>% 
+  filter(month %in% c(5,11)) %>% 
+  arrange(day, desc(arr_time))
+```
+:::
+:::
+:::
+
+::: {.content-visible when-format="revealjs"}
+##  {.unlisted .unnumbered}
+
+::: {.callout-important appearance="simple"}
+### Renderprüfung!
+::: nonincremental
+Nehmt euch einen Moment Zeit, um euer Dokument zu rendern. Wird es gerendert?
+
+Könnte man das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?
+
+:::
+
+:::
+
+:::
+
+# Spalten
+
+- In Tidy Data stellen die Spalten Variablen dar
+
+- die wichtigsten Verben für Spalten sind:
+  + `rename()`: ändert die Namen der Spalten
+  + `mutate()`: erzeugt neue Spalten, die von den vorhandenen Spalten abgeleitet werden
+  + `select()`: ändert, welche Spalten vorhanden sind
+  + `relocate()`: ändert die Position der Spalten
+
+## `rename()`
+
+- Mit `rename()` können wir den Namen von Spalten ändern
+  + die Reihenfolge der Argumente ist `neuer_name` = `alter_name`
+  
+- Versuchen wir, einige der Variablennamen auf Deutsch zu ändern
+  + Ich behalte die Variablennamen in Kleinbuchstaben, als Kodierungskonvention
+  
+```{r}
+# single variable
+fluege <- df_flights %>% rename(jahr = year)
+
+# or multiple variables at once
+fluege <- df_flights %>% 
+  rename(jahr = year,
+         monat = month,
+         tag = day)
+```
+
+## `mutate()`
+
+- `mutate()` erzeugt neue Spalten aus vorhandenen Spalten
+  + z.B. können wir einfache Algebra mit den Werten in jeder Spalte durchführen
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  mutate(
+    gain = dep_delay - arr_delay,
+  )
+```
+
+::: {.content-visible when-format="revealjs"}
+## `mutate()` {.unlisted .unnumbered}
+:::
+
+- mit "mutate()" werden diese neuen Spalten auf der rechten Seite des Datensatzes hinzugefügt
+  + Das macht es schwierig zu sehen, was passiert.
+- um zu kontrollieren, wo die neue Spalte hinzugefügt wird, können wir `.before` oder `.after` verwenden
+
+```{r}
+#| output-location: fragment
+df_flights |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    .after = day
+  )
+```
+
+::: {.content-visible when-format="revealjs"}
+##  {.unlisted .unnumbered}
+
+::: {.callout-important appearance="simple"}
+### Renderprüfung!
+::: nonincremental
+Nehmt euch einen Moment Zeit, um euer Dokument zu rendern. Wird es gerendert?
+
+Könnte man das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?
+
+:::
+
+:::
+
+:::
+
+## Exercise
+
+1. Erstelle eine neue Variable namens `Geschwindigkeit`, die gleich ist:
+    - Entfernung" geteilt durch "air_time", multipliziert mit 60
+    - erscheint vor `dep_time`
+2. Rendert euer Dokument
+
+```{r}
+#| echo: false
+#| eval: true
+df_flights <- df_flights %>% 
+  mutate(
+    speed = distance / air_time * 60,
+    .before = dep_time
+  )
+```
+
+
+## `select()`
+
+- `select()` fasst die Daten so zusammen, dass sie nur die gewünschten Spalten enthalten
+
+- Spalten nach Namen auswählen
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  select(year, month, day)
+```
+
+::: {.content-visible when-format="revealjs"}
+## `select()` {.unlisted .unnumbered}
+:::
+
+- alle Spalten zwischen `year` und `day` auswählen
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  select(year:day)
+```
+
+::: {.content-visible when-format="revealjs"}
+## `select()` {.unlisted .unnumbered}
+:::
+
+- alle Spalten außer denen von Jahr bis Tag auswählen (`!` wird als "nicht" gelesen)
+
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  select(!year:day)
+```
+
+## `select()` helper functions
+
+- einige Hilfsfunktionen, die das Leben bei der Arbeit mit `select()` erleichtern:
+  + `starts_with("abc")`
+  + `ends_with("xyz")`
+  + `contains("ijk")`
+  + `where(is.character)`
+
+:::: columns
+
+::: {.column width="50%"}
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  select(starts_with("d"))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: fragment
+df_flights %>% 
+  select(ends_with("ay"))
+```
+:::
+::::
+
+::: {.content-visible when-format="revealjs"}
+## Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+### [Aufgabe @exm-select]: `select()`
+::: {#exm-select .custom}
+::: nonincremental
+
+1. Drucke die Spalten in `df_flights`, die mit "d" beginnen
+2. Drucke die Spalten in `df_flights`, die "dep" enthalten
+3. Drucke die Spalten in `df_flights`, die
+    + mit mit "a" beginnen, und
+    + mit "e" enden
+
+:::
+:::
+:::
+  
+```{r}
+#| echo: false
+#| eval: false
+
+# 1
+df_flights %>%
+  select(starts_with("d"))
+# 2
+df_flights %>%
+  select(contains("dep"))
+# 3
+df_flights %>%
+  select(starts_with("a"),
+         ends_with("e"))
+```
+
+
+## `relocate()`
+
+- `relocate()` verschiebt Variablen
+  + standardmäßig werden sie nach vorne verschoben
+
+```{r}
+#| output-location: fragment
+df_flights %>% relocate(speed)
+```
+
+::: {.content-visible when-format="revealjs"}
+## `relocate()` {.unlisted .unnumbered}
+:::
+
+- aber wir können auch `.before` oder `.after` verwenden, um eine Variable zu platzieren
+
+```{r}
+#| output-location: fragment
+df_flights %>% relocate(speed, .after = day)
+```
+
+# `dplyr` and `ggplot2`
+
+- wir können einen Datensatz mit Hilfe der Verben "dplyr" ändern und diese Änderungen dann in "ggplot2" einspeisen
+
+- Was würde der folgende Code ergeben?
+
+```{r}
+#| output-location: column-fragment
+df_flights %>% 
+  # filter the data
+  filter(dep_delay > 120,
+         arr_delay < 120) %>% 
+  # plot the filtered data
+  ggplot(aes(x = fct_infreq(carrier))) +
+  geom_bar() +
+  theme_minimal()
+```
+
+- wichtig: wir können Pipes (` %>% `) für neue Verben/Funktionen verwenden
+  + aber die Funktion `ggplot()` verwendet `+`, um neue *Ebenen* zur Darstellung hinzuzufügen
+  
+::: {.content-visible when-format="revealjs"}
+##  {.unlisted .unnumbered}
+
+::: {.callout-important appearance="simple"}
+### Renderprüfung!
+::: nonincremental
+Nehmt euch einen Moment Zeit, um euer Dokument zu rendern. Wird es gerendert?
+
+Könnte man das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?
+
+:::
+
+:::
+
+:::
+
+## Exercises
+
+- damit Ihr Quarto-Skript für diese Woche als abgeschlossen gilt, muss es zumindest die Übungen aus `nettle_1999_climate.csv` enthalten (siehe unten)
+
+### `flights.csv`
+
+::: nonincremental
+
+1. Drucke in einer einzigen Pipeline alle Flüge aus, die jede der folgenden Bedingungen erfüllen:
+    - Kam mit mehr als zwei Stunden Verspätung an, ist aber nicht zu spät abgeflogen
+    - Sie flogen nach Houston (`IAH` oder `HOU`)
+    - Wurden von United Airlines (`UA`), American Airlines (`AA`) oder Delta (`DL`) durchgeführt
+    - Sie sind im Sommer abgeflogen (Juli, August oder September)
+    - kamen mehr als zwei Stunden zu spät an, flogen aber nicht zu spät ab
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_flights %>%
+  filter(arr_delay <= 120 & dep_delay <= 0,
+         dest %in% c("IAH", "HOU"),
+         carrier %in% c("UA", "DL", "AA"),
+         month %in% c(7,8,9))
+```
+
+
+2. Sortiert `df_flights`, um die Flüge mit den größten Abflugverspätungen zu finden
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_flights %>% 
+  arrange(dep_delay)
+```
+
+3. Welche Flüge haben die weiteste Strecke zurückgelegt? Welche Flüge haben die geringste Entfernung zurückgelegt?
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_flights %>% 
+  arrange(distance)
+
+df_flights %>% 
+  arrange(desc(distance))
+```
+:::
+
+::: {.content-visible when-format="revealjs"}
+## {.unlisted unnumbered}
+:::
+
+::: nonincremental
+4. Speichert in einer einzigen Pipeline ein neues Objekt namens `df_fluege` und:
+    + den Datensatz `flights.csv` erneut laden
+    + Auswahl der Variablen `Jahr`, `Monat`, `Tag`, `dep_delay`, `arr_delay`, `carrier`
+    + eine neue Variable `gain` erstellen, die `dep_delay` subtrahiert von `arr_delay` ist
+      + und vor `dep_delay` eingefügt wird
+    + benennen Sie diese Variablen um, so dass sie deutsch sind
+
+```{r}
+df_fluege <- 
+  read_csv(here::here("daten","flights.csv")) %>% 
+  select(year,month,day,dep_delay,arr_delay,carrier) %>% 
+  mutate(gewinn = dep_delay - arr_delay, .before = dep_delay) %>% 
+  rename(jahr = year,
+         monat = month) # etcetera
+```
+:::
+
+### `nettle_1999_climate.csv`
+
+::: nonincremental
+5. Speichere den Datensatz `nettle_1999_climate.csv` als ein Objekt namens `df_nettle`
+    + einen kurzen Blick auf den Datensatz werfen (z.B. `summary()`)
+
+6. In einer einzigen Pipeline:
+    + Erstellen eines neuen Objekts namens `fig_nettle`, das die folgenden Schritte enthält:
++ nehmt `df_nettle`, *und dann* (d.h., benutzt eine `Pipeline`)
+    + verwende die Funktion `clean_names` aus dem `janitor`-Paket, um die Namen zu bereinigen (siehe die Anmerkungen von letzter Woche), *und dann*
+    + Umbenennen von `mgs` in `grow_seasons`, *und dann*
+    + ein Streudiagramm erstellen, das `grow_seasons` auf der `x` Achse und `langs` auf der `y` Achse hat
+
+```{r}
+#| echo: false
+#| eval: false
+
+# 1
+df_nettle <- read_csv(here::here("daten","nettle_1999_climate.csv"))
+
+# 2
+fig_nettle <- df_nettle %>% 
+  janitor::clean_names() %>% 
+  rename(grow_seasons = mgs) %>% 
+  ggplot(aes(x = grow_seasons, y = langs, colour = population)) +
+  geom_point()
+```
+:::
+
+# Heutige Ziele 🏁 {.unnumbered .unlisted}
+
+Heute haben wir gelernt...
+
+- gelernt, wie man mit dem Paket `dplyr` aus dem `tidyverse` Daten verarbeiten kann ✅
+- gelernt, wie man die `pipe` (` %>%`) verwendet, um das Ergebnis einer Funktion in eine andere Funktion einzuspeisen ✅
+- Funktionen kennengelernt, die auf Zeilen operieren ✅
+- Funktionen kennengelernt, die mit Spalten arbeiten ✅
+- gelernt, wie man `dplyr`-Funktionen mit Plots von `ggplot2` kombiniert ✅
+
+# Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
+
+```{r}
+sessionInfo()
+```
