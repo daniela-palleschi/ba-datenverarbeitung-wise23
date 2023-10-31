@@ -26,4 +26,4 @@ bibliography: ../references.bib
 csl: references/apa.csl
 ---
 
-Die Materialien werden vor dem Unterricht zur Verfügung gestellt.
+***Die Materialien werden vor dem Unterricht zur Verfügung gestellt.***

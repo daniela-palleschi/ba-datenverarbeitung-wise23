@@ -22,10 +22,10 @@ book:
         - mats/01-intro_r.qmd
         - mats/02-dataviz_1.qmd
         - mats/03-quarto_1.qmd
-        # - mats/04-wrangling_1.qmd
-        # - mats/05-code_stil.qmd
-        # - mats/07-desc_stats.qmd
-        # - mats/08-dateneinlesung.qmd
+        - mats/04-wrangling_1.qmd
+        - mats/05-dataviz_2.qmd
+        - mats/07-dateneinlesung.qmd
+        # - mats/08-desc_stats.qmd
         # - mats/09-wrangling_2.qmd
         # - mats/10-dataviz_2.qmd
         # - mats/12-functions.qmd
@@ -50,8 +50,8 @@ book:
         href: https://github.com/daniela-palleschi/r4ling
         aria-label: Source Code
       - icon: life-preserver
-        href: https://moodle.hu-berlin.de/course/view.php?id=119097
-        aria-label: Course Moodle
+        href: https://moodle.hu-berlin.de/course/view.php?id=124123
+        text: Moodle
 
 bibliography: references.bib
 

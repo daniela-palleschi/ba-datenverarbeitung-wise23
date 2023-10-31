@@ -1,6 +1,6 @@
 ---
-title: "Wrangling 1: Umwandlung von Daten"
-## subtitle: ""
+title: "Data Wrangling 1: Transformation"
+subtitle: "Umwandlung von Daten"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 footer: "Woche 4 - Data Transformation"
@@ -16,7 +16,8 @@ format:
     toc-title: "heutige Themen"
     code-overflow: wrap
     code-tools: true
-    self-contained: true
+    # self-contained: true
+    embed-resources: false
   pdf:
     toc: true
     number-sections: true
@@ -26,4 +27,10 @@ bibliography: ../references.bib
 csl: references/apa.csl
 ---
 
-Die Materialien werden vor dem Unterricht zur Verfügung gestellt.
+***Die Materialien werden vor dem Unterricht zur Verfügung gestellt.***
+
+## Lesungen {.unnumbered}
+
+Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kap. 4 (Data Transformation)](https://r4ds.hadley.nz/data-transform) in @wickham_r_2023.
+
+Eine **ergänzende Lektüre** ist [Ch. 9 (Data Wrangling)](https://psyteachr.github.io/ads-v2/09-wrangle.html) in @nordmann_applied_2022.

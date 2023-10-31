@@ -3,15 +3,15 @@ title: "Einführung in Quarto"
 subtitle: "Dynamische und reproduzierbare Berichte mit R"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-footer: "Woche 2 - Quarto" 
+footer: "Woche 3 - Quarto" 
 lang: de
-date: "11/25/2023"
+date: "01/11/2023"
 date-format: "ddd [d]en DD.MM.YYYY"
 date-modified: last-modified
 format: 
   html:
     output-file: quarto_blatt.html
-    include-after-body: custom.html
+    include-after-body: ../../custom.html
     number-sections: true
     number-depth: 3
     toc: true
@@ -21,31 +21,32 @@ format:
     self-contained: true
   revealjs: 
     output-file: quarto_folien.html
-    include-after-body: custom.html
+    include-after-body: ../../custom.html
     theme: [dark]
     width: 1600
     height: 900
     progress: true
-    # smaller: true
     scrollable: true
     slide-number: c/t
     code-link: true
     code-overflow: wrap
     code-tools: true
-    # logo: logos/hu_logo.png
-    # css: logo.css
     incremental: true
     number-depth: 1
     toc: true
     toc-depth: 1
     toc-title: 'Überblick'
+    # layout
     navigation-mode: linear
     controls-layout: bottom-right
-    fig-cap-location: top
     font-size: 0.6em
     slide-level: 4
     self-contained: true
-    # chalkboard: true
+    # figures
+    fig-cap-location: top
+    fig-width: 8
+    fig-asp: .618
+    # title slide
     title-slide-attributes: 
       data-background-image: logos/logos.tif
       data-background-size: 15%
@@ -76,7 +77,7 @@ knitr::opts_chunk$set(eval = T, # evaluate chunks
 # rbbt::bbt_update_bib("_quarto.qmd")
 ```
 
-# Heutige Ziele {.unnumbered}
+# Heutige Ziele {.unnumbered .unlisted}
 
 -   lernen, was dynamische Berichte sind
 -   unser eigenes Quarto-Dokument erstellen
@@ -92,48 +93,30 @@ knitr::opts_chunk$set(eval = T, # evaluate chunks
         -   @nordmann_applied_2022 verwendet Rmarkdown-Skripte, während wir die nächste Generation verwenden werden: Quarto
         -   wir sollten in Quarto immer noch in der Lage sein, genau die gleichen Dinge zu tun, wie sie in Rmarkdown vorgeschlagen werden
 
-# Wiederholung {.smaller}
+# Wiederholung {.unnumbered .unlisted}
 
 Letzte Woche haben wir...
 
--   den Unterschied zwischen R und RStudio kennengelernt
--   ein RProjekt für den Kurs erstellt
-    -   der Projektordner enthält:
-        -   eine `.RProj`-Datei
-        -   einen Ordner `daten`, der derzeit leer ist
-        -   einen Ordner mit dem Namen `notes`, der eure Notizen enthält
--   unser erstes R-Skript erstellt
--   gelernt, wie man:
-    -   Pakete installiert mit `install.packages("")`
-    -   Pakete mit `library()` ladt
-    -   eine Paketfunktion aufruft, z.B. `beep()`
-    -   Funktionsargumente verwendet, z.B. `beep(sound = "wilhelm")`
-    -   einfaches Rechnen in R, z. B. `4+4`
-    -   Funktionen aufruft, um einfache Berechnungen in R durchzuführen, z.B. `sum(4,5)`, oder `mean(c(4,5))`
 
-## Weitere Einrichtung
-
--   Die Aufrechterhaltung eines reproduzierbaren Arbeitsablaufs erfordert einige Änderungen, wenn Ihr Projekt wächst
--   also lasst uns erstellen:
-    -   Unterordner in `notes`, einen für jede Woche
-        -   z.B. einen Ordner `01-rstudio`, in dem wir unser R-Skript von letzter Woche ablegen werden
-        -   Dies wird uns helfen, unser Ordner zu organisieren und zu strukturieren, wenn wir im Laufe des Semesters weitere Skripte erstellen
--   einen Ordner mit dem Namen `moodle`, in dem ihr jede Woche die Materialien aus Moodle speichert
--   Jetzt könnt die Materialordner der einzelnen Moodle-Abschnitte in den Ordner `moodle` herunterladen
-
-::: {.content-visible when-format="revealjs"}
-# Weitere Einrichtung {.unnumbered .unlisted}
-:::
+# Set-up {.unnumbered .unlisted}
 
 ::: callout-tip
 
-### [Aufgabe @exm-folders]: Ordner für Woche 2
+### [Aufgabe @exm-folders]: Ordner für Woche 3
 ::: {#exm-folders .custom}
 ::: nonincremental
-1.  Fügen Sie einen Unterordner mit dem Namen `02-quarto` in `Notes` hinzu
-2.  Gehen Sie zu Moodle und speichern den Materialordner für '02 - Einführung in Quarto' in Ihrem `moodle` Ordner
+1.  Fügen Sie einen Unterordner mit dem Namen `03-quarto` in `Notes` hinzu
+2.  Gehen Sie zu Moodle und speichern den Materialordner für '03 - Einführung in Quarto' in Ihrem `moodle` Ordner
 3.  Öffnen Sie das Dokument `_blatt.html` auf Ihren Computer
     -   Sehen Sie das Dokument an; Sie können oben rechts auf verschiedene Schaltflächen klicken. Probieren Sie es.
+    
+```{r eval = T, fig.env = "figure", fig.align = "center", out.width = "75%", fig.pos="H", set.cap.width=T, fig.cap="Notes folder structure"}
+#| echo: false
+#| label: fig-notes-folder
+
+library(magick)
+magick::image_read(here::here("media/notes_folder.png"))
+```
 :::
 :::
 :::
@@ -188,38 +171,6 @@ Letzte Woche haben wir...
     -   leicht zu lesen ist
 -   Markdown-Dokumente sind das Bindeglied zwischen unserem Quelldokument (`.qmd`) und unserer Ausgabe (z.B. PDF)
 
-## Ausgabeformate
-
--   wenn wir das Dokument rendern:
-    1.  Quarto sendet die `.qmd`-Datei an [`knitr`](https://yihui.org/knitr/) (ein R-Paket für dynamische Berichte mit R)
-    2.  `knitr` führt die Code-Chunke aus und erstellt ein neues `.md` Dokument mit Code und Ausgabe
-    3.  die `.md`-Datei wird von [`pandoc`](https://pandoc.org) verarbeitet, das `.md`-Dateien in die fertige Datei konvertieren kann, mit vielen Ausgabeformaten
-
-```{r}
-#| echo: false
-#| fig-cap: "Diagramm des Quarto-Workflows von qmd, zu knitr, zu md, zu pandoc, zur Ausgabe im PDF-, MS Word- oder HTML-Format. (Quelle: @wickham_r_2023)"
-#| label: knitr
-knitr::include_graphics(here::here("media","Wickham_Ch29_knitr.png"))
-```
-
-::: {.content-visible when-format="revealjs"}
-## Ausgabeformate {.unlisted .unnumbered}
-:::
-
-::: callout-note
-## Andere Verwendungen
-
-::: nonincremental
-Quarto kann für eine Vielzahl von Zwecken verwendet werden, wie z. B.:
-
--   Websites/Blogs
--   Notizen machen
--   Dokumentieren von allem, was mit Code zu tun hat, um die Reproduzierbarkeit zu verbessern
-    -   Tipps zum Arbeitsablauf
-    -   Bearbeitung von csv-Dateien (z. B. Stimuluslisten)
-:::
-:::
-
 ## Folder structure
 
 -   jede `.qmd` sollte (normalerweise) in einem eigenen Ordner sein
@@ -243,13 +194,13 @@ Quarto kann für eine Vielzahl von Zwecken verwendet werden, wie z. B.:
 ::: {#exm-qmd .custom}
 
 ::: nonincremental
-1.  Erstellen Sie in Ihrem R-Projekt-Ordner, in dem ihr eure Kursunterlagen/Notizen aufbewahren, einen neuen Ordner für Woche 2
+1.  Erstellen Sie in Ihrem R-Projekt-Ordner, in dem ihr eure Kursunterlagen/Notizen aufbewahren, einen neuen Ordner für Woche 3
 2.  `File > New Document > Quarto Document`
-    -   Geben Sie ihm einen Titel wie "Quarto - Woche 2"
+    -   Geben Sie ihm einen Titel wie "Quarto - Woche 3"
     -   Deaktivieren Sie die Option "open with Visual Editor".
 3.  Schauen das neue Skript an, um mehr über Quarto zu erfahren.
 4.  Klicken Sie auf die Schaltfläche "Render" am oberen Rand des Dokuments
-    -   Speichern Sie das Dokument in dem Ordner für Woche 2, den Sie gerade erstellt haben.
+    -   Speichern Sie das Dokument in dem Ordner für Woche 3, den Sie gerade erstellt haben.
     -   Was geschiehen? Vergleichen die Ausgabe mit dem Quellcode des Dokuments.
 5.  Gehen Sie zurück zu Ihrem neuen Ordner `02-quarto`
     -   Was hat sich geändert?
@@ -292,7 +243,7 @@ Quarto kann für eine Vielzahl von Zwecken verwendet werden, wie z. B.:
 ```{r}
 #| eval: false
 ---
-title: "Quarto - Woche 2"
+title: "Quarto - Woche 3"
 author: "Vorname Nachname"
 format:
   html:
@@ -319,6 +270,13 @@ format:
 ```{r}
 #| eval: false
 #| code-line-numbers: false
+---
+title: "Quarto - Woche 3"
+author: "Vorname Nachname"
+format:
+  html:
+    toc: true
+---
 
 # Überschrift 1
 
@@ -370,16 +328,27 @@ Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Z
 :::
 :::
 
-## Text formatting
+## Textformatierung
 
--   Wir können Wörter betonen:
-    -   *Kursivschrift*: `_Text_` oder `*Text*`
-    -   **fett**: `**text**`
-    -   [Unterstreichen]{.underline}: `[text]{.underline}`
-    -   ~~durchgestrichen~~: `~~text~~`
-    -   ~Subskription~: `~text~`
-    -   ^Hochgestellt^: `^text^`
-    -   [Smallcaps]{.smallcaps}: `[text]{.smallcaps}`
+- zum Formatieren von Text müssen wir die Markdown-Syntax verwenden
+
+```{r}
+#| echo: false
+dplyr::tribble(
+  ~"Format", ~"Markdown", ~"Ausgabe",
+  "Kursivschrift", "`Dieser Text ist *kursiv*`", "Dieser Text ist *kursiv*",
+  "Fett", "`Dieser Text ist **fett**`", "Dieser Text ist **fett**",
+  "Subskription", "`Dieser Text ist ~tiefgestellt~`", "Dieser Text ist~tiefgestellt~",
+  "Hochgestelt", "`Dieser Text ist ^hochgestellt^`", "Dieser Text ist ^hochgestellt^"
+) |> 
+  gt::gt() |> 
+  gt::fmt_markdown(
+  columns = c(Markdown, Ausgabe),
+  rows = dplyr::everything(),
+  md_engine = c( "markdown", "commonmark")
+) 
+```
+
 
 ## Aufzählungen
 
@@ -387,6 +356,11 @@ Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Z
     -   Unteraufzählungen müssen eingerückt werden (drückt die Tabulatortaste)
 -   nummerierte Listen können durch einfaches Schreiben einer nummerierten Liste erstellt werden
     -   Unteraufzählungen müssen in nummerierten Listen *doppelt* eingerückt werden
+
+
+::: {.content-visible when-format="revealjs"}
+## Aufzählungen {.unnumbered .unlisted .uncounted}
+:::
 
 ```{r}
 #| eval: false
@@ -399,6 +373,13 @@ Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Z
     a. dies ist ein unternummerierter Punkt (beachtt den doppelten Einzug)
 2. dies ist der zweite nummerierte Punkt
 ```
+
+- dies ist ein Aufzählungszeichen
+  + dies ist ein Unterpunkt
+
+1. Dies ist ein nummerierter Punkt
+    a. dies ist ein unternummerierter Punkt (beachtt den doppelten Einzug)
+2. dies ist der zweite nummerierte Punkt
 
 ::: {.content-visible when-format="revealjs"}
 ## Aufzählungen {.unlisted .unnumbered}
@@ -420,7 +401,7 @@ Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Z
 # Codierung in Quarto
 
 -   Der große Vorteil von dynamischen Berichten ist die Integration von Text und Code
--   Letzte Woche haben wir gelernt, wie man einfache mathematische Berechnungen in R durchführt.
+-   Vorletzte Woche haben wir gelernt, wie man einfache mathematische Berechnungen in R durchführt.
 -   wie würden wir R-Befehle in ein `.qmd`-Dokument einfügen?
     -   Inline-Code (Code, der innerhalb einer Textzeile ausgeführt wird)
     -   Code-Chunke (ein Code-Chunk, der nicht in Text enthalten ist)
@@ -456,10 +437,7 @@ Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Z
     -   Füge einige mathematische Operationen ein (Addition, Subtraktion, etc)
     -   Fügt informative Anmerkungen zu Ihrem Code hinzu (z.B. `# Addition`)
 2.  Füge einen Text unter deinem Code-Chunk hinzu, der beschreibt, was der obige Code erreicht hat.
-3.  Füge einen weiteren Code-Chunk unter diesem Text hinzu.
-    -   Erstellt einige Objekte, `wert1` und `wert2`, die die Werte `15` und `46` haben (Hinweis: Denkt daran, den Zuweisungsoperator `objekt_name <- objekt_wert` zu verwenden)
-4.  Fügt einen weiteren Code-Chunk unter diesem Text ein
-    -   Benutze die Funktionen `sum()` oder `mean()`, um die Summe oder den Mittelwert einiger Zahlen zu berechnen
+3.  Rendern Sie das Dokument. Hat es geklappt?
 :::
 :::
 :::
@@ -522,85 +500,138 @@ Tipp: Klicken Sie auf die Schaltfläche "Outline" oben rechts im Texteditor-Fens
 :::
 :::
 
-## Inline-Code
+# Plots in Quarto
 
--   wir können Code auch in-line, d.h. in unserem Text, ausführen, indem wir ihn mit `` `r ` `` umgeben
-    -   Wenn Sie Ihr Dokument rendern, wird der berechnete Wert ausgegeben (nicht der Quellcode)
--   es ist klug, dies nur mit kurzen Code-Chunken zu tun (d.h. `mean(c(3,5,7,2,4,556,7,8,3,2,35,4,56,57,7,90,2))` in-line zu schreiben ist unschön, obwohl dies nur in Ihrem Quellcode erscheinen wird)
-    -   deshalb ist es eine gute Idee, z.B. lange Listen von Zahlen (d.h. Daten) als Objekte zu speichern
-    -   und alle Berechnungen usw. in Code-Blöcken auszuführen und alle wichtigen Werte als Objekte zu speichern
+- Ein großer Vorteil der gerenderten Quarto-Dokumente besteht darin, dass wir unsere Abbildungen zusammen mit den Textbeschreibungen anzeigen können
+- Lassen Sie uns versuchen, eine Handlung von letzter Woche in unserem neuen Quarto-Dokument zu reproduzieren
 
-::: {.content-visible when-format="revealjs"}
-## Inline-Code {.unlisted .unnumbered}
-:::
+## Set-up
+
+- unsere Pakete in einen Codechunk laden: `tidyverse` und `languageR`
 
 ```{r}
-#| results: hide
 #| echo: fenced
 
-# Bevölkerung von Berlin
-berlin <- 3645000
-# Bevölkerung von Deutschland
-de <- 8320000
-
-# welcher Anteil der deutschen Bevölkerung lebt in Berlin?
-berlin/de
-
-# dies als Objekt speichern
-ber_anteil <- berlin/de
+# Pakete laden
+library(tidyverse)
+library(languageR)
+library(ggthemes)
 ```
 
--   Nachdem ich diesen Code-Chunk ausgeführt habe, kann ich das Ergebnis auf verschiedene Arten ausgeben:
-    -   `3645000/8320000`, was `r 3645000/8320000` ausgeben würde
-    -   `berlin/de`, was `r berlin/de` ausgeben würde
-    -   `ber_anteil`, was `r ber_anteil` ausgeben würde
+- unsere Daten in einen separaten Codechunk laden (am besten ist es, einen einzigen Codechunk für einen einzigen Zweck zu verwenden)
+
+```{r}
+#| echo: fenced
+
+# Daten laden
+df_lexdec <- lexdec
+```
+
+## Plots in Quarto
+
+- Erstellen Sie jetzt einfach einen neuen Codechunk, der einen Code von letzter Woche enthält
+- wir speichern es als Objekt mit dem Namen `fig_lexdec_hist`:
+
+```{r}
+#| label: fig-hist
+#| fig-cap: Histogram of reactiontimes per native language from lexdec
+#| output-location: column-fragment
+
+## histogram of reaction times by native language
+  ggplot(data = df_lexdec) +
+  aes(x = exp(RT), fill = NativeLanguage) + ## set aesthetics
+  geom_histogram(position = "identity", alpha = 0.3) +
+  scale_fill_colorblind() + ## make fill colorblind friendly
+  theme_minimal() ## set plot theme
+```
+
+## Plots drucken
+
+- Erinnern Sie sich an die letzte Woche: Wenn Sie einen Plot benennen, wird er nur gedruckt, wenn Sie den Namen des Objekts eingeben 
+- wenn Sie den Plot nicht als Objekt speichern, wird er gedruckt, wenn Sie den Code ausführen, der den Plot erzeugt
+- Wenn Sie den Plot als Objekt speichern, wird er nicht gedruckt, wenn Sie den Code ausführen.
+    - In diesem Fall müssen Sie den Objektnamen ausführen, um zu sehen, was unter diesem Namen gespeichert ist
+    - Dies gilt für alle Arten von Objekten, nicht nur für Diagramme! 
+    
 
 ::: {.content-visible when-format="revealjs"}
-## Inline-Code {.unlisted .unnumbered}
-:::
-
--   aber wir können auch Funktionen verwenden und etwas mehr Mathematik betreiben, um diese Zahl zu einem *Prozentsatz* zu machen
-    -   Multiplizieren der Zahl mit 100
-        -   `ber_anteil*100`
-    -   in die Funktion `round()` einfügen, um 1 Dezimalpunkt anzuzeigen
-        -   das sollte so aussehen: `` `r round(ber_anteil*100,1)` ``
-    -   fügt dies in einen Satz ein
-        -   der Quelletext "Ungefähr `` `r `` `` round(ber_anteil*100,1)` ``% der deutschen Bevölkerung lebt in Berlin, der Hauptstadt." wird wie folgt rendert:
-        -   *Ungefähr* `r round(ber_anteil*100,1)`*% der deutschen Bevölkerung lebt in Berlin, der Hauptstadt.*
-
-::: {.content-visible when-format="revealjs"}
-## Inline-Code {.unlisted .unnumbered}
+## Plots in Quarto {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
-### [Aufgabe @exm-chunks]: Code-Chunks
-::: {#exm-chunks .custom}
+### [Aufgabe @exm-plots]: Plots in Quarto
+::: {#exm-plots .custom}
 
 ::: nonincremental
-1.  Beginnen Sie ein neues Code-Chunk
-2.  Googeln und als R-Objekt speichern die Bevölkerung von:
-    -   Toronto, Kanada
-    -   Kanada
-    -   der Provinz Ontario
-    -   der Provinz Prince Edward Island
-3.  Ermitteln Sie den Anteil der kanadischen Bevölkerung, der in Toronto lebt
-4.  Ermitteln Sie den Anteil der Bevölkerung von Ontario, der in Toronto lebt
-5.  Ermitteln Sie den Anteil der kanadischen Bevölkerung, der in Ontario lebt
-6.  Ermitteln Sie den Anteil der kanadischen Bevölkerung, der in Prince Edward Island lebt
-7.  Ermitteln Sie ein Objekt, das die Bevölkerungen von Ontario und Prince Edward Island kombiniert (d.h. "verkettet") (nennt es z.B. "on_pei"). Verwenden Sie dieses Objekt, ermitteln Sie den Anteil der kanadischen Bevölkerung, der in Prince Edward Island oder Ontario lebt
-8.  Geben Sie diese Ergebnisse in einem Text an (als Prozentsatz, gerundet auf eine Dezimalstelle)
+1. Einen neuen Codeabschnitt erstellen und das Balkendiagramm von letzter Woche erzeugen, aber als Objekt speichern
+2. In einem separaten Codechunk nur den Objektnamen dieses Diagramms angeben
+3. Rendern Sie das Dokument, um zu sehen, wo die Abbildung gedruckt wurde.
 
 :::
 :::
 :::
 
-# Ausgabeformate
+::: {.content-visible when-format="revealjs"}
+## Plots in Quarto {.unlisted .unnumbered}
+:::
+
+```{r}
+fig_lexdec_l1 <-
+  ggplot(data = df_lexdec) +
+  aes(x = NativeLanguage, fill = NativeLanguage) +
+  # add the geom:
+  geom_bar() +
+  scale_fill_colorblind() + # add colourblind colours
+  theme_minimal()
+```
+
+```{r}
+#| label: fig-barplot
+#| fig-cap: Barplot of observations per native language
+#| fig-asp: .7
+#| output-location: fragment
+fig_lexdec_l1
+```
+
+# Ausgabeformate {.unlisted}
 
 -   es gibt mehrere Ausgabeformate, die wahrscheinlich nützlichsten sind:
     -   `html` (default)
     -   `pdf`
     -   `revealjs` (Folien)
     -   `docx`
+
+## Ausgabeformate
+
+-   wenn wir das Dokument rendern:
+    1.  Quarto sendet die `.qmd`-Datei an [`knitr`](https://yihui.org/knitr/) (ein R-Paket für dynamische Berichte mit R)
+    2.  `knitr` führt die Code-Chunke aus und erstellt ein neues `.md` Dokument mit Code und Ausgabe
+    3.  die `.md`-Datei wird von [`pandoc`](https://pandoc.org) verarbeitet, das `.md`-Dateien in die fertige Datei konvertieren kann, mit vielen Ausgabeformaten
+
+```{r}
+#| echo: false
+#| fig-cap: "Diagramm des Quarto-Workflows von qmd, zu knitr, zu md, zu pandoc, zur Ausgabe im PDF-, MS Word- oder HTML-Format. (Quelle: @wickham_r_2023)"
+#| label: knitr
+knitr::include_graphics(here::here("media","Wickham_Ch29_knitr.png"))
+```
+
+::: {.content-visible when-format="revealjs"}
+## Ausgabeformate {.unlisted .unnumbered}
+:::
+
+::: callout-note
+## Andere Verwendungen
+
+::: nonincremental
+Quarto kann für eine Vielzahl von Zwecken verwendet werden, wie z. B.:
+
+-   Websites/Blogs
+-   Notizen machen
+-   Dokumentieren von allem, was mit Code zu tun hat, um die Reproduzierbarkeit zu verbessern
+    -   Tipps zum Arbeitsablauf
+    -   Bearbeitung von csv-Dateien (z. B. Stimuluslisten)
+:::
+:::
 
 ::: {.content-visible when-format="revealjs"}
 # Ausgabeformate {.unnumbered .unlisted}
@@ -657,7 +688,7 @@ sessionInfo()
 
 :::
 
-# Session Info {.unnumbered}
+# Session Info {.unnumbered .unlisted}
 
 Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
 
