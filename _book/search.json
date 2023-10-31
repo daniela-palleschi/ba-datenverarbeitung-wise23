@@ -1,0 +1,275 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "",
+    "text": "Kursübersicht\nDies ist die Webseite der Lehrveranstaltung “Angewandte Datenverarbeitung und Visualisierung” an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle hier (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).\nJedes Kapitel entspricht einer Vorlesung von einer Woche. Vorerst werden die Materialien auf dieser Website im Bullet-Point-Format erscheinen und genau denselben Inhalt wie die Kursfolien enthalten. Ich plane, die Aufzählungspunkte später in Prosa umzuwandeln und die einzelnen Themen zu vertiefen."
+  },
+  {
+    "objectID": "index.html#kursbeschreibung-auf-agnes",
+    "href": "index.html#kursbeschreibung-auf-agnes",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Kursbeschreibung auf AGNES",
+    "text": "Kursbeschreibung auf AGNES\n\nDies ist ein Einführungskurs in das Denken, Arbeiten und Kommunizieren mit / über sprachliche Daten. Der Kurs fokussiert sich auf praktische Anwendungen und die Vermittlung übertragbarer Fähigkeiten. In RStudio machen sich die Teilnehmenden sich mit der Programmiersprache R vertraut und entwickeln Fähigkeiten zur Erstellung und Vermittlung zusammenfassender Statistiken für den akademischen und beruflichen Kontext. Die Teilnehmenden lernen, Rohdaten zu laden und zu manipulieren, Tabellen mit deskriptiven Statistiken zu erstellen und die Daten angemessen visuell darzustellen. Am Ende des Kurses werden die Teilnehmenden ein besseres Verständnis dafür haben, wie man mit Daten umgeht und die Fähigkeiten besitzen, Ergebnisse klar zu kommunizieren. Studierende, die keinen eigenen Laptop zum Unterricht mitbringen können, setzen sich bitte so früh wie möglich mit der Dozentin in Verbindung, damit ein alternativer Laptop organisiert werden kann. Der Kurs wird auf Deutsch gehalten."
+  },
+  {
+    "objectID": "index.html#ziele-des-kurses",
+    "href": "index.html#ziele-des-kurses",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Ziele des Kurses",
+    "text": "Ziele des Kurses\nDas Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer “Explorativen Datenanalyse (EDA)” erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr “a state of mind” (Wickham et al., 2023, Kapitel 11). Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R."
+  },
+  {
+    "objectID": "index.html#ressourcen",
+    "href": "index.html#ressourcen",
+    "title": "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)",
+    "section": "Ressourcen",
+    "text": "Ressourcen\nDie meisten unserer Materialien basieren auf dem Buch “R for Data Science” von Hadley Wickham (2. Auflage), das Sie hier vollständig online einsehen können. Wo es möglich war, habe ich die in diesem Buch verwendeten Daten durch linguistische Datensätze ersetzt, damit Sie sich ein Bild davon machen können, wie Linguisten R verwenden könnten.\nEinige andere Ressourcen, die wir von Zeit zu Zeit verwenden werden oder die Sie vielleicht selbst erkunden möchten, sind das E-book Data visualisation using R, for researchers who don’t use R (Nordmann et al., 2022) und das Lehrbuch Statistics for Linguists: An Introduction Using R by Bodo Winter [Winter (2019); PDF erhältlich über das Grimm Zentrum].\n\n\n\n\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L. M. (2022). Data Visualization Using R for Researchers Who Do Not Use R. Advances in Methods and Practices in Psychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.).\n\n\nWinter, B. (2019). Statistics for Linguists: An Introduction Using R. In Statistics for Linguists: An Introduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Die vorgeschlagene Lektüre erleichtert die Arbeit mit dem Material für jede Woche. Die Lektüre umfasst Kapitel oder Abschnitte aus Nordmann et al. (2022) (web tutorial), Wickham et al. (2023) (E-book), and Winter (2019) (PDF verfügbar über die Grimm-Bibliothek).\n\n\n\n\n\n\n  \n    \n    \n    \n    \n  \n  \n    \n    \n      Woche\n      Datum\n      Thema\n      Vorbereitung\n    \n  \n  \n    1\n18.10.2023\nEinführung in R und RStudio\n\n📚 R4DS - Ch 1 (Introduction) \n📚 R4DS - Ch 3 (Workflow: Basics)\n\n    2\n25.10.2023\nData Viz 1: Verteilungen\n\n📚 R4DS - Ch 2 (Data visualization), Abschnitte 2.1-2.4\n\n    3\n01.11.2023\nDynamische Berichte mit Quarto\n\n📚 R4DS - Ch 29 (Quarto)\n\n    4\n08.11.2023\nWrangling 1: Umwandlung von Daten\n\n📚 R4DS - Ch 4 (Data transformation)\n\n    5\n15.11.2023\nData Viz 2: Visualisierung von Beziehungen\n\n📚 R4DS - Ch 5 (Workflow: code style)\n\n    6\n22.11.2023\nBericht 1\n\n\n    7\n29.11.2023\nDaten einlesen\n\n📚 R4DS - Ch 8 (Data import)\n\n    8\n06.12.2023\nWrangling 2: Tidying data\n\n📚 R4DS - Ch 6 (Data tidying)\n\n    9\n13.12.2023\nDeskriptive Statistik\n\n📚 Winter (2019) - Ch 3 (Descriptive statistics, models, and distributions)\n\n    10\n20.12.2023\nData Viz 3: Visualisierung von Zusammenfassungen\n\n📚 R4DS - Ch 2 (Data visualization), Abschnitte 2.5 \n📚 Nordmann et al. (2002) - Ch 4 (Representing Summary Statistics), Abschnitte 2.5\n\n    Vorlesungsfrei\n27.12.2023\nNA\n\n🎿\n\n    Vorlesungsfrei\n03.01.2024\nNA\n\n🎿\n\n    11\n10.01.2024\nBericht 2\n\n\n    12\n17.01.2024\nEinführung in Base R\n\n📚 R4DS - Ch 28 (A field guide to base R)\n\n    13\n24.01.2024\nRegular expressions\n\n📚 R4DS - Ch 16 (Regular expressions)\n\n    14\n31.01.2024\nData Viz 4: Kommunikation\n\n📚 R4DS - Ch 12 (Communication)\n\n    15\n07.02.2024\nBericht 3\n\n\n    16\n14.02.2024\nOffene Sitzung: Q&A\n\n\n  \n  \n  \n\n\n\n\n\n\n\n\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L. M. (2022). Data Visualization Using R for Researchers Who Do Not Use R. Advances in Methods and Practices in Psychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.).\n\n\nWinter, B. (2019). Statistics for Linguists: An Introduction Using R. In Statistics for Linguists: An Introduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
+  },
+  {
+    "objectID": "setup/setup.html",
+    "href": "setup/setup.html",
+    "title": "Erforderliche Software",
+    "section": "",
+    "text": "R und RStudio\nUm an diesem Kurs teilnehmen zu können, müssen Sie R und RStudio installieren.\nR ist eine statistische Programmiersprache, die für statistische Berechnungen und grafische Darstellungen verwendet wird. Am häufigsten wird sie zur Analyse und Visualisierung von Daten verwendet, beides werden wir in diesem Semester tun. RStudio ist eine IDE (integrierte Entwicklungsumgebung) für R und andere Sprachen. RStudio macht die Analyse und Visualisierung von Daten in R viel einfacher (glauben Sie mir, als ich mit R anfing, gab es kein RStudio!).\nSie müssen R herunterladen, bevor Sie RStudio herunterladen können.\nIm weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir tinytex installieren. Es gibt verschiedene Möglichkeiten, dies zu tun:\nSie können diesen Schritt vorerst überspringen, falls Sie Probleme haben."
+  },
+  {
+    "objectID": "setup/setup.html#sec-packages",
+    "href": "setup/setup.html#sec-packages",
+    "title": "Erforderliche Software",
+    "section": "Pakete",
+    "text": "Pakete\nR-Pakete, die im Comprehensive R Archive Network, allgemein bekannt als CRAN-Repository, verfügbar sind, können einfach mit dem Befehl install.packages(\"packageName\") installiert werden. Einige Pakete, die wir brauchen werden, sind:\n\n\nhere Paket (Müller 2020)\n\n\ntidyverse-Paketfamilie (Wickham u. a. 2019)\n\nenthält automatisch Pakete, die wir brauchen, wie dplyr und ggplot2\n\n\n\n\nlanguageR-Paket (Baayen und Shafaei-Bajestan 2019)\n\n\nUm mehrere Pakete auf einmal herunterzuladen, verwenden Sie die ‘concatenate’-Funktion in r (c()) innerhalb von install.packages():\n\ninstall.packages(c(\"here\", \n                   \"tidyverse\",\n                   \"pacman\"))"
+  },
+  {
+    "objectID": "setup/setup.html#rstudio-globale-optionen-optional",
+    "href": "setup/setup.html#rstudio-globale-optionen-optional",
+    "title": "Erforderliche Software",
+    "section": "RStudio Globale Optionen (optional)",
+    "text": "RStudio Globale Optionen (optional)\nHier sind meine bevorzugten globalen Optionen (RStudio &gt; Werkzeuge &gt; Globale Optionen). Ich empfehle dringend, die Einstellungen für “Arbeitsbereich” und “R-Sitzungen” zu befolgen, um die Reproduzierbarkeit zu gewährleisten. Mit den anderen Einstellungen können Sie herumspielen, um herauszufinden, was Ihnen gefällt.\n\nAllgemein &gt; Grundeinstellungen\n\n\nArbeitsbereich (für reproduzierbare Arbeitsabläufe!!!)\n\nDeaktivieren Sie das Kontrollkästchen “.RData beim Starten in Arbeitsbereich wiederherstellen”.\nArbeitsbereich beim Beenden in .RData speichern: Niemals\n\n\n\n\nR-Sitzungen\n\nDeaktivieren Sie das Kontrollkästchen “Zuvor geöffnete Quelldokumente beim Start wiederherstellen”.\n\n\n\n\nCode &gt; Anzeige\n\nAllgemein\n\nLeerzeichen anzeigen\nScrollen über das Ende des Dokuments hinaus zulassen\nAusgewählte Zeile hervorheben\n\n\n\n\nErscheinungsbild\n\nEditor-Thema: Kobalt"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#heutige-ziele",
+    "href": "mats/01-intro_r.html#heutige-ziele",
+    "title": "1  Einführung in R und RStudio",
+    "section": "Heutige Ziele",
+    "text": "Heutige Ziele\n\nR und RStudio installieren\nin der Lage sein, Zusatzpakete zu installieren\nin der Lage sein, Hilfe für Pakete und Funktionen zu erhalten\nin der Lage sein, Objekte in der Konsole zu erstellen"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#weitere-lektüre",
+    "href": "mats/01-intro_r.html#weitere-lektüre",
+    "title": "1  Einführung in R und RStudio",
+    "section": "Weitere Lektüre",
+    "text": "Weitere Lektüre\n\nDieser Vortrag basiert lose auf Kapitel 1 - Introduction und Kapitel 3 - Workflow Basics von Wickham et al. (2023)\ndieser Kurs folgt mehr oder weniger diesem Buch\nwo möglich, ersetze ich die Datensätze im Buch durch linguistische Datenbeispiele"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#vorbereitung",
+    "href": "mats/01-intro_r.html#vorbereitung",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.1 Vorbereitung",
+    "text": "1.1 Vorbereitung\n\nhoffentlich haben Sie R und RStudio bereits installiert/aktualisiert\n\nfalls nicht: Versuchen Sie es mit Posit Cloud für heute posit.cloud\n\nGehen Sie zum Kurs GitHub und laden Sie eine ZIP-Datei des Repositorys herunter\n\ngroße grüne Schaltfläche ‘&lt;&gt; Code’ &gt; ZIP herunterladen\n\n\n\n\n\n\n\nDownload GitHub repositiory"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#rprojekt",
+    "href": "mats/01-intro_r.html#rprojekt",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.2 RProjekt",
+    "text": "1.2 RProjekt\n\nSuchen Sie die ZIP-Datei, die Sie soeben heruntergeladen haben, auf Ihrem Computer und dekomprimieren Sie sie.\nÖffnen Sie den Ordner und navigieren Sie zu r4ling_student.Rproj, doppelklicken Sie darauf\nSie sollten nun RStudio sehen, wie in Abbildung 1.1\nJetzt können wir an unserem ersten Skript arbeiten\n\n\n\n\n\n\nAbbildung 1.1: Student RProject\n\n\n\n\n\n\n\n\n\n\n\nWarnung\n\n\n\nWichtig!!\nVerschieben oder benennen Sie den Ordner data/ nicht um! Sie müssen denselben Dateipfad zu den Datensätzen haben, um meinen Code in den nächsten Wochen nahtlos verwenden zu können."
+  },
+  {
+    "objectID": "mats/01-intro_r.html#r-in-rstudio",
+    "href": "mats/01-intro_r.html#r-in-rstudio",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.3 R in RStudio",
+    "text": "1.3 R in RStudio\n\nÖffnen Sie RStudio immer durch einen Doppelklick auf r4ling_student.Rproj (für diesen Kurs)\nklicken Sie auf File &gt; New File &gt; R Script\n\nsehen Sie nun vier Quadrate (statt 3 in Abbildung 1.1):\n\n\nTexteditor - oben Links - wo wir unseren Code schreiben werden\nR-Konsole (EN: Console) - unten links - wo wir die Ausgabe unseres Codes und Warn-/Fehlermeldungen sehen werden\nArbeitsumgebung (EN: Environment) - oben rechts - wo unsere Daten und Objekte nach dem Laden gespeichert werden\nDateien und Grafikausgabe - unten links - wo wir unsere Dateien und die von uns erstellten Grafiken sehen oder Hilfe bekommen können\n\n\n\n1.3.1 Erweitungspakete\n\nR hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können\n\nähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind\n\nJeder kann Zusatzpakete für R erstellen, z.B.,\n\nfür Datenvisualisierung\nDatenverarbeitung\n\nDies ist ähnlich wie bei Handy-Apps, die von jedem erstellt und auf Ihr Gerät heruntergeladen werden können\n\naber Pakete sind immer kostenlos\n\nEs gibt 2 Schritte, um ein Paket zu verwenden:\n\nInstallieren des Pakets (einmalig) mit install.packages(\"Paket\")\nLaden Sie das Paket (zu Beginn jeder Sitzung) library(Paket)\n\n\n\nPaket-Installation\n\nerfolgt mit der Funktion install.packages()\n\nSie machen dies nur einmal (wie das Herunterladen einer App)\n\ndas Paket tidyverse ist sehr hilfreich für Datenverarbeitung und Visualisierung\n\nInstallieren wir es jetzt\n\n\n\n\nPaket-Installation\n\ninstallieren Sie die Pakete tidyverse und beepr\n\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"beepr\")\n\n\n\n\n\n\n\nPakete in der Konsole installieren\n\n\n\nInstallieren Sie Pakete immer über die Konsole, nicht über ein Skript!\nSie können auch die Registerkarte “Pakete” in der unteren rechten Box verwenden (Pakete &gt; Installieren)\n\n\n\n\ntinytex\n\nwir brauchen auch LaTeX und tinytex (Xie, 2023), um PDF-Dokumente zu erstellen\nführen Sie diesen Code aus, um tinytex zu installieren\n\n\n## run this in the console\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\n\nSie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: https://www.latex-project.org/get/\n\n\n\n\n1.3.2 Laden eines Pakets\n\ndie Funktion library() lädt ein Paket in Ihre Umgebung\ndies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können\n\n\nlibrary(beepr)\n\n\nVerwendung einer Funktion\n\nSobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen\nZum Beispiel hat das Paket beepr eine Funktion beep(), probieren wir sie aus\n\n\n\n\nin der Konsole laufen\n\nbeep()\n\n\n\n\nFunktionsargumente\n\nArgumente enthalten optionale Informationen, die an eine Funktion übergeben werden\n\nDie Funktion beep() hat das Argument sound, das einen numerischen Wert von 1:11 annimmt.\nVersuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?\n\n\n\n\n\nin der Konsole laufen\n\nbeep(sound = 5)\n\n\n\n\nFunktionsargumente\n\n\n\n\n\n\n?help\n\n\n\nSie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. ?beep). Versuchen Sie, ?beep auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von sound = 5 schreiben kannst, um denselben Ton zu erzeugen?\n\n\n\n\n\n1.3.3 Aufgabe: Paket-Installation\n\n\n\n\n\n\nAufgabe\n\n\n\nWir brauchen auch das here-Paket. Installieren Sie dieses.\nNachdem Sie das Paket installiert haben, führen Sie den Befehl here() aus. Was geschieht?"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#reproduzierbarkeit",
+    "href": "mats/01-intro_r.html#reproduzierbarkeit",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.4 Reproduzierbarkeit",
+    "text": "1.4 Reproduzierbarkeit\n\nin diesem Kurs werden wir lernen, wie man reproduzierbare Berichte erstellt\n\nDas bedeutet, dass unser Code später noch einmal ausgeführt werden kann und immer noch die gleichen Ergebnisse liefert\n\nwenn Ihre Arbeit reproduzierbar ist, können andere Leute (und Sie selbst) Ihre Arbeit verstehen und überprüfen\n\nFür Kursaufgaben werden Sie Berichte sowie den Quellcode einreichen, die ich auf meinem Rechner ausführen können sollte\n\n\n\n1.4.1 RStudio-Einstellungen\n\nwir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten\n\nWir wollen auch niemals unseren Arbeitsbereich für später speichern\nwir wollen nur unseren Code (und die Ausgabeberichte) speichern\n\nGehen Sie zu Tools &gt; Global Options\n\nDeaktivieren Sie das Kontrollkästchen Restore .RData into workspace at startup\nSetzen Sie Save workspace to .RData on exit: to Never\n\n\n\n\nRStudio-Einstellungen\n\n\nRStudio: Tools &gt; Global Options:\n\nRestore .RData into workspace at startup\n\nnein\n\nSave workspace to .RData on exit:\n\nNever\n\n\n\n\n\n\n\n\n\nIhre ‘Global Options’ sollten wie folgt aussehen\n\n\n\n\n\n\nRStudio-Einstellungen\n\nKlicken Sie auf Appearance (linke Spalte)\n\nÖffnen Sie die Optionen “Editor Theme” und wählen Sie ein Farbschema, das Ihnen gefällt\nSie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen\n\n\n\n\n1.4.2 Aufgabe: neues R-Skript\n\n\n\n\n\n\nAufgabe\n\n\n\n\nin RStudio: File &gt; New File &gt; R Script\n\nwenn sich oben links ein neues Fenster öffnet: “Datei &gt; Speichern unter…”.\n\nspeichern Sie es in Ihrem ‘notizen’ Ordner\n\nschreiben Sie oben in das Skript: ## Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)\n\n\n\n\n\n\n\n\n\nIhre Skript (oben links) sollten so aussehen"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#rechnen-in-r",
+    "href": "mats/01-intro_r.html#rechnen-in-r",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.5 Rechnen in R",
+    "text": "1.5 Rechnen in R\n\nkönnen wir Berechnungen in R durchführen\nwir können addieren (+), subtrahieren (-), multiplizieren (*) und dividieren (/)\n\n\n1.5.1 Aufgabe: Berechnungen\n\n\n\n\n\n\nAufgabe\n\n\n\n\nVersuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:\n\n\n# Addition\n16+32\n\n[1] 48\n\n\n\n# Multiplikation\n16*32\n\n[1] 512\n\n\n\n# Subtraktion\n16-32\n\n[1] -16\n\n\n\n# Division\n16/32\n\n[1] 0.5\n\n\n\nschreiben Sie diese Berechnungen in Ihr Skript, und drücken Sie Cmd/Strg-Enter, um sie auszuführen\n\n\nWas passiert?\n\n\n\n\n\n1.5.2 Kommentare\n\nSie haben vielleicht bemerkt, dass in meinen Code-Blöcken z. B. # Subtraktion über dem Code stand\nR ignoriert jeden Text nach # (plus ein Leerzeichen )\nalso können wir Kommentare nach # schreiben\n\n\n# Kommentar zum folgenden Code\n16-32\n\n[1] -16\n\n\n\nWir können auch eine Abschnittsüberschrift erstellen, um unsere R-Skripte zu strukturieren, indem wir vier # nach einem Titel hinzufügen\nDie Struktur des Skripts kann dann durch Klicken auf die Schaltfläche “Gliederung” oberhalb des Skriptfensters angezeigt werden\n\n\n# Rechnen mit R ####\n\n# Subtraction\n16-32\n\n[1] -16\n\n\n\n\n1.5.3 Objekte\n\nwir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind\n\n\nx &lt;- 16\ny &lt;- 32\n\n\n\n\n\n\n\nAssignment operator\n\n\n\nDas Symbol &lt;- ist ein sogenannter assignment operator. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: “Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite”.\n\n\n\n\n1.5.4 Rechnen mit Funktionen\n\nes gibt auch eingebaute Funktionen für komplexere Berechnungen\nz.B., mean() (DE: Durchschnitt), sum() (DE: Summe)\nwas passiert, wenn wir folgendes ausführen?\n\n\nsum(6,10)\n\n[1] 16\n\n\n\n6+10\n\n[1] 16\n\n\n\nmean(6,10)\n\n[1] 6\n\n\n\n(6+10)/2\n\n[1] 8\n\n\n\n\nRechnen mit Funktionen\n\ndie Funktion mean() nimmt nur ein Argument an; alles andere wird ignoriert\n\ndas Komma in 6,10 listet 2 Argumente auf, also wird alles nach dem Komma ignoriert\n\nwenn wir mehr als ein Objekt in ein Argument einschließen wollen, müssen wir die “concatenate”-Funktion c() verwenden\n\n“concatenate” bedeutet zusammenfügen oder kombinieren\n\n\n\nmean(c(6,10))\n\n[1] 8\n\n\n\n\nRechnen mit Funktionen\n\nSie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben\n\n\n\n\n\n\n\nAufgabe: Rechnen mit Funktionen\n\n\n\n\nVersuchen Sie, die Funktion mean() mit Ihren gespeicherten Variablen (x und y) als “verkettete” Argumente auszuführen\nMachen Sie dasselbe mit der Funktion sum(). Was passiert, wenn Sie c() nicht verwenden?"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#vektoren",
+    "href": "mats/01-intro_r.html#vektoren",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.6 Vektoren",
+    "text": "1.6 Vektoren\n\nVektoren sind eine Liste von Elementen desselben Typs (z. B. numerisch, Zeichenkette)\nwir können einen Vektor mit der Verkettungsfunktion c() erstellen\nDer folgende Code speichert in einem Objekt namens ‘vec’ einen Vektor aus mehreren Zahlen\n\n\n# einen Vektor erstellen\nvec &lt;- c(171, 164, 186, 191)\n\n\nder folgende Code ruft das Objekt auf, das wir als ‘vec’ gespeichert haben, und gibt seinen Inhalt aus\n\n\n# print vec\nvec\n\n[1] 171 164 186 191\n\n\n\n1.6.1 Arithmetic mit Vektoren\n\nGrundlegende Arithmetik auf Vektoren wird auf jedes Element angewendet\n\n\n# add 5 to vec\nvec + 5\n\n[1] 176 169 191 196\n\n\n\nkönnen wir auch Funktionen auf Vektoren anwenden\n\n\n# Summe von vec\nsum(vec)\n\n[1] 712\n\n\n\n# Mittelwert von vec\nmean(vec)\n\n[1] 178\n\n\n\n# Quadratwurzel aus vec\nsqrt(vec)\n\n[1] 13.07670 12.80625 13.63818 13.82027\n\n\n\n\n1.6.2 Ausgabe: Vektoren\n\n\n\n\n\n\nAusgabe\n\n\n\n\nErstelle einen Vektor namens vec1, der die Werte 12, 183, 56, 25 und 18 enthält\nErstellen Sie einen Vektor namens vec2, der die Werte 8, 5, 1, 6 und 8 enthält\nCreate a vector called vec3 that contains the values 28, 54, 10, 13, 2, and 81\nFinde die Summe von vec1.\nFinde die Summe von vec1 plus vec2. Wie unterscheidet sich das Ergebnis von dem, das Sie für vec1 allein erhalten haben?\nWas passiert, wenn du versuchst, die Summe von vec1 und vec3 zu finden?"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#endergebnis",
+    "href": "mats/01-intro_r.html#endergebnis",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.7 Endergebnis",
+    "text": "1.7 Endergebnis\n\nSpeichern Sie Ihr R-Skript (File &gt; Save, oder Cmd/Strg-S)\nSie sollten nun einen RProject-Ordner für diesen Kurs, der Folgendes enthält:\n\nr4ling_student.RProj`\neinen Ordner namens Daten\neinen Ordner namens notes, der Folgendes enthält + eine .R-Datei mit der heutigen Arbeit\n\nSie wissen jetzt, wie man\n\neinfache Berechnungen in R durchführen\nObjekte in Ihrer Arbeitsumgebung zu speichern\neinfache mathematische Berechnungen mit Ihren gespeicherten Objekten durchführen"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#session-info",
+    "href": "mats/01-intro_r.html#session-info",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.8 Session Info",
+    "text": "1.8 Session Info\n\nUm die Reproduzierbarkeit zu verbessern, ist es nützlich, die Version von R, RStudio und die verwendeten Pakete zu verfolgen\n\nZu diesem Zweck können Sie die folgenden Befehle ausführen:\n\n\n\n## R version\nR.version.string\n\n[1] \"R version 4.3.0 (2023-04-21)\"\n\n## R version name\nR.version$nickname\n\n[1] \"Already Tomorrow\"\n\n\n\n## RStudio version\nRStudio.Version()$version\n## RStudio version name\nRStudio.Version()$release_name\n\n\n## alle Paketeversionen\nsessionInfo()"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#nächste-woche",
+    "href": "mats/01-intro_r.html#nächste-woche",
+    "title": "1  Einführung in R und RStudio",
+    "section": "1.9 Nächste Woche",
+    "text": "1.9 Nächste Woche\nvor nächster Woche, stellen Sie bitte sicher, dass Sie:\n\nR und RStudio installiert/aktualisiert haben\ndie Pakete tidyverse und here installiert haben\nbitte stellen Sie sicher, dass Sie die Übungen des heutigen Kurses in Ihrem R-Skript durcharbeiten\n(optional) speichern Sie das Skript, und laden Sie es auf Moodle hoch, wenn Sie es auf Ihre 6 Skripte für die Teilnahme-LP anrechnen lassen möchten\n\n\nSession Info\nHergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.3.0.386 (Cherry Blosson).\n\nsessionInfo()\n\nR version 4.3.0 (2023-04-21)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Ventura 13.2.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Berlin\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] beepr_1.3    magick_2.7.4\n\nloaded via a namespace (and not attached):\n [1] digest_0.6.33     fastmap_1.1.1     xfun_0.39         magrittr_2.0.3   \n [5] glue_1.6.2        stringr_1.5.0     audio_0.1-10      knitr_1.44       \n [9] htmltools_0.5.5   png_0.1-8         rmarkdown_2.22    lifecycle_1.0.3  \n[13] cli_3.6.1         compiler_4.3.0    rprojroot_2.0.3   here_1.0.1       \n[17] rstudioapi_0.14   tools_4.3.0       evaluate_0.21     Rcpp_1.0.11      \n[21] yaml_2.3.7        rlang_1.1.1       jsonlite_1.8.7    htmlwidgets_1.6.2\n[25] stringi_1.7.12"
+  },
+  {
+    "objectID": "mats/01-intro_r.html#literaturverzeichnis",
+    "href": "mats/01-intro_r.html#literaturverzeichnis",
+    "title": "1  Einführung in R und RStudio",
+    "section": "Literaturverzeichnis",
+    "text": "Literaturverzeichnis\n\n\nBaayen, R. H. (2008). Analyzing Linguistic Data:\nA Practical Introduction to Statistics using\nR.\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR:\nAnalyzing linguistic data: A practical introduction to statistics.\nhttps://CRAN.R-project.org/package=languageR\n\n\nMüller, K. (2020). Here: A simpler way to find your files. https://CRAN.R-project.org/package=here\n\n\nNordmann, E., & DeBruine, L. (2022). Applied data skills.\nZenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L.\nM. (2022). Data Visualization Using R for Researchers\nWho Do Not Use R. Advances in Methods and Practices in\nPsychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,\nFrançois, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M.,\nPedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J.,\nRobinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to\nthe tidyverse. Journal of Open Source\nSoftware, 4(43), 1686. https://doi.org/10.21105/joss.01686\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for\nData Science (2nd ed.).\n\n\nWinter, B. (2019). Statistics for Linguists: An\nIntroduction Using R. In Statistics for Linguists: An\nIntroduction Using R. Routledge. https://doi.org/10.4324/9781315165547\n\n\nXie, Y. (2023). Tinytex: Helper functions to install and maintain\nTeX live, and compile LaTeX documents. https://github.com/rstudio/tinytex"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#wiederholung",
+    "href": "mats/02-dataviz_1.html#wiederholung",
+    "title": "2  Datenvisualiserung 1",
+    "section": "Wiederholung",
+    "text": "Wiederholung\nLetzte Woche haben wir…\n\nR und RStudio installiert\nunser erstes R-Skript erstellt\neinfache Arithmetik mit Objekten und Vektoren durchgeführt\n\n\nWiederholung\n\nx &lt;- c(1,2,3)\ny &lt;- sum(1,2,3)\n\n\n\nWas enthalten die Vektoren x und y?\nDas Objekt x enthält 1, 2, 3\nDas Objekt y enthält ` 6 ``"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#heutige-ziele",
+    "href": "mats/02-dataviz_1.html#heutige-ziele",
+    "title": "2  Datenvisualiserung 1",
+    "section": "Heutige Ziele",
+    "text": "Heutige Ziele\nHeute werden wir lernen…\n\nwas Datenframes sind\nden Unterschied zwischen kategorialen und kontinuierlichen Daten\nwie man Diagramme mit ggplot erstellt\ndie richtige Darstellung für unsere Daten auszuwählen\n\n\nEndgültiges Ziel\n\nUnser heutiges Ziel ist es, die Daten wie folgt zu visualisieren\n\nDas Diagramm zeigt die Verteilung (Anzahl) der Reaktionszeiten und der Muttersprache der Teilnehmer\n\n\n\n\n\n\n\n\n\nLust auf mehr?\n\nKapitel 2 (Datenvisualisierung) in Wickham et al. (2023), bis zum Abschnitt 2.4\nKapitel 3 (Datenvisualisierung) in Nordmann & DeBruine (2022)\n\n\n\nVorbereitung\nIn Ihrem RProject-Ordner…\n\nerstellen Sie einen neuen Ordner mit dem Namen moodle\n\nLaden Sie die Moodle-Materialien von heute herunter und speichern Sie sie dort\n\nErstellen Sie einen neuen Ordner in notes mit dem Namen 02-datenviz1\nöffne ein neues .R Skript\n\nspeichere es in dem neuen Ordner\n\n\n\nPakete\n\nPakete laden (und installieren)\n\ntidyverse\nlanguageR\nggthemes\npatchwork\n\n\n\n## in the CONSOLE: install packages if needed\ninstall.packages(\"tidyverse\")\ninstall.packages(\"languageR\")\ninstall.packages(\"ggthemes\") ## for customising our plots\ninstall.packages(\"patchwork\") ## plot layouts\n\n\n## Pakete laden\nlibrary(tidyverse)\nlibrary(languageR)\nlibrary(ggthemes)\nlibrary(patchwork)"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#datenrahmen",
+    "href": "mats/02-dataviz_1.html#datenrahmen",
+    "title": "2  Datenvisualiserung 1",
+    "section": "2.1 Datenrahmen",
+    "text": "2.1 Datenrahmen\n\nDatenrahmen sind eine Sammlung von Variablen, wobei\n\njede Variable eine Spalte ist\njede Zeile eine einzelne Beobachtung/ein einzelner Datenpunkt ist\njede Zelle in einer Zeile verknüpft ist\n\nDatenrahmen sind genau wie Tabellenkalkulationen, aber rechteckig\nVerschiedene Wörter für Datenrahmen:\n\nDatenrahmen\nDatensatz\nTibble (im tidyverse)\n\n\n\n2.1.1 Sprechen über Datensätze\n\neine Variable: eine Menge, Qualität oder Eigenschaft, die man messen kann\nein Wert: der Zustand einer Variablen, wenn man sie misst\neine Beobachtung: eine Reihe von Messungen, die unter ähnlichen Bedingungen durchgeführt werden\n\nenthält mehrere Werte, die jeweils mit einer Variablen verbunden sind\neine Beobachtung für eine einzelne Variable wird manchmal als Datenpunkt bezeichnet\n\nTabellendaten sind eine Reihe von Werten, die jeweils mit einer Variablen und einer Beobachtung verbunden sind\n\nTabellarische Daten sind “tidy”, wenn jeder Wert in einer eigenen Zelle, jede Variable in einer eigenen Spalte und jede Beobachtung in einer eigenen Zeile steht\n\n\n\n\n2.1.2 Kategoriale und kontinuierliche Variablen\n\nWie wir die Verteilung einer Variablen darstellen, hängt davon ab, welche Art von Daten sie repräsentiert: kategorisch oder numerisch\nEine Variable ist kategorisch, wenn sie eine kleine Menge von Werten annehmen kann, die sich in Gruppen zusammenfassen lassen\n\n\nB. alt/jung, klein/groß, grammatikalisch/ungrammatikalisch, L1/L2-Sprecher\n\n\neine Variable ist numerisch (d. h. quantitativ), wenn sie eine große Bandbreite an numerischen Werten annehmen kann\n\nund es sinnvoll wäre, zu addieren, zu subtrahieren, den Mittelwert zu berechnen usw.\nkann kontinuierlich sein (Dezimalpunkte sind sinnvoll, z. B. 1,5 cm)\noder diskret (Dezimalpunkte sind nicht sinnvoll, z. B. 1,5 Kinder sind nicht sinnvoll)\n\nwir erstellen verschiedene Diagramme, je nachdem, welche Art von Variablen wir visualisieren wollen"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#lexical-decision-task-ldt",
+    "href": "mats/02-dataviz_1.html#lexical-decision-task-ldt",
+    "title": "2  Datenvisualiserung 1",
+    "section": "2.2 Lexical Decision Task (LDT)",
+    "text": "2.2 Lexical Decision Task (LDT)\n\nunser erster Datensatz enthält Daten aus einer lexikalischen Entscheidungsaufgabe\nBei der LDT drücken die Teilnehmer eine Taste, um anzugeben, ob ein Wort ein echtes Wort oder ein Pseudowort ist.\n\n\n\n\n\n\n\n\n\n\n\n2.2.1 LDT-Variablen\n\nDie üblichen Variablen, die in einem Experiment zur lexikalischen Entscheidungsaufgabe erhoben werden, sind:\n\nReaktionszeit\nGenauigkeit (richtig/falsch)\nWortkategorie (z. B. real/pseudo, Nomen/Verb)\nWorthäufigkeit\n\nZusätzliche Variablen, die erhoben werden könnten, sind:\n\ndemografische Daten der Teilnehmer (z. B. Alter, L1/L2, Geschlecht)"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#lexdec-datensatz",
+    "href": "mats/02-dataviz_1.html#lexdec-datensatz",
+    "title": "2  Datenvisualiserung 1",
+    "section": "2.3 lexdec Datensatz",
+    "text": "2.3 lexdec Datensatz\n\nlanguageR ist ein Begleitpaket für das Lehrbuch Baayen (2008)\n\nenthält linguistische Datensätze, z.B. lexdec.\n\nder lexdec-Datensatz enthält Daten für eine lexikalische Entscheidungsaufgabe im Englischen\n\nwir werden mit Variablen wie Reaktionszeiten und Genauigkeit arbeiten\n\n\n\n2.3.1 lexdec-Variablen\n\neine Liste einiger der Variablen ist in Tabelle 2.1 enthalten\n\n\n\n\n\nTabelle 2.1: Datenwörterbuch für df_lexdec: Lexikalische Entscheidungslatenzen, die von 21 Probanden für 79 konkrete englische Substantive erhoben wurden, mit Variablen, die mit dem Subjekt oder dem Wort verknüpft sind.\n\n\nVariable\nBeschreibung\n\n\n\n\nSubject\nein Faktor für die Probanden\n\n\nRT\nein numerischer Vektor für die Reaktionszeit in Millisekunden\n\n\nTrial\nein numerischer Vektor für den Rang des Versuchs in der Versuchsliste\n\n\nSex\nein Faktor mit den Ausprägungen F (weiblich) und M (männlich)\n\n\nNativeLanguage\nein Faktor mit den Niveaus English und Other, der zwischen englischen Muttersprachlern und Nicht-Muttersprachlern unterscheidet\n\n\n\n\n\n\n\n\n\n\n2.3.2 LDT-Forschungsfragen\n\nbevor wir ein Experiment durchführen, haben wir Forschungsfragen, die wir mit den Daten beantworten wollen\n\nWir werden uns heute mit der folgenden Frage beschäftigen:\n\nUnterscheiden sich die Reaktionszeiten zwischen Muttersprachlern und Nicht-Muttersprachlern?\n\n\n\n\n\n2.3.3 Laden der Daten\n\nunsere Daten sind in dem Paket lanaugeR verfügbar, das wir bereits geladen haben\n\num die Daten zu drucken, geben Sie einfach den Namen des Datensatzes ein und führen Sie ihn aus\n\nUnten sehen wir nur ein paar Variablen, aber Sie sollten mehr in Ihrer Konsole sehen\n\n\nlexdec\n\n\n\n  Subject       RT Trial Sex NativeLanguage Correct PrevType PrevCorrect\n1      A1 6.340359    23   F        English correct     word     correct\n2      A1 6.308098    27   F        English correct  nonword     correct\n3      A1 6.349139    29   F        English correct  nonword     correct\n4      A1 6.186209    30   F        English correct     word     correct\n5      A1 6.025866    32   F        English correct  nonword     correct\n6      A1 6.180017    33   F        English correct     word     correct\n\n\n\nWie viele Variablen haben wir? Beobachtungen?\n\n\nDaten als Objekt speichern\n\nUm die Daten in unserer Umgebung zu speichern, müssen wir ihnen einen Namen zuweisen\n\nNennen wir es df_lexdec, was soviel bedeutet wie “Datenrahmen lexikalische Entscheidung”.\n\n\n\ndf_lexdec &lt;- lexdec\n\n\njetzt sehen wir es in unserem Enrivonment\n\nDoppelklicken Sie darauf, um es im Editorfenster zu sehen.\n\n\n\n\n\n2.3.4 Relevante Variablen\n\nZu den Variablen, die wir haben, gehören:\n\nSubjekt: Teilnehmer-ID\nRT: protokollierte Reaktionszeiten\nNativeLanguage: die Muttersprache des Teilnehmers\nWord: welches Wort präsentiert wurde\nClass: ob das Wort ein Tier oder eine Pflanze war\n\n\n\n\n\n\n\n\nAufgabe 2.1: ?lexdec\n\n\n\n\nBeispiel 2.1  \n\nUm herauszufinden, wofür die anderen Variablen stehen, führen Sie ?lexdec in der Konsole aus."
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#erstellen-von-plots-mit-ggplot2",
+    "href": "mats/02-dataviz_1.html#erstellen-von-plots-mit-ggplot2",
+    "title": "2  Datenvisualiserung 1",
+    "section": "2.4 Erstellen von Plots mit ggplot2",
+    "text": "2.4 Erstellen von Plots mit ggplot2\n\ndas tidyverse ist eine Sammlung von Paketen, die das Aufräumen und die Visualisierung von Daten erleichtern\n\nwenn wir tidyverse laden, wird diese Sammlung von Paketen automatisch geladen\n\ndas ggplot2-Paket ist ein tidyverse-Paket, das Plots in Schichten aufbaut\n\n\nggplot2 Schichten\n\n\n\n\n\nAbbildung 2.1: Example of layers in a ggplot figure\n\n\n\n\n\n\n2.4.1 Ebene 1: leere Leinwand\n\ndie erste Ebene mit der Funktion ggplot() ist wie eine leere Leinwand\n\n\nggplot(data = df_lexdec)\n\n\n\n\n\n\n2.4.2 Ebene 2: Ästhetik der Darstellung\n\nals nächstes teilen wir ggplot() mit, wie unsere Variablen visuell dargestellt werden sollen\n\nWir fügen das “+” am Ende unserer Codezeile ein und verwenden in einer neuen Codezeile die Funktion “aes()”, um unsere Ästhetik zu definieren.\n\nUnsere erste Ästhetik bildet die Reaktionszeiten (RT) auf der x-Achse ab (der untere Teil der Grafik)\n\nwir wickeln die protokollierte RT in die Funktion exp() ein, um RTs in Millisekunden zu erhalten (aus Gründen, die wir nicht diskutieren werden)\n\n\n\nggplot(data = df_lexdec) +\n  aes(x = exp(RT))\n\n\n\n\n\n\n\n\n\n\nAufgabe 2.2: Ästhetische Kartierung\n\n\n\n\nBeispiel 2.2  \n\nAdd the x-axis aesthetic.\n\n\n\n\n\n\n2.4.3 Schicht 3: Hinzufügen von Beobachtungen\n\nwir sehen keine Beobachtungen (d.h. die Balken) in der Grafik, warum nicht?\n\nwir haben ggplot() nicht gesagt, wie sie dargestellt werden sollen\n\nwir müssen ein Geom definieren: das geometrische Objekt, das ein Diagramm verwendet, um Daten darzustellen\n\nin ggplot2 beginnen die Geom-Funktionen mit geom_\nwir beschreiben Diagramme oft in Bezug auf die Arten von Geomen, die sie verwenden, z.B. verwenden Balkendiagramme Balkengeome (geom_bar()), Liniendiagramme Liniengeome (geom_line()), Punktdiagramme ein Punktgeom (geom_point()), usw.\n\n\n\nErzeugen wir unser Histogramm mit dem Geom geom_histogram()\n\n\nggplot(data = df_lexdec) +\n  aes(x = exp(RT)) +\n  geom_histogram()\n\n\n\n\n\n\n\n\n\n\nHinweis\n\n\n\nWir erhielten die folgende Meldung, als wir geom_point() einschlossen:\n\nstat_bin() mit bins = 30. Wählen Sie einen besseren Wert mit binwidth.\n\nDies sagt uns nur etwas über die Breite unserer Balken: jeder Balken repräsentiert einen Bereich möglicher Reaktionszeitwerte + bins = 30 bedeutet einfach, dass es 30 Balken gibt, wir können dies ändern und mehr oder weniger Balken haben, indem wir z.B. bins = 20 oder bins = 100 in geom_histogram() einfügen\n\n\n\n\nCode\nggplot(\n  data = df_lexdec,\n  mapping = aes(x = exp(RT))\n) +\n  labs(title = \"with geom_histogram(bins = 20)\") +\n  geom_histogram(bins = 20) +\n\n  ggplot(\n  data = df_lexdec,\n  mapping = aes(x = exp(RT))\n) +\n  labs(title = \"with geom_histogram(bins = 100)\") +\n  geom_histogram(bins = 100)\n\n\n\n\n\n\n\n2.4.4 Hinzufügen von Ästhetik\n\nEs ist nützlich, die Verteilung der Reaktionszeiten im Allgemeinen zu sehen.\n\naber wir wollen normalerweise Gruppen vergleichen\n\nB. Unterschiede zwischen Muttersprachlern und Nicht-Muttersprachlern oder zwischen verschiedenen Wortarten\n\n\nWir haben auch die Muttersprache als Variable, wie könnten wir diese in unserem Diagramm visualisieren?\n\n\n\nCode\nggplot(\n  data = df_lexdec,\n  aes(x = exp(RT), fill = NativeLanguage)\n) +\n  geom_histogram()\n\n\n\n\n\n\nwir sehen die roten und die blauen Balken, aber ist das blaue Histogramm über das rote geschichtet?\n\noder sind die roten Balken über den blauen Balken gestapelt?\n\nEs ist letzteres\n\nstellen wir es so ein, dass das blaue Histogramm über dem roten liegt\n\n\n\n\nCode\nggplot(\n  data = df_lexdec,\n  aes(x = exp(RT))\n) +\n  labs(title = \"No grouping\") +\n  geom_histogram() + \n\nggplot(\n  data = df_lexdec,\n  aes(x = exp(RT), fill = NativeLanguage)\n) +\n  labs(title = \"Stacked\") +\n  geom_histogram() + \n  \nggplot(\n  data = df_lexdec,\n  aes(x = exp(RT), fill = NativeLanguage)\n) +\n  labs(title = \"Layered: position = \\\"identity\\\"\") +\n  geom_histogram(position = \"identity\") +\n  \n  \n  plot_layout(guides = \"collect\") & theme(legend.position = 'bottom') \n\n\n\n\n\n\n\n2.4.5 Globale und lokale Ästhetik\n\nin unserer endgültigen Darstellung ist die Farbe der Histogramme leicht transparent\n\nWir können dies steuern, indem wir das Argument alpha = 0.3 zu geom_histogram() hinzufügen.\nalpha kann jeden anderen Wert zwischen 0 und 1 annehmen.\n\n\n\n\n\n\n\n\nAufgabe 2.3: Transparenz\n\n\n\n\nBeispiel 2.3  \n\nSpielen Sie mit der Transparenz des Histogramms geom. Wählen Sie den von Ihnen bevorzugten Alpha-Wert. Die Ausgabe sollte in etwa so aussehen:\n\n\n\n\n\n\n\n\n\n\n\n2.4.6 Anpassen unseres Plots\n\nwir können unsere Achsen- und Legendenbeschriftungen verbessern und auch Titel hinzufügen, indem wir die Funktion labs() verwenden\nWir können auch die Funktion scale_fill_colorblind() aus dem Paket ggthemes verwenden.\n\ndies erzeugt farbenblind-sichere Farben\n\nWir werden auch die Funktion theme_minimal() aus dem Paket ggplot2 verwenden; was bewirkt diese Funktion?\nVersuchen Sie, Ihrem Diagramm Folgendes hinzuzufügen\n\nÄndern Sie die Beschriftungen entsprechend\nund fügen Sie dem Code sinnvolle Kommentare mit # hinzu\n\n\n\nlabs(title = \"Plot title\",\n     x = \"x-axis label\",\n     y = \"y-axis label\") +\n  scale_fill_colourblind() +\n  theme_minimal()\n\n\n\n2.4.7 Kommentar\n\nDer Code und die Darstellung sollten in etwa so aussehen:\n\n\n## histogram of reaction times by native language\nggplot(data = df_lexdec) +\n  aes(x = exp(RT), fill = NativeLanguage) + ## set aesthetics\n  labs(title = \"Reaction times by L1\",\n     x = \"Reaction times (ms)\") +\n  geom_histogram(position = \"identity\", alpha = 0.3) +\n  scale_fill_colorblind() + ## make fill colorblind friendly\n  theme_minimal() ## set plot theme\n\n\n\n\n\n\n2.4.8 Speichern von Plots\n\nWir können Diagramme in unserer Umgebung speichern, genau wie wir Zahlen und Daten als Objekte speichern können.\n\nSie können Objekte beliebig benennen\naber es ist ratsam, den Namen sinnvoll zu gestalten (z.B. nicht fig1 oder xyz)\n\nNennen wir diese Grafik fig_lexdec_rt, für “figure lexical decision task reaction times”.\n\n\n\n\n\n\n\nAufgabe 2.4: Figur als Objekt speichern\n\n\n\n\nBeispiel 2.4  \n\n\nSpeichern Sie unsere endgültige Darstellung als Objekt mit dem Namen fig_lexdec_rt.\n\n\n\n\n\n\n\n2.4.9 Balkendiagramme\n\nKopieren Sie den Code für Ihr Histogramm\nNehmen Sie die folgenden Änderungen vor, um unser Balkendiagramm darzustellen\n\nEntfernen Sie die Namenszuweisung (fig_lexdec_rt)\nauf der x-Achse wollen wir NativeLanguage\nErsetzen Sie geom_histogram() durch geom_bar()\n\nEntfernen Sie die Argumente für das Histogramm (kein position oder alpha)\n\nändern Sie die Beschriftungen entsprechend\n\nSpeichern Sie das Diagramm als Objekt mit einem aussagekräftigen Namen (z.B. fig_lexdec_l1)\n\n\n\n\n\nsollte das Diagramm in etwa so aussehen:\n\n\n\n\n\n\n\n\n2.4.10 Kombinieren von Plots\n\nEin Grund, Ihre Darstellung als Objekt zu speichern, ist, dass wir sie später aufrufen können\n\nd.h. Sie können den Plot an einer Stelle in Ihrem Dokument erstellen, sich aber entscheiden, ihn erst im gerenderten Bericht weiter unten zu drucken\n\nein weiterer Grund ist, dass wir mehrere Diagramme kombinieren können\n\nDies kann mit einer Vielzahl von Paketen geschehen\nVersuchen wir es mit dem Paket patchwork\n\nBenutze + um zwei Plots nebeneinander zu verbinden\noder /, um sie übereinander darzustellen\n\n\n\n\nKombinieren von Plots mit +\n\nfig_lexdec_rt + fig_lexdec_l1\n\n\n\n\n\n\nKombinieren von Plots mit /\n\nfig_lexdec_rt / fig_lexdec_l1"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#entscheidung-für-ein-geom",
+    "href": "mats/02-dataviz_1.html#entscheidung-für-ein-geom",
+    "title": "2  Datenvisualiserung 1",
+    "section": "2.5 Entscheidung für ein Geom",
+    "text": "2.5 Entscheidung für ein Geom\n\nWarum verwenden wir ein Histogramm für die Reaktionszeit und ein Balkendiagramm für die Muttersprache?\nUm welche Arten von Variablen handelt es sich?\n\nReaktionszeit ist kontinuierlich\nMuttersprache ist eine kategoriale Variable\n\nWir verwenden Histogramme, um die Verteilungen von kontinuierlichen Variablen zu visualisieren.\nWir verwenden Balkendiagramme, um Verteilungen von kateogrischen Variablen zu visualisieren.\nWenn wir wissen, was wir visualisieren wollen (z. B. Verteilungen) und welche Art von Variable wir haben (d. h. kontinuierlich, kategorial), können wir entscheiden, welche Art von Diagramm wir erstellen wollen.\nOft ist es eine gute Idee, die Darstellung auf Papier zu zeichnen, bevor man in R beginnt (ich mache das auch oft)."
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#exercises",
+    "href": "mats/02-dataviz_1.html#exercises",
+    "title": "2  Datenvisualiserung 1",
+    "section": "2.6 Exercises",
+    "text": "2.6 Exercises\nDiese Übungen sollten auch in Ihrem Skript enthalten sein, wenn Sie es auf Moodle hochladen. Das Durcharbeiten des Unterrichtsmaterials wird Sie auf diese Aufgaben vorbereiten.\n\nReproduzieren Sie unser Histogramm als Dichte-Diagramm, indem Sie geom_histogram() durch geom_density() ersetzen.\n\nWas zeigt diese Art der Darstellung?\n\nErstellen Sie ein Balkendiagramm, das die Anzahl der Beobachtungen pro Wortklasse zeigt (Hinweis: Sie benötigen die Variable Class aus unserem Datensatz)."
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#section-2",
+    "href": "mats/02-dataviz_1.html#section-2",
+    "title": "2  Datenvisualiserung 1",
+    "section": "",
+    "text": "Drucken Sie Ihren Dichteplot und Ihren Klassen-Balkenplot übereinander mit Hilfe des patchwork Pakets\nReproduzieren Sie die folgenden Diagramme so genau wie möglich (Hinweis: Sie benötigen das Argument position = \"dodge\"):"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#heutige-ziele-1",
+    "href": "mats/02-dataviz_1.html#heutige-ziele-1",
+    "title": "2  Datenvisualiserung 1",
+    "section": "Heutige Ziele",
+    "text": "Heutige Ziele\nHeute haben wir gelernt…\n\nwas Datenrahmen sind\nden Unterschied zwischen kategorialen und kontinuierlichen Daten\nwie man Diagramme mit ggplot erstellt\ndie richtige Darstellung für unsere Daten auszuwählen"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#session-info",
+    "href": "mats/02-dataviz_1.html#session-info",
+    "title": "2  Datenvisualiserung 1",
+    "section": "Session Info",
+    "text": "Session Info\nHergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.3.0.386 (Cherry Blossom).\n\nsessionInfo()\n\nR version 4.3.0 (2023-04-21)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Ventura 13.2.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Berlin\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] magick_2.7.4     kableExtra_1.3.4 knitr_1.44       patchwork_1.1.3 \n [5] ggthemes_4.2.4   languageR_1.5.0  lubridate_1.9.2  forcats_1.0.0   \n [9] stringr_1.5.0    dplyr_1.1.3      purrr_1.0.2      readr_2.1.4     \n[13] tidyr_1.3.0      tibble_3.2.1     ggplot2_3.4.3    tidyverse_2.0.0 \n\nloaded via a namespace (and not attached):\n [1] utf8_1.2.3        generics_0.1.3    xml2_1.3.4        stringi_1.7.12   \n [5] hms_1.1.3         digest_0.6.33     magrittr_2.0.3    evaluate_0.21    \n [9] grid_4.3.0        timechange_0.2.0  fastmap_1.1.1     rprojroot_2.0.3  \n[13] jsonlite_1.8.7    httr_1.4.6        rvest_1.0.3       fansi_1.0.4      \n[17] viridisLite_0.4.2 scales_1.2.1      cli_3.6.1         rlang_1.1.1      \n[21] munsell_0.5.0     withr_2.5.0       yaml_2.3.7        tools_4.3.0      \n[25] tzdb_0.4.0        colorspace_2.1-0  webshot_0.5.4     here_1.0.1       \n[29] pacman_0.5.1      vctrs_0.6.3       R6_2.5.1          lifecycle_1.0.3  \n[33] htmlwidgets_1.6.2 pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4     \n[37] Rcpp_1.0.11       glue_1.6.2        systemfonts_1.0.4 highr_0.10       \n[41] xfun_0.39         tidyselect_1.2.0  rstudioapi_0.14   farver_2.1.1     \n[45] htmltools_0.5.5   svglite_2.1.1     rmarkdown_2.22    labeling_0.4.3   \n[49] compiler_4.3.0"
+  },
+  {
+    "objectID": "mats/02-dataviz_1.html#literaturverzeichnis",
+    "href": "mats/02-dataviz_1.html#literaturverzeichnis",
+    "title": "2  Datenvisualiserung 1",
+    "section": "Literaturverzeichnis",
+    "text": "Literaturverzeichnis\n\n\nBaayen, R. H. (2008). Analyzing Linguistic Data: A Practical Introduction to Statistics Using R.\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "mats/03-quarto_1.html",
+    "href": "mats/03-quarto_1.html",
+    "title": "3  Dynamic reports with Quarto",
+    "section": "",
+    "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
+  },
+  {
+    "objectID": "mats/04-wrangling_1.html#lesungen",
+    "href": "mats/04-wrangling_1.html#lesungen",
+    "title": "4  Data Wrangling 1: Transformation",
+    "section": "Lesungen",
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kap. 4 (Data Transformation) in Wickham et al. (2023).\nEine ergänzende Lektüre ist Ch. 9 (Data Wrangling) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "mats/05-dataviz_2.html#lesungen",
+    "href": "mats/05-dataviz_2.html#lesungen",
+    "title": "5  Datenvisualisierung 2",
+    "section": "Lesungen",
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kap. 2 (Datenvisualisierung) aus Abschnitt 2.5 in Wickham et al. (2023).\nEine ergänzende Lektüre ist Ch. 3 (Data visualtion) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "mats/07-dateneinlesung.html#lesungen",
+    "href": "mats/07-dateneinlesung.html#lesungen",
+    "title": "6  Einlesen von Daten",
+    "section": "Lesungen",
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kap. 8 (Data Import) in Wickham et al. (2023).\nEine ergänzende Lektüre ist Ch. 4 (Data Import) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "berichte/bericht_1.html",
+    "href": "berichte/bericht_1.html",
+    "title": "Bericht 1",
+    "section": "",
+    "text": "Die Anweisungen werden am Tag der Vorlesung veröffentlicht."
+  },
+  {
+    "objectID": "berichte/bericht_2.html",
+    "href": "berichte/bericht_2.html",
+    "title": "Bericht 2",
+    "section": "",
+    "text": "Die Anweisungen werden am Tag der Vorlesung veröffentlicht."
+  },
+  {
+    "objectID": "berichte/bericht_3.html",
+    "href": "berichte/bericht_3.html",
+    "title": "Bericht 3",
+    "section": "",
+    "text": "Die Anweisungen werden am Tag der Vorlesung veröffentlicht."
+  }
+]

@@ -30,7 +30,7 @@ csl: references/apa.csl
 
 ***Die Materialien werden vor dem Unterricht zur Verfügung gestellt.***
 
-## Lesungen
+## Lesungen {.unnumbered}
 
 Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kap. 2 (Datenvisualisierung)](https://r4ds.hadley.nz/data-visualize) aus [Abschnitt 2.5](https://r4ds.hadley.nz/data-visualize#visualizing-relationships) in @wickham_r_2023.
 
