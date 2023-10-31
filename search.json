@@ -231,6 +231,27 @@
     "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
   },
   {
+    "objectID": "mats/04-wrangling_1.html#lesungen",
+    "href": "mats/04-wrangling_1.html#lesungen",
+    "title": "4  Data Wrangling 1: Transformation",
+    "section": "Lesungen",
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kap. 4 (Data Transformation) in Wickham et al. (2023).\nEine ergänzende Lektüre ist Ch. 9 (Data Wrangling) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "mats/05-dataviz_2.html#lesungen",
+    "href": "mats/05-dataviz_2.html#lesungen",
+    "title": "5  Datenvisualisierung 2",
+    "section": "Lesungen",
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kap. 2 (Datenvisualisierung) aus Abschnitt 2.5 in Wickham et al. (2023).\nEine ergänzende Lektüre ist Ch. 3 (Data visualtion) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "mats/07-dateneinlesung.html#lesungen",
+    "href": "mats/07-dateneinlesung.html#lesungen",
+    "title": "6  Einlesen von Daten",
+    "section": "Lesungen",
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kap. 8 (Data Import) in Wickham et al. (2023).\nEine ergänzende Lektüre ist Ch. 4 (Data Import) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
     "objectID": "berichte/bericht_1.html",
     "href": "berichte/bericht_1.html",
     "title": "Bericht 1",
