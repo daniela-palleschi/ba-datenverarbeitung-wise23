@@ -111,11 +111,11 @@ library(languageR)
 library(tidyverse)
 df_lexdec <- lexdec
 
-fig_lexdec1 <-
+fig_lexdec <-
   df_lexdec |> 
   ggplot() +
-  aes(x = RT, colour = Class) +
-  geom_density(position = "identity", alpha = .5) +
+  aes(x = RT, fill = Class) +
+  geom_histogram(position = "identity", alpha = .5) +
   theme_bw()
 ```
 
@@ -123,18 +123,14 @@ fig_lexdec1 <-
 ## Wiederholung: `ggplot()` {.unnumbered .unlisted}
 :::
 
-- Welche Darstellung wird durch den folgenden Code erzeugt?
+Welche Darstellung in @fig-wiederholung wird durch den folgenden Code erzeugt?
 
 ```{r}
-library(languageR)
-library(tidyverse)
-df_lexdec <- lexdec
-
 fig_lexdec1 <-
   df_lexdec |> 
   ggplot() +
   aes(x = RT, colour = Class) +
-  geom_density(position = "identity", alpha = .5) +
+  geom_density(alpha = .5) +
   theme_bw()
 ```
 
@@ -142,6 +138,7 @@ fig_lexdec1 <-
 #| echo: false
 
 library(patchwork)
+
 fig_lexdec2 <-
   df_lexdec |> 
   ggplot() +
@@ -158,6 +155,9 @@ fig_lexdec3 <-
 
 ```{r}
 #| echo: false
+#| label: fig-wiederholung
+#| fig-cap: Drei aus dem lexdec-Datensatz generierte Diagramme
+#| fig-asp: .5
 fig_lexdec2 + fig_lexdec3 + fig_lexdec1 +
   plot_annotation(tag_levels = "A") & theme(legend.position = "bottom")
 ```
@@ -169,7 +169,7 @@ fig_lexdec2 + fig_lexdec3 + fig_lexdec1 +
   + TinyTex ist eine eigene LaTeX-Distribution, mit der wir PDFs erstellen können.
   + Das Paket `tinytex` kann uns helfen, TinyTex zu installieren
 
-## Installation von LaTeX über `tinytex`
+## Installation von LaTeX über `tinytex` {.unnumbered .unlisted}
 
 - Führen Sie den folgenden Code *in der Konsole* aus
 - oder, wenn Sie ihn in einem Skript ausführen wollen, um zu dokumentieren, was Sie getan haben, kommentieren Sie ihn nach der Ausführung aus (d.h. fügen Sie ein # davor)
@@ -181,7 +181,7 @@ install.packages("tinytex")
 tinytex::install_tinytex()
 ```
 
-## Ordner für Woche 3
+## Ordner für Woche 3 {.unnumbered .unlisted}
 
 1.  Fügen Sie einen Unterordner mit dem Namen `03-quarto` in `Notes` hinzu
 2.  Gehen Sie zu Moodle und speichern den Materialordner für '03 - Einführung in Quarto' in Ihrem `moodle` Ordner

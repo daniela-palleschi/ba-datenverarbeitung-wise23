@@ -65,17 +65,15 @@ library(languageR)
 library(tidyverse)
 df_lexdec <- lexdec
 
-fig_lexdec1 <-
+fig_lexdec <-
   df_lexdec |> 
   ggplot() +
   aes(x = RT, colour = Class) +
-  geom_density(position = "identity", alpha = .5) +
+  geom_histogram(position = "identity", alpha = .5) +
   theme_bw()
 ```
 
-### Wiederholung: `ggplot()` {.unnumbered}
-
-- Welche Darstellung in @fig-wiederholung wird durch den folgenden Code erzeugt?
+Welche Darstellung in @fig-wiederholung wird durch den folgenden Code erzeugt?
 
 ```{r}
 #| echo: true
@@ -87,7 +85,7 @@ fig_lexdec1 <-
   df_lexdec |> 
   ggplot() +
   aes(x = RT, colour = Class) +
-  geom_density(position = "identity", alpha = .5) +
+  geom_density(alpha = .5) +
   theme_bw()
 ```
 
@@ -99,7 +97,7 @@ fig_lexdec2 <-
   df_lexdec |> 
   ggplot() +
   aes(x = RT, colour = Class) +
-  geom_density(position = "identity", alpha = .5)
+  geom_density(alpha = .5)
 
 fig_lexdec3 <-
   df_lexdec |> 
