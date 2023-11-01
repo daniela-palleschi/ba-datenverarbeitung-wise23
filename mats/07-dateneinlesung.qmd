@@ -1,0 +1,45 @@
+---
+title: "Einlesen von Daten"
+subtitle: "Importieren von Datendateien"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 5 - Dateneinlesung" 
+date: "11/15/2023"
+date-format: "ddd [den] DD.MM.YYYY"
+date-modified: last-modified
+format:
+  html:
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    # self-contained: true
+    embed-resources: false
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+bibliography: ../references.bib
+csl: references/apa.csl
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, ## evaluate chunks
+                      echo = T, ## 'print code chunk?'
+                      message = F, ## 'print messages (e.g., warnings)?'
+                      error = T, ## continueeven when error encountered
+                      warning = F) ## don't print warnings
+```
+
+
+Die Materialien werden vor dem Unterricht zur Verfügung gestellt.
+
+## Lesungen {.unnumbered}
+
+Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kap. 8 (Data Import)](https://r4ds.hadley.nz/data-import) in @wickham_r_2023.
+
+Eine **ergänzende Lektüre** ist [Ch. 4 (Data Import)](https://psyteachr.github.io/ads-v2/04-data.html) in @nordmann_applied_2022.

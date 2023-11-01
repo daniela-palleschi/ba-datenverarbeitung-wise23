@@ -10,7 +10,7 @@ book:
   author: "Daniela Palleschi"
   date: "9/7/2023"
   twitter-card: true
-  downloads: [pdf, epub]
+  # downloads: [pdf]
   chapters:
     - part: "Overview"
       chapters:
@@ -76,6 +76,7 @@ format:
       warning: false
       echo: false
   # pdf:
+  #   documentclass: scrreport
   #   toc: true
   #   number-sections: true
   #   colorlinks: true

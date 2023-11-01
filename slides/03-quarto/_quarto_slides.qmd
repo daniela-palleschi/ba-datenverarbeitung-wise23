@@ -95,16 +95,94 @@ knitr::opts_chunk$set(eval = T, # evaluate chunks
 
 # Wiederholung {.unnumbered .unlisted}
 
-Letzte Woche haben wir...
+Letzte Woche haben wir gelernt...
 
+- was Datenrahmen sind
+- den Unterschied zwischen kategorialen und kontinuierlichen Daten
+- wie man Diagramme mit `ggplot` erstellt
+- die richtige Darstellung für unsere Daten auszuwählen
+
+## Wiederholung: `ggplot()` {.unnumbered .unlisted}
+
+Sehen Sie sich diesen Code an. Was würde passieren, wenn wir ihn ausführen würden?
+
+```{r}
+library(languageR)
+library(tidyverse)
+df_lexdec <- lexdec
+
+fig_lexdec1 <-
+  df_lexdec |> 
+  ggplot() +
+  aes(x = RT, colour = Class) +
+  geom_density(position = "identity", alpha = .5) +
+  theme_bw()
+```
+
+::: {.content-visible when-format="revealjs"}
+## Wiederholung: `ggplot()` {.unnumbered .unlisted}
+:::
+
+- Welche Darstellung wird durch den folgenden Code erzeugt?
+
+```{r}
+library(languageR)
+library(tidyverse)
+df_lexdec <- lexdec
+
+fig_lexdec1 <-
+  df_lexdec |> 
+  ggplot() +
+  aes(x = RT, colour = Class) +
+  geom_density(position = "identity", alpha = .5) +
+  theme_bw()
+```
+
+```{r}
+#| echo: false
+
+library(patchwork)
+fig_lexdec2 <-
+  df_lexdec |> 
+  ggplot() +
+  aes(x = RT, colour = Class) +
+  geom_density(position = "identity", alpha = .5)
+
+fig_lexdec3 <-
+  df_lexdec |> 
+  ggplot() +
+  aes(x = Class, fill = Class) +
+  geom_bar() +
+  theme_bw()
+```
+
+```{r}
+#| echo: false
+fig_lexdec2 + fig_lexdec3 + fig_lexdec1 +
+  plot_annotation(tag_levels = "A") & theme(legend.position = "bottom")
+```
 
 # Set-up {.unnumbered .unlisted}
 
-::: callout-tip
+- wir müssen eine LaTeX-Distribution verwenden, um PDF-Dokumente mit Quarto zu erstellen
+  + LaTeX ist ein Schriftsatzsystem
+  + TinyTex ist eine eigene LaTeX-Distribution, mit der wir PDFs erstellen können.
+  + Das Paket `tinytex` kann uns helfen, TinyTex zu installieren
 
-### [Aufgabe @exm-folders]: Ordner für Woche 3
-::: {#exm-folders .custom}
-::: nonincremental
+## Installation von LaTeX über `tinytex`
+
+- Führen Sie den folgenden Code *in der Konsole* aus
+- oder, wenn Sie ihn in einem Skript ausführen wollen, um zu dokumentieren, was Sie getan haben, kommentieren Sie ihn nach der Ausführung aus (d.h. fügen Sie ein # davor)
+
+```{r}
+#| eval: false
+# run this in the console
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+## Ordner für Woche 3
+
 1.  Fügen Sie einen Unterordner mit dem Namen `03-quarto` in `Notes` hinzu
 2.  Gehen Sie zu Moodle und speichern den Materialordner für '03 - Einführung in Quarto' in Ihrem `moodle` Ordner
 3.  Öffnen Sie das Dokument `_blatt.html` auf Ihren Computer
@@ -117,9 +195,6 @@ Letzte Woche haben wir...
 library(magick)
 magick::image_read(here::here("media/notes_folder.png"))
 ```
-:::
-:::
-:::
 
 # Quarto
 
@@ -129,12 +204,12 @@ magick::image_read(here::here("media/notes_folder.png"))
 ## Dynamische Berichte
 
 -   diejenigen, die Text, Code, Codeausgabe enthalten
--   Quarto bietet ein "unified authoring framework" für Data Science, das Ihren Text, Ihren Code und eure Code-Ausgabe einschließt [@wickham_r_2023, Kap 29.1]
+-   Quarto bietet ein "unified authoring framework" für Data Science, das Ihren Text, Ihren Code und Ihre Code-Ausgabe einschließt [@wickham_r_2023, Kap 29.1]
 -   Quarto wurde entwickelt, um auf drei Arten verwendet zu werden:
 
 1.  Für die Kommunikation mit Entscheidungsträgern, die sich auf die Schlussfolgerungen und nicht auf den Code hinter der Analyse konzentrieren wollen.
-2.  Für die Zusammenarbeit mit anderen Datenwissenschaftlern (einschließlich euch in der Zukunft!), die sowohl an Ihren Schlussfolgerungen als auch daran interessiert sind, wie t diese erreicht habt (d. h. am Code)
-3.  Als eine Umgebung, in der Datenwissenschaft betrieben werden kann, als ein modernes Labornotizbuch, in dem t nicht nur festhalten könnt, was t getan habt, sondern auch, was t gedacht habt.
+2. für die Zusammenarbeit mit anderen Datenwissenschaftlern (einschließlich Ihnen in der Zukunft!), die sich sowohl für Ihre Schlussfolgerungen als auch für die Art und Weise interessieren, wie Sie zu ihnen gekommen sind (d. h. für den Code).
+3. als eine Umgebung, in der Datenwissenschaft betrieben wird, als ein modernes Labornotizbuch, in dem wir nicht nur aufzeichnen können, was wir getan haben, sondern auch unsere Gedankengänge.
 
 ## R v. Rmarkdown v. Quarto
 
@@ -179,14 +254,14 @@ magick::image_read(here::here("media/notes_folder.png"))
     -   d.h., es gibt keinen technischen Grund dafür (die Dokumente laufen auch dann, wenn sie sich alle im selben Ordner befinden)
 -   werfen wir einen Blick auf einige meiner früheren und aktuellen Projektordner
 
-# Euer erstes Quarto-Dokument
+# Unsere erstes Quarto-Dokument
 
--   letzte Woche haben wir ein R-Skript erstellt, das t über Moodle eingereicht habt
--   ihr werdet nun eure erste `.qmd`-Datei erstellen
--   von nun an wird dies die Datei sein, die ihr in Moodle einreicht (kein R-Skript)
+-   letzte Woche haben wir ein R-Skript erstellt, das wir über Moodle eingereicht haben
+-   wir werden nun unsere erste `.qmd`-Datei erstellen
+-   von nun an wird dies die Datei sein, die wir in Moodle einreichen (kein R-Skript)
 
 ::: {.content-visible when-format="revealjs"}
-## Euer erstes Quarto-Dokument {.unlisted .unnumbered}
+## Unsere erstes Quarto-Dokument {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
@@ -194,7 +269,7 @@ magick::image_read(here::here("media/notes_folder.png"))
 ::: {#exm-qmd .custom}
 
 ::: nonincremental
-1.  Erstellen Sie in Ihrem R-Projekt-Ordner, in dem ihr eure Kursunterlagen/Notizen aufbewahren, einen neuen Ordner für Woche 3
+1.  Erstellen Sie in Ihrem R-Projekt-Ordner, in dem ihr Ihre Kursunterlagen/Notizen aufbewahren, einen neuen Ordner für Woche 3
 2.  `File > New Document > Quarto Document`
     -   Geben Sie ihm einen Titel wie "Quarto - Woche 3"
     -   Deaktivieren Sie die Option "open with Visual Editor".
@@ -202,7 +277,7 @@ magick::image_read(here::here("media/notes_folder.png"))
 4.  Klicken Sie auf die Schaltfläche "Render" am oberen Rand des Dokuments
     -   Speichern Sie das Dokument in dem Ordner für Woche 3, den Sie gerade erstellt haben.
     -   Was geschiehen? Vergleichen die Ausgabe mit dem Quellcode des Dokuments.
-5.  Gehen Sie zurück zu Ihrem neuen Ordner `02-quarto`
+5.  Gehen Sie zurück zu Ihrem neuen Ordner `03-quarto`
     -   Was hat sich geändert?
 :::
 :::
@@ -213,7 +288,15 @@ magick::image_read(here::here("media/notes_folder.png"))
 -   Quarto-Dokumente (wie Rmarkdown) enthalten drei wichtige Arten von Inhalten:
     1.  den **YAML-Header**, der von `---` umgeben ist
     2.  Text mit einer einfachen Formatierung oder Strukturierung wie `# Überschrift` oder `*Kursivschrift*`
-    3.  R-Code-Chunk, umgeben von ```` ``` ````
+    3.  R-Code-Chunk, umgeben von ```` ```{r} ``` ````
+  
+```{r}
+#| code-line-numbers: false
+#| echo: fenced
+# Dies ist ein Code Chunk
+1 + 1
+```
+
 
 ## YAML
 
@@ -235,10 +318,11 @@ magick::image_read(here::here("media/notes_folder.png"))
 ::: {#exm-YAML .custom}
 
 ::: nonincremental
-1.  Ändert den Titel, wenn ihr das möchtet
-2.  Raten Sie, wie wir einen "Untertitel" hinzufügen könnten (Hinweis: es ist ähnlich wie beim Hinzufügen eines "Titels")
-3.  Fügen Sie einen Autor hinzu, `author: "Vorname Nachname"` (siehe Beispiel unten)
-4.  Fügen Sie ein Inhaltsverzeichnis hinzu, indem Sie `format` so ändern, dass es wie folgt aussieht:
+
+1. Ändern Sie den Titel, wenn Sie das tun möchten.
+2. Raten Sie, wie man einen "Untertitel" (EN: subtitle) hinzufügen könnte (Hinweis: es ist ähnlich wie beim Hinzufügen eines `title`)
+3. Fügen Sie einen Autor hinzu, `Autor: "vorname nachname"` (siehe Beispiel unten)
+4. Füge ein Inhaltsverzeichnis hinzu (EN: Table of Contents, `toc`), indem du `format` so änderst, dass es wie folgt aussieht:
 
 ```{r}
 #| eval: false
@@ -256,7 +340,7 @@ format:
 :::
 :::
 
-## Strukturierung eures Dokuments
+## Strukturierung Ihres Dokuments
 
 -   wir können unser Dokument strukturieren mit
     -   `# Überschriften`
@@ -292,7 +376,7 @@ Dies ist ein Text über das Unterthema.
 ```
 
 ::: {.content-visible when-format="revealjs"}
-## Strukturierung eures Dokuments {.unlisted .unnumbered}
+## Strukturierung Ihres Dokuments {.unlisted .unnumbered}
 :::
 
 ::: callout-note
@@ -307,7 +391,7 @@ Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Z
 :::
 
 ::: {.content-visible when-format="revealjs"}
-## Strukturierung eures Dokuments {.unlisted .unnumbered}
+## Strukturierung Ihres Dokuments {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
@@ -419,7 +503,7 @@ dplyr::tribble(
 4+6
 ```
 
--   ihr könnt den Code in eurer RStudio-Sitzung ausführen, indem ihr:
+-   ihr könnt den Code in Ihrer RStudio-Sitzung ausführen, indem ihr:
     -   auf das kleine grüne Dreieck oben rechts im Chunk klickt
     -   die Tastenkombination `Cmd`/`Strg-Enter` verwendt, um eine einzelne Code-Zeile auszuführen (je nachdem, worauf der Cursor steht)
     -   der Tastenkombination `Cmd`/`Strg-Shift-Enter` benutzt, um den gesamten Code-Chunk auszuführen (falls es mehrere Befehle innerhalb eines einzelnen Abschnitts gibt)
@@ -480,6 +564,10 @@ Tipp: Klicken Sie auf die Schaltfläche "Outline" oben rechts im Texteditor-Fens
 4+6
 ```
 
+- Wichtig ist, dass die Codechunk-Optionen:
+  - mit `#| ` beginnen, mit einem Leerzeichen dahinter und keinem Leerzeichen davor
+  - direkt unter ```` ```{r} ```` platziert werden
+
 ::: {.content-visible when-format="revealjs"}
 ## Code-Chunk-Optionen {.unnumbered .unlisted .unlisted}
 :::
@@ -507,7 +595,7 @@ Tipp: Klicken Sie auf die Schaltfläche "Outline" oben rechts im Texteditor-Fens
 
 ## Set-up
 
-- unsere Pakete in einen Codechunk laden: `tidyverse` und `languageR`
+- unsere Pakete in einen Codechunk laden: `tidyverse`, `languageR`, und `ggthemes`
 
 ```{r}
 #| echo: fenced

@@ -18,11 +18,6 @@ format:
     code-tools: true
     # self-contained: true
     embed-resources: false
-  pdf:
-    toc: true
-    number-sections: true
-    colorlinks: true
-    code-overflow: wrap
 bibliography: ../references.bib
 csl: references/apa.csl
 ---

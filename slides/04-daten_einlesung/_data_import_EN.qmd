@@ -69,20 +69,11 @@ knitr::opts_chunk$set(eval = T, # evaluate chunks
                       warning = F) # don't print warnings
 ```
 
-```{r, eval = T, cache = F}
-#| echo: false
-# Create references.json file based on the citations in this script
-# make sure you have 'bibliography: references.json' in the YAML
-# rbbt::bbt_update_bib("_data_import_EN.qmd")
-```
-
 # Wiederholung {.unnumbered .unlisted}
 
 Last week we...
 
--   learned the difference between numerical and categorical data types
--   produced our first plots with `ggplot2`
--   learned which plots are appropriate for different data types
+
 
 # Heutige Ziele {.unnumbered .unlisted}
 
@@ -100,7 +91,7 @@ Today we will...
 
 # Exploring data
 
-- last week we worked with data provided in the R package `palmerpenguings`
+- so far we've worked with data provided in the R package `languageR`
   + data from packages are a great way to learn data science tools
   + but you'll want to work with your own data at some point
 - today we'll learn the basics of reading data files into R
@@ -109,7 +100,7 @@ Today we will...
 
 - we will start using the `pacman` package
   - the function `p_load()` takes package names as arguments
-  - it then checks if you have the package install
+  - it then checks if you have the package installed
     + if yes, then it loads the package
     + if not, then it installs and loads the package
 - this saves us from having to install new packages every time
@@ -130,10 +121,11 @@ install.packages("pacman")
 
 ```{r}
 # load packages
-pacman::p_load("tidyverse", # wrangling
-               "janitor", # wrangling
-               "here", # relative file paths
-               "patchwork" # plot layout
+pacman::p_load(tidyverse, # wrangling
+               languageR, # linguistic datasets
+               janitor, # wrangling
+               here, # relative file paths
+               patchwork # plot layout
                )
 ```
 
@@ -146,30 +138,26 @@ pacman::p_load("tidyverse", # wrangling
 
 ## Built-in data
 
-- let's first explore some built-in data: the `iris` dataset
+- let's first load some built-in data
+-  the `weightRatings` dataset contains subjective estimates on a seven-point scale of the weight of the referents of 81 English nouns
   + how many *variables* are there?
   + how many *observations*?
 
 ```{r}
-# load tidyverse
-library(tidyverse)
-# read-in iris dataset
-data("iris")
-```
-
-```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source:](https://www.analyticsvidhya.com/blog/2022/06/iris-flowers-classification-using-machine-learning/) Analytics Vidhya (all rights reserved)"}
-knitr::include_graphics(here::here("media", "iris.png"))
+#| eval: false
+# read-in df_weight dataset
+df_weight <- weightRatings
 ```
 
 ## Explore a dataset
 
-- `View()`: open dataset
-  + only run this **in the console**! Your document won't render if you have it in your script
-- the `head()` function prints the first 6 rows of the data
+- double-click on the object in your environment to view its full contents
+- or use the `head()` function prints the first 6 rows of the data
+  + this is useful to get an idea of the data structure and contents
 
 ```{r}
 # print dataset (first 6 rows)
-head(iris)
+head(df_weight)
 ```
 
 ### `glimpse()`
@@ -178,7 +166,7 @@ head(iris)
 - gives a sideways preview of the dataframe
 
 ```{r}
-glimpse(iris)
+glimpse(df_weight)
 ```
 
 ### `summary()`
@@ -196,20 +184,9 @@ glimpse(iris)
 ### [Aufgabe @exm-table1]: `table1`
 ::: {#exm-table1 .custom}
 ::: nonincremental
-1.  Try loading the built-in dataset `table1`
+1.  Try loading the built-in dataset `df_weight`
 2.  Explore the dataset using the functions we just learned
-3.  Is there anything funny with the summary? How might we fix that?
-
-```{r}
-#| eval: false
-#| echo: false
-
-data(table1)
-summary(table1) # population is in scientific notation
-
-options(scipen=999)
-summary(table1)
-```
+3.  What do you think each variable contains?
 
 :::
 :::
@@ -242,7 +219,7 @@ read_lines(here::here("daten", "students.csv")) |> cat(sep = "\n")
 
 ## `readr` package
 
-- the same data can be viewed as a table, just like we did with `penguins` and `iris`
+- the same data can be viewed as a table, just like we did with `penguins` and `df_weight`
   + but first we have to *read in the data*
 - the `readr` package (part of `tidyverse`) can load in most data types
 
