@@ -357,30 +357,16 @@
     "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitungen auf dieses Thema sind\n\nKap. 3, Abschnitt 3.4-3.9 (Descriptive statistics, models, and distributions) in Winter (2019) (online verfügbar über das HU Grimm Zentrum unter https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431).\nBereich 4.5 (Groups) in Kapital 4 (Data Transformation) in (wickham_tidyverse_2023?).\n\n\n\n\n\n\n\nWinter, B. (2019). Statistics for Linguists: An Introduction Using R. In Statistics for Linguists: An Introduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
   },
   {
-    "objectID": "mats/09-wrangling_2.html#section",
-    "href": "mats/09-wrangling_2.html#section",
-    "title": "8  Data Wrangling 2",
-    "section": "",
-    "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
-  },
-  {
-    "objectID": "mats/09-wrangling_2.html#lesungen",
-    "href": "mats/09-wrangling_2.html#lesungen",
-    "title": "8  Data Wrangling 2",
-    "section": "Lesungen",
-    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Kapital 6 (Data tidying) in Wickham et al. (2023).\nEine ergänzende Lektüre ist Kapital 8 (Data tidying) in Nordmann & DeBruine (2022).\n\n\n\n\n\n\nNordmann, E., & DeBruine, L. (2022). Applied Data Skills. Zenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
-  },
-  {
     "objectID": "mats/10-dataviz_3.html#section",
     "href": "mats/10-dataviz_3.html#section",
-    "title": "9  Datenvisualisierung 2",
+    "title": "8  Datenvisualisierung 2",
     "section": "",
     "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
   },
   {
     "objectID": "mats/10-dataviz_3.html#lesungen",
     "href": "mats/10-dataviz_3.html#lesungen",
-    "title": "9  Datenvisualisierung 2",
+    "title": "8  Datenvisualisierung 2",
     "section": "Lesungen",
     "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitung auf dieses Thema ist Bereich 2.5 (Visualising relationsips) in Wickham et al. (2023).\nEine ergänzende Lektüre ist Kapital 4 (Representing summary statistics) in Nordmann et al. (2022).\n\n\n\n\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L. M. (2022). Data Visualization Using R for Researchers Who Do Not Use R. Advances in Methods and Practices in Psychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
   }

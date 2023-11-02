@@ -6,6 +6,6 @@ date-format: "Vorle[s]ung ddd [d]en DD.MM.YYYY"
 # date-modified: last-modified
 ---
 
-# Bericht 1 {.unnumbered}
+# Bericht 1
 
 Die Anweisungen werden am Tag der Vorlesung veröffentlicht.
