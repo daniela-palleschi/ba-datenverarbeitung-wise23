@@ -6,41 +6,12 @@ project:
   
 book:
   title: "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)"
+  output-file: "r4ling_de_ws2324"
   subtitle: "WiSe23/24"
   author: "Daniela Palleschi"
-  date: "9/7/2023"
+  date: "10/16/2023"
   twitter-card: true
-  # downloads: [pdf]
-  chapters:
-    - part: "Overview"
-      chapters:
-        - index.qmd
-        - syllabus.qmd
-        - setup/setup.qmd
-    - part: "Course mats"
-      chapters:
-        - mats/01-intro_r.qmd
-        - mats/02-dataviz_1.qmd
-        - mats/03-quarto_1.qmd
-        - mats/04-wrangling_1.qmd
-        - mats/05-dataviz_2.qmd
-        - mats/07-dateneinlesung.qmd
-        # - mats/08-desc_stats.qmd
-        # - mats/09-wrangling_2.qmd
-        # - mats/10-dataviz_2.qmd
-        # - mats/12-functions.qmd
-        # - mats/13-infer_stats_1.qmd
-        # - mats/14-dataviz_3.qmd
-        # - mats/16-qna.qmd
-    - part: "Berichte"
-      chapters:
-        - berichte/bericht_1.qmd
-        - berichte/bericht_2.qmd
-        - berichte/bericht_3.qmd
-        
-    - references.qmd
-
-
+  downloads: [pdf]
   navbar:
     right:
       - icon: home
@@ -52,8 +23,43 @@ book:
       - icon: life-preserver
         href: https://moodle.hu-berlin.de/course/view.php?id=124123
         text: Moodle
+  chapters:
+    - part: "Kursübersicht"
+      chapters:
+        - index.qmd
+        - syllabus.qmd
+        - setup/setup.qmd
+    - part: "Grundlagen"
+      chapters:
+        - mats/01-intro_r.qmd
+        - mats/02-dataviz_1.qmd
+        - mats/03-quarto_1.qmd
+        - mats/04-wrangling_1.qmd
+        - mats/05-dataviz_2.qmd
+        - mats/06-bericht_1.qmd
+    - part: "Nächste Stufe"
+      chapters:
+        - mats/07-dateneinlesung.qmd
+        - mats/08-desc_stats.qmd
+        - mats/09-wrangling_2.qmd
+        - mats/10-dataviz_3.qmd
+        - mats/11-bericht_2.qmd
+    - part: "Fortgeschrittene Themen"
+      # chapters:
+        # - mats/12-baseR.qmd
+        # - mats/13-infer_stats_1.qmd
+        # - mats/14-dataviz_3.qmd
+        # - berichte/bericht_3.qmd
+        # - mats/16-qna.qmd
+    - part: "Literaturverzeichnis"
+      chapters:
+        - references.qmd
 
 bibliography: references.bib
+csl: apa.csl
+
+  
+
 
 crossref:
   exm-prefix: ex.   # (default is "Figure")
@@ -63,11 +69,13 @@ crossref:
 format:
   html:
     toc: true
+    toc-title: "Kapitelinhalt"
     number-sections: true
     include-after-body: custom.html
     code-tools: true
+    code-overflow: wrap
     page-layout: full
-    self-contained: true
+    embed-resources: false
     theme:
       light: flatly
       dark: darkly
@@ -75,12 +83,11 @@ format:
       message: false
       warning: false
       echo: false
-  # pdf:
-  #   documentclass: scrreport
-  #   toc: true
-  #   number-sections: true
-  #   colorlinks: true
-  #   code-overflow: wrap
-
-
-
+  pdf:
+    documentclass: scrreport
+    toc: true
+    toc-depth: 1
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+    keep-tex: true

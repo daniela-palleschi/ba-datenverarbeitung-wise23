@@ -8,18 +8,6 @@ lang: de
 date: "10/25/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
-format:
-  html:
-    number-sections: true
-    number-depth: 3
-    toc: true
-    toc-title: "heutige Themen"
-    code-overflow: wrap
-    code-tools: true
-    # self-contained: true
-    embed-resources: false
-bibliography: ../references.bib
-csl: ../apa.csl
 ---
 
 
@@ -72,6 +60,8 @@ fig_lexdec <-
   geom_histogram(position = "identity", alpha = .5) +
   theme_bw()
 ```
+
+
 
 Welche Darstellung in @fig-wiederholung wird durch den folgenden Code erzeugt?
 

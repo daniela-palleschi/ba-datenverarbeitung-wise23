@@ -1,9 +1,4 @@
----
-bibliography: references.bib
-csl: apa.csl
----
-
-# References {.unnumbered}
+# Literaturverzeichnis {.unnumbered}
 
 ::: {#refs}
 :::

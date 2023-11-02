@@ -1,5 +1,29 @@
 ---
+title: "Datenvisualisierung 2"
+subtitle: "Visualisierung von Beziehungen"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 10 - Data Viz 3" 
 date: "12/20/2023"
+date-format: "ddd [den] DD.MM.YYYY"
+date-modified: last-modified
 ---
 
-# Data Viz 2
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, ## evaluate chunks
+                      echo = T, ## 'print code chunk?'
+                      message = F, ## 'print messages (e.g., warnings)?'
+                      error = T, ## continueeven when error encountered
+                      warning = F) ## don't print warnings
+```
+
+## {.unnumbered}
+
+**Die Materialien werden vor dem Unterricht zur Verfügung gestellt.**
+
+## Lesungen {.unnumbered}
+
+Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Bereich 2.5 (Visualising relationsips)](https://r4ds.hadley.nz/data-visualize#visualizing-relationships) in @wickham_r_2023.
+
+Eine **ergänzende Lektüre** ist [Kapital 4 (Representing summary statistics)](https://psyteachr.github.io/introdataviz/representing-summary-statistics.html) in @nordmann_data_2022.

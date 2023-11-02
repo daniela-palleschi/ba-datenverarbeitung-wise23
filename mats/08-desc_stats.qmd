@@ -1,5 +1,31 @@
 ---
+title: "Deskriptive Statistik"
+subtitle: "Maße der zentralen Tendenz und Streuung"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 8 - Dateneinlesung" 
 date: "11/29/2023"
+date-format: "ddd [den] DD.MM.YYYY"
+date-modified: last-modified
 ---
 
-# Descriptive Statistics
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, ## evaluate chunks
+                      echo = T, ## 'print code chunk?'
+                      message = F, ## 'print messages (e.g., warnings)?'
+                      error = T, ## continueeven when error encountered
+                      warning = F) ## don't print warnings
+```
+
+## {.unnumbered}
+
+**Die Materialien werden vor dem Unterricht zur Verfügung gestellt.**
+
+## Lesungen {.unnumbered}
+
+Die **Pflichtlektüre** zur Vorbereitungen auf dieses Thema sind
+
+1. Kap. 3, Abschnitt 3.4-3.9 (Descriptive statistics, models, and distributions) in @winter_statistics_2019 (online verfügbar über das [HU Grimm Zentrum](https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431) unter https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431).
+
+2. [Bereich 4.5 (Groups)](https://r4ds.hadley.nz/data-transform#groups) in Kapital 4 (Data Transformation) in @wickham_tidyverse_2023.

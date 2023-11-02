@@ -8,18 +8,6 @@ lang: de
 date: "11/15/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
-format:
-  html:
-    number-sections: true
-    number-depth: 3
-    toc: true
-    toc-title: "heutige Themen"
-    code-overflow: wrap
-    code-tools: true
-    # self-contained: true
-    embed-resources: false
-bibliography: ../references.bib
-csl: references/apa.csl
 ---
 
 

@@ -7,23 +7,6 @@ footer: "Woche 2 - Datenvisualisierung 1"
 date: "11/01/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
-format:
-  html:
-    number-sections: true
-    number-depth: 3
-    toc: true
-    toc-title: "heutige Themen"
-    code-overflow: wrap
-    code-tools: true
-    # self-contained: true
-    embed-resources: false
-  pdf:
-    toc: true
-    number-sections: true
-    colorlinks: true
-    code-overflow: wrap
-bibliography: ../references.bib
-csl: references/apa.csl
 ---
 
 ```{r}
