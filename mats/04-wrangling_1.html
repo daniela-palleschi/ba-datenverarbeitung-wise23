@@ -332,6 +332,32 @@ div.csl-indent {
    
   <ul>
   <li><a href="#lesungen" id="toc-lesungen" class="nav-link active" data-scroll-target="#lesungen">Lesungen</a></li>
+  <li><a href="#wiederholung" id="toc-wiederholung" class="nav-link" data-scroll-target="#wiederholung">Wiederholung</a></li>
+  <li><a href="#heutige-ziele" id="toc-heutige-ziele" class="nav-link" data-scroll-target="#heutige-ziele">Heutige Ziele</a></li>
+  <li><a href="#voraussetzungen" id="toc-voraussetzungen" class="nav-link" data-scroll-target="#voraussetzungen"><span class="header-section-number">4.1</span> Voraussetzungen</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><span class="header-section-number">4.2</span> Data Wrangling</a>
+  <ul class="collapse">
+  <li><a href="#lexdec" id="toc-lexdec" class="nav-link" data-scroll-target="#lexdec"><span class="header-section-number">4.2.1</span> <code>lexdec</code></a></li>
+  <li><a href="#dplyr-grundlagen" id="toc-dplyr-grundlagen" class="nav-link" data-scroll-target="#dplyr-grundlagen"><span class="header-section-number">4.2.2</span> <code>dplyr</code>-Grundlagen</a></li>
+  </ul></li>
+  <li><a href="#zeilen" id="toc-zeilen" class="nav-link" data-scroll-target="#zeilen"><span class="header-section-number">4.3</span> Zeilen</a>
+  <ul class="collapse">
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><span class="header-section-number">4.3.1</span> <code>filter()</code></a></li>
+  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"><span class="header-section-number">4.3.2</span> <code>arrange()</code></a></li>
+  </ul></li>
+  <li><a href="#spalten" id="toc-spalten" class="nav-link" data-scroll-target="#spalten"><span class="header-section-number">4.4</span> Spalten</a>
+  <ul class="collapse">
+  <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"><span class="header-section-number">4.4.1</span> <code>rename()</code></a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><span class="header-section-number">4.4.2</span> <code>mutate()</code></a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><span class="header-section-number">4.4.3</span> <code>select()</code></a></li>
+  <li><a href="#relocate" id="toc-relocate" class="nav-link" data-scroll-target="#relocate"><span class="header-section-number">4.4.4</span> <code>relocate()</code></a></li>
+  </ul></li>
+  <li><a href="#dplyr-und-ggplot2" id="toc-dplyr-und-ggplot2" class="nav-link" data-scroll-target="#dplyr-und-ggplot2"><span class="header-section-number">4.5</span> <code>dplyr</code> und <code>ggplot2</code></a>
+  <ul class="collapse">
+  <li><a href="#pipe-versus-plus-vs." id="toc-pipe-versus-plus-vs." class="nav-link" data-scroll-target="#pipe-versus-plus-vs."><span class="header-section-number">4.5.1</span> Pipe versus plus (<code>|&gt;</code> vs.&nbsp;<code>+</code>)</a></li>
+  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">4.5.2</span> Aufgaben</a></li>
+  </ul></li>
+  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session Info</a></li>
   </ul>
 </nav>
     </div>
@@ -372,7 +398,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Do. den 02.11.2023</p>
+      <p class="date-modified">Di. den 07.11.2023</p>
     </div>
   </div>
     
@@ -381,16 +407,960 @@ div.csl-indent {
 
 </header>
 
-<p><strong><em>Die Materialien werden vor dem Unterricht zur Verfügung gestellt.</em></strong></p>
-<section id="lesungen" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h2>
+<section id="lesungen" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h3>
 <p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-transform">Kap. 4 (Data Transformation)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
 <p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/09-wrangle.html">Ch. 9 (Data Wrangling)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
+</section>
+<section id="wiederholung" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="wiederholung">Wiederholung</h2>
+<p>Letze Woche haben wir…</p>
+<ul>
+<li>gelernt, was dynamische Berichte sind</li>
+<li>unser eigenes Quarto-Dokument erstellt</li>
+<li>gelernt, wie man ein Quarto-Dokument bearbeitet</li>
+<li>gelernt, wie man Code in ein Quarto-Dokument einfügt</li>
+<li>ein Quarto-Dokument in verschiedenen Formaten wiedergebt</li>
+</ul>
+</section>
+<section id="heutige-ziele" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="heutige-ziele">Heutige Ziele</h2>
+<p>Heute werden wir…</p>
+<ul>
+<li>lernen, wie man Daten mit dem Paket <code>dplyr</code> aus dem <code>tidyverse</code> verarbeitet</li>
+<li>lernen, wie man die <code>pipe</code> (<code>|&gt;</code>) verwendet, um das Ergebnis einer Funktion in eine andere Funktion einzuspeisen</li>
+<li>Funktionen kennenlernen, die auf Zeilen operieren</li>
+<li>Funktionen kennenlernen, die mit Spalten arbeiten</li>
+<li>lernen, wie man <code>dplyr</code>-Funktionen mit Plots von <code>ggplot2</code> kombiniert</li>
+</ul>
+<section id="lust-auf-mehr" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="lust-auf-mehr">Lust auf mehr?</h3>
+<ul>
+<li><a href="https://r4ds.hadley.nz/data-transform.html">Kapital 4 (Data transformation)</a> in <span class="citation" data-cites="wickham_r_nodate">(<a href="01-intro_r.html#ref-wickham_r_nodate" role="doc-biblioref"><strong>wickham_r_nodate?</strong></a>)</span></li>
+<li><a href="https://psyteachr.github.io/ads-v2/09-wrangle.html">Kapital 9 (Data wrangling)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span></li>
+</ul>
+</section>
+</section>
+<section id="voraussetzungen" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="voraussetzungen"><span class="header-section-number">4.1</span> Voraussetzungen</h2>
+<ol type="1">
+<li>Frisches Quarto-Dokument
+<ul>
+<li>Erstellen Sie ein neues Quarto-Dokument für den heutigen Unterricht
+<ul>
+<li>Datei &gt; Neues Dokument &gt; Quarto Dokument, mit dem Namen <code>04-wrangling</code></li>
+</ul></li>
+<li>YAML einrichten: Titel, Ihr Name, ein <code>toc</code> hinzufügen</li>
+</ul></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Data wrangling"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>subtitle<span class="sc">:</span> <span class="st">"Transforming data"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Your name here"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lang<span class="sc">:</span> de</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">"11/08/2023"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Pakete
+<ul>
+<li>Die heutigen Pakete sind:
+<ul>
+<li><code>tidyverse</code>: zum Verarbeiten (<code>dplyr</code>) und Plotten (<code>ggplot2</code>)</li>
+<li><code>languageR</code>: für linguistische Datensätze</li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(languageR)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Daten
+<ul>
+<li>wir arbeiten wieder mit dem <code>lexdec</code>-Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="01-intro_r.html#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span></li>
+<li>wir speichern ihn als Objekt mit dem Namen <code>df_lexdec</code></li>
+<li>wir wandeln auch die Variable <code>RT</code> um, so dass sie in Millisekunden angegeben wird (vorher war sie in log Millisekunden angegeben, aber machen Sie sich keine Gedanken darüber, was das bedeutet)</li>
+<li>und wir wählen 10 Variablen aus, die für uns heute relevant sind</li>
+</ul></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="ot">&lt;-</span> lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">exp</span>(RT)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Subject, RT, Trial, Sex, NativeLanguage, Correct, Word, Frequency, Class, Length)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-wrangling" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="data-wrangling"><span class="header-section-number">4.2</span> Data Wrangling</h2>
+<ul>
+<li>Im Englischen bezieht sich “wrangling” auf einen langen, schwierigen Prozess
+<ul>
+<li><ol start="26" type="a">
+<li>B. treiben Cowboys ihre Rinder oder Herden zusammen (sammeln, sammeln ihre Tiere)</li>
+</ol></li>
+</ul></li>
+<li>Es gibt zwei Hauptbestandteile des Wrangling
+<ul>
+<li>Transformieren: Sortieren oder Erstellen neuer Variablen (was wir heute tun werden)</li>
+<li>Aufräumen: Umformung oder Strukturierung Ihrer Daten (dies werden wir in einigen Wochen tun)</li>
+</ul></li>
+<li>Sowohl das Aufräumen als auch das Transformieren von Daten erfordern das Paket <code>dplyr</code> aus dem <code>tidyverse</code>.
+<ul>
+<li><code>dplyr</code> Funktionen werden oft als Verben bezeichnet, weil sie etwas <em>tun</em></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Der Name <code>dplyr</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Der Name <code>dplyr</code> kommt von einem früheren Paket, <code>plyr</code>, das dazu verwendet wird, Daten zu zerlegen, Funktionen darauf anzuwenden und zu kombinieren
+<ul>
+<li>Im Englischen klingt <code>plyr</code> wie das Wort für Zangen (“pliers”), die benutzt werden, um Dinge auseinander zu nehmen, wie das, was <code>plyr</code> mit Daten macht</li>
+<li>das “d” in “dplyr” wurde hinzugefügt, weil das Paket speziell für die Arbeit mit Datenrahmen gedacht ist</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<section id="lexdec" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="lexdec"><span class="header-section-number">4.2.1</span> <code>lexdec</code></h3>
+<ul>
+<li>der <code>lexdec</code>-Datensatz enthält Daten für eine lexikalische Entscheidungsaufgabe im Englischen
+<ul>
+<li>Schauen wir uns den Datensatz mit der Funktion <code>head()</code> an, die nur die ersten 6 Zeilen ausgibt
+<ul>
+<li>hier geben wir die ersten 10 Zeilen aus</li>
+</ul></li>
+</ul></li>
+</ul>
+<ul>
+<li>In meinen Materialien verwende ich oft die Funktion “head()”, um zu vermeiden, dass der gesamte Datensatz in der Ausgabe gedruckt wird, aber Sie würden im Allgemeinen nicht “head()” verwenden wollen, wenn Sie Ihre Daten betrachten, sondern Ihren gesamten Datensatz betrachten wollen</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="#exm-df_lexent">Aufgabe&nbsp;<span>4.1</span></a>: <code>df_lexdec</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="exm-df_lexent" class="custom theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.1 </strong></span>&nbsp;</p>
+<div class="nonincremental">
+<ol type="1">
+<li>Betrachten Sie den Datensatz
+<ul>
+<li>wie viele Beobachtungen gibt es?</li>
+<li>Wie viele Variablen gibt es?</li>
+</ul></li>
+<li>Geben Sie den Datensatz in die Funktion <code>glimpse()</code> ein.
+<ul>
+<li>Was zeigt Ihnen das?</li>
+<li>Wie sieht es im Vergleich zu dem aus, was Sie sehen, wenn Sie <code>summary()</code> verwenden?</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dplyr-grundlagen" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="dplyr-grundlagen"><span class="header-section-number">4.2.2</span> <code>dplyr</code>-Grundlagen</h3>
+<ul>
+<li>heute lernen wir einige der wichtigsten <code>dplyr</code>-Verben (Funktionen) kennen, mit denen wir die meisten unserer Datenmanipulationsprobleme lösen können
+<ul>
+<li>Ich verwende diese Verben mehrfach in wahrscheinlich jedem Analyseskript</li>
+</ul></li>
+<li>Die <code>dplyr</code>-Verben haben einige Dinge gemeinsam:
+<ol type="1">
+<li>das erste Argument ist immer ein Datenrahmen</li>
+<li>die folgenden Argumente beschreiben in der Regel die zu bearbeitenden Spalten, wobei der Variablenname (ohne Anführungszeichen) verwendet wird</li>
+<li>die Ausgabe ist immer ein neuer Datenrahmen</li>
+</ol></li>
+</ul>
+<ul>
+<li>Die Verben sind alle für eine Sache gut geeignet, so dass wir oft mehrere Verben auf einmal verwenden wollen.
+<ul>
+<li>Wir verwenden dazu die Pipe (<code>|&gt;</code> oder <code>|&gt;</code>)</li>
+<li>Wir haben diese Pipe bereits gesehen, als wir einen Datenrahmen in <code>ggplot()</code> einspeisten.</li>
+<li>wir können die Pipe als <code>und dann</code> lesen</li>
+</ul></li>
+</ul>
+<ul>
+<li>In dem folgenden Code identifizieren
+<ul>
+<li>den Datenrahmen</li>
+<li><code>dplyr</code>-Verben</li>
+<li>Variablennamen</li>
+</ul></li>
+<li>Kannst du versuchen, herauszulesen (zu erraten), was der folgende Code macht?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Subject <span class="sc">==</span> <span class="st">"A1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Subject, Trial, RT, NativeLanguage, Word) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(NativeLanguage, <span class="at">.after =</span> Trial)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Korrekte Syntax
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>.Beachten Sie, dass <code>A1</code> mit Anführungszeichen geschrieben wird, aber keiner der anderen Codes. Wenn wir ein Objekt (z.B. <code>df_lexdec</code>) oder seine Variablen (z.B. <code>Subject</code>) aufrufen, setzen wir sie nicht in Anführungszeichen. Wenn wir einen bestimmten <em>Wert</em> einer Variablen aufrufen, der nicht numerisch ist, müssen wir diesen Wert in Anführungszeichen setzen, weil die Subject ID <code>A1</code> ein Wert der Variablen <code>Subject</code> ist, müssen wir sie in Anführungszeichen setzen.</p>
+<p>Versuchen Sie, die Anführungszeichen zu entfernen. Welche Fehlermeldung erhalten Sie?</p>
+<p>Versuchen Sie, einen Variablennamen in Anführungszeichen zu setzen, welche Fehlermeldung erhalten Sie?</p>
+<p>Dies ist eine wichtige Übung, denn Sie werden oft feststellen, dass Ihr Code nicht läuft, aber die Lösung ist oft etwas so Einfaches wie fehlende oder zusätzliche Anführungszeichen oder Interpunktion.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="zeilen" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="zeilen"><span class="header-section-number">4.3</span> Zeilen</h2>
+<ul>
+<li><p>In aufgeräumten Daten stellen die Zeilen Beobachtungen dar.</p></li>
+<li><p>die wichtigsten Verben für Zeilen sind:</p>
+<ul>
+<li><code>filter()</code>: ändert, welche Zeilen vorhanden sind</li>
+<li><code>arrange()</code>: ändert die Reihenfolge der Zeilen</li>
+</ul></li>
+<li><p>Wir besprechen auch</p>
+<ul>
+<li><code>distinct()</code>: findet Zeilen mit unterschiedlichen Werten basierend auf einer Variablen (Spalte)</li>
+</ul></li>
+</ul>
+<section id="filter" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="filter"><span class="header-section-number">4.3.1</span> <code>filter()</code></h3>
+<ul>
+<li>ändert, welche Zeilen vorhanden sind, ohne ihre Reihenfolge zu ändern</li>
+<li>nimmt den Datenrahmen als erstes Argument
+<ul>
+<li>Die folgenden Argumente sind Bedingungen, die <code>TRUE</code> sein müssen, damit die Zeile erhalten bleibt</li>
+</ul></li>
+</ul>
+<ul>
+<li>findet alle Reaktionszeiten, die länger als 450 Millisekunden waren:</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="dv">450</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Subject       RT Trial Sex NativeLanguage Correct       Word Frequency  Class
+1      A1 566.9998    23   F        English correct        owl  4.859812 animal
+2      A1 548.9998    27   F        English correct       mole  4.605170 animal
+3      A1 572.0000    29   F        English correct     cherry  4.997212  plant
+4      A1 486.0002    30   F        English correct       pear  4.727388  plant
+6      A1 483.0002    33   F        English correct blackberry  4.060443  plant
+8      A1 524.9999    38   F        English correct   squirrel  4.709530 animal
+  Length
+1      3
+2      4
+3      6
+4      4
+6     10
+8      8</code></pre>
+</div>
+</div>
+<ul>
+<li>Beachten Sie, dass wir den Wert der Reaktionszeit nicht in Anführungszeichen setzen, da er <em>numerisch</em> ist</li>
+</ul>
+<ul>
+<li>wenn Sie die gefilterten Daten speichern wollen, ist es in der Regel ratsam, sie unter einem <em>neuen</em> Objektnamen zu speichern
+<ul>
+<li>wenn Sie die vorgefilterte Version nicht überschreiben wollen, ist ein neuer Name erforderlich</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_lexdec_450 <span class="ot">&lt;-</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="dv">450</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Logische Operatoren
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="nicht-inkrementelle">
+<ul>
+<li>Symbole, die zur Beschreibung einer logischen Bedingung verwendet werden
+<ul>
+<li><code>==</code> <em>ist identisch</em> (<code>1 == 1</code>)</li>
+<li><code>!=</code> <em>ist nicht identisch</em> (<code>1 != 2</code>)</li>
+<li><code>&gt;</code> <em>ist größer als</em> (<code>2 &gt; 1</code>)</li>
+<li><code>&lt;</code> <em>ist kleiner als</em> (<code>1 &lt; 2</code>)</li>
+</ul></li>
+<li>um Bedingungen zu kombinieren
+<ul>
+<li><code>&amp;</code> oder <code>,</code> <em>und auch</em> (für mehrere Bedingungen)</li>
+<li><code>|</code> <em>oder</em> (für mehrere Bedingungen)</li>
+</ul></li>
+<li>es gibt eine nette Abkürzung für die Kombination von <code>==</code> und <code>|</code>: <code>%in%</code>
+<ul>
+<li>behält Zeilen, in denen die Variable gleich einem der Werte auf der rechten Seite ist</li>
+</ul></li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><code>==</code> und <code>|</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>%in%</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Trial <span class="sc">==</span> <span class="dv">30</span> <span class="sc">|</span> Trial <span class="sc">==</span> <span class="dv">23</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Subject       RT Trial Sex NativeLanguage Correct    Word Frequency  Class
+1        A1 566.9998    23   F        English correct     owl  4.859812 animal
+4        A1 486.0002    30   F        English correct    pear  4.727388  plant
+475      A2 561.0001    23   M        English correct     dog  7.667626 animal
+949       C 688.0001    23   F        English correct vulture  4.248495 animal
+83        D 553.0000    30   M          Other correct  walnut  4.499810  plant
+317       J 824.0004    23   F          Other correct  beaver  3.951244 animal
+    Length
+1        3
+4        4
+475      3
+949      7
+83       6
+317      6</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Trial <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">23</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Subject       RT Trial Sex NativeLanguage Correct    Word Frequency  Class
+1        A1 566.9998    23   F        English correct     owl  4.859812 animal
+4        A1 486.0002    30   F        English correct    pear  4.727388  plant
+475      A2 561.0001    23   M        English correct     dog  7.667626 animal
+949       C 688.0001    23   F        English correct vulture  4.248495 animal
+83        D 553.0000    30   M          Other correct  walnut  4.499810  plant
+317       J 824.0004    23   F          Other correct  beaver  3.951244 animal
+    Length
+1        3
+4        4
+475      3
+949      7
+83       6
+317      6</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="#exm-filter">Aufgabe&nbsp;<span>4.2</span></a>: <code>filter()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="exm-filter" class="custom theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.2 </strong></span>&nbsp;</p>
+<div class="nonincremental">
+<ol type="1">
+<li>Filtern Sie die Daten, um Zeilen aus Versuch 25 und Nicht-Muttersprachler (<code>andere</code>) einzuschließen.</li>
+<li>Wie viele Zeilen gibt es?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="arrange" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="arrange"><span class="header-section-number">4.3.2</span> <code>arrange()</code></h3>
+<ul>
+<li>ändert die Reihenfolge der Zeilen auf der Grundlage eines Wertes in einer oder mehreren Spalten</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(RT) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Subject       RT Trial Sex NativeLanguage   Correct    Word Frequency
+542       A2 340.0001   159   M        English incorrect     pig  6.660575
+815        K 347.9998    83   F        English incorrect   lemon  5.631212
+822        K 363.0001    99   F        English incorrect  potato  6.461468
+73        A1 364.9999   174   F        English   correct chicken  6.599870
+524       A2 365.9999   117   M        English   correct   goose  5.267858
+1516       I 367.0001    51   F          Other   correct  carrot  4.976734
+      Class Length
+542  animal      3
+815   plant      5
+822   plant      6
+73   animal      7
+524  animal      5
+1516  plant      6</code></pre>
+</div>
+</div>
+<ul>
+<li>wenn Sie mehr als einen Spaltennamen verwenden, wird jede zusätzliche Spalte verwendet, um die Verbindung zwischen den Werten der vorangegangenen Spalten zu lösen</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Length,Sex) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Subject       RT Trial Sex NativeLanguage   Correct Word Frequency  Class
+1        A1 566.9998    23   F        English   correct  owl  4.859812 animal
+5        A1 414.0000    32   F        English   correct  dog  7.667626 animal
+15       A1 556.9999    53   F        English   correct  bee  5.700444 animal
+20       A1 456.9998    61   F        English incorrect  bat  5.918894 animal
+31       A1 581.9997    88   F        English   correct  fox  5.652489 animal
+44       A1 494.0002   113   F        English   correct  pig  6.660575 animal
+62       A1 467.9999   152   F        English   correct  cat  7.086738 animal
+64       A1 875.9999   157   F        English   correct  ant  5.347108 animal
+719      A3 607.0001    41   F          Other   correct  ant  5.347108 animal
+720      A3 562.0001    44   F          Other   correct  pig  6.660575 animal
+    Length
+1        3
+5        3
+15       3
+20       3
+31       3
+44       3
+62       3
+64       3
+719      3
+720      3</code></pre>
+</div>
+</div>
+<ul>
+<li>wir können <code>desc()</code> innerhalb von <code>arrange()</code> hinzufügen, um eine absteigende Reihenfolge (groß-klein) anstelle der standardmäßigen aufsteigenden Reihenfolge zu verwenden</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Length)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Subject       RT Trial Sex NativeLanguage Correct       Word Frequency
+6        A1 483.0002    33   F        English correct blackberry  4.060443
+7        A1 417.9998    34   F        English correct strawberry  4.753590
+69       A1 540.9998   168   F        English correct woodpecker  2.890372
+505      A2 503.9999    87   M        English correct woodpecker  2.890372
+516      A2 400.9998   105   M        English correct strawberry  4.753590
+518      A2 517.0001   108   M        English correct blackberry  4.060443
+     Class Length
+6    plant     10
+7    plant     10
+69  animal     10
+505 animal     10
+516  plant     10
+518  plant     10</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="#exm-arrange">Aufgabe&nbsp;<span>4.3</span></a>: <code>arrange()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="exm-arrange" class="custom theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.3 </strong></span>&nbsp;</p>
+<div class="nonincremental">
+<ol type="1">
+<li>Filtere die Daten so, dass sie nur Beobachtungen der “Probanden” M1 und W2 enthalten, <em>und dann</em></li>
+<li>Ordnen Sie die Daten nach absteigender Reaktionszeit</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="spalten" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="spalten"><span class="header-section-number">4.4</span> Spalten</h2>
+<ul>
+<li><p>In Tidy Data stellen die Spalten Variablen dar.</p></li>
+<li><p>die wichtigsten Verben für Spalten sind:</p>
+<ul>
+<li><code>rename()</code>: ändert die Namen der Spalten</li>
+<li><code>mutate()</code>: erzeugt neue Spalten, die von den vorhandenen Spalten abgeleitet werden</li>
+<li><code>select()</code>: ändert, welche Spalten vorhanden sind</li>
+<li><code>relocate()</code>: ändert die Position der Spalten</li>
+</ul></li>
+</ul>
+<section id="rename" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="rename"><span class="header-section-number">4.4.1</span> <code>rename()</code></h3>
+<ul>
+<li>Mit <code>rename()</code> können wir den Namen von Spalten ändern
+<ul>
+<li>die Reihenfolge der Argumente ist <code>neuer_name</code> = <code>alter_name</code></li>
+</ul></li>
+<li>Versuchen wir, einige der Variablennamen auf Deutsch zu ändern
+<ul>
+<li>Ich neige dazu, Variablennamen in Kleinbuchstaben zu schreiben, als Kodierungskonvention</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## single variable</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">teilnehmer =</span> Subject)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">## or multiple variables at once</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span> </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">rename</span>(<span class="at">teilnehmer =</span> Subject,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">rz_ms =</span> RT,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">geschlect =</span> Sex,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">laenge =</span> Length)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutate" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="mutate"><span class="header-section-number">4.4.2</span> <code>mutate()</code></h3>
+<ul>
+<li>Mit <code>mutate()</code> werden neue Spalten aus vorhandenen Spalten erzeugt.
+<ul>
+<li>So können wir z.B. einfache Algebra mit den Werten in jeder Spalte durchführen</li>
+</ul></li>
+</ul>
+<div class="cell" data-ausgabeort="Fragment">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rz_laenge =</span> rz_ms <span class="sc">/</span> laenge,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teilnehmer    rz_ms Trial geschlect NativeLanguage Correct       Word
+1         A1 566.9998    23         F        English correct        owl
+2         A1 548.9998    27         F        English correct       mole
+3         A1 572.0000    29         F        English correct     cherry
+4         A1 486.0002    30         F        English correct       pear
+5         A1 414.0000    32         F        English correct        dog
+6         A1 483.0002    33         F        English correct blackberry
+  Frequency  Class laenge rz_laenge
+1  4.859812 animal      3 188.99994
+2  4.605170 animal      4 137.24994
+3  4.997212  plant      6  95.33333
+4  4.727388  plant      4 121.50005
+5  7.667626 animal      3 138.00000
+6  4.060443  plant     10  48.30002</code></pre>
+</div>
+</div>
+<ul>
+<li>Mit <code>mutate()</code> werden diese neuen Spalten auf der rechten Seite des Datensatzes hinzugefügt.
+<ul>
+<li>Das macht es schwierig zu sehen, was passiert.</li>
+</ul></li>
+<li>um zu kontrollieren, wo die neue Spalte hinzugefügt wird, können wir <code>.before</code> oder <code>.after</code> verwenden</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rz_laenge =</span> rz_ms <span class="sc">/</span> laenge,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> rz_ms</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teilnehmer    rz_ms rz_laenge Trial geschlect NativeLanguage Correct
+1         A1 566.9998 188.99994    23         F        English correct
+2         A1 548.9998 137.24994    27         F        English correct
+3         A1 572.0000  95.33333    29         F        English correct
+4         A1 486.0002 121.50005    30         F        English correct
+5         A1 414.0000 138.00000    32         F        English correct
+6         A1 483.0002  48.30002    33         F        English correct
+        Word Frequency  Class laenge
+1        owl  4.859812 animal      3
+2       mole  4.605170 animal      4
+3     cherry  4.997212  plant      6
+4       pear  4.727388  plant      4
+5        dog  7.667626 animal      3
+6 blackberry  4.060443  plant     10</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rendernpause!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="nonincremental">
+<p>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?</p>
+<p>Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="#exm-mutate">Aufgabe&nbsp;<span>4.4</span></a>: <code>mutate()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="exm-mutate" class="custom theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.4 </strong></span>&nbsp;</p>
+<div class="nonincremental">
+<ol type="1">
+<li>Create a new variable called <code>rz_s</code> in <code>df_lexent</code>:
+<ul>
+<li>equals <code>rz_ms</code> divided by 1000 (i.e., converts milliseconds to seconds)</li>
+<li>appears after <code>rz_ms</code></li>
+</ul></li>
+<li>Render your document</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="select" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="select"><span class="header-section-number">4.4.3</span> <code>select()</code></h3>
+<ul>
+<li><p><code>select()</code> fasst die Daten so zusammen, dass sie nur die gewünschten Spalten enthalten</p></li>
+<li><p>Spalten nach Namen auswählen</p></li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(teilnehmer, rz_ms, Word) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teilnehmer    rz_ms       Word
+1         A1 566.9998        owl
+2         A1 548.9998       mole
+3         A1 572.0000     cherry
+4         A1 486.0002       pear
+5         A1 414.0000        dog
+6         A1 483.0002 blackberry</code></pre>
+</div>
+</div>
+<ul>
+<li>select alle Spalten zwischen <code>rz_ms</code> und <code>geschlecht</code></li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rz_ms<span class="sc">:</span>geschlect) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     rz_ms      rz_s Trial geschlect
+1 566.9998 0.5669998    23         F
+2 548.9998 0.5489998    27         F
+3 572.0000 0.5720000    29         F
+4 486.0002 0.4860002    30         F
+5 414.0000 0.4140000    32         F
+6 483.0002 0.4830002    33         F</code></pre>
+</div>
+</div>
+<ul>
+<li>alle Spalten außer <code>rz_s</code> auswählen (<code>!</code> wird als “nicht” gelesen)</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>rz_s) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teilnehmer    rz_ms Trial geschlect NativeLanguage Correct       Word
+1         A1 566.9998    23         F        English correct        owl
+2         A1 548.9998    27         F        English correct       mole
+3         A1 572.0000    29         F        English correct     cherry
+4         A1 486.0002    30         F        English correct       pear
+5         A1 414.0000    32         F        English correct        dog
+6         A1 483.0002    33         F        English correct blackberry
+  Frequency  Class laenge
+1  4.859812 animal      3
+2  4.605170 animal      4
+3  4.997212  plant      6
+4  4.727388  plant      4
+5  7.667626 animal      3
+6  4.060443  plant     10</code></pre>
+</div>
+</div>
+<section id="select-hilfsfunktionen" class="level4" data-number="4.4.3.1">
+<h4 data-number="4.4.3.1" class="anchored" data-anchor-id="select-hilfsfunktionen"><span class="header-section-number">4.4.3.1</span> <code>select()</code>-Hilfsfunktionen</h4>
+<ul>
+<li>einige Hilfsfunktionen, die das Leben bei der Arbeit mit <code>select()</code> erleichtern:
+<ul>
+<li><code>starts_with("abc")</code>: wählt Spalten aus, die mit einer bestimmten Zeichenkette beginnen</li>
+<li><code>ends_with("xyz")</code>: wählt Spalten aus, die mit einer bestimmten Zeichenkette enden</li>
+<li><code>contains("ijk")</code>: wählt Spalten aus, die eine bestimmte Zeichenkette enthalten</li>
+<li><code>where(is.character)</code>: wählt Spalten aus, die einem logischen Kriterium entsprechen
+<ul>
+<li>z.B. gibt die Funktion <code>is.character()</code> den Wert <code>TRUE</code> zurück, wenn eine Variable Zeichenketten enthält, nicht numerische Werte oder Kategorien</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"w"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Word
+1        owl
+2       mole
+3     cherry
+4       pear
+5        dog
+6 blackberry</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"er"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teilnehmer
+1         A1
+2         A1
+3         A1
+4         A1
+5         A1
+6         A1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="#exm-select">Aufgabe&nbsp;<span>4.5</span></a>: <code>select()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="exm-select" class="custom theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.5 </strong></span>&nbsp;</p>
+<div class="nonincremental">
+<ol type="1">
+<li>Drucke die Spalten in <code>df_lexent</code>, die mit “t” beginnen</li>
+<li>Drucke die Spalten in <code>df_lexent</code>, die “ge” enthalten</li>
+<li>Drucke die Spalten in <code>df_lexent</code>, die
+<ul>
+<li>mit mit “r” beginnen, und</li>
+<li>mit “s” enden</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="relocate" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="relocate"><span class="header-section-number">4.4.4</span> <code>relocate()</code></h3>
+<ul>
+<li><code>relocate()</code> verschiebt Variablen
+<ul>
+<li>standardmäßig werden sie nach vorne verschoben</li>
+</ul></li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> <span class="fu">relocate</span>(Trial) <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Trial teilnehmer    rz_ms      rz_s geschlect NativeLanguage Correct
+1    23         A1 566.9998 0.5669998         F        English correct
+2    27         A1 548.9998 0.5489998         F        English correct
+3    29         A1 572.0000 0.5720000         F        English correct
+4    30         A1 486.0002 0.4860002         F        English correct
+5    32         A1 414.0000 0.4140000         F        English correct
+6    33         A1 483.0002 0.4830002         F        English correct
+        Word Frequency  Class laenge
+1        owl  4.859812 animal      3
+2       mole  4.605170 animal      4
+3     cherry  4.997212  plant      6
+4       pear  4.727388  plant      4
+5        dog  7.667626 animal      3
+6 blackberry  4.060443  plant     10</code></pre>
+</div>
+</div>
+<ul>
+<li>aber wir können auch <code>.before</code> oder <code>.after</code> verwenden, um eine Variable zu platzieren</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(Trial, <span class="at">.after =</span> teilnehmer) <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teilnehmer Trial    rz_ms      rz_s geschlect NativeLanguage Correct
+1         A1    23 566.9998 0.5669998         F        English correct
+2         A1    27 548.9998 0.5489998         F        English correct
+3         A1    29 572.0000 0.5720000         F        English correct
+4         A1    30 486.0002 0.4860002         F        English correct
+5         A1    32 414.0000 0.4140000         F        English correct
+6         A1    33 483.0002 0.4830002         F        English correct
+        Word Frequency  Class laenge
+1        owl  4.859812 animal      3
+2       mole  4.605170 animal      4
+3     cherry  4.997212  plant      6
+4       pear  4.727388  plant      4
+5        dog  7.667626 animal      3
+6 blackberry  4.060443  plant     10</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="dplyr-und-ggplot2" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="dplyr-und-ggplot2"><span class="header-section-number">4.5</span> <code>dplyr</code> und <code>ggplot2</code></h2>
+<ul>
+<li><p>wir können einen Datensatz mit den <code>dplyr</code>-Verben ändern und diese Änderungen dann in <code>ggplot2</code> einspeisen</p></li>
+<li><p>Was wird der folgende Code ergeben?</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## filter the data</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rz_ms <span class="sc">&gt;</span> <span class="dv">120</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>         rz_ms <span class="sc">&gt;</span> <span class="dv">500</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## plot the filtered data</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(Correct))) <span class="sc">+</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="pipe-versus-plus-vs." class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="pipe-versus-plus-vs."><span class="header-section-number">4.5.1</span> Pipe versus plus (<code>|&gt;</code> vs.&nbsp;<code>+</code>)</h3>
+<ul>
+<li>wichtig: wir können Pipes (<code>|&gt;</code>) verwenden, um zusätzliche Verben/Funktionen mit dem Ergebnis einer vorherigen Codezeile auszuführen
+<ul>
+<li>Die Funktion <code>ggplot()</code> verwendet jedoch <code>+</code>, um neue <em>Ebenen</em> zur Darstellung hinzuzufügen</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rendernpause!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="nonincremental">
+<p>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?</p>
+<p>Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="aufgaben" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">4.5.2</span> Aufgaben</h3>
+<div class="nonincremental">
+<ol type="1">
+<li>Drucken Sie in einer einzigen Pipeline <code>df_lexent</code>, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:
+<ul>
+<li>die Reaktionszeiten waren größer als 500ms <em>und</em> kleiner als 550ms</li>
+<li>aus den Wörtern “pear”, “elephant” oder “tortoise” stammen</li>
+</ul></li>
+</ol>
+<ol start="2" type="1">
+<li>Sortiere <code>df_lexent</code> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
+</ol>
+</div>
+<div class="nonincremental">
+<ol start="3" type="1">
+<li>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <code>df_rz</code>, das <code>df_lexent</code> enthält, <em>und dann</em>:
+<ul>
+<li>Selektieren Sie die Variablen <code>Teilnehmer</code>, <code>NativeLanguage</code>, <code>Word</code>, <code>rz_s</code>, <code>laenge</code>, und <code>Frequency</code></li>
+<li>Erstelle eine neue Variable <code>rz_s_laenge</code>, die <code>rz_s</code> geteilt durch <code>laenge</code> ist
+<ul>
+<li>und wird vor <code>Laenge</code> gesetzt</li>
+</ul></li>
+<li>Benennen Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</li>
+</ul></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="heutige-ziele-1" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="heutige-ziele-1">Heutige Ziele 🏁</h2>
+<p>Heute haben wir gelernt…</p>
+<ul>
+<li>wie man Daten mit dem Paket <code>dplyr</code> aus dem <code>tidyverse</code> verarbeitet ✅</li>
+<li>wie man die <code>pipe</code> (<code>|&gt;</code>) verwendet, um das Ergebnis einer Funktion in eine andere Funktion einzuspeisen ✅</li>
+<li>über Funktionen, die auf Zeilen operieren ✅</li>
+<li>über Funktionen, die auf Spalten operieren ✅</li>
+<li>wie man <code>dplyr</code>-Funktionen mit Plots von <code>ggplot2</code> kombiniert ✅</li>
+</ul>
+</section>
+<section id="session-info" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
+<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.3.0 (2023-04-21)
+Platform: aarch64-apple-darwin20 (64-bit)
+Running under: macOS Ventura 13.2.1
 
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 
-<!-- -->
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+time zone: Europe/Berlin
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] languageR_1.5.0 lubridate_1.9.2 forcats_1.0.0   stringr_1.5.0  
+ [5] dplyr_1.1.3     purrr_1.0.2     readr_2.1.4     tidyr_1.3.0    
+ [9] tibble_3.2.1    ggplot2_3.4.3   tidyverse_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] gtable_0.3.4      jsonlite_1.8.7    compiler_4.3.0    tidyselect_1.2.0 
+ [5] scales_1.2.1      yaml_2.3.7        fastmap_1.1.1     R6_2.5.1         
+ [9] generics_0.1.3    knitr_1.44        htmlwidgets_1.6.2 munsell_0.5.0    
+[13] pillar_1.9.0      tzdb_0.4.0        rlang_1.1.1       utf8_1.2.3       
+[17] stringi_1.7.12    xfun_0.39         timechange_0.2.0  cli_3.6.1        
+[21] withr_2.5.0       magrittr_2.0.3    digest_0.6.33     grid_4.3.0       
+[25] rstudioapi_0.14   hms_1.1.3         lifecycle_1.0.3   vctrs_0.6.3      
+[29] evaluate_0.21     glue_1.6.2        fansi_1.0.4       colorspace_2.1-0 
+[33] rmarkdown_2.22    tools_4.3.0       pkgconfig_2.0.3   htmltools_0.5.5  </code></pre>
+</div>
+</div>
+</section>
+<section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
+<h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-languageR-package" class="csl-entry" role="listitem">
+Baayen, R. H., &amp; Shafaei-Bajestan, E. (2019). <em>languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics</em>. <a href="https://CRAN.R-project.org/package=languageR">https://CRAN.R-project.org/package=languageR</a>
+</div>
 <div id="ref-nordmann_applied_2022" class="csl-entry" role="listitem">
 Nordmann, E., &amp; DeBruine, L. (2022). <em>Applied Data Skills</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.6365078">https://doi.org/10.5281/zenodo.6365078</a>
 </div>
@@ -398,6 +1368,10 @@ Nordmann, E., &amp; DeBruine, L. (2022). <em>Applied Data Skills</em>. Zenodo. <
 Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R for <span>Data Science</span></em> (2. Aufl.).
 </div>
 </div>
+
+
+<!-- -->
+
 </section>
 
 </main> <!-- /main -->
@@ -820,25 +1794,836 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Wrangling 1: Transformation"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Umwandlung von Daten"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Daniela Palleschi"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">institute:</span><span class="co"> Humboldt-Universität zu Berlin</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">footer:</span><span class="co"> "Woche 4 - Data Transformation"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> de</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "11/08/2023"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "ddd [den] DD.MM.YYYY"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>***Die Materialien werden vor dem Unterricht zur Verfügung gestellt.***</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lesungen {.unnumbered}</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kap. 4 (Data Transformation)</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span> in @wickham_r_2023.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Eine **ergänzende Lektüre** ist <span class="co">[</span><span class="ot">Ch. 9 (Data Wrangling)</span><span class="co">](https://psyteachr.github.io/ads-v2/09-wrangle.html)</span> in @nordmann_applied_2022.</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Wrangling 1: Transformation"</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Umwandlung von Daten"</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Daniela Palleschi"</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="an">institute:</span><span class="co"> Humboldt-Universität zu Berlin</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="an">footer:</span><span class="co"> "Woche 4 - Data Transformation"</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> de</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "11/08/2023"</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "ddd [den] DD.MM.YYYY"</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lesungen {.unnumbered}</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kap. 4 (Data Transformation)</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span> in @wickham_r_2023.</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>Eine **ergänzende Lektüre** ist <span class="co">[</span><span class="ot">Ch. 9 (Data Wrangling)</span><span class="co">](https://psyteachr.github.io/ads-v2/09-wrangle.html)</span> in @nordmann_applied_2022.</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">## evaluate chunks</span></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">## 'print code chunk?'</span></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">## 'print messages (e.g., warnings)?'</span></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> F, <span class="do">## stop when error encountered</span></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">## don't print warnings</span></span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = T, cache = F}</span></span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Create references.json file based on the citations in this script</span></span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="do">## make sure you have 'bibliography: references.json' in the YAML</span></span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="do">## rbbt::bbt_update_bib("_wrangling1_DE.qmd")</span></span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Wiederholung {.unnumbered}</span></span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>Letze Woche haben wir...</span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>gelernt, was dynamische Berichte sind </span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>unser eigenes Quarto-Dokument erstellt</span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>gelernt, wie man ein Quarto-Dokument bearbeitet</span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>gelernt, wie man Code in ein Quarto-Dokument einfügt</span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ein Quarto-Dokument in verschiedenen Formaten wiedergebt</span>
+<span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heutige Ziele {.unnumbered}</span></span>
+<span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-50"><a href="#cb40-50" aria-hidden="true" tabindex="-1"></a>Heute werden wir...</span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lernen, wie man Daten mit dem Paket <span class="in">`dplyr`</span> aus dem <span class="in">`tidyverse`</span> verarbeitet</span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lernen, wie man die <span class="in">`pipe`</span> (<span class="in">`|&gt;`</span>) verwendet, um das Ergebnis einer Funktion in eine andere Funktion einzuspeisen</span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Funktionen kennenlernen, die auf Zeilen operieren</span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Funktionen kennenlernen, die mit Spalten arbeiten</span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lernen, wie man <span class="in">`dplyr`</span>-Funktionen mit Plots von <span class="in">`ggplot2`</span> kombiniert</span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lust auf mehr? {.unnumbered .unlisted}</span></span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Kapital 4 (Data transformation)</span><span class="co">](https://r4ds.hadley.nz/data-transform.html)</span> in @wickham_r_nodate</span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Kapital 9 (Data wrangling)</span><span class="co">](https://psyteachr.github.io/ads-v2/09-wrangle.html)</span> in @nordmann_applied_2022</span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Voraussetzungen</span></span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Frisches Quarto-Dokument</span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Erstellen Sie ein neues Quarto-Dokument für den heutigen Unterricht</span>
+<span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span>Datei &gt; Neues Dokument &gt; Quarto Dokument, mit dem Namen <span class="in">`04-wrangling`</span></span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>YAML einrichten: Titel, Ihr Name, ein <span class="in">`toc`</span> hinzufügen</span>
+<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-72"><a href="#cb40-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-73"><a href="#cb40-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-74"><a href="#cb40-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
+<span id="cb40-75"><a href="#cb40-75" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Data wrangling"</span></span>
+<span id="cb40-76"><a href="#cb40-76" aria-hidden="true" tabindex="-1"></a>subtitle<span class="sc">:</span> <span class="st">"Transforming data"</span></span>
+<span id="cb40-77"><a href="#cb40-77" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Your name here"</span></span>
+<span id="cb40-78"><a href="#cb40-78" aria-hidden="true" tabindex="-1"></a>lang<span class="sc">:</span> de</span>
+<span id="cb40-79"><a href="#cb40-79" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">"11/08/2023"</span></span>
+<span id="cb40-80"><a href="#cb40-80" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> </span>
+<span id="cb40-81"><a href="#cb40-81" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb40-82"><a href="#cb40-82" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb40-83"><a href="#cb40-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-84"><a href="#cb40-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-85"><a href="#cb40-85" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-86"><a href="#cb40-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Voraussetzungen {.unlisted .unnumbered}</span></span>
+<span id="cb40-87"><a href="#cb40-87" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-88"><a href="#cb40-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-89"><a href="#cb40-89" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Pakete</span>
+<span id="cb40-90"><a href="#cb40-90" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Die heutigen Pakete sind:</span>
+<span id="cb40-91"><a href="#cb40-91" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span><span class="in">`tidyverse`</span>: zum Verarbeiten (<span class="in">`dplyr`</span>) und Plotten (<span class="in">`ggplot2`</span>)</span>
+<span id="cb40-92"><a href="#cb40-92" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span><span class="in">`languageR`</span>: für linguistische Datensätze</span>
+<span id="cb40-93"><a href="#cb40-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-96"><a href="#cb40-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-97"><a href="#cb40-97" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb40-98"><a href="#cb40-98" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
+<span id="cb40-99"><a href="#cb40-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-100"><a href="#cb40-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-101"><a href="#cb40-101" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-102"><a href="#cb40-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### Voraussetzungen {.unlisted .unnumbered}</span></span>
+<span id="cb40-103"><a href="#cb40-103" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-104"><a href="#cb40-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-105"><a href="#cb40-105" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Daten</span>
+<span id="cb40-106"><a href="#cb40-106" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>wir arbeiten wieder mit dem <span class="in">`lexdec`</span>-Datensatz aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span></span>
+<span id="cb40-107"><a href="#cb40-107" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>wir speichern ihn als Objekt mit dem Namen <span class="in">`df_lexdec`</span></span>
+<span id="cb40-108"><a href="#cb40-108" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>wir wandeln auch die Variable <span class="in">`RT`</span> um, so dass sie in Millisekunden angegeben wird (vorher war sie in log Millisekunden angegeben, aber machen Sie sich keine Gedanken darüber, was das bedeutet)</span>
+<span id="cb40-109"><a href="#cb40-109" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>und wir wählen 10 Variablen aus, die für uns heute relevant sind</span>
+<span id="cb40-110"><a href="#cb40-110" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-113"><a href="#cb40-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-114"><a href="#cb40-114" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="ot">&lt;-</span> lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-115"><a href="#cb40-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">exp</span>(RT)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-116"><a href="#cb40-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Subject, RT, Trial, Sex, NativeLanguage, Correct, Word, Frequency, Class, Length)</span>
+<span id="cb40-117"><a href="#cb40-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-118"><a href="#cb40-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-119"><a href="#cb40-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-120"><a href="#cb40-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-121"><a href="#cb40-121" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-122"><a href="#cb40-122" aria-hidden="true" tabindex="-1"></a><span class="fu">###  {.unlisted .unnumbered}</span></span>
+<span id="cb40-123"><a href="#cb40-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-124"><a href="#cb40-124" aria-hidden="true" tabindex="-1"></a>::: {.callout-important appearance="simple"}</span>
+<span id="cb40-125"><a href="#cb40-125" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Rendernpause!</span></span>
+<span id="cb40-126"><a href="#cb40-126" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-127"><a href="#cb40-127" aria-hidden="true" tabindex="-1"></a>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wurde es gerendert?</span>
+<span id="cb40-128"><a href="#cb40-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-129"><a href="#cb40-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hat es einen Titel?</span>
+<span id="cb40-130"><a href="#cb40-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Enthält es Ihren Namen?</span>
+<span id="cb40-131"><a href="#cb40-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hat es eine Überschrift für "Pakete"?</span>
+<span id="cb40-132"><a href="#cb40-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fügen Sie eine Überschrift für 'Data Wrangling' hinzu</span>
+<span id="cb40-133"><a href="#cb40-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-134"><a href="#cb40-134" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-135"><a href="#cb40-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-136"><a href="#cb40-136" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-137"><a href="#cb40-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-138"><a href="#cb40-138" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-139"><a href="#cb40-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-140"><a href="#cb40-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Wrangling</span></span>
+<span id="cb40-141"><a href="#cb40-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-142"><a href="#cb40-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Im Englischen bezieht sich "wrangling" auf einen langen, schwierigen Prozess</span>
+<span id="cb40-143"><a href="#cb40-143" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>z. B. treiben Cowboys ihre Rinder oder Herden zusammen (sammeln, sammeln ihre Tiere)</span>
+<span id="cb40-144"><a href="#cb40-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es gibt zwei Hauptbestandteile des Wrangling</span>
+<span id="cb40-145"><a href="#cb40-145" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Transformieren: Sortieren oder Erstellen neuer Variablen (was wir heute tun werden)</span>
+<span id="cb40-146"><a href="#cb40-146" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Aufräumen: Umformung oder Strukturierung Ihrer Daten (dies werden wir in einigen Wochen tun)</span>
+<span id="cb40-147"><a href="#cb40-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sowohl das Aufräumen als auch das Transformieren von Daten erfordern das Paket <span class="in">`dplyr`</span> aus dem <span class="in">`tidyverse`</span>.</span>
+<span id="cb40-148"><a href="#cb40-148" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`dplyr`</span> Funktionen werden oft als Verben bezeichnet, weil sie etwas *tun*</span>
+<span id="cb40-149"><a href="#cb40-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-150"><a href="#cb40-150" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-151"><a href="#cb40-151" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dplyr` {.unlisted .unnumbered}</span></span>
+<span id="cb40-152"><a href="#cb40-152" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-153"><a href="#cb40-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-154"><a href="#cb40-154" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-155"><a href="#cb40-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-156"><a href="#cb40-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Der Name `dplyr`</span></span>
+<span id="cb40-157"><a href="#cb40-157" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Der Name <span class="in">`dplyr`</span> kommt von einem früheren Paket, <span class="in">`plyr`</span>, das dazu verwendet wird, Daten zu zerlegen, Funktionen darauf anzuwenden und zu kombinieren</span>
+<span id="cb40-158"><a href="#cb40-158" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Im Englischen klingt <span class="in">`plyr`</span> wie das Wort für Zangen ("pliers"), die benutzt werden, um Dinge auseinander zu nehmen, wie das, was <span class="in">`plyr`</span> mit Daten macht</span>
+<span id="cb40-159"><a href="#cb40-159" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>das "d" in "dplyr" wurde hinzugefügt, weil das Paket speziell für die Arbeit mit Datenrahmen gedacht ist</span>
+<span id="cb40-160"><a href="#cb40-160" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-161"><a href="#cb40-161" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-162"><a href="#cb40-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-163"><a href="#cb40-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-164"><a href="#cb40-164" aria-hidden="true" tabindex="-1"></a><span class="fu">### `lexdec`</span></span>
+<span id="cb40-165"><a href="#cb40-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-166"><a href="#cb40-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>der <span class="in">`lexdec`</span>-Datensatz enthält Daten für eine lexikalische Entscheidungsaufgabe im Englischen</span>
+<span id="cb40-167"><a href="#cb40-167" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Schauen wir uns den Datensatz mit der Funktion <span class="in">`head()`</span> an, die nur die ersten 6 Zeilen ausgibt</span>
+<span id="cb40-168"><a href="#cb40-168" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>hier geben wir die ersten 10 Zeilen aus</span>
+<span id="cb40-169"><a href="#cb40-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-172"><a href="#cb40-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-173"><a href="#cb40-173" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-174"><a href="#cb40-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-175"><a href="#cb40-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-176"><a href="#cb40-176" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_lexdec, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb40-177"><a href="#cb40-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-178"><a href="#cb40-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-179"><a href="#cb40-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-180"><a href="#cb40-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In meinen Materialien verwende ich oft die Funktion "head()", um zu vermeiden, dass der gesamte Datensatz in der Ausgabe gedruckt wird, aber Sie würden im Allgemeinen nicht "head()" verwenden wollen, wenn Sie Ihre Daten betrachten, sondern Ihren gesamten Datensatz betrachten wollen</span>
+<span id="cb40-181"><a href="#cb40-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-182"><a href="#cb40-182" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-183"><a href="#cb40-183" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb40-184"><a href="#cb40-184" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-185"><a href="#cb40-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-186"><a href="#cb40-186" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-187"><a href="#cb40-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-188"><a href="#cb40-188" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-df_lexent]: `df_lexdec`</span></span>
+<span id="cb40-189"><a href="#cb40-189" aria-hidden="true" tabindex="-1"></a>::: {#exm-df_lexent .custom}</span>
+<span id="cb40-190"><a href="#cb40-190" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-191"><a href="#cb40-191" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Betrachten Sie den Datensatz</span>
+<span id="cb40-192"><a href="#cb40-192" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>wie viele Beobachtungen gibt es?</span>
+<span id="cb40-193"><a href="#cb40-193" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Wie viele Variablen gibt es?</span>
+<span id="cb40-194"><a href="#cb40-194" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Geben Sie den Datensatz in die Funktion <span class="in">`glimpse()`</span> ein.</span>
+<span id="cb40-195"><a href="#cb40-195" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Was zeigt Ihnen das?</span>
+<span id="cb40-196"><a href="#cb40-196" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Wie sieht es im Vergleich zu dem aus, was Sie sehen, wenn Sie <span class="in">`summary()`</span> verwenden?</span>
+<span id="cb40-197"><a href="#cb40-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-198"><a href="#cb40-198" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-199"><a href="#cb40-199" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-200"><a href="#cb40-200" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-201"><a href="#cb40-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-202"><a href="#cb40-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-203"><a href="#cb40-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dplyr`-Grundlagen</span></span>
+<span id="cb40-204"><a href="#cb40-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-205"><a href="#cb40-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>heute lernen wir einige der wichtigsten <span class="in">`dplyr`</span>-Verben (Funktionen) kennen, mit denen wir die meisten unserer Datenmanipulationsprobleme lösen können</span>
+<span id="cb40-206"><a href="#cb40-206" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Ich verwende diese Verben mehrfach in wahrscheinlich jedem Analyseskript</span>
+<span id="cb40-207"><a href="#cb40-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Die <span class="in">`dplyr`</span>-Verben haben einige Dinge gemeinsam:</span>
+<span id="cb40-208"><a href="#cb40-208" aria-hidden="true" tabindex="-1"></a><span class="ss">    1. </span>das erste Argument ist immer ein Datenrahmen</span>
+<span id="cb40-209"><a href="#cb40-209" aria-hidden="true" tabindex="-1"></a><span class="ss">    2. </span>die folgenden Argumente beschreiben in der Regel die zu bearbeitenden Spalten, wobei der Variablenname (ohne Anführungszeichen) verwendet wird</span>
+<span id="cb40-210"><a href="#cb40-210" aria-hidden="true" tabindex="-1"></a><span class="ss">    3. </span>die Ausgabe ist immer ein neuer Datenrahmen</span>
+<span id="cb40-211"><a href="#cb40-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-212"><a href="#cb40-212" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-213"><a href="#cb40-213" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dplyr` Grundlagen</span></span>
+<span id="cb40-214"><a href="#cb40-214" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-215"><a href="#cb40-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-216"><a href="#cb40-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Die Verben sind alle für eine Sache gut geeignet, so dass wir oft mehrere Verben auf einmal verwenden wollen.</span>
+<span id="cb40-217"><a href="#cb40-217" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Wir verwenden dazu die Pipe (<span class="in">`|&gt;`</span> oder <span class="in">`|&gt;`</span>)</span>
+<span id="cb40-218"><a href="#cb40-218" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Wir haben diese Pipe bereits gesehen, als wir einen Datenrahmen in <span class="in">`ggplot()`</span> einspeisten.</span>
+<span id="cb40-219"><a href="#cb40-219" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>wir können die Pipe als <span class="in">`und dann`</span> lesen</span>
+<span id="cb40-220"><a href="#cb40-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-221"><a href="#cb40-221" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-222"><a href="#cb40-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dplyr` Grundlagen</span></span>
+<span id="cb40-223"><a href="#cb40-223" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-224"><a href="#cb40-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-225"><a href="#cb40-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In dem folgenden Code identifizieren</span>
+<span id="cb40-226"><a href="#cb40-226" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>den Datenrahmen</span>
+<span id="cb40-227"><a href="#cb40-227" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`dplyr`</span>-Verben</span>
+<span id="cb40-228"><a href="#cb40-228" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Variablennamen</span>
+<span id="cb40-229"><a href="#cb40-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Kannst du versuchen, herauszulesen (zu erraten), was der folgende Code macht?</span>
+<span id="cb40-230"><a href="#cb40-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-233"><a href="#cb40-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-234"><a href="#cb40-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-235"><a href="#cb40-235" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-236"><a href="#cb40-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Subject <span class="sc">==</span> <span class="st">"A1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-237"><a href="#cb40-237" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Subject, Trial, RT, NativeLanguage, Word) <span class="sc">|&gt;</span> </span>
+<span id="cb40-238"><a href="#cb40-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(NativeLanguage, <span class="at">.after =</span> Trial)</span>
+<span id="cb40-239"><a href="#cb40-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-240"><a href="#cb40-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-241"><a href="#cb40-241" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-242"><a href="#cb40-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-245"><a href="#cb40-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-246"><a href="#cb40-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-247"><a href="#cb40-247" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-248"><a href="#cb40-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Subject <span class="sc">==</span> <span class="st">"A1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-249"><a href="#cb40-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Subject, Trial, RT, NativeLanguage, Word) <span class="sc">|&gt;</span> </span>
+<span id="cb40-250"><a href="#cb40-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(NativeLanguage, <span class="at">.after =</span> Trial)</span>
+<span id="cb40-251"><a href="#cb40-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-252"><a href="#cb40-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-253"><a href="#cb40-253" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-254"><a href="#cb40-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-255"><a href="#cb40-255" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-256"><a href="#cb40-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### {.unnumbered .uncounted .unlisted}</span></span>
+<span id="cb40-257"><a href="#cb40-257" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-258"><a href="#cb40-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-259"><a href="#cb40-259" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-260"><a href="#cb40-260" aria-hidden="true" tabindex="-1"></a><span class="fu">### Korrekte Syntax</span></span>
+<span id="cb40-261"><a href="#cb40-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-262"><a href="#cb40-262" aria-hidden="true" tabindex="-1"></a>.Beachten Sie, dass <span class="in">`A1`</span> mit Anführungszeichen geschrieben wird, aber keiner der anderen Codes. Wenn wir ein Objekt (z.B. <span class="in">`df_lexdec`</span>) oder seine Variablen (z.B. <span class="in">`Subject`</span>) aufrufen, setzen wir sie nicht in Anführungszeichen. Wenn wir einen bestimmten *Wert* einer Variablen aufrufen, der nicht numerisch ist, müssen wir diesen Wert in Anführungszeichen setzen, weil die Subject ID <span class="in">`A1`</span> ein Wert der Variablen <span class="in">`Subject`</span> ist, müssen wir sie in Anführungszeichen setzen.</span>
+<span id="cb40-263"><a href="#cb40-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-264"><a href="#cb40-264" aria-hidden="true" tabindex="-1"></a>Versuchen Sie, die Anführungszeichen zu entfernen. Welche Fehlermeldung erhalten Sie?</span>
+<span id="cb40-265"><a href="#cb40-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-266"><a href="#cb40-266" aria-hidden="true" tabindex="-1"></a>Versuchen Sie, einen Variablennamen in Anführungszeichen zu setzen, welche Fehlermeldung erhalten Sie?</span>
+<span id="cb40-267"><a href="#cb40-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-268"><a href="#cb40-268" aria-hidden="true" tabindex="-1"></a>Dies ist eine wichtige Übung, denn Sie werden oft feststellen, dass Ihr Code nicht läuft, aber die Lösung ist oft etwas so Einfaches wie fehlende oder zusätzliche Anführungszeichen oder Interpunktion.</span>
+<span id="cb40-269"><a href="#cb40-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-270"><a href="#cb40-270" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-271"><a href="#cb40-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-272"><a href="#cb40-272" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-273"><a href="#cb40-273" aria-hidden="true" tabindex="-1"></a><span class="fu">###  {.unlisted .unnumbered}</span></span>
+<span id="cb40-274"><a href="#cb40-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-275"><a href="#cb40-275" aria-hidden="true" tabindex="-1"></a>::: {.callout-important appearance="simple"}</span>
+<span id="cb40-276"><a href="#cb40-276" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Rendernpause!</span></span>
+<span id="cb40-277"><a href="#cb40-277" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-278"><a href="#cb40-278" aria-hidden="true" tabindex="-1"></a>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?</span>
+<span id="cb40-279"><a href="#cb40-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-280"><a href="#cb40-280" aria-hidden="true" tabindex="-1"></a>Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?</span>
+<span id="cb40-281"><a href="#cb40-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-282"><a href="#cb40-282" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-283"><a href="#cb40-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-284"><a href="#cb40-284" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-285"><a href="#cb40-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-286"><a href="#cb40-286" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-287"><a href="#cb40-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-288"><a href="#cb40-288" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zeilen</span></span>
+<span id="cb40-289"><a href="#cb40-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-290"><a href="#cb40-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In aufgeräumten Daten stellen die Zeilen Beobachtungen dar.</span>
+<span id="cb40-291"><a href="#cb40-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-292"><a href="#cb40-292" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die wichtigsten Verben für Zeilen sind:</span>
+<span id="cb40-293"><a href="#cb40-293" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`filter()`</span>: ändert, welche Zeilen vorhanden sind</span>
+<span id="cb40-294"><a href="#cb40-294" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`arrange()`</span>: ändert die Reihenfolge der Zeilen</span>
+<span id="cb40-295"><a href="#cb40-295" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Wir besprechen auch</span>
+<span id="cb40-296"><a href="#cb40-296" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`distinct()`</span>: findet Zeilen mit unterschiedlichen Werten basierend auf einer Variablen (Spalte)</span>
+<span id="cb40-297"><a href="#cb40-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-298"><a href="#cb40-298" aria-hidden="true" tabindex="-1"></a><span class="fu">### `filter()`</span></span>
+<span id="cb40-299"><a href="#cb40-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-300"><a href="#cb40-300" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ändert, welche Zeilen vorhanden sind, ohne ihre Reihenfolge zu ändern</span>
+<span id="cb40-301"><a href="#cb40-301" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>nimmt den Datenrahmen als erstes Argument</span>
+<span id="cb40-302"><a href="#cb40-302" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Die folgenden Argumente sind Bedingungen, die <span class="in">`TRUE`</span> sein müssen, damit die Zeile erhalten bleibt</span>
+<span id="cb40-303"><a href="#cb40-303" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-304"><a href="#cb40-304" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-305"><a href="#cb40-305" aria-hidden="true" tabindex="-1"></a><span class="fu">### `filter()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-306"><a href="#cb40-306" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-307"><a href="#cb40-307" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-308"><a href="#cb40-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>findet alle Reaktionszeiten, die länger als 450 Millisekunden waren:</span>
+<span id="cb40-309"><a href="#cb40-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-312"><a href="#cb40-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-313"><a href="#cb40-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-314"><a href="#cb40-314" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-315"><a href="#cb40-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="dv">450</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-316"><a href="#cb40-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-317"><a href="#cb40-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-318"><a href="#cb40-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-319"><a href="#cb40-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Beachten Sie, dass wir den Wert der Reaktionszeit nicht in Anführungszeichen setzen, da er *numerisch* ist</span>
+<span id="cb40-320"><a href="#cb40-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-321"><a href="#cb40-321" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-322"><a href="#cb40-322" aria-hidden="true" tabindex="-1"></a><span class="fu">### `filter()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-323"><a href="#cb40-323" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-324"><a href="#cb40-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-325"><a href="#cb40-325" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wenn Sie die gefilterten Daten speichern wollen, ist es in der Regel ratsam, sie unter einem *neuen* Objektnamen zu speichern</span>
+<span id="cb40-326"><a href="#cb40-326" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>wenn Sie die vorgefilterte Version nicht überschreiben wollen, ist ein neuer Name erforderlich</span>
+<span id="cb40-327"><a href="#cb40-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-330"><a href="#cb40-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-331"><a href="#cb40-331" aria-hidden="true" tabindex="-1"></a>df_lexdec_450 <span class="ot">&lt;-</span> </span>
+<span id="cb40-332"><a href="#cb40-332" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-333"><a href="#cb40-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="dv">450</span>)</span>
+<span id="cb40-334"><a href="#cb40-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-335"><a href="#cb40-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-336"><a href="#cb40-336" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-337"><a href="#cb40-337" aria-hidden="true" tabindex="-1"></a><span class="fu">### Logische Operatoren {.unlisted .unnumbered}</span></span>
+<span id="cb40-338"><a href="#cb40-338" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-339"><a href="#cb40-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-340"><a href="#cb40-340" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb40-341"><a href="#cb40-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-342"><a href="#cb40-342" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Logische Operatoren</span></span>
+<span id="cb40-343"><a href="#cb40-343" aria-hidden="true" tabindex="-1"></a>::: nicht-inkrementelle</span>
+<span id="cb40-344"><a href="#cb40-344" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Symbole, die zur Beschreibung einer logischen Bedingung verwendet werden</span>
+<span id="cb40-345"><a href="#cb40-345" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`==`</span> *ist identisch* (<span class="in">`1 == 1`</span>)</span>
+<span id="cb40-346"><a href="#cb40-346" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`!=`</span> *ist nicht identisch* (<span class="in">`1 != 2`</span>)</span>
+<span id="cb40-347"><a href="#cb40-347" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`&gt;`</span> *ist größer als* (<span class="in">`2 &gt; 1`</span>)</span>
+<span id="cb40-348"><a href="#cb40-348" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`&lt;`</span> *ist kleiner als* (<span class="in">`1 &lt; 2`</span>)</span>
+<span id="cb40-349"><a href="#cb40-349" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>um Bedingungen zu kombinieren</span>
+<span id="cb40-350"><a href="#cb40-350" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`&amp;`</span> oder <span class="in">`,`</span> *und auch* (für mehrere Bedingungen)</span>
+<span id="cb40-351"><a href="#cb40-351" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`|`</span> *oder* (für mehrere Bedingungen)</span>
+<span id="cb40-352"><a href="#cb40-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-353"><a href="#cb40-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>es gibt eine nette Abkürzung für die Kombination von <span class="in">`==`</span> und <span class="in">`|`</span>: <span class="in">`%in%`</span></span>
+<span id="cb40-354"><a href="#cb40-354" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>behält Zeilen, in denen die Variable gleich einem der Werte auf der rechten Seite ist</span>
+<span id="cb40-355"><a href="#cb40-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-356"><a href="#cb40-356" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
+<span id="cb40-357"><a href="#cb40-357" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `==` und `|`</span></span>
+<span id="cb40-360"><a href="#cb40-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-361"><a href="#cb40-361" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-362"><a href="#cb40-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Trial <span class="sc">==</span> <span class="dv">30</span> <span class="sc">|</span> Trial <span class="sc">==</span> <span class="dv">23</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-363"><a href="#cb40-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-364"><a href="#cb40-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-365"><a href="#cb40-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-366"><a href="#cb40-366" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `%in%`</span></span>
+<span id="cb40-369"><a href="#cb40-369" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-370"><a href="#cb40-370" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-371"><a href="#cb40-371" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Trial <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">23</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-372"><a href="#cb40-372" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-373"><a href="#cb40-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-374"><a href="#cb40-374" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-375"><a href="#cb40-375" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-376"><a href="#cb40-376" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-377"><a href="#cb40-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-378"><a href="#cb40-378" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-379"><a href="#cb40-379" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb40-380"><a href="#cb40-380" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-381"><a href="#cb40-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-382"><a href="#cb40-382" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-383"><a href="#cb40-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-384"><a href="#cb40-384" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-filter]: `filter()`</span></span>
+<span id="cb40-385"><a href="#cb40-385" aria-hidden="true" tabindex="-1"></a>::: {#exm-filter .custom}</span>
+<span id="cb40-386"><a href="#cb40-386" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-387"><a href="#cb40-387" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Filtern Sie die Daten, um Zeilen aus Versuch 25 und Nicht-Muttersprachler (<span class="in">`andere`</span>) einzuschließen.</span>
+<span id="cb40-388"><a href="#cb40-388" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Wie viele Zeilen gibt es?</span>
+<span id="cb40-389"><a href="#cb40-389" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-390"><a href="#cb40-390" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-391"><a href="#cb40-391" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-392"><a href="#cb40-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-395"><a href="#cb40-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-396"><a href="#cb40-396" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-397"><a href="#cb40-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-398"><a href="#cb40-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-399"><a href="#cb40-399" aria-hidden="true" tabindex="-1"></a><span class="do">## 1, 2</span></span>
+<span id="cb40-400"><a href="#cb40-400" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-401"><a href="#cb40-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Trial <span class="sc">==</span> <span class="dv">25</span>,</span>
+<span id="cb40-402"><a href="#cb40-402" aria-hidden="true" tabindex="-1"></a>         NativeLanguage <span class="sc">==</span> <span class="st">"Other"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-403"><a href="#cb40-403" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span>
+<span id="cb40-404"><a href="#cb40-404" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-405"><a href="#cb40-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-406"><a href="#cb40-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-407"><a href="#cb40-407" aria-hidden="true" tabindex="-1"></a><span class="fu">### `arrange()`</span></span>
+<span id="cb40-408"><a href="#cb40-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-409"><a href="#cb40-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ändert die Reihenfolge der Zeilen auf der Grundlage eines Wertes in einer oder mehreren Spalten</span>
+<span id="cb40-410"><a href="#cb40-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-413"><a href="#cb40-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-414"><a href="#cb40-414" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-415"><a href="#cb40-415" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-416"><a href="#cb40-416" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(RT) <span class="sc">|&gt;</span> </span>
+<span id="cb40-417"><a href="#cb40-417" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-418"><a href="#cb40-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-419"><a href="#cb40-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-420"><a href="#cb40-420" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-421"><a href="#cb40-421" aria-hidden="true" tabindex="-1"></a><span class="fu">### `arrange()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-422"><a href="#cb40-422" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-423"><a href="#cb40-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-424"><a href="#cb40-424" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wenn Sie mehr als einen Spaltennamen verwenden, wird jede zusätzliche Spalte verwendet, um die Verbindung zwischen den Werten der vorangegangenen Spalten zu lösen</span>
+<span id="cb40-425"><a href="#cb40-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-428"><a href="#cb40-428" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-429"><a href="#cb40-429" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-430"><a href="#cb40-430" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-431"><a href="#cb40-431" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Length,Sex) <span class="sc">|&gt;</span> </span>
+<span id="cb40-432"><a href="#cb40-432" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb40-433"><a href="#cb40-433" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-434"><a href="#cb40-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-435"><a href="#cb40-435" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-436"><a href="#cb40-436" aria-hidden="true" tabindex="-1"></a><span class="fu">### `arrange()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-437"><a href="#cb40-437" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-438"><a href="#cb40-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-439"><a href="#cb40-439" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wir können <span class="in">`desc()`</span> innerhalb von <span class="in">`arrange()`</span> hinzufügen, um eine absteigende Reihenfolge (groß-klein) anstelle der standardmäßigen aufsteigenden Reihenfolge zu verwenden</span>
+<span id="cb40-440"><a href="#cb40-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-443"><a href="#cb40-443" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-444"><a href="#cb40-444" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-445"><a href="#cb40-445" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-446"><a href="#cb40-446" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Length)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-447"><a href="#cb40-447" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-448"><a href="#cb40-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-449"><a href="#cb40-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-450"><a href="#cb40-450" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-451"><a href="#cb40-451" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb40-452"><a href="#cb40-452" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-453"><a href="#cb40-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-454"><a href="#cb40-454" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-455"><a href="#cb40-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-456"><a href="#cb40-456" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-arrange]: `arrange()`</span></span>
+<span id="cb40-457"><a href="#cb40-457" aria-hidden="true" tabindex="-1"></a>::: {#exm-arrange .custom}</span>
+<span id="cb40-458"><a href="#cb40-458" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-459"><a href="#cb40-459" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Filtere die Daten so, dass sie nur Beobachtungen der "Probanden" M1 und W2 enthalten, *und dann*</span>
+<span id="cb40-460"><a href="#cb40-460" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Ordnen Sie die Daten nach absteigender Reaktionszeit</span>
+<span id="cb40-461"><a href="#cb40-461" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-464"><a href="#cb40-464" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-465"><a href="#cb40-465" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-466"><a href="#cb40-466" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-467"><a href="#cb40-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-468"><a href="#cb40-468" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-469"><a href="#cb40-469" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Subject <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"M1"</span>, <span class="st">"W2"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-470"><a href="#cb40-470" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(RT)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-471"><a href="#cb40-471" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-472"><a href="#cb40-472" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-473"><a href="#cb40-473" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-474"><a href="#cb40-474" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-475"><a href="#cb40-475" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-476"><a href="#cb40-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-477"><a href="#cb40-477" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-478"><a href="#cb40-478" aria-hidden="true" tabindex="-1"></a><span class="fu">###  {.unlisted .unnumbered}</span></span>
+<span id="cb40-479"><a href="#cb40-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-480"><a href="#cb40-480" aria-hidden="true" tabindex="-1"></a>::: {.callout-important appearance="simple"}</span>
+<span id="cb40-481"><a href="#cb40-481" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Rendernpause!</span></span>
+<span id="cb40-482"><a href="#cb40-482" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-483"><a href="#cb40-483" aria-hidden="true" tabindex="-1"></a>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?</span>
+<span id="cb40-484"><a href="#cb40-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-485"><a href="#cb40-485" aria-hidden="true" tabindex="-1"></a>Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?</span>
+<span id="cb40-486"><a href="#cb40-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-487"><a href="#cb40-487" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-488"><a href="#cb40-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-489"><a href="#cb40-489" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-490"><a href="#cb40-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-491"><a href="#cb40-491" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-492"><a href="#cb40-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-493"><a href="#cb40-493" aria-hidden="true" tabindex="-1"></a><span class="fu">## Spalten</span></span>
+<span id="cb40-494"><a href="#cb40-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-495"><a href="#cb40-495" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In Tidy Data stellen die Spalten Variablen dar.</span>
+<span id="cb40-496"><a href="#cb40-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-497"><a href="#cb40-497" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die wichtigsten Verben für Spalten sind:</span>
+<span id="cb40-498"><a href="#cb40-498" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`rename()`</span>: ändert die Namen der Spalten</span>
+<span id="cb40-499"><a href="#cb40-499" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`mutate()`</span>: erzeugt neue Spalten, die von den vorhandenen Spalten abgeleitet werden</span>
+<span id="cb40-500"><a href="#cb40-500" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`select()`</span>: ändert, welche Spalten vorhanden sind</span>
+<span id="cb40-501"><a href="#cb40-501" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`relocate()`</span>: ändert die Position der Spalten</span>
+<span id="cb40-502"><a href="#cb40-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-503"><a href="#cb40-503" aria-hidden="true" tabindex="-1"></a><span class="fu">### `rename()`</span></span>
+<span id="cb40-504"><a href="#cb40-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-505"><a href="#cb40-505" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mit <span class="in">`rename()`</span> können wir den Namen von Spalten ändern</span>
+<span id="cb40-506"><a href="#cb40-506" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>die Reihenfolge der Argumente ist <span class="in">`neuer_name`</span> = <span class="in">`alter_name`</span></span>
+<span id="cb40-507"><a href="#cb40-507" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-508"><a href="#cb40-508" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Versuchen wir, einige der Variablennamen auf Deutsch zu ändern</span>
+<span id="cb40-509"><a href="#cb40-509" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Ich neige dazu, Variablennamen in Kleinbuchstaben zu schreiben, als Kodierungskonvention</span>
+<span id="cb40-510"><a href="#cb40-510" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-513"><a href="#cb40-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-514"><a href="#cb40-514" aria-hidden="true" tabindex="-1"></a><span class="do">## single variable</span></span>
+<span id="cb40-515"><a href="#cb40-515" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span> </span>
+<span id="cb40-516"><a href="#cb40-516" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span></span>
+<span id="cb40-517"><a href="#cb40-517" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">teilnehmer =</span> Subject)</span>
+<span id="cb40-518"><a href="#cb40-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-519"><a href="#cb40-519" aria-hidden="true" tabindex="-1"></a><span class="do">## or multiple variables at once</span></span>
+<span id="cb40-520"><a href="#cb40-520" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span> </span>
+<span id="cb40-521"><a href="#cb40-521" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb40-522"><a href="#cb40-522" aria-hidden="true" tabindex="-1"></a> <span class="fu">rename</span>(<span class="at">teilnehmer =</span> Subject,</span>
+<span id="cb40-523"><a href="#cb40-523" aria-hidden="true" tabindex="-1"></a>        <span class="at">rz_ms =</span> RT,</span>
+<span id="cb40-524"><a href="#cb40-524" aria-hidden="true" tabindex="-1"></a>        <span class="at">geschlect =</span> Sex,</span>
+<span id="cb40-525"><a href="#cb40-525" aria-hidden="true" tabindex="-1"></a>        <span class="at">laenge =</span> Length)</span>
+<span id="cb40-526"><a href="#cb40-526" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-527"><a href="#cb40-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-528"><a href="#cb40-528" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mutate()`</span></span>
+<span id="cb40-529"><a href="#cb40-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-530"><a href="#cb40-530" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mit <span class="in">`mutate()`</span> werden neue Spalten aus vorhandenen Spalten erzeugt.</span>
+<span id="cb40-531"><a href="#cb40-531" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>So können wir z.B. einfache Algebra mit den Werten in jeder Spalte durchführen</span>
+<span id="cb40-532"><a href="#cb40-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-535"><a href="#cb40-535" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-536"><a href="#cb40-536" aria-hidden="true" tabindex="-1"></a><span class="co">#| Ausgabeort: Fragment</span></span>
+<span id="cb40-537"><a href="#cb40-537" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-538"><a href="#cb40-538" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-539"><a href="#cb40-539" aria-hidden="true" tabindex="-1"></a>    <span class="at">rz_laenge =</span> rz_ms <span class="sc">/</span> laenge,</span>
+<span id="cb40-540"><a href="#cb40-540" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb40-541"><a href="#cb40-541" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-542"><a href="#cb40-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-543"><a href="#cb40-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-544"><a href="#cb40-544" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-545"><a href="#cb40-545" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mutate()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-546"><a href="#cb40-546" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-547"><a href="#cb40-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-548"><a href="#cb40-548" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mit <span class="in">`mutate()`</span> werden diese neuen Spalten auf der rechten Seite des Datensatzes hinzugefügt.</span>
+<span id="cb40-549"><a href="#cb40-549" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Das macht es schwierig zu sehen, was passiert.</span>
+<span id="cb40-550"><a href="#cb40-550" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>um zu kontrollieren, wo die neue Spalte hinzugefügt wird, können wir <span class="in">`.before`</span> oder <span class="in">`.after`</span> verwenden</span>
+<span id="cb40-551"><a href="#cb40-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-554"><a href="#cb40-554" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-555"><a href="#cb40-555" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-556"><a href="#cb40-556" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-557"><a href="#cb40-557" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-558"><a href="#cb40-558" aria-hidden="true" tabindex="-1"></a>    <span class="at">rz_laenge =</span> rz_ms <span class="sc">/</span> laenge,</span>
+<span id="cb40-559"><a href="#cb40-559" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> rz_ms</span>
+<span id="cb40-560"><a href="#cb40-560" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb40-561"><a href="#cb40-561" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-562"><a href="#cb40-562" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-563"><a href="#cb40-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-564"><a href="#cb40-564" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-565"><a href="#cb40-565" aria-hidden="true" tabindex="-1"></a><span class="fu">###  {.unlisted .unnumbered}</span></span>
+<span id="cb40-566"><a href="#cb40-566" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-567"><a href="#cb40-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-568"><a href="#cb40-568" aria-hidden="true" tabindex="-1"></a>::: {.callout-important appearance="simple"}</span>
+<span id="cb40-569"><a href="#cb40-569" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Rendernpause!</span></span>
+<span id="cb40-570"><a href="#cb40-570" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-571"><a href="#cb40-571" aria-hidden="true" tabindex="-1"></a>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?</span>
+<span id="cb40-572"><a href="#cb40-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-573"><a href="#cb40-573" aria-hidden="true" tabindex="-1"></a>Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?</span>
+<span id="cb40-574"><a href="#cb40-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-575"><a href="#cb40-575" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-576"><a href="#cb40-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-577"><a href="#cb40-577" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-578"><a href="#cb40-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-579"><a href="#cb40-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-580"><a href="#cb40-580" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-581"><a href="#cb40-581" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb40-582"><a href="#cb40-582" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-583"><a href="#cb40-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-584"><a href="#cb40-584" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-585"><a href="#cb40-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-586"><a href="#cb40-586" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-mutate]: `mutate()`</span></span>
+<span id="cb40-587"><a href="#cb40-587" aria-hidden="true" tabindex="-1"></a>::: {#exm-mutate .custom}</span>
+<span id="cb40-588"><a href="#cb40-588" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-589"><a href="#cb40-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-590"><a href="#cb40-590" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Create a new variable called <span class="in">`rz_s`</span> in <span class="in">`df_lexent`</span>:</span>
+<span id="cb40-591"><a href="#cb40-591" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>equals <span class="in">`rz_ms`</span> divided by 1000 (i.e., converts milliseconds to seconds)</span>
+<span id="cb40-592"><a href="#cb40-592" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>appears after <span class="in">`rz_ms`</span></span>
+<span id="cb40-593"><a href="#cb40-593" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Render your document</span>
+<span id="cb40-594"><a href="#cb40-594" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-597"><a href="#cb40-597" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-598"><a href="#cb40-598" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-599"><a href="#cb40-599" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb40-600"><a href="#cb40-600" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span></span>
+<span id="cb40-601"><a href="#cb40-601" aria-hidden="true" tabindex="-1"></a>  df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-602"><a href="#cb40-602" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-603"><a href="#cb40-603" aria-hidden="true" tabindex="-1"></a>    <span class="at">rz_s =</span> rz_ms <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb40-604"><a href="#cb40-604" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> rz_ms</span>
+<span id="cb40-605"><a href="#cb40-605" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-606"><a href="#cb40-606" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-607"><a href="#cb40-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-608"><a href="#cb40-608" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-609"><a href="#cb40-609" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-610"><a href="#cb40-610" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-611"><a href="#cb40-611" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-612"><a href="#cb40-612" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-613"><a href="#cb40-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-614"><a href="#cb40-614" aria-hidden="true" tabindex="-1"></a><span class="fu">### `select()`</span></span>
+<span id="cb40-615"><a href="#cb40-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-616"><a href="#cb40-616" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`select()`</span> fasst die Daten so zusammen, dass sie nur die gewünschten Spalten enthalten</span>
+<span id="cb40-617"><a href="#cb40-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-618"><a href="#cb40-618" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Spalten nach Namen auswählen</span>
+<span id="cb40-619"><a href="#cb40-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-622"><a href="#cb40-622" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-623"><a href="#cb40-623" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-624"><a href="#cb40-624" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-625"><a href="#cb40-625" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(teilnehmer, rz_ms, Word) <span class="sc">|&gt;</span> </span>
+<span id="cb40-626"><a href="#cb40-626" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-627"><a href="#cb40-627" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-628"><a href="#cb40-628" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-629"><a href="#cb40-629" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-630"><a href="#cb40-630" aria-hidden="true" tabindex="-1"></a><span class="fu">### `select()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-631"><a href="#cb40-631" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-632"><a href="#cb40-632" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-633"><a href="#cb40-633" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>select alle Spalten zwischen <span class="in">`rz_ms`</span> und <span class="in">`geschlecht`</span></span>
+<span id="cb40-634"><a href="#cb40-634" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-637"><a href="#cb40-637" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-638"><a href="#cb40-638" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-639"><a href="#cb40-639" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-640"><a href="#cb40-640" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rz_ms<span class="sc">:</span>geschlect) <span class="sc">|&gt;</span> </span>
+<span id="cb40-641"><a href="#cb40-641" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-642"><a href="#cb40-642" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-643"><a href="#cb40-643" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-644"><a href="#cb40-644" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-645"><a href="#cb40-645" aria-hidden="true" tabindex="-1"></a><span class="fu">### `select()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-646"><a href="#cb40-646" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-647"><a href="#cb40-647" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-648"><a href="#cb40-648" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>alle Spalten außer <span class="in">`rz_s`</span> auswählen (<span class="in">`!`</span> wird als "nicht" gelesen)</span>
+<span id="cb40-649"><a href="#cb40-649" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-652"><a href="#cb40-652" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-653"><a href="#cb40-653" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-654"><a href="#cb40-654" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-655"><a href="#cb40-655" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>rz_s) <span class="sc">|&gt;</span> </span>
+<span id="cb40-656"><a href="#cb40-656" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-657"><a href="#cb40-657" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-658"><a href="#cb40-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-659"><a href="#cb40-659" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `select()`-Hilfsfunktionen</span></span>
+<span id="cb40-660"><a href="#cb40-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-661"><a href="#cb40-661" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>einige Hilfsfunktionen, die das Leben bei der Arbeit mit <span class="in">`select()`</span> erleichtern:</span>
+<span id="cb40-662"><a href="#cb40-662" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`starts_with("abc")`</span>: wählt Spalten aus, die mit einer bestimmten Zeichenkette beginnen</span>
+<span id="cb40-663"><a href="#cb40-663" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`ends_with("xyz")`</span>: wählt Spalten aus, die mit einer bestimmten Zeichenkette enden</span>
+<span id="cb40-664"><a href="#cb40-664" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`contains("ijk")`</span>: wählt Spalten aus, die eine bestimmte Zeichenkette enthalten</span>
+<span id="cb40-665"><a href="#cb40-665" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`where(is.character)`</span>: wählt Spalten aus, die einem logischen Kriterium entsprechen</span>
+<span id="cb40-666"><a href="#cb40-666" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>z.B. gibt die Funktion <span class="in">`is.character()`</span> den Wert <span class="in">`TRUE`</span> zurück, wenn eine Variable Zeichenketten enthält, nicht numerische Werte oder Kategorien</span>
+<span id="cb40-667"><a href="#cb40-667" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-668"><a href="#cb40-668" aria-hidden="true" tabindex="-1"></a>:::: columns</span>
+<span id="cb40-669"><a href="#cb40-669" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-670"><a href="#cb40-670" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb40-673"><a href="#cb40-673" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-674"><a href="#cb40-674" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-675"><a href="#cb40-675" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-676"><a href="#cb40-676" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"w"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-677"><a href="#cb40-677" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-678"><a href="#cb40-678" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-679"><a href="#cb40-679" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-680"><a href="#cb40-680" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-681"><a href="#cb40-681" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb40-684"><a href="#cb40-684" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-685"><a href="#cb40-685" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-686"><a href="#cb40-686" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-687"><a href="#cb40-687" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"er"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-688"><a href="#cb40-688" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-689"><a href="#cb40-689" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-690"><a href="#cb40-690" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-691"><a href="#cb40-691" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb40-692"><a href="#cb40-692" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-693"><a href="#cb40-693" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-694"><a href="#cb40-694" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb40-695"><a href="#cb40-695" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-696"><a href="#cb40-696" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-697"><a href="#cb40-697" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb40-698"><a href="#cb40-698" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-699"><a href="#cb40-699" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-select]: `select()`</span></span>
+<span id="cb40-700"><a href="#cb40-700" aria-hidden="true" tabindex="-1"></a>::: {#exm-select .custom}</span>
+<span id="cb40-701"><a href="#cb40-701" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-702"><a href="#cb40-702" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-703"><a href="#cb40-703" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Drucke die Spalten in <span class="in">`df_lexent`</span>, die mit "t" beginnen</span>
+<span id="cb40-704"><a href="#cb40-704" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Drucke die Spalten in <span class="in">`df_lexent`</span>, die "ge" enthalten</span>
+<span id="cb40-705"><a href="#cb40-705" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Drucke die Spalten in <span class="in">`df_lexent`</span>, die</span>
+<span id="cb40-706"><a href="#cb40-706" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>mit mit "r" beginnen, und</span>
+<span id="cb40-707"><a href="#cb40-707" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>mit "s" enden</span>
+<span id="cb40-708"><a href="#cb40-708" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-709"><a href="#cb40-709" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-710"><a href="#cb40-710" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-711"><a href="#cb40-711" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-712"><a href="#cb40-712" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-715"><a href="#cb40-715" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-716"><a href="#cb40-716" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-717"><a href="#cb40-717" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-718"><a href="#cb40-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-719"><a href="#cb40-719" aria-hidden="true" tabindex="-1"></a><span class="do">## 1</span></span>
+<span id="cb40-720"><a href="#cb40-720" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span></span>
+<span id="cb40-721"><a href="#cb40-721" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"t"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-722"><a href="#cb40-722" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-723"><a href="#cb40-723" aria-hidden="true" tabindex="-1"></a><span class="do">## 2</span></span>
+<span id="cb40-724"><a href="#cb40-724" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span></span>
+<span id="cb40-725"><a href="#cb40-725" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"ge"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-726"><a href="#cb40-726" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-727"><a href="#cb40-727" aria-hidden="true" tabindex="-1"></a><span class="do">## 3</span></span>
+<span id="cb40-728"><a href="#cb40-728" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span></span>
+<span id="cb40-729"><a href="#cb40-729" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"r"</span>),</span>
+<span id="cb40-730"><a href="#cb40-730" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ends_with</span>(<span class="st">"s"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-731"><a href="#cb40-731" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-732"><a href="#cb40-732" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-733"><a href="#cb40-733" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-734"><a href="#cb40-734" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-735"><a href="#cb40-735" aria-hidden="true" tabindex="-1"></a><span class="fu">### `relocate()`</span></span>
+<span id="cb40-736"><a href="#cb40-736" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-737"><a href="#cb40-737" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`relocate()`</span> verschiebt Variablen</span>
+<span id="cb40-738"><a href="#cb40-738" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>standardmäßig werden sie nach vorne verschoben</span>
+<span id="cb40-739"><a href="#cb40-739" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-742"><a href="#cb40-742" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-743"><a href="#cb40-743" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-744"><a href="#cb40-744" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> <span class="fu">relocate</span>(Trial) <span class="sc">|&gt;</span> </span>
+<span id="cb40-745"><a href="#cb40-745" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-746"><a href="#cb40-746" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-747"><a href="#cb40-747" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-748"><a href="#cb40-748" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-749"><a href="#cb40-749" aria-hidden="true" tabindex="-1"></a><span class="fu">### `relocate()` {.unlisted .unnumbered}</span></span>
+<span id="cb40-750"><a href="#cb40-750" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-751"><a href="#cb40-751" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-752"><a href="#cb40-752" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>aber wir können auch <span class="in">`.before`</span> oder <span class="in">`.after`</span> verwenden, um eine Variable zu platzieren</span>
+<span id="cb40-753"><a href="#cb40-753" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-756"><a href="#cb40-756" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-757"><a href="#cb40-757" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb40-758"><a href="#cb40-758" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-759"><a href="#cb40-759" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(Trial, <span class="at">.after =</span> teilnehmer) <span class="sc">|&gt;</span> </span>
+<span id="cb40-760"><a href="#cb40-760" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb40-761"><a href="#cb40-761" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-762"><a href="#cb40-762" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-763"><a href="#cb40-763" aria-hidden="true" tabindex="-1"></a><span class="fu">## `dplyr` und `ggplot2`</span></span>
+<span id="cb40-764"><a href="#cb40-764" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-765"><a href="#cb40-765" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wir können einen Datensatz mit den <span class="in">`dplyr`</span>-Verben ändern und diese Änderungen dann in <span class="in">`ggplot2`</span> einspeisen</span>
+<span id="cb40-766"><a href="#cb40-766" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-767"><a href="#cb40-767" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Was wird der folgende Code ergeben?</span>
+<span id="cb40-768"><a href="#cb40-768" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-771"><a href="#cb40-771" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-772"><a href="#cb40-772" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-773"><a href="#cb40-773" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-774"><a href="#cb40-774" aria-hidden="true" tabindex="-1"></a>  <span class="do">## filter the data</span></span>
+<span id="cb40-775"><a href="#cb40-775" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rz_ms <span class="sc">&gt;</span> <span class="dv">120</span>,</span>
+<span id="cb40-776"><a href="#cb40-776" aria-hidden="true" tabindex="-1"></a>         rz_ms <span class="sc">&gt;</span> <span class="dv">500</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-777"><a href="#cb40-777" aria-hidden="true" tabindex="-1"></a>  <span class="do">## plot the filtered data</span></span>
+<span id="cb40-778"><a href="#cb40-778" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(Correct))) <span class="sc">+</span></span>
+<span id="cb40-779"><a href="#cb40-779" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb40-780"><a href="#cb40-780" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb40-781"><a href="#cb40-781" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-782"><a href="#cb40-782" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-783"><a href="#cb40-783" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pipe versus plus (`|&gt;` vs. `+`)</span></span>
+<span id="cb40-784"><a href="#cb40-784" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-785"><a href="#cb40-785" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wichtig: wir können Pipes (<span class="in">` |&gt; `</span>) verwenden, um zusätzliche Verben/Funktionen mit dem Ergebnis einer vorherigen Codezeile auszuführen</span>
+<span id="cb40-786"><a href="#cb40-786" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Die Funktion <span class="in">`ggplot()`</span> verwendet jedoch <span class="in">`+`</span>, um neue *Ebenen* zur Darstellung hinzuzufügen</span>
+<span id="cb40-787"><a href="#cb40-787" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-788"><a href="#cb40-788" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-789"><a href="#cb40-789" aria-hidden="true" tabindex="-1"></a><span class="fu">### {.unlisted .unnumbered}</span></span>
+<span id="cb40-790"><a href="#cb40-790" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-791"><a href="#cb40-791" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-792"><a href="#cb40-792" aria-hidden="true" tabindex="-1"></a>::: {.callout-important appearance="simple"}</span>
+<span id="cb40-793"><a href="#cb40-793" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Rendernpause!</span></span>
+<span id="cb40-794"><a href="#cb40-794" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-795"><a href="#cb40-795" aria-hidden="true" tabindex="-1"></a>Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?</span>
+<span id="cb40-796"><a href="#cb40-796" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-797"><a href="#cb40-797" aria-hidden="true" tabindex="-1"></a>Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr Überschriften, Text?</span>
+<span id="cb40-798"><a href="#cb40-798" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-799"><a href="#cb40-799" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-800"><a href="#cb40-800" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-801"><a href="#cb40-801" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-802"><a href="#cb40-802" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-803"><a href="#cb40-803" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-804"><a href="#cb40-804" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgaben</span></span>
+<span id="cb40-805"><a href="#cb40-805" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-806"><a href="#cb40-806" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-807"><a href="#cb40-807" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-808"><a href="#cb40-808" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Drucken Sie in einer einzigen Pipeline <span class="in">`df_lexent`</span>, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:</span>
+<span id="cb40-809"><a href="#cb40-809" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>die Reaktionszeiten waren größer als 500ms *und* kleiner als 550ms</span>
+<span id="cb40-810"><a href="#cb40-810" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>aus den Wörtern "pear", "elephant" oder "tortoise" stammen</span>
+<span id="cb40-811"><a href="#cb40-811" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-814"><a href="#cb40-814" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-815"><a href="#cb40-815" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-816"><a href="#cb40-816" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-817"><a href="#cb40-817" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-818"><a href="#cb40-818" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span></span>
+<span id="cb40-819"><a href="#cb40-819" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rz_ms, NativeLanguage, Word) <span class="sc">|&gt;</span> </span>
+<span id="cb40-820"><a href="#cb40-820" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(rz_ms) <span class="sc">|&gt;</span> </span>
+<span id="cb40-821"><a href="#cb40-821" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rz_ms <span class="sc">&lt;=</span> <span class="dv">550</span> <span class="sc">&amp;</span> rz_ms <span class="sc">&gt;</span> <span class="dv">500</span>,</span>
+<span id="cb40-822"><a href="#cb40-822" aria-hidden="true" tabindex="-1"></a>         Word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"tortoise"</span>, <span class="st">"elephant"</span>, <span class="st">"pear"</span>)) </span>
+<span id="cb40-823"><a href="#cb40-823" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-824"><a href="#cb40-824" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-825"><a href="#cb40-825" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-826"><a href="#cb40-826" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Sortiere <span class="in">`df_lexent`</span> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</span>
+<span id="cb40-827"><a href="#cb40-827" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-830"><a href="#cb40-830" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-831"><a href="#cb40-831" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-832"><a href="#cb40-832" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-833"><a href="#cb40-833" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-834"><a href="#cb40-834" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-835"><a href="#cb40-835" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rz_ms)) </span>
+<span id="cb40-836"><a href="#cb40-836" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-837"><a href="#cb40-837" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-838"><a href="#cb40-838" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-839"><a href="#cb40-839" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-840"><a href="#cb40-840" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb40-841"><a href="#cb40-841" aria-hidden="true" tabindex="-1"></a><span class="fu">### {.unlisted .unnumbered}</span></span>
+<span id="cb40-842"><a href="#cb40-842" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-843"><a href="#cb40-843" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-844"><a href="#cb40-844" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb40-845"><a href="#cb40-845" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <span class="in">`df_rz`</span>, das <span class="in">`df_lexent`</span> enthält, *und dann*:</span>
+<span id="cb40-846"><a href="#cb40-846" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Selektieren Sie die Variablen <span class="in">`Teilnehmer`</span>, <span class="in">`NativeLanguage`</span>, <span class="in">`Word`</span>, <span class="in">`rz_s`</span>, <span class="in">`laenge`</span>, und <span class="in">`Frequency`</span></span>
+<span id="cb40-847"><a href="#cb40-847" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Erstelle eine neue Variable <span class="in">`rz_s_laenge`</span>, die <span class="in">`rz_s`</span> geteilt durch <span class="in">`laenge`</span> ist</span>
+<span id="cb40-848"><a href="#cb40-848" aria-hidden="true" tabindex="-1"></a><span class="ss">      + </span>und wird vor <span class="in">`Laenge`</span> gesetzt</span>
+<span id="cb40-849"><a href="#cb40-849" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Benennen Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</span>
+<span id="cb40-850"><a href="#cb40-850" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-853"><a href="#cb40-853" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-854"><a href="#cb40-854" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-855"><a href="#cb40-855" aria-hidden="true" tabindex="-1"></a>df_rz <span class="ot">&lt;-</span> </span>
+<span id="cb40-856"><a href="#cb40-856" aria-hidden="true" tabindex="-1"></a>  df_lexent <span class="sc">|&gt;</span> </span>
+<span id="cb40-857"><a href="#cb40-857" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(teilnehmer, NativeLanguage, Word, rz_s, laenge, Frequency) <span class="sc">|&gt;</span> </span>
+<span id="cb40-858"><a href="#cb40-858" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rz_s_laenge =</span> rz_s<span class="sc">/</span>laenge, <span class="at">.before =</span> laenge) <span class="sc">|&gt;</span> </span>
+<span id="cb40-859"><a href="#cb40-859" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">muttersprache =</span> NativeLanguage,</span>
+<span id="cb40-860"><a href="#cb40-860" aria-hidden="true" tabindex="-1"></a>         <span class="at">wort =</span> Word,</span>
+<span id="cb40-861"><a href="#cb40-861" aria-hidden="true" tabindex="-1"></a>         <span class="at">frequenz =</span> Frequency) <span class="do">## etcetera</span></span>
+<span id="cb40-862"><a href="#cb40-862" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-863"><a href="#cb40-863" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-864"><a href="#cb40-864" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-865"><a href="#cb40-865" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heutige Ziele 🏁 {.unnumbered .unlisted}</span></span>
+<span id="cb40-866"><a href="#cb40-866" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-867"><a href="#cb40-867" aria-hidden="true" tabindex="-1"></a>Heute haben wir gelernt...</span>
+<span id="cb40-868"><a href="#cb40-868" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-869"><a href="#cb40-869" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wie man Daten mit dem Paket <span class="in">`dplyr`</span> aus dem <span class="in">`tidyverse`</span> verarbeitet ✅</span>
+<span id="cb40-870"><a href="#cb40-870" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wie man die <span class="in">`pipe`</span> (<span class="in">` |&gt; `</span>) verwendet, um das Ergebnis einer Funktion in eine andere Funktion einzuspeisen ✅</span>
+<span id="cb40-871"><a href="#cb40-871" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>über Funktionen, die auf Zeilen operieren ✅</span>
+<span id="cb40-872"><a href="#cb40-872" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>über Funktionen, die auf Spalten operieren ✅</span>
+<span id="cb40-873"><a href="#cb40-873" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wie man <span class="in">`dplyr`</span>-Funktionen mit Plots von <span class="in">`ggplot2`</span> kombiniert ✅</span>
+<span id="cb40-874"><a href="#cb40-874" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-875"><a href="#cb40-875" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info {.unnumbered}</span></span>
+<span id="cb40-876"><a href="#cb40-876" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-879"><a href="#cb40-879" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-880"><a href="#cb40-880" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-881"><a href="#cb40-881" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-882"><a href="#cb40-882" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
+<span id="cb40-883"><a href="#cb40-883" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-884"><a href="#cb40-884" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-885"><a href="#cb40-885" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-886"><a href="#cb40-886" aria-hidden="true" tabindex="-1"></a>Hergestellt mit <span class="in">`r R.version.string`</span> (<span class="in">`r R.version$nickname`</span>) und RStudioversion 2023.9.0.463 (Desert Sunflower).</span>
+<span id="cb40-887"><a href="#cb40-887" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-890"><a href="#cb40-890" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-891"><a href="#cb40-891" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb40-892"><a href="#cb40-892" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-893"><a href="#cb40-893" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-894"><a href="#cb40-894" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb40-895"><a href="#cb40-895" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-896"><a href="#cb40-896" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
+<span id="cb40-897"><a href="#cb40-897" aria-hidden="true" tabindex="-1"></a>:::</span>
+</code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
