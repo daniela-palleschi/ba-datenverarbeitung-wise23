@@ -1,39 +1,84 @@
 ---
-title: "Data Wrangling 1: Transformation"
-subtitle: "Umwandlung von Daten"
+title: "Datentransformation"
+subtitle: "Arbeiten mit Zeilen und Spalten"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-footer: "Woche 4 - Data Transformation"
+footer: "Woche 4 - Datenumwandlung" 
 lang: de
 date: "11/08/2023"
-date-format: "ddd [den] DD.MM.YYYY"
+date-format: "ddd [d]en DD.MM.YYYY"
 date-modified: last-modified
+format: 
+  html:
+    output-file: wrangling1_blatt.html
+    include-after-body: custom.html
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-title: "heutige Themen"
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
+  revealjs: 
+    output-file: wrangling1_folien.html
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+  pdf:
+    output-file: wrangling1.pdf
+    toc: true
+    number-sections: true
+    colorlinks: true
+    code-overflow: wrap
+bibliography: ../../references.bib
+csl: ../../apa.csl
+editor_options: 
+  chunk_output_type: console
 ---
-
-### Lesungen {.unnumbered}
-
-Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kap. 4 (Data Transformation)](https://r4ds.hadley.nz/data-transform) in @wickham_r_2023.
-
-Eine **ergänzende Lektüre** ist [Ch. 9 (Data Wrangling)](https://psyteachr.github.io/ads-v2/09-wrangle.html) in @nordmann_applied_2022.
-
 
 ```{r}
 #| echo: false
-knitr::opts_chunk$set(eval = T, ## evaluate chunks
-                      echo = T, ## 'print code chunk?'
-                      message = F, ## 'print messages (e.g., warnings)?'
-                      error = F, ## stop when error encountered
-                      warning = F) ## don't print warnings
+knitr::opts_chunk$set(eval = T, # evaluate chunks
+                      echo = T, # 'print code chunk?'
+                      message = F, # 'print messages (e.g., warnings)?'
+                      error = F, # stop when error encountered
+                      warning = F) # don't print warnings
 ```
 
 ```{r, eval = T, cache = F}
 #| echo: false
-## Create references.json file based on the citations in this script
-## make sure you have 'bibliography: references.json' in the YAML
-## rbbt::bbt_update_bib("_wrangling1_DE.qmd")
+# Create references.json file based on the citations in this script
+# make sure you have 'bibliography: references.json' in the YAML
+# rbbt::bbt_update_bib("_wrangling1_DE.qmd")
 ```
 
-## Wiederholung {.unnumbered}
+# Wiederholung {.unnumbered}
 
 Letze Woche haben wir...
 
@@ -43,7 +88,7 @@ Letze Woche haben wir...
 -   gelernt, wie man Code in ein Quarto-Dokument einfügt
 -   ein Quarto-Dokument in verschiedenen Formaten wiedergebt
 
-## Heutige Ziele {.unnumbered}
+# Heutige Ziele {.unnumbered}
 
 Heute werden wir...
 
@@ -53,12 +98,12 @@ Heute werden wir...
 - Funktionen kennenlernen, die mit Spalten arbeiten
 - lernen, wie man `dplyr`-Funktionen mit Plots von `ggplot2` kombiniert
 
-### Lust auf mehr? {.unnumbered .unlisted}
+## Lust auf mehr? {.unnumbered .unlisted}
 
 - [Kapital 4 (Data transformation)](https://r4ds.hadley.nz/data-transform.html) in @wickham_r_nodate
 - [Kapital 9 (Data wrangling)](https://psyteachr.github.io/ads-v2/09-wrangle.html) in @nordmann_applied_2022
 
-## Voraussetzungen
+# Voraussetzungen
 
 1. Frisches Quarto-Dokument
     - Erstellen Sie ein neues Quarto-Dokument für den heutigen Unterricht
@@ -79,7 +124,7 @@ format:
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### Voraussetzungen {.unlisted .unnumbered}
+## Voraussetzungen {.unlisted .unnumbered}
 :::
 
 2. Pakete
@@ -93,7 +138,7 @@ library(languageR)
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### Voraussetzungen {.unlisted .unnumbered}
+## Voraussetzungen {.unlisted .unnumbered}
 :::
 
 3. Daten
@@ -111,10 +156,10 @@ df_lexdec <- lexdec |>
 
 
 ::: {.content-visible when-format="revealjs"}
-###  {.unlisted .unnumbered}
+##  {.unlisted .unnumbered}
 
 ::: {.callout-important appearance="simple"}
-#### Rendernpause!
+### Rendernpause!
 ::: nonincremental
 Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wurde es gerendert?
 
@@ -129,7 +174,7 @@ Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wurde es gerender
 
 :::
 
-## Data Wrangling
+# Data Wrangling
 
 - Im Englischen bezieht sich "wrangling" auf einen langen, schwierigen Prozess
   + z. B. treiben Cowboys ihre Rinder oder Herden zusammen (sammeln, sammeln ihre Tiere)
@@ -140,12 +185,12 @@ Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wurde es gerender
   + `dplyr` Funktionen werden oft als Verben bezeichnet, weil sie etwas *tun*
 
 ::: {.content-visible when-format="revealjs"}
-### `dplyr` {.unlisted .unnumbered}
+## `dplyr` {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
 
-## Der Name `dplyr`
+# Der Name `dplyr`
   + Der Name `dplyr` kommt von einem früheren Paket, `plyr`, das dazu verwendet wird, Daten zu zerlegen, Funktionen darauf anzuwenden und zu kombinieren
     + Im Englischen klingt `plyr` wie das Wort für Zangen ("pliers"), die benutzt werden, um Dinge auseinander zu nehmen, wie das, was `plyr` mit Daten macht
     + das "d" in "dplyr" wurde hinzugefügt, weil das Paket speziell für die Arbeit mit Datenrahmen gedacht ist
@@ -153,7 +198,7 @@ Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wurde es gerender
 :::
 
 
-### `lexdec`
+## `lexdec`
 
 - der `lexdec`-Datensatz enthält Daten für eine lexikalische Entscheidungsaufgabe im Englischen
   + Schauen wir uns den Datensatz mit der Funktion `head()` an, die nur die ersten 6 Zeilen ausgibt
@@ -170,12 +215,12 @@ head(df_lexdec, n = 10)
 - In meinen Materialien verwende ich oft die Funktion "head()", um zu vermeiden, dass der gesamte Datensatz in der Ausgabe gedruckt wird, aber Sie würden im Allgemeinen nicht "head()" verwenden wollen, wenn Sie Ihre Daten betrachten, sondern Ihren gesamten Datensatz betrachten wollen
 
 ::: {.content-visible when-format="revealjs"}
-### Aufgabe {.unlisted .unnumbered}
+## Aufgabe {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
 
-#### [Aufgabe @exm-df_lexent]: `df_lexdec`
+### [Aufgabe @exm-df_lexent]: `df_lexdec`
 ::: {#exm-df_lexent .custom}
 ::: nonincremental
 1. Betrachten Sie den Datensatz
@@ -190,7 +235,7 @@ head(df_lexdec, n = 10)
 :::
 
 
-### `dplyr`-Grundlagen
+## `dplyr`-Grundlagen
 
 - heute lernen wir einige der wichtigsten `dplyr`-Verben (Funktionen) kennen, mit denen wir die meisten unserer Datenmanipulationsprobleme lösen können
   + Ich verwende diese Verben mehrfach in wahrscheinlich jedem Analyseskript
@@ -200,7 +245,7 @@ head(df_lexdec, n = 10)
     3. die Ausgabe ist immer ein neuer Datenrahmen
 
 ::: {.content-visible when-format="revealjs"}
-### `dplyr` Grundlagen
+## `dplyr` Grundlagen
 :::
 
 - Die Verben sind alle für eine Sache gut geeignet, so dass wir oft mehrere Verben auf einmal verwenden wollen.
@@ -209,7 +254,7 @@ head(df_lexdec, n = 10)
   + wir können die Pipe als `und dann` lesen
 
 ::: {.content-visible when-format="revealjs"}
-### `dplyr` Grundlagen
+## `dplyr` Grundlagen
 :::
 
 - In dem folgenden Code identifizieren
@@ -239,11 +284,11 @@ df_lexdec |>
 :::
 
 ::: {.content-visible when-format="revealjs"}
-### {.unnumbered .uncounted .unlisted}
+## {.unnumbered .uncounted .unlisted}
 :::
 
 ::: callout-tip
-### Korrekte Syntax
+## Korrekte Syntax
 
 .Beachten Sie, dass `A1` mit Anführungszeichen geschrieben wird, aber keiner der anderen Codes. Wenn wir ein Objekt (z.B. `df_lexdec`) oder seine Variablen (z.B. `Subject`) aufrufen, setzen wir sie nicht in Anführungszeichen. Wenn wir einen bestimmten *Wert* einer Variablen aufrufen, der nicht numerisch ist, müssen wir diesen Wert in Anführungszeichen setzen, weil die Subject ID `A1` ein Wert der Variablen `Subject` ist, müssen wir sie in Anführungszeichen setzen.
 
@@ -256,10 +301,10 @@ Dies ist eine wichtige Übung, denn Sie werden oft feststellen, dass Ihr Code ni
 :::
 
 ::: {.content-visible when-format="revealjs"}
-###  {.unlisted .unnumbered}
+##  {.unlisted .unnumbered}
 
 ::: {.callout-important appearance="simple"}
-#### Rendernpause!
+### Rendernpause!
 ::: nonincremental
 Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?
 
@@ -271,7 +316,7 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 
 :::
 
-## Zeilen
+# Zeilen
 
 - In aufgeräumten Daten stellen die Zeilen Beobachtungen dar.
 
@@ -281,14 +326,14 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 - Wir besprechen auch
   + `distinct()`: findet Zeilen mit unterschiedlichen Werten basierend auf einer Variablen (Spalte)
 
-### `filter()`
+## `filter()`
 
 - ändert, welche Zeilen vorhanden sind, ohne ihre Reihenfolge zu ändern
 - nimmt den Datenrahmen als erstes Argument
   + Die folgenden Argumente sind Bedingungen, die `TRUE` sein müssen, damit die Zeile erhalten bleibt
   
 ::: {.content-visible when-format="revealjs"}
-### `filter()` {.unlisted .unnumbered}
+## `filter()` {.unlisted .unnumbered}
 :::
   
 - findet alle Reaktionszeiten, die länger als 450 Millisekunden waren:
@@ -303,7 +348,7 @@ df_lexdec |>
 - Beachten Sie, dass wir den Wert der Reaktionszeit nicht in Anführungszeichen setzen, da er *numerisch* ist
 
 ::: {.content-visible when-format="revealjs"}
-### `filter()` {.unlisted .unnumbered}
+## `filter()` {.unlisted .unnumbered}
 :::
 
 - wenn Sie die gefilterten Daten speichern wollen, ist es in der Regel ratsam, sie unter einem *neuen* Objektnamen zu speichern
@@ -316,12 +361,12 @@ df_lexdec_450 <-
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### Logische Operatoren {.unlisted .unnumbered}
+## Logische Operatoren {.unlisted .unnumbered}
 :::
 
 ::: callout-note
 
-#### Logische Operatoren
+### Logische Operatoren
 ::: nicht-inkrementelle
 - Symbole, die zur Beschreibung einer logischen Bedingung verwendet werden
   - `==` *ist identisch* (`1 == 1`)
@@ -336,14 +381,14 @@ df_lexdec_450 <-
   + behält Zeilen, in denen die Variable gleich einem der Werte auf der rechten Seite ist
 
 ::: panel-tabset
-#### `==` und `|`
+### `==` und `|`
 ```{r}
 df_lexdec |> 
   filter(Trial == 30 | Trial == 23) |> 
   head()
 ```
 
-#### `%in%`
+### `%in%`
 ```{r}
 df_lexdec |> 
   filter(Trial %in% c(30, 23)) |> 
@@ -354,12 +399,12 @@ df_lexdec |>
 :::
 
 ::: {.content-visible when-format="revealjs"}
-### Aufgabe {.unlisted .unnumbered}
+## Aufgabe {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
 
-#### [Aufgabe @exm-filter]: `filter()`
+### [Aufgabe @exm-filter]: `filter()`
 ::: {#exm-filter .custom}
 ::: nonincremental
 1. Filtern Sie die Daten, um Zeilen aus Versuch 25 und Nicht-Muttersprachler (`andere`) einzuschließen.
@@ -372,7 +417,7 @@ df_lexdec |>
 #| eval: false
 #| echo: false
 
-## 1, 2
+# 1, 2
 df_lexdec |> 
   filter(Trial == 25,
          NativeLanguage == "Other") |> 
@@ -380,7 +425,7 @@ df_lexdec |>
 ```
 
 
-### `arrange()`
+## `arrange()`
 
 - ändert die Reihenfolge der Zeilen auf der Grundlage eines Wertes in einer oder mehreren Spalten
 
@@ -392,7 +437,7 @@ df_lexdec |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### `arrange()` {.unlisted .unnumbered}
+## `arrange()` {.unlisted .unnumbered}
 :::
 
 - wenn Sie mehr als einen Spaltennamen verwenden, wird jede zusätzliche Spalte verwendet, um die Verbindung zwischen den Werten der vorangegangenen Spalten zu lösen
@@ -405,7 +450,7 @@ df_lexdec |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### `arrange()` {.unlisted .unnumbered}
+## `arrange()` {.unlisted .unnumbered}
 :::
 
 - wir können `desc()` innerhalb von `arrange()` hinzufügen, um eine absteigende Reihenfolge (groß-klein) anstelle der standardmäßigen aufsteigenden Reihenfolge zu verwenden
@@ -418,12 +463,12 @@ df_lexdec |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### Aufgabe {.unlisted .unnumbered}
+## Aufgabe {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
 
-#### [Aufgabe @exm-arrange]: `arrange()`
+### [Aufgabe @exm-arrange]: `arrange()`
 ::: {#exm-arrange .custom}
 ::: nonincremental
 1. Filtere die Daten so, dass sie nur Beobachtungen der "Probanden" M1 und W2 enthalten, *und dann*
@@ -443,10 +488,10 @@ df_lexdec |>
 :::
 
 ::: {.content-visible when-format="revealjs"}
-###  {.unlisted .unnumbered}
+##  {.unlisted .unnumbered}
 
 ::: {.callout-important appearance="simple"}
-#### Rendernpause!
+### Rendernpause!
 ::: nonincremental
 Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?
 
@@ -458,7 +503,7 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 
 :::
 
-## Spalten
+# Spalten
 
 - In Tidy Data stellen die Spalten Variablen dar.
 
@@ -468,7 +513,7 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
   + `select()`: ändert, welche Spalten vorhanden sind
   + `relocate()`: ändert die Position der Spalten
 
-### `rename()`
+## `rename()`
 
 - Mit `rename()` können wir den Namen von Spalten ändern
   + die Reihenfolge der Argumente ist `neuer_name` = `alter_name`
@@ -477,12 +522,12 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
   + Ich neige dazu, Variablennamen in Kleinbuchstaben zu schreiben, als Kodierungskonvention
   
 ```{r}
-## single variable
+# single variable
 df_lexent <- 
   df_lexdec |>
   rename(teilnehmer = Subject)
 
-## or multiple variables at once
+# or multiple variables at once
 df_lexent <- 
   df_lexdec |> 
  rename(teilnehmer = Subject,
@@ -491,7 +536,7 @@ df_lexent <-
         laenge = Length)
 ```
 
-### `mutate()`
+## `mutate()`
 
 - Mit `mutate()` werden neue Spalten aus vorhandenen Spalten erzeugt.
   + So können wir z.B. einfache Algebra mit den Werten in jeder Spalte durchführen
@@ -506,7 +551,7 @@ df_lexent |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### `mutate()` {.unlisted .unnumbered}
+## `mutate()` {.unlisted .unnumbered}
 :::
 
 - Mit `mutate()` werden diese neuen Spalten auf der rechten Seite des Datensatzes hinzugefügt.
@@ -524,11 +569,11 @@ df_lexent |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-###  {.unlisted .unnumbered}
+##  {.unlisted .unnumbered}
 :::
 
 ::: {.callout-important appearance="simple"}
-#### Rendernpause!
+### Rendernpause!
 ::: nonincremental
 Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?
 
@@ -540,12 +585,12 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 
 
 ::: {.content-visible when-format="revealjs"}
-### Aufgabe {.unlisted .unnumbered}
+## Aufgabe {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
 
-#### [Aufgabe @exm-mutate]: `mutate()`
+### [Aufgabe @exm-mutate]: `mutate()`
 ::: {#exm-mutate .custom}
 ::: nonincremental
 
@@ -571,7 +616,7 @@ df_lexent <-
 
 :::
 
-### `select()`
+## `select()`
 
 - `select()` fasst die Daten so zusammen, dass sie nur die gewünschten Spalten enthalten
 
@@ -585,7 +630,7 @@ df_lexent |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### `select()` {.unlisted .unnumbered}
+## `select()` {.unlisted .unnumbered}
 :::
 
 - select alle Spalten zwischen `rz_ms` und `geschlecht`
@@ -598,7 +643,7 @@ df_lexent |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### `select()` {.unlisted .unnumbered}
+## `select()` {.unlisted .unnumbered}
 :::
 
 - alle Spalten außer `rz_s` auswählen (`!` wird als "nicht" gelesen)
@@ -610,7 +655,7 @@ df_lexent |>
   head()
 ```
 
-#### `select()`-Hilfsfunktionen
+## `select()`-Hilfsfunktionen
 
 - einige Hilfsfunktionen, die das Leben bei der Arbeit mit `select()` erleichtern:
   + `starts_with("abc")`: wählt Spalten aus, die mit einer bestimmten Zeichenkette beginnen
@@ -641,12 +686,12 @@ df_lexent |>
 ::::
 
 ::: {.content-visible when-format="revealjs"}
-### Aufgabe {.unlisted .unnumbered}
+## Aufgabe {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
 
-#### [Aufgabe @exm-select]: `select()`
+### [Aufgabe @exm-select]: `select()`
 ::: {#exm-select .custom}
 ::: nonincremental
 
@@ -664,15 +709,15 @@ df_lexent |>
 #| echo: false
 #| eval: false
 
-## 1
+# 1
 df_lexent |>
   select(starts_with("t")) |> 
   head()
-## 2
+# 2
 df_lexent |>
   select(contains("ge")) |> 
   head()
-## 3
+# 3
 df_lexent |>
   select(starts_with("r"),
          ends_with("s")) |> 
@@ -680,7 +725,7 @@ df_lexent |>
 ```
 
 
-### `relocate()`
+## `relocate()`
 
 - `relocate()` verschiebt Variablen
   + standardmäßig werden sie nach vorne verschoben
@@ -692,7 +737,7 @@ df_lexent |> relocate(Trial) |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### `relocate()` {.unlisted .unnumbered}
+## `relocate()` {.unlisted .unnumbered}
 :::
 
 - aber wir können auch `.before` oder `.after` verwenden, um eine Variable zu platzieren
@@ -704,7 +749,7 @@ df_lexent |>
   head()
 ```
 
-## `dplyr` und `ggplot2`
+# `dplyr` und `ggplot2`
 
 - wir können einen Datensatz mit den `dplyr`-Verben ändern und diese Änderungen dann in `ggplot2` einspeisen
 
@@ -713,26 +758,26 @@ df_lexent |>
 ```{r}
 #| eval: false
 df_lexent |> 
-  ## filter the data
+  # filter the data
   filter(rz_ms > 120,
          rz_ms > 500) |> 
-  ## plot the filtered data
+  # plot the filtered data
   ggplot(aes(x = fct_infreq(Correct))) +
   geom_bar() +
   theme_minimal()
 ```
 
-### Pipe versus plus (`|>` vs. `+`)
+## Pipe versus plus (`|>` vs. `+`)
 
 - wichtig: wir können Pipes (` |> `) verwenden, um zusätzliche Verben/Funktionen mit dem Ergebnis einer vorherigen Codezeile auszuführen
   + Die Funktion `ggplot()` verwendet jedoch `+`, um neue *Ebenen* zur Darstellung hinzuzufügen
   
 ::: {.content-visible when-format="revealjs"}
-### {.unlisted .unnumbered}
+## {.unlisted .unnumbered}
 :::
 
 ::: {.callout-important appearance="simple"}
-#### Rendernpause!
+### Rendernpause!
 ::: nonincremental
 Nehmen Sie sich einen Moment Zeit, um Ihr Dokument zu rendern. Wird es gerendert?
 
@@ -743,7 +788,7 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 :::
 
 
-### Aufgaben
+## Aufgaben
 
 ::: nonincremental
 
@@ -776,7 +821,7 @@ df_lexent |>
 :::
 
 ::: {.content-visible when-format="revealjs"}
-### {.unlisted .unnumbered}
+## {.unlisted .unnumbered}
 :::
 
 ::: nonincremental
@@ -794,11 +839,11 @@ df_rz <-
   mutate(rz_s_laenge = rz_s/laenge, .before = laenge) |> 
   rename(muttersprache = NativeLanguage,
          wort = Word,
-         frequenz = Frequency) ## etcetera
+         frequenz = Frequency) # etcetera
 ```
 :::
 
-## Heutige Ziele 🏁 {.unnumbered .unlisted}
+# Heutige Ziele 🏁 {.unnumbered .unlisted}
 
 Heute haben wir gelernt...
 
@@ -808,7 +853,7 @@ Heute haben wir gelernt...
 - über Funktionen, die auf Spalten operieren ✅
 - wie man `dplyr`-Funktionen mit Plots von `ggplot2` kombiniert ✅
 
-## Session Info {.unnumbered}
+# Session Info {.unnumbered}
 
 ```{r}
 #| eval: false
@@ -823,7 +868,7 @@ Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion
 sessionInfo()
 ```
 
-## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
 
 ::: {#refs custom-style="Bibliography"}
 :::

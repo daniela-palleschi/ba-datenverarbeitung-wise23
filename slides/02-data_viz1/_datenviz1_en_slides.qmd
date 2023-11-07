@@ -6,7 +6,7 @@ institute: Humboldt-Universität zu Berlin
 footer: "Woche 2 - Datenvisualisierung 1" 
 lang: en
 date: "10/25/2023"
-date-format: "Class date ddd DD.MM.YYYY"
+date-format: "Class date ddd mmm, DD, YYYY"
 date-modified: last-modified
 format:
   html:
