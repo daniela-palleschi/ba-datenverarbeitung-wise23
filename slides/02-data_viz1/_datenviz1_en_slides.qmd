@@ -11,7 +11,7 @@ date-modified: last-modified
 format:
   html:
     output-file: dataviz1_en_longform.html
-    include-after-body: custom.html
+    include-after-body: ../../custom.html
     number-sections: true
     number-depth: 3
     toc: true

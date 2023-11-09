@@ -302,8 +302,6 @@ Can you organise the document better? E.g., adding more headers, text?
 - the most important verbs for rows are:
   + `filter()`: changes which rows are present
   + `arrange()`: changes the order of rows
-- we'll also discuss
-  + `distinct()`: finds rows with distinct values based on a variable (column)
 
 ## `filter()`
 
@@ -809,11 +807,11 @@ df_rz <-
 
 Today we learned...
 
-- learn how to wrangle data using the `dplyr` package from the `tidyverse` ✅
+- how to wrangle data using the `dplyr` package from the `tidyverse` ✅
 - learn to use uses the `pipe` (` |> `) to feed the result of one function into another function ✅
-- learn about functions that operate on rows ✅
-- learn about functions that operate on columns ✅
-- learn how to combine `dplyr` functions with plots from `ggplot2` ✅
+- about functions that operate on rows ✅
+- about functions that operate on columns ✅
+- how to combine `dplyr` functions with plots from `ggplot2` ✅
 
 # Session Info {.unnumbered}
 

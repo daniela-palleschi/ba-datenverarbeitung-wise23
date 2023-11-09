@@ -176,6 +176,7 @@ library(beepr)
 - Zum Beispiel hat das Paket `beepr` eine Funktion `beep()`, probieren wir sie aus
 
 ```{r, filename="in der Konsole laufen"}
+#| eval: false
 beep()
 ```
 
@@ -186,6 +187,7 @@ beep()
   + Versuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?
 
 ```{r, filename="in der Konsole laufen"}
+#| eval: false
 beep(sound = 5)
 ```
 

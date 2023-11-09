@@ -743,7 +743,7 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 :::
 
 
-### Aufgaben
+## Aufgaben {.unnumbered}
 
 ::: nonincremental
 
@@ -763,7 +763,7 @@ df_lexent |>
 ```
 
 
-2. Sortiere `df_lexent` in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.
+2. Sortiere (`arrange()`) `df_lexent` in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.
 
 ```{r}
 #| eval: false
@@ -781,10 +781,10 @@ df_lexent |>
 
 ::: nonincremental
 3. Speichern Sie in einer einzigen Pipeline ein neues Objekt namens `df_rz`, das `df_lexent` enthält, *und dann*:
-    + Selektieren Sie die Variablen `Teilnehmer`, `NativeLanguage`, `Word`, `rz_s`, `laenge`, und `Frequency`
-    + Erstelle eine neue Variable `rz_s_laenge`, die `rz_s` geteilt durch `laenge` ist
+    + Selektieren (`select()`) Sie die Variablen `Teilnehmer`, `NativeLanguage`, `Word`, `rz_s`, `laenge`, und `Frequency`
+    + Erstelle eine neue Variable `rz_s_laenge` (`mutate()`), die `rz_s` geteilt durch `laenge` ist
       + und wird vor `Laenge` gesetzt
-    + Benennen Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.
+    + Benennen (`rename`()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.
 
 ```{r}
 #| echo: false
