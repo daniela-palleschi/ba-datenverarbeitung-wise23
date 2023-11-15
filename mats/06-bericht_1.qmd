@@ -1,11 +1,195 @@
 ---
+title: "Bericht 1"
+subtitle: "Konsolidierung der neuen Kenntnisse"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
+footer: "Woche 6 - Bericht 1"
+lang: de
 date: "11/22/2023"
-date-format: "ddd [d]en DD.MM.YYYY"
-# date-modified: last-modified
+date-format: "ddd [den] DD.MM.YYYY"
+date-modified: last-modified
+execute:
+    code-tools: false
+    eval: false
+    echo: false
+    message: false
+    warning: false
 ---
 
-# Bericht 1 {.unnumbered}
+Dieser Bericht dient dazu, das bisher Gelernte zu wiederholen und zu festigen. Ihre Aufgaben umfassen das Laden von Paketen und Daten sowie eine leichte Datenverarbeitung (@sec-wrangle). Außerdem werden Sie 4 Diagramme erstellen (@sec-dataviz) und eine kurze Interpretation zu einem der Diagramme schreiben (@sec-interpret).
 
-Die Anweisungen werden am Tag der Vorlesung veröffentlicht.
+Ein Tipp: Ich empfehle Ihnen, Ihr Dokument häufig zu rendern, um eventuelle Fehler frühzeitig zu erkennen.
+
+Sie müssen nur das Quarto-Skript einreichen, das auf meinem Rechner gerendert werden sollte (wenn es auf Ihrem gerendert wird, sollte es auch auf meinem gerendert werden).
+
+## Einrichtung
+
+### Quarto
+
+Öffnen Sie ein neues Quarto-Skript und speichern Sie es als `nachname_vorname_bericht1.qmd`. Ändern Sie das YAML so, dass es einen:
+
+- einen aussagekräftigen Titel
+- Ihren Namen als `Autor`
+- ein Inhaltsverzeichnis
+
+Achten Sie darauf, Code Chunks, Prosa und Überschriften zu verwenden, um Ihre Aufgaben angemessen zu dokumentieren. Eine gute Faustregel ist, für jede (Unter-)Überschrift in diesem Dokument eine Überschrift hinzuzufügen.
+
+### Pakete
+
+Laden Sie die Pakete `tidyverse` und `languageR` ein.
+
+```{r}
+#| eval: true
+library(tidyverse)
+library(languageR)
+```
+
+```{r}
+#| eval: true
+#| echo: false
+pacman::p_load(
+  knitr,
+  kableExtra
+)
+```
+
+
+### Daten
+
+Der Datensatz `durationsGe` aus dem languageR-Paket [@languageR-package] enthält Dauermessungen zur niederländischen Vorsilbe *ge*. Eine Beschreibung aller Variablen des Datensatzes findet sich in @tbl-durationGe. Ihre Aufgabe ist es: 
+
+1. Speichern Sie den Datensatz als Objekt `df_ge` in Ihrer Umgebung (dies kann auf die gleiche Weise geschehen wie bei allen Datensätzen, die wir bisher verwendet haben)
+2. Drucken Sie die ersten 10 Zeilen des Datensatzes mit der Funktion "head()" aus.
+
+```{r}
+#| eval: true
+df_ge <- durationsGe
+```
+
+```{r}
+#| label: tbl-durationGe
+#| tbl-cap: "'Data dictionary' für 'durationsGe' aus dem languageR-Paket"
+#| eval: true
+#| echo: false
+tribble(
+  ~"Variable", ~"Description", ~"Beschreibung",
+  "Word", "a factor with the words as levels", "ein Faktor mit den Wörtern als Ebenen",
+  "Frequency", "a numeric vector with the word’s absolute frequency in the Spoken Dutch Corpus", "ein numerischer Vektor mit der absoluten Häufigkeit des Wortes im Spoken Dutch Corpus",
+  "Speaker", "a factor with the speakers as levels", "ein numerischer Vektor mit der absoluten Häufigkeit des Wortes im Spoken Dutch Corpus",
+  "Sex", "a factor with levels female and male, this information is missing for one speaker", "ein Faktor mit den Lautsprechern als Ebenen",
+  "YearOfBirth", "a numeric vector with years of birth", "ein numerischer Vektor mit Geburtsjahren",
+  "DurationOfPrefix", "a numeric vector with the duration of the prefix -ge in seconds.", "ein numerischer Vektor mit der Dauer des Präfixes -ge in Sekunden.",
+  "SpeechRate", "a numeric vector coding speech rate in number of syllables per second", "ein numerischer Vektor, der die Sprechgeschwindigkeit in Anzahl der Silben pro Sekunde kodiert",
+  "NumberSegmentsOnset", "a numeric vector for the number of segments in the onset of the stem", "ein numerischer Vektor, der die Sprechgeschwindigkeit in Anzahl der Silben pro Sekunde kodiert"
+) |> 
+  select(-Description) |> 
+  kable() |> 
+  kable_styling(full_width = T)
+```
+
+## Data wrangling {#sec-wrangle}
+
+Hier werden Sie die `dplyr`-Verben aus Woche 4 verwenden. Denken Sie daran, dass Sie den Zuweisungsoperator (`<-`) nur verwenden müssen, wenn Sie die Änderungen, die Sie vornehmen, als Objekt in der Umgebung speichern wollen. Wenn Sie diese Änderungen nur ausdrucken wollen, brauchen Sie den Zuweisungsoperator nicht.
+
+### Subsetting
+
+Drucken (aber nicht in Ihrer Umgebung speichern) Sie die Zeilen von `df_ge`, in denen SpeechRate über 9 liegt, nur mit den Spalten word, speaker und SpeechRate. Es sollten 5 Zeilen sein.
+
+```{r}
+df_ge |> 
+  filter(SpeechRate > 9) |> 
+  select(Word, Speaker, SpeechRate)
+```
+
+### `mutate()`
+
+Fügen Sie eine neue Variable hinzu, `duration_ms`, die `DauerVonPräfix` multipliziert mit 1000 (`DurationOfPrefix*1000`) entspricht. Dies entspricht der Dauer von *ge* in Millisekunden, statt in Sekunden. Stellen Sie sicher, dass Sie diese neue Variable in Ihrem Datenrahmen speichern (Hinweis: Sie müssen den Zuweisungsoperator `<-` und das `dplyr`-Verb `mutate()` verwenden).
+
+```{r}
+#| eval: true
+df_ge <-
+  df_ge |> 
+  mutate(duration_ms = DurationOfPrefix*1000)
+```
+
+
+### Fehlersuche
+
+Warum läuft dieser Code nicht? Es gibt zwei Probleme mit dem Code, identifizieren und beheben Sie sie.
+
+```{r}
+#| eval: false
+#| echo: true
+## Troubleshooting
+df_ge  |> 
+  select(Frequency, word) +
+  filter(YearOfBirth == 1978)
+```
+
+## Datenvisualisierung {#sec-dataviz}
+
+Verwenden Sie für alle Diagramme `labs(title = "...")`, um entsprechende Diagrammtitel hinzuzufügen. 
+
+*Optional*: Ändern Sie die `x` und `y` Achsenbeschriftungen, wenn Sie wollen, mit `labs(x = "...", y = "...")`. Vielleicht möchten Sie auch ein Thema hinzufügen (z.B. `theme_minimal()`).
+
+
+```{r}
+df_ge |> 
+  ggplot() +
+  aes(x = NumberSegmentsOnset, fill = Sex) +
+  geom_bar(position = "dodge") +
+  theme_minimal()
+```
+
+### Scatterplot
+
+Erstellen Sie ein Streudiagramm mit `SpeechRate` (x-Achse) und `DurationOfPrefix` (y-Achse), mit YearOfBirth als Farbe (`colour`). Ändern Sie die Einstellungen für den Codechunk so, dass das Diagramm beim Rendern des Skripts *nicht* gedruckt wird, der Code aber schon. Tipp: Sie müssen `#| eval:` verwenden.
+
+```{r}
+df_ge |> 
+  filter(Sex != "NA") |> 
+  ggplot() +
+  aes(x = SpeechRate, y = DurationOfPrefix, colour = YearOfBirth) +
+  geom_point() +
+  ## facet_wrap(~Sex) +
+  theme_bw()
+```
+
+### Facetten
+
+Fügen Sie Facetten für `Sex` hinzu (denken Sie daran, die Tilde `~` einzufügen). Ändern Sie die Code-Chunk-Einstellungen so, dass die Darstellung gedruckt wird, wenn das Skript gerendert wird, aber der Code nicht (Sie benötigen `echo` anstelle von `eval`).
+
+```{r}
+df_ge |> 
+  filter(Sex != "NA") |> 
+  ggplot() +
+  aes(x = SpeechRate, y = DurationOfPrefix, colour = YearOfBirth) +
+  geom_point() +
+  facet_wrap(~Sex) +
+  theme_bw()
+```
+
+### Reproduzieren eines Plots
+
+Reproduzieren Sie die @fig-reproduce (es muss keine exakte Kopie sein, aber kommen Sie ihr so nahe wie möglich). Stellen Sie sicher, dass sowohl der Code als auch die Darstellung beim Rendern gedruckt werden. Hinweis: Sie müssen `filter()` sowohl für `Frequency` als auch für `Sex` verwenden. Ich würde mich darauf konzentrieren, zuerst das Diagramm zu erstellen und dann zu versuchen, die Daten zu filtern.
+
+```{r}
+#| eval: true
+#| label: fig-reproduce
+#| fig-cap: Eine zu reproduzierende Figur
+df_ge |> 
+  filter(
+         Sex != "NA") |> 
+  ggplot() +
+  aes(x = duration_ms, fill = Sex, colour = Sex) +
+  labs(title = "Verteilung der Dauern von 'ge' nach Geschlecht der Teilnehmer",
+       x = "Dauern von 'ge' (Millisekunden)",
+       y = "Dichte") +
+  geom_density(alpha = .3) +
+  theme_bw()
+```
+ 
+## Interpretation {#sec-interpret}
+
+Beschreiben Sie die Beziehung zwischen den beiden Variablen, die Sie in @fig-reproduce sehen.
+

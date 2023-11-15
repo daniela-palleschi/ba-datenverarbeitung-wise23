@@ -40,7 +40,7 @@ book:
       chapters:
         - mats/07-dateneinlesung.qmd
         - mats/08-desc_stats.qmd
-        # - mats/09-wrangling_2.qmd
+        - mats/09-wrangling_2.qmd
         - mats/10-dataviz_3.qmd
         - mats/11-bericht_2.qmd
     - part: "Fortgeschrittene Themen"
@@ -50,16 +50,10 @@ book:
         # - mats/14-dataviz_3.qmd
         # - berichte/bericht_3.qmd
         # - mats/16-qna.qmd
-    - part: "Literaturverzeichnis"
-      chapters:
-        - references.qmd
+    - references.qmd
 
 bibliography: references.bib
 csl: apa.csl
-
-  
-
-
 crossref:
   exm-prefix: ex.   # (default is "Figure")
   # labels: alpha a        # (default is arabic)
@@ -84,9 +78,5 @@ format:
       echo: false
   pdf:
     documentclass: scrreport
-    toc: true
-    toc-depth: 1
-    number-sections: true
-    colorlinks: true
-    code-overflow: wrap
-    keep-tex: true
+    toc: true 
+    toc-depth: 2

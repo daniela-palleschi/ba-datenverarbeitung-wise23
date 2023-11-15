@@ -261,7 +261,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/06-bericht_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bericht 1</span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bericht 1</span></span></a>
   </div>
 </li>
       </ul>
@@ -278,19 +278,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/07-dateneinlesung.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/08-desc_stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/09-wrangling_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/10-dataviz_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -305,23 +311,12 @@ div.csl-indent {
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Fortgeschrittene Themen</span></span>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Literaturverzeichnis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Abschnitt umschalten">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literaturverzeichnis</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -404,7 +399,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Do. den 02.11.2023</p>
+      <p class="date-modified">Mi. den 15.11.2023</p>
     </div>
   </div>
     
@@ -1598,586 +1593,590 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "10/18/2023"</span></span>
 <span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "ddd [den] DD.MM.YYYY"</span></span>
 <span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">## evaluate chunks</span></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">## 'print code chunk?'</span></span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">## 'print messages (e.g., warnings)?'</span></span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> F, <span class="do">## stop when error encountered</span></span>
-<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">## don't print warnings</span></span>
-<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heutige Ziele {-}</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">## evaluate chunks</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">## 'print code chunk?'</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">## 'print messages (e.g., warnings)?'</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> F, <span class="do">## stop when error encountered</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">## don't print warnings</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R und RStudio installieren</span>
-<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in der Lage sein, Zusatzpakete zu installieren</span>
-<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in der Lage sein, Hilfe für Pakete und Funktionen zu erhalten</span>
-<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in der Lage sein, Objekte in der Konsole zu erstellen</span>
-<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Weitere Lektüre {-}</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heutige Ziele {-}</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R und RStudio installieren</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in der Lage sein, Zusatzpakete zu installieren</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in der Lage sein, Hilfe für Pakete und Funktionen zu erhalten</span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in der Lage sein, Objekte in der Konsole zu erstellen</span>
 <span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dieser Vortrag basiert lose auf Kapitel 1 - *Introduction* und Kapitel 3 - *Workflow Basics* von @wickham_r_2023</span>
-<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>dieser Kurs folgt mehr oder weniger diesem Buch</span>
-<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wo möglich, ersetze ich die Datensätze im Buch durch linguistische Datenbeispiele</span>
-<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vorbereitung</span></span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Weitere Lektüre {-}</span></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dieser Vortrag basiert lose auf Kapitel 1 - *Introduction* und Kapitel 3 - *Workflow Basics* von @wickham_r_2023</span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>dieser Kurs folgt mehr oder weniger diesem Buch</span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wo möglich, ersetze ich die Datensätze im Buch durch linguistische Datenbeispiele</span>
 <span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>hoffentlich haben Sie R und RStudio bereits installiert/aktualisiert</span>
-<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>falls nicht: Versuchen Sie es mit <span class="co">[</span><span class="ot">Posit Cloud</span><span class="co">](posit.cloud)</span> für heute <span class="co">[</span><span class="ot">posit.cloud</span><span class="co">](posit.cloud)</span></span>
-<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gehen Sie zum <span class="co">[</span><span class="ot">Kurs GitHub</span><span class="co">](https://github.com/daniela-palleschi/r4ling_student)</span> und laden Sie eine ZIP-Datei des Repositorys herunter</span>
-<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>große grüne Schaltfläche '&lt;&gt; Code' &gt; ZIP herunterladen</span>
-<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Download GitHub repositiory"}</span></span>
-<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_github_zip.png"</span>))</span>
-<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Download GitHub repositiory"}</span></span>
-<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_github_zip.png"</span>))</span>
-<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vorbereitung</span></span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>hoffentlich haben Sie R und RStudio bereits installiert/aktualisiert</span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>falls nicht: Versuchen Sie es mit <span class="co">[</span><span class="ot">Posit Cloud</span><span class="co">](posit.cloud)</span> für heute <span class="co">[</span><span class="ot">posit.cloud</span><span class="co">](posit.cloud)</span></span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gehen Sie zum <span class="co">[</span><span class="ot">Kurs GitHub</span><span class="co">](https://github.com/daniela-palleschi/r4ling_student)</span> und laden Sie eine ZIP-Datei des Repositorys herunter</span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>große grüne Schaltfläche '&lt;&gt; Code' &gt; ZIP herunterladen</span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Download GitHub repositiory"}</span></span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_github_zip.png"</span>))</span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Download GitHub repositiory"}</span></span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_github_zip.png"</span>))</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
-<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="pdf"}</span>
-<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Download GitHub repositiory"}</span></span>
-<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_github_zip.png"</span>))</span>
-<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## RProjekt</span></span>
+<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
+<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="pdf"}</span>
+<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Download GitHub repositiory"}</span></span>
+<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_github_zip.png"</span>))</span>
+<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-75"><a href="#cb48-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Suchen Sie die ZIP-Datei, die Sie soeben heruntergeladen haben, auf Ihrem Computer und dekomprimieren Sie sie.</span>
-<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Öffnen Sie den Ordner und navigieren Sie zu r4ling_student.Rproj, doppelklicken Sie darauf</span>
-<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie sollten nun RStudio sehen, wie in @fig-student-proj</span>
-<span id="cb48-79"><a href="#cb48-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Jetzt können wir an unserem ersten Skript arbeiten</span>
-<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%", fig.pos="H", set.cap.width=T}</span></span>
-<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-student-proj</span></span>
-<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Student RProject</span></span>
-<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_student.png"</span>))</span>
-<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## RProjekt</span></span>
+<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Suchen Sie die ZIP-Datei, die Sie soeben heruntergeladen haben, auf Ihrem Computer und dekomprimieren Sie sie.</span>
+<span id="cb48-79"><a href="#cb48-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Öffnen Sie den Ordner und navigieren Sie zu r4ling_student.Rproj, doppelklicken Sie darauf</span>
+<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie sollten nun RStudio sehen, wie in @fig-student-proj</span>
+<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Jetzt können wir an unserem ersten Skript arbeiten</span>
+<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%", fig.pos="H", set.cap.width=T}</span></span>
+<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-student-proj</span></span>
+<span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Student RProject</span></span>
+<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/r4ling_student.png"</span>))</span>
+<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a>**Wichtig!!** </span>
+<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
 <span id="cb48-95"><a href="#cb48-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a>Verschieben oder benennen Sie den Ordner <span class="in">`data/`</span> nicht um! Sie müssen denselben Dateipfad zu den Datensätzen haben, um meinen Code in den nächsten Wochen nahtlos verwenden zu können.</span>
+<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a>**Wichtig!!** </span>
 <span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-98"><a href="#cb48-98" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-98"><a href="#cb48-98" aria-hidden="true" tabindex="-1"></a>Verschieben oder benennen Sie den Ordner <span class="in">`data/`</span> nicht um! Sie müssen denselben Dateipfad zu den Datensätzen haben, um meinen Code in den nächsten Wochen nahtlos verwenden zu können.</span>
 <span id="cb48-99"><a href="#cb48-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-100"><a href="#cb48-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## R in RStudio</span></span>
+<span id="cb48-100"><a href="#cb48-100" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-101"><a href="#cb48-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Öffnen Sie RStudio *immer* durch einen Doppelklick auf <span class="in">`r4ling_student.Rproj`</span> (für diesen Kurs)</span>
-<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>klicken Sie auf <span class="in">`File &gt; New File &gt; R Script`</span></span>
-<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>sehen Sie nun vier Quadrate (statt 3 in @fig-student-proj):</span>
-<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a>      i.   Texteditor - oben Links</span>
-<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo wir unseren Code schreiben werden</span>
-<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a>      ii.   R-Konsole (EN: Console) - unten links</span>
-<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo wir die Ausgabe unseres Codes und Warn-/Fehlermeldungen sehen werden</span>
-<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a>      iii.   Arbeitsumgebung (EN: Environment) - oben rechts</span>
-<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo unsere Daten und Objekte nach dem Laden gespeichert werden</span>
-<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a>      iv.   Dateien und Grafikausgabe - unten links</span>
-<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo wir unsere Dateien und die von uns erstellten Grafiken sehen oder Hilfe bekommen können</span>
-<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### Erweitungspakete</span></span>
+<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## R in RStudio</span></span>
+<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Öffnen Sie RStudio *immer* durch einen Doppelklick auf <span class="in">`r4ling_student.Rproj`</span> (für diesen Kurs)</span>
+<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>klicken Sie auf <span class="in">`File &gt; New File &gt; R Script`</span></span>
+<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>sehen Sie nun vier Quadrate (statt 3 in @fig-student-proj):</span>
+<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a>      i.   Texteditor - oben Links</span>
+<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo wir unseren Code schreiben werden</span>
+<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a>      ii.   R-Konsole (EN: Console) - unten links</span>
+<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo wir die Ausgabe unseres Codes und Warn-/Fehlermeldungen sehen werden</span>
+<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a>      iii.   Arbeitsumgebung (EN: Environment) - oben rechts</span>
+<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo unsere Daten und Objekte nach dem Laden gespeichert werden</span>
+<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a>      iv.   Dateien und Grafikausgabe - unten links</span>
+<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a><span class="ss">          -   </span>wo wir unsere Dateien und die von uns erstellten Grafiken sehen oder Hilfe bekommen können</span>
 <span id="cb48-115"><a href="#cb48-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-116"><a href="#cb48-116" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können</span>
-<span id="cb48-117"><a href="#cb48-117" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>ähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind</span>
-<span id="cb48-118"><a href="#cb48-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Jeder kann Zusatzpakete für R erstellen, z.B.,</span>
-<span id="cb48-119"><a href="#cb48-119" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>für Datenvisualisierung</span>
-<span id="cb48-120"><a href="#cb48-120" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Datenverarbeitung</span>
-<span id="cb48-121"><a href="#cb48-121" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Dies ist ähnlich wie bei Handy-Apps, die von jedem erstellt und auf Ihr Gerät heruntergeladen werden können</span>
-<span id="cb48-122"><a href="#cb48-122" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>aber Pakete sind *immer kostenlos*</span>
-<span id="cb48-123"><a href="#cb48-123" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Es gibt 2 Schritte, um ein Paket zu verwenden:</span>
-<span id="cb48-124"><a href="#cb48-124" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>Installieren des Pakets (einmalig) mit <span class="in">`install.packages("Paket")`</span></span>
-<span id="cb48-125"><a href="#cb48-125" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>Laden Sie das Paket (zu Beginn jeder Sitzung) <span class="in">`library(Paket)`</span></span>
-<span id="cb48-126"><a href="#cb48-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-127"><a href="#cb48-127" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Paket-Installation</span></span>
+<span id="cb48-116"><a href="#cb48-116" aria-hidden="true" tabindex="-1"></a><span class="fu">### Erweitungspakete</span></span>
+<span id="cb48-117"><a href="#cb48-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-118"><a href="#cb48-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R hat eine Reihe von nativen Funktionen und Datensätzen, auf die wir zugreifen können</span>
+<span id="cb48-119"><a href="#cb48-119" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>ähnlich wie die Standard-Apps, die auf Ihrem Handy vorinstalliert sind</span>
+<span id="cb48-120"><a href="#cb48-120" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Jeder kann Zusatzpakete für R erstellen, z.B.,</span>
+<span id="cb48-121"><a href="#cb48-121" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>für Datenvisualisierung</span>
+<span id="cb48-122"><a href="#cb48-122" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Datenverarbeitung</span>
+<span id="cb48-123"><a href="#cb48-123" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Dies ist ähnlich wie bei Handy-Apps, die von jedem erstellt und auf Ihr Gerät heruntergeladen werden können</span>
+<span id="cb48-124"><a href="#cb48-124" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>aber Pakete sind *immer kostenlos*</span>
+<span id="cb48-125"><a href="#cb48-125" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Es gibt 2 Schritte, um ein Paket zu verwenden:</span>
+<span id="cb48-126"><a href="#cb48-126" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>Installieren des Pakets (einmalig) mit <span class="in">`install.packages("Paket")`</span></span>
+<span id="cb48-127"><a href="#cb48-127" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>Laden Sie das Paket (zu Beginn jeder Sitzung) <span class="in">`library(Paket)`</span></span>
 <span id="cb48-128"><a href="#cb48-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-129"><a href="#cb48-129" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>erfolgt mit der Funktion <span class="in">`install.packages()`</span></span>
-<span id="cb48-130"><a href="#cb48-130" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Sie machen dies nur einmal (wie das Herunterladen einer App)</span>
-<span id="cb48-131"><a href="#cb48-131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>das Paket <span class="in">`tidyverse`</span> ist sehr hilfreich für Datenverarbeitung und Visualisierung</span>
-<span id="cb48-132"><a href="#cb48-132" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Installieren wir es jetzt</span>
-<span id="cb48-133"><a href="#cb48-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-134"><a href="#cb48-134" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Paket-Installation {.unlisted .unnumbered}</span></span>
+<span id="cb48-129"><a href="#cb48-129" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Paket-Installation</span></span>
+<span id="cb48-130"><a href="#cb48-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-131"><a href="#cb48-131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>erfolgt mit der Funktion <span class="in">`install.packages()`</span></span>
+<span id="cb48-132"><a href="#cb48-132" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Sie machen dies nur einmal (wie das Herunterladen einer App)</span>
+<span id="cb48-133"><a href="#cb48-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>das Paket <span class="in">`tidyverse`</span> ist sehr hilfreich für Datenverarbeitung und Visualisierung</span>
+<span id="cb48-134"><a href="#cb48-134" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Installieren wir es jetzt</span>
 <span id="cb48-135"><a href="#cb48-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-136"><a href="#cb48-136" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>installieren Sie die Pakete <span class="in">`tidyverse`</span> und <span class="in">`beepr`</span></span>
+<span id="cb48-136"><a href="#cb48-136" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Paket-Installation {.unlisted .unnumbered}</span></span>
 <span id="cb48-137"><a href="#cb48-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-140"><a href="#cb48-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-141"><a href="#cb48-141" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb48-142"><a href="#cb48-142" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb48-143"><a href="#cb48-143" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"beepr"</span>)</span>
-<span id="cb48-144"><a href="#cb48-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-145"><a href="#cb48-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-146"><a href="#cb48-146" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
-<span id="cb48-147"><a href="#cb48-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pakete in der Konsole installieren</span></span>
-<span id="cb48-148"><a href="#cb48-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-149"><a href="#cb48-149" aria-hidden="true" tabindex="-1"></a>Installieren Sie Pakete immer über die Konsole, nicht über ein Skript!</span>
+<span id="cb48-138"><a href="#cb48-138" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>installieren Sie die Pakete <span class="in">`tidyverse`</span> und <span class="in">`beepr`</span></span>
+<span id="cb48-139"><a href="#cb48-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-142"><a href="#cb48-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-143"><a href="#cb48-143" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-144"><a href="#cb48-144" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb48-145"><a href="#cb48-145" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"beepr"</span>)</span>
+<span id="cb48-146"><a href="#cb48-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-147"><a href="#cb48-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-148"><a href="#cb48-148" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb48-149"><a href="#cb48-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pakete in der Konsole installieren</span></span>
 <span id="cb48-150"><a href="#cb48-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-151"><a href="#cb48-151" aria-hidden="true" tabindex="-1"></a>Sie können auch die Registerkarte "Pakete" in der unteren rechten Box verwenden (Pakete <span class="sc">\&gt;</span> Installieren)</span>
-<span id="cb48-152"><a href="#cb48-152" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-153"><a href="#cb48-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-154"><a href="#cb48-154" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `tinytex`</span></span>
+<span id="cb48-151"><a href="#cb48-151" aria-hidden="true" tabindex="-1"></a>Installieren Sie Pakete immer über die Konsole, nicht über ein Skript!</span>
+<span id="cb48-152"><a href="#cb48-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-153"><a href="#cb48-153" aria-hidden="true" tabindex="-1"></a>Sie können auch die Registerkarte "Pakete" in der unteren rechten Box verwenden (Pakete <span class="sc">\&gt;</span> Installieren)</span>
+<span id="cb48-154"><a href="#cb48-154" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-155"><a href="#cb48-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-156"><a href="#cb48-156" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wir brauchen auch LaTeX und <span class="in">`tinytex`</span> <span class="co">[</span><span class="ot">@xie_tinytex_2023</span><span class="co">]</span>, um PDF-Dokumente zu erstellen</span>
-<span id="cb48-157"><a href="#cb48-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>führen Sie diesen Code aus, um <span class="in">`tinytex`</span> zu installieren</span>
-<span id="cb48-158"><a href="#cb48-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-161"><a href="#cb48-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-162"><a href="#cb48-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb48-163"><a href="#cb48-163" aria-hidden="true" tabindex="-1"></a><span class="do">## run this in the console</span></span>
-<span id="cb48-164"><a href="#cb48-164" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
-<span id="cb48-165"><a href="#cb48-165" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
-<span id="cb48-166"><a href="#cb48-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-167"><a href="#cb48-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-168"><a href="#cb48-168" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Sie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: <span class="ot">&lt;https://www.latex-project.org/get/&gt;</span></span>
+<span id="cb48-156"><a href="#cb48-156" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `tinytex`</span></span>
+<span id="cb48-157"><a href="#cb48-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-158"><a href="#cb48-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wir brauchen auch LaTeX und <span class="in">`tinytex`</span> <span class="co">[</span><span class="ot">@xie_tinytex_2023</span><span class="co">]</span>, um PDF-Dokumente zu erstellen</span>
+<span id="cb48-159"><a href="#cb48-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>führen Sie diesen Code aus, um <span class="in">`tinytex`</span> zu installieren</span>
+<span id="cb48-160"><a href="#cb48-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-163"><a href="#cb48-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-164"><a href="#cb48-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-165"><a href="#cb48-165" aria-hidden="true" tabindex="-1"></a><span class="do">## run this in the console</span></span>
+<span id="cb48-166"><a href="#cb48-166" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
+<span id="cb48-167"><a href="#cb48-167" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
+<span id="cb48-168"><a href="#cb48-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-169"><a href="#cb48-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-170"><a href="#cb48-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Laden eines Pakets</span></span>
+<span id="cb48-170"><a href="#cb48-170" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Sie müssen auch LaTeX installieren, wenn Sie es noch nicht haben: <span class="ot">&lt;https://www.latex-project.org/get/&gt;</span></span>
 <span id="cb48-171"><a href="#cb48-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-172"><a href="#cb48-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Funktion <span class="in">`library()`</span> lädt ein Paket in Ihre Umgebung</span>
-<span id="cb48-173"><a href="#cb48-173" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>dies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können</span>
-<span id="cb48-174"><a href="#cb48-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-177"><a href="#cb48-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-178"><a href="#cb48-178" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beepr)</span>
-<span id="cb48-179"><a href="#cb48-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-180"><a href="#cb48-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-181"><a href="#cb48-181" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Verwendung einer Funktion</span></span>
+<span id="cb48-172"><a href="#cb48-172" aria-hidden="true" tabindex="-1"></a><span class="fu">### Laden eines Pakets</span></span>
+<span id="cb48-173"><a href="#cb48-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-174"><a href="#cb48-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Funktion <span class="in">`library()`</span> lädt ein Paket in Ihre Umgebung</span>
+<span id="cb48-175"><a href="#cb48-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>dies muss zu Beginn jeder Sitzung geschehen, um auf das entsprechende Paket zugreifen zu können</span>
+<span id="cb48-176"><a href="#cb48-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-179"><a href="#cb48-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-180"><a href="#cb48-180" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beepr)</span>
+<span id="cb48-181"><a href="#cb48-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-182"><a href="#cb48-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-183"><a href="#cb48-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen</span>
-<span id="cb48-184"><a href="#cb48-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Zum Beispiel hat das Paket <span class="in">`beepr`</span> eine Funktion <span class="in">`beep()`</span>, probieren wir sie aus</span>
-<span id="cb48-185"><a href="#cb48-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-186"><a href="#cb48-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename="in der Konsole laufen"}</span></span>
-<span id="cb48-187"><a href="#cb48-187" aria-hidden="true" tabindex="-1"></a><span class="fu">beep</span>()</span>
-<span id="cb48-188"><a href="#cb48-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-189"><a href="#cb48-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-190"><a href="#cb48-190" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funktionsargumente</span></span>
-<span id="cb48-191"><a href="#cb48-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-192"><a href="#cb48-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Argumente enthalten optionale Informationen, die an eine Funktion übergeben werden</span>
-<span id="cb48-193"><a href="#cb48-193" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Die Funktion <span class="in">`beep()`</span> hat das Argument <span class="in">`sound`</span>, das einen numerischen Wert von 1:11 annimmt.</span>
-<span id="cb48-194"><a href="#cb48-194" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Versuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?</span>
-<span id="cb48-195"><a href="#cb48-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-196"><a href="#cb48-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename="in der Konsole laufen"}</span></span>
-<span id="cb48-197"><a href="#cb48-197" aria-hidden="true" tabindex="-1"></a><span class="fu">beep</span>(<span class="at">sound =</span> <span class="dv">5</span>)</span>
-<span id="cb48-198"><a href="#cb48-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-199"><a href="#cb48-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-200"><a href="#cb48-200" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funktionsargumente {.unlisted .unnumbered}</span></span>
-<span id="cb48-201"><a href="#cb48-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-202"><a href="#cb48-202" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb48-203"><a href="#cb48-203" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `?help`</span></span>
-<span id="cb48-204"><a href="#cb48-204" aria-hidden="true" tabindex="-1"></a>Sie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. <span class="in">`?beep`</span>). Versuchen Sie, <span class="in">`?beep`</span> auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von <span class="in">`sound = 5`</span> schreiben kannst, um denselben Ton zu erzeugen?</span>
-<span id="cb48-205"><a href="#cb48-205" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-206"><a href="#cb48-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-207"><a href="#cb48-207" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: Paket-Installation</span></span>
-<span id="cb48-208"><a href="#cb48-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-209"><a href="#cb48-209" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb48-210"><a href="#cb48-210" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe</span></span>
-<span id="cb48-211"><a href="#cb48-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-212"><a href="#cb48-212" aria-hidden="true" tabindex="-1"></a>Wir brauchen auch das <span class="in">`here`</span>-Paket. Installieren Sie dieses.</span>
-<span id="cb48-213"><a href="#cb48-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-214"><a href="#cb48-214" aria-hidden="true" tabindex="-1"></a>Nachdem Sie das Paket installiert haben, führen Sie den Befehl <span class="in">`here()`</span> aus. Was geschieht?</span>
-<span id="cb48-215"><a href="#cb48-215" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-216"><a href="#cb48-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-217"><a href="#cb48-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reproduzierbarkeit</span></span>
-<span id="cb48-218"><a href="#cb48-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-219"><a href="#cb48-219" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in diesem Kurs werden wir lernen, wie man *reproduzierbare Berichte* erstellt</span>
-<span id="cb48-220"><a href="#cb48-220" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Das bedeutet, dass unser Code später noch einmal ausgeführt werden kann und immer noch die gleichen Ergebnisse liefert</span>
-<span id="cb48-221"><a href="#cb48-221" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wenn Ihre Arbeit reproduzierbar ist, können andere Leute (und Sie selbst) Ihre Arbeit verstehen und überprüfen</span>
-<span id="cb48-222"><a href="#cb48-222" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Für Kursaufgaben werden Sie Berichte sowie den Quellcode einreichen, die ich auf meinem Rechner ausführen können sollte</span>
-<span id="cb48-223"><a href="#cb48-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-224"><a href="#cb48-224" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio-Einstellungen</span></span>
-<span id="cb48-225"><a href="#cb48-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-226"><a href="#cb48-226" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten</span>
-<span id="cb48-227"><a href="#cb48-227" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Wir wollen auch niemals unseren Arbeitsbereich für später speichern</span>
-<span id="cb48-228"><a href="#cb48-228" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>wir wollen nur unseren Code (und die Ausgabeberichte) speichern</span>
-<span id="cb48-229"><a href="#cb48-229" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Gehen Sie zu <span class="in">`Tools &gt; Global Options`</span></span>
-<span id="cb48-230"><a href="#cb48-230" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Deaktivieren Sie das Kontrollkästchen <span class="in">`Restore .RData into workspace at startup`</span></span>
-<span id="cb48-231"><a href="#cb48-231" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Setzen Sie <span class="in">`Save workspace to .RData on exit:`</span> to <span class="in">`Never`</span></span>
-<span id="cb48-232"><a href="#cb48-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-233"><a href="#cb48-233" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio-Einstellungen {.unlisted .unnumbered}</span></span>
-<span id="cb48-234"><a href="#cb48-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-235"><a href="#cb48-235" aria-hidden="true" tabindex="-1"></a>:::: columns</span>
-<span id="cb48-236"><a href="#cb48-236" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
-<span id="cb48-237"><a href="#cb48-237" aria-hidden="true" tabindex="-1"></a><span class="in">`RStudio: Tools &gt; Global Options`</span>:</span>
+<span id="cb48-183"><a href="#cb48-183" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Verwendung einer Funktion</span></span>
+<span id="cb48-184"><a href="#cb48-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-185"><a href="#cb48-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sobald Sie ein Paket geladen haben, können Sie auf dessen Funktionen zugreifen</span>
+<span id="cb48-186"><a href="#cb48-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Zum Beispiel hat das Paket <span class="in">`beepr`</span> eine Funktion <span class="in">`beep()`</span>, probieren wir sie aus</span>
+<span id="cb48-187"><a href="#cb48-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-188"><a href="#cb48-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename="in der Konsole laufen"}</span></span>
+<span id="cb48-189"><a href="#cb48-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-190"><a href="#cb48-190" aria-hidden="true" tabindex="-1"></a><span class="fu">beep</span>()</span>
+<span id="cb48-191"><a href="#cb48-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-192"><a href="#cb48-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-193"><a href="#cb48-193" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funktionsargumente</span></span>
+<span id="cb48-194"><a href="#cb48-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-195"><a href="#cb48-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Argumente enthalten optionale Informationen, die an eine Funktion übergeben werden</span>
+<span id="cb48-196"><a href="#cb48-196" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Die Funktion <span class="in">`beep()`</span> hat das Argument <span class="in">`sound`</span>, das einen numerischen Wert von 1:11 annimmt.</span>
+<span id="cb48-197"><a href="#cb48-197" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Versuchen Sie, den folgenden Code mit anderen Zahlen auszuführen, was passiert?</span>
+<span id="cb48-198"><a href="#cb48-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-199"><a href="#cb48-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename="in der Konsole laufen"}</span></span>
+<span id="cb48-200"><a href="#cb48-200" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-201"><a href="#cb48-201" aria-hidden="true" tabindex="-1"></a><span class="fu">beep</span>(<span class="at">sound =</span> <span class="dv">5</span>)</span>
+<span id="cb48-202"><a href="#cb48-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-203"><a href="#cb48-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-204"><a href="#cb48-204" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funktionsargumente {.unlisted .unnumbered}</span></span>
+<span id="cb48-205"><a href="#cb48-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-206"><a href="#cb48-206" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb48-207"><a href="#cb48-207" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `?help`</span></span>
+<span id="cb48-208"><a href="#cb48-208" aria-hidden="true" tabindex="-1"></a>Sie können mehr über eine Funktion (einschließlich ihrer verfügbaren Argumente) herausfinden, indem Sie ihren Namen nach einem Fragezeichen in die Konsole schreiben (z.B. <span class="in">`?beep`</span>). Versuchen Sie, <span class="in">`?beep`</span> auszuführen. Kannst du auf der Hilfeseite herausfinden, was du anstelle von <span class="in">`sound = 5`</span> schreiben kannst, um denselben Ton zu erzeugen?</span>
+<span id="cb48-209"><a href="#cb48-209" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-210"><a href="#cb48-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-211"><a href="#cb48-211" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: Paket-Installation</span></span>
+<span id="cb48-212"><a href="#cb48-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-213"><a href="#cb48-213" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-214"><a href="#cb48-214" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe</span></span>
+<span id="cb48-215"><a href="#cb48-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-216"><a href="#cb48-216" aria-hidden="true" tabindex="-1"></a>Wir brauchen auch das <span class="in">`here`</span>-Paket. Installieren Sie dieses.</span>
+<span id="cb48-217"><a href="#cb48-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-218"><a href="#cb48-218" aria-hidden="true" tabindex="-1"></a>Nachdem Sie das Paket installiert haben, führen Sie den Befehl <span class="in">`here()`</span> aus. Was geschieht?</span>
+<span id="cb48-219"><a href="#cb48-219" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-220"><a href="#cb48-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-221"><a href="#cb48-221" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reproduzierbarkeit</span></span>
+<span id="cb48-222"><a href="#cb48-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-223"><a href="#cb48-223" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>in diesem Kurs werden wir lernen, wie man *reproduzierbare Berichte* erstellt</span>
+<span id="cb48-224"><a href="#cb48-224" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Das bedeutet, dass unser Code später noch einmal ausgeführt werden kann und immer noch die gleichen Ergebnisse liefert</span>
+<span id="cb48-225"><a href="#cb48-225" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wenn Ihre Arbeit reproduzierbar ist, können andere Leute (und Sie selbst) Ihre Arbeit verstehen und überprüfen</span>
+<span id="cb48-226"><a href="#cb48-226" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Für Kursaufgaben werden Sie Berichte sowie den Quellcode einreichen, die ich auf meinem Rechner ausführen können sollte</span>
+<span id="cb48-227"><a href="#cb48-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-228"><a href="#cb48-228" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio-Einstellungen</span></span>
+<span id="cb48-229"><a href="#cb48-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-230"><a href="#cb48-230" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wir wollen immer mit einem freien Arbeitsbereich in RStudio beginnen, um die Reproduzierbarkeit zu gewährleisten</span>
+<span id="cb48-231"><a href="#cb48-231" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Wir wollen auch niemals unseren Arbeitsbereich für später speichern</span>
+<span id="cb48-232"><a href="#cb48-232" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>wir wollen nur unseren Code (und die Ausgabeberichte) speichern</span>
+<span id="cb48-233"><a href="#cb48-233" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Gehen Sie zu <span class="in">`Tools &gt; Global Options`</span></span>
+<span id="cb48-234"><a href="#cb48-234" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Deaktivieren Sie das Kontrollkästchen <span class="in">`Restore .RData into workspace at startup`</span></span>
+<span id="cb48-235"><a href="#cb48-235" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Setzen Sie <span class="in">`Save workspace to .RData on exit:`</span> to <span class="in">`Never`</span></span>
+<span id="cb48-236"><a href="#cb48-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-237"><a href="#cb48-237" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio-Einstellungen {.unlisted .unnumbered}</span></span>
 <span id="cb48-238"><a href="#cb48-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-239"><a href="#cb48-239" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Restore .RData into workspace at startup`</span></span>
-<span id="cb48-240"><a href="#cb48-240" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>nein</span>
-<span id="cb48-241"><a href="#cb48-241" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Save workspace to .RData on exit:`</span></span>
-<span id="cb48-242"><a href="#cb48-242" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`Never`</span></span>
-<span id="cb48-243"><a href="#cb48-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-244"><a href="#cb48-244" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-245"><a href="#cb48-245" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb48-246"><a href="#cb48-246" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
-<span id="cb48-247"><a href="#cb48-247" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%", fig.pos="H", set.cap.width=T, fig.cap="Ihre 'Global Options' sollten wie folgt aussehen"}</span></span>
-<span id="cb48-248"><a href="#cb48-248" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-249"><a href="#cb48-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-250"><a href="#cb48-250" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-251"><a href="#cb48-251" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/RStudio_global-options.png"</span>))</span>
-<span id="cb48-252"><a href="#cb48-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-253"><a href="#cb48-253" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-254"><a href="#cb48-254" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-255"><a href="#cb48-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-256"><a href="#cb48-256" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb48-257"><a href="#cb48-257" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
-<span id="cb48-258"><a href="#cb48-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Ihre 'Global Options' sollten wie folgt aussehen"}</span></span>
-<span id="cb48-259"><a href="#cb48-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-260"><a href="#cb48-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-261"><a href="#cb48-261" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-262"><a href="#cb48-262" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/RStudio_global-options.png"</span>))</span>
-<span id="cb48-263"><a href="#cb48-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-264"><a href="#cb48-264" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-265"><a href="#cb48-265" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-266"><a href="#cb48-266" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb48-267"><a href="#cb48-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-268"><a href="#cb48-268" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
-<span id="cb48-269"><a href="#cb48-269" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="pdf"}</span>
-<span id="cb48-270"><a href="#cb48-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Ihre 'Global Options' sollten wie folgt aussehen"}</span></span>
-<span id="cb48-271"><a href="#cb48-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-272"><a href="#cb48-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-273"><a href="#cb48-273" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-274"><a href="#cb48-274" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/RStudio_global-options.png"</span>))</span>
-<span id="cb48-275"><a href="#cb48-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-276"><a href="#cb48-276" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-277"><a href="#cb48-277" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-278"><a href="#cb48-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-279"><a href="#cb48-279" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio-Einstellungen {.unlisted .unnumbered}</span></span>
-<span id="cb48-280"><a href="#cb48-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-281"><a href="#cb48-281" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Klicken Sie auf <span class="in">`Appearance`</span> (linke Spalte)</span>
-<span id="cb48-282"><a href="#cb48-282" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Öffnen Sie die Optionen "Editor Theme" und wählen Sie ein Farbschema, das Ihnen gefällt</span>
-<span id="cb48-283"><a href="#cb48-283" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Sie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen</span>
+<span id="cb48-239"><a href="#cb48-239" aria-hidden="true" tabindex="-1"></a>:::: columns</span>
+<span id="cb48-240"><a href="#cb48-240" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb48-241"><a href="#cb48-241" aria-hidden="true" tabindex="-1"></a><span class="in">`RStudio: Tools &gt; Global Options`</span>:</span>
+<span id="cb48-242"><a href="#cb48-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-243"><a href="#cb48-243" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Restore .RData into workspace at startup`</span></span>
+<span id="cb48-244"><a href="#cb48-244" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>nein</span>
+<span id="cb48-245"><a href="#cb48-245" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Save workspace to .RData on exit:`</span></span>
+<span id="cb48-246"><a href="#cb48-246" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`Never`</span></span>
+<span id="cb48-247"><a href="#cb48-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-248"><a href="#cb48-248" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-249"><a href="#cb48-249" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb48-250"><a href="#cb48-250" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb48-251"><a href="#cb48-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%", fig.pos="H", set.cap.width=T, fig.cap="Ihre 'Global Options' sollten wie folgt aussehen"}</span></span>
+<span id="cb48-252"><a href="#cb48-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-253"><a href="#cb48-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-254"><a href="#cb48-254" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-255"><a href="#cb48-255" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/RStudio_global-options.png"</span>))</span>
+<span id="cb48-256"><a href="#cb48-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-257"><a href="#cb48-257" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-258"><a href="#cb48-258" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-259"><a href="#cb48-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-260"><a href="#cb48-260" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb48-261"><a href="#cb48-261" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb48-262"><a href="#cb48-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Ihre 'Global Options' sollten wie folgt aussehen"}</span></span>
+<span id="cb48-263"><a href="#cb48-263" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-264"><a href="#cb48-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-265"><a href="#cb48-265" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-266"><a href="#cb48-266" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/RStudio_global-options.png"</span>))</span>
+<span id="cb48-267"><a href="#cb48-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-268"><a href="#cb48-268" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-269"><a href="#cb48-269" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-270"><a href="#cb48-270" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb48-271"><a href="#cb48-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-272"><a href="#cb48-272" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
+<span id="cb48-273"><a href="#cb48-273" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="pdf"}</span>
+<span id="cb48-274"><a href="#cb48-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Ihre 'Global Options' sollten wie folgt aussehen"}</span></span>
+<span id="cb48-275"><a href="#cb48-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-276"><a href="#cb48-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-277"><a href="#cb48-277" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-278"><a href="#cb48-278" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/RStudio_global-options.png"</span>))</span>
+<span id="cb48-279"><a href="#cb48-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-280"><a href="#cb48-280" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-281"><a href="#cb48-281" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-282"><a href="#cb48-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-283"><a href="#cb48-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio-Einstellungen {.unlisted .unnumbered}</span></span>
 <span id="cb48-284"><a href="#cb48-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-285"><a href="#cb48-285" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: neues R-Skript</span></span>
-<span id="cb48-286"><a href="#cb48-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-287"><a href="#cb48-287" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-285"><a href="#cb48-285" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Klicken Sie auf <span class="in">`Appearance`</span> (linke Spalte)</span>
+<span id="cb48-286"><a href="#cb48-286" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Öffnen Sie die Optionen "Editor Theme" und wählen Sie ein Farbschema, das Ihnen gefällt</span>
+<span id="cb48-287"><a href="#cb48-287" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Sie können auch die Schriftart/Schriftgröße ändern, wenn Sie dies wünschen</span>
 <span id="cb48-288"><a href="#cb48-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-289"><a href="#cb48-289" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.smaller}</span></span>
+<span id="cb48-289"><a href="#cb48-289" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: neues R-Skript</span></span>
 <span id="cb48-290"><a href="#cb48-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-291"><a href="#cb48-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>in RStudio: <span class="in">`File &gt; New File &gt; R Script`</span></span>
-<span id="cb48-292"><a href="#cb48-292" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>wenn sich oben links ein neues Fenster öffnet: "Datei &gt; Speichern unter...".</span>
-<span id="cb48-293"><a href="#cb48-293" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>speichern Sie es in Ihrem 'notizen' Ordner</span>
-<span id="cb48-294"><a href="#cb48-294" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>schreiben Sie oben in das Skript: <span class="in">`## Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)`</span></span>
-<span id="cb48-295"><a href="#cb48-295" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-296"><a href="#cb48-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-297"><a href="#cb48-297" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-298"><a href="#cb48-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-299"><a href="#cb48-299" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="html"}</span>
-<span id="cb48-300"><a href="#cb48-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure",out.height="100%", fig.pos = "H",  fig.cap="Ihre Skript (oben links) sollten so aussehen"}</span></span>
-<span id="cb48-301"><a href="#cb48-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-291"><a href="#cb48-291" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-292"><a href="#cb48-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-293"><a href="#cb48-293" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.smaller}</span></span>
+<span id="cb48-294"><a href="#cb48-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-295"><a href="#cb48-295" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>in RStudio: <span class="in">`File &gt; New File &gt; R Script`</span></span>
+<span id="cb48-296"><a href="#cb48-296" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>wenn sich oben links ein neues Fenster öffnet: "Datei &gt; Speichern unter...".</span>
+<span id="cb48-297"><a href="#cb48-297" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>speichern Sie es in Ihrem 'notizen' Ordner</span>
+<span id="cb48-298"><a href="#cb48-298" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>schreiben Sie oben in das Skript: <span class="in">`## Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)`</span></span>
+<span id="cb48-299"><a href="#cb48-299" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-300"><a href="#cb48-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-301"><a href="#cb48-301" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-302"><a href="#cb48-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-303"><a href="#cb48-303" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-304"><a href="#cb48-304" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Rscript_day1.png"</span>))</span>
-<span id="cb48-305"><a href="#cb48-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-306"><a href="#cb48-306" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-307"><a href="#cb48-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-308"><a href="#cb48-308" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb48-309"><a href="#cb48-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure",out.width="100%", fig.pos="H",  fig.cap="Ihre Skript (oben links) sollten so aussehen"}</span></span>
-<span id="cb48-310"><a href="#cb48-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-303"><a href="#cb48-303" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="html"}</span>
+<span id="cb48-304"><a href="#cb48-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure",out.height="100%", fig.pos = "H",  fig.cap="Ihre Skript (oben links) sollten so aussehen"}</span></span>
+<span id="cb48-305"><a href="#cb48-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-306"><a href="#cb48-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-307"><a href="#cb48-307" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-308"><a href="#cb48-308" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Rscript_day1.png"</span>))</span>
+<span id="cb48-309"><a href="#cb48-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-310"><a href="#cb48-310" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-311"><a href="#cb48-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-312"><a href="#cb48-312" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb48-313"><a href="#cb48-313" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Rscript_day1.png"</span>))</span>
-<span id="cb48-314"><a href="#cb48-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-315"><a href="#cb48-315" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-316"><a href="#cb48-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-317"><a href="#cb48-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-318"><a href="#cb48-318" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rechnen in R</span></span>
-<span id="cb48-319"><a href="#cb48-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-320"><a href="#cb48-320" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>können wir Berechnungen in R durchführen</span>
-<span id="cb48-321"><a href="#cb48-321" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wir können addieren (<span class="in">`+`</span>), subtrahieren (<span class="in">`-`</span>), multiplizieren (<span class="in">`*`</span>) und dividieren (<span class="in">`/`</span>)</span>
-<span id="cb48-322"><a href="#cb48-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-323"><a href="#cb48-323" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: Berechnungen</span></span>
-<span id="cb48-324"><a href="#cb48-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-325"><a href="#cb48-325" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb48-326"><a href="#cb48-326" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe</span></span>
-<span id="cb48-327"><a href="#cb48-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-328"><a href="#cb48-328" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Versuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:</span>
-<span id="cb48-329"><a href="#cb48-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-332"><a href="#cb48-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-333"><a href="#cb48-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-334"><a href="#cb48-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb48-335"><a href="#cb48-335" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
-<span id="cb48-336"><a href="#cb48-336" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">+</span><span class="dv">32</span></span>
-<span id="cb48-337"><a href="#cb48-337" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-338"><a href="#cb48-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-341"><a href="#cb48-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-342"><a href="#cb48-342" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-343"><a href="#cb48-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb48-344"><a href="#cb48-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplikation</span></span>
-<span id="cb48-345"><a href="#cb48-345" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">*</span><span class="dv">32</span></span>
-<span id="cb48-346"><a href="#cb48-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-347"><a href="#cb48-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-350"><a href="#cb48-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-351"><a href="#cb48-351" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-352"><a href="#cb48-352" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb48-353"><a href="#cb48-353" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraktion</span></span>
-<span id="cb48-354"><a href="#cb48-354" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
-<span id="cb48-355"><a href="#cb48-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-356"><a href="#cb48-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-359"><a href="#cb48-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-360"><a href="#cb48-360" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-361"><a href="#cb48-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb48-362"><a href="#cb48-362" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
-<span id="cb48-363"><a href="#cb48-363" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">/</span><span class="dv">32</span></span>
-<span id="cb48-364"><a href="#cb48-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-365"><a href="#cb48-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-366"><a href="#cb48-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-367"><a href="#cb48-367" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>schreiben Sie diese Berechnungen in Ihr Skript, und drücken Sie <span class="in">`Cmd/Strg-Enter`</span>, um sie auszuführen</span>
-<span id="cb48-368"><a href="#cb48-368" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Was passiert?</span>
-<span id="cb48-369"><a href="#cb48-369" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-370"><a href="#cb48-370" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-371"><a href="#cb48-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-372"><a href="#cb48-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-373"><a href="#cb48-373" aria-hidden="true" tabindex="-1"></a><span class="fu">### Kommentare </span></span>
-<span id="cb48-374"><a href="#cb48-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-375"><a href="#cb48-375" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie haben vielleicht bemerkt, dass in meinen Code-Blöcken z. B. <span class="in">`# Subtraktion`</span> über dem Code stand</span>
-<span id="cb48-376"><a href="#cb48-376" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>R ignoriert jeden Text nach <span class="in">`# `</span> (plus ein Leerzeichen )</span>
-<span id="cb48-377"><a href="#cb48-377" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>also können wir Kommentare nach <span class="in">`#`</span> schreiben</span>
+<span id="cb48-312"><a href="#cb48-312" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb48-313"><a href="#cb48-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure",out.width="100%", fig.pos="H",  fig.cap="Ihre Skript (oben links) sollten so aussehen"}</span></span>
+<span id="cb48-314"><a href="#cb48-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-315"><a href="#cb48-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-316"><a href="#cb48-316" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb48-317"><a href="#cb48-317" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Rscript_day1.png"</span>))</span>
+<span id="cb48-318"><a href="#cb48-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-319"><a href="#cb48-319" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-320"><a href="#cb48-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-321"><a href="#cb48-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-322"><a href="#cb48-322" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rechnen in R</span></span>
+<span id="cb48-323"><a href="#cb48-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-324"><a href="#cb48-324" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>können wir Berechnungen in R durchführen</span>
+<span id="cb48-325"><a href="#cb48-325" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>wir können addieren (<span class="in">`+`</span>), subtrahieren (<span class="in">`-`</span>), multiplizieren (<span class="in">`*`</span>) und dividieren (<span class="in">`/`</span>)</span>
+<span id="cb48-326"><a href="#cb48-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-327"><a href="#cb48-327" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: Berechnungen</span></span>
+<span id="cb48-328"><a href="#cb48-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-329"><a href="#cb48-329" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-330"><a href="#cb48-330" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe</span></span>
+<span id="cb48-331"><a href="#cb48-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-332"><a href="#cb48-332" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Versuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:</span>
+<span id="cb48-333"><a href="#cb48-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-336"><a href="#cb48-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-337"><a href="#cb48-337" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-338"><a href="#cb48-338" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
+<span id="cb48-339"><a href="#cb48-339" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
+<span id="cb48-340"><a href="#cb48-340" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">+</span><span class="dv">32</span></span>
+<span id="cb48-341"><a href="#cb48-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-342"><a href="#cb48-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-345"><a href="#cb48-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-346"><a href="#cb48-346" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-347"><a href="#cb48-347" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
+<span id="cb48-348"><a href="#cb48-348" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplikation</span></span>
+<span id="cb48-349"><a href="#cb48-349" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">*</span><span class="dv">32</span></span>
+<span id="cb48-350"><a href="#cb48-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-351"><a href="#cb48-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-354"><a href="#cb48-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-355"><a href="#cb48-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-356"><a href="#cb48-356" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
+<span id="cb48-357"><a href="#cb48-357" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraktion</span></span>
+<span id="cb48-358"><a href="#cb48-358" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
+<span id="cb48-359"><a href="#cb48-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-360"><a href="#cb48-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-363"><a href="#cb48-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-364"><a href="#cb48-364" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-365"><a href="#cb48-365" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
+<span id="cb48-366"><a href="#cb48-366" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
+<span id="cb48-367"><a href="#cb48-367" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">/</span><span class="dv">32</span></span>
+<span id="cb48-368"><a href="#cb48-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-369"><a href="#cb48-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-370"><a href="#cb48-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-371"><a href="#cb48-371" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>schreiben Sie diese Berechnungen in Ihr Skript, und drücken Sie <span class="in">`Cmd/Strg-Enter`</span>, um sie auszuführen</span>
+<span id="cb48-372"><a href="#cb48-372" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Was passiert?</span>
+<span id="cb48-373"><a href="#cb48-373" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-374"><a href="#cb48-374" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-375"><a href="#cb48-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-376"><a href="#cb48-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-377"><a href="#cb48-377" aria-hidden="true" tabindex="-1"></a><span class="fu">### Kommentare </span></span>
 <span id="cb48-378"><a href="#cb48-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-381"><a href="#cb48-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-382"><a href="#cb48-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-383"><a href="#cb48-383" aria-hidden="true" tabindex="-1"></a><span class="co"># Kommentar zum folgenden Code</span></span>
-<span id="cb48-384"><a href="#cb48-384" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
-<span id="cb48-385"><a href="#cb48-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-386"><a href="#cb48-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-387"><a href="#cb48-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-388"><a href="#cb48-388" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Wir können auch eine Abschnittsüberschrift erstellen, um unsere R-Skripte zu strukturieren, indem wir vier # nach einem Titel hinzufügen</span>
-<span id="cb48-389"><a href="#cb48-389" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Die Struktur des Skripts kann dann durch Klicken auf die Schaltfläche "Gliederung" oberhalb des Skriptfensters angezeigt werden</span>
+<span id="cb48-379"><a href="#cb48-379" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie haben vielleicht bemerkt, dass in meinen Code-Blöcken z. B. <span class="in">`# Subtraktion`</span> über dem Code stand</span>
+<span id="cb48-380"><a href="#cb48-380" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>R ignoriert jeden Text nach <span class="in">`# `</span> (plus ein Leerzeichen )</span>
+<span id="cb48-381"><a href="#cb48-381" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>also können wir Kommentare nach <span class="in">`#`</span> schreiben</span>
+<span id="cb48-382"><a href="#cb48-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-385"><a href="#cb48-385" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-386"><a href="#cb48-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-387"><a href="#cb48-387" aria-hidden="true" tabindex="-1"></a><span class="co"># Kommentar zum folgenden Code</span></span>
+<span id="cb48-388"><a href="#cb48-388" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
+<span id="cb48-389"><a href="#cb48-389" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-390"><a href="#cb48-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-393"><a href="#cb48-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-394"><a href="#cb48-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-395"><a href="#cb48-395" aria-hidden="true" tabindex="-1"></a><span class="co"># Rechnen mit R ####</span></span>
-<span id="cb48-396"><a href="#cb48-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-397"><a href="#cb48-397" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
-<span id="cb48-398"><a href="#cb48-398" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
-<span id="cb48-399"><a href="#cb48-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-391"><a href="#cb48-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-392"><a href="#cb48-392" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Wir können auch eine Abschnittsüberschrift erstellen, um unsere R-Skripte zu strukturieren, indem wir vier # nach einem Titel hinzufügen</span>
+<span id="cb48-393"><a href="#cb48-393" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Die Struktur des Skripts kann dann durch Klicken auf die Schaltfläche "Gliederung" oberhalb des Skriptfensters angezeigt werden</span>
+<span id="cb48-394"><a href="#cb48-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-397"><a href="#cb48-397" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-398"><a href="#cb48-398" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-399"><a href="#cb48-399" aria-hidden="true" tabindex="-1"></a><span class="co"># Rechnen mit R ####</span></span>
 <span id="cb48-400"><a href="#cb48-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-401"><a href="#cb48-401" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objekte</span></span>
-<span id="cb48-402"><a href="#cb48-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-403"><a href="#cb48-403" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind</span>
+<span id="cb48-401"><a href="#cb48-401" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
+<span id="cb48-402"><a href="#cb48-402" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
+<span id="cb48-403"><a href="#cb48-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-404"><a href="#cb48-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-407"><a href="#cb48-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-408"><a href="#cb48-408" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb48-409"><a href="#cb48-409" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">32</span></span>
-<span id="cb48-410"><a href="#cb48-410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-411"><a href="#cb48-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-412"><a href="#cb48-412" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb48-413"><a href="#cb48-413" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assignment operator</span></span>
-<span id="cb48-414"><a href="#cb48-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-415"><a href="#cb48-415" aria-hidden="true" tabindex="-1"></a>Das Symbol <span class="in">`&lt;-`</span> ist ein sogenannter *assignment operator*. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: "Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite".</span>
-<span id="cb48-416"><a href="#cb48-416" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-417"><a href="#cb48-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-418"><a href="#cb48-418" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rechnen mit Funktionen</span></span>
-<span id="cb48-419"><a href="#cb48-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-420"><a href="#cb48-420" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>es gibt auch eingebaute Funktionen für komplexere Berechnungen</span>
-<span id="cb48-421"><a href="#cb48-421" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>z.B., <span class="in">`mean()`</span> (DE: Durchschnitt), <span class="in">`sum()`</span> (DE: Summe)</span>
-<span id="cb48-422"><a href="#cb48-422" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>was passiert, wenn wir folgendes ausführen?</span>
+<span id="cb48-405"><a href="#cb48-405" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objekte</span></span>
+<span id="cb48-406"><a href="#cb48-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-407"><a href="#cb48-407" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wir können auch Werte als Objekte/Variablen speichern, die in der Arbeitsumgebung gespeichert sind</span>
+<span id="cb48-408"><a href="#cb48-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-411"><a href="#cb48-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-412"><a href="#cb48-412" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb48-413"><a href="#cb48-413" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">32</span></span>
+<span id="cb48-414"><a href="#cb48-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-415"><a href="#cb48-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-416"><a href="#cb48-416" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb48-417"><a href="#cb48-417" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assignment operator</span></span>
+<span id="cb48-418"><a href="#cb48-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-419"><a href="#cb48-419" aria-hidden="true" tabindex="-1"></a>Das Symbol <span class="in">`&lt;-`</span> ist ein sogenannter *assignment operator*. Es erstellt ein neues Objekt in Ihrer Arbeitsumgebung oder überschreibt ein vorhandenes Objekt mit demselben Namen. Es ist wie ein Pfeil, der sagt: "Nimm das, was rechts steht, und speichere es als den Objektnamen auf der linken Seite".</span>
+<span id="cb48-420"><a href="#cb48-420" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-421"><a href="#cb48-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-422"><a href="#cb48-422" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rechnen mit Funktionen</span></span>
 <span id="cb48-423"><a href="#cb48-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-426"><a href="#cb48-426" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-427"><a href="#cb48-427" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-428"><a href="#cb48-428" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">6</span>,<span class="dv">10</span>)</span>
-<span id="cb48-429"><a href="#cb48-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-430"><a href="#cb48-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-433"><a href="#cb48-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-434"><a href="#cb48-434" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-435"><a href="#cb48-435" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span><span class="sc">+</span><span class="dv">10</span></span>
-<span id="cb48-436"><a href="#cb48-436" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-437"><a href="#cb48-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-440"><a href="#cb48-440" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-441"><a href="#cb48-441" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-442"><a href="#cb48-442" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">6</span>,<span class="dv">10</span>)</span>
-<span id="cb48-443"><a href="#cb48-443" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-444"><a href="#cb48-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-447"><a href="#cb48-447" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-448"><a href="#cb48-448" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-449"><a href="#cb48-449" aria-hidden="true" tabindex="-1"></a>(<span class="dv">6</span><span class="sc">+</span><span class="dv">10</span>)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb48-450"><a href="#cb48-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-451"><a href="#cb48-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-452"><a href="#cb48-452" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rechnen mit Funktionen {.unlisted .unnumbered}</span></span>
-<span id="cb48-453"><a href="#cb48-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-454"><a href="#cb48-454" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Funktion <span class="in">`mean()`</span> nimmt nur ein Argument an; alles andere wird ignoriert</span>
-<span id="cb48-455"><a href="#cb48-455" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>das Komma in <span class="in">`6,10`</span> listet 2 Argumente auf, also wird alles nach dem Komma ignoriert</span>
-<span id="cb48-456"><a href="#cb48-456" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wenn wir mehr als ein Objekt in ein Argument einschließen wollen, müssen wir die "concatenate"-Funktion <span class="in">`c()`</span> verwenden</span>
-<span id="cb48-457"><a href="#cb48-457" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>"concatenate" bedeutet zusammenfügen oder kombinieren</span>
-<span id="cb48-458"><a href="#cb48-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-461"><a href="#cb48-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-462"><a href="#cb48-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb48-463"><a href="#cb48-463" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">10</span>))</span>
-<span id="cb48-464"><a href="#cb48-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-465"><a href="#cb48-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-466"><a href="#cb48-466" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rechnen mit Funktionen {.unlisted .unnumbered}</span></span>
-<span id="cb48-467"><a href="#cb48-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-468"><a href="#cb48-468" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben</span>
+<span id="cb48-424"><a href="#cb48-424" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>es gibt auch eingebaute Funktionen für komplexere Berechnungen</span>
+<span id="cb48-425"><a href="#cb48-425" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>z.B., <span class="in">`mean()`</span> (DE: Durchschnitt), <span class="in">`sum()`</span> (DE: Summe)</span>
+<span id="cb48-426"><a href="#cb48-426" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>was passiert, wenn wir folgendes ausführen?</span>
+<span id="cb48-427"><a href="#cb48-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-430"><a href="#cb48-430" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-431"><a href="#cb48-431" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-432"><a href="#cb48-432" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">6</span>,<span class="dv">10</span>)</span>
+<span id="cb48-433"><a href="#cb48-433" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-434"><a href="#cb48-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-437"><a href="#cb48-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-438"><a href="#cb48-438" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-439"><a href="#cb48-439" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span><span class="sc">+</span><span class="dv">10</span></span>
+<span id="cb48-440"><a href="#cb48-440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-441"><a href="#cb48-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-444"><a href="#cb48-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-445"><a href="#cb48-445" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-446"><a href="#cb48-446" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">6</span>,<span class="dv">10</span>)</span>
+<span id="cb48-447"><a href="#cb48-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-448"><a href="#cb48-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-451"><a href="#cb48-451" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-452"><a href="#cb48-452" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-453"><a href="#cb48-453" aria-hidden="true" tabindex="-1"></a>(<span class="dv">6</span><span class="sc">+</span><span class="dv">10</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb48-454"><a href="#cb48-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-455"><a href="#cb48-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-456"><a href="#cb48-456" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rechnen mit Funktionen {.unlisted .unnumbered}</span></span>
+<span id="cb48-457"><a href="#cb48-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-458"><a href="#cb48-458" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Funktion <span class="in">`mean()`</span> nimmt nur ein Argument an; alles andere wird ignoriert</span>
+<span id="cb48-459"><a href="#cb48-459" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>das Komma in <span class="in">`6,10`</span> listet 2 Argumente auf, also wird alles nach dem Komma ignoriert</span>
+<span id="cb48-460"><a href="#cb48-460" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wenn wir mehr als ein Objekt in ein Argument einschließen wollen, müssen wir die "concatenate"-Funktion <span class="in">`c()`</span> verwenden</span>
+<span id="cb48-461"><a href="#cb48-461" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>"concatenate" bedeutet zusammenfügen oder kombinieren</span>
+<span id="cb48-462"><a href="#cb48-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-465"><a href="#cb48-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-466"><a href="#cb48-466" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
+<span id="cb48-467"><a href="#cb48-467" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">10</span>))</span>
+<span id="cb48-468"><a href="#cb48-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-469"><a href="#cb48-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-470"><a href="#cb48-470" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb48-471"><a href="#cb48-471" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: Rechnen mit Funktionen</span></span>
-<span id="cb48-472"><a href="#cb48-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-473"><a href="#cb48-473" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Versuchen Sie, die Funktion <span class="in">`mean()`</span> mit Ihren gespeicherten Variablen (<span class="in">`x`</span> und <span class="in">`y`</span>) als "verkettete" Argumente auszuführen</span>
-<span id="cb48-474"><a href="#cb48-474" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Machen Sie dasselbe mit der Funktion <span class="in">`sum()`</span>. Was passiert, wenn Sie <span class="in">`c()`</span> nicht verwenden?</span>
-<span id="cb48-475"><a href="#cb48-475" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-470"><a href="#cb48-470" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rechnen mit Funktionen {.unlisted .unnumbered}</span></span>
+<span id="cb48-471"><a href="#cb48-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-472"><a href="#cb48-472" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie können auch benannte Objekte (d.h. die in Ihrer Arbeitsumgebung) verwenden, die einen numerischen Wert haben</span>
+<span id="cb48-473"><a href="#cb48-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-474"><a href="#cb48-474" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-475"><a href="#cb48-475" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe: Rechnen mit Funktionen</span></span>
 <span id="cb48-476"><a href="#cb48-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-477"><a href="#cb48-477" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vektoren</span></span>
-<span id="cb48-478"><a href="#cb48-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-479"><a href="#cb48-479" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vektoren sind eine Liste von Elementen desselben Typs (z. B. numerisch, Zeichenkette)</span>
-<span id="cb48-480"><a href="#cb48-480" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wir können einen Vektor mit der Verkettungsfunktion c() erstellen</span>
-<span id="cb48-481"><a href="#cb48-481" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Der folgende Code speichert in einem Objekt namens 'vec' einen Vektor aus mehreren Zahlen</span>
+<span id="cb48-477"><a href="#cb48-477" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Versuchen Sie, die Funktion <span class="in">`mean()`</span> mit Ihren gespeicherten Variablen (<span class="in">`x`</span> und <span class="in">`y`</span>) als "verkettete" Argumente auszuführen</span>
+<span id="cb48-478"><a href="#cb48-478" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Machen Sie dasselbe mit der Funktion <span class="in">`sum()`</span>. Was passiert, wenn Sie <span class="in">`c()`</span> nicht verwenden?</span>
+<span id="cb48-479"><a href="#cb48-479" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-480"><a href="#cb48-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-481"><a href="#cb48-481" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vektoren</span></span>
 <span id="cb48-482"><a href="#cb48-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-485"><a href="#cb48-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-486"><a href="#cb48-486" aria-hidden="true" tabindex="-1"></a><span class="co"># einen Vektor erstellen</span></span>
-<span id="cb48-487"><a href="#cb48-487" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">171</span>, <span class="dv">164</span>, <span class="dv">186</span>, <span class="dv">191</span>)</span>
-<span id="cb48-488"><a href="#cb48-488" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-489"><a href="#cb48-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-490"><a href="#cb48-490" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>der folgende Code ruft das Objekt auf, das wir als 'vec' gespeichert haben, und gibt seinen Inhalt aus</span>
-<span id="cb48-491"><a href="#cb48-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-494"><a href="#cb48-494" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-495"><a href="#cb48-495" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-496"><a href="#cb48-496" aria-hidden="true" tabindex="-1"></a><span class="co"># print vec</span></span>
-<span id="cb48-497"><a href="#cb48-497" aria-hidden="true" tabindex="-1"></a>vec</span>
-<span id="cb48-498"><a href="#cb48-498" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-499"><a href="#cb48-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-500"><a href="#cb48-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-501"><a href="#cb48-501" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arithmetic mit Vektoren</span></span>
-<span id="cb48-502"><a href="#cb48-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-503"><a href="#cb48-503" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grundlegende Arithmetik auf Vektoren wird auf jedes Element angewendet</span>
+<span id="cb48-483"><a href="#cb48-483" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vektoren sind eine Liste von Elementen desselben Typs (z. B. numerisch, Zeichenkette)</span>
+<span id="cb48-484"><a href="#cb48-484" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wir können einen Vektor mit der Verkettungsfunktion c() erstellen</span>
+<span id="cb48-485"><a href="#cb48-485" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Der folgende Code speichert in einem Objekt namens 'vec' einen Vektor aus mehreren Zahlen</span>
+<span id="cb48-486"><a href="#cb48-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-489"><a href="#cb48-489" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-490"><a href="#cb48-490" aria-hidden="true" tabindex="-1"></a><span class="co"># einen Vektor erstellen</span></span>
+<span id="cb48-491"><a href="#cb48-491" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">171</span>, <span class="dv">164</span>, <span class="dv">186</span>, <span class="dv">191</span>)</span>
+<span id="cb48-492"><a href="#cb48-492" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-493"><a href="#cb48-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-494"><a href="#cb48-494" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>der folgende Code ruft das Objekt auf, das wir als 'vec' gespeichert haben, und gibt seinen Inhalt aus</span>
+<span id="cb48-495"><a href="#cb48-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-498"><a href="#cb48-498" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-499"><a href="#cb48-499" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-500"><a href="#cb48-500" aria-hidden="true" tabindex="-1"></a><span class="co"># print vec</span></span>
+<span id="cb48-501"><a href="#cb48-501" aria-hidden="true" tabindex="-1"></a>vec</span>
+<span id="cb48-502"><a href="#cb48-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-503"><a href="#cb48-503" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-504"><a href="#cb48-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-507"><a href="#cb48-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-508"><a href="#cb48-508" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-509"><a href="#cb48-509" aria-hidden="true" tabindex="-1"></a><span class="co"># add 5 to vec</span></span>
-<span id="cb48-510"><a href="#cb48-510" aria-hidden="true" tabindex="-1"></a>vec <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb48-511"><a href="#cb48-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-512"><a href="#cb48-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-513"><a href="#cb48-513" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>können wir auch Funktionen auf Vektoren anwenden</span>
-<span id="cb48-514"><a href="#cb48-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-517"><a href="#cb48-517" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-518"><a href="#cb48-518" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-519"><a href="#cb48-519" aria-hidden="true" tabindex="-1"></a><span class="co"># Summe von vec</span></span>
-<span id="cb48-520"><a href="#cb48-520" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(vec)</span>
-<span id="cb48-521"><a href="#cb48-521" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-522"><a href="#cb48-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-525"><a href="#cb48-525" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-526"><a href="#cb48-526" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-527"><a href="#cb48-527" aria-hidden="true" tabindex="-1"></a><span class="co"># Mittelwert von vec</span></span>
-<span id="cb48-528"><a href="#cb48-528" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vec)</span>
-<span id="cb48-529"><a href="#cb48-529" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-530"><a href="#cb48-530" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-533"><a href="#cb48-533" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-534"><a href="#cb48-534" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb48-535"><a href="#cb48-535" aria-hidden="true" tabindex="-1"></a><span class="co"># Quadratwurzel aus vec</span></span>
-<span id="cb48-536"><a href="#cb48-536" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(vec)</span>
-<span id="cb48-537"><a href="#cb48-537" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-538"><a href="#cb48-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-539"><a href="#cb48-539" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ausgabe: Vektoren</span></span>
-<span id="cb48-540"><a href="#cb48-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-541"><a href="#cb48-541" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-542"><a href="#cb48-542" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb48-543"><a href="#cb48-543" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ausgabe</span></span>
+<span id="cb48-505"><a href="#cb48-505" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arithmetic mit Vektoren</span></span>
+<span id="cb48-506"><a href="#cb48-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-507"><a href="#cb48-507" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grundlegende Arithmetik auf Vektoren wird auf jedes Element angewendet</span>
+<span id="cb48-508"><a href="#cb48-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-511"><a href="#cb48-511" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-512"><a href="#cb48-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-513"><a href="#cb48-513" aria-hidden="true" tabindex="-1"></a><span class="co"># add 5 to vec</span></span>
+<span id="cb48-514"><a href="#cb48-514" aria-hidden="true" tabindex="-1"></a>vec <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb48-515"><a href="#cb48-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-516"><a href="#cb48-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-517"><a href="#cb48-517" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>können wir auch Funktionen auf Vektoren anwenden</span>
+<span id="cb48-518"><a href="#cb48-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-521"><a href="#cb48-521" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-522"><a href="#cb48-522" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-523"><a href="#cb48-523" aria-hidden="true" tabindex="-1"></a><span class="co"># Summe von vec</span></span>
+<span id="cb48-524"><a href="#cb48-524" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(vec)</span>
+<span id="cb48-525"><a href="#cb48-525" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-526"><a href="#cb48-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-529"><a href="#cb48-529" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-530"><a href="#cb48-530" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-531"><a href="#cb48-531" aria-hidden="true" tabindex="-1"></a><span class="co"># Mittelwert von vec</span></span>
+<span id="cb48-532"><a href="#cb48-532" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vec)</span>
+<span id="cb48-533"><a href="#cb48-533" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-534"><a href="#cb48-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-537"><a href="#cb48-537" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-538"><a href="#cb48-538" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb48-539"><a href="#cb48-539" aria-hidden="true" tabindex="-1"></a><span class="co"># Quadratwurzel aus vec</span></span>
+<span id="cb48-540"><a href="#cb48-540" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(vec)</span>
+<span id="cb48-541"><a href="#cb48-541" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-542"><a href="#cb48-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-543"><a href="#cb48-543" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ausgabe: Vektoren</span></span>
 <span id="cb48-544"><a href="#cb48-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-545"><a href="#cb48-545" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Erstelle einen Vektor namens <span class="in">`vec1`</span>, der die Werte 12, 183, 56, 25 und 18 enthält</span>
-<span id="cb48-546"><a href="#cb48-546" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Erstellen Sie einen Vektor namens <span class="in">`vec2`</span>, der die Werte 8, 5, 1, 6 und 8 enthält</span>
-<span id="cb48-547"><a href="#cb48-547" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create a vector called <span class="in">`vec3`</span> that contains the values 28, 54, 10, 13, 2, and 81</span>
-<span id="cb48-548"><a href="#cb48-548" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Finde die Summe von <span class="in">`vec1`</span>.</span>
-<span id="cb48-549"><a href="#cb48-549" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Finde die Summe von vec1 plus <span class="in">`vec2`</span>. Wie unterscheidet sich das Ergebnis von dem, das Sie für vec1 allein erhalten haben?</span>
-<span id="cb48-550"><a href="#cb48-550" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Was passiert, wenn du versuchst, die Summe von <span class="in">`vec1`</span> und <span class="in">`vec3`</span> zu finden?</span>
-<span id="cb48-551"><a href="#cb48-551" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-552"><a href="#cb48-552" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb48-553"><a href="#cb48-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-554"><a href="#cb48-554" aria-hidden="true" tabindex="-1"></a><span class="fu">## Endergebnis</span></span>
+<span id="cb48-545"><a href="#cb48-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-546"><a href="#cb48-546" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-547"><a href="#cb48-547" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ausgabe</span></span>
+<span id="cb48-548"><a href="#cb48-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-549"><a href="#cb48-549" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Erstelle einen Vektor namens <span class="in">`vec1`</span>, der die Werte 12, 183, 56, 25 und 18 enthält</span>
+<span id="cb48-550"><a href="#cb48-550" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Erstellen Sie einen Vektor namens <span class="in">`vec2`</span>, der die Werte 8, 5, 1, 6 und 8 enthält</span>
+<span id="cb48-551"><a href="#cb48-551" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create a vector called <span class="in">`vec3`</span> that contains the values 28, 54, 10, 13, 2, and 81</span>
+<span id="cb48-552"><a href="#cb48-552" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Finde die Summe von <span class="in">`vec1`</span>.</span>
+<span id="cb48-553"><a href="#cb48-553" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Finde die Summe von vec1 plus <span class="in">`vec2`</span>. Wie unterscheidet sich das Ergebnis von dem, das Sie für vec1 allein erhalten haben?</span>
+<span id="cb48-554"><a href="#cb48-554" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Was passiert, wenn du versuchst, die Summe von <span class="in">`vec1`</span> und <span class="in">`vec3`</span> zu finden?</span>
 <span id="cb48-555"><a href="#cb48-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-556"><a href="#cb48-556" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Speichern Sie Ihr R-Skript (<span class="in">`File &gt; Save`</span>, oder <span class="in">`Cmd/Strg-S`</span>)</span>
+<span id="cb48-556"><a href="#cb48-556" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb48-557"><a href="#cb48-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-558"><a href="#cb48-558" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie sollten nun einen *RProject-Ordner* für diesen Kurs, der Folgendes enthält:</span>
-<span id="cb48-559"><a href="#cb48-559" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`r4ling_student`</span>.RProj`</span>
-<span id="cb48-560"><a href="#cb48-560" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>einen Ordner namens <span class="in">`Daten`</span></span>
-<span id="cb48-561"><a href="#cb48-561" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>einen Ordner namens <span class="in">`notes`</span>, der Folgendes enthält</span>
-<span id="cb48-562"><a href="#cb48-562" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>eine <span class="in">`.R`</span>-Datei mit der heutigen Arbeit</span>
-<span id="cb48-563"><a href="#cb48-563" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie wissen jetzt, wie man</span>
-<span id="cb48-564"><a href="#cb48-564" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>*einfache Berechnungen* in R durchführen</span>
-<span id="cb48-565"><a href="#cb48-565" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>*Objekte* in Ihrer Arbeitsumgebung zu speichern</span>
-<span id="cb48-566"><a href="#cb48-566" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>einfache mathematische Berechnungen mit Ihren gespeicherten Objekten durchführen</span>
-<span id="cb48-567"><a href="#cb48-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-568"><a href="#cb48-568" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info</span></span>
-<span id="cb48-569"><a href="#cb48-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-570"><a href="#cb48-570" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Um die Reproduzierbarkeit zu verbessern, ist es nützlich, die Version von R, RStudio und die verwendeten Pakete zu verfolgen</span>
-<span id="cb48-571"><a href="#cb48-571" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Zu diesem Zweck können Sie die folgenden Befehle ausführen:</span>
-<span id="cb48-572"><a href="#cb48-572" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-575"><a href="#cb48-575" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-576"><a href="#cb48-576" aria-hidden="true" tabindex="-1"></a><span class="do">## R version</span></span>
-<span id="cb48-577"><a href="#cb48-577" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
-<span id="cb48-578"><a href="#cb48-578" aria-hidden="true" tabindex="-1"></a><span class="do">## R version name</span></span>
-<span id="cb48-579"><a href="#cb48-579" aria-hidden="true" tabindex="-1"></a>R.version<span class="sc">$</span>nickname</span>
-<span id="cb48-580"><a href="#cb48-580" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-581"><a href="#cb48-581" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-584"><a href="#cb48-584" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-585"><a href="#cb48-585" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb48-586"><a href="#cb48-586" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version</span></span>
-<span id="cb48-587"><a href="#cb48-587" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
-<span id="cb48-588"><a href="#cb48-588" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version name</span></span>
-<span id="cb48-589"><a href="#cb48-589" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>release_name</span>
-<span id="cb48-590"><a href="#cb48-590" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-591"><a href="#cb48-591" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-594"><a href="#cb48-594" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-595"><a href="#cb48-595" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb48-596"><a href="#cb48-596" aria-hidden="true" tabindex="-1"></a><span class="do">## alle Paketeversionen</span></span>
-<span id="cb48-597"><a href="#cb48-597" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb48-598"><a href="#cb48-598" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-599"><a href="#cb48-599" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-600"><a href="#cb48-600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-603"><a href="#cb48-603" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-604"><a href="#cb48-604" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb48-605"><a href="#cb48-605" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-606"><a href="#cb48-606" aria-hidden="true" tabindex="-1"></a><span class="do">## N.B., RStudio.Version can also be called using</span></span>
-<span id="cb48-607"><a href="#cb48-607" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span>
-<span id="cb48-608"><a href="#cb48-608" aria-hidden="true" tabindex="-1"></a><span class="do">## but neither will run during a knit/render; so manually run and update inline text</span></span>
-<span id="cb48-609"><a href="#cb48-609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-610"><a href="#cb48-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-611"><a href="#cb48-611" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nächste Woche</span></span>
-<span id="cb48-612"><a href="#cb48-612" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-613"><a href="#cb48-613" aria-hidden="true" tabindex="-1"></a>vor nächster Woche, stellen Sie bitte sicher, dass Sie:</span>
+<span id="cb48-558"><a href="#cb48-558" aria-hidden="true" tabindex="-1"></a><span class="fu">## Endergebnis</span></span>
+<span id="cb48-559"><a href="#cb48-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-560"><a href="#cb48-560" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Speichern Sie Ihr R-Skript (<span class="in">`File &gt; Save`</span>, oder <span class="in">`Cmd/Strg-S`</span>)</span>
+<span id="cb48-561"><a href="#cb48-561" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-562"><a href="#cb48-562" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie sollten nun einen *RProject-Ordner* für diesen Kurs, der Folgendes enthält:</span>
+<span id="cb48-563"><a href="#cb48-563" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`r4ling_student`</span>.RProj`</span>
+<span id="cb48-564"><a href="#cb48-564" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>einen Ordner namens <span class="in">`Daten`</span></span>
+<span id="cb48-565"><a href="#cb48-565" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>einen Ordner namens <span class="in">`notes`</span>, der Folgendes enthält</span>
+<span id="cb48-566"><a href="#cb48-566" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>eine <span class="in">`.R`</span>-Datei mit der heutigen Arbeit</span>
+<span id="cb48-567"><a href="#cb48-567" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sie wissen jetzt, wie man</span>
+<span id="cb48-568"><a href="#cb48-568" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>*einfache Berechnungen* in R durchführen</span>
+<span id="cb48-569"><a href="#cb48-569" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>*Objekte* in Ihrer Arbeitsumgebung zu speichern</span>
+<span id="cb48-570"><a href="#cb48-570" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>einfache mathematische Berechnungen mit Ihren gespeicherten Objekten durchführen</span>
+<span id="cb48-571"><a href="#cb48-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-572"><a href="#cb48-572" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info</span></span>
+<span id="cb48-573"><a href="#cb48-573" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-574"><a href="#cb48-574" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Um die Reproduzierbarkeit zu verbessern, ist es nützlich, die Version von R, RStudio und die verwendeten Pakete zu verfolgen</span>
+<span id="cb48-575"><a href="#cb48-575" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Zu diesem Zweck können Sie die folgenden Befehle ausführen:</span>
+<span id="cb48-576"><a href="#cb48-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-579"><a href="#cb48-579" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-580"><a href="#cb48-580" aria-hidden="true" tabindex="-1"></a><span class="do">## R version</span></span>
+<span id="cb48-581"><a href="#cb48-581" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb48-582"><a href="#cb48-582" aria-hidden="true" tabindex="-1"></a><span class="do">## R version name</span></span>
+<span id="cb48-583"><a href="#cb48-583" aria-hidden="true" tabindex="-1"></a>R.version<span class="sc">$</span>nickname</span>
+<span id="cb48-584"><a href="#cb48-584" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-585"><a href="#cb48-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-588"><a href="#cb48-588" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-589"><a href="#cb48-589" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-590"><a href="#cb48-590" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version</span></span>
+<span id="cb48-591"><a href="#cb48-591" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
+<span id="cb48-592"><a href="#cb48-592" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version name</span></span>
+<span id="cb48-593"><a href="#cb48-593" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>release_name</span>
+<span id="cb48-594"><a href="#cb48-594" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-595"><a href="#cb48-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-598"><a href="#cb48-598" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-599"><a href="#cb48-599" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-600"><a href="#cb48-600" aria-hidden="true" tabindex="-1"></a><span class="do">## alle Paketeversionen</span></span>
+<span id="cb48-601"><a href="#cb48-601" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb48-602"><a href="#cb48-602" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-603"><a href="#cb48-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-604"><a href="#cb48-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-607"><a href="#cb48-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-608"><a href="#cb48-608" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-609"><a href="#cb48-609" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-610"><a href="#cb48-610" aria-hidden="true" tabindex="-1"></a><span class="do">## N.B., RStudio.Version can also be called using</span></span>
+<span id="cb48-611"><a href="#cb48-611" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span>
+<span id="cb48-612"><a href="#cb48-612" aria-hidden="true" tabindex="-1"></a><span class="do">## but neither will run during a knit/render; so manually run and update inline text</span></span>
+<span id="cb48-613"><a href="#cb48-613" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-614"><a href="#cb48-614" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-615"><a href="#cb48-615" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>R und RStudio installiert/aktualisiert haben</span>
-<span id="cb48-616"><a href="#cb48-616" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Pakete tidyverse und here installiert haben</span>
-<span id="cb48-617"><a href="#cb48-617" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bitte stellen Sie sicher, dass Sie die Übungen des heutigen Kurses in Ihrem R-Skript durcharbeiten</span>
-<span id="cb48-618"><a href="#cb48-618" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(optional) speichern Sie das Skript, und laden Sie es auf Moodle hoch, wenn Sie es auf Ihre 6 Skripte für die Teilnahme-LP anrechnen lassen möchten</span>
-<span id="cb48-619"><a href="#cb48-619" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-620"><a href="#cb48-620" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session Info {-}</span></span>
-<span id="cb48-621"><a href="#cb48-621" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-624"><a href="#cb48-624" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-625"><a href="#cb48-625" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb48-626"><a href="#cb48-626" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb48-627"><a href="#cb48-627" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version</span></span>
-<span id="cb48-628"><a href="#cb48-628" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
-<span id="cb48-629"><a href="#cb48-629" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version name</span></span>
-<span id="cb48-630"><a href="#cb48-630" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>release_name</span>
-<span id="cb48-631"><a href="#cb48-631" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-632"><a href="#cb48-632" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-633"><a href="#cb48-633" aria-hidden="true" tabindex="-1"></a>Hergestellt mit <span class="in">`r R.version.string`</span> (<span class="in">`r R.version$nickname`</span>) und RStudioversion 2023.3.0.386 (Cherry Blosson).</span>
-<span id="cb48-634"><a href="#cb48-634" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-637"><a href="#cb48-637" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-638"><a href="#cb48-638" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb48-639"><a href="#cb48-639" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-640"><a href="#cb48-640" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-641"><a href="#cb48-641" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
-<span id="cb48-642"><a href="#cb48-642" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-643"><a href="#cb48-643" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
-<span id="cb48-644"><a href="#cb48-644" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-615"><a href="#cb48-615" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nächste Woche</span></span>
+<span id="cb48-616"><a href="#cb48-616" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-617"><a href="#cb48-617" aria-hidden="true" tabindex="-1"></a>vor nächster Woche, stellen Sie bitte sicher, dass Sie:</span>
+<span id="cb48-618"><a href="#cb48-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-619"><a href="#cb48-619" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>R und RStudio installiert/aktualisiert haben</span>
+<span id="cb48-620"><a href="#cb48-620" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Pakete tidyverse und here installiert haben</span>
+<span id="cb48-621"><a href="#cb48-621" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bitte stellen Sie sicher, dass Sie die Übungen des heutigen Kurses in Ihrem R-Skript durcharbeiten</span>
+<span id="cb48-622"><a href="#cb48-622" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(optional) speichern Sie das Skript, und laden Sie es auf Moodle hoch, wenn Sie es auf Ihre 6 Skripte für die Teilnahme-LP anrechnen lassen möchten</span>
+<span id="cb48-623"><a href="#cb48-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-624"><a href="#cb48-624" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session Info {-}</span></span>
+<span id="cb48-625"><a href="#cb48-625" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-628"><a href="#cb48-628" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-629"><a href="#cb48-629" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb48-630"><a href="#cb48-630" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb48-631"><a href="#cb48-631" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version</span></span>
+<span id="cb48-632"><a href="#cb48-632" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
+<span id="cb48-633"><a href="#cb48-633" aria-hidden="true" tabindex="-1"></a><span class="do">## RStudio version name</span></span>
+<span id="cb48-634"><a href="#cb48-634" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>release_name</span>
+<span id="cb48-635"><a href="#cb48-635" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-636"><a href="#cb48-636" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-637"><a href="#cb48-637" aria-hidden="true" tabindex="-1"></a>Hergestellt mit <span class="in">`r R.version.string`</span> (<span class="in">`r R.version$nickname`</span>) und RStudioversion 2023.3.0.386 (Cherry Blosson).</span>
+<span id="cb48-638"><a href="#cb48-638" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-641"><a href="#cb48-641" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-642"><a href="#cb48-642" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb48-643"><a href="#cb48-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-644"><a href="#cb48-644" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-645"><a href="#cb48-645" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb48-646"><a href="#cb48-646" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-647"><a href="#cb48-647" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
+<span id="cb48-648"><a href="#cb48-648" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
