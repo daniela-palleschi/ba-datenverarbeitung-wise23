@@ -117,6 +117,21 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: {autoNumber: "AMS"} },
+  tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ]}
+});
+</script>
+
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+    tex: {
+      tags: 'ams'  // should be 'ams', 'none', or 'all'
+    }
+  };
+</script>
 
 
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 1&nbsp; Einführung in R und RStudio">
@@ -1123,6 +1138,10 @@ Baayen, R. H. (2008). <em>Analyzing <span>Linguistic Data</span>:
 Baayen, R. H., &amp; Shafaei-Bajestan, E. (2019). <em>languageR:
 Analyzing linguistic data: A practical introduction to statistics</em>.
 <a href="https://CRAN.R-project.org/package=languageR">https://CRAN.R-project.org/package=languageR</a>
+</div>
+<div id="ref-datasauRus-package" class="csl-entry" role="listitem">
+Davies, R., Locke, S., &amp; D’Agostino McGowan, L. (2022).
+<em>datasauRus: Datasets from the datasaurus dozen</em>. <a href="https://CRAN.R-project.org/package=datasauRus">https://CRAN.R-project.org/package=datasauRus</a>
 </div>
 <div id="ref-here-package" class="csl-entry" role="listitem">
 Müller, K. (2020). <em>Here: A simpler way to find your files</em>. <a href="https://CRAN.R-project.org/package=here">https://CRAN.R-project.org/package=here</a>
