@@ -599,7 +599,7 @@
     "href": "mats/08-desc_stats.html#lesungen",
     "title": "8  Deskriptive Statistik",
     "section": "Lesungen",
-    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitungen auf dieses Thema sind\n\nKap. 3, Abschnitt 3.4-3.9 (Descriptive statistics, models, and distributions) in Winter (2019) (online verfügbar über das HU Grimm Zentrum.\nBereich 4.5 (Groups) in Kapital 4 (Data Transformation) in (wickham_tidyverse_2023?)."
+    "text": "Lesungen\nDie Pflichtlektüre zur Vorbereitungen auf dieses Thema sind\n\nKap. 3, Abschnitt 3.4-3.9 (Descriptive statistics, models, and distributions) in Winter (2019) (online verfügbar über das HU Grimm Zentrum.\nBereich 4.5 (Groups) in Kapital 4 (Data Transformation) in Wickham et al. (2023)."
   },
   {
     "objectID": "mats/08-desc_stats.html#einrichten",
@@ -662,14 +662,7 @@
     "href": "mats/08-desc_stats.html#literaturverzeichnis",
     "title": "8  Deskriptive Statistik",
     "section": "Literaturverzeichnis",
-    "text": "Literaturverzeichnis\n\n\nDavies, R., Locke, S., & D’Agostino McGowan, L. (2022). datasauRus: Datasets from the Datasaurus Dozen. https://CRAN.R-project.org/package=datasauRus\n\n\nWinter, B. (2019). Statistics for Linguists: An Introduction Using R. In Statistics for Linguists: An Introduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
-  },
-  {
-    "objectID": "mats/09-wrangling_2.html#section",
-    "href": "mats/09-wrangling_2.html#section",
-    "title": "9  Data Wrangling 2",
-    "section": "",
-    "text": "Die Materialien werden vor dem Unterricht zur Verfügung gestellt."
+    "text": "Literaturverzeichnis\n\n\nDavies, R., Locke, S., & D’Agostino McGowan, L. (2022). datasauRus: Datasets from the Datasaurus Dozen. https://CRAN.R-project.org/package=datasauRus\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.).\n\n\nWinter, B. (2019). Statistics for Linguists: An Introduction Using R. In Statistics for Linguists: An Introduction Using R. Routledge. https://doi.org/10.4324/9781315165547"
   },
   {
     "objectID": "mats/09-wrangling_2.html#lesungen",
