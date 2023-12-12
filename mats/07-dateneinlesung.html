@@ -342,8 +342,7 @@ MathJax.Hub.Config({
     <h2 id="toc-title">Kapitelinhalt</h2>
    
   <ul>
-  <li><a href="#lesungen" id="toc-lesungen" class="nav-link active" data-scroll-target="#lesungen">Lesungen</a></li>
-  <li><a href="#einrichtung" id="toc-einrichtung" class="nav-link" data-scroll-target="#einrichtung"><span class="header-section-number">7.1</span> Einrichtung</a>
+  <li><a href="#einrichtung" id="toc-einrichtung" class="nav-link active" data-scroll-target="#einrichtung"><span class="header-section-number">7.1</span> Einrichtung</a>
   <ul class="collapse">
   <li><a href="#pakete-mit-pacman" id="toc-pakete-mit-pacman" class="nav-link" data-scroll-target="#pakete-mit-pacman"><span class="header-section-number">7.1.1</span> Pakete mit <code>pacman</code></a></li>
   <li><a href="#rprojects" id="toc-rprojects" class="nav-link" data-scroll-target="#rprojects"><span class="header-section-number">7.1.2</span> RProjects</a></li>
@@ -413,7 +412,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mi. den 29.11.2023</p>
+      <p class="date-modified">Di. den 12.12.2023</p>
     </div>
   </div>
     
@@ -422,15 +421,6 @@ MathJax.Hub.Config({
 
 </header>
 
-<section id="lesungen" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h3>
-<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-import">Kap. 8 (Data Import)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
-<p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/04-data.html">Ch. 4 (Data Import)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
-</section>
-<section id="wiederholung" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="wiederholung">Wiederholung</h2>
-<p>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="01-intro_r.html#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span> eingelesen, ihn mit dem <code>dplyr</code>-Paket aus dem <code>tidyverse</code> verarbeitet und mehrere Diagramme mit dem <code>ggplot2</code>-Paket aus dem <code>tidyverse</code> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</p>
-</section>
 <section id="lernziele" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele">Lernziele</h2>
 <p>In diesem Kapitel werden wir lernen, wie man:</p>
@@ -439,6 +429,15 @@ MathJax.Hub.Config({
 <li>mit fehlenden Werten umzugehen</li>
 <li>Variablen in Faktoren umwandeln</li>
 </ul>
+<section id="lesungen" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="lesungen">Lesungen</h3>
+<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-import">Kap. 8 (Data Import)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/04-data.html">Ch. 4 (Data Import)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
+</section>
+</section>
+<section id="wiederholung" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="wiederholung">Wiederholung</h2>
+<p>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="01-intro_r.html#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span> eingelesen, ihn mit dem <code>dplyr</code>-Paket aus dem <code>tidyverse</code> verarbeitet und mehrere Diagramme mit dem <code>ggplot2</code>-Paket aus dem <code>tidyverse</code> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</p>
 </section>
 <section id="einrichtung" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="einrichtung"><span class="header-section-number">7.1</span> Einrichtung</h2>
@@ -986,7 +985,7 @@ var custom_title = document.querySelectorAll('.custom .theorem-title');
 
 for (let i = 0; i < custom_title.length; i++ ) {
    var mod_name = custom_title[i].innerHTML;
-   custom_title[i].innerHTML = mod_name.replace("Example", "");
+   custom_title[i].innerHTML = mod_name.replace("Beispiel", "Aufgabe");
 };
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1420,24 +1419,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">### don't print warnings</span></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lesungen {.unnumbered}</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele {.unnumbered .unlisted}</span></span>
 <span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kap. 8 (Data Import)</span><span class="co">](https://r4ds.hadley.nz/data-import)</span> in @wickham_r_2023.</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir lernen, wie man:</span>
 <span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>Eine **ergänzende Lektüre** ist <span class="co">[</span><span class="ot">Ch. 4 (Data Import)</span><span class="co">](https://psyteachr.github.io/ads-v2/04-data.html)</span> in @nordmann_applied_2022.</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Wiederholung {.unnumbered .unlisted}</span></span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span> eingelesen, ihn mit dem <span class="in">`dplyr`</span>-Paket aus dem <span class="in">`tidyverse`</span> verarbeitet und mehrere Diagramme mit dem <span class="in">`ggplot2`</span>-Paket aus dem <span class="in">`tidyverse`</span> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele {.unnumbered .unlisted}</span></span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir lernen, wie man:</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lokale Datendateien mit dem Paket <span class="in">`readr`</span> zu importieren </span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>mit fehlenden Werten umzugehen </span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variablen in Faktoren umwandeln</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lesungen {.unnumbered .unlisted}</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kap. 8 (Data Import)</span><span class="co">](https://r4ds.hadley.nz/data-import)</span> in @wickham_r_2023.</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>Eine **ergänzende Lektüre** ist <span class="co">[</span><span class="ot">Ch. 4 (Data Import)</span><span class="co">](https://psyteachr.github.io/ads-v2/04-data.html)</span> in @nordmann_applied_2022.</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lokale Datendateien mit dem Paket <span class="in">`readr`</span> zu importieren </span>
-<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>mit fehlenden Werten umzugehen </span>
-<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variablen in Faktoren umwandeln</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Wiederholung {.unnumbered .unlisted}</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span> eingelesen, ihn mit dem <span class="in">`dplyr`</span>-Paket aus dem <span class="in">`tidyverse`</span> verarbeitet und mehrere Diagramme mit dem <span class="in">`ggplot2`</span>-Paket aus dem <span class="in">`tidyverse`</span> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</span>
 <span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einrichtung</span></span>
 <span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a></span>
