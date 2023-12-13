@@ -4,25 +4,570 @@ subtitle: "Importieren von Datendateien"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 footer: "Woche 5 - Dateneinlesung" 
-date: "11/15/2023"
+date: "11/29/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
 ---
 
 ```{r}
 #| echo: false
-knitr::opts_chunk$set(eval = T, ## evaluate chunks
-                      echo = T, ## 'print code chunk?'
-                      message = F, ## 'print messages (e.g., warnings)?'
-                      error = T, ## continueeven when error encountered
-                      warning = F) ## don't print warnings
+knitr::opts_chunk$set(eval = T, ### evaluate chunks
+                      echo = T, ### 'print code chunk?'
+                      message = F, ### 'print messages (e.g., warnings)?'
+                      error = T, ### continueeven when error encountered
+                      warning = F) ### don't print warnings
 ```
 
+## Lernziele {.unnumbered .unlisted}
 
-Die Materialien werden vor dem Unterricht zur Verfügung gestellt.
+In diesem Kapitel werden wir lernen, wie man:
 
-## Lesungen {.unnumbered}
+- lokale Datendateien mit dem Paket `readr` zu importieren 
+- mit fehlenden Werten umzugehen 
+- Variablen in Faktoren umwandeln
+
+### Lesungen {.unnumbered .unlisted}
 
 Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kap. 8 (Data Import)](https://r4ds.hadley.nz/data-import) in @wickham_r_2023.
 
 Eine **ergänzende Lektüre** ist [Ch. 4 (Data Import)](https://psyteachr.github.io/ads-v2/04-data.html) in @nordmann_applied_2022.
+
+
+## Wiederholung {.unnumbered .unlisted}
+
+Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem `languageR`-Paket [@languageR-package] eingelesen, ihn mit dem `dplyr`-Paket aus dem `tidyverse` verarbeitet und mehrere Diagramme mit dem `ggplot2`-Paket aus dem `tidyverse` erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.
+
+## Einrichtung
+
+### Pakete mit `pacman`
+
+Zu Beginn werden wir mit dem Paket `pacman` beginnen. Die Funktion `p_load()` nimmt Paketnamen als Argumente und prüft dann, ob Sie das Paket installiert haben. Wenn ja, dann lädt sie das Paket (genau wie `library()`). Wenn Sie das Paket nicht installiert haben, wird das Paket installiert und geladen (wie mit `install.packages()`, `library()`). Das erspart uns, neue Pakete einzeln zu installieren, und bedeutet auch, dass, wenn wir unser Skript mit anderen teilen, sie einfach `pacman::p_load()` ausführen können.
+
+```{r}
+#| eval: false
+## install new packages IN THE CONSOLE!
+install.packages("pacman")
+```
+
+```{r}
+## load packages
+pacman::p_load(tidyverse, ## wrangling
+               janitor, ## wrangling
+               here ## relative file paths
+               )
+```
+
+Wir haben nun `tidyverse` geladen, und die neuen Pakete `janitor` und `here` installiert und geladen. Um mehr über diese Pakete herauszufinden, versuchen Sie `?janitor` und `?here` in der Konsole einzugeben.
+
+### RProjects
+
+Bevor wir mit unserer ersten Datei beginnen, müssen wir sicherstellen, dass wir innerhalb unseres RProjekts arbeiten. Zu Beginn des Kurses haben Sie eine ZIP-Datei von [GitHub](https://github.com/daniela-palleschi/r4ling_student) (https://github.com/daniela-palleschi/r4ling_student) heruntergeladen, die einige Ordner und eine `.RProj`-Datei enthielt. Hoffentlich haben Sie bis jetzt *innerhalb* dieses RProjekts gearbeitet und Ihre Skripte im Ordner `notizen` gespeichert. Von nun an wird es notwendig sein, innerhalb dieses RProjekts zu arbeiten, damit wir immer auf unsere relevanten Datendateien zugreifen können, die in einem Ordner namens `daten` gespeichert werden sollten.
+
+Um ein RProjekt zu öffnen, navigieren Sie einfach zu dem Ordner auf Ihrem Rechner und doppelklicken Sie auf die `.RProj`-Datei. Wenn Sie sich bereits in RStudio befinden, können Sie auch überprüfen, ob Sie im richtigen RProjekt arbeiten, indem Sie oben im Fenster nachsehen.
+
+::: callout-tip
+
+### Aufgabe
+
+1. Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie `r4ling_student-main` oben in Ihrem RStudio (@fig-project).
+  + Wenn dies nicht der Fall ist (@fig-no-project), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche "Projekt" oben rechts im RStudio klicken (@fig-project-open; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).
+2. Fügen Sie Ihrem RProject-Ordner einen Ordner namens `daten` hinzu.
+
+::: {.content-visible when-format="html"}
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject (here: r4ling_student-main)."}
+#| echo: false
+#| label: fig-project
+
+library(magick)
+magick::image_read(here::here("media/rstudio_project.png"))
+```
+
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}
+#| echo: false
+#| label: fig-no-project
+
+library(magick)
+magick::image_read(here::here("media/rstudio_project.png"))
+```
+
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}
+#| echo: false
+#| label: fig-project-open
+
+library(magick)
+magick::image_read(here::here("media/rstudio_noproject.png"))
+```
+
+
+:::
+
+::: {.content-hidden when-format="html"}
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}
+#| echo: false
+#| label: fig-project-1
+
+library(magick)
+magick::image_read(here::here("media/rstudio_project.png"))
+```
+
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}
+#| echo: false
+#| label: fig-no-project-1
+
+library(magick)
+magick::image_read(here::here("media/rstudio_project.png"))
+```
+
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}
+#| echo: false
+#| label: fig-project-open-1
+
+library(magick)
+magick::image_read(here::here("media/rstudio_noproject.png"))
+```
+
+
+:::
+:::
+
+## CSV: Komma getrennter Wert
+
+Bisher haben wir mit Daten aus dem R-Paket `languageR` gearbeitet. Daten aus Paketen sind eine großartige Möglichkeit, die Werkzeuge der Datenwissenschaft zu erlernen, aber normalerweise wollen wir mit unseren *eigenen* Daten arbeiten, nicht mit eingebauten Spielzeugdaten. Wir werden uns nur auf *rechteckige* Daten (d. h. aufgeräumte Daten) konzentrieren, obwohl Ihre Daten zu Beginn oft nicht aufgeräumt sind. Es gibt viele verschiedene Dateitypen, die Daten annehmen können, z. B. .xlsx, .txt, .csv, .tsv. Der Dateityp "csv" ist der häufigste Dateityp und steht für: Comma Separated Values.
+
+So sieht eine einfache CSV-Datei aus:
+
+```{r}
+#| echo: false
+#| output-location: fragment
+#| message: false
+#| comment: ""
+
+read_lines(here::here("daten", "students.csv")) |> cat(sep = "\n")
+```
+
+Die erste Zeile (die "Kopfzeile") enthält die Spaltennamen. Die folgenden Zeilen enthalten die Daten. Wie viele Variablen gibt es? Wie viele Beobachtungen?
+
+Wir lernen jetzt etwas über aufgeräumte Daten und sehen uns ein Beispiel an. Anschließend werden wir eine CSV-Datei in R laden.
+
+::: callout-warning
+
+### Microsoft Excel
+
+Versuchen Sie, `.xlsx`-Dateien im Allgemeinen zu vermeiden, vor allem aber, wenn Sie Ihre Daten in R laden wollen. Der Grund dafür ist, dass Excel viele Formatierungsprobleme hat, die für R problematisch sind. Wenn Sie einen Excel-Datensatz haben, versuchen Sie, ihn als .csv zu speichern, bevor Sie ihn in R einlesen (`Datei > Speichern unter > Dateiformat > Komma-getrennter Wert`).
+
+:::
+
+### Tidydaten
+
+Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie *aufgeräumt* sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (@fig-tidy-data).
+
+::: {.content-visible when-format="html"}
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}
+#| echo: false
+#| label: fig-tidy-data
+
+library(magick)
+magick::image_read(here::here("media/Wickham_tidydata.png"))
+```
+:::
+
+
+::: {.content-visible when-format="pdf"}
+```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}
+#| echo: false
+#| label: fig-tidy-data-1
+
+library(magick)
+magick::image_read(here::here("media/Wickham_tidydata.png"))
+```
+:::
+
+
+
+## Tabelle zu csv
+
+Lassen Sie uns einige Spielzeugdaten in einem Arbeitsblatt sammeln, das wir dann als CSV-Datei speichern und in R laden werden. [Klicken Sie hier](https://docs.google.com/spreadsheets/d/1nAKO3AGSTMmNibZLNZ4DD6okXyxxP8IDkj9PjpX0B5k/edit?usp=sharing), um zu einem bearbeitbaren Arbeitsblatt zu gelangen. Geben Sie die relevanten Informationen über sich selbst ein, oder erfinden Sie einige Daten: den Namen eines Haustiers, das Sie haben/hatten, Größe, Geburtsmonat und -tag sowie Ihre erste Sprache. Wenn Sie kein Haustier haben, lassen Sie die Zelle leer.
+
+::: {.content-visible when-format="html"}
+```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/spreadsheet_googlesheet.png"))
+```
+:::
+
+
+::: {.content-visible when-format="pdf"}
+```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/spreadsheet_googlesheet.png"))
+```
+:::
+
+### CSV speichern
+
+Jetzt müssen wir unser Arbeitsblatt als CSV-Datei auf unserem Computer speichern. Solange wir in unserem RProjekt arbeiten, wird R immer nach Dateien aus dem Ordner suchen, der unser RProjekt enthält. Stellen wir also zunächst sicher, dass unser Ordner einen Unterordner namens `daten` enthält. Darin werden wir alle unsere Daten speichern.
+
+::: {.content-visible when-format="revealjs"}
+#### Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+#### [Aufgabe @exm-table1]: `Speichern einer CSV`
+::: {#exm-table1 .custom}
+::: nonincremental
+1. Erstellen Sie einen neuen Ordner mit dem Namen `daten` in Ihrem Projektordner (falls Sie das nicht schon getan haben).
+1. Laden Sie das Google Sheet herunter und speichern Sie es in Ihrem `daten`-Ordner als `groesse_geburtstag.csv`.
+2. Gehen Sie zu Ihrem `daten`-Ordner und überprüfen Sie, ob die CSV-Datei dort ist.
+
+::: {.content-visible when-format="html"}
+```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/spreadsheet_save.png"))
+```
+
+```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Find the CSV file in your file manager."}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/spreadsheet_csv.png"))
+```
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/spreadsheet_save.png"))
+```
+
+```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}
+#| echo: false
+
+library(magick)
+magick::image_read(here::here("media/spreadsheet_csv.png"))
+```
+:::
+
+:::
+:::
+:::
+
+## Das `readr`-Paket
+
+Unsere Daten können als Tabelle angezeigt werden, genau wie unsere eingebauten Datensätze aus dem `languageR`-Paket [@languageR-package]. Genau wie bei den eingebauten Datensätzen müssen wir zuerst die Daten *einlesen*, aber anstatt nur den Namen des eingebauten Datensatzes anzugeben, müssen wir eine Funktion verwenden, die CSV-Daten liest. Wir müssen auch angeben, *wo* sich die Daten in unserem RProject-Ordner befinden.
+
+Das Paket `readr` (Teil von `tidyverse`) kann die meisten Datentypen einlesen und hat mehrere Funktionen für verschiedene Datentypen.
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+
+read_csv(here::here("daten", "groesse_geburtstag.csv"))
+```
+
+```{r}
+#| label: tbl-students-table
+#| echo: false
+#| message: false
+#| tbl-cap: Data from the students.csv file as a table.
+
+read_csv(here::here("daten", "groesse_geburtstag.csv")) |>
+  knitr::kable()
+```
+
+::: {.content-visible when-format="revealjs"}
+### Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+#### [Aufgabe @exm-students]: `df_groesse`
+::: {#exm-students .custom}
+::: nonincremental
+1.  Importieren Sie den Datensatz "groesse_geburtstag.csv" und speichern Sie ihn als Objekt mit dem Namen "df_groesse".
+    - `df_` ist die Abkürzung für DataFrame; es ist eine gute Idee, ein Präfix vor Objektnamen zu verwenden, damit wir wissen, was jedes Objekt enthält.
+2.  Wenn Daten mit `read_csv` importiert werden, werden einige Informationen in der Konsole ausgegeben. Was wird gedruckt?
+2.  Untersuche den Datensatz mit Funktionen wie `summary()` oder `head()`
+3.  Sehen Sie etwas Ungewöhnliches?
+
+:::
+:::
+:::
+
+```{r}
+#| eval: false
+#| echo: false
+
+df_groesse <- read_csv(here("daten", "groesse_geburtstag.csv"))
+head(df_groesse) ## missing data points
+```
+
+## Das `here`-Paket
+
+Aber woher weiß R genau, wo der Ordner `daten` zu finden ist? Unser *Arbeitsverzeichnis* ist auf den Ort unseres RProjekts auf unserem Computer festgelegt. Wann immer wir auf Daten in unserem RProjekt zugreifen wollen, sollten wir `here()` verwenden (vorausgesetzt, wir haben das `here`-Paket bereits geladen). Um zu sehen, von wo aus `here()` startet, führen Sie `here()` aus. Wie sieht die Ausgabe im Vergleich zu der von `getwd()` (für 'get working directory')?
+
+```{r}
+#| output-location: fragment
+here()
+getwd()
+```
+
+Die Ausgabe wird auf allen unseren Rechnern anders aussehen, aber was gleich sein sollte, ist unsere Ordnerstruktur innerhalb unserer Projekte (z. B. `data/groesse_geburtstag.csv`).
+
+::: {.content-visible when-format="revealjs"}
+### `here` package {.unlisted .unnumbered}
+
+```{r echo = F, fig.env = "figure",out.width="70%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}
+knitr::include_graphics(here::here("media", "Horst_here.png"))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}
+knitr::include_graphics(here::here("media", "Horst_here.png"))
+```
+:::
+
+::: callout-note
+
+#### `here`-Paket
+::: nonincremental
+Vor dem `here`-Paket mussten wir R explizit mitteilen, wo sich eine Datei auf unserem Computer befindet (z.B., `/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten/daten/students.csv`), oder die Funktion `setwd()` (set Working Directory) benutzen, um R mitzuteilen, wo alle Dateien zu finden sind (z.B. `setwd("/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten")`). Glücklicherweise brauchen Sie diese absoluten Dateipfade oder `setwd()` nie zu benutzen!
+
+Aus der [`hier`-Paketdokumentation](https://here.r-lib.org/): 
+
+> The goal of the here package is to enable easy file referencing in project-oriented workflows. In contrast to using `setwd()`, which is fragile and dependent on the way you organize your files, here uses the top-level directory of a project to easily build paths to files.
+
+Das bedeutet, dass wir nun den ***großen*** Vorteil haben, dass wir unseren Projektordner überall hin verschieben können und unser Dateipfad immer noch relativ zu dem Ort ist, an den wir unseren Projektordner verschoben haben. Das bedeutet, dass das Projekt unabhängig davon läuft, wo es sich auf Ihrem Computer befindet. Sie können auch jemandem den Projektordner schicken, und alles sollte auf dessen Rechner laufen!
+
+:::
+:::
+
+## Arbeit mit Daten
+
+Daten sind chaotisch, aber mit Erfahrung können wir lernen, sie zu bändigen. Im Folgenden finden Sie einige Tipps, die das Gelernte über die Datenverarbeitung erweitern.
+
+### Fehlende Werte
+
+Bei der Datentransformation geht es darum, unsere Daten zu "reparieren", wenn sie nicht "in Ordnung" sind. In unserem `df_groesse` Datenrahmen haben Sie vielleicht einige `NA` oder `N/A` Werte bemerkt. N/A" wurde in einer unserer Beobachtungen als Text geschrieben und wird von R als solcher gelesen. N/A" in R bezieht sich auf fehlende Daten ("Nicht verfügbar"). Echte fehlende Werte sind komplett leer, so dass `N/A` in unseren `df_groesse`-Daten nicht wirklich als fehlender Wert gelesen wird, obwohl wir möchten, dass R weiß, dass dies als fehlende Daten zählt und nicht das Haustier von jemandem namens "NA" (Menschen tun seltsame Dinge!). Um dies zu beheben, können wir das Argument `na =` für die Funktion `read_csv()` verwenden, das der Funktion `read_csv()` mitteilt, welche Werte sie mit fehlenden Werten gleichsetzen soll.
+
+::: {.content-visible when-format="revealjs"}
+### Missing values {.unlisted .unnumbered}
+:::
+
+```{r}
+#| output-location: fragment
+# force "N/A" to missing values
+df_groesse <- read_csv(here::here("daten", "groesse_geburtstag.csv"),
+                        na = "N/A")
+# print the head of the data set
+head(df_groesse)
+```
+
+Jetzt wird der Wert, der vorher `""` war, als `NA` gelesen. Aber was ist mit der leeren Zelle? Wir haben jetzt überschrieben, dass `read_csv()` leere Zellen als `NA` liest. Jetzt wollen wir `read_csv()` anweisen, *mehr als eine* Art von Eingabe als `NA` zu lesen, d.h. wir wollen es anweisen, `""` *und* `"N/A"` als `NA` zu lesen. Dafür verwenden wir unsere immer nützliche Verkettungsfunktion: `c()`.
+
+::: {.content-visible when-format="revealjs"}
+### Missing values {.unlisted .unnumbered}
+:::
+
+```{r}
+#| output-location: fragment
+# force "N/A" and empty cells to missing values
+df_groesse <- read_csv(here::here("daten", "groesse_geburtstag.csv"),
+                        na = c("N/A",""))
+# print the head of the data set
+head(df_groesse)
+```
+
+### Spaltennamen
+
+Wenn wir `df_groesse` in der Konsole ausdrucken, werden wir sehen, dass ein Spaltenname von Backticks umgeben ist (z.B. `` `Monat der Geburt``). Das liegt daran, dass er ein Leerzeichen enthält, das syntaktisch nicht gültig ist (Variablennamen müssen mit einem Buchstaben beginnen und dürfen keine Leerzeichen oder Sonderzeichen enthalten). Eine schnelle Lösung ist die Funktion `clean_names()` aus dem Paket `janitor`, das wir bereits geladen haben.
+
+```{r}
+clean_names(df_groesse)
+```
+
+Das sieht besser aus! Aber wenn Sie jetzt `head(df_groesse)` ausführen, sehen Sie dann die bereinigten Spaltennamen?
+
+::: {.content-visible when-format="revealjs"}
+### Spaltennamen {.unlisted .unnumbered}
+:::
+
+Das sollten Sie nicht, denn wenn wir ein Objekt durch eine Funktion übergeben, wird das Objekt nicht 'aktualisiert', so dass wir das Objekt erneut mit dem Zuweisungsoperator `<-` zuweisen müssen.
+
+```{r}
+df_groesse <- janitor::clean_names(df_groesse)
+```
+
+Aber wir wissen oft, dass wir mehrere Funktionen (`read_csv()`, `clean_names()`) auf demselben Objekt ausführen wollen, denken Sie daran, dass wir das mit Pipes tun können.
+
+### Pipes
+
+Pipes werden am Ende eines Funktionsaufrufs eingefügt, wenn das Ergebnis dieser Funktion durch eine nachfolgende Funktion weitergegeben werden soll. Pipes können als "und dann..." gelesen werden.
+
+```{r}
+read_csv(here::here("daten", "groesse_geburtstag.csv")) |>
+  head()
+```
+
+Derzeit gibt es 2 Pipes, die in R verwendet werden können.
+
+  1. die `magrittr` Paket-Pipe: `%>%`
+  2. die neue native R-Pipe: `|>`
+    
+Es gibt keine großen Unterschiede, die für unsere aktuellen Anwendungen wichtig sind, also benutzen wir die neue `|>`. Sie können die Tastenkombination `Cmd/Ctrl + Shift/Strg + M` verwenden, um eine Pipe zu erzeugen. Dies könnte die "Magrittr"-Paket-Pipe erzeugen, was in Ordnung ist, aber wenn Sie das ändern möchten, können Sie das unter `Werkzeuge > Globale Optionen > Code > Native Pipe-Operator verwenden` tun.
+
+::: {.content-visible when-format="revealjs"}
+### Aufgabe {.unlisted .unnumbered}
+:::
+
+::: callout-tip
+
+#### [Aufgabe @exm-pipes]: pipes
+::: {#exm-pipes .custom}
+::: nonincremental
+1.    Laden Sie den Datensatz `groesse_geburtstag.csv` erneut mit festen `NA`s *und dann*
+        + Benutze eine Pipe, um `clean_names()` auf dem Datensatz aufzurufen, *und dann*
+        + rufen Sie die Funktion "head()" auf
+        + Überprüfen Sie die Anzahl der Beobachtungen und Variablen, gibt es ein Problem?
+2.    Laden Sie den Datensatz `groesse_geburtstag.csv` erneut mit festen `NA`s, speichern Sie ihn als Objekt `df_groesse`, *und dann*
+        + Verwenden Sie eine Pipe, um `clean_names()` auf den Datensatz anzuwenden.
+4.    Warum sollte man nicht eine Pipe und die Funktion `head()` verwenden, wenn man den Datensatz als Objekt speichert?
+
+```{r}
+#| eval: false
+#| echo: false
+read_csv(here("daten", "groesse_geburtstag.csv"), na = c("","N/A")) |>
+  clean_names() |>
+  head()
+
+
+df_groesse <- read_csv(here("daten", "groesse_geburtstag.csv"), na = c("","N/A")) |>
+  clean_names()
+```
+
+:::
+:::
+:::
+
+### Variablentypen
+
+Das Paket `readr` errät den Typ der Daten, die jede Spalte enthält. Die wichtigsten Spaltentypen, die man kennen muss, sind `numerisch` und `Faktor` (kategorisch). Faktoren enthalten *Kategorien* oder *Gruppen* von Daten, können aber manchmal *aussehen* wie `numerische` Daten. Zum Beispiel enthält unsere Spalte "Monat" Zahlen, aber sie könnte auch den Namen jedes Monats enthalten. Ein guter Weg, um zu wissen, was was ist: Es ist sinnvoll, den Mittelwert einer "numerischen" Variablen zu berechnen, aber nicht den eines "Faktors". Zum Beispiel ist es sinnvoll, den Mittelwert der Körpergröße zu berechnen, aber nicht den Mittelwert des Geburtsmonats.
+
+Um sicherzustellen, dass eine Variable als Faktor gespeichert wird, können wir die Funktion `as_factor()` verwenden. Wir können entweder die R-Basissyntax verwenden, um dies zu tun, indem wir ein `$` verwenden, um eine Spalte in einem Datenrahmen zu indizieren:
+
+
+```{r}
+df_groesse$monat_der_geburt <- as_factor(df_groesse$monat_der_geburt)
+```
+
+Or we can use `tidyverse` syntax and the `mutate()` function.
+
+```{r}
+df_groesse <-
+  df_groesse |> 
+  mutate(monat_der_geburt = as_factor(monat_der_geburt))
+```
+
+## Andere Dateitypen und Begrenzungszeichen
+
+Sobald Sie mit `read_csv()` vertraut sind, sind die anderen Funktionen von `readr` einfach zu benutzen, Sie müssen nur wissen, wann Sie welche benutzen.
+  
+Die Funktion `read_csv2()` liest Semikolon-separierte Dateien. Diese verwenden Semikolons (`;`) anstelle von Kommas (`,`), um Felder zu trennen und sind in Ländern üblich, die `,` als Dezimaltrennzeichen verwenden (wie Deutschland).
+
+Die Funktion `read_tsv()` liest Tabulator-getrennte Dateien. Die Funktion `read_delim()` liest Dateien mit beliebigen Trennzeichen ein und versucht, das Trennzeichen zu erraten, es sei denn, Sie geben es mit dem Argument `delim =` an (z.B. `read_delim(students.csv, delim = ",")`).
+
+`readr` hat mehrere andere Funktionen, die ich persönlich noch nicht gebraucht habe, wie zum Beispiel:
+
+- `read_fwf()` liest Dateien mit fester Breite
+- `read_table()` liest eine gängige Variante von Dateien mit fester Breite, bei der die Spalten durch Leerzeichen getrennt sind
+- `read_log()` liest Log-Dateien im Apache-Stil
+
+## Übungen {.unnummeriert}
+
+Nun wollen wir üben, das Paket `readr` zu benutzen und mit unseren Daten zu arbeiten.
+
+### `readr` Funktionen {.unnumbered}
+
+1.  Welche Funktion würdest du benutzen, um eine Datei zu lesen, in der die Felder mit "`|`" getrennt sind?
+2.  Welche Argumente haben `read_csv()` und `read_tsv()` gemeinsam?
+3.  Welche Funktion(en) könnten Sie verwenden, um einen Datensatz mit einem Semikolon (`;`) als Trennzeichen einzulesen?
+
+### Data wrangling {.unnumbered}
+
+Laden Sie die Datei `groesse_geburtstag.csv` erneut. Benutzen Sie Pipes, um auch die Funktion `clean_names` zu benutzen, und um die folgenden Änderungen im Objekt `df_groesse` vorzunehmen.
+
+1. Umwandlung der Variablen `l1` in einen Faktor.
+2. Umbenennen von 
+  + `grosse` in `groesse`
+  + `monat_der_geburt` in `geburtsmonat`
+  
+```{r}
+#| echo: false
+df_groesse <-
+  read_csv(here("daten/groesse_geburtstag.csv")) |> 
+  clean_names() |> 
+  rename(
+    groesse = grosse,
+    geburtsmonat = monat_der_geburt
+  ) |> 
+  mutate(l1 = as_factor(l1))
+```
+
+### Plots {.unnumbered}
+
+Erstelle ein Streudiagramm mit unserem `df_groesse`-Datensatz, das die Beziehung zwischen unserem Geburtsdatum und unseren Geburtstagen visualisiert (es macht keinen Sinn, dies zu vergleichen, aber es ist nur eine Übung). Suchen Sie Ihren Geburtstag in der Grafik. Stellen Sie die Farbe und die Form so ein, dass sie "L1" entsprechen. Fügen Sie einen Titel für die Grafik hinzu.
+
+```{r}
+#| echo: false
+#| eval: false
+df_groesse |> 
+  ggplot() +
+  aes(x = geburtsmonat, y = tag, colour = l1, shape = l1) +
+  labs(title = "Geburtsmonat und Geburtstag",
+       y = "Geburtsag",
+       x = "Geburtsmonat") +
+  geom_point() +
+  theme_bw()
+```
+
+
+## Lernziele 🏁 {.unnumbered .unlisted}
+
+Heute haben wir gelernt, wie man...
+
+- lokale Datendateien mit dem Paket `readr` importiert ✅
+- fehlende Werte behandeln ✅
+- Variablen in Faktoren umwandeln ✅
+
+Lassen Sie uns nun dieses neue Wissen anwenden.
+
+## Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+RStudio.Version()$release_name
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.9.0.463 (Desert Sunflower).
+
+```{r}
+sessionInfo()
+```
+
+## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

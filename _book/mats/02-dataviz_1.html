@@ -117,6 +117,21 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: {autoNumber: "AMS"} },
+  tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ]}
+});
+</script>
+
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+    tex: {
+      tags: 'ams'  // should be 'ams', 'none', or 'all'
+    }
+  };
+</script>
 
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -730,7 +745,7 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-help">Aufgabe&nbsp;<span>2.1</span></a>: <code>?lexdec</code>
+<a href="09-wrangling_2.html#exm-help">Aufgabe&nbsp;<span>9.2</span></a>: <code>?lexdec</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1236,7 +1251,7 @@ var custom_title = document.querySelectorAll('.custom .theorem-title');
 
 for (let i = 0; i < custom_title.length; i++ ) {
    var mod_name = custom_title[i].innerHTML;
-   custom_title[i].innerHTML = mod_name.replace("Example", "");
+   custom_title[i].innerHTML = mod_name.replace("Beispiel", "Aufgabe");
 };
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

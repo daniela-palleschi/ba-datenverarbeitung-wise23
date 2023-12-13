@@ -1,0 +1,547 @@
+---
+title: "Data Wrangling 2"
+subtitle: "Datenbereinigung (Data tidying)"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 9 - Data Wrangling 2" 
+date: "12/13/2023"
+date-format: "ddd [den] DD.MM.YYYY"
+date-modified: last-modified
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, ### evaluate chunks
+                      echo = T, ### 'print code chunk?'
+                      message = F, ### 'print messages (e.g., warnings)?'
+                      error = T, ### continueeven when error encountered
+                      warning = F) ### don't print warnings
+```
+
+## Learning objectives {.unnumbered}
+
+Today we will learn...
+
+- about wide versus long data
+- how to make wide data longer
+- how to make long data wider
+
+### Resources {.unnumbered}
+
+The suggested resources for this topic are [Chapter 6 (Data tidying)](https://r4ds.hadley.nz/data-tidy) in @wickham_r_2023, and [Chapter 8 (Data tidying)](https://psyteachr.github.io/ads-v2/08-tidy.html) in @nordmann_applied_2022.
+
+
+## Review {.unnumbered}
+
+In the last chapter we learned about descriptive statistics, specifically measures of central tendency (mean, median, mode) and dispersion (range, standard deviation). We also saw how to compute these values with base R (e.g., `mean()`, `sd()`) and the `tidyverse` (e.g., `summarise()`), and by groups (`summarise(.by = )`).
+
+In this chapter we'll review the concept of tidy data, and see how to organise and re-arrange our data so that it is tidy.
+
+## Set-up
+
+We'll need the packages `tidyverse`, `here`, and `janitor`.
+
+```{r}
+pacman::p_load(tidyverse,
+               here,
+               janitor)
+```
+
+We'll use the `languageR_english.csv` dataset (in `daten` folder).
+
+```{r}
+df_eng <- read_csv(here("daten", "languageR_english.csv")) |> 
+  clean_names() |> 
+  arrange(word) |> 
+  rename(
+    rt_lexdec = r_tlexdec,
+    rt_naming = r_tnaming
+  )
+```
+
+## Tidy workflow
+
+@fig-workflow shows an overview of the typical data science process, whereby we import our data, tidy it, then work through a cycle of transforming, visualising, and modelling before finally communicating your findings. 
+
+::: {.content-visible when-format="revealjs"}
+```{r}
+#| echo: false
+#| out-width: "70%"
+#| fig-align: center
+#| fig-cap: "A model of the data science process from @wickham_r_nodate [(all rights reserved)](https://r4ds.hadley.nz/intro.html)"
+magick::image_negate(magick::image_read(here::here("media/Wickham_tidyworkflow.png")))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r}
+#| echo: false
+#| out-height: "100%"
+#| label: fig-workflow
+#| fig-align: center
+#| fig-cap: "[Image source:](https://r4ds.hadley.nz/intro.html) @wickham_r_nodate (all rights reserved)"
+magick::image_read(here::here("media/Wickham_tidyworkflow.png"))
+```
+:::
+
+We've already seen how to import our data (`readr::read_csv`), transform  (`dplyr` package), and visualise  (`ggplot` package) data. But we've only seen tidy data so far, so we haven't needed to perform the 'tidy' step.
+
+## Tidy data
+
+The same data can be representing multiple ways. The datasets below all show the same values of four variables: `country`, `year`, `popuplation`, and number of tuberculosis `cases`. Each dataset organises the values differently. Take a moment to consider the different options. Which is easiest to read?
+
+::: {.content-visible when-format="revealjs"}
+:::: columns 
+::: {.column width="33%"}
+```{r}
+#| output-location: fragment
+#| echo: false
+#| tbl-cap: Tabelle 1
+df_tb <- read_csv(here("daten", "table1.csv"))
+df_tb %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(
+    font_size = 20
+  )
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+#| output-location: fragment
+#| echo: false
+#| tbl-cap: Tabelle 2
+df_tb %>%
+  pivot_longer(
+    cols = c(cases, population),
+    names_to = "type",
+    values_to = "count"
+  ) %>%
+  knitr::kable() %>% 
+  kableExtra::kable_styling(
+    font_size = 20
+  )
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+#| echo: false
+#| output-location: fragment
+#| tbl-cap: Tabelle 3
+df_tb %>%
+  ## group_by(country,year) %>% 
+  mutate(rate = paste0(cases,"/",population)) %>% 
+  select(-cases,-population) %>%
+  knitr::kable() %>% 
+  kableExtra::kable_styling(
+    font_size = 20
+  )
+```
+:::
+
+:::: 
+
+:::
+
+
+```{r}
+#| output-location: fragment
+#| echo: false
+#| tbl-cap: Tabelle 1
+#| label: tbl-1
+df_tb %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(
+    font_size = 20
+  )
+```
+
+```{r}
+#| output-location: fragment
+#| echo: false
+#| tbl-cap: Tabelle 2
+#| label: tbl-2
+df_tb %>%
+  pivot_longer(
+    cols = c(cases, population),
+    names_to = "type",
+    values_to = "count"
+  ) %>%
+  knitr::kable() %>% 
+  kableExtra::kable_styling(
+    font_size = 20
+  )
+```
+
+```{r}
+#| echo: false
+#| output-location: fragment
+#| tbl-cap: Tabelle 3
+#| label: tbl-3
+df_tb %>%
+  ## group_by(country,year) %>% 
+  mutate(rate = paste0(cases,"/",population)) %>% 
+  select(-cases,-population) %>%
+  knitr::kable() %>% 
+  kableExtra::kable_styling(
+    font_size = 20,
+    full_width = F
+  )
+```
+
+You likely found @tbl-1 easiest to read. This is because it follows the three rules for tidy data (visualised in @fig-tidy):
+
+1.  Each variable is a column, each column is a variable
+2.  Each observation is a row, each row is an observation
+3.  Each value is a cell, each cell is a single value
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+#| label: fig-tidy
+#| fig-align: center
+#| fig-cap: "[Image source:](https://r4ds.hadley.nz/data-tidy.html) @wickham_r_nodate (all rights reserved)"
+magick::image_read(here::here("media/Wickham_tidydata.png"))
+```
+
+In @tbl-1, each column represents a variable: `country`, `year`, `population` and `case`. Each row represents a single observation: a country in a given year. And lastly, each cell contained a single value.
+
+### Why tidy data?
+
+> "**Happy families** are all alike; every **unhappy family** is unhappy in its own way."
+--- Leo Tolstoy
+
+> "**Tidy datasets** are all alike, but every **untidy dataset** is untidy in its own way."
+--- Hadley Wickham
+
+Once you have tidy data, you'll spend less time trying to get your data in the right shape to do what you want. Data tidying requires some work up front, but is helpful in the long run.
+
+There are two main advantages to working with tidy data:
+
+1. working with a consistent data structure allows us to adopt conventions
+    + since tidy data is the generally agreed upon data structure, conventions are built on the assumption of this structure
+    + so tools have an underlying uniformity
+2. `R`'s vectorised nature can shine
+    + most built-in R funtions work with *vector values* (and columns are essentially vectors)
+    + all packages in the `tidyverse` are designed to work with tidy data (e.g., `ggplot2` and `dplyr`)
+
+::: callout-tip
+### Review: Vectors
+Vectors are the most basic data object type in R. A vector contains data of the same type, and is essentially a list. You can create a vector using the `c()` function, for example.
+
+```{r}
+vector1 <- c(2, 3, 4, 6, 7)
+vector2 <- c(2, 3, 4, 6, "c")
+```
+
+`vector1` will contain numeric values, because all elements are numbers. `vector2` will contain all character values (i.e., text), because there is a singlular unambiguous character element (`"c"`). So, R reads all elements as character type. We can create a dataframe from vectors of the same length using the `tibble()` function, for example.
+
+```{r}
+tibble(vector1,vector2)
+```
+
+:::
+
+Most data "in the wild" is untidy. Data is often first organised for some goal other than analysis. This goal is usually to facilitate data entry: we want to make it easy to document our observations first. Most people aren't familiar with the principles of tidy data, only after spending *a lot* of time with data does it become obvious why tidy data is necessary. This means most *real* analyses will require at least some tidying.
+
+::: callout-tip
+#### [Aufgabe @exm-tidy]: Tidy data
+
+::: {#exm-tidy .custom}
+::: nonincremental
+1.  Go back to Tables 1-3. For each table, describe what each observation and each column represents.
+2.  Sketch out the process you’d use to calculate the rate for @tbl-1. You will need just one verb that:
+    + creates a new variable (call it `rate`) that contains:
+      + the number of TB `cases` per country per year, divided by
+      + the matching `population` per country per year, 
+      + multiply by `10000`
+    + hint: Which `dplyr` verb creates new variables? (Look back at @sec-data-transform.)
+3.  Look at tables 2 and 3. Would it have been as easy to calculate `rate` with these data structures?
+
+:::
+:::
+:::
+
+## Data tidying
+
+Data tidying essentially consists of transforming wide data to long data and long data to wide data (among other steps). The outcome is tidy data, in which each column represents a variable and each row an observation. How exactly we define an observation is dependent on what exactly we're trying to achieve, and can change between one analysis step and another.
+
+### Data tidying with the `tidyverse`
+
+The `tidyr` package from the `tidyverse` has two useful functions for transposing our data: 
+
+  - `pivot_longer()`: make wide data longer
+  - `pivot_wider()`: make long data wider
+  
+We often need to convert between these formats to do different types of summaries or visualisation. But what exactly are wide and long data?
+
+::: {.content-hidden when-format="pdf"}
+```{r echo = F, fig.align = "center", out.width="100%"}
+#| fig-cap-location: bottom
+#| label: fig-pivot-html
+#| fig-cap: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials) ([Friends](https://www.youtube.com/watch?v=8w3wmQAMoxQ))
+magick::image_read(here::here("media/pivot_friends.jpeg"))
+```
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r echo = F, fig.align = "center", out.width="50%"}
+#| fig-cap-location: bottom
+#| label: fig-pivot-pdf
+#| fig-cap: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials)
+magick::image_read(here::here("media/pivot_friends.jpeg"))
+```
+:::
+
+## Wide versus long data
+
+In wide data,  all of the observations about one thing are in the same row. Wide data is *usually* not tidy. In long data, each observation is on a separate row. Long data is *usually* tidy. Let's start with the most typical case: turning wide data into long data.
+  
+## Lengthening data: `df_eng`
+
+- in the `languageR_english.csv` dataset
+  - each row is an observation
+  - the first column describes the participant's age group
+  - the columsn `word`, `length_in_letters`, `written_frequency`, and `word_category` describe properties of the stimulus for a given observation (i.e., the word)
+  - we have 4568 observations
+
+```{r}
+#| label: tbl-df_eng
+#| tbl-cap: df_eng
+df_eng %>% 
+  head() %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+- is this data in @tbl-df_eng tidy?
+- is this data too wide or too long?
+- how might we make this data longer?
+
+Whether or not we would wnat to lengthen this data depends on our task at hand. If we wanted to plot response times for the lexical decision task (`rt_lexdec`) alongside the response time for the naming task (`rt_naming`), we might want to include the two in `facet_wrap()`. However, `facet_wrap()` takes a *categorical* variable as its argument, and produces plots of each category. We would need to have a new variable, for example `response`, which contains the levels `lexdec` and `naming`, and another, for example `time`, that contains the response time. Let's try doing that.
+
+### `pivot_longer()`
+
+The `tidyr` function `pivot_longer()` converts a wide data table to a longer format by converting the headers from specified columns into the values of new columns, and combining the values of those columns into a new condensed column.
+
+```{r}
+#| echo: true
+df_eng_long <- 
+  df_eng %>% 
+  pivot_longer(
+    cols = starts_with("rt_"), 
+    names_to = "response", 
+    values_to = "time"
+  )
+```
+
+The output of the first 12 rows (after some additional formatting to make a pretty table) should look like @tbl-longer.
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+#| label: tbl-longer
+#| tbl-cap: A pivoted version of `df_billboard` (first 10 rows)
+df_eng_long %>% 
+  head(n = 12) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20)
+```
+
+Let's take a second to compare the values that we see in @tbl-longer to those from the first 6 rows in `df_eng`, given in @tbl-df_eng. Compare the values in the `df_eng` variable `rt_lexdec` (@tbl-df_eng) to the `time` values when `response` is `rt_lexdec` (@tbl-longer): they're identical. Now what about `rt_naming` in both @tbl-df_eng and @tbl-longer? They're also identical. This is an important realisation: we haven't changed any data or observation values, we've just simply re-structured the organisation of the data points.
+
+How did `pivot_longer()` do this? Here's a breakdown of the arguments `pivot_longer()` takes (which you can also explore by running `?pivot_longer` in the Console):
+
+- `col = ` specifies which columns need to be pivoted (should be a categorical variable)
+  + takes the same syntax as `select()`, so we could use e.g., `starts_with("")`
+- `names_to = ` names the variable stored in the current column names, here it is `week`
+- `values_to = ` names the variable stored int he cell values, which we name `rank`
+- N.B., we had to wrap `week` and `rank` with quotation marks because they aren't variable names *yet*
+
+#### Plotting our tidy data
+
+Now that we have the `response` data in one variable and the `time` data in another variable, let's try to produce a plot where we have `age_subject` on the x-axis, `time` on the y-axis, and `response` 
+
+```{r}
+#| echo: false
+#| label: fig-eng
+#| fig-cap: Response times per age group for the lexical decision task vs. naming task
+df_eng_long %>% 
+  ggplot() +
+  aes(x = age_subject, 
+      y = time, 
+      colour = age_subject, 
+      shape = age_subject) +
+  facet_wrap(~response) +
+  labs(title = "Response time by task and age group",
+       x = "Age group", 
+       y = "Response time (ms)") +
+  geom_point(alpha = 0.4, position = position_jitter(0.2)) +
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+
+::: callout-tip
+#### [Aufgabe @exm-tidy]: Tidy data
+
+::: {#exm-help .custom}
+::: nonincremental
+Recreate @fig-eng
+:::
+:::
+:::
+
+## Widening data: `df_eng`
+
+The `tidyr` function `pivot_wider()` make datasets *wider* by increasing columns and reducing rows. This helps when one observation is spread across multiple rows. Although this type of data isn't very common in the wild, it's pretty common in governmental data for example.
+
+We can again start with `df_eng` to make the data wider. For example, we could have a single row per *word*, wich a single variable for the `young` subject's response and the `old` subject's response.
+
+### `pivot_wider()`
+
+Pivot wider takes similar arguments to `pivot_longer()`, with some slight differences (e.g., `?pivot_wider`):
+
+  + `id_cols`: identifying columns (which columns uniquely identify each observation?)
+  + `names_from`: what should we call the new column containing the previous column names (must be a categorical variable)? 
+  + `names_prefix`: prefix for the new column names (optional)
+  + `values_from`: new column values
+
+Let's create two new variables that take their names from `age_subject`, and their values from `rt_lexdec`. The result should look like @tbl-eng_wider.
+
+```{r}
+#| code-fold: true
+df_eng_wide <-
+  df_eng %>%  
+  select(-rt_naming) |>
+  pivot_wider(
+    names_from = age_subject,
+    values_from = rt_lexdec,
+    names_prefix = "lexdec_"
+  )
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-eng_wider
+#| tbl-cap: Wider `df_eng` data 
+df_eng %>%  
+  select(-rt_naming) |>
+  pivot_wider(
+    names_from = age_subject,
+    values_from = rt_lexdec,
+    names_prefix = "lexdec_"
+  ) %>% 
+  head() %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20)
+```
+
+@tbl-df_eng-2 shows the first 6 rows of the original dataset again.
+
+```{r}
+#| echo: false
+#| label: tbl-df_eng-2 
+#| tbl-cap: head(df_eng, n = 6)
+df_eng %>% 
+  head() %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+How is the data from @tbl-eng-wide represented in @tbl-df_eng-2?
+
+::: callout-warning
+
+Where has `rt_naming` gone? We've removed it because it also has a single value per word per age group, so not removing it means we don't change the length of our dataset (still one row per word per age group), we just change the width and introduce `NA` values for `lexdec_young` for old subjects and `NA` values for `lexdec_old` for young subjects. If we hadn't removed it, our first 6 rows would've looked like @tbl-eng_wider_na. Compare this to the output in @tbl-eng-wide, do you see the diffeernce?
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-eng_wider_na
+#| tbl-cap: Wider `df_eng` data with NA's
+df_eng %>%  
+  # select(-rt_naming) |>
+  pivot_wider(
+    names_from = age_subject,
+    values_from = rt_lexdec,
+    names_prefix = "lexdec_"
+  ) %>% 
+  head() %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling(font_size = 20)
+```
+
+:::
+
+## Learning objectives 🏁 {.unnumbered .unlisted}
+
+Today we learned...
+
+- about wide versus long data  ✅
+- how to make wide data longer ✅
+- how to make long data wider  ✅
+
+
+## Homework
+
+We'll stick with the `df_eng` dataset for these tasks.
+
+1. Using `pivot_wider` to create `rt_naming` new variables: `naming_old` and `naming_young` which containg the naming response times for old and young participants, respectively. Hint: you will need to remove `rt_lexdec`. The resulting data frame should have 2284 observations and 6 variables.
+
+2. Recreate @fig-old_young. Hint: you will need `pivot_wider()`. 
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: fig-old_young
+#| fig-cap: Scatterplot of lexical decision task response times per word for old versus young participants
+df_eng_wide |> 
+  ggplot() +
+  aes(x = lexdec_young, y = lexdec_old, colour = word_category) +
+  geom_point()
+```
+
+3. Why do we need out `df_eng_wide` dataset to produce @fig-old_young? In other words, why is `df_eng_wide` the appropriate structure but not `df_eng_long` for such a scatterplot?
+
+
+1. Using `df_eng_long` and the `summarise()` function we saw in the last section, reproduce the summary below:
+
+```{r}
+#| echo: false
+df_eng_long |> 
+  drop_na() |> 
+  summarise(
+    mean = mean(time),
+    sd = sd(time),
+    .by = response
+  )
+```
+
+Hint: do you need to remove `NA`s (we saw how to do this in the last section)?
+
+
+
+## Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+RStudio.Version()$release_name
+```
+
+
+Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.9.0.463 (Desert Sunflower).
+
+```{r}
+sessionInfo()
+```
+
+## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

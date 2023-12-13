@@ -4,7 +4,7 @@ subtitle: "Maße der zentralen Tendenz und Streuung"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 footer: "Woche 8 - Dateneinlesung" 
-date: "11/29/2023"
+date: "12/06/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
 ---
@@ -18,14 +18,725 @@ knitr::opts_chunk$set(eval = T, ## evaluate chunks
                       warning = F) ## don't print warnings
 ```
 
-## {.unnumbered}
+## Lernziele {.unnumbered}
 
-**Die Materialien werden vor dem Unterricht zur Verfügung gestellt.**
+In diesem Kapitel werden wir lernen...
+
+- über Maße der zentralen Tendenz (Mittelwert, Median, Modus)
+- über Streuungsmaße (Bereich, Standardabweichung)
+- wie man die Funktion `summarise()` von `dplyr` benutzt
+- wie man Zusammenfassungen `.by` Gruppe erstellt
 
 ## Lesungen {.unnumbered}
 
 Die **Pflichtlektüre** zur Vorbereitungen auf dieses Thema sind
 
-1. Kap. 3, Abschnitt 3.4-3.9 (Descriptive statistics, models, and distributions) in @winter_statistics_2019 (online verfügbar über das [HU Grimm Zentrum](https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431) unter https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431).
+1. Kap. 3, Abschnitt 3.4-3.9 (Descriptive statistics, models, and distributions) in @winter_statistics_2019 (online verfügbar über das [HU Grimm Zentrum](https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431).
 
-2. [Bereich 4.5 (Groups)](https://r4ds.hadley.nz/data-transform#groups) in Kapital 4 (Data Transformation) in @wickham_tidyverse_2023.
+2. [Bereich 4.5 (Groups)](https://r4ds.hadley.nz/data-transform#groups) in Kapital 4 (Data Transformation) in @wickham_r_2023.
+
+## Einrichten
+
+### Umgebung löschen
+
+Ein wichtiger Schritt, über den wir noch nicht viel gesprochen haben, ist sicherzustellen, dass Sie ein neues Skript *immer* mit einer leeren R-Umgebung starten. Das bedeutet, dass wir keine Objekte in der Umgebung gespeichert haben sollten, aber auch keine Pakete geladen haben sollten. Wir wollen nämlich sicherstellen, dass alles, was wir tun, ausschließlich in diesem Skript ausgeführt wird und nicht von einem Paket oder Daten abhängt, die wir aus einem anderen Skript geladen haben. Um dies zu erreichen, können Sie auf `Sitzung > R neu starten` klicken, um mit einer neuen Umgebung zu beginnen, oder die Tastenkombination `Cmd/Strg+Strg+0` verwenden.
+
+### Pakete
+
+Wir müssen die Pakete `tidyverse`, `here` und `janitor` laden. Die letzten beiden brauchen wir, weil wir lokale CSV-Datensätze laden werden.
+
+```{r}
+pacman::p_load(tidyverse,
+               here,
+               janitor)
+```
+
+```{r}
+#| echo: false
+pacman::p_load(patchwork)
+```
+
+### Daten laden
+
+Wir werden heute zwei Datensätze verwenden: eine leicht veränderte Version des `groesse_geburtstag`-Datensatzes aus dem letzten Abschnitt (`groesse_geburtstag_ws2324.csv`) und `languageR_english.csv`, das eine kürzere Version des `english`-Datensatzes aus dem `languageR`-Paket ist. Wenn Sie diese Daten noch nicht haben, laden Sie sie direkt in Ihren `Daten`-Ordner vom GitHub-Kurs herunter (klicken Sie auf "Download raw file" neben dem "Raw"-Button): 
+
+- [languageR_english.csv](https://github.com/daniela-palleschi/r4ling_student/blob/main/daten/languageR_english.csv)
+- [groesse_geburtstag_ws2324.csv](https://github.com/daniela-palleschi/r4ling_student/blob/main/daten/groesse_geburtstag_ws2324.csv)
+
+
+```{r}
+#| eval: false
+#| echo: false
+library(languageR)
+
+df_eng <- english |> 
+  select(AgeSubject, Word, LengthInLetters, WrittenFrequency, WordCategory, RTlexdec, RTnaming) |>   mutate(RTlexdec = exp(RTlexdec),
+         RTnaming = exp(RTnaming),
+         RTnaming = ifelse(Word == "age" & AgeSubject == "young", NA, RTnaming)) 
+
+write_csv(df_eng, here("daten", "languageR_english.csv"))
+
+df_groesse <- read_csv(here("daten", "groesse_geburtstag_ws2324.csv"),
+                       # fix N/A values
+                       na = c("", "N/A")) |> 
+  mutate(Größe = ifelse(Größe == 168, 167, Größe)) |> 
+  clean_names() |> 
+  rename(groesse = groesse,
+         muttersprache = l1,
+         geburtsmonat = monat_der_geburt,
+         geburtstag = tag)
+
+write_csv(df_groesse, here("daten", "groesse_geburtstag_ws2324.csv"))
+```
+
+```{r}
+df_groesse <- read_csv(here("daten", "groesse_geburtstag_ws2324.csv"))
+```
+
+
+```{r}
+df_eng <- read_csv(here("daten", "languageR_english.csv")) |> 
+  clean_names() |> 
+  # fix some wonky variable names:
+  rename(rt_lexdec = r_tlexdec,
+         rt_naming = r_tnaming)
+```
+
+
+## Deskriptive Statistik
+
+Deskriptive Statistiken beschreiben quantitativ die zentrale Tendenz, die Variabilität und die Verteilung von Daten. Sie werden manchmal auch als zusammenfassende Statistiken bezeichnet, weil wir die beobachteten Daten *zusammenfassen*. Zu den gängigen zusammenfassenden Statistiken gehören der Wertebereich (Minimum, Maximum), der Mittelwert und die Standardabweichung. Deskriptive Statistiken helfen uns, unsere Daten in vollem Umfang zu verstehen, und sind ein wichtiger Schritt bei der Untersuchung unseres Datensatzes, bevor wir fortgeschrittenere *Inferenzstatistiken* durchführen (die wir in diesem Kurs nicht behandeln werden).
+
+### Anzahl der Beobachtungen ($n$)
+
+Die Anzahl der Beobachtungen in einem Datensatz ist keine statistische Größe, sondern eine wichtige Information bei der Zusammenfassung oder Beschreibung von Daten. Wenn wir mehr Daten haben (höher $n$), können wir den Schlussfolgerungen, die wir aus unseren Daten ziehen, mehr Vertrauen schenken, da wir mehr Beweise haben. Umgekehrt kann es sein, dass bei weniger Daten (niedriger $n$) unsere zusammenfassende Statistik nicht auf die Grundgesamtheit verallgemeinerbar ist. Wir können die Anzahl der Beobachtungen in einem Datensatz mit der R-eigenen Funktion `nrow()` überprüfen:
+  
+```{r}
+#| output-location: fragment
+nrow(df_groesse)
+```
+
+::: callout-note
+#### `length()` gegenüber `nrow()`
+Die Funktion `length()` sagt uns, wie viele (horizontale) Werte in einem Objekt enthalten sind. Wenn das Objekt ein Datenrahmen (statt eines Vektors) ist, sagt sie uns, wie viele *Spalten* wir haben.
+
+```{r}
+#| output-location: fragment
+length(df_groesse)
+```
+
+Wenn es sich bei dem Objekt jedoch um einen Vektor handelt, dann gibt uns `length()` die Anzahl der Beobachtungen an.
+
+```{r}
+vector <- c(1,5,2,6,8,4,7,8,3)
+length(vector)
+```
+
+:::
+
+### Maße der zentralen Tendenz (Lagemaße)
+
+Maße der zentralen Tendenz beschreiben quantitativ die Mitte unserer Daten. Wahrscheinlich haben Sie schon einmal drei Maße der zentralen Tendenz kennengelernt: den Mittelwert, den Median und den Modus.
+
+#### Mittelwert ($\mu$ oder $\bar{x}$)
+
+Der Mittelwert oder Durchschnitt ist die Summe aller Werte geteilt durch die Anzahl der Werte (wie in Gleichung \ref{eq-mean}). In der mathematischen Notation wird *sum* mit dem großen griechischen Sigma ($\sum$) geschrieben, wie in der Gleichung \ref{eq-sigma}.
+
+\begin{align}
+\mu &= \frac{Summe\;der\;Werte} 
+           {n} \label{eq-mean} \\
+\bar{x} &= \frac{\sum{x}}      
+           {n} \label{eq-sigma} 
+\end{align}
+
+::: .callout-tip
+
+#### Populationsmittelwert ($\mu$) versus Stichprobenmittelwert ($\bar{x}$)
+
+Beide Gleichungen bedeuten dasselbe, verwenden aber unterschiedliche Schreibweisen, um dieselbe Gleichung darzustellen. Während $\mu$ den *Populationsmittelwert* darstellt, repräsentiert $\bar{x}$ den *Stichprobenmittelwert*. Der Populationsmittelwert ist der wahre Mittelwert einer Messung in einer gesamten Population (z. B. die Körpergröße aller Studenten an der Humboldt-Universität zu Berlin). Ein *Stichprobenmittel* ist der Mittelwert einer *Stichprobenpopulation*, aus der wir unsere Daten erhoben haben. Wir haben zum Beispiel `r nrow(df_groesse)` Beobachtungen in `df_groesse`. Diese Daten stellen eine Stichprobe von Daten aus einer größeren Grundgesamtheit dar.
+:::
+
+Wir können den Mittelwert leicht von Hand berechnen, wenn wir nur ein paar Werte haben. Erinnern Sie sich an unseren Datensatz von letzter Woche, in dem wir unsere Höhen in Zentimetern gesammelt haben (`171, 168, 182, 190, 170, 163, 164, 167, 189`). Es gibt 9 Werte, also müssen wir diese Höhen addieren und die Summe durch 9 teilen.
+
+```{r}
+#| output-location: fragment
+171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189 / 9
+```
+
+Daraus ergibt sich eine durchschnittliche Körpergröße von `r 171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189 / 9` cm. Das kann nicht richtig sein, was ist also schief gelaufen? Wir können die obige Gleichung korrigieren, indem wir die Höhen in Klammern setzen (`()`), bevor wir durch $n$ dividieren.
+
+```{r}
+#| output-location: fragment
+(171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189) / 9
+```
+
+Dieses Problem wurde durch die *Reihenfolge der Operationen* verursacht, die im Folgenden näher beschrieben wird. Das Wichtigste ist, dass Sie sicher sein können, dass das *Ergebnis* einer bestimmten Operation vor allen anderen Operationen ausgeführt wird, wenn Sie es in Paranthesen einschließen.
+
+::: {.content-visible when-format="html"}
+::: callout-tip
+
+### Operatorrangfolge: KEMDAS
+
+Vielleicht erinnern Sie sich, dass Sie als Kind im Mathematikunterricht etwas über die Reihenfolge der Operationen gelernt haben. Dies bezieht sich auf die Reihenfolge der Ausführung, wenn wir eine mathematische Gleichung mit mehreren Operatoren wie Division, Addition und Multiplikation haben. `R` folgt auf `KEMDAS` (das ich von `PEMDAS` im Englischen übernommen habe), was für:
+
+```{r}
+#| echo: false
+#| label: tbl-kemdas
+#| tbl-cap: "KEMDAS"
+tribble(
+  ~letter, ~operation, ~R,
+  "K", "Klammern", "(x + y)",
+  "E", "Exponenten", "x^y",
+  "M", "Multiplikation", "x*y",
+  "D", "Division", "x/y",
+  "A", "Addierung", "x + y",
+  "S", "Subtraktion", "x - y"
+) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+```
+
+Multiplikation und Division werden jedoch von links nach rechts ausgeführt, ebenso wie Addition und Subtraktion.
+
+:::
+:::
+
+Wir können auch die Ergebnisse einer Gleichung als Objekt oder mehrere Werte als Vektor (eine Liste von Werten der gleichen Klasse) speichern. Wir könnten dann die Funktionen `sum()` und `length()` verwenden, um den Mittelwert zu berechnen, oder einfach die Funktion `mean()` benutzen.
+
+```{r}
+#| output-location: fragment
+# save groesse as a vector
+groesse <- c(171, 168, 182, 190, 170, 163, 164, 167, 189)
+# divide the sum of groesse by the n of groesse
+sum(groesse)/length(groesse)
+```
+
+```{r}
+# or use the mean() function
+mean(groesse)
+```
+
+Unsere Daten sind oft nicht in einem einzelnen Vektor gespeichert, sondern in einem Datensatz. Wir können die Funktion `mean()` auf eine Variable in einem Datenrahmen anwenden, indem wir den Operator `$` verwenden, um anzugeben, dass wir eine Spalte aus einem Datenrahmen auswählen wollen (`datenrahmen$variable`).
+  
+```{r}
+#| output-location: fragment
+mean(df_groesse$groesse)
+```
+
+Der `$`-Operator ist Teil der nativen R-Syntax und ähnelt dem Operator `pdf_groesse |>select(groesse)` in der `dplyr`-Syntax.
+
+#### Median
+
+Ein weiteres Maß für die zentrale Tendenz ist der `Median`, d. h. der Wert in der Mitte des Datensatzes. Wenn Sie alle Ihre Werte in aufsteigender (oder absteigender) Reihenfolge anordnen, ist der mittlere Wert der Median. Wenn Sie zum Beispiel 5 Werte haben, ist der 3. Bei 6 Werten ist der Mittelwert des 3. und 4. Wertes der Median. Die Hälfte der Daten liegt unter dem Median, die andere Hälfte über dem Median.
+
+Um unsere Daten in aufsteigender Reihenfolge zu sortieren, können wir die Funktion `sort()` verwenden. Wir können dann einfach zählen, welches der mittlere Wert ist:   
+
+```{r}
+#| output-location: fragment
+sort(df_groesse$groesse)
+```
+
+Das ist einfach, wenn wir nur ein paar Beobachtungen haben. Wir könnten alternativ einfach die Funktion `Median()` verwenden.
+
+```{r}
+median(df_groesse$groesse)
+```
+
+Ein wichtiges Merkmal des Medians ist, dass er nicht von Ausreißern oder Extremwerten beeinflusst wird. Schauen wir uns an, was passiert, wenn wir unsere größte Körpergröße (190 cm) so ändern, dass sie der Größe der derzeit größten Person der Welt entspricht: 251 cm. 
+
+```{r}
+df_groesste <- df_groesse |> mutate(groesse = ifelse(groesse == 190, 251, groesse))
+```
+
+```{r}
+sort(df_groesste$groesse)
+```
+
+```{r}
+median(df_groesste$groesse)
+```
+
+```{r}
+mean(df_groesste$groesse)
+```
+
+Wir sehen, dass sich der Mittelwert von ungefähr `r round(mean(df_groesse$groesse),0)`cm auf `r round(mean(df_groesste$groesse),0)`cm geändert hat. Der Median blieb jedoch gleich (`r median(df_groesste$groesse)` cm), weil der Mittelwert unabhängig von den anderen Werten in einem Datensatz ist. Aus diesem Grund wird der Median häufig anstelle des Mittelwerts angegeben, wenn die Daten stark zu extremeren Werten neigen, wie z. B. bei der Angabe der Einkommen in einer Bevölkerung. Durchschnittseinkommen können aufgrund einer kleinen Gruppe von extrem gut Verdienenden stark verzerrt sein und sind in der Regel nicht repräsentativ für das Einkommen der Mehrheit der Bürger.
+
+#### Modus
+
+Der Modus ist der Wert, der in einem Datensatz am häufigsten vorkommt, und ist ein weiteres Maß für die zentrale Tendenz. Es gibt keine R-Funktion, um den Modus zu bestimmen, aber wir haben bereits einige gängige Möglichkeiten gesehen, ihn zu visualisieren: mit einem Histogramm oder einem Dichteplot.
+
+```{r}
+#| output-location: column-fragment
+df_groesse |>
+  ggplot(aes(x = groesse)) +
+  geom_histogram(binwidth = .5) +
+  theme_minimal() 
+```
+
+### Streuungsmaße
+
+Maße der zentralen Tendenz beschreiben (normalerweise) die Mitte der Daten. Streuungsmaße beschreiben die Streuung der Datenpunkte und sagen etwas darüber aus, wie die Daten insgesamt verteilt sind.
+
+#### Bereich
+
+Der "Bereich" von Werten kann sich auf den höchsten (maximalen) und den niedrigsten (minimalen) Wert oder auf die Differenz zwischen höchstem und niedrigstem Wert beziehen. Die R-Basisfunktionen `max()` und `min()` geben die höchsten und niedrigsten Werte aus.
+
+```{r}
+#| output-location: fragment
+max(groesse)
+```
+
+```{r}
+#| output-location: fragment
+min(groesse)
+```
+
+Oder wir können einfach die Funktion `range()` verwenden, die diese beiden Zahlen nebeneinander ausgibt.
+
+```{r}
+#| output-location: fragment
+range(groesse)
+```
+
+Wir können die Differenz zwischen diesen Werten ermitteln, indem wir den Minimalwert vom Maximalwert subtrahieren.
+
+```{r}
+#| output-location: fragment
+max(groesse) - min(groesse)
+```
+
+In einem Histogramm oder Dichteplot werden diese Werte durch den niedrigsten und den höchsten Wert auf der x-Achse dargestellt.
+
+```{r}
+#| echo: false
+fig_hist <-
+  df_groesse |> 
+  ggplot() + 
+  aes(x = groesse) + 
+  labs(title = "Histogram of groesse") +
+  scale_y_continuous(breaks = c(1,2)) +
+  geom_histogram(binwidth = .5)
+
+fig_dens <-
+  df_groesse |> 
+  ggplot() + 
+  aes(x = groesse) + 
+  labs(title = "Density plot of groesse") +
+  geom_density()
+
+fig_hist + fig_dens
+```
+
+
+#### Standardabweichung (`sd` oder $\sigma$)
+
+Die Standardabweichung ist ein Maß dafür, wie weit die Daten *im Verhältnis zum Mittelwert* gestreut sind. Eine niedrige Standardabweichung bedeutet, dass die Daten um den Mittelwert herum gruppiert sind (d. h. es gibt weniger Streuung), während eine hohe Standardabweichung bedeutet, dass die Daten stärker gestreut sind. Ob eine Standardabweichung hoch oder niedrig ist, hängt von der Skala und der Maßeinheit ab, in der die Daten vorliegen. Die Standardabweichung wird sehr oft angegeben, wenn der Mittelwert berichtet wird. 
+
+Die Standardabweichung (`sd`) ist gleich der Quadratwurzel ($\sqrt{}$ oder `sqrt()` in R) der Summe der quadrierten Wertabweichungen vom Mittelwert ($(x - \mu)^2$) geteilt durch die Anzahl der Beobachtungen minus 1 ($n-1$), angegeben in Gleichung \ref{eq-sd}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + ... + (x_N-\mu)^2}{N-1}} \label{eq-sd}
+\end{align}
+
+Das sieht einschüchternd aus, aber wir können die Standardabweichung in R mit der Funktion `sd()` berechnen.
+
+```{r}
+#| output-location: fragment
+sd(groesse)
+```
+
+Wenn man jedoch weiß, wie man die Standardabweichung von Hand berechnen kann, versteht man, was die Zahl bedeutet. Lassen Sie uns die Berechnung der Standardabweichung für eine kleine Gruppe von Werten üben. Unter Berücksichtigung der Gleichung für die Standardabweichung in \ref{eq-sd} können wir die Standardabweichung von Hand berechnen, wenn wir den Wert jeder Beobachtung, den Mittelwert dieser Werte und die Anzahl dieser Werte kennen. In einem Vektor mit 3 Beobachtungen (`3, 5, 9`) sind unsere Werte ($x$) zum Beispiel folgende:
+
+```{r}
+#| output-location: column-fragment
+values <- c(3,5,16)
+values
+```
+
+Setzt man diese in die Gleichung für die Standardabweichung ein, erhält man Gleichung \ref{eq-sd1}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(3-\mu)^2 + (5-\mu)^2 + (16-\mu)^2}{N-1}} \label{eq-sd1}
+\end{align}
+
+Unser Mittelwert ($\mu$) ist:
+
+```{r}
+#| output-location: column-fragment
+mean(values)
+```
+
+Wenn wir dies zu Gleichung \ref{eq-sd1} hinzufügen, erhalten wir Gleichung \ref{eq-sd2}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(3-8)^2 + (5-8)^2 + (16-8)^2}{N-1}} \label{eq-sd2}
+\end{align}
+
+Die Anzahl der Werte ($n$) ist:
+
+```{r}
+#| output-location: column-fragment
+length(values)
+```
+
+Wenn wir dies zu Gleichung \ref{eq-sd2} hinzufügen, erhalten wir Gleichung \ref{eq-sd3}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(3-8)^2 + (5-8)^2 + (16-8)^2}{3-1}} \label{eq-sd3}
+\end{align}
+
+If we carry out all of the operations following PEDMAS, then we get Equations \ref{eq-sd4} through \ref{eq-sd}:
+
+\begin{align}
+\sigma & = \sqrt{\frac{(-5)^2 + (-3)^2 + (8)^2}{3-1}} \\ \label{eq-sd4}
+\\
+& = \sqrt{\frac{25 + 9 + 64}{3-1}}
+\\
+& = \sqrt{\frac{98}{2}} \\
+& = \sqrt{49} \\
+& = 7
+\end{align}
+
+Um unsere Arbeit zu überprüfen, berechnen wir die Standardabweichung ($\sigma$) in "R":
+
+```{r}
+#| output-location: column-fragment
+sd(values)
+```
+
+#### Warum Standardabweichung?
+
+Die Standardabweichung ist ein Maß dafür, wie "eng" die beobachteten Werte am Mittelwert liegen. Wenn die meisten Beobachtungen sehr nahe am Mittelwert liegen, ist die Standardabweichung im Verhältnis zum Mittelwert eine kleine Zahl. Wenn es viele Beobachtungen mit großen Abweichungen vom Mittelwert gibt, wird die Standardabweichung tendenziell eine große Zahl sein (relativ zum Mittelwert).
+
+Verschiedene Datensätze können denselben Mittelwert, aber sehr unterschiedliche Standardabweichungen aufweisen. Ein Beispiel:
+
+
+```{r}
+values2 <- c(55,55,55,55,55,57,57,57,57,57)
+values3 <- c(1,1,1,1,100,100,100,100,100)
+```
+
+```{r}
+#| output-location: column-fragment
+mean(values2)
+```
+
+```{r}
+#| output-location: column-fragment
+mean(values3)
+```
+
+Wir sehen, dass `values2` und `values3` den gleichen Mittelwert haben. Daraus könnte man schließen, dass die Daten ähnlich sind. Aber ihre Standardabweichungen werden sich unterscheiden, weil ihre jeweiligen beobachteten Werte alle unterschiedlich weit vom Mittelwert abweichen. Welcher Vektor wird Ihrer Meinung nach die *geringste* Standardabweichung haben? Und warum?
+
+```{r}
+#| output-location: column-fragment
+sd(values2)
+```
+
+```{r}
+#| output-location: column-fragment
+sd(values3)
+```
+
+Die größere Standardabweichung für `Werte3` spiegelt die Tatsache wider, dass die Werte tendenziell sehr weit vom Mittelwert entfernt sind. Die kleinere Standardabweichung für `Werte2` spiegelt die Tatsache wider, dass der Wert für diese Variable tendenziell recht nahe am Mittelwert liegt.
+
+::: callout-tip
+#### Quadrat und Quadratwurzel
+
+Warum quadrieren wir die Abweichung jeder Beobachtung vom Mittelwert, um dann später die Quadratwurzel aus ihrer Summe geteilt durch $N-1$ zu berechnen? Da die Hälfte unserer Beobachtungen unterhalb und die Hälfte oberhalb des Mittelwerts liegen wird, sind die resultierenden Differenzen, wenn wir den Mittelwert von den Werten abziehen, zur Hälfte negativ und zur Hälfte positiv. Wenn wir positive und negative Werte zusammenzählen, heben sie sich gegenseitig auf. Wenn wir also alle diese Abweichungen vom Mittelwert quadrieren, werden alle Werte positiv sein (eine positive Zahl multipliziert mit einer positiven Zahl ist eine positive Zahl, während eine negative Zahl multipliziert mit sich selbst ebenfalls eine positive Zahl ergibt). Wenn wir dann die Quadratwurzel dieser Werte berechnen, erhalten wir die ursprüngliche Größe der Abweichung, aber immer als positiven Wert.
+
+:::
+
+::: callout-tip
+
+### Eigenschaften der Grundgesamtheit
+
+Sowohl der Mittelwert als auch die Standardabweichung sagen etwas über die Grundgesamtheit aus, aus der unsere Datenstichprobe stammt. Je mehr Beobachtungen wir sammeln, desto genauer werden diese Maße im Durchschnitt sein.
+
+:::
+
+## Zusammenfassende Statistiken mit R
+
+Wir haben bereits einige nützliche Funktionen zur Berechnung von zusammenfassenden Statistiken gesehen (z.B. `mean()`, `median()`, `sd()`). In der Regel möchten wir jedoch mehrere zusammenfassende Statistiken auf einmal erstellen und zusammenfassende Statistiken zwischen Gruppen vergleichen. Um dies zu erreichen, bietet das Paket `dplyr` aus dem `tidyverse` einige hilfreiche Funktionen. Lassen Sie uns nun den `df_eng`-Datensatz verwenden, um diese `dplyr`-Verben kennenzulernen.
+
+### `dplyr::summarise`
+
+Die Funktion `summarise()` von `dplyr` berechnet Zusammenfassungen von Daten, aber wir müssen ihr sagen, *was* sie berechnen soll, und für welche Variable(n). Die Funktion `n()` liefert zum Beispiel die Anzahl der Beobachtungen (nur wenn sie innerhalb von `summarise()` oder `mutate()` verwendet wird). Lassen Sie uns zunächst prüfen, wie viele Beobachtungen wir im Datensatz `df_eng` haben:
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  summarise(N = n())
+```
+
+Werfen wir nun einen Blick auf das Histogramm von `rt_lexdec`, der Variable, die die lexikalische Entscheidungsantwortzeit in Millisekunden enthält:
+
+```{r}
+df_eng |> 
+  ggplot() +
+  aes(x = rt_lexdec) +
+  geom_histogram()
+```
+
+Wir sehen, dass die Antwortzeit zwischen 500 ms und 1320 ms liegt, wobei die meisten Antworten zwischen 550 ms und 900 ms liegen. Wir sehen auch eine *bimodale* Verteilung, d. h. es gibt zwei Modi (zwei Spitzen). Der allgemeine Modus liegt bei 700 ms (500 Beobachtungen), mit einer zweiten Spitze bei 600 ms (~420 Beobachtungen).
+
+Wir können auch mehrere Berechnungen auf einmal durchführen. Lassen Sie uns auch den Mittelwert und die Standardabweichung der lexikalischen Entscheidungsaufgabe (`rt_lexdec`, in Millisekunden) berechnen.
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  summarise(mean_lexdec = mean(rt_lexdec, na.rm=T),
+            sd_lexdec = sd(rt_lexdec, na.rm = T),
+            N = n()) 
+```
+
+Jetzt sehen wir, dass die durchschnittliche lexikalische Entscheidungsantwortzeit `r round(mean(df_eng$rt_lexdec),1)` ms betrug, mit einer Standardabweichung von `r round(sd(df_eng$rt_lexdec),1)`.
+
+Und wir können Berechnungen mit typischen mathematischen Operatoren (z.B. `+, -, /, *, ^` ...) und/oder Funktionen angeben. Was war der Unterschied zwischen der längsten und der kürzesten lexikalischen Entscheidungsantwortzeit?
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  summarise(range_lexdec = max(rt_lexdec) - min(rt_lexdec))
+```
+
+::: callout-tip
+
+### Fehlende Werte
+
+Einige Berechnungen sind nicht möglich, wenn Werte fehlen. Die Variable `rt_naming` hat einen fehlenden Wert. Dies ist in der Ausgabe der Funktion `summary()` zu sehen, die vor der Berechnung der zusammenfassenden Statistik alle `NA`-Werte löscht.
+
+```{r}
+#| output-location: column-fragment
+df_eng |>
+  select(rt_lexdec, rt_naming) |>
+  summary()
+```
+
+Die Funktion `mean()` entfernt jedoch *nicht* die `NA`-Werte.
+
+```{r}
+#| output-location: column-fragment
+df_eng |>
+  summarise(mean_naming = mean(rt_naming))
+```
+
+Was tun wir mit fehlenden Werten? Bei der Arbeit mit realen Daten ist es nicht trivial, wie wir mit fehlenden Werten umgehen. Wir könnten z. B. alle `NA`-Werte in `0` umwandeln, wenn wir wollen, dass sie zur Berechnung des Mittelwerts beitragen. Meistens wollen wir sie jedoch einfach entfernen.
+
+Wir können dies leicht mit dem `dplyr`-Verb `drop_na()` tun:
+
+```{r}
+df_eng |>
+  drop_na() |>
+  summarise(mean_naming = mean(rt_naming))
+```
+
+:::
+
+## Gruppierung von Variablen
+
+Wir wollen jedoch nicht immer nur die zusammenfassenden Statistiken für einen gesamten Datensatz kennen. Normalerweise wollen wir bestimmte Gruppen *vergleichen* (z. B. Vergleich der Reaktionszeiten bei lexikalischen Entscheidungen zwischen Altersgruppen)
+
+### `.by =`
+
+Das semi-neue (und experimentelle) Argument `.by =` in `summarise()` berechnet unsere Berechnungen auf gruppierten Teilmengen der Daten. Es nimmt eine `Variable` (d.h. einen Spaltennamen) und gruppiert nach den Stufen dieser Variable.
+
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  drop_na() |>
+  summarise(mean_lexdec = mean(rt_lexdec),
+            sd_lexdec = sd(rt_lexdec),
+            N = n(),
+            .by = age_subject) |>
+  arrange(mean_lexdec)
+```
+
+### Gruppieren nach mehreren Variablen
+
+- Wir können auch nach mehreren Variablen gruppieren
+  + dafür brauchen wir `concatenate` (`c()`)
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "7"
+df_eng |>
+  drop_na() |>
+  summarise(mean_lexdec = mean(rt_lexdec),
+            sd_lexdec = sd(rt_lexdec),
+            N = n(),
+            .by = c(age_subject, word_category)) |>
+  arrange(age_subject)
+```
+
+::: callout-note
+### `group_by()`
+
+- Anstelle des neuen `.by`-Arguments können wir das `dplyr`-Verb `group_by()` und `ungroup()` verwenden
+  + Ich bevorzuge das neue `.by`, weil es die Gruppierung lokal hält (keine Notwendigkeit für `ungroup()`)
+  + Behalten Sie dies im Hinterkopf, Sie könnten `group_by()` in freier Wildbahn sehen
+
+```{r}
+#| code-line-numbers: "4,9"
+df_eng |>
+  group_by(age_subject, word_category) |> 
+  summarise(mean_lexdec = mean(rt_lexdec),
+            sd_lexdec = sd(rt_lexdec),
+            N = n()) |> 
+  ungroup() |> 
+  arrange(age_subject)
+```
+:::
+
+## Anscombes Quartett
+
+Francis Anscombe erstellte 1973 vier Datensätze, um zu veranschaulichen, wie wichtig es ist, Daten zu visualisieren, bevor man sie analysiert und ein Modell erstellt. Diese vier Diagramme stellen 4 Datensätze dar, die alle einen nahezu identischen Mittelwert und eine Standardabweichung, aber sehr unterschiedliche Verteilungen aufweisen.
+
+```{r}
+#| echo: false
+## https://michael-franke.github.io/intro-data-analysis/Chap-02-04-Anscombe-example.html
+data("anscombe")
+tidy_anscombe <- anscombe |>
+  pivot_longer(
+    everything(),
+    names_pattern = "(.)(.)",      
+    names_to = c(".value", "grp")  
+  ) |>
+  mutate(grp = paste0("Group ", grp))
+```
+
+```{r}
+#| label: tbl-anscombe
+#| tbl-cap: Summary stats of Anscombe's quratet datasets
+#| echo: false
+tidy_anscombe |>
+  group_by(grp) |>
+  summarise(
+    mean_x    = mean(x),
+    mean_y    = mean(y),
+    min_x     = min(x),
+    min_y     = min(y),
+    max_x     = max(x),
+    max_y     = max(y),
+    crrltn    = cor(x, y)
+  ) |>
+  knitr::kable() |>
+  kableExtra::kable_styling(font_size=20)
+```
+
+```{r}
+#| label: fig-anscombe
+#| fig-cap: Plots of Anscombe's quratet distributions
+#| echo: false
+tidy_anscombe |>
+  ggplot(aes(x, y)) +
+    geom_smooth(method = lm, se = F, color = "darkorange") +
+    geom_point(size = 2) +
+    scale_y_continuous(breaks = scales::pretty_breaks()) +
+    scale_x_continuous(breaks = scales::pretty_breaks()) +
+    labs(
+      title = "Anscombe's Quartet", x = NULL, y = NULL,
+      subtitle = bquote(y == 0.5 * x + 3 ~ (r %~~% .82) ~ "for all groups")
+    ) +
+    facet_wrap(~grp, ncol = 2, scales = "free_x") +
+    theme(strip.background = element_rect(fill = "#f2f2f2", colour = "white")) +
+  theme_minimal()
+```
+
+### DatasaurRus
+
+Das Paket datasauRus [@datasauRus-package] enthält einige weitere Datensätze, die ähnliche `Mittelwerte` und `sd`, aber unterschiedliche Verteilungen aufweisen, die in @tbl-datasauRus angegeben sind.
+
+```{r}
+pacman::p_load("datasauRus")
+```
+
+```{r}
+#| label: tbl-datasauRus
+#| tbl-cap: Summary stats of datasauRus datasets
+#| output-location: column-fragment
+datasaurus_dozen |>
+    group_by(dataset) |>
+    summarize(
+      mean_x    = mean(x),
+      mean_y    = mean(y),
+      std_dev_x = sd(x),
+      std_dev_y = sd(y),
+      corr_x_y  = cor(x, y)
+    ) |>
+  knitr::kable() |>
+  kableExtra::kable_styling(font_size = 20)
+```
+
+Wenn wir die Datensätze grafisch darstellen, sehen sie alle sehr unterschiedlich aus (@fig-datasauRus)!
+
+```{r}
+#| label: fig-datasauRus
+#| fig-cap: Plots of datasauRus dataset distributions
+#| out-width: "50%"
+#| fig-asp: 1
+#| echo: false
+ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+  geom_point() +
+  theme_void() +
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol = 3)
+```
+
+Der Punkt hier ist: ***Stellen Sie Ihre Daten immer grafisch dar*** und betrachten Sie nicht nur die beschreibenden Statistiken!!! Beides ist sehr wichtig für das Verständnis Ihrer Daten. Wir haben bereits gesehen, wie wir unsere Rohdaten mithilfe von Histogrammen, Dichteplots, Balkendiagrammen und Streudiagrammen darstellen können. Nächste Woche werden wir uns ansehen, wie wir unsere zusammenfassenden Statistiken darstellen und wie wir die Rohdaten in die Darstellung mit mehrteiligen Diagrammen einbeziehen können.
+
+## Lernziele 🏁 {.unnumbered .unlisted}
+
+Today we learned...
+
+- über Maße der zentralen Tendenz ✅
+- über Streuungsmaße ✅
+- wie man die Funktion `summarise()` von `dplyr` verwendet ✅
+- wie man Zusammenfassungen nach Gruppen erstellt ✅
+
+## Hausaufgaben
+
+::: nonincremental
+
+1. Berechnen Sie die Standardabweichung der Werte `152, 19, 1398, 67, 2111`, ohne die Funktion `sd()` zu benutzen.
+    + zeige deine Arbeit. Die folgende R-Syntax könnte nützlich sein (je nachdem, wie Sie es machen wollen):
+      + `c()`
+      + `mean()`
+      + `x^2` berechnet das Quadrat eines Wertes (hier, `x`) 
+      + `sqrt()` berechnet die Quadratwurzel
+      + `length()` liefert die Anzahl der Beobachtungen in einem Vektor
+      
+```{r}
+#| echo: false
+#| eval: false
+x <- c(152, 19, 1398, 67, 2111)
+sqrt((sum((x-mean(x))^2))/(length(x)-1))
+```
+
+2. Benutze die Funktion `sd()`, um die Standardabweichung der obigen Werte zu drucken. Haben Sie es richtig gemacht?
+3.  Benutze `summarise`, um den Mittelwert, die Standardabweichung und die Anzahl der Beobachtungen für `rt_naming` im `df_lexdec` Datenrahmen zu drucken.
+    - Hinweis: Müssen Sie fehlende Werte (`NA`) entfernen?
+4.  Machen Sie dasselbe, aber fügen Sie das Argument `.by()` hinzu, um die mittlere Reaktionszeit der Benennungsaufgabe (`rt_naming`) pro Monat zu ermitteln
+    - Ordnen Sie die Ausgabe nach der mittleren Antwortzeit für die Namensgebung an.
+
+## Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+RStudio.Version()$release_name
+```
+
+Erstellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.9.0.463 (Desert Sunflower).
+
+```{r}
+sessionInfo()
+```
+
+## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

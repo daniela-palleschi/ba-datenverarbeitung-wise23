@@ -65,6 +65,7 @@ format:
     toc-title: "Kapitelinhalt"
     number-sections: true
     include-after-body: custom.html
+    include-in-header: mathjax.html
     code-tools: true
     code-overflow: wrap
     page-layout: full
@@ -80,3 +81,12 @@ format:
     documentclass: scrreport
     toc: true 
     toc-depth: 2
+execute:
+  eval: true
+  echo: true
+  message: false
+  error: false
+  warning: false
+  fig-align: "center"
+  fig-asp: .618
+

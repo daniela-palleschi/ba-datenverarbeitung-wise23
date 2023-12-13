@@ -1,5 +1,4 @@
 ---
-title: "Data Wrangling 1: Transformation"
 subtitle: "Umwandlung von Daten"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
@@ -11,6 +10,8 @@ date-modified: last-modified
 execute:
   echo: true
 ---
+
+## Data Wrangling 1: Transformation {#sec-data-transform}
 
 ### Lesungen {.unnumbered}
 

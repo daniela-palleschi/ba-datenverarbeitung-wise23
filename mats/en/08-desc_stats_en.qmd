@@ -1,0 +1,793 @@
+---
+title: "Descriptive Statistics"
+subtitle: "Measures of central tendency and dispersion"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+footer: "Woche 8 - Dateneinlesung" 
+date: "12/06/2023"
+date-format: "ddd [den] DD.MM.YYYY"
+date-modified: last-modified
+include-in-header: ../../mathjax.html
+---
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(eval = T, ## evaluate chunks
+                      echo = T, ## 'print code chunk?'
+                      message = F, ## 'print messages (e.g., warnings)?'
+                      error = T, ## continueeven when error encountered
+                      warning = F) ## don't print warnings
+```
+
+
+## Learning objects {.unnumbered}
+
+In this section we will learn...
+
+- about measures of central tendency (mean, median, mode)
+- about measures of dispersion (range, standard deviation)
+- how to use the `summarise()` function from `dplyr`
+- how to produce summaries `.by` group
+
+
+## Resources {.unnumbered}
+
+Some suggested readings for this topic are:
+
+1. Ch. 3, Sections 3.4-3.9 (*Descriptive statistics, models, and distributions*) in @winter_statistics_2019 (available online for students/employees of the HU Berlin via the [HU Grimm Zentrum](https://hu-berlin.hosted.exlibrisgroup.com/permalink/f/uig076/TN_cdi_askewsholts_vlebooks_9781351677431).
+
+2. [Section 4.5 (Groups)](https://r4ds.hadley.nz/data-transform#groups) in Ch. 4 (*Data Transformation*) in @wickham_tidyverse_2023.
+
+## Set-up
+
+### Clear Environment
+
+An important step we haven't talked about much yet is making sure you *always* start a new script with a clear R environment. This means that we shouldn't have any objects stored in the Environment, but we also shouldn't have any packages loaded. This is because we want to make sure everything we are doing is achieved solely in this script, and is not dependent on a package or data we had loaded from some other script. To achieve this, you can click `Session > Restart R` to start with a fresh environment, or use the keyboard shortcut `Cmd/Ctrl+Shift/Strg+0`.
+
+### Packages
+
+We need to load the `tidyverse`, `here`, and `janitor` packages. The latter two we need because we'll be loading in local CSV datasets.
+
+```{r}
+pacman::p_load(tidyverse,
+               here,
+               janitor)
+```
+
+```{r}
+#| echo: false
+pacman::p_load(patchwork)
+```
+
+### Load data
+
+We will be using two datasets today: a slightly altered version of the  `groesse_geburtstag` dataset from the last section (`groesse_geburtstag_ws2324.csv`), and `languageR_english.csv`, which is a shorter version of the `english` dataset from the `languageR` package. If you don't have these data already, download them directly into your `daten` folder from the course GitHub  (press 'Download raw file' near the 'Raw' button): 
+
+- [languageR_english.csv](https://github.com/daniela-palleschi/r4ling_student/blob/main/daten/languageR_english.csv)
+- [groesse_geburtstag_ws2324.csv](https://github.com/daniela-palleschi/r4ling_student/blob/main/daten/groesse_geburtstag_ws2324.csv)
+
+
+```{r}
+#| eval: false
+#| echo: false
+library(languageR)
+
+df_eng <- english |> 
+  select(AgeSubject, Word, LengthInLetters, WrittenFrequency, WordCategory, RTlexdec, RTnaming) |>   mutate(RTlexdec = exp(RTlexdec),
+         RTnaming = exp(RTnaming),
+         RTnaming = ifelse(Word == "age" & AgeSubject == "young", NA, RTnaming)) 
+
+write_csv(df_eng, here("daten", "languageR_english.csv"))
+
+df_groesse <- read_csv(here("daten", "groesse_geburtstag_ws2324.csv"),
+                       # fix N/A values
+                       na = c("", "N/A")) |> 
+  mutate(Größe = ifelse(Größe == 168, 167, Größe)) |> 
+  clean_names() |> 
+  rename(groesse = groesse,
+         muttersprache = l1,
+         geburtsmonat = monat_der_geburt,
+         geburtstag = tag)
+
+write_csv(df_groesse, here("daten", "groesse_geburtstag_ws2324.csv"))
+```
+
+```{r}
+df_groesse <- read_csv(here("daten", "groesse_geburtstag_ws2324.csv"))
+```
+
+
+```{r}
+df_eng <- read_csv(here("daten", "languageR_english.csv")) |> 
+  clean_names() |> 
+  # fix some wonky variable names:
+  rename(rt_lexdec = r_tlexdec,
+         rt_naming = r_tnaming)
+```
+
+
+## Deskriptive statistics
+
+Descriptive statistics qunatitatively describe the central tendency, variability, and distribution of data. They are sometimes also referred to as summary statistics, because we *summarise* the observed data. Some common summary statistics include the range of values (minimum, maximum), the mean value, and the standard deviation. Descriptive statistics help us to the full scope understand our data, and are an important step in exploring our dataset before running more advanced *inferential* statistics (which we will not cover in this course).
+
+### Number of observations ($n$)
+
+The number of observations in a dataset is not a statistic, but is important information when summarising or describing data. When we have more data (higher $n$), we can have more confidence in the conclusions we draw from our data because we have more evidence. Conversely, when we have less data (lower $n$), our summary statistics may not be generalisable to the broader population. We can check the number of observations in a dataset using the native R `nrow()` function:
+  
+```{r}
+#| output-location: fragment
+nrow(df_groesse)
+```
+
+::: callout-note
+#### `length()` versus `nrow()`
+The function `length()` tells us how many (horizontal) values there are in an object. If that object is a data frame (instead of a vector), it tells us how many *columns* we have.
+
+```{r}
+#| output-location: fragment
+length(df_groesse)
+```
+
+However, if that object is a vector, then `length()` gives us the number of observations.
+
+```{r}
+vector <- c(1,5,2,6,8,4,7,8,3)
+length(vector)
+```
+
+:::
+
+### Measures of central tendency
+
+Measures of central tendency quantitavely describe the centre of our data. You have likely already encounted three measures of central tendency before: the mean, median, and mode.
+
+#### Mean ($\mu$ or $\bar{x}$)
+
+The `mean`, or average, is the sum of all values divided by the number of values (as in Equation \ref{eq-mean}). In mathematical notation, *sum* is written with the capital Greek sigma ($\sum$), as in Equation \ref{eq-sigma}.
+
+
+\begin{align}
+\mu &= \frac{sum\;of\;values} 
+           {n} \label{eq-mean} \\
+\bar{x} &= \frac{\sum{x}}      
+           {n} \label{eq-sigma} 
+\end{align}
+
+::: .callout-tip
+#### Population mean ($\mu$) versus sample mean ($\bar{x}$)
+Both equations mean the same thing, but use different notation to represent the same equation. While $\mu$ represents the *population mean*, while $\bar{x}$ represents the *sample mean*. The population mean is the true mean of some measure in an entire population (e.g., heights of all students at the Humboldt-Universität zu Berlin). A *sample* mean is the mean of a *sample population* from which we collected our data. For example, we have `r nrow(df_groesse)` observations in `df_groesse`. This data represents a sample of data from a larger population.
+:::
+
+---
+
+We can easily compute the mean by hand when we have only a few values. Recall our dataset from last week where we collected our heights in centimeters (`171, 168, 182, 190, 170, 163, 164, 167, 189`). There are 9 values, so we have to add up these heights and divide the total by 9.
+
+```{r}
+#| output-location: fragment
+171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189 / 9
+```
+
+This produces a mean height of `r 171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189 / 9` cm. This can't be right, so what went wrong? We can fix the equation above by wrapping the heights with parantheses (`()`) before dividing by $n$.
+
+```{r}
+#| output-location: fragment
+(171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189) / 9
+```
+
+This problem was caused by the *order of operations*, which is described in more detail below. The important thing to remember is that you can be sure the *outcome* of a certain operation will be performed before any other operations if you wrap it in parantheses.
+
+::: callout-tip
+
+### PEMDAS
+
+You might recall learning about the order of operations in math class as a kid. This refers to the order of execution when we have a mathematical equation with multiple operators, such as division, addition, and multiplication. `R` follows `PEMDAS`, which stands for:
+
+```{r}
+#| echo: false
+tribble(
+  ~letter, ~operation, ~R,
+  "P", "parantheses", "(x + y)",
+  "E", "exponents", "x^y",
+  "M", "mutiply", "x*y",
+  "D", "divide", "x/y",
+  "A", "addition", "x + y",
+  "S", "subtraction", "x - y"
+) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+```
+
+However, multiplication and division are performed as they appear from left to right, as are addition and subtraction.
+
+So, if an equation has more than one operation, such as `171+ 168+ 182+ 190+ 170+ 163+ 164+ 167+ 189 / 9`, which has both addition and division, the division will take place first: `189 / 9` occurs before addition all the numbers together. This is why we wrap the addition of the observations in parantheses to ensure we are dividing the *sum* of these numbers by `9`, rather than adding the first 8 numbers with the quotient of `189 / 9` (i.e., `21`).
+:::
+
+We can also save the results of an equation as an object, or multiple values as a vector (a list of values of the same class). We could then use the functions `sum()` and `length()` to compute the mean, or simply use the `mean()` function.
+
+```{r}
+#| output-location: fragment
+# save heights as a vector
+heights <- c(171, 168, 182, 190, 170, 163, 164, 167, 189)
+# divide the sum of heights by the n of heights
+sum(heights)/length(heights)
+```
+
+```{r}
+# or use the mean() function
+mean(heights)
+```
+
+Our data is not often stored in a single vector, but rather a dataset. We can run the `mean()` function on a variable in a data frame by using the `$` operator to indicate we want to select a column from a data frame (`dataframe$variable`).
+  
+```{r}
+#| output-location: fragment
+mean(df_groesse$groesse)
+```
+
+The `$` operator is part of native R, and similar to `df_groesse |>select(groesse)` in `dplyr` syntax.
+
+#### Median
+
+Another measure of central tendency is the `median`, which is the the value in the middle of the dataset. If you line up all your values in ascending (or descending) order, the middle value is the median. For example, if you have 5 values, the 3rd value is the median. If you have 6 values, the mean of the 3rd and 4th values are the median. Half of the data lie below the median, and half above it.
+
+To sort our data in ascending order using base R, we can use the `sort()` function. We can then just count which is the middle value:
+
+```{r}
+#| output-location: fragment
+sort(df_groesse$groesse)
+```
+
+This is easy when we just have a few observations. We could alternatively just use the function `median()`.
+
+```{r}
+median(df_groesse$groesse)
+```
+
+An important feature of the median is that it is not affected by outliers, or extreme values. Let's see what happens when we change our tallest height (190cm) to be the height of the current tallest person in the world: 251 cm. 
+
+```{r}
+df_groesste <- df_groesse |> mutate(groesse = ifelse(groesse == 190, 251, groesse))
+```
+
+```{r}
+sort(df_groesste$groesse)
+```
+
+```{r}
+median(df_groesste$groesse)
+```
+
+```{r}
+mean(df_groesste$groesse)
+```
+
+We see that the mean changed from approximately `r round(mean(df_groesse$groesse),0)`cm to `r round(mean(df_groesste$groesse),0)`cm. The median remained the same (`r median(df_groesste$groesse)` cm), however, because the middle value is independent of the other values in a dataset. For this reason the median is often reported instead of the mean for data that has heavy skews to more extreme values, such as when reporting incomes in a population. Average incomes can be greatly skewed due to a small group of extremely high-earners, and are not typically representative of the income of the majority of citizens.
+
+#### Mode
+
+The `mode` is the value that occurs the most in a data set, and is another measure of central tendency. There's no R function to determine the `mode`, but we've already seen some common ways to visualise it: with a histogram or a density plot.
+
+```{r}
+#| output-location: column-fragment
+df_groesse |>
+  ggplot(aes(x = groesse)) +
+  geom_histogram(binwidth = .5) +
+  theme_minimal() 
+```
+
+### Measures of dispersion
+
+Measures of central tendency describe the middle of the data (usually). Measures of dispersion describe the spread of data points, and tell us something about how the data as a whole is distributed.
+
+#### Range
+
+The `range` of values can refer to the highest (maximum) and lowest (minimum) values, or the difference between highest and lowest value.
+
+--- 
+
+The base R function `max()` and `min()` print the highest and lowest values.
+
+```{r}
+#| output-location: fragment
+max(heights)
+```
+
+```{r}
+#| output-location: fragment
+min(heights)
+```
+
+Or, we can simply use the `range()` function, which prints these two numbers side-by-side.
+
+```{r}
+#| output-location: fragment
+range(heights)
+```
+
+We can find out the difference between these values by subtracting the minimum value from the maximum value.
+
+```{r}
+#| output-location: fragment
+max(heights) - min(heights)
+```
+
+In a histogram or density plot, these values are represented by the lowest and heights values on the x-axis.
+
+```{r}
+#| echo: false
+fig_hist <-
+  df_groesse |> 
+  ggplot() + 
+  aes(x = groesse) + 
+  labs(title = "Histogram of heights") +
+  scale_y_continuous(breaks = c(1,2)) +
+  geom_histogram(binwidth = .5)
+
+fig_dens <-
+  df_groesse |> 
+  ggplot() + 
+  aes(x = groesse) + 
+  labs(title = "Density plot of heights") +
+  geom_density()
+
+fig_hist + fig_dens
+```
+
+
+#### Standard deviation (`sd` or $\sigma$)
+
+Standard deviation is a measure of how dispersed data is *in relation to the mean*. A low standard deviation means data are clustered around the mean (i.e., there is less spread), while a high standard deviation means data are more spread out. Whether a standard deviation is high or low is dependent on the scale and unit of measurement your data is in. Standard deviation is very often given whenever mean is reported. 
+
+Standard deviation (`sd`) is equal to the square root ($\sqrt{}$ or `sqrt()` in R) of the sum of squared value deviations from the mean ($(x - \mu)^2$) divided by the number of observations minus 1 ($n-1$), given in Equation \ref{eq-sd}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + ... + (x_N-\mu)^2}{N-1}} \label{eq-sd}
+\end{align}
+
+This looks intimidating, but we can calcuate standard deviation in R using the `sd()` function.
+
+```{r}
+#| output-location: fragment
+sd(heights)
+```
+
+However, knowing how to calculate standard deviation by hand gives us an understanding of what the number represents. Let's practice calculating standard deviation for a small set of values. Keeping in mind the equation for standard deviation in \ref{eq-sd}, we can calculate standard deviation by hand if we know the value of each observation, the mean of these values, and the number of these values. For example, in a vector with 3 observations (`3,5,9`), our values ($x$) are:
+
+```{r}
+#| output-location: column-fragment
+values <- c(3,5,16)
+values
+```
+
+If we plug these into the equation for standard deviation we get Equation \ref{eq-sd1}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(3-\mu)^2 + (5-\mu)^2 + (16-\mu)^2}{N-1}} \label{eq-sd1}
+\end{align}
+
+Our mean ($\mu$) is:
+
+```{r}
+#| output-location: column-fragment
+mean(values)
+```
+
+If we add this to Equation \ref{eq-sd1}, we get Equation \ref{eq-sd2}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(3-8)^2 + (5-8)^2 + (16-8)^2}{N-1}} \label{eq-sd2}
+\end{align}
+
+The number of values ($n$) is:
+
+```{r}
+#| output-location: column-fragment
+length(values)
+```
+
+If we add this to Equation \ref{eq-sd2}, we get Equation \ref{eq-sd3}.
+
+\begin{align}
+\sigma & = \sqrt{\frac{(3-8)^2 + (5-8)^2 + (16-8)^2}{3-1}} \label{eq-sd3}
+\end{align}
+
+If we carry out all of the operations following PEDMAS, then we get Equations \ref{eq-sd4} through \ref{eq-sd}:
+
+\begin{align}
+\sigma & = \sqrt{\frac{(-5)^2 + (-3)^2 + (8)^2}{3-1}} \\ \label{eq-sd4}
+\\
+& = \sqrt{\frac{25 + 9 + 64}{3-1}}
+\\
+& = \sqrt{\frac{98}{2}} \\
+& = \sqrt{49} \\
+& = 7
+\end{align}
+
+To check our work, we calculate the standard deviation ($\sigma$) in `R`:
+
+```{r}
+#| output-location: column-fragment
+sd(values)
+```
+
+### Why standard deviation?
+
+Standard deviation gives us a measure of how "tight" the observed values are to the mean. If most of the observations are very close to the mean, the standard deviation will be a small number relative to the mean. If there are many observations with large deviations from the mean, the standard deviation will tend to be a large number (relative to the mean).
+
+Different datasets can have the same mean but vastly different standard deviations. For example:
+
+
+```{r}
+values2 <- c(55,55,55,55,55,57,57,57,57,57)
+values3 <- c(1,1,1,1,100,100,100,100,100)
+```
+
+```{r}
+#| output-location: column-fragment
+mean(values2)
+```
+
+```{r}
+#| output-location: column-fragment
+mean(values3)
+```
+
+We see that `values2` and `values3` have the same mean. We might therefore conclude the data are similar. But their standard deviations will differ, because their respective observed values all differ in how far they deviate from the mean. Which vector do you think will have the *smallest* standard deviation? Why?
+
+```{r}
+#| output-location: column-fragment
+sd(values2)
+```
+
+```{r}
+#| output-location: column-fragment
+sd(values3)
+```
+
+The larger standard deviation for `values3` reflects the fact that the values tended to be very far from the mean. The smaller standard deviation for `values2` reflects the fact that the value for this variable tended to be quite close to the mean.
+
+::: callout-note
+##### Calculating standard deviation
+::: nonincremental
+- first, calculate the deviation of each value from the mean
+  + and square this value
+- add up all these squared deviation values
+  + divide by the number of observations *minue one* ($n-1$)
+- this is now the *variance*, to get the population standard deviation, compute the square root of this value
+
+
+\begin{align}
+
+\sigma & = \sqrt\frac{(171-173.8)^2 + (168-173.8)^2 + (182-173.8)^2 + (190-173.8)^2 + (170-173.8)^2 +
+        (163-173.8)^2 + (164-173.8)^2 + (167-173.8)^2 + (189-173.8)^2 }{9-1}
+\\
+& = \sqrt\frac{(-2.8)^2 + (-5.8)^2 + (8.2)^2 + (16.2)^2 + (-3.8)^2 +
+        (-10.8)^2 + (-9.8)^2 + (-6.8)^2 + (15.2)^2 }{9-1}
+\\
+& = \sqrt\frac{7.84 + 33.64 + 67.24 + 262.44 + 14.44 +
+        116.64 + 96.04 + 46.24 + 231.04 }{9-1}
+\\
+& = \sqrt{\frac{875.56}{8}}
+\\
+& = \sqrt{109.445}
+\\
+& = 10.4616
+
+\end{align}
+
+Why do we square each observation's deviance from the mean, only to later calculate the square root of their sum divided by $N-1$? Since half of our observations will lie below the mean and half above, when we subtract the mean from the values half of the resulting differences will be negative and half of them positive. When we add positive and negative values together, they cancel each other out. So, if we square all these deviations from the mean, all the values will be positive (a positive number multiplied by a positive number is a positive number, while a negative number multiplied by itself also results in a positive number). If we then calculate the square root of these values, we'd get the original magnitude of the deviance but always as a positive value.
+:::
+:::
+
+::: callout-tip
+
+### Population properties
+
+Both the mean and standard deviation tell us something about the population from which our data sample comes from. The more observations we collect, the more precise these measures will tend to be on average.
+
+:::
+
+## Summary statistics with R
+
+We've already seen some useful functions to calculate summary statistics (e.g., `mean()`, `median()`, `sd()`). However, we will typically want to produce multiple summary statistics at once, and to compare summary statistics between groups. To achieve this, the `dplyr` package from the `tidyverse` has some helpful functions. Let's now use the `df_eng` dataset to learn about these `dplyr` verbs.
+
+### `dplyr::summarise`
+
+The `summarise()` function from `dplyr` computes summaries of data, but we have to tell it *what* to compute, and for which variable(s). For example, the `n()` function produces the number of observations (only when used inside `summarise()` or `mutate()`). Let's first check how many observations we have in the `df_eng` dataset:
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  summarise(N = n())
+```
+
+Now let's take a look at a histogram of `rt_lexdec`, the variable containing lexical decision response times in milliseconds:
+
+```{r}
+df_eng |> 
+  ggplot() +
+  aes(x = rt_lexdec) +
+  geom_histogram()
+```
+
+We see that response time ranged from about 500 ms to 1320 ms, with most responses between 550 ms and 900 ms. We also see a *bimodal* distribution, in that there are two modes (two peaks). The overall mode is around 700 ms (500 observations), with a second peak around 600 ms (~420 observations).
+
+We can also run multiple computations at once. Let's also generate the mean and standard deviation of the lexical decision task (`rt_lexdec`, in milliseconds).
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  summarise(mean_lexdec = mean(rt_lexdec, na.rm=T),
+            sd_lexdec = sd(rt_lexdec, na.rm = T),
+            N = n()) 
+```
+
+Now we see that the average lexical decision response time was `r round(mean(df_eng$rt_lexdec),1)` ms, with a standard deviation of `r round(sd(df_eng$rt_lexdec),1)`.
+
+And we can specify calculations using typical mathematical operators (e.g., `+, -, /, *, ^` ...) and/or functions. What was the difference between the longest and the shortest lexical decision response time?
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  summarise(range_lexdec = max(rt_lexdec) - min(rt_lexdec))
+```
+
+::: callout-tip
+
+### Missing values
+
+Some calculations aren't possible if there are missing values. The variable `rt_naming` has a missing value. We can see that in the output from the `summary()` function, which removes any `NA` values before computing summary statistics.
+
+```{r}
+#| output-location: column-fragment
+df_eng |>
+  select(rt_lexdec, rt_naming) |>
+  summary()
+```
+
+The `mean()` function does *not* remove `NA` values, however.
+
+```{r}
+#| output-location: column-fragment
+df_eng |>
+  summarise(mean_naming = mean(rt_naming))
+```
+
+What do we do with missing values? When working with real data, how we deal with missing values is not trivial. E.g., we might want to convert all `NA` values to `0` if we want them to contribute to the calculation of the `mean`. More often than not though we want to just remove them.
+
+We can easily do this with the `dplyr` verb `drop_na()`:
+
+```{r}
+df_eng |>
+  drop_na() |>
+  summarise(mean_naming = mean(rt_naming))
+```
+
+:::
+
+## Grouping variables
+
+We don't always just want to know the summary statistics for an entire dataset, however. We usually want to *compare* certain groups (e.g., comparing lexical decision response times between age groups)
+
+### `.by =`
+
+The brand new (and experimental) `.by =` argument in `summarise()` computes our calculations on grouped subsets of the data. It takes a `variable` (i.e., column name), and groups by the levels of this variable.
+---
+
+```{r}
+#| output-location: fragment
+df_eng |>
+  drop_na() |>
+  summarise(mean_lexdec = mean(rt_lexdec),
+            sd_lexdec = sd(rt_lexdec),
+            N = n(),
+            .by = age_subject) |>
+  arrange(mean_lexdec)
+```
+
+### Group by multiple variables
+
+- we can also group by multiple variables
+  + for this we need `concatenate` (`c()`)
+
+- we'll filter to only have a couple of carriers, just so our output isn't too long
+
+---
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "7"
+df_eng |>
+  drop_na() |>
+  summarise(mean_lexdec = mean(rt_lexdec),
+            sd_lexdec = sd(rt_lexdec),
+            N = n(),
+            .by = c(age_subject, word_category)) |>
+  arrange(age_subject)
+```
+
+---
+
+::: callout-note
+### `group_by()`
+
+- instead of the new `.by` argument, we can use the `dplyr` verb `group_by()` and `ungroup()`
+  + I prefer the new `.by`, because it keeps the grouping local (no need to `ungroup()`)
+  + keep this in mind, you might see `group_by()` in the wild
+
+```{r}
+#| code-line-numbers: "4,9"
+df_eng |>
+  group_by(age_subject, word_category) |> 
+  summarise(mean_lexdec = mean(rt_lexdec),
+            sd_lexdec = sd(rt_lexdec),
+            N = n()) |> 
+  ungroup() |> 
+  arrange(age_subject)
+```
+:::
+
+## Anscombe's Quartet
+
+Francis Anscombe constructed 4 datasets in 1973 to illustrate the importance of visualising data before analysing it and building a model. These four plots represent 4 datasets that all have nearly identical mean and standard deviation, but very different distributions.
+
+```{r}
+#| echo: false
+## https://michael-franke.github.io/intro-data-analysis/Chap-02-04-Anscombe-example.html
+data("anscombe")
+tidy_anscombe <- anscombe |>
+  pivot_longer(
+    everything(),
+    names_pattern = "(.)(.)",      
+    names_to = c(".value", "grp")  
+  ) |>
+  mutate(grp = paste0("Group ", grp))
+```
+
+```{r}
+#| label: tbl-anscombe
+#| tbl-cap: Summary stats of Anscombe's quratet datasets
+#| echo: false
+tidy_anscombe |>
+  group_by(grp) |>
+  summarise(
+    mean_x    = mean(x),
+    mean_y    = mean(y),
+    min_x     = min(x),
+    min_y     = min(y),
+    max_x     = max(x),
+    max_y     = max(y),
+    crrltn    = cor(x, y)
+  ) |>
+  knitr::kable() |>
+  kableExtra::kable_styling(font_size=20)
+```
+
+---
+
+```{r}
+#| label: fig-anscombe
+#| fig-cap: Plots of Anscombe's quratet distributions
+#| echo: false
+tidy_anscombe |>
+  ggplot(aes(x, y)) +
+    geom_smooth(method = lm, se = F, color = "darkorange") +
+    geom_point(size = 2) +
+    scale_y_continuous(breaks = scales::pretty_breaks()) +
+    scale_x_continuous(breaks = scales::pretty_breaks()) +
+    labs(
+      title = "Anscombe's Quartet", x = NULL, y = NULL,
+      subtitle = bquote(y == 0.5 * x + 3 ~ (r %~~% .82) ~ "for all groups")
+    ) +
+    facet_wrap(~grp, ncol = 2, scales = "free_x") +
+    theme(strip.background = element_rect(fill = "#f2f2f2", colour = "white")) +
+  theme_minimal()
+```
+
+### DatasaurRus
+
+The datasauRus package [@datasauRus-package] contains some more datasets that have similar `mean` and `sd`, but different distributions, given in @tbl-datasauRus.
+
+```{r}
+pacman::p_load("datasauRus")
+```
+
+```{r}
+#| label: tbl-datasauRus
+#| tbl-cap: Summary stats of datasauRus datasets
+#| output-location: column-fragment
+datasaurus_dozen |>
+    group_by(dataset) |>
+    summarize(
+      mean_x    = mean(x),
+      mean_y    = mean(y),
+      std_dev_x = sd(x),
+      std_dev_y = sd(y),
+      corr_x_y  = cor(x, y)
+    ) |>
+  knitr::kable() |>
+  kableExtra::kable_styling(font_size = 20)
+```
+
+If we plot the datasets, they all look very different (@fig-datasauRus)!
+
+```{r}
+#| label: fig-datasauRus
+#| fig-cap: Plots of datasauRus dataset distributions
+#| out-width: "50%"
+#| fig-asp: 1
+#| echo: false
+ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+  geom_point() +
+  theme_void() +
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol = 3)
+```
+
+---
+
+The point here being: ***always plot your data***, don't just look at the descriptive stats!! Both are very important to understanding your data. We've already seen how to plot our raw data using histograms, density plots, barplots, and scatterplots. Next week we're going to look at how to plot our summary statistics, and how to include the raw data in the plot with multi-part plots.
+
+## Learning objectives 🏁 {.unnumbered .unlisted}
+
+Today we learned...
+
+- about measures of central tendency ✅
+- about measures of dispersion ✅
+- how to use the `summarise()` function from `dplyr` ✅
+- how to produce summaries `.by` group ✅
+
+## Aufgaben
+
+::: nonincremental
+
+1. Calculate the standard deviation of the values `152, 19, 1398, 67, 2111` without using the function `sd()`
+    + show your work. The following R syntax might be useful (depending on how you decide to do it):
+      + `c()`
+      + `mean()`
+      + `x^2` calculates the square of a value (here, `x`) 
+      + `sqrt()` calculates the square root
+      + `length()` produces the number of observations in a vector
+      
+```{r}
+#| echo: false
+#| eval: false
+x <- c(152, 19, 1398, 67, 2111)
+sqrt((sum((x-mean(x))^2))/(length(x)-1))
+```
+
+:::
+
+---
+
+::: nonincremental
+
+2. Use the function `sd()` to print the standard deviation of the values above. Did you get it right?
+3. Using `summarise`, print the mean, standard deviation, and number of observations for `dep_delay`.
+    + Hint: do you need to remove missing values (`NA`s)?
+4. Do the same, but add the `.by()` argument to find the departure delay (`dep_delay`) per month
+    + `arrange()` the output by the mean departure delay
+
+:::
+
+
+## Session Info {.unnumbered}
+
+```{r}
+#| eval: false
+#| echo: false
+RStudio.Version()$version
+RStudio.Version()$release_name
+```
+
+
+Created with `r R.version.string` (`r R.version$nickname`) and RStudioversion 2023.9.0.463 (Desert Sunflower).
+
+```{r}
+sessionInfo()
+```
+
+## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+
+::: {#refs custom-style="Bibliography"}
+:::

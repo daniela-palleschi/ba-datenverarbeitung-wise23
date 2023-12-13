@@ -122,8 +122,8 @@ Warum läuft dieser Code nicht? Es gibt zwei Probleme mit dem Code, identifizier
 #| echo: true
 ## Troubleshooting
 df_ge  |> 
-  select(Frequency, word) +
-  filter(YearOfBirth == 1978)
+  filter(YearOfBirth == 1978) +
+  select(Frequency, word)
 ```
 
 ## Datenvisualisierung {#sec-dataviz}
