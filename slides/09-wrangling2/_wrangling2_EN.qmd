@@ -772,7 +772,7 @@ df_eng_wide |>
 :::
 
 
-3. Why do we need out `df_eng_wide` dataset to produce @fig-old_young? In other words, why is `df_eng_wide` the appropriate structure but not `df_eng_long` for such a scatterplot?
+3. Why do we need `df_eng_wide` dataset to produce @fig-old_young? In other words, why is `df_eng_wide` the appropriate structure but not `df_eng_long` for such a scatterplot?
 
 
 ::: {.content-visible when-format="revealjs"}

@@ -64,6 +64,7 @@ format:
     toc: true
     toc-title: "Kapitelinhalt"
     number-sections: true
+    toc-depth: 3
     include-after-body: custom.html
     include-in-header: mathjax.html
     code-tools: true

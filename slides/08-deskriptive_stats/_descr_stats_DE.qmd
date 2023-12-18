@@ -707,7 +707,7 @@ sqrt((sum((x-mean(x))^2))/(length(x)-1))
 2.  Benutze die Funktion `sd()`, um die Standardabweichung der obigen Werte zu drucken. Haben Sie es richtig gemacht?
 3.  Benutze `summarise`, um den Mittelwert, die Standardabweichung und die Anzahl der Beobachtungen für `rt_naming` im `df_lexdec` Datenrahmen zu drucken.
     - Hinweis: Müssen Sie fehlende Werte (`NA`) entfernen?
-4.  Machen Sie dasselbe, aber fügen Sie das Argument `.by()` hinzu, um die mittlere Reaktionszeit der Benennungsaufgabe (`rt_naming`) pro Monat zu ermitteln
+4.  Machen Sie dasselbe, aber fügen Sie das Argument `.by()` hinzu, um die mittlere Reaktionszeit der Benennungsaufgabe (`rt_naming`) pro Altersgruppe zu ermitteln
     - Ordnen Sie die Ausgabe nach der mittleren Antwortzeit für die Namensgebung an.
 :::
 
