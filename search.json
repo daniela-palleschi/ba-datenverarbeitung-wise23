@@ -494,7 +494,7 @@
     "href": "mats/06-bericht_1.html#sec-interpret",
     "title": "6  Bericht 1",
     "section": "6.4 Interpretation",
-    "text": "6.4 Interpretation\nBeschreiben Sie die Beziehung zwischen den beiden Variablen, die Sie in Abbildung 6.1 sehen.\n\n\n\n\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. https://CRAN.R-project.org/package=languageR"
+    "text": "6.4 Interpretation\nBeschreiben Sie die Beziehung zwischen den beiden Variablen, die Sie in Abbildung 6.1 sehen.\n\n\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. https://CRAN.R-project.org/package=languageR"
   },
   {
     "objectID": "mats/07-dateneinlesung.html#lernziele",
@@ -843,8 +843,8 @@
     "objectID": "mats/11-bericht_2.html#plot-interpretation-verteilung",
     "href": "mats/11-bericht_2.html#plot-interpretation-verteilung",
     "title": "11  Bericht 2",
-    "section": "11.2 Plot-interpretation: Verteilung",
-    "text": "11.2 Plot-interpretation: Verteilung\nBetrachten Sie Abbildung 11.1 A und B und beschreiben Sie die Diagramme. Beide enthalten nur Daten aus der Verbregion eines Satzes (roi == 4). Geben Sie den ungefähren Modus sowie die Minimal- und Maximalwerte für den gesamten Datensatz (?fig-Verteilung A) und den Median, den Minimal- und den Maximalwert pro Bedingung (?fig-Verteilung B) an.\n\n\n\n\n\nAbbildung 11.1: Zu interpretierende Plots"
+    "section": "11.2 Plot-Interpretation: Verteilung",
+    "text": "11.2 Plot-Interpretation: Verteilung\nBetrachten Sie Abbildung 11.1 A und B und beschreiben Sie die Diagramme. Beide enthalten nur Daten aus der Verbregion eines Satzes (roi == 4). Geben Sie den ungefähren Modus sowie die Minimal- und Maximalwerte für den gesamten Datensatz (?fig-Verteilung A) und den Median, den Minimal- und den Maximalwert pro Bedingung (?fig-Verteilung B) an.\n\n\n\n\n\nAbbildung 11.1: Zu interpretierende Plots"
   },
   {
     "objectID": "mats/11-bericht_2.html#data-wrangling-2-aufräumen",
@@ -872,6 +872,6 @@
     "href": "mats/11-bericht_2.html#plot-interpretation-zusammenfassende-statistiken",
     "title": "11  Bericht 2",
     "section": "11.6 Plot-Interpretation: zusammenfassende Statistiken",
-    "text": "11.6 Plot-Interpretation: zusammenfassende Statistiken\nBeschreiben Sie etwaige Unterschiede zwischen den Bedingungen und Regionen auf der Grundlage der von Ihnen erstellten Zusammenfassung und der aus der Zusammenfassung generierten Diagramme.\n\n\n\n\n\n\nBiondo, N., Soilemezidi, M., & Mancini, S. (2022). Yesterday Is History, Tomorrow Is a Mystery: An Eye-Tracking Investigation of the Processing of Past and Future Time Reference during Sentence Reading. Journal of Experimental Psychology: Learning, Memory, and Cognition, 48(7), 1001–1018. https://doi.org/10.1037/xlm0001053"
+    "text": "11.6 Plot-Interpretation: zusammenfassende Statistiken\nBeschreiben Sie etwaige Unterschiede zwischen den Bedingungen und Regionen auf der Grundlage der von Ihnen erstellten Zusammenfassung und der aus der Zusammenfassung generierten Diagramme.\n\n\n\n\nBiondo, N., Soilemezidi, M., & Mancini, S. (2022). Yesterday Is History, Tomorrow Is a Mystery: An Eye-Tracking Investigation of the Processing of Past and Future Time Reference during Sentence Reading. Journal of Experimental Psychology: Learning, Memory, and Cognition, 48(7), 1001–1018. https://doi.org/10.1037/xlm0001053"
   }
 ]

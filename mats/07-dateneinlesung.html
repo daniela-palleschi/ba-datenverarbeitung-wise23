@@ -412,7 +412,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Di. den 12.12.2023</p>
+      <p class="date-modified">Mi. den 17.01.2024</p>
     </div>
   </div>
     
@@ -1408,570 +1408,571 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "11/29/2023"</span></span>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "ddd [den] DD.MM.YYYY"</span></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">### evaluate chunks</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">### 'print code chunk?'</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">### 'print messages (e.g., warnings)?'</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> T, <span class="do">### continueeven when error encountered</span></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">### don't print warnings</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele {.unnumbered .unlisted}</span></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir lernen, wie man:</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lokale Datendateien mit dem Paket <span class="in">`readr`</span> zu importieren </span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>mit fehlenden Werten umzugehen </span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variablen in Faktoren umwandeln</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lesungen {.unnumbered .unlisted}</span></span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kap. 8 (Data Import)</span><span class="co">](https://r4ds.hadley.nz/data-import)</span> in @wickham_r_2023.</span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>Eine **ergänzende Lektüre** ist <span class="co">[</span><span class="ot">Ch. 4 (Data Import)</span><span class="co">](https://psyteachr.github.io/ads-v2/04-data.html)</span> in @nordmann_applied_2022.</span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">### evaluate chunks</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">### 'print code chunk?'</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">### 'print messages (e.g., warnings)?'</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> T, <span class="do">### continueeven when error encountered</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">### don't print warnings</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele {.unnumbered .unlisted}</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir lernen, wie man:</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lokale Datendateien mit dem Paket <span class="in">`readr`</span> zu importieren </span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>mit fehlenden Werten umzugehen </span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variablen in Faktoren umwandeln</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lesungen {.unnumbered .unlisted}</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kap. 8 (Data Import)</span><span class="co">](https://r4ds.hadley.nz/data-import)</span> in @wickham_r_2023.</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>Eine **ergänzende Lektüre** ist <span class="co">[</span><span class="ot">Ch. 4 (Data Import)</span><span class="co">](https://psyteachr.github.io/ads-v2/04-data.html)</span> in @nordmann_applied_2022.</span>
 <span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Wiederholung {.unnumbered .unlisted}</span></span>
-<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span> eingelesen, ihn mit dem <span class="in">`dplyr`</span>-Paket aus dem <span class="in">`tidyverse`</span> verarbeitet und mehrere Diagramme mit dem <span class="in">`ggplot2`</span>-Paket aus dem <span class="in">`tidyverse`</span> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</span>
-<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einrichtung</span></span>
-<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pakete mit `pacman`</span></span>
-<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>Zu Beginn werden wir mit dem Paket <span class="in">`pacman`</span> beginnen. Die Funktion <span class="in">`p_load()`</span> nimmt Paketnamen als Argumente und prüft dann, ob Sie das Paket installiert haben. Wenn ja, dann lädt sie das Paket (genau wie <span class="in">`library()`</span>). Wenn Sie das Paket nicht installiert haben, wird das Paket installiert und geladen (wie mit <span class="in">`install.packages()`</span>, <span class="in">`library()`</span>). Das erspart uns, neue Pakete einzeln zu installieren, und bedeutet auch, dass, wenn wir unser Skript mit anderen teilen, sie einfach <span class="in">`pacman::p_load()`</span> ausführen können.</span>
-<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a><span class="do">## install new packages IN THE CONSOLE!</span></span>
-<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="do">## load packages</span></span>
-<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="do">## wrangling</span></span>
-<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a>               janitor, <span class="do">## wrangling</span></span>
-<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a>               here <span class="do">## relative file paths</span></span>
-<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a>               )</span>
-<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a>Wir haben nun <span class="in">`tidyverse`</span> geladen, und die neuen Pakete <span class="in">`janitor`</span> und <span class="in">`here`</span> installiert und geladen. Um mehr über diese Pakete herauszufinden, versuchen Sie <span class="in">`?janitor`</span> und <span class="in">`?here`</span> in der Konsole einzugeben.</span>
-<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a><span class="fu">### RProjects</span></span>
-<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a>Bevor wir mit unserer ersten Datei beginnen, müssen wir sicherstellen, dass wir innerhalb unseres RProjekts arbeiten. Zu Beginn des Kurses haben Sie eine ZIP-Datei von <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/daniela-palleschi/r4ling_student)</span> (https://github.com/daniela-palleschi/r4ling_student) heruntergeladen, die einige Ordner und eine <span class="in">`.RProj`</span>-Datei enthielt. Hoffentlich haben Sie bis jetzt *innerhalb* dieses RProjekts gearbeitet und Ihre Skripte im Ordner <span class="in">`notizen`</span> gespeichert. Von nun an wird es notwendig sein, innerhalb dieses RProjekts zu arbeiten, damit wir immer auf unsere relevanten Datendateien zugreifen können, die in einem Ordner namens <span class="in">`daten`</span> gespeichert werden sollten.</span>
-<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a>Um ein RProjekt zu öffnen, navigieren Sie einfach zu dem Ordner auf Ihrem Rechner und doppelklicken Sie auf die <span class="in">`.RProj`</span>-Datei. Wenn Sie sich bereits in RStudio befinden, können Sie auch überprüfen, ob Sie im richtigen RProjekt arbeiten, indem Sie oben im Fenster nachsehen.</span>
-<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe</span></span>
-<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie <span class="in">`r4ling_student-main`</span> oben in Ihrem RStudio (@fig-project).</span>
-<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Wenn dies nicht der Fall ist (@fig-no-project), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche "Projekt" oben rechts im RStudio klicken (@fig-project-open; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).</span>
-<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Fügen Sie Ihrem RProject-Ordner einen Ordner namens <span class="in">`daten`</span> hinzu.</span>
-<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject (here: r4ling_student-main)."}</span></span>
-<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project</span></span>
-<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
-<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
-<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-project</span></span>
-<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
-<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}</span></span>
-<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-open</span></span>
-<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-103"><a href="#cb22-103" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_noproject.png"</span>))</span>
-<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Wiederholung {.unnumbered .unlisted}</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span> eingelesen, ihn mit dem <span class="in">`dplyr`</span>-Paket aus dem <span class="in">`tidyverse`</span> verarbeitet und mehrere Diagramme mit dem <span class="in">`ggplot2`</span>-Paket aus dem <span class="in">`tidyverse`</span> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einrichtung</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pakete mit `pacman`</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>Zu Beginn werden wir mit dem Paket <span class="in">`pacman`</span> beginnen. Die Funktion <span class="in">`p_load()`</span> nimmt Paketnamen als Argumente und prüft dann, ob Sie das Paket installiert haben. Wenn ja, dann lädt sie das Paket (genau wie <span class="in">`library()`</span>). Wenn Sie das Paket nicht installiert haben, wird das Paket installiert und geladen (wie mit <span class="in">`install.packages()`</span>, <span class="in">`library()`</span>). Das erspart uns, neue Pakete einzeln zu installieren, und bedeutet auch, dass, wenn wir unser Skript mit anderen teilen, sie einfach <span class="in">`pacman::p_load()`</span> ausführen können.</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="do">## install new packages IN THE CONSOLE!</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a><span class="do">## load packages</span></span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="do">## wrangling</span></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a>               janitor, <span class="do">## wrangling</span></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a>               here <span class="do">## relative file paths</span></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a>               )</span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a>Wir haben nun <span class="in">`tidyverse`</span> geladen, und die neuen Pakete <span class="in">`janitor`</span> und <span class="in">`here`</span> installiert und geladen. Um mehr über diese Pakete herauszufinden, versuchen Sie <span class="in">`?janitor`</span> und <span class="in">`?here`</span> in der Konsole einzugeben.</span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### RProjects</span></span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a>Bevor wir mit unserer ersten Datei beginnen, müssen wir sicherstellen, dass wir innerhalb unseres RProjekts arbeiten. Zu Beginn des Kurses haben Sie eine ZIP-Datei von <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/daniela-palleschi/r4ling_student)</span> (https://github.com/daniela-palleschi/r4ling_student) heruntergeladen, die einige Ordner und eine <span class="in">`.RProj`</span>-Datei enthielt. Hoffentlich haben Sie bis jetzt *innerhalb* dieses RProjekts gearbeitet und Ihre Skripte im Ordner <span class="in">`notizen`</span> gespeichert. Von nun an wird es notwendig sein, innerhalb dieses RProjekts zu arbeiten, damit wir immer auf unsere relevanten Datendateien zugreifen können, die in einem Ordner namens <span class="in">`daten`</span> gespeichert werden sollten.</span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a>Um ein RProjekt zu öffnen, navigieren Sie einfach zu dem Ordner auf Ihrem Rechner und doppelklicken Sie auf die <span class="in">`.RProj`</span>-Datei. Wenn Sie sich bereits in RStudio befinden, können Sie auch überprüfen, ob Sie im richtigen RProjekt arbeiten, indem Sie oben im Fenster nachsehen.</span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe</span></span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie <span class="in">`r4ling_student-main`</span> oben in Ihrem RStudio (@fig-project).</span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Wenn dies nicht der Fall ist (@fig-no-project), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche "Projekt" oben rechts im RStudio klicken (@fig-project-open; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).</span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Fügen Sie Ihrem RProject-Ordner einen Ordner namens <span class="in">`daten`</span> hinzu.</span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject (here: r4ling_student-main)."}</span></span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project</span></span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
+<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-project</span></span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}</span></span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-open</span></span>
+<span id="cb22-103"><a href="#cb22-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_noproject.png"</span>))</span>
+<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="html"}</span>
-<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
-<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-1</span></span>
-<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
-<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
-<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-project-1</span></span>
-<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
-<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}</span></span>
-<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-open-1</span></span>
-<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_noproject.png"</span>))</span>
-<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="html"}</span>
+<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-1</span></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-project-1</span></span>
+<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}</span></span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-open-1</span></span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_noproject.png"</span>))</span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-139"><a href="#cb22-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV: Komma getrennter Wert</span></span>
-<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a>Bisher haben wir mit Daten aus dem R-Paket <span class="in">`languageR`</span> gearbeitet. Daten aus Paketen sind eine großartige Möglichkeit, die Werkzeuge der Datenwissenschaft zu erlernen, aber normalerweise wollen wir mit unseren *eigenen* Daten arbeiten, nicht mit eingebauten Spielzeugdaten. Wir werden uns nur auf *rechteckige* Daten (d. h. aufgeräumte Daten) konzentrieren, obwohl Ihre Daten zu Beginn oft nicht aufgeräumt sind. Es gibt viele verschiedene Dateitypen, die Daten annehmen können, z. B. .xlsx, .txt, .csv, .tsv. Der Dateityp "csv" ist der häufigste Dateityp und steht für: Comma Separated Values.</span>
-<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-143"><a href="#cb22-143" aria-hidden="true" tabindex="-1"></a>So sieht eine einfache CSV-Datei aus:</span>
-<span id="cb22-144"><a href="#cb22-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-147"><a href="#cb22-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a><span class="co">#| comment: ""</span></span>
-<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"students.csv"</span>)) <span class="sc">|&gt;</span> <span class="fu">cat</span>(<span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a>Die erste Zeile (die "Kopfzeile") enthält die Spaltennamen. Die folgenden Zeilen enthalten die Daten. Wie viele Variablen gibt es? Wie viele Beobachtungen?</span>
-<span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a>Wir lernen jetzt etwas über aufgeräumte Daten und sehen uns ein Beispiel an. Anschließend werden wir eine CSV-Datei in R laden.</span>
-<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
-<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a><span class="fu">### Microsoft Excel</span></span>
-<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a>Versuchen Sie, <span class="in">`.xlsx`</span>-Dateien im Allgemeinen zu vermeiden, vor allem aber, wenn Sie Ihre Daten in R laden wollen. Der Grund dafür ist, dass Excel viele Formatierungsprobleme hat, die für R problematisch sind. Wenn Sie einen Excel-Datensatz haben, versuchen Sie, ihn als .csv zu speichern, bevor Sie ihn in R einlesen (<span class="in">`Datei &gt; Speichern unter &gt; Dateiformat &gt; Komma-getrennter Wert`</span>).</span>
-<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-167"><a href="#cb22-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-168"><a href="#cb22-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tidydaten</span></span>
-<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a>Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie *aufgeräumt* sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (@fig-tidy-data).</span>
-<span id="cb22-171"><a href="#cb22-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}</span></span>
-<span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-tidy-data</span></span>
-<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_tidydata.png"</span>))</span>
-<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-139"><a href="#cb22-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV: Komma getrennter Wert</span></span>
+<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a>Bisher haben wir mit Daten aus dem R-Paket <span class="in">`languageR`</span> gearbeitet. Daten aus Paketen sind eine großartige Möglichkeit, die Werkzeuge der Datenwissenschaft zu erlernen, aber normalerweise wollen wir mit unseren *eigenen* Daten arbeiten, nicht mit eingebauten Spielzeugdaten. Wir werden uns nur auf *rechteckige* Daten (d. h. aufgeräumte Daten) konzentrieren, obwohl Ihre Daten zu Beginn oft nicht aufgeräumt sind. Es gibt viele verschiedene Dateitypen, die Daten annehmen können, z. B. .xlsx, .txt, .csv, .tsv. Der Dateityp "csv" ist der häufigste Dateityp und steht für: Comma Separated Values.</span>
+<span id="cb22-143"><a href="#cb22-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-144"><a href="#cb22-144" aria-hidden="true" tabindex="-1"></a>So sieht eine einfache CSV-Datei aus:</span>
+<span id="cb22-145"><a href="#cb22-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a><span class="co">#| comment: ""</span></span>
+<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"students.csv"</span>)) <span class="sc">|&gt;</span> <span class="fu">cat</span>(<span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a>Die erste Zeile (die "Kopfzeile") enthält die Spaltennamen. Die folgenden Zeilen enthalten die Daten. Wie viele Variablen gibt es? Wie viele Beobachtungen?</span>
+<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a>Wir lernen jetzt etwas über aufgeräumte Daten und sehen uns ein Beispiel an. Anschließend werden wir eine CSV-Datei in R laden.</span>
+<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### Microsoft Excel</span></span>
+<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a>Versuchen Sie, <span class="in">`.xlsx`</span>-Dateien im Allgemeinen zu vermeiden, vor allem aber, wenn Sie Ihre Daten in R laden wollen. Der Grund dafür ist, dass Excel viele Formatierungsprobleme hat, die für R problematisch sind. Wenn Sie einen Excel-Datensatz haben, versuchen Sie, ihn als .csv zu speichern, bevor Sie ihn in R einlesen (<span class="in">`Datei &gt; Speichern unter &gt; Dateiformat &gt; Komma-getrennter Wert`</span>).</span>
+<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-167"><a href="#cb22-167" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-168"><a href="#cb22-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tidydaten</span></span>
+<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-171"><a href="#cb22-171" aria-hidden="true" tabindex="-1"></a>Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie *aufgeräumt* sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (@fig-tidy-data).</span>
+<span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}</span></span>
+<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-tidy-data</span></span>
+<span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_tidydata.png"</span>))</span>
+<span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-182"><a href="#cb22-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}</span></span>
-<span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-tidy-data-1</span></span>
-<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-188"><a href="#cb22-188" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_tidydata.png"</span>))</span>
-<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-191"><a href="#cb22-191" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-192"><a href="#cb22-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}</span></span>
+<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-tidy-data-1</span></span>
+<span id="cb22-188"><a href="#cb22-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_tidydata.png"</span>))</span>
+<span id="cb22-191"><a href="#cb22-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-192"><a href="#cb22-192" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-193"><a href="#cb22-193" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-194"><a href="#cb22-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-195"><a href="#cb22-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabelle zu csv</span></span>
-<span id="cb22-196"><a href="#cb22-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-197"><a href="#cb22-197" aria-hidden="true" tabindex="-1"></a>Lassen Sie uns einige Spielzeugdaten in einem Arbeitsblatt sammeln, das wir dann als CSV-Datei speichern und in R laden werden. <span class="co">[</span><span class="ot">Klicken Sie hier</span><span class="co">](https://docs.google.com/spreadsheets/d/1nAKO3AGSTMmNibZLNZ4DD6okXyxxP8IDkj9PjpX0B5k/edit?usp=sharing)</span>, um zu einem bearbeitbaren Arbeitsblatt zu gelangen. Geben Sie die relevanten Informationen über sich selbst ein, oder erfinden Sie einige Daten: den Namen eines Haustiers, das Sie haben/hatten, Größe, Geburtsmonat und -tag sowie Ihre erste Sprache. Wenn Sie kein Haustier haben, lassen Sie die Zelle leer.</span>
-<span id="cb22-198"><a href="#cb22-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-199"><a href="#cb22-199" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb22-200"><a href="#cb22-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}</span></span>
-<span id="cb22-201"><a href="#cb22-201" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-203"><a href="#cb22-203" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_googlesheet.png"</span>))</span>
-<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-206"><a href="#cb22-206" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-207"><a href="#cb22-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-195"><a href="#cb22-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-196"><a href="#cb22-196" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabelle zu csv</span></span>
+<span id="cb22-197"><a href="#cb22-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-198"><a href="#cb22-198" aria-hidden="true" tabindex="-1"></a>Lassen Sie uns einige Spielzeugdaten in einem Arbeitsblatt sammeln, das wir dann als CSV-Datei speichern und in R laden werden. <span class="co">[</span><span class="ot">Klicken Sie hier</span><span class="co">](https://docs.google.com/spreadsheets/d/1nAKO3AGSTMmNibZLNZ4DD6okXyxxP8IDkj9PjpX0B5k/edit?usp=sharing)</span>, um zu einem bearbeitbaren Arbeitsblatt zu gelangen. Geben Sie die relevanten Informationen über sich selbst ein, oder erfinden Sie einige Daten: den Namen eines Haustiers, das Sie haben/hatten, Größe, Geburtsmonat und -tag sowie Ihre erste Sprache. Wenn Sie kein Haustier haben, lassen Sie die Zelle leer.</span>
+<span id="cb22-199"><a href="#cb22-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-200"><a href="#cb22-200" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb22-201"><a href="#cb22-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}</span></span>
+<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-203"><a href="#cb22-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_googlesheet.png"</span>))</span>
+<span id="cb22-206"><a href="#cb22-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-207"><a href="#cb22-207" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-208"><a href="#cb22-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-209"><a href="#cb22-209" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb22-210"><a href="#cb22-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}</span></span>
-<span id="cb22-211"><a href="#cb22-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-213"><a href="#cb22-213" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-214"><a href="#cb22-214" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_googlesheet.png"</span>))</span>
-<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-216"><a href="#cb22-216" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-217"><a href="#cb22-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-218"><a href="#cb22-218" aria-hidden="true" tabindex="-1"></a><span class="fu">### CSV speichern</span></span>
-<span id="cb22-219"><a href="#cb22-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-220"><a href="#cb22-220" aria-hidden="true" tabindex="-1"></a>Jetzt müssen wir unser Arbeitsblatt als CSV-Datei auf unserem Computer speichern. Solange wir in unserem RProjekt arbeiten, wird R immer nach Dateien aus dem Ordner suchen, der unser RProjekt enthält. Stellen wir also zunächst sicher, dass unser Ordner einen Unterordner namens <span class="in">`daten`</span> enthält. Darin werden wir alle unsere Daten speichern.</span>
-<span id="cb22-221"><a href="#cb22-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-222"><a href="#cb22-222" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-223"><a href="#cb22-223" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Aufgabe {.unlisted .unnumbered}</span></span>
-<span id="cb22-224"><a href="#cb22-224" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-225"><a href="#cb22-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-226"><a href="#cb22-226" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb22-227"><a href="#cb22-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-228"><a href="#cb22-228" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-table1]: `Speichern einer CSV`</span></span>
-<span id="cb22-229"><a href="#cb22-229" aria-hidden="true" tabindex="-1"></a>::: {#exm-table1 .custom}</span>
-<span id="cb22-230"><a href="#cb22-230" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
-<span id="cb22-231"><a href="#cb22-231" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Erstellen Sie einen neuen Ordner mit dem Namen <span class="in">`daten`</span> in Ihrem Projektordner (falls Sie das nicht schon getan haben).</span>
-<span id="cb22-232"><a href="#cb22-232" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Laden Sie das Google Sheet herunter und speichern Sie es in Ihrem <span class="in">`daten`</span>-Ordner als <span class="in">`groesse_geburtstag.csv`</span>.</span>
-<span id="cb22-233"><a href="#cb22-233" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Gehen Sie zu Ihrem <span class="in">`daten`</span>-Ordner und überprüfen Sie, ob die CSV-Datei dort ist.</span>
-<span id="cb22-234"><a href="#cb22-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
-<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_save.png"</span>))</span>
-<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Find the CSV file in your file manager."}</span></span>
-<span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-246"><a href="#cb22-246" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_csv.png"</span>))</span>
-<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-249"><a href="#cb22-249" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-250"><a href="#cb22-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-251"><a href="#cb22-251" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb22-252"><a href="#cb22-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
-<span id="cb22-253"><a href="#cb22-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-255"><a href="#cb22-255" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_save.png"</span>))</span>
-<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-258"><a href="#cb22-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-259"><a href="#cb22-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
-<span id="cb22-260"><a href="#cb22-260" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-262"><a href="#cb22-262" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_csv.png"</span>))</span>
-<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-265"><a href="#cb22-265" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-266"><a href="#cb22-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-267"><a href="#cb22-267" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-209"><a href="#cb22-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-210"><a href="#cb22-210" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb22-211"><a href="#cb22-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}</span></span>
+<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-213"><a href="#cb22-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-214"><a href="#cb22-214" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_googlesheet.png"</span>))</span>
+<span id="cb22-216"><a href="#cb22-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-217"><a href="#cb22-217" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-218"><a href="#cb22-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-219"><a href="#cb22-219" aria-hidden="true" tabindex="-1"></a><span class="fu">### CSV speichern</span></span>
+<span id="cb22-220"><a href="#cb22-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-221"><a href="#cb22-221" aria-hidden="true" tabindex="-1"></a>Jetzt müssen wir unser Arbeitsblatt als CSV-Datei auf unserem Computer speichern. Solange wir in unserem RProjekt arbeiten, wird R immer nach Dateien aus dem Ordner suchen, der unser RProjekt enthält. Stellen wir also zunächst sicher, dass unser Ordner einen Unterordner namens <span class="in">`daten`</span> enthält. Darin werden wir alle unsere Daten speichern.</span>
+<span id="cb22-222"><a href="#cb22-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-223"><a href="#cb22-223" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-224"><a href="#cb22-224" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb22-225"><a href="#cb22-225" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-226"><a href="#cb22-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-227"><a href="#cb22-227" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb22-228"><a href="#cb22-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-229"><a href="#cb22-229" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-table1]: `Speichern einer CSV`</span></span>
+<span id="cb22-230"><a href="#cb22-230" aria-hidden="true" tabindex="-1"></a>::: {#exm-table1 .custom}</span>
+<span id="cb22-231"><a href="#cb22-231" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb22-232"><a href="#cb22-232" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Erstellen Sie einen neuen Ordner mit dem Namen <span class="in">`daten`</span> in Ihrem Projektordner (falls Sie das nicht schon getan haben).</span>
+<span id="cb22-233"><a href="#cb22-233" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Laden Sie das Google Sheet herunter und speichern Sie es in Ihrem <span class="in">`daten`</span>-Ordner als <span class="in">`groesse_geburtstag.csv`</span>.</span>
+<span id="cb22-234"><a href="#cb22-234" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Gehen Sie zu Ihrem <span class="in">`daten`</span>-Ordner und überprüfen Sie, ob die CSV-Datei dort ist.</span>
+<span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
+<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_save.png"</span>))</span>
+<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Find the CSV file in your file manager."}</span></span>
+<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-246"><a href="#cb22-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_csv.png"</span>))</span>
+<span id="cb22-249"><a href="#cb22-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-250"><a href="#cb22-250" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-251"><a href="#cb22-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-252"><a href="#cb22-252" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb22-253"><a href="#cb22-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
+<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-255"><a href="#cb22-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_save.png"</span>))</span>
+<span id="cb22-258"><a href="#cb22-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-259"><a href="#cb22-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-260"><a href="#cb22-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
+<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-262"><a href="#cb22-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_csv.png"</span>))</span>
+<span id="cb22-265"><a href="#cb22-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-266"><a href="#cb22-266" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-267"><a href="#cb22-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-268"><a href="#cb22-268" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-269"><a href="#cb22-269" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-270"><a href="#cb22-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-271"><a href="#cb22-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## Das `readr`-Paket</span></span>
-<span id="cb22-272"><a href="#cb22-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-273"><a href="#cb22-273" aria-hidden="true" tabindex="-1"></a>Unsere Daten können als Tabelle angezeigt werden, genau wie unsere eingebauten Datensätze aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span>. Genau wie bei den eingebauten Datensätzen müssen wir zuerst die Daten *einlesen*, aber anstatt nur den Namen des eingebauten Datensatzes anzugeben, müssen wir eine Funktion verwenden, die CSV-Daten liest. Wir müssen auch angeben, *wo* sich die Daten in unserem RProject-Ordner befinden.</span>
-<span id="cb22-274"><a href="#cb22-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-275"><a href="#cb22-275" aria-hidden="true" tabindex="-1"></a>Das Paket <span class="in">`readr`</span> (Teil von <span class="in">`tidyverse`</span>) kann die meisten Datentypen einlesen und hat mehrere Funktionen für verschiedene Datentypen.</span>
-<span id="cb22-276"><a href="#cb22-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-279"><a href="#cb22-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-280"><a href="#cb22-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb22-281"><a href="#cb22-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-282"><a href="#cb22-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb22-283"><a href="#cb22-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-284"><a href="#cb22-284" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>))</span>
-<span id="cb22-285"><a href="#cb22-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-286"><a href="#cb22-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-289"><a href="#cb22-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-290"><a href="#cb22-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-students-table</span></span>
-<span id="cb22-291"><a href="#cb22-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-292"><a href="#cb22-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb22-293"><a href="#cb22-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: Data from the students.csv file as a table.</span></span>
-<span id="cb22-294"><a href="#cb22-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-295"><a href="#cb22-295" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb22-296"><a href="#cb22-296" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
-<span id="cb22-297"><a href="#cb22-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-298"><a href="#cb22-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-299"><a href="#cb22-299" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-300"><a href="#cb22-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
-<span id="cb22-301"><a href="#cb22-301" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-302"><a href="#cb22-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-303"><a href="#cb22-303" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb22-304"><a href="#cb22-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-305"><a href="#cb22-305" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-students]: `df_groesse`</span></span>
-<span id="cb22-306"><a href="#cb22-306" aria-hidden="true" tabindex="-1"></a>::: {#exm-students .custom}</span>
-<span id="cb22-307"><a href="#cb22-307" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
-<span id="cb22-308"><a href="#cb22-308" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Importieren Sie den Datensatz "groesse_geburtstag.csv" und speichern Sie ihn als Objekt mit dem Namen "df_groesse".</span>
-<span id="cb22-309"><a href="#cb22-309" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`df_`</span> ist die Abkürzung für DataFrame; es ist eine gute Idee, ein Präfix vor Objektnamen zu verwenden, damit wir wissen, was jedes Objekt enthält.</span>
-<span id="cb22-310"><a href="#cb22-310" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Wenn Daten mit <span class="in">`read_csv`</span> importiert werden, werden einige Informationen in der Konsole ausgegeben. Was wird gedruckt?</span>
-<span id="cb22-311"><a href="#cb22-311" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Untersuche den Datensatz mit Funktionen wie <span class="in">`summary()`</span> oder <span class="in">`head()`</span></span>
-<span id="cb22-312"><a href="#cb22-312" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Sehen Sie etwas Ungewöhnliches?</span>
-<span id="cb22-313"><a href="#cb22-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-314"><a href="#cb22-314" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-270"><a href="#cb22-270" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-271"><a href="#cb22-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-272"><a href="#cb22-272" aria-hidden="true" tabindex="-1"></a><span class="fu">## Das `readr`-Paket</span></span>
+<span id="cb22-273"><a href="#cb22-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-274"><a href="#cb22-274" aria-hidden="true" tabindex="-1"></a>Unsere Daten können als Tabelle angezeigt werden, genau wie unsere eingebauten Datensätze aus dem <span class="in">`languageR`</span>-Paket <span class="co">[</span><span class="ot">@languageR-package</span><span class="co">]</span>. Genau wie bei den eingebauten Datensätzen müssen wir zuerst die Daten *einlesen*, aber anstatt nur den Namen des eingebauten Datensatzes anzugeben, müssen wir eine Funktion verwenden, die CSV-Daten liest. Wir müssen auch angeben, *wo* sich die Daten in unserem RProject-Ordner befinden.</span>
+<span id="cb22-275"><a href="#cb22-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-276"><a href="#cb22-276" aria-hidden="true" tabindex="-1"></a>Das Paket <span class="in">`readr`</span> (Teil von <span class="in">`tidyverse`</span>) kann die meisten Datentypen einlesen und hat mehrere Funktionen für verschiedene Datentypen.</span>
+<span id="cb22-277"><a href="#cb22-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-280"><a href="#cb22-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-281"><a href="#cb22-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb22-282"><a href="#cb22-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-283"><a href="#cb22-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb22-284"><a href="#cb22-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-285"><a href="#cb22-285" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>))</span>
+<span id="cb22-286"><a href="#cb22-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-287"><a href="#cb22-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-290"><a href="#cb22-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-291"><a href="#cb22-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-students-table</span></span>
+<span id="cb22-292"><a href="#cb22-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-293"><a href="#cb22-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb22-294"><a href="#cb22-294" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: Data from the students.csv file as a table.</span></span>
+<span id="cb22-295"><a href="#cb22-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-296"><a href="#cb22-296" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-297"><a href="#cb22-297" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb22-298"><a href="#cb22-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-299"><a href="#cb22-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-300"><a href="#cb22-300" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-301"><a href="#cb22-301" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb22-302"><a href="#cb22-302" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-303"><a href="#cb22-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-304"><a href="#cb22-304" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb22-305"><a href="#cb22-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-306"><a href="#cb22-306" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-students]: `df_groesse`</span></span>
+<span id="cb22-307"><a href="#cb22-307" aria-hidden="true" tabindex="-1"></a>::: {#exm-students .custom}</span>
+<span id="cb22-308"><a href="#cb22-308" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb22-309"><a href="#cb22-309" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Importieren Sie den Datensatz "groesse_geburtstag.csv" und speichern Sie ihn als Objekt mit dem Namen "df_groesse".</span>
+<span id="cb22-310"><a href="#cb22-310" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`df_`</span> ist die Abkürzung für DataFrame; es ist eine gute Idee, ein Präfix vor Objektnamen zu verwenden, damit wir wissen, was jedes Objekt enthält.</span>
+<span id="cb22-311"><a href="#cb22-311" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Wenn Daten mit <span class="in">`read_csv`</span> importiert werden, werden einige Informationen in der Konsole ausgegeben. Was wird gedruckt?</span>
+<span id="cb22-312"><a href="#cb22-312" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Untersuche den Datensatz mit Funktionen wie <span class="in">`summary()`</span> oder <span class="in">`head()`</span></span>
+<span id="cb22-313"><a href="#cb22-313" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Sehen Sie etwas Ungewöhnliches?</span>
+<span id="cb22-314"><a href="#cb22-314" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-315"><a href="#cb22-315" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-316"><a href="#cb22-316" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-317"><a href="#cb22-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-320"><a href="#cb22-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-321"><a href="#cb22-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-322"><a href="#cb22-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-323"><a href="#cb22-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-324"><a href="#cb22-324" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>))</span>
-<span id="cb22-325"><a href="#cb22-325" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_groesse) <span class="do">## missing data points</span></span>
-<span id="cb22-326"><a href="#cb22-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-327"><a href="#cb22-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-328"><a href="#cb22-328" aria-hidden="true" tabindex="-1"></a><span class="fu">## Das `here`-Paket</span></span>
-<span id="cb22-329"><a href="#cb22-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-330"><a href="#cb22-330" aria-hidden="true" tabindex="-1"></a>Aber woher weiß R genau, wo der Ordner <span class="in">`daten`</span> zu finden ist? Unser *Arbeitsverzeichnis* ist auf den Ort unseres RProjekts auf unserem Computer festgelegt. Wann immer wir auf Daten in unserem RProjekt zugreifen wollen, sollten wir <span class="in">`here()`</span> verwenden (vorausgesetzt, wir haben das <span class="in">`here`</span>-Paket bereits geladen). Um zu sehen, von wo aus <span class="in">`here()`</span> startet, führen Sie <span class="in">`here()`</span> aus. Wie sieht die Ausgabe im Vergleich zu der von <span class="in">`getwd()`</span> (für 'get working directory')?</span>
-<span id="cb22-331"><a href="#cb22-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-334"><a href="#cb22-334" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-335"><a href="#cb22-335" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb22-336"><a href="#cb22-336" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>()</span>
-<span id="cb22-337"><a href="#cb22-337" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb22-338"><a href="#cb22-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-339"><a href="#cb22-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-340"><a href="#cb22-340" aria-hidden="true" tabindex="-1"></a>Die Ausgabe wird auf allen unseren Rechnern anders aussehen, aber was gleich sein sollte, ist unsere Ordnerstruktur innerhalb unserer Projekte (z. B. <span class="in">`data/groesse_geburtstag.csv`</span>).</span>
-<span id="cb22-341"><a href="#cb22-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-342"><a href="#cb22-342" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-343"><a href="#cb22-343" aria-hidden="true" tabindex="-1"></a><span class="fu">### `here` package {.unlisted .unnumbered}</span></span>
-<span id="cb22-344"><a href="#cb22-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-345"><a href="#cb22-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.env = "figure",out.width="70%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}</span></span>
-<span id="cb22-346"><a href="#cb22-346" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_here.png"</span>))</span>
-<span id="cb22-347"><a href="#cb22-347" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-348"><a href="#cb22-348" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-349"><a href="#cb22-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-350"><a href="#cb22-350" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
-<span id="cb22-351"><a href="#cb22-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}</span></span>
-<span id="cb22-352"><a href="#cb22-352" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_here.png"</span>))</span>
-<span id="cb22-353"><a href="#cb22-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-354"><a href="#cb22-354" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-355"><a href="#cb22-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-356"><a href="#cb22-356" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb22-357"><a href="#cb22-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-358"><a href="#cb22-358" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `here`-Paket</span></span>
-<span id="cb22-359"><a href="#cb22-359" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
-<span id="cb22-360"><a href="#cb22-360" aria-hidden="true" tabindex="-1"></a>Vor dem <span class="in">`here`</span>-Paket mussten wir R explizit mitteilen, wo sich eine Datei auf unserem Computer befindet (z.B., <span class="in">`/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten/daten/students.csv`</span>), oder die Funktion <span class="in">`setwd()`</span> (set Working Directory) benutzen, um R mitzuteilen, wo alle Dateien zu finden sind (z.B. <span class="in">`setwd("/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten")`</span>). Glücklicherweise brauchen Sie diese absoluten Dateipfade oder <span class="in">`setwd()`</span> nie zu benutzen!</span>
-<span id="cb22-361"><a href="#cb22-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-362"><a href="#cb22-362" aria-hidden="true" tabindex="-1"></a>Aus der <span class="co">[</span><span class="ot">`hier`-Paketdokumentation</span><span class="co">](https://here.r-lib.org/)</span>: </span>
-<span id="cb22-363"><a href="#cb22-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-364"><a href="#cb22-364" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The goal of the here package is to enable easy file referencing in project-oriented workflows. In contrast to using </span><span class="in">`setwd()`</span><span class="at">, which is fragile and dependent on the way you organize your files, here uses the top-level directory of a project to easily build paths to files.</span></span>
-<span id="cb22-365"><a href="#cb22-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-366"><a href="#cb22-366" aria-hidden="true" tabindex="-1"></a>Das bedeutet, dass wir nun den ***großen*** Vorteil haben, dass wir unseren Projektordner überall hin verschieben können und unser Dateipfad immer noch relativ zu dem Ort ist, an den wir unseren Projektordner verschoben haben. Das bedeutet, dass das Projekt unabhängig davon läuft, wo es sich auf Ihrem Computer befindet. Sie können auch jemandem den Projektordner schicken, und alles sollte auf dessen Rechner laufen!</span>
-<span id="cb22-367"><a href="#cb22-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-368"><a href="#cb22-368" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-317"><a href="#cb22-317" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-318"><a href="#cb22-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-321"><a href="#cb22-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-322"><a href="#cb22-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-323"><a href="#cb22-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-324"><a href="#cb22-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-325"><a href="#cb22-325" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>))</span>
+<span id="cb22-326"><a href="#cb22-326" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_groesse) <span class="do">## missing data points</span></span>
+<span id="cb22-327"><a href="#cb22-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-328"><a href="#cb22-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-329"><a href="#cb22-329" aria-hidden="true" tabindex="-1"></a><span class="fu">## Das `here`-Paket</span></span>
+<span id="cb22-330"><a href="#cb22-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-331"><a href="#cb22-331" aria-hidden="true" tabindex="-1"></a>Aber woher weiß R genau, wo der Ordner <span class="in">`daten`</span> zu finden ist? Unser *Arbeitsverzeichnis* ist auf den Ort unseres RProjekts auf unserem Computer festgelegt. Wann immer wir auf Daten in unserem RProjekt zugreifen wollen, sollten wir <span class="in">`here()`</span> verwenden (vorausgesetzt, wir haben das <span class="in">`here`</span>-Paket bereits geladen). Um zu sehen, von wo aus <span class="in">`here()`</span> startet, führen Sie <span class="in">`here()`</span> aus. Wie sieht die Ausgabe im Vergleich zu der von <span class="in">`getwd()`</span> (für 'get working directory')?</span>
+<span id="cb22-332"><a href="#cb22-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-335"><a href="#cb22-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-336"><a href="#cb22-336" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb22-337"><a href="#cb22-337" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>()</span>
+<span id="cb22-338"><a href="#cb22-338" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb22-339"><a href="#cb22-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-340"><a href="#cb22-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-341"><a href="#cb22-341" aria-hidden="true" tabindex="-1"></a>Die Ausgabe wird auf allen unseren Rechnern anders aussehen, aber was gleich sein sollte, ist unsere Ordnerstruktur innerhalb unserer Projekte (z. B. <span class="in">`data/groesse_geburtstag.csv`</span>).</span>
+<span id="cb22-342"><a href="#cb22-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-343"><a href="#cb22-343" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-344"><a href="#cb22-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### `here` package {.unlisted .unnumbered}</span></span>
+<span id="cb22-345"><a href="#cb22-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-346"><a href="#cb22-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.env = "figure",out.width="70%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}</span></span>
+<span id="cb22-347"><a href="#cb22-347" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_here.png"</span>))</span>
+<span id="cb22-348"><a href="#cb22-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-349"><a href="#cb22-349" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-350"><a href="#cb22-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-351"><a href="#cb22-351" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
+<span id="cb22-352"><a href="#cb22-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}</span></span>
+<span id="cb22-353"><a href="#cb22-353" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_here.png"</span>))</span>
+<span id="cb22-354"><a href="#cb22-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-355"><a href="#cb22-355" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-356"><a href="#cb22-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-357"><a href="#cb22-357" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb22-358"><a href="#cb22-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-359"><a href="#cb22-359" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `here`-Paket</span></span>
+<span id="cb22-360"><a href="#cb22-360" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb22-361"><a href="#cb22-361" aria-hidden="true" tabindex="-1"></a>Vor dem <span class="in">`here`</span>-Paket mussten wir R explizit mitteilen, wo sich eine Datei auf unserem Computer befindet (z.B., <span class="in">`/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten/daten/students.csv`</span>), oder die Funktion <span class="in">`setwd()`</span> (set Working Directory) benutzen, um R mitzuteilen, wo alle Dateien zu finden sind (z.B. <span class="in">`setwd("/Users/danielapalleschi/Documents/IdSL/Teaching/SoSe23/BA/ba_daten")`</span>). Glücklicherweise brauchen Sie diese absoluten Dateipfade oder <span class="in">`setwd()`</span> nie zu benutzen!</span>
+<span id="cb22-362"><a href="#cb22-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-363"><a href="#cb22-363" aria-hidden="true" tabindex="-1"></a>Aus der <span class="co">[</span><span class="ot">`hier`-Paketdokumentation</span><span class="co">](https://here.r-lib.org/)</span>: </span>
+<span id="cb22-364"><a href="#cb22-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-365"><a href="#cb22-365" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The goal of the here package is to enable easy file referencing in project-oriented workflows. In contrast to using </span><span class="in">`setwd()`</span><span class="at">, which is fragile and dependent on the way you organize your files, here uses the top-level directory of a project to easily build paths to files.</span></span>
+<span id="cb22-366"><a href="#cb22-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-367"><a href="#cb22-367" aria-hidden="true" tabindex="-1"></a>Das bedeutet, dass wir nun den ***großen*** Vorteil haben, dass wir unseren Projektordner überall hin verschieben können und unser Dateipfad immer noch relativ zu dem Ort ist, an den wir unseren Projektordner verschoben haben. Das bedeutet, dass das Projekt unabhängig davon läuft, wo es sich auf Ihrem Computer befindet. Sie können auch jemandem den Projektordner schicken, und alles sollte auf dessen Rechner laufen!</span>
+<span id="cb22-368"><a href="#cb22-368" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-369"><a href="#cb22-369" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-370"><a href="#cb22-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-371"><a href="#cb22-371" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arbeit mit Daten</span></span>
-<span id="cb22-372"><a href="#cb22-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-373"><a href="#cb22-373" aria-hidden="true" tabindex="-1"></a>Daten sind chaotisch, aber mit Erfahrung können wir lernen, sie zu bändigen. Im Folgenden finden Sie einige Tipps, die das Gelernte über die Datenverarbeitung erweitern.</span>
-<span id="cb22-374"><a href="#cb22-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-375"><a href="#cb22-375" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fehlende Werte</span></span>
-<span id="cb22-376"><a href="#cb22-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-377"><a href="#cb22-377" aria-hidden="true" tabindex="-1"></a>Bei der Datentransformation geht es darum, unsere Daten zu "reparieren", wenn sie nicht "in Ordnung" sind. In unserem <span class="in">`df_groesse`</span> Datenrahmen haben Sie vielleicht einige <span class="in">`NA`</span> oder <span class="in">`N/A`</span> Werte bemerkt. N/A" wurde in einer unserer Beobachtungen als Text geschrieben und wird von R als solcher gelesen. N/A" in R bezieht sich auf fehlende Daten ("Nicht verfügbar"). Echte fehlende Werte sind komplett leer, so dass <span class="in">`N/A`</span> in unseren <span class="in">`df_groesse`</span>-Daten nicht wirklich als fehlender Wert gelesen wird, obwohl wir möchten, dass R weiß, dass dies als fehlende Daten zählt und nicht das Haustier von jemandem namens "NA" (Menschen tun seltsame Dinge!). Um dies zu beheben, können wir das Argument <span class="in">`na =`</span> für die Funktion <span class="in">`read_csv()`</span> verwenden, das der Funktion <span class="in">`read_csv()`</span> mitteilt, welche Werte sie mit fehlenden Werten gleichsetzen soll.</span>
-<span id="cb22-378"><a href="#cb22-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-379"><a href="#cb22-379" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-380"><a href="#cb22-380" aria-hidden="true" tabindex="-1"></a><span class="fu">### Missing values {.unlisted .unnumbered}</span></span>
-<span id="cb22-381"><a href="#cb22-381" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-382"><a href="#cb22-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-385"><a href="#cb22-385" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-386"><a href="#cb22-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb22-387"><a href="#cb22-387" aria-hidden="true" tabindex="-1"></a><span class="co"># force "N/A" to missing values</span></span>
-<span id="cb22-388"><a href="#cb22-388" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>),</span>
-<span id="cb22-389"><a href="#cb22-389" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na =</span> <span class="st">"N/A"</span>)</span>
-<span id="cb22-390"><a href="#cb22-390" aria-hidden="true" tabindex="-1"></a><span class="co"># print the head of the data set</span></span>
-<span id="cb22-391"><a href="#cb22-391" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_groesse)</span>
-<span id="cb22-392"><a href="#cb22-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-393"><a href="#cb22-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-394"><a href="#cb22-394" aria-hidden="true" tabindex="-1"></a>Jetzt wird der Wert, der vorher <span class="in">`""`</span> war, als <span class="in">`NA`</span> gelesen. Aber was ist mit der leeren Zelle? Wir haben jetzt überschrieben, dass <span class="in">`read_csv()`</span> leere Zellen als <span class="in">`NA`</span> liest. Jetzt wollen wir <span class="in">`read_csv()`</span> anweisen, *mehr als eine* Art von Eingabe als `NA` zu lesen, d.h. wir wollen es anweisen, `""` *und* <span class="in">`"N/A"`</span> als <span class="in">`NA`</span> zu lesen. Dafür verwenden wir unsere immer nützliche Verkettungsfunktion: <span class="in">`c()`</span>.</span>
-<span id="cb22-395"><a href="#cb22-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-396"><a href="#cb22-396" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-397"><a href="#cb22-397" aria-hidden="true" tabindex="-1"></a><span class="fu">### Missing values {.unlisted .unnumbered}</span></span>
-<span id="cb22-398"><a href="#cb22-398" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-399"><a href="#cb22-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-402"><a href="#cb22-402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-403"><a href="#cb22-403" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb22-404"><a href="#cb22-404" aria-hidden="true" tabindex="-1"></a><span class="co"># force "N/A" and empty cells to missing values</span></span>
-<span id="cb22-405"><a href="#cb22-405" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>),</span>
-<span id="cb22-406"><a href="#cb22-406" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"N/A"</span>,<span class="st">""</span>))</span>
-<span id="cb22-407"><a href="#cb22-407" aria-hidden="true" tabindex="-1"></a><span class="co"># print the head of the data set</span></span>
-<span id="cb22-408"><a href="#cb22-408" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_groesse)</span>
-<span id="cb22-409"><a href="#cb22-409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-410"><a href="#cb22-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-411"><a href="#cb22-411" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spaltennamen</span></span>
-<span id="cb22-412"><a href="#cb22-412" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-413"><a href="#cb22-413" aria-hidden="true" tabindex="-1"></a>Wenn wir <span class="in">`df_groesse`</span> in der Konsole ausdrucken, werden wir sehen, dass ein Spaltenname von Backticks umgeben ist (z.B. `<span class="in">` `</span>Monat der Geburt`<span class="in">`). Das liegt daran, dass er ein Leerzeichen enthält, das syntaktisch nicht gültig ist (Variablennamen müssen mit einem Buchstaben beginnen und dürfen keine Leerzeichen oder Sonderzeichen enthalten). Eine schnelle Lösung ist die Funktion `</span>clean_names()<span class="in">` aus dem Paket `</span>janitor`, das wir bereits geladen haben.</span>
-<span id="cb22-414"><a href="#cb22-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-417"><a href="#cb22-417" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-418"><a href="#cb22-418" aria-hidden="true" tabindex="-1"></a><span class="fu">clean_names</span>(df_groesse)</span>
-<span id="cb22-419"><a href="#cb22-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-420"><a href="#cb22-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-421"><a href="#cb22-421" aria-hidden="true" tabindex="-1"></a>Das sieht besser aus! Aber wenn Sie jetzt <span class="in">`head(df_groesse)`</span> ausführen, sehen Sie dann die bereinigten Spaltennamen?</span>
-<span id="cb22-422"><a href="#cb22-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-423"><a href="#cb22-423" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-424"><a href="#cb22-424" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spaltennamen {.unlisted .unnumbered}</span></span>
-<span id="cb22-425"><a href="#cb22-425" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-426"><a href="#cb22-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-427"><a href="#cb22-427" aria-hidden="true" tabindex="-1"></a>Das sollten Sie nicht, denn wenn wir ein Objekt durch eine Funktion übergeben, wird das Objekt nicht 'aktualisiert', so dass wir das Objekt erneut mit dem Zuweisungsoperator <span class="in">`&lt;-`</span> zuweisen müssen.</span>
-<span id="cb22-428"><a href="#cb22-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-431"><a href="#cb22-431" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-432"><a href="#cb22-432" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(df_groesse)</span>
-<span id="cb22-433"><a href="#cb22-433" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-434"><a href="#cb22-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-435"><a href="#cb22-435" aria-hidden="true" tabindex="-1"></a>Aber wir wissen oft, dass wir mehrere Funktionen (<span class="in">`read_csv()`</span>, <span class="in">`clean_names()`</span>) auf demselben Objekt ausführen wollen, denken Sie daran, dass wir das mit Pipes tun können.</span>
-<span id="cb22-436"><a href="#cb22-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-437"><a href="#cb22-437" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pipes</span></span>
-<span id="cb22-438"><a href="#cb22-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-439"><a href="#cb22-439" aria-hidden="true" tabindex="-1"></a>Pipes werden am Ende eines Funktionsaufrufs eingefügt, wenn das Ergebnis dieser Funktion durch eine nachfolgende Funktion weitergegeben werden soll. Pipes können als "und dann..." gelesen werden.</span>
-<span id="cb22-440"><a href="#cb22-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-443"><a href="#cb22-443" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-444"><a href="#cb22-444" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb22-445"><a href="#cb22-445" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb22-446"><a href="#cb22-446" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-447"><a href="#cb22-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-448"><a href="#cb22-448" aria-hidden="true" tabindex="-1"></a>Derzeit gibt es 2 Pipes, die in R verwendet werden können.</span>
-<span id="cb22-449"><a href="#cb22-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-450"><a href="#cb22-450" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>die <span class="in">`magrittr`</span> Paket-Pipe: <span class="in">`%&gt;%`</span></span>
-<span id="cb22-451"><a href="#cb22-451" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>die neue native R-Pipe: <span class="in">`|&gt;`</span></span>
-<span id="cb22-452"><a href="#cb22-452" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb22-453"><a href="#cb22-453" aria-hidden="true" tabindex="-1"></a>Es gibt keine großen Unterschiede, die für unsere aktuellen Anwendungen wichtig sind, also benutzen wir die neue <span class="in">`|&gt;`</span>. Sie können die Tastenkombination <span class="in">`Cmd/Ctrl + Shift/Strg + M`</span> verwenden, um eine Pipe zu erzeugen. Dies könnte die "Magrittr"-Paket-Pipe erzeugen, was in Ordnung ist, aber wenn Sie das ändern möchten, können Sie das unter <span class="in">`Werkzeuge &gt; Globale Optionen &gt; Code &gt; Native Pipe-Operator verwenden`</span> tun.</span>
-<span id="cb22-454"><a href="#cb22-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-455"><a href="#cb22-455" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
-<span id="cb22-456"><a href="#cb22-456" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
-<span id="cb22-457"><a href="#cb22-457" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-458"><a href="#cb22-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-459"><a href="#cb22-459" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb22-460"><a href="#cb22-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-461"><a href="#cb22-461" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-pipes]: pipes</span></span>
-<span id="cb22-462"><a href="#cb22-462" aria-hidden="true" tabindex="-1"></a>::: {#exm-pipes .custom}</span>
-<span id="cb22-463"><a href="#cb22-463" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
-<span id="cb22-464"><a href="#cb22-464" aria-hidden="true" tabindex="-1"></a><span class="ss">1.    </span>Laden Sie den Datensatz <span class="in">`groesse_geburtstag.csv`</span> erneut mit festen <span class="in">`NA`</span>s *und dann*</span>
-<span id="cb22-465"><a href="#cb22-465" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>Benutze eine Pipe, um <span class="in">`clean_names()`</span> auf dem Datensatz aufzurufen, *und dann*</span>
-<span id="cb22-466"><a href="#cb22-466" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>rufen Sie die Funktion "head()" auf</span>
-<span id="cb22-467"><a href="#cb22-467" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>Überprüfen Sie die Anzahl der Beobachtungen und Variablen, gibt es ein Problem?</span>
-<span id="cb22-468"><a href="#cb22-468" aria-hidden="true" tabindex="-1"></a><span class="ss">2.    </span>Laden Sie den Datensatz <span class="in">`groesse_geburtstag.csv`</span> erneut mit festen <span class="in">`NA`</span>s, speichern Sie ihn als Objekt <span class="in">`df_groesse`</span>, *und dann*</span>
-<span id="cb22-469"><a href="#cb22-469" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>Verwenden Sie eine Pipe, um <span class="in">`clean_names()`</span> auf den Datensatz anzuwenden.</span>
-<span id="cb22-470"><a href="#cb22-470" aria-hidden="true" tabindex="-1"></a><span class="ss">4.    </span>Warum sollte man nicht eine Pipe und die Funktion <span class="in">`head()`</span> verwenden, wenn man den Datensatz als Objekt speichert?</span>
-<span id="cb22-471"><a href="#cb22-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-474"><a href="#cb22-474" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-475"><a href="#cb22-475" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-476"><a href="#cb22-476" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-477"><a href="#cb22-477" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>), <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"N/A"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb22-478"><a href="#cb22-478" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb22-479"><a href="#cb22-479" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb22-480"><a href="#cb22-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-370"><a href="#cb22-370" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-371"><a href="#cb22-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-372"><a href="#cb22-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arbeit mit Daten</span></span>
+<span id="cb22-373"><a href="#cb22-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-374"><a href="#cb22-374" aria-hidden="true" tabindex="-1"></a>Daten sind chaotisch, aber mit Erfahrung können wir lernen, sie zu bändigen. Im Folgenden finden Sie einige Tipps, die das Gelernte über die Datenverarbeitung erweitern.</span>
+<span id="cb22-375"><a href="#cb22-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-376"><a href="#cb22-376" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fehlende Werte</span></span>
+<span id="cb22-377"><a href="#cb22-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-378"><a href="#cb22-378" aria-hidden="true" tabindex="-1"></a>Bei der Datentransformation geht es darum, unsere Daten zu "reparieren", wenn sie nicht "in Ordnung" sind. In unserem <span class="in">`df_groesse`</span> Datenrahmen haben Sie vielleicht einige <span class="in">`NA`</span> oder <span class="in">`N/A`</span> Werte bemerkt. N/A" wurde in einer unserer Beobachtungen als Text geschrieben und wird von R als solcher gelesen. N/A" in R bezieht sich auf fehlende Daten ("Nicht verfügbar"). Echte fehlende Werte sind komplett leer, so dass <span class="in">`N/A`</span> in unseren <span class="in">`df_groesse`</span>-Daten nicht wirklich als fehlender Wert gelesen wird, obwohl wir möchten, dass R weiß, dass dies als fehlende Daten zählt und nicht das Haustier von jemandem namens "NA" (Menschen tun seltsame Dinge!). Um dies zu beheben, können wir das Argument <span class="in">`na =`</span> für die Funktion <span class="in">`read_csv()`</span> verwenden, das der Funktion <span class="in">`read_csv()`</span> mitteilt, welche Werte sie mit fehlenden Werten gleichsetzen soll.</span>
+<span id="cb22-379"><a href="#cb22-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-380"><a href="#cb22-380" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-381"><a href="#cb22-381" aria-hidden="true" tabindex="-1"></a><span class="fu">### Missing values {.unlisted .unnumbered}</span></span>
+<span id="cb22-382"><a href="#cb22-382" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-383"><a href="#cb22-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-386"><a href="#cb22-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-387"><a href="#cb22-387" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb22-388"><a href="#cb22-388" aria-hidden="true" tabindex="-1"></a><span class="co"># force "N/A" to missing values</span></span>
+<span id="cb22-389"><a href="#cb22-389" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>),</span>
+<span id="cb22-390"><a href="#cb22-390" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na =</span> <span class="st">"N/A"</span>)</span>
+<span id="cb22-391"><a href="#cb22-391" aria-hidden="true" tabindex="-1"></a><span class="co"># print the head of the data set</span></span>
+<span id="cb22-392"><a href="#cb22-392" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_groesse)</span>
+<span id="cb22-393"><a href="#cb22-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-394"><a href="#cb22-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-395"><a href="#cb22-395" aria-hidden="true" tabindex="-1"></a>Jetzt wird der Wert, der vorher <span class="in">`""`</span> war, als <span class="in">`NA`</span> gelesen. Aber was ist mit der leeren Zelle? Wir haben jetzt überschrieben, dass <span class="in">`read_csv()`</span> leere Zellen als <span class="in">`NA`</span> liest. Jetzt wollen wir <span class="in">`read_csv()`</span> anweisen, *mehr als eine* Art von Eingabe als `NA` zu lesen, d.h. wir wollen es anweisen, `""` *und* <span class="in">`"N/A"`</span> als <span class="in">`NA`</span> zu lesen. Dafür verwenden wir unsere immer nützliche Verkettungsfunktion: <span class="in">`c()`</span>.</span>
+<span id="cb22-396"><a href="#cb22-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-397"><a href="#cb22-397" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-398"><a href="#cb22-398" aria-hidden="true" tabindex="-1"></a><span class="fu">### Missing values {.unlisted .unnumbered}</span></span>
+<span id="cb22-399"><a href="#cb22-399" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-400"><a href="#cb22-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-403"><a href="#cb22-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-404"><a href="#cb22-404" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb22-405"><a href="#cb22-405" aria-hidden="true" tabindex="-1"></a><span class="co"># force "N/A" and empty cells to missing values</span></span>
+<span id="cb22-406"><a href="#cb22-406" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>),</span>
+<span id="cb22-407"><a href="#cb22-407" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"N/A"</span>,<span class="st">""</span>))</span>
+<span id="cb22-408"><a href="#cb22-408" aria-hidden="true" tabindex="-1"></a><span class="co"># print the head of the data set</span></span>
+<span id="cb22-409"><a href="#cb22-409" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_groesse)</span>
+<span id="cb22-410"><a href="#cb22-410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-411"><a href="#cb22-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-412"><a href="#cb22-412" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spaltennamen</span></span>
+<span id="cb22-413"><a href="#cb22-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-414"><a href="#cb22-414" aria-hidden="true" tabindex="-1"></a>Wenn wir <span class="in">`df_groesse`</span> in der Konsole ausdrucken, werden wir sehen, dass ein Spaltenname von Backticks umgeben ist (z.B. `<span class="in">` `</span>Monat der Geburt`<span class="in">`). Das liegt daran, dass er ein Leerzeichen enthält, das syntaktisch nicht gültig ist (Variablennamen müssen mit einem Buchstaben beginnen und dürfen keine Leerzeichen oder Sonderzeichen enthalten). Eine schnelle Lösung ist die Funktion `</span>clean_names()<span class="in">` aus dem Paket `</span>janitor`, das wir bereits geladen haben.</span>
+<span id="cb22-415"><a href="#cb22-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-418"><a href="#cb22-418" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-419"><a href="#cb22-419" aria-hidden="true" tabindex="-1"></a><span class="fu">clean_names</span>(df_groesse)</span>
+<span id="cb22-420"><a href="#cb22-420" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-421"><a href="#cb22-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-422"><a href="#cb22-422" aria-hidden="true" tabindex="-1"></a>Das sieht besser aus! Aber wenn Sie jetzt <span class="in">`head(df_groesse)`</span> ausführen, sehen Sie dann die bereinigten Spaltennamen?</span>
+<span id="cb22-423"><a href="#cb22-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-424"><a href="#cb22-424" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-425"><a href="#cb22-425" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spaltennamen {.unlisted .unnumbered}</span></span>
+<span id="cb22-426"><a href="#cb22-426" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-427"><a href="#cb22-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-428"><a href="#cb22-428" aria-hidden="true" tabindex="-1"></a>Das sollten Sie nicht, denn wenn wir ein Objekt durch eine Funktion übergeben, wird das Objekt nicht 'aktualisiert', so dass wir das Objekt erneut mit dem Zuweisungsoperator <span class="in">`&lt;-`</span> zuweisen müssen.</span>
+<span id="cb22-429"><a href="#cb22-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-432"><a href="#cb22-432" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-433"><a href="#cb22-433" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(df_groesse)</span>
+<span id="cb22-434"><a href="#cb22-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-435"><a href="#cb22-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-436"><a href="#cb22-436" aria-hidden="true" tabindex="-1"></a>Aber wir wissen oft, dass wir mehrere Funktionen (<span class="in">`read_csv()`</span>, <span class="in">`clean_names()`</span>) auf demselben Objekt ausführen wollen, denken Sie daran, dass wir das mit Pipes tun können.</span>
+<span id="cb22-437"><a href="#cb22-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-438"><a href="#cb22-438" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pipes</span></span>
+<span id="cb22-439"><a href="#cb22-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-440"><a href="#cb22-440" aria-hidden="true" tabindex="-1"></a>Pipes werden am Ende eines Funktionsaufrufs eingefügt, wenn das Ergebnis dieser Funktion durch eine nachfolgende Funktion weitergegeben werden soll. Pipes können als "und dann..." gelesen werden.</span>
+<span id="cb22-441"><a href="#cb22-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-444"><a href="#cb22-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-445"><a href="#cb22-445" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-446"><a href="#cb22-446" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb22-447"><a href="#cb22-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-448"><a href="#cb22-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-449"><a href="#cb22-449" aria-hidden="true" tabindex="-1"></a>Derzeit gibt es 2 Pipes, die in R verwendet werden können.</span>
+<span id="cb22-450"><a href="#cb22-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-451"><a href="#cb22-451" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>die <span class="in">`magrittr`</span> Paket-Pipe: <span class="in">`%&gt;%`</span></span>
+<span id="cb22-452"><a href="#cb22-452" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>die neue native R-Pipe: <span class="in">`|&gt;`</span></span>
+<span id="cb22-453"><a href="#cb22-453" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-454"><a href="#cb22-454" aria-hidden="true" tabindex="-1"></a>Es gibt keine großen Unterschiede, die für unsere aktuellen Anwendungen wichtig sind, also benutzen wir die neue <span class="in">`|&gt;`</span>. Sie können die Tastenkombination <span class="in">`Cmd/Ctrl + Shift/Strg + M`</span> verwenden, um eine Pipe zu erzeugen. Dies könnte die "Magrittr"-Paket-Pipe erzeugen, was in Ordnung ist, aber wenn Sie das ändern möchten, können Sie das unter <span class="in">`Werkzeuge &gt; Globale Optionen &gt; Code &gt; Native Pipe-Operator verwenden`</span> tun.</span>
+<span id="cb22-455"><a href="#cb22-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-456"><a href="#cb22-456" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb22-457"><a href="#cb22-457" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aufgabe {.unlisted .unnumbered}</span></span>
+<span id="cb22-458"><a href="#cb22-458" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-459"><a href="#cb22-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-460"><a href="#cb22-460" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb22-461"><a href="#cb22-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-462"><a href="#cb22-462" aria-hidden="true" tabindex="-1"></a><span class="fu">#### [Aufgabe @exm-pipes]: pipes</span></span>
+<span id="cb22-463"><a href="#cb22-463" aria-hidden="true" tabindex="-1"></a>::: {#exm-pipes .custom}</span>
+<span id="cb22-464"><a href="#cb22-464" aria-hidden="true" tabindex="-1"></a>::: nonincremental</span>
+<span id="cb22-465"><a href="#cb22-465" aria-hidden="true" tabindex="-1"></a><span class="ss">1.    </span>Laden Sie den Datensatz <span class="in">`groesse_geburtstag.csv`</span> erneut mit festen <span class="in">`NA`</span>s *und dann*</span>
+<span id="cb22-466"><a href="#cb22-466" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>Benutze eine Pipe, um <span class="in">`clean_names()`</span> auf dem Datensatz aufzurufen, *und dann*</span>
+<span id="cb22-467"><a href="#cb22-467" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>rufen Sie die Funktion "head()" auf</span>
+<span id="cb22-468"><a href="#cb22-468" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>Überprüfen Sie die Anzahl der Beobachtungen und Variablen, gibt es ein Problem?</span>
+<span id="cb22-469"><a href="#cb22-469" aria-hidden="true" tabindex="-1"></a><span class="ss">2.    </span>Laden Sie den Datensatz <span class="in">`groesse_geburtstag.csv`</span> erneut mit festen <span class="in">`NA`</span>s, speichern Sie ihn als Objekt <span class="in">`df_groesse`</span>, *und dann*</span>
+<span id="cb22-470"><a href="#cb22-470" aria-hidden="true" tabindex="-1"></a><span class="ss">        + </span>Verwenden Sie eine Pipe, um <span class="in">`clean_names()`</span> auf den Datensatz anzuwenden.</span>
+<span id="cb22-471"><a href="#cb22-471" aria-hidden="true" tabindex="-1"></a><span class="ss">4.    </span>Warum sollte man nicht eine Pipe und die Funktion <span class="in">`head()`</span> verwenden, wenn man den Datensatz als Objekt speichert?</span>
+<span id="cb22-472"><a href="#cb22-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-475"><a href="#cb22-475" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-476"><a href="#cb22-476" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-477"><a href="#cb22-477" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-478"><a href="#cb22-478" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>), <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"N/A"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-479"><a href="#cb22-479" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb22-480"><a href="#cb22-480" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
 <span id="cb22-481"><a href="#cb22-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-482"><a href="#cb22-482" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>), <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"N/A"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb22-483"><a href="#cb22-483" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb22-484"><a href="#cb22-484" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-485"><a href="#cb22-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-486"><a href="#cb22-486" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-482"><a href="#cb22-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-483"><a href="#cb22-483" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>), <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"N/A"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-484"><a href="#cb22-484" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb22-485"><a href="#cb22-485" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-486"><a href="#cb22-486" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-487"><a href="#cb22-487" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-488"><a href="#cb22-488" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb22-489"><a href="#cb22-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-490"><a href="#cb22-490" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variablentypen</span></span>
-<span id="cb22-491"><a href="#cb22-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-492"><a href="#cb22-492" aria-hidden="true" tabindex="-1"></a>Das Paket <span class="in">`readr`</span> errät den Typ der Daten, die jede Spalte enthält. Die wichtigsten Spaltentypen, die man kennen muss, sind <span class="in">`numerisch`</span> und <span class="in">`Faktor`</span> (kategorisch). Faktoren enthalten *Kategorien* oder *Gruppen* von Daten, können aber manchmal *aussehen* wie <span class="in">`numerische`</span> Daten. Zum Beispiel enthält unsere Spalte "Monat" Zahlen, aber sie könnte auch den Namen jedes Monats enthalten. Ein guter Weg, um zu wissen, was was ist: Es ist sinnvoll, den Mittelwert einer "numerischen" Variablen zu berechnen, aber nicht den eines "Faktors". Zum Beispiel ist es sinnvoll, den Mittelwert der Körpergröße zu berechnen, aber nicht den Mittelwert des Geburtsmonats.</span>
-<span id="cb22-493"><a href="#cb22-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-494"><a href="#cb22-494" aria-hidden="true" tabindex="-1"></a>Um sicherzustellen, dass eine Variable als Faktor gespeichert wird, können wir die Funktion <span class="in">`as_factor()`</span> verwenden. Wir können entweder die R-Basissyntax verwenden, um dies zu tun, indem wir ein <span class="in">`$`</span> verwenden, um eine Spalte in einem Datenrahmen zu indizieren:</span>
-<span id="cb22-495"><a href="#cb22-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-489"><a href="#cb22-489" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-490"><a href="#cb22-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-491"><a href="#cb22-491" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variablentypen</span></span>
+<span id="cb22-492"><a href="#cb22-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-493"><a href="#cb22-493" aria-hidden="true" tabindex="-1"></a>Das Paket <span class="in">`readr`</span> errät den Typ der Daten, die jede Spalte enthält. Die wichtigsten Spaltentypen, die man kennen muss, sind <span class="in">`numerisch`</span> und <span class="in">`Faktor`</span> (kategorisch). Faktoren enthalten *Kategorien* oder *Gruppen* von Daten, können aber manchmal *aussehen* wie <span class="in">`numerische`</span> Daten. Zum Beispiel enthält unsere Spalte "Monat" Zahlen, aber sie könnte auch den Namen jedes Monats enthalten. Ein guter Weg, um zu wissen, was was ist: Es ist sinnvoll, den Mittelwert einer "numerischen" Variablen zu berechnen, aber nicht den eines "Faktors". Zum Beispiel ist es sinnvoll, den Mittelwert der Körpergröße zu berechnen, aber nicht den Mittelwert des Geburtsmonats.</span>
+<span id="cb22-494"><a href="#cb22-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-495"><a href="#cb22-495" aria-hidden="true" tabindex="-1"></a>Um sicherzustellen, dass eine Variable als Faktor gespeichert wird, können wir die Funktion <span class="in">`as_factor()`</span> verwenden. Wir können entweder die R-Basissyntax verwenden, um dies zu tun, indem wir ein <span class="in">`$`</span> verwenden, um eine Spalte in einem Datenrahmen zu indizieren:</span>
 <span id="cb22-496"><a href="#cb22-496" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-499"><a href="#cb22-499" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-500"><a href="#cb22-500" aria-hidden="true" tabindex="-1"></a>df_groesse<span class="sc">$</span>monat_der_geburt <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(df_groesse<span class="sc">$</span>monat_der_geburt)</span>
-<span id="cb22-501"><a href="#cb22-501" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-502"><a href="#cb22-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-503"><a href="#cb22-503" aria-hidden="true" tabindex="-1"></a>Or we can use <span class="in">`tidyverse`</span> syntax and the <span class="in">`mutate()`</span> function.</span>
-<span id="cb22-504"><a href="#cb22-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-507"><a href="#cb22-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-508"><a href="#cb22-508" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span></span>
-<span id="cb22-509"><a href="#cb22-509" aria-hidden="true" tabindex="-1"></a>  df_groesse <span class="sc">|&gt;</span> </span>
-<span id="cb22-510"><a href="#cb22-510" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">monat_der_geburt =</span> <span class="fu">as_factor</span>(monat_der_geburt))</span>
-<span id="cb22-511"><a href="#cb22-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-512"><a href="#cb22-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-513"><a href="#cb22-513" aria-hidden="true" tabindex="-1"></a><span class="fu">## Andere Dateitypen und Begrenzungszeichen</span></span>
-<span id="cb22-514"><a href="#cb22-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-515"><a href="#cb22-515" aria-hidden="true" tabindex="-1"></a>Sobald Sie mit <span class="in">`read_csv()`</span> vertraut sind, sind die anderen Funktionen von <span class="in">`readr`</span> einfach zu benutzen, Sie müssen nur wissen, wann Sie welche benutzen.</span>
-<span id="cb22-516"><a href="#cb22-516" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-517"><a href="#cb22-517" aria-hidden="true" tabindex="-1"></a>Die Funktion <span class="in">`read_csv2()`</span> liest Semikolon-separierte Dateien. Diese verwenden Semikolons (<span class="in">`;`</span>) anstelle von Kommas (<span class="in">`,`</span>), um Felder zu trennen und sind in Ländern üblich, die <span class="in">`,`</span> als Dezimaltrennzeichen verwenden (wie Deutschland).</span>
-<span id="cb22-518"><a href="#cb22-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-519"><a href="#cb22-519" aria-hidden="true" tabindex="-1"></a>Die Funktion <span class="in">`read_tsv()`</span> liest Tabulator-getrennte Dateien. Die Funktion <span class="in">`read_delim()`</span> liest Dateien mit beliebigen Trennzeichen ein und versucht, das Trennzeichen zu erraten, es sei denn, Sie geben es mit dem Argument <span class="in">`delim =`</span> an (z.B. <span class="in">`read_delim(students.csv, delim = ",")`</span>).</span>
-<span id="cb22-520"><a href="#cb22-520" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-521"><a href="#cb22-521" aria-hidden="true" tabindex="-1"></a><span class="in">`readr`</span> hat mehrere andere Funktionen, die ich persönlich noch nicht gebraucht habe, wie zum Beispiel:</span>
-<span id="cb22-522"><a href="#cb22-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-523"><a href="#cb22-523" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`read_fwf()`</span> liest Dateien mit fester Breite</span>
-<span id="cb22-524"><a href="#cb22-524" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`read_table()`</span> liest eine gängige Variante von Dateien mit fester Breite, bei der die Spalten durch Leerzeichen getrennt sind</span>
-<span id="cb22-525"><a href="#cb22-525" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`read_log()`</span> liest Log-Dateien im Apache-Stil</span>
-<span id="cb22-526"><a href="#cb22-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-527"><a href="#cb22-527" aria-hidden="true" tabindex="-1"></a><span class="fu">## Übungen {.unnummeriert}</span></span>
-<span id="cb22-528"><a href="#cb22-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-529"><a href="#cb22-529" aria-hidden="true" tabindex="-1"></a>Nun wollen wir üben, das Paket <span class="in">`readr`</span> zu benutzen und mit unseren Daten zu arbeiten.</span>
-<span id="cb22-530"><a href="#cb22-530" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-531"><a href="#cb22-531" aria-hidden="true" tabindex="-1"></a><span class="fu">### `readr` Funktionen {.unnumbered}</span></span>
-<span id="cb22-532"><a href="#cb22-532" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-533"><a href="#cb22-533" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Welche Funktion würdest du benutzen, um eine Datei zu lesen, in der die Felder mit "<span class="in">`|`</span>" getrennt sind?</span>
-<span id="cb22-534"><a href="#cb22-534" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Welche Argumente haben <span class="in">`read_csv()`</span> und <span class="in">`read_tsv()`</span> gemeinsam?</span>
-<span id="cb22-535"><a href="#cb22-535" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Welche Funktion(en) könnten Sie verwenden, um einen Datensatz mit einem Semikolon (<span class="in">`;`</span>) als Trennzeichen einzulesen?</span>
-<span id="cb22-536"><a href="#cb22-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-537"><a href="#cb22-537" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data wrangling {.unnumbered}</span></span>
-<span id="cb22-538"><a href="#cb22-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-539"><a href="#cb22-539" aria-hidden="true" tabindex="-1"></a>Laden Sie die Datei <span class="in">`groesse_geburtstag.csv`</span> erneut. Benutzen Sie Pipes, um auch die Funktion <span class="in">`clean_names`</span> zu benutzen, und um die folgenden Änderungen im Objekt <span class="in">`df_groesse`</span> vorzunehmen.</span>
-<span id="cb22-540"><a href="#cb22-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-541"><a href="#cb22-541" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Umwandlung der Variablen <span class="in">`l1`</span> in einen Faktor.</span>
-<span id="cb22-542"><a href="#cb22-542" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Umbenennen von </span>
-<span id="cb22-543"><a href="#cb22-543" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`grosse`</span> in <span class="in">`groesse`</span></span>
-<span id="cb22-544"><a href="#cb22-544" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`monat_der_geburt`</span> in <span class="in">`geburtsmonat`</span></span>
-<span id="cb22-545"><a href="#cb22-545" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-548"><a href="#cb22-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-549"><a href="#cb22-549" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-550"><a href="#cb22-550" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span></span>
-<span id="cb22-551"><a href="#cb22-551" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten/groesse_geburtstag.csv"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb22-552"><a href="#cb22-552" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb22-553"><a href="#cb22-553" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb22-554"><a href="#cb22-554" aria-hidden="true" tabindex="-1"></a>    <span class="at">groesse =</span> grosse,</span>
-<span id="cb22-555"><a href="#cb22-555" aria-hidden="true" tabindex="-1"></a>    <span class="at">geburtsmonat =</span> monat_der_geburt</span>
-<span id="cb22-556"><a href="#cb22-556" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb22-557"><a href="#cb22-557" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">l1 =</span> <span class="fu">as_factor</span>(l1))</span>
-<span id="cb22-558"><a href="#cb22-558" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-559"><a href="#cb22-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-560"><a href="#cb22-560" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plots {.unnumbered}</span></span>
-<span id="cb22-561"><a href="#cb22-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-562"><a href="#cb22-562" aria-hidden="true" tabindex="-1"></a>Erstelle ein Streudiagramm mit unserem <span class="in">`df_groesse`</span>-Datensatz, das die Beziehung zwischen unserem Geburtsdatum und unseren Geburtstagen visualisiert (es macht keinen Sinn, dies zu vergleichen, aber es ist nur eine Übung). Suchen Sie Ihren Geburtstag in der Grafik. Stellen Sie die Farbe und die Form so ein, dass sie "L1" entsprechen. Fügen Sie einen Titel für die Grafik hinzu.</span>
-<span id="cb22-563"><a href="#cb22-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-566"><a href="#cb22-566" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-567"><a href="#cb22-567" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-568"><a href="#cb22-568" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-569"><a href="#cb22-569" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="sc">|&gt;</span> </span>
-<span id="cb22-570"><a href="#cb22-570" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb22-571"><a href="#cb22-571" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> geburtsmonat, <span class="at">y =</span> tag, <span class="at">colour =</span> l1, <span class="at">shape =</span> l1) <span class="sc">+</span></span>
-<span id="cb22-572"><a href="#cb22-572" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Geburtsmonat und Geburtstag"</span>,</span>
-<span id="cb22-573"><a href="#cb22-573" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Geburtsag"</span>,</span>
-<span id="cb22-574"><a href="#cb22-574" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Geburtsmonat"</span>) <span class="sc">+</span></span>
-<span id="cb22-575"><a href="#cb22-575" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-576"><a href="#cb22-576" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb22-577"><a href="#cb22-577" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-578"><a href="#cb22-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-497"><a href="#cb22-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-500"><a href="#cb22-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-501"><a href="#cb22-501" aria-hidden="true" tabindex="-1"></a>df_groesse<span class="sc">$</span>monat_der_geburt <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(df_groesse<span class="sc">$</span>monat_der_geburt)</span>
+<span id="cb22-502"><a href="#cb22-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-503"><a href="#cb22-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-504"><a href="#cb22-504" aria-hidden="true" tabindex="-1"></a>Or we can use <span class="in">`tidyverse`</span> syntax and the <span class="in">`mutate()`</span> function.</span>
+<span id="cb22-505"><a href="#cb22-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-508"><a href="#cb22-508" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-509"><a href="#cb22-509" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span></span>
+<span id="cb22-510"><a href="#cb22-510" aria-hidden="true" tabindex="-1"></a>  df_groesse <span class="sc">|&gt;</span> </span>
+<span id="cb22-511"><a href="#cb22-511" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">monat_der_geburt =</span> <span class="fu">as_factor</span>(monat_der_geburt))</span>
+<span id="cb22-512"><a href="#cb22-512" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-513"><a href="#cb22-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-514"><a href="#cb22-514" aria-hidden="true" tabindex="-1"></a><span class="fu">## Andere Dateitypen und Begrenzungszeichen</span></span>
+<span id="cb22-515"><a href="#cb22-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-516"><a href="#cb22-516" aria-hidden="true" tabindex="-1"></a>Sobald Sie mit <span class="in">`read_csv()`</span> vertraut sind, sind die anderen Funktionen von <span class="in">`readr`</span> einfach zu benutzen, Sie müssen nur wissen, wann Sie welche benutzen.</span>
+<span id="cb22-517"><a href="#cb22-517" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-518"><a href="#cb22-518" aria-hidden="true" tabindex="-1"></a>Die Funktion <span class="in">`read_csv2()`</span> liest Semikolon-separierte Dateien. Diese verwenden Semikolons (<span class="in">`;`</span>) anstelle von Kommas (<span class="in">`,`</span>), um Felder zu trennen und sind in Ländern üblich, die <span class="in">`,`</span> als Dezimaltrennzeichen verwenden (wie Deutschland).</span>
+<span id="cb22-519"><a href="#cb22-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-520"><a href="#cb22-520" aria-hidden="true" tabindex="-1"></a>Die Funktion <span class="in">`read_tsv()`</span> liest Tabulator-getrennte Dateien. Die Funktion <span class="in">`read_delim()`</span> liest Dateien mit beliebigen Trennzeichen ein und versucht, das Trennzeichen zu erraten, es sei denn, Sie geben es mit dem Argument <span class="in">`delim =`</span> an (z.B. <span class="in">`read_delim(students.csv, delim = ",")`</span>).</span>
+<span id="cb22-521"><a href="#cb22-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-522"><a href="#cb22-522" aria-hidden="true" tabindex="-1"></a><span class="in">`readr`</span> hat mehrere andere Funktionen, die ich persönlich noch nicht gebraucht habe, wie zum Beispiel:</span>
+<span id="cb22-523"><a href="#cb22-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-524"><a href="#cb22-524" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`read_fwf()`</span> liest Dateien mit fester Breite</span>
+<span id="cb22-525"><a href="#cb22-525" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`read_table()`</span> liest eine gängige Variante von Dateien mit fester Breite, bei der die Spalten durch Leerzeichen getrennt sind</span>
+<span id="cb22-526"><a href="#cb22-526" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`read_log()`</span> liest Log-Dateien im Apache-Stil</span>
+<span id="cb22-527"><a href="#cb22-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-528"><a href="#cb22-528" aria-hidden="true" tabindex="-1"></a><span class="fu">## Übungen {.unnummeriert}</span></span>
+<span id="cb22-529"><a href="#cb22-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-530"><a href="#cb22-530" aria-hidden="true" tabindex="-1"></a>Nun wollen wir üben, das Paket <span class="in">`readr`</span> zu benutzen und mit unseren Daten zu arbeiten.</span>
+<span id="cb22-531"><a href="#cb22-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-532"><a href="#cb22-532" aria-hidden="true" tabindex="-1"></a><span class="fu">### `readr` Funktionen {.unnumbered}</span></span>
+<span id="cb22-533"><a href="#cb22-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-534"><a href="#cb22-534" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Welche Funktion würdest du benutzen, um eine Datei zu lesen, in der die Felder mit "<span class="in">`|`</span>" getrennt sind?</span>
+<span id="cb22-535"><a href="#cb22-535" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Welche Argumente haben <span class="in">`read_csv()`</span> und <span class="in">`read_tsv()`</span> gemeinsam?</span>
+<span id="cb22-536"><a href="#cb22-536" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Welche Funktion(en) könnten Sie verwenden, um einen Datensatz mit einem Semikolon (<span class="in">`;`</span>) als Trennzeichen einzulesen?</span>
+<span id="cb22-537"><a href="#cb22-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-538"><a href="#cb22-538" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data wrangling {.unnumbered}</span></span>
+<span id="cb22-539"><a href="#cb22-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-540"><a href="#cb22-540" aria-hidden="true" tabindex="-1"></a>Laden Sie die Datei <span class="in">`groesse_geburtstag.csv`</span> erneut. Benutzen Sie Pipes, um auch die Funktion <span class="in">`clean_names`</span> zu benutzen, und um die folgenden Änderungen im Objekt <span class="in">`df_groesse`</span> vorzunehmen.</span>
+<span id="cb22-541"><a href="#cb22-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-542"><a href="#cb22-542" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Umwandlung der Variablen <span class="in">`l1`</span> in einen Faktor.</span>
+<span id="cb22-543"><a href="#cb22-543" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Umbenennen von </span>
+<span id="cb22-544"><a href="#cb22-544" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`grosse`</span> in <span class="in">`groesse`</span></span>
+<span id="cb22-545"><a href="#cb22-545" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`monat_der_geburt`</span> in <span class="in">`geburtsmonat`</span></span>
+<span id="cb22-546"><a href="#cb22-546" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-549"><a href="#cb22-549" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-550"><a href="#cb22-550" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-551"><a href="#cb22-551" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="ot">&lt;-</span></span>
+<span id="cb22-552"><a href="#cb22-552" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten/groesse_geburtstag.csv"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-553"><a href="#cb22-553" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-554"><a href="#cb22-554" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb22-555"><a href="#cb22-555" aria-hidden="true" tabindex="-1"></a>    <span class="at">groesse =</span> grosse,</span>
+<span id="cb22-556"><a href="#cb22-556" aria-hidden="true" tabindex="-1"></a>    <span class="at">geburtsmonat =</span> monat_der_geburt</span>
+<span id="cb22-557"><a href="#cb22-557" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb22-558"><a href="#cb22-558" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">l1 =</span> <span class="fu">as_factor</span>(l1))</span>
+<span id="cb22-559"><a href="#cb22-559" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-560"><a href="#cb22-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-561"><a href="#cb22-561" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plots {.unnumbered}</span></span>
+<span id="cb22-562"><a href="#cb22-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-563"><a href="#cb22-563" aria-hidden="true" tabindex="-1"></a>Erstelle ein Streudiagramm mit unserem <span class="in">`df_groesse`</span>-Datensatz, das die Beziehung zwischen unserem Geburtsdatum und unseren Geburtstagen visualisiert (es macht keinen Sinn, dies zu vergleichen, aber es ist nur eine Übung). Suchen Sie Ihren Geburtstag in der Grafik. Stellen Sie die Farbe und die Form so ein, dass sie "L1" entsprechen. Fügen Sie einen Titel für die Grafik hinzu.</span>
+<span id="cb22-564"><a href="#cb22-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-567"><a href="#cb22-567" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-568"><a href="#cb22-568" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-569"><a href="#cb22-569" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-570"><a href="#cb22-570" aria-hidden="true" tabindex="-1"></a>df_groesse <span class="sc">|&gt;</span> </span>
+<span id="cb22-571"><a href="#cb22-571" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb22-572"><a href="#cb22-572" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> geburtsmonat, <span class="at">y =</span> tag, <span class="at">colour =</span> l1, <span class="at">shape =</span> l1) <span class="sc">+</span></span>
+<span id="cb22-573"><a href="#cb22-573" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Geburtsmonat und Geburtstag"</span>,</span>
+<span id="cb22-574"><a href="#cb22-574" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Geburtsag"</span>,</span>
+<span id="cb22-575"><a href="#cb22-575" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Geburtsmonat"</span>) <span class="sc">+</span></span>
+<span id="cb22-576"><a href="#cb22-576" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb22-577"><a href="#cb22-577" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb22-578"><a href="#cb22-578" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-579"><a href="#cb22-579" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-580"><a href="#cb22-580" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele 🏁 {.unnumbered .unlisted}</span></span>
-<span id="cb22-581"><a href="#cb22-581" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-582"><a href="#cb22-582" aria-hidden="true" tabindex="-1"></a>Heute haben wir gelernt, wie man...</span>
-<span id="cb22-583"><a href="#cb22-583" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-584"><a href="#cb22-584" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lokale Datendateien mit dem Paket <span class="in">`readr`</span> importiert ✅</span>
-<span id="cb22-585"><a href="#cb22-585" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>fehlende Werte behandeln ✅</span>
-<span id="cb22-586"><a href="#cb22-586" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variablen in Faktoren umwandeln ✅</span>
-<span id="cb22-587"><a href="#cb22-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-588"><a href="#cb22-588" aria-hidden="true" tabindex="-1"></a>Lassen Sie uns nun dieses neue Wissen anwenden.</span>
-<span id="cb22-589"><a href="#cb22-589" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-590"><a href="#cb22-590" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info {.unnumbered}</span></span>
-<span id="cb22-591"><a href="#cb22-591" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-594"><a href="#cb22-594" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-595"><a href="#cb22-595" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-596"><a href="#cb22-596" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-597"><a href="#cb22-597" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
-<span id="cb22-598"><a href="#cb22-598" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>release_name</span>
-<span id="cb22-599"><a href="#cb22-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-600"><a href="#cb22-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-580"><a href="#cb22-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-581"><a href="#cb22-581" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele 🏁 {.unnumbered .unlisted}</span></span>
+<span id="cb22-582"><a href="#cb22-582" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-583"><a href="#cb22-583" aria-hidden="true" tabindex="-1"></a>Heute haben wir gelernt, wie man...</span>
+<span id="cb22-584"><a href="#cb22-584" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-585"><a href="#cb22-585" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lokale Datendateien mit dem Paket <span class="in">`readr`</span> importiert ✅</span>
+<span id="cb22-586"><a href="#cb22-586" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>fehlende Werte behandeln ✅</span>
+<span id="cb22-587"><a href="#cb22-587" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variablen in Faktoren umwandeln ✅</span>
+<span id="cb22-588"><a href="#cb22-588" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-589"><a href="#cb22-589" aria-hidden="true" tabindex="-1"></a>Lassen Sie uns nun dieses neue Wissen anwenden.</span>
+<span id="cb22-590"><a href="#cb22-590" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-591"><a href="#cb22-591" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info {.unnumbered}</span></span>
+<span id="cb22-592"><a href="#cb22-592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-595"><a href="#cb22-595" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-596"><a href="#cb22-596" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-597"><a href="#cb22-597" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-598"><a href="#cb22-598" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
+<span id="cb22-599"><a href="#cb22-599" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>release_name</span>
+<span id="cb22-600"><a href="#cb22-600" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-601"><a href="#cb22-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-602"><a href="#cb22-602" aria-hidden="true" tabindex="-1"></a>Hergestellt mit <span class="in">`r R.version.string`</span> (<span class="in">`r R.version$nickname`</span>) und RStudioversion 2023.9.0.463 (Desert Sunflower).</span>
-<span id="cb22-603"><a href="#cb22-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-606"><a href="#cb22-606" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-607"><a href="#cb22-607" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb22-608"><a href="#cb22-608" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-609"><a href="#cb22-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-610"><a href="#cb22-610" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
-<span id="cb22-611"><a href="#cb22-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-612"><a href="#cb22-612" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
-<span id="cb22-613"><a href="#cb22-613" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-602"><a href="#cb22-602" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-603"><a href="#cb22-603" aria-hidden="true" tabindex="-1"></a>Hergestellt mit <span class="in">`r R.version.string`</span> (<span class="in">`r R.version$nickname`</span>) und RStudioversion 2023.9.0.463 (Desert Sunflower).</span>
+<span id="cb22-604"><a href="#cb22-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-607"><a href="#cb22-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-608"><a href="#cb22-608" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb22-609"><a href="#cb22-609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-610"><a href="#cb22-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-611"><a href="#cb22-611" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb22-612"><a href="#cb22-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-613"><a href="#cb22-613" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
+<span id="cb22-614"><a href="#cb22-614" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
