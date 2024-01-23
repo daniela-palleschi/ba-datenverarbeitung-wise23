@@ -133,6 +133,7 @@ MathJax.Hub.Config({
 </script>
 
 
+<link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)">
 <meta name="twitter:description" content="WiSe23/24">
 <meta name="twitter:card" content="summary">
@@ -315,14 +316,27 @@ MathJax.Hub.Config({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mats/11-bericht_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bericht 2</span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bericht 2</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Fortgeschrittene Themen</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Fortgeschrittene Themen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mats/12-baseR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -394,17 +408,17 @@ MathJax.Hub.Config({
 </section>
 <section id="ziele-des-kurses" class="level2">
 <h2 class="anchored" data-anchor-id="ziele-des-kurses">Ziele des Kurses</h2>
-<p>Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer “Explorativen Datenanalyse (EDA)” erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr “a state of mind” <span class="citation" data-cites="wickham_r_2023">(<a href="mats/01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">Wickham et al., 2023, Kapitel 11</a>)</span>. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.</p>
+<p>Das Hauptziel dieses Kurses ist es, die Kenntnisse und Fähigkeiten zu entwickeln, die für die Durchführung einer “Explorativen Datenanalyse (EDA)” erforderlich sind. EDA ist kein formaler Prozess mit spezifischen Regeln, sondern vielmehr “a state of mind” <span class="citation" data-cites="wickham_r_2023">(<a href="#ref-wickham_r_2023" role="doc-biblioref">Wickham et al., 2023, Kapitel 11</a>)</span>. Das Wissen, das für die Durchführung einer EDA erforderlich ist, besteht einfach darin, die Daten zu verstehen und ihre Struktur zu erforschen, um ein Verständnis für ihre Verteilung und Muster zu bekommen. Die für die Durchführung einer EDA erforderlichen Fähigkeiten sind spezifisch für die zur Durchführung der EDA verwendete Sprache, in unserem Fall R.</p>
 </section>
 <section id="ressourcen" class="level2">
 <h2 class="anchored" data-anchor-id="ressourcen">Ressourcen</h2>
 <p>Die meisten unserer Materialien basieren auf dem Buch “R for Data Science” von Hadley Wickham (2. Auflage), das Sie <a href="https://r4ds.hadley.nz/">hier</a> vollständig online einsehen können. Wo es möglich war, habe ich die in diesem Buch verwendeten Daten durch linguistische Datensätze ersetzt, damit Sie sich ein Bild davon machen können, wie Linguisten R verwenden könnten.</p>
-<p>Einige andere Ressourcen, die wir von Zeit zu Zeit verwenden werden oder die Sie vielleicht selbst erkunden möchten, sind das E-book <em>Data visualisation using R, for researchers who don’t use R</em> <span class="citation" data-cites="nordmann_data_2022">(<a href="mats/01-intro_r.html#ref-nordmann_data_2022" role="doc-biblioref">Nordmann et al., 2022</a>)</span> und das Lehrbuch <em>Statistics for Linguists: An Introduction Using R</em> by Bodo Winter [<span class="citation" data-cites="winter_statistics_2019">Winter (<a href="mats/01-intro_r.html#ref-winter_statistics_2019" role="doc-biblioref">2019</a>)</span>; PDF erhältlich über das Grimm Zentrum].</p>
+<p>Einige andere Ressourcen, die wir von Zeit zu Zeit verwenden werden oder die Sie vielleicht selbst erkunden möchten, sind das E-book <em>Data visualisation using R, for researchers who don’t use R</em> <span class="citation" data-cites="nordmann_data_2022">(<a href="#ref-nordmann_data_2022" role="doc-biblioref">Nordmann et al., 2022</a>)</span> und das Lehrbuch <em>Statistics for Linguists: An Introduction Using R</em> by Bodo Winter [<span class="citation" data-cites="winter_statistics_2019">Winter (<a href="#ref-winter_statistics_2019" role="doc-biblioref">2019</a>)</span>; PDF erhältlich über das Grimm Zentrum].</p>
 
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
 <div id="ref-nordmann_data_2022" class="csl-entry" role="listitem">
 Nordmann, E., McAleer, P., Toivo, W., Paterson, H., &amp; DeBruine, L. M. (2022). Data <span>Visualization Using R</span> for <span>Researchers Who Do Not Use R</span>. <em>Advances in Methods and Practices in Psychological Science</em>, <em>5</em>(2), 251524592210746. <a href="https://doi.org/10.1177/25152459221074654">https://doi.org/10.1177/25152459221074654</a>
 </div>

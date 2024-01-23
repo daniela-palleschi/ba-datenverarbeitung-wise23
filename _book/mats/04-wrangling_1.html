@@ -134,6 +134,7 @@ MathJax.Hub.Config({
 </script>
 
 
+<link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 4&nbsp; Data Wrangling 1: Transformation">
 <meta name="twitter:description" content="Umwandlung von Daten">
 <meta name="twitter:card" content="summary">
@@ -316,14 +317,27 @@ MathJax.Hub.Config({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/11-bericht_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bericht 2</span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bericht 2</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Fortgeschrittene Themen</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Fortgeschrittene Themen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/12-baseR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -408,7 +422,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Di. den 12.12.2023</p>
+      <p class="date-modified">Mi. den 17.01.2024</p>
     </div>
   </div>
     
@@ -419,8 +433,8 @@ MathJax.Hub.Config({
 
 <section id="lesungen" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h3>
-<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-transform">Kap. 4 (Data Transformation)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
-<p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/09-wrangle.html">Ch. 9 (Data Wrangling)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-transform">Kap. 4 (Data Transformation)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/09-wrangle.html">Ch. 9 (Data Wrangling)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
 </section>
 <section id="wiederholung" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="wiederholung">Wiederholung</h2>
@@ -446,8 +460,8 @@ MathJax.Hub.Config({
 <section id="lust-auf-mehr" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="lust-auf-mehr">Lust auf mehr?</h3>
 <ul>
-<li><a href="https://r4ds.hadley.nz/data-transform.html">Kapital 4 (Data transformation)</a> in <span class="citation" data-cites="wickham_r_nodate">(<a href="01-intro_r.html#ref-wickham_r_nodate" role="doc-biblioref"><strong>wickham_r_nodate?</strong></a>)</span></li>
-<li><a href="https://psyteachr.github.io/ads-v2/09-wrangle.html">Kapital 9 (Data wrangling)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span></li>
+<li><a href="https://r4ds.hadley.nz/data-transform.html">Kapital 4 (Data transformation)</a> in <span class="citation" data-cites="wickham_r_nodate">(<a href="#ref-wickham_r_nodate" role="doc-biblioref"><strong>wickham_r_nodate?</strong></a>)</span></li>
+<li><a href="https://psyteachr.github.io/ads-v2/09-wrangle.html">Kapital 9 (Data wrangling)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span></li>
 </ul>
 </section>
 </section>
@@ -490,7 +504,7 @@ MathJax.Hub.Config({
 <ol start="3" type="1">
 <li>Daten
 <ul>
-<li>wir arbeiten wieder mit dem <code>lexdec</code>-Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="01-intro_r.html#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span></li>
+<li>wir arbeiten wieder mit dem <code>lexdec</code>-Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span></li>
 <li>wir speichern ihn als Objekt mit dem Namen <code>df_lexdec</code></li>
 <li>wir wandeln auch die Variable <code>RT</code> um, so dass sie in Millisekunden angegeben wird (vorher war sie in log Millisekunden angegeben, aber machen Sie sich keine Gedanken darüber, was das bedeutet)</li>
 <li>und wir wählen 10 Variablen aus, die für uns heute relevant sind</li>
@@ -560,7 +574,7 @@ Der Name <code>dplyr</code>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-df_lexent">Aufgabe&nbsp;<span>4.1</span></a>: <code>df_lexdec</code>
+<a href="#exm-df_lexent">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-df_lexent</span></a>: <code>df_lexdec</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -789,7 +803,7 @@ Logische Operatoren
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-filter">Aufgabe&nbsp;<span>4.2</span></a>: <code>filter()</code>
+<a href="#exm-filter">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-filter</span></a>: <code>filter()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -893,7 +907,7 @@ Logische Operatoren
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-arrange">Aufgabe&nbsp;<span>4.3</span></a>: <code>arrange()</code>
+<a href="#exm-arrange">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-arrange</span></a>: <code>arrange()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1033,7 +1047,7 @@ Rendernpause!
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-mutate">Aufgabe&nbsp;<span>4.4</span></a>: <code>mutate()</code>
+<a href="#exm-mutate">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-mutate</span></a>: <code>mutate()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1167,7 +1181,7 @@ Rendernpause!
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-select">Aufgabe&nbsp;<span>4.5</span></a>: <code>select()</code>
+<a href="#exm-select">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-select</span></a>: <code>select()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1367,7 +1381,7 @@ loaded via a namespace (and not attached):
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list">
 <div id="ref-languageR-package" class="csl-entry" role="listitem">
 Baayen, R. H., &amp; Shafaei-Bajestan, E. (2019). <em>languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics</em>. <a href="https://CRAN.R-project.org/package=languageR">https://CRAN.R-project.org/package=languageR</a>
 </div>
@@ -1813,8 +1827,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "11/08/2023"</span></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "ddd [den] DD.MM.YYYY"</span></span>
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> true</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
 <span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Wrangling 1: Transformation {#sec-data-transform}</span></span>

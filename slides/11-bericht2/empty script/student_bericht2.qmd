@@ -9,7 +9,12 @@ number-sections: true
 toc: true
 echo: true
 eval: false
+output:
+  pdf: default
+  html: default
 ---
+
+> Hinweis: Den Anweisungen wird ein ">" vorangestellt, damit sie beim Rendern Ihres Dokuments als lange Anführungszeichen formatiert werden. Bitte belassen Sie dies so, und wenn Sie Text schreiben müssen, verwenden Sie kein ">". Auf diese Weise lassen sich Ihre Antworten in der gerenderten Ausgabe leicht von den Anweisungen unterscheiden.
 
 # Einrichten
 

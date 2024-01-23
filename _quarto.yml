@@ -44,8 +44,8 @@ book:
         - mats/10-dataviz_3.qmd
         - mats/11-bericht_2.qmd
     - part: "Fortgeschrittene Themen"
-      # chapters:
-        # - mats/12-baseR.qmd
+      chapters:
+        - mats/12-baseR.qmd
         # - mats/13-infer_stats_1.qmd
         # - mats/14-dataviz_3.qmd
         # - berichte/bericht_3.qmd
@@ -71,6 +71,7 @@ format:
     code-overflow: wrap
     page-layout: full
     embed-resources: false
+    css: cutsom.css
     theme:
       light: flatly
       dark: darkly

@@ -82,11 +82,10 @@ Hier sind meine bevorzugten globalen Optionen (RStudio > Werkzeuge > Globale Opt
   - Erscheinungsbild
     - Editor-Thema: Kobalt
 
-# tinyTex (optional) {#sec-tinytex}
+# tinyTex {#sec-tinytex}
 
-Im weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir [tinytex](https://yihui.org/tinytex/) installieren. Es gibt verschiedene Möglichkeiten, dies zu tun:
+Im weiteren Verlauf des Kurses werden wir lernen, wie man verschiedene Ausgabeformate, einschließlich PDF, erzeugt. Um PDF-Dokumente mit LaTeX unter der Haube darstellen zu können, müssen wir [tinytex](https://yihui.org/tinytex/) installieren [@tinytex-package]. Es gibt verschiedene Möglichkeiten, dies zu tun:
 
 - Führen Sie folgendes im *Terminal* aus: `quarto install tinytex`
 - oder in der Konsole: `tinytex::install_tinytex()`
 
-Sie können diesen Schritt vorerst überspringen, falls Sie Probleme haben.
