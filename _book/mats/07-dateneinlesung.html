@@ -445,13 +445,13 @@ MathJax.Hub.Config({
 </ul>
 <section id="lesungen" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="lesungen">Lesungen</h3>
-<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-import">Kap. 8 (Data Import)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
-<p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/04-data.html">Ch. 4 (Data Import)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/data-import">Kap. 8 (Data Import)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p>Eine <strong>ergänzende Lektüre</strong> ist <a href="https://psyteachr.github.io/ads-v2/04-data.html">Ch. 4 (Data Import)</a> in <span class="citation" data-cites="nordmann_applied_2022">Nordmann &amp; DeBruine (<a href="01-intro_r.html#ref-nordmann_applied_2022" role="doc-biblioref">2022</a>)</span>.</p>
 </section>
 </section>
 <section id="wiederholung" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="wiederholung">Wiederholung</h2>
-<p>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span> eingelesen, ihn mit dem <code>dplyr</code>-Paket aus dem <code>tidyverse</code> verarbeitet und mehrere Diagramme mit dem <code>ggplot2</code>-Paket aus dem <code>tidyverse</code> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</p>
+<p>Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="01-intro_r.html#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span> eingelesen, ihn mit dem <code>dplyr</code>-Paket aus dem <code>tidyverse</code> verarbeitet und mehrere Diagramme mit dem <code>ggplot2</code>-Paket aus dem <code>tidyverse</code> erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.</p>
 </section>
 <section id="einrichtung" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="einrichtung"><span class="header-section-number">7.1</span> Einrichtung</h2>
@@ -486,10 +486,10 @@ Aufgabe
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie <code>r4ling_student-main</code> oben in Ihrem RStudio (<a href="#fig-project">Abbildung&nbsp;<span class="quarto-unresolved-ref">fig-project</span></a>).</li>
+<li>Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie <code>r4ling_student-main</code> oben in Ihrem RStudio (<a href="#fig-project">Abbildung&nbsp;<span>7.1</span></a>).</li>
 </ol>
 <ul>
-<li>Wenn dies nicht der Fall ist (<a href="#fig-no-project">Abbildung&nbsp;<span class="quarto-unresolved-ref">fig-no-project</span></a>), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche “Projekt” oben rechts im RStudio klicken (<a href="#fig-project-open">Abbildung&nbsp;<span class="quarto-unresolved-ref">fig-project-open</span></a>; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).</li>
+<li>Wenn dies nicht der Fall ist (<a href="#fig-no-project">Abbildung&nbsp;<span>7.2</span></a>), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche “Projekt” oben rechts im RStudio klicken (<a href="#fig-project-open">Abbildung&nbsp;<span>7.3</span></a>; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).</li>
 </ul>
 <ol start="2" type="1">
 <li>Fügen Sie Ihrem RProject-Ordner einen Ordner namens <code>daten</code> hinzu.</li>
@@ -560,13 +560,13 @@ Microsoft Excel
 </div>
 <section id="tidydaten" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="tidydaten"><span class="header-section-number">7.2.1</span> Tidydaten</h3>
-<p>Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie <em>aufgeräumt</em> sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (<a href="#fig-tidy-data">Abbildung&nbsp;<span class="quarto-unresolved-ref">fig-tidy-data</span></a>).</p>
+<p>Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie <em>aufgeräumt</em> sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (<a href="#fig-tidy-data">Abbildung&nbsp;<span>7.4</span></a>).</p>
 <div class="cell" data-set.cap.width="true">
 <div class="cell-output-display">
 <div id="fig-tidy-data" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-dateneinlesung_files/figure-html/fig-tidy-data-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;7.4: Source: <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;7.4: Source: <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)</figcaption>
 </figure>
 </div>
 </div>
@@ -595,7 +595,7 @@ Microsoft Excel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-table1">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-table1</span></a>: <code>Speichern einer CSV</code>
+<a href="#exm-table1">Aufgabe&nbsp;<span>7.1</span></a>: <code>Speichern einer CSV</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -635,7 +635,7 @@ Microsoft Excel
 </section>
 <section id="das-readr-paket" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="das-readr-paket"><span class="header-section-number">7.4</span> Das <code>readr</code>-Paket</h2>
-<p>Unsere Daten können als Tabelle angezeigt werden, genau wie unsere eingebauten Datensätze aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span>. Genau wie bei den eingebauten Datensätzen müssen wir zuerst die Daten <em>einlesen</em>, aber anstatt nur den Namen des eingebauten Datensatzes anzugeben, müssen wir eine Funktion verwenden, die CSV-Daten liest. Wir müssen auch angeben, <em>wo</em> sich die Daten in unserem RProject-Ordner befinden.</p>
+<p>Unsere Daten können als Tabelle angezeigt werden, genau wie unsere eingebauten Datensätze aus dem <code>languageR</code>-Paket <span class="citation" data-cites="languageR-package">(<a href="01-intro_r.html#ref-languageR-package" role="doc-biblioref">Baayen &amp; Shafaei-Bajestan, 2019</a>)</span>. Genau wie bei den eingebauten Datensätzen müssen wir zuerst die Daten <em>einlesen</em>, aber anstatt nur den Namen des eingebauten Datensatzes anzugeben, müssen wir eine Funktion verwenden, die CSV-Daten liest. Wir müssen auch angeben, <em>wo</em> sich die Daten in unserem RProject-Ordner befinden.</p>
 <p>Das Paket <code>readr</code> (Teil von <code>tidyverse</code>) kann die meisten Datentypen einlesen und hat mehrere Funktionen für verschiedene Datentypen.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -687,7 +687,7 @@ Microsoft Excel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-students">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-students</span></a>: <code>df_groesse</code>
+<a href="#exm-students">Aufgabe&nbsp;<span>7.2</span></a>: <code>df_groesse</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -839,7 +839,7 @@ Microsoft Excel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-pipes">Aufgabe&nbsp;<span class="quarto-unresolved-ref ref-noprefix">exm-pipes</span></a>: pipes
+<a href="#exm-pipes">Aufgabe&nbsp;<span>7.3</span></a>: pipes
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -976,7 +976,7 @@ loaded via a namespace (and not attached):
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-languageR-package" class="csl-entry" role="listitem">
 Baayen, R. H., &amp; Shafaei-Bajestan, E. (2019). <em>languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics</em>. <a href="https://CRAN.R-project.org/package=languageR">https://CRAN.R-project.org/package=languageR</a>
 </div>

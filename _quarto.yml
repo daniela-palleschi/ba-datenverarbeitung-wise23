@@ -78,7 +78,6 @@ format:
     execute:
       message: false
       warning: false
-      echo: false
   pdf:
     documentclass: scrreport
     toc: true 
@@ -87,7 +86,7 @@ execute:
   eval: true
   echo: true
   message: false
-  error: false
+  error: true
   warning: false
   fig-align: "center"
   fig-asp: .618

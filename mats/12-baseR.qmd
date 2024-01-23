@@ -112,7 +112,7 @@ Wir werden den Datensatz `languageR_english.csv` einlesen, der sich bereits in I
 
 Wir haben bereits gesehen, wie man die `read_()` Familie von Funktionen (`read_csv()`, `read_csv2()`, `read_delim()`, etc.) aus dem `readr` Paket aus dem `tidyverse` benutzt.
 
-```{r filename = "tidyverse: readr::read_csv()"}
+```{r filename = "tidyverse"}
 df_tidy <-
   read_csv(
     here("daten", "languageR_english.csv")
@@ -121,7 +121,7 @@ df_tidy <-
 
 Um einen Datensatz mit kommagetrennten Werten (CSV) einzulesen, können wir die Funktion `read.csv()` verwenden, die eine Version der umfassenderen Funktion `read.table()` aus dem Paket `utils` ist. Das `utils`-Paket ist ein Standard-Installationspaket in R, so wie einige Anwendungen bereits installiert sind, wenn man ein neues Telefon kauft.
 
-```{r filename = "Base R: read.csv()"}
+```{r filename = "Base R"}
 df_base <-
   read.csv(
     here("daten", "languageR_english.csv")
@@ -168,7 +168,7 @@ Beide haben `r nrow(df_base)` Zeilen. Die Datenstruktur ist also identisch.
 
 Erinnern Sie sich, dass wir mit dem tidyverse-Paket `readr` `read_delim(delim = "")` verwenden können, um das Trennzeichen explizit zu definieren. Hier verwenden wir `delim = ","`, weil wir immer noch eine kommagetrennte Wertedatei verwenden. 
 
-```{r filename = "tidyverse: readr::read_delim()"}
+```{r filename = "tidyverse"}
 df_tidy <-
   read_delim(
     here("daten", "languageR_english.csv"),
@@ -178,7 +178,7 @@ df_tidy <-
 
 Wir können dies mit `read.table(sep = "")` aus dem Paket `utils` tun.
 
-```{r filename = "Base R: read.table()"}
+```{r filename = "Base R"}
 df_base <-read.table(
     here("daten", "languageR_english.csv"),
     sep = ",",
@@ -207,13 +207,13 @@ Wir sind bereits mit einer Reihe von `dplyr`-Verben vertraut, die zum Manipulier
 
 Wir sind bereits vertraut mit `select()` aus `dplyr`:
 
-```{r filename = "tidyverse: dplyr::select()"}
+```{r filename = "tidyverse"}
 #| eval: false
 df_tidy |> 
   select(AgeSubject)
 ```
 
-```{r filename = "tidyverse: dplyr::select()"}
+```{r filename = "tidyverse"}
 #| echo: false
 df_tidy |> 
   select(AgeSubject) |> 
@@ -222,19 +222,19 @@ df_tidy |>
 
 In Base R können wir ein Dollarzeichen (`$`) verwenden, um eine Spalte aus einem Datenrahmen (oder Tibble) zu extrahieren. Dadurch erhalten wir einen Vektor, während `dplyr::select()` die Datenrahmen-/Tibble-Attribute der Spalte beibehält.
 
-```{r filename = "Base R: dataframe$column_name"}
+```{r filename = "Base R"}
 #| eval: false
 df_base$AgeSubject
 ```
 
-```{r filename = "Base R: dataframe$column_name"}
+```{r filename = "Base R"}
 #| echo: false
 head(df_base$AgeSubject,18)
 ```
 
 Alternativ kann man auch `dataframe[row,column]` verwenden, um Zeilen und Spalten zu definieren. Wir können den Namen einer Spalte in Anführungszeichen verwenden oder den Index der Spalte angeben, wobei 1 für die erste Spalte steht, 2 für die zweite Spalte usw. Wir konzentrieren uns zunächst auf die Spalten, geben also nicht an, welche Zeile wir wollen, sondern geben alle Zeilen dieser Spalte aus.
 
-```{r filename = "Base R: dataframe[,'column_name']"}
+```{r filename = "Base R"}
 #| eval: false
 # using variable name
 df_base[,"AgeSubject"]
@@ -246,7 +246,7 @@ df_base[,"AgeSubject"]
 head(df_base[,"AgeSubject"],18)
 ```
 
-```{r filename = "Base R: dataframe[,index]"}
+```{r filename = "Base R"}
 #| eval: false
 # using variable index
 df_base[,1]
@@ -260,7 +260,7 @@ head(df_base[,1],18)
 
 Ein Hauptunterschied zwischen der Verwendung von tidyverse und Base R zum Extrahieren einer einzelnen Variablen besteht darin, dass Base R einen Vektor extrahiert, während das tidyverse-Verb `select()` die Variable als Tibble behält. Beachten Sie, dass es auch möglich ist, mehrere Variablen mit der Funktion `select()` auszuwählen. Sie können dies auch mit Base R tun, aber Sie müssen die Funktion `c()` verwenden.
 
-```{r filename = "tidyverse: dplyr::select()"}
+```{r filename = "tidyverse"}
 #| eval: false
 df_tidy |> 
   select(AgeSubject, RTlexdec)
@@ -273,7 +273,7 @@ df_tidy |>
   head(10)
 ```
 
-```{r filename = "Base R: dataframe[,c('column_name1','column_name2')]"}
+```{r filename = "Base R"}
 #| eval: false
 # using variable name
 df_base[,c("AgeSubject", "RTlexdec")]
@@ -287,7 +287,7 @@ df_base[,c("AgeSubject", "RTlexdec")] |>
 ```
 
 
-```{r filename = "Base R: dataframe[,c(index1,index2)]"}
+```{r filename = "Base R"}
 #| eval: false
 # using variable index
 df_base[,c(1, 6)]
@@ -303,7 +303,7 @@ df_base[,c(1, 6)] |>  head(10)
 
 Die Ausgabe dieser Operationen hängt nicht nur davon ab, ob Sie eine Tidyverse- oder eine R-Basisfunktion verwenden. Es macht auch einen Unterschied, ob die Daten ein Datenrahmen oder ein Tibble sind. Versuchen wir, die Funktion `select()` von tidyverse auf einen Datenrahmen anzuwenden:
 
-```{r filename = "tidyverse: dplyr::select() with a dataframe"}
+```{r filename = "tidyverse"}
 #| eval: false
 df_base |> 
   select(AgeSubject)
@@ -318,7 +318,7 @@ df_tidy |>
 
 Base R behandelt Tibbles jedoch genauso wie Datenrahmen und gibt einen Vektor mit allen Werten einer einzelnen Spalte aus.
 
-```{r filename = "Base R: tibble$column_name"}
+```{r filename = "Base R"}
 #| eval: false
 df_tidy$AgeSubject
 ```
@@ -334,14 +334,14 @@ Dies sollte keine Folgen haben, aber es ist wichtig, die innere Struktur Ihrer D
 
 Wir haben bereits die Funktion `filter()` von `dplyr` gesehen, die Zeilen extrahiert, die logischen Bedingungen entsprechen.
 
-```{r filename = "tidyverse: dplyr::filter()"}
+```{r filename = "tidyverse"}
 df_tidy |> 
   filter(RTlexdec > 600 & RTnaming < 480)
 ```
 
 Wir können diese bedingten Anweisungen in `[,]` einfügen, wobei zu beachten ist, dass die Zeilen vor dem Komma und die Spalten nach dem Komma angegeben werden. Wir lassen die Spaltenangabe leer, d. h. wir wollen alle Spalten ausgeben. Wichtig ist, dass wir in den bedingten Anweisungen den Namen des Datenrahmens mit dem Dollarzeichen vor dem Spaltennamen angeben.
 
-```{r filename = "Base R: dataframe[,]"}
+```{r filename = "Base R"}
 #| eval: false
 df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,]
 ```
@@ -357,7 +357,7 @@ df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,] |>
 
 Wir können bestimmte Zeilen und bestimmte Spalten auf einmal extrahieren. Wenn wir zum Beispiel die relevanten Zeilen wie oben ausgeben wollen, aber nur die Spalten `AgeSubject` und `RTlexdec`, können wir dies mit `filter()` und `select()` tun (was wir bereits zuvor getan haben).
 
-```{r filename = "tidyverse: filter() |> select()"}
+```{r filename = "tidyverse"}
 #| eval: false
 df_tidy |> 
   filter(RTlexdec > 600, RTnaming < 480) |> 
@@ -374,7 +374,7 @@ df_tidy |>
 
 In Base R würden wir dies einfach in `[,]` einfügen. Dadurch erhalten wir keinen Vektor mehr, sondern die Datenrahmenstruktur bleibt erhalten. Nicht, dass wir auch die Zeilennummern erhalten.
 
-```{r filename = "Base R: dataframe[conditions,columns]"}
+```{r filename = "Base R"}
 #| eval: false
 df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c("AgeSubject", "RTlexdec")]
 ```
@@ -387,7 +387,7 @@ df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c("AgeSubject", "RTlexde
 
 Auch hier können Sie die Spaltennamen durch den Indexwert ersetzen.
 
-```{r filename = "Base R: dataframe[conditions,index]"}
+```{r filename = "Base R"}
 #| eval: false
 df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c(1, 6)]
 ```
@@ -402,7 +402,7 @@ df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c(1, 6)] |>
 
 Wir haben gelernt, wie man mit der Funktion `mutate()`, die ebenfalls aus `dplyr` stammt, neue Variablen erstellt oder bestehende Variablen ändert.
 
-```{r filename = "tidyverse: dplyr::mutate()"}
+```{r filename = "tidyverse"}
 df_tidy |> 
   mutate(rt_lexdec_s = RTlexdec/1000)
 ```
@@ -417,7 +417,7 @@ df_base$rt_lexdec_s <- df_base$RTlexdec/1000
 
 Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht einfach, wenn man eine Gruppe hat, deshalb werden wir das nicht behandeln. 
 
-```{r}
+```{r, filename = "tidyverse"}
   df_tidy |> 
   summarise(
     mean_lexdec = mean(RTlexdec),
@@ -429,13 +429,27 @@ Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht ei
 
 In Base R müssen wir neue Objekte erstellen, die den Wert jeder Operation enthalten, und sie mit der Funktion "data.frame()" zu einem Datenrahmen zusammenfassen.
 
-```{r}
+```{r, filename = "Base R"}
 data.frame(mean_lexdec = mean(df_base$RTlexdec),
            sd_lexdec = sd(df_base$RTlexdec),
            mean_naming = mean(df_base$RTnaming, na.rm = T),
            sd_naming = sd(df_base$RTnaming, na.rm = T))
 ```
 
+# Pipes
+
+Lange Zeit waren Pipes ein Feature des Tidyverse, mit der `%>%` Pipe aus dem `magrittr` Paket. Seit 2023 bietet R eine native Pipe `|>`. Sie haben vielleicht schon beide Versionen gesehen (ich tendiere dazu, `|>` zu benutzen). Für unsere Zwecke sind sie austauschbar, aber es gibt wichtige Unterschiede für komplexere Fälle, die wir nicht behandeln werden.
+
+
+```{r filename = "tidyverse"}
+df_base$RTlexdec |> 
+  mean()
+```
+
+```{r filename = "Base R"}
+df_base$RTlexdec %>%
+  mean()
+```
 
 # Plots
 
@@ -443,9 +457,9 @@ data.frame(mean_lexdec = mean(df_base$RTlexdec),
 
 Das Plotten mit Base R kann auch sehr praktisch sein, wenn man einfache Diagramme erstellen will, um einen ersten Blick auf die Daten zu bekommen. Die nützlichsten Funktionen sind `hist()` und `plot()`, die jeweils Histogramme und Streudiagramme erzeugen. Beachten Sie, dass diese Funktionen mit Vektoren arbeiten, weswegen wir `$` verwenden müssen, um die Spalten aus dem Datenrahmen zu extrahieren.
 
-```{r}
-#| fig-width: 4
-#| fig-asp: 1
+::: {.content-visible when-format="html"}
+
+```{r, filename = "Base R"}
 #| dev: png
 #| layout-ncol: 2
 #| label: fig-baser
@@ -456,10 +470,35 @@ hist(df_base$RTlexdec)
 # right
 plot(df_base$RTlexdec, df_base$RTnaming) 
 ```
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r, filename = "Base R histogram"}
+#| fig-width: 4
+#| fig-asp: 1.1
+#| label: fig-baser-hist
+#| fig-cap: Histogram with Base R
+
+# histogram
+hist(df_base$RTlexdec)
+```
+
+```{r, filename = "Base R histogram"}
+#| fig-width: 4
+#| fig-asp: 1.1
+#| label: fig-baser-scatter
+#| fig-cap: Scatterplot with Base R
+
+# scatterplot
+plot(df_base$RTlexdec, df_base$RTnaming)
+```
+
+
+:::
 
 To achieve the same thing with the tidyverse:
 
-```{r}
+```{r, filename = "tidyverse"}
 #| eval: false
 
 # histogram
@@ -496,20 +535,7 @@ df_base |>
 ```
 
 
-# Pipes
 
-Lange Zeit waren Pipes ein Feature des Tidyverse, mit der `%>%` Pipe aus dem `magrittr` Paket. Seit 2023 bietet R eine native Pipe `|>`. Sie haben vielleicht schon beide Versionen gesehen (ich tendiere dazu, `|>` zu benutzen). Für unsere Zwecke sind sie austauschbar, aber es gibt wichtige Unterschiede für komplexere Fälle, die wir nicht behandeln werden.
-
-
-```{r filename = "tidyverse: magrittr pipe %>%"}
-df_base$RTlexdec |> 
-  mean()
-```
-
-```{r filename = "Base R: native pipe |>"}
-df_base$RTlexdec %>%
-  mean()
-```
 
 # Lernziele 🏁 {.unnumbered .unlisted}
 

@@ -20,559 +20,703 @@ knitr::opts_chunk$set(eval = T, ### evaluate chunks
                       warning = F) ### don't print warnings
 ```
 
-# Lesungen
+## Lernziele {.unnumbered}
 
-Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kapital 27 (A field guide to base R)](https://r4ds.hadley.nz/base-r) in @wickham_r_2023.
+In diesem Kapital lernen wir wie man...
 
-# Lernziele {.unnumbered}
+- Boxplots zu erstellen und zu interpretieren
+- Mittelwerte und Standardabweichungen zu visualisieren
 
-In diesem Kapitel werden wir...
+## Ressourcen {.unnumbered}
 
-- lernen, was Base R ist
-- Base R und Tidyverse vergleichen
-- die Base-R-Äquivalente der Tidyverse-Verben kennenlernen
+Für weitere Lektüre und Übungen zu diesem Thema empfehle ich die Lektüre von [Abschnitt 2.5 (Visualisierung von Relationen)](https://r4ds.hadley.nz/data-visualize#visualizing-relationships) in @wickham_r_2023, [Kapitel 4 (Darstellung von zusammenfassenden Statistiken)](https://psyteachr.github.io/introdataviz/representing-summary-statistics.html) in @nordmann_data_2022 und die Abschnitte 3.5-3.9 in @winter_statistics_2019.
 
-# base R
+## Einrichten {.unnumbered}
 
-Die Basissoftware, die die Programmiersprache R enthält, heißt base-R oder natives R. Dieses Basissystem enthält das Paket `base`, das zum Ausführen von R erforderlich ist. Ähnlich wie tidyverse enthält das Basissystem auch einige Pakete wie `utils` und `stats` (unter anderem). Um zu sehen, welche Pakete enthalten sind, gehen Sie einfach auf die Registerkarte `Pakete` unten rechts in Ihrer RStudio-Sitzung. Unter der Annahme, dass Sie mit einer sauberen Arbeitsumgebung beginnen, sollten nur die Pakete geladen werden, die zum R-Basissystem gehören. Alle diese Pakete werden bei der Installation von R installiert. Mit dieser Sammlung von Paketen können die meisten (wenn nicht alle) der gleichen Ziele wie mit tidyverse erreicht werden, auch wenn beide für bestimmte Ziele vorzuziehen oder besser zu rationalisieren sind.
+### Pakete {.unnumbered}
 
-Wie wir bereits gelernt haben, ist das [Tidyverse](https://www.tidyverse.org/) [@tidyverse-package] eine Familie von R-Paketen, die das Bereinigen und Verwalten von Daten erleichtern sollen. Der Hauptentwickler von Tidyverse ist Hadley Wickham, der Chefwissenschaftler von Posit (ehemals RStudio), dem Softwareunternehmen, das die integrierte Entwicklungsumgebung (IDE) RStudio entwickelt hat. Alle Pakete in Tidyverse "teilen eine High-Level-Design-Philosophie und Low-Level-Grammatik und Datenstrukturen, so dass das Erlernen eines Pakets es einfacher macht, das nächste zu erlernen" [@wickham_welcome_2019]. Allerdings wurde das Tidyverse in der Programmiersprache R geschrieben, sodass die beiden nicht vollständig voneinander getrennt sind. 
-
-Sowohl base R als auch tidyverse sind Open-Source-Sprachen, die für die Datenwissenschaft geschrieben wurden. Ein Hauptziel von Base R ist die Stabilität, d. h. der Code sollte über viele Jahre hinweg stabil sein. Tidyverse hingegen fügt ständig Funktionen und Argumente hinzu, aktualisiert sie und ändert sie mit neuen Paketversionen im Hinblick auf die Optimierung. Dies bedeutet, dass Tidyverse-Code anfällig für "Brüche" ist: Tidyverse-Code, der heute läuft, läuft vielleicht in ein paar Jahren nicht mehr, wenn einige Funktionen oder Argumente "veraltet" sind. Deshalb ist es so wichtig, dass Sie immer Ihre `sessionInfo()` mit einem Bericht mitschicken, sie dokumentiert, welche Pakete und deren Versionen Sie verwendet haben.
-
-In der Debatte zwischen Base R und Tidyverse gibt es in der Regel drei Lager: die starken Befürworter von Base R, die starken Befürworter von Tidyverse und die Agnostiker. In Bezug auf den R-Unterricht gibt es mehrere Arbeiten, in denen die potenziellen Vorteile des Unterrichts von Base R oder des Tidyverse bzw. einer Kombination aus beidem untersucht werden. Einige argumentieren, dass das Lehren der Tidyverse für Schüler intuitiver ist, während andere behaupten, dass Base R der "einzige" Weg ist, um echte R-Kenntnisse zu erlangen. Base R ist z.B. einfacher, wenn es darum geht, eine einzelne Variable zu extrahieren, aber selbst unter standhaften Base R-Nutzern wird das Paket `ggplot2` oft bevorzugt, um Diagramme zu erstellen. Unten sehen wir einen Tweet von Prof. Christopher Zorn (Penn State), der vorschlägt, dass die Kenntnis des "tidyverse" nicht bedeutet, dass man R kennt, mit einer Antwort von Prof. Bodo Winter (University of Birmingham) zur Unterstützung des tidyverse. Viele andere Antworten wiesen auf die verschiedenen Vorteile des Tidyverse hin, von der Lehre von R bis zur Arbeit in der Industrie.
-
-<center>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What a thing to say when modern R is pretty much synonymous with the tidyverse for many in the community!<br><br>I was a base R masochist once too.. but there&#39;s no need for statements like this when the tidyverse has helped so many of us be more productive and write more readable code.</p>&mdash; Bodo Winter (@BodoWinter) <a href="https://twitter.com/BodoWinter/status/1612882152483586049?ref_src=twsrc%5Etfw">January 10, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</center>
+Wie üblich laden wir die `tidyverse` Familie von Paketen. Um uns beim Laden unserer Daten zu helfen, laden wir auch das `here`-Paket und das `janitor`-Paket, das nützlich ist, um unsere Daten aufzuräumen (z.B. die `clean_names()`-Funktion). Um unsere Diagramme anzupassen, verwenden wir auch die Pakete `ggthemes` und `patchwork`. Ersteres hilft uns bei der Erstellung von farbenblindenfreundlichen Diagrammen, während letzteres uns erlaubt, mehrere Diagramme zusammen zu drucken.
 
 ```{r}
-#| eval: false
-#| echo: false
-#| label: fig-twitter
-#| fig-cap: A tweet (A) with a reply in support of the tidyverse, with two other replies pointing out the benefits of the tidyverse (B) and its use in industry (C)
-#| fig-height: 8
-
-library(ggpubr)
-library(grid)
-library(png)
-
-
-tweet_bodo <- readPNG(
-  here::here("media", "twitter_baser_tidyverse.png")
-)  
-
-tweet_cleaner <- readPNG(
-  here::here("media", "twitter_cleaner.png")
-)
-
-tweet_industry <- readPNG(
-  here::here("media", "twitter_industry.png")
-)
-
-ggarrange(rasterGrob(tweet_bodo, width = .65),
-          rasterGrob(tweet_cleaner, width = .65),
-          rasterGrob(tweet_industry, width = .65), 
-          ncol = 1,
-          labels = c("A","B","C"),
-          heights = c(0.5, 1/4,1/4))
-```
-
-Offensichtlich halte ich das Erlernen des Tidyversums für wichtig, denn ich habe mich entschieden, diesen Kurs auf Tidyversum-Pakete zu stützen. Das liegt daran, dass das Tidyverse den Menschen in den Mittelpunkt stellt, und dieser Kurs ist nicht für Programmierer oder Informatiker gedacht. Wie wir im obigen Tweet sehen, stimmt nicht jeder mit mir überein, aber es gibt auch viele Leute, die das tun.
-
-
-## Warum beides lernen?
-
-Ich persönlich lernte Base R Jahre bevor ich Tidyverse lernte. Ich habe nie zurückgeblickt, und mein Code ist seit der Einführung von tidyverse und den dahinter stehenden Philosophien viel sauberer und besser lesbar geworden. Trotzdem gibt es immer noch bestimmte Aufgaben, für die ich Base R verwende, z. B. für einen schnellen Blick auf eine einzelne Variable oder wenn ich mit Listen oder verschachtelten Datenstrukturen arbeite (die wir in diesem Kurs nicht behandeln werden). 
-
-Auch wenn ich persönlich mit ähnlichen Ansichten wie im ursprünglichen Tweet von @fig-twitter nicht einverstanden bin (wie viele andere auch), ist die Kenntnis von Base R eine wichtige Fähigkeit, um Ihre R-Horizonte zu erweitern. Sie werden mit Sicherheit auf Base R-Code stoßen, wenn Sie nach Lösungen für Probleme suchen oder sich den Code von anderen ansehen. Unabhängig davon, ob jemand eine starke Vorliebe für Base R oder Tidyverse hat, ist es eine gute Idee, mit beiden Optionen vertraut zu sein, um das Beste aus der R-Community herauszuholen. Es ist wichtig zu verstehen, dass es so etwas wie perfekten Code nicht gibt, und dass es fast immer mehrere Möglichkeiten gibt, das gleiche Ziel zu erreichen, sogar innerhalb von Base R oder Tidyverse. Was wir heute lernen werden, ist im Wesentlichen, wie wir den Tidyverse-Code, mit dem wir vertraut sind, in Base R übersetzen können.
-
-# Einrichten
-
-Wir werden heute ziemlich minimalistisch arbeiten. Alles was wir brauchen sind die Pakete `tidyverse` und `here`.
-
-```{r}
-pacman::p_load(
-  tidyverse,
-  here
-)
+pacman::p_load(tidyverse,
+               here,
+               janitor,
+               ggthemes,
+               patchwork)
 ```
 
 ```{r}
 #| echo: false
-pacman::p_load(janitor)
+## load magick for the slides
+pacman::p_load(magick)
+theme_set(theme_bw())
 ```
 
+### Daten {.unnumbered}
 
-# Einrichten
+Wir arbeiten wieder mit unserer leicht veränderten Version des `english`-Datensatzes aus dem `languageR`-Paket. Sie sollten `langaugeR_english.csv` in Ihrem `Daten` Ordner haben. Der folgende Code lädt den Datensatz, bereinigt die Namen und korrigiert einige fehlerhafte Namen.
 
-Wir werden heute ziemlich minimalistisch arbeiten. Alles was wir brauchen sind die Pakete `tidyverse` und `here`.Daten einlesen
-
-Wir werden den Datensatz `languageR_english.csv` einlesen, der sich bereits in Ihrem `daten`-Ordner befinden sollte. Dieser Datensatz enthält Daten aus einer Benennungs- und lexikalischen Entscheidungsaufgabe in Englisch.
-
-## CSV
-
-Wir haben bereits gesehen, wie man die `read_()` Familie von Funktionen (`read_csv()`, `read_csv2()`, `read_delim()`, etc.) aus dem `readr` Paket aus dem `tidyverse` benutzt.
-
-```{r filename = "tidyverse: readr::read_csv()"}
-df_tidy <-
-  read_csv(
-    here("daten", "languageR_english.csv")
+```{r}
+df_eng <- read_csv(
+  here(
+    "daten",
+    "languageR_english.csv"
+  )
+) |> 
+  clean_names() |> 
+  rename(
+    rt_lexdec = r_tlexdec,
+    rt_naming = r_tnaming
   )
 ```
 
-Um einen Datensatz mit kommagetrennten Werten (CSV) einzulesen, können wir die Funktion `read.csv()` verwenden, die eine Version der umfassenderen Funktion `read.table()` aus dem Paket `utils` ist. Das `utils`-Paket ist ein Standard-Installationspaket in R, so wie einige Anwendungen bereits installiert sind, wenn man ein neues Telefon kauft.
+## Rückblick: Visualisierung von Verteilungen
 
-```{r filename = "base R: read.csv()"}
-df_base <-
-  read.csv(
-    here("daten", "languageR_english.csv")
+Wir haben bereits mehrere Arten von Diagrammen gesehen, die zur Visualisierung der Verteilung und der Beziehungen zwischen Variablen verwendet werden: 
+
+  + Histogramme (1 numerische Variable)
+  + Dichteplots (1 numerische Variable)
+  + Streudiagramme (2 numerische Variablen)
+  + Balkendiagramme (kategorische Variablen)
+  
+```{r}
+#| echo: false
+fig_hist <-
+  df_eng |> 
+  ggplot(aes(x = rt_lexdec, fill = age_subject)) +
+  geom_histogram(binwidth = 50, alpha = 0.5, position = "identity") +
+  labs(
+    title = "Histogramm",
+       x = "LDT-Reaktionszeit (ms)",
+       y = "Anzahl",
+    fill = "Altersgruppe") +
+  scale_color_colorblind() +
+  scale_fill_colorblind() +
+  theme_minimal()
+
+fig_dens <-
+  df_eng |> 
+  ggplot(aes(x = rt_lexdec, fill = age_subject, colour = age_subject)) +
+  geom_density(alpha=.2) +
+  labs(
+    title = "Dichtediagramm",
+      x = "LDT-Reaktionszeit (ms)",
+       y = "Dichte",
+    color = "Altersgruppe",
+    fill = "Altersgruppe") +
+  scale_color_colorblind() +
+  scale_fill_colorblind() +
+  theme_minimal()
+
+fig_scat <-
+  df_eng |> 
+  ggplot(aes(x = rt_lexdec, y = rt_naming)) +
+  geom_point(aes(color = age_subject, shape = age_subject), alpha = .3) +
+  ## geom_smooth(method = "lm") +
+  labs(
+    title = "Streudiagramm",
+       x = "LDT-Reaktionszeit (ms)",
+       y = "Benennungsreaktionszeit (ms)",
+    color = "Altersgruppe",
+    shape = "Altersgruppe") +
+  scale_color_colorblind() +
+  theme_minimal()
+
+fig_bar <-
+  df_eng |> 
+  ggplot(
+       aes(x = age_subject, fill = word_category)) +
+  geom_bar() +
+    labs(
+    title = "Balkendiagramm (gestapelt)",
+    x = "Altersgruppe",
+    y = "Anzahl",
+    fill = "Wortkategorie"
+  ) +
+  scale_fill_colorblind() +
+  theme_minimal()
+
+fig_bar_dodge <-
+  df_eng |> 
+  ggplot(
+        aes(x = age_subject, fill = word_category)) +
+  geom_bar(position="dodge") +
+    labs(
+    title = "Balkenplot (ausgewichen)",
+    x = "Altersgruppe",
+    y = "Anzahl",
+    fill = "Wortkategorie"
+  ) +
+  scale_fill_colorblind() +
+  theme_minimal()
+```
+
+Schauen Sie sich jede Abbildung in @fig-distributions an. Wie viele Variablen werden jeweils dargestellt, und um welche *Typen* von Variablen handelt es sich? Welche zusammenfassende(n) Statistik(en) wird/werden in jedem Diagramm dargestellt?
+
+```{r}
+#| echo: false
+#| label: fig-distributions
+#| fig-cap: "Verschiedene Diagrammtypen zur Visualisierung der Verteilung von Rohdaten: Histogramm (A), Dichte-Diagramm (B), Streudiagramm (C), gestapeltes Balkendiagramm (D) und unscharfes Balkendiagramm (E)"
+#| fig-width: 8
+#| fig-asp: 1
+
+(fig_hist + fig_dens) /
+  (plot_spacer() + fig_scat + plot_spacer() + plot_layout(widths = c(1,2,1))) /
+  (fig_bar + fig_bar_dodge) +
+  plot_annotation(tag_levels = "A") +
+  theme(plot.title = element_blank()) 
+```
+
+## Darstellung von zusammenfassenden Statistiken
+
+In @sec-desc-stats haben wir etwas über zusammenfassende Statistiken gelernt. Wir behandelten Maße der zentralen Tendenz, nämlich Modus, Median und Mittelwert, sowie Maße der Streuung, wie Bereich und Standardabweichung. Wie können wir zusammenfassende Statistiken visualisieren?
+
+Wir haben bereits gesehen, dass Histogramme, Dichtediagramme und nun auch Geigenplots den Modus (höchster Wert) und den Bereich (niedrigster und höchster Wert) visualisieren. Jetzt lernen wir zwei weitere Arten von Diagrammen kennen, eines zur Darstellung der Verteilung der beobachteten Werte und eines zur Darstellung von Mittelwert und Standardabweichung.
+
+### Boxplot {.kleiner}
+
+Boxplots (manchmal auch Box-and-Whisker-Plots genannt, z. B. @fig-boxplot) bestehen aus einer Box mit einer Linie in der Mitte (die "Box") und Linien, die an beiden Enden der Box herausragen (die "Whisker"), sowie manchmal einigen Punkten. Schauen Sie sich @fig-boxplot an und identifizieren Sie jeden dieser 4 Aspekte der Darstellung. Kannst du erraten, was jeder dieser Aspekte darstellen könnte und wie du die Darstellung interpretieren solltest?
+
+
+```{r}
+#| ouput-location: column-fragment
+#| echo: false
+#| code-line-numbers: "|4"
+#| label: fig-boxplot
+#| fig-cap: "Boxplot von `df_eng` (Körpermasse nach Alter_Proband)"
+
+df_eng |> 
+  ggplot(aes(x = age_subject, y = rt_lexdec, colour = age_subject)) +
+  geom_boxplot() +
+  labs(title = "Boxplot",
+    x = "Altersgruppe",
+    y = "LDT-Reaktionszeit (ms)",
+    color = "Altersgruppe"
+  ) +
+  scale_color_colorblind() +
+  theme_minimal() +
+  theme(
+    legend.position = "none"
   )
 ```
 
-Das erste, was Ihnen vielleicht auffällt, ist, dass wir beim Ausführen von `read_csv()` eine Meldung erhalten haben, die uns die Anzahl der Zeilen und Spalten in den Daten, das verwendete Trennzeichen (bei `read_csv()` immer ein Komma) und den Datentyp, zu dem unsere Variablen gehören, mitteilt. Hier haben wir gesehen, dass wir drei Zeichenvariablen (`chr`) und vier numerische Variablen (`dbl` für "double") haben. Bei der Verwendung von `read.csv()` erhalten wir keine derartige Meldung. Im Allgemeinen ist Tidyverse ein besserer Gesprächspartner als Base R. Sie erhalten mehr Meldungen, und die Warn- oder Fehlermeldungen sind anschaulicher.
+Die Box und die Whiskers stellen eine Vielzahl von Informationen in einer einzigen Visualisierung dar. Die Linie in der Mitte des Boxplots stellt den *Median* dar, auch Q2 genannt (2. Quartil; der mittlere Wert, über/unter dem 50% der Daten liegen). Die Box selbst stellt den *Interquartilsbereich* (IQR; der Wertebereich, der zwischen den mittleren 50\% der Daten liegt) dar. Die Grenzen der Box stellen Q1 (1. Quartil, unter dem 25\% der Daten liegen) und Q3 (3. Quartil, über dem 25\% der Daten liegen) dar. Die Whisker stellen `1,5*IQR` von Q1 (unterer Whisker) oder Q3 (oberer Whisker) dar. Alle Punkte, die außerhalb der Whisker liegen, stellen Ausreißer dar (d. h. Extremwerte, die außerhalb des IQR liegen).
 
-Ein weiterer Unterschied zwischen diesen beiden Funktionen ist die Art und Weise, wie sie `read` und `csv` trennen: tidyverse verwendet typischerweise `_`, um Wörter zu trennen, während base R dazu neigt, eine Mischung aus `.` und `_` zu verwenden. Dies geht auf die Prinzipien von tidyverse zurück, in denen versucht wird, konsistente Konventionen beizubehalten, um sauberen Code und saubere Daten zu fördern. Dazu gehört auch die konsequente Verwendung von `_" in Funktions- und Variablennamen.
+@fig-winter-boxplot-hist [@winter_statistics_2019, S. 59] zeigt die Beziehung zwischen der Verteilung einer Variablen, wie sie in einem Histogramm dargestellt wird, und einem Boxplot. Während das Histogramm die Balkenhöhe verwendet, um die Anzahl der Beobachtungen innerhalb eines bestimmten Bereichs anzuzeigen, verwendet der Boxplot die Box und die Whiskers, um die Schwellenwerte anzugeben, in denen bestimmte Anteile der Daten enthalten sind (d. h. der Interquartilsbereich).
 
-Schauen wir uns nun die beiden Objekte an, die wir jetzt haben. Wie viele Spalten haben sie?
+::: {.content-visible when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"
+#| fig-cap-location: bottom
+
+## invert colours for dark mode in slides
+library(magick)
+magick::image_negate(magick::image_read(here::here("media/Winter_2019_boxplot.png")))
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"
+#| fig-cap-location: bottom
+#| label: fig-winter-boxplot-hist
+magick::image_read(here::here("media/Winter_2019_boxplot.png"))
+```
+:::
+
+@fig-wickham-boxplot-hist [@wickham_r_2023] bietet einen ähnlichen Vergleich, wobei die einzelnen Beobachtungen im Streudiagramm auf der linken Seite hinzugefügt wurden.
+
+::: {.content-visible when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @wickham_r_2023 (all rights reserved)"
+#| fig-cap-location: bottom
+
+## invert colours for dark mode in slides
+y <- magick::image_read(here::here("media/Wickham_boxplot.png"))
+
+magick::image_negate(y)
+```
+:::
+
+::: {.content-hidden when-format="revealjs"}
+```{r echo = F, fig.align = "center"}
+#| fig-cap: "Image source: @wickham_r_2023 (all rights reserved)"
+#| fig-cap-location: bottom
+#| label: fig-wickham-boxplot-hist
+magick::image_read(here::here("media/Wickham_boxplot.png"))
+```
+:::
+
+Ich hoffe, Sie haben jetzt ein wenig verstanden, wie man Boxplots interpretiert. Man braucht etwas Übung, aber das Wichtigste ist, sich daran zu erinnern, dass die mittleren 50\% der Daten in der Box enthalten sind, während die "Schwänze" der Daten durch die "Whisker" dargestellt werden.
+
+#### `geom_boxplot()`
+
+Wir können Boxplots mit der Funktion `geom_boxplot()` von `ggplot2` erstellen. Zumindest müssen wir eine numerische Variable als `x` oder `y` Achse angeben (@fig-geom-boxplot-y). Wenn wir Boxplots für verschiedene Gruppen erstellen wollen, können wir den Namen einer kategorischen Variable auf der anderen Achse angeben (@fig-geom-boxplot).
 
 ```{r}
-length(df_tidy)
+#| code-line-numbers: "2,3"
+#| label: fig-geom-boxplot-y
+#| fig-cap: "Ein Boxplot für alle Beobachtungen einer kontinuierlichen Variablen"
+#| output-location: column
+#| fig-asp: .618
+#| fig-width: 5
+df_eng |> 
+  ggplot(aes(y = rt_lexdec)) +
+  geom_boxplot() +
+  theme_bw() +
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
 ```
+
 
 ```{r}
-length(df_base)
+#| code-line-numbers: "|3"
+#| label: fig-geom-boxplot
+#| fig-cap: "Ein Boxplot für zwei Gruppen"
+#| output-location: column
+#| fig-width: 5
+#| fig-asp: .618
+df_eng |> 
+  ggplot(aes(x = age_subject, y = rt_lexdec)) +
+  geom_boxplot() +
+  theme_bw()
 ```
 
-Beide haben `r length(df_base)` Spalten. Wie lauten die Namen dieser Spalten?
+#### Gruppierter Boxplot
+
+Genau wie ein Bargraph können wir gruppierte Boxplots erstellen, um mehr Variablen zu visualisieren. Ordnen Sie einfach eine neue Variable mit `colour` oder `fill` ästhetisch zu.
 
 ```{r}
-names(df_base)
+#| output-location: column-fragment
+#| fig-width: 7
+#| label: df_boxplot_group
+#| fig-cap: Ein gruppierter Boxplot
+df_eng |> 
+  ggplot(aes(x = age_subject, y = rt_lexdec, colour = word_category)) +
+  geom_boxplot() +
+  labs(
+    x = "Altersgruppe",
+    y = "LDT-Reaktionszeit (ms)",
+    color = "Wortart"
+  ) +
+  scale_colour_colorblind() +
+  theme_bw()
 ```
 
-```{r}
-names(df_tidy)
-```
-
-Sie haben auch die gleichen Namen, so weit, so gut. Wie viele Zeilen gibt es in jedem?
-
-```{r}
-nrow(df_tidy)
-```
-
-```{r}
-nrow(df_base)
-```
-
-Beide haben `r nrow(df_base)` Zeilen. Die Datenstruktur ist also identisch.
-
-## Andere Begrenzungszeichen
-
-Erinnern Sie sich, dass wir mit dem tidyverse-Paket `readr` `read_delim(delim = "")` verwenden können, um das Trennzeichen explizit zu definieren. Hier verwenden wir `delim = ","`, weil wir immer noch eine kommagetrennte Wertedatei verwenden. 
-
-```{r filename = "tidyverse: readr::read_delim()"}
-df_tidy <-
-  read_delim(
-    here("daten", "languageR_english.csv"),
-    delim = ","
-  )
-```
-
-Wir können dies mit `read.table(sep = "")` aus dem Paket `utils` tun.
-
-```{r filename = "base R: read.table()"}
-df_base <-read.table(
-    here("daten", "languageR_english.csv"),
-    sep = ",",
-    header = TRUE
-  )
-```
 
 ::: {.callout-tip}
 
-## Begrenzungszeichen und Trennzeichen
+#### Boxplots in R
 
-Versuchen Sie, das Trennzeichen in den obigen Code-Blöcken durch ein Semikolon (`;`) zu ersetzen. Was ändert sich, und warum? Ändern Sie es wieder in ein Komma und führen Sie es erneut aus, bevor Sie fortfahren.
+Mit der Funktion `boxplot()`, die einen kontinuierlichen (d.h. numerischen) Vektor als Argument akzeptiert, kann ein Boxplot in der Base-R-Syntax erstellt werden. Da Datenrahmen eine Ansammlung von Vektoren (d.h. die Variablen/Spalten) gleicher Länge sind, können wir auch eine kontinuierliche Variable in einem Datenrahmen als Argument verwenden. Dazu verwenden wir den Subsetting-Operator `$`, der einen Datenrahmen in eine einzelne Variable, in unserem Fall `rt_lexdec`, unterteilt.
+
+```{r}
+#| label: fig-baser-boxplot
+#| fig-cap: Boxplot erstellt mit Basis R
+#| fig-width: 5
+boxplot(df_eng$rt_lexdec)
+```
+
+Wir können auch eine kategoriale Variable als "Prädiktor" verwenden, mit der Syntax `kontinuierlich ~ kategorisch`, wobei `~` als "vorhergesagt von" gelesen werden kann.
+
+```{r}
+#| label: fig-baser-boxplot-cat
+#| fig-cap: Boxplot erstellt mit Basis R
+#| fig-width: 5
+boxplot(df_eng$rt_lexdec ~ df_eng$age_subject)
+```
 
 :::
 
-## Datenrahmen versus Tibbles
+## Visualisierung des Mittelwerts
 
-Daten, die mit tidyverse eingelesen werden, werden als Tibble gespeichert, das als eine aufgeräumtere Version eines Datenrahmens gilt. Wichtig ist, dass die Struktur eines Tibbles und die darin enthaltenen Informationen mit denen eines Datenrahmens identisch sind. Im Folgenden werden wir einige Unterschiede zwischen Tibbles und Datenrahmen sehen. 
+Boxplots zeigen ein Maß für die zentrale Tendenz (Median) und mehrere Maße für die Streuung. In der Regel wird auch der Mittelwert mit der Standardabweichung dargestellt.^[Anstelle der Standardabweichung werden in der Regel Standardfehler oder Konfidenzintervalle (oder glaubwürdige Intervalle) dargestellt, die jedoch in diesem Kurs nicht behandelt werden. Aus diesem Grund sollten wir im Titel der Grafik vermerken, was die Fehlerbalken darstellen]. Wie könnte man dies tun?
 
+### Fehlerbalken-Diagramme
 
-# Umgang mit Spalten und Zeilen
-
-Wir sind bereits mit einer Reihe von `dplyr`-Verben vertraut, die zum Manipulieren, Filtern und Extrahieren von Zeilen und Spalten verwendet werden. Jetzt sehen wir uns alternative Wege an, um die gleichen Ergebnisse mit Base R zu erzielen.
-
-## Variablen extrahieren
-
-Wir sind bereits vertraut mit `select()` aus `dplyr`:
-
-```{r filename = "tidyverse: dplyr::select()"}
-#| eval: false
-df_tidy |> 
-  select(AgeSubject)
-```
-
-```{r filename = "tidyverse: dplyr::select()"}
-#| echo: false
-df_tidy |> 
-  select(AgeSubject) |> 
-  head(10)
-```
-
-In Base R können wir ein Dollarzeichen (`$`) verwenden, um eine Spalte aus einem Datenrahmen (oder Tibble) zu extrahieren. Dadurch erhalten wir einen Vektor, während `dplyr::select()` die Datenrahmen-/Tibble-Attribute der Spalte beibehält.
-
-```{r filename = "base R: dataframe$column_name"}
-#| eval: false
-df_base$AgeSubject
-```
-
-```{r filename = "base R: dataframe$column_name"}
-#| echo: false
-head(df_base$AgeSubject,18)
-```
-
-Alternativ kann man auch `dataframe[row,column]` verwenden, um Zeilen und Spalten zu definieren. Wir können den Namen einer Spalte in Anführungszeichen verwenden oder den Index der Spalte angeben, wobei 1 für die erste Spalte steht, 2 für die zweite Spalte usw. Wir konzentrieren uns zunächst auf die Spalten, geben also nicht an, welche Zeile wir wollen, sondern geben alle Zeilen dieser Spalte aus.
-
-```{r filename = "base R: dataframe[,'column_name']"}
-#| eval: false
-# using variable name
-df_base[,"AgeSubject"]
-```
+Fehlerbalkendiagramme werden üblicherweise verwendet, um den Mittelwert und die Standardabweichung mit Hilfe von Fehlerbalken zu visualisieren. Auch hier werden in der Regel Standardfehler oder Konfidenzintervalle (oder glaubwürdige Intervalle) durch Fehlerbalken dargestellt, die wir in diesem Kurs jedoch nicht behandeln werden. Diese Diagramme bestehen aus zwei Teilen: dem Mittelwert, der mit `geom_point()` dargestellt wird, und der Standardabweichung, die mit `geom_errorbar()` dargestellt wird. Die Fehlerbalken stellen den Bereich von 1 Standardabweichung über und unter dem Mittelwert dar (Mittelwert +/- 1SD).
 
 ```{r}
+#| ouput-location: column-fragment
 #| echo: false
-# using variable name
-head(df_base[,"AgeSubject"],18)
-```
+#| label: fig-errorbar
+#| fig-width: 5
+#| fig-cap: "Fehlerbalken-Diagramm von `df_eng` (Körpermasse nach Alter_Proband)"
 
-```{r filename = "base R: dataframe[,index]"}
-#| eval: false
-# using variable index
-df_base[,1]
-```
-
-```{r}
-#| echo: false
-# using variable index
-head(df_base[,1],18)
-```
-
-Ein Hauptunterschied zwischen der Verwendung von tidyverse und base R zum Extrahieren einer einzelnen Variablen besteht darin, dass base R einen Vektor extrahiert, während das tidyverse-Verb `select()` die Variable als Tibble behält. Beachten Sie, dass es auch möglich ist, mehrere Variablen mit der Funktion `select()` auszuwählen. Sie können dies auch mit Base R tun, aber Sie müssen die Funktion `c()` verwenden.
-
-```{r filename = "tidyverse: dplyr::select()"}
-#| eval: false
-df_tidy |> 
-  select(AgeSubject, RTlexdec)
-```
-
-```{r}
-#| echo: false
-df_tidy |> 
-  select(AgeSubject, RTlexdec) |> 
-  head(10)
-```
-
-```{r filename = "base R: dataframe[,c('column_name1','column_name2')]"}
-#| eval: false
-# using variable name
-df_base[,c("AgeSubject", "RTlexdec")]
-```
-
-```{r}
-#| echo: false
-# using variable name
-df_base[,c("AgeSubject", "RTlexdec")] |> 
-  head(10)
-```
-
-
-```{r filename = "base R: dataframe[,c(index1,index2)]"}
-#| eval: false
-# using variable index
-df_base[,c(1, 6)]
-```
-
-```{r}
-#| echo: false
-# using variable index
-df_base[,c(1, 6)] |>  head(10)
-```
-
-### Mixing tibbles and dataframes
-
-Die Ausgabe dieser Operationen hängt nicht nur davon ab, ob Sie eine Tidyverse- oder eine R-Basisfunktion verwenden. Es macht auch einen Unterschied, ob die Daten ein Datenrahmen oder ein Tibble sind. Versuchen wir, die Funktion `select()` von tidyverse auf einen Datenrahmen anzuwenden:
-
-```{r filename = "tidyverse: dplyr::select() with a dataframe"}
-#| eval: false
-df_base |> 
-  select(AgeSubject)
-```
-
-```{r}
-#| echo: false
-df_tidy |> 
-  select(AgeSubject) |> 
-  head(10)
-```
-
-Base R behandelt Tibbles jedoch genauso wie Datenrahmen und gibt einen Vektor mit allen Werten einer einzelnen Spalte aus.
-
-```{r filename = "base R: tibble$column_name"}
-#| eval: false
-df_tidy$AgeSubject
-```
-
-```{r}
-#| echo: false
-head(df_tidy$AgeSubject, 10)
-```
-
-Dies sollte keine Folgen haben, aber es ist wichtig, die innere Struktur Ihrer Daten zu verstehen, damit Sie entsprechend damit arbeiten können.
-
-## Beobachtungen extrahieren/filtern
-
-Wir haben bereits die Funktion `filter()` von `dplyr` gesehen, die Zeilen extrahiert, die logischen Bedingungen entsprechen.
-
-```{r filename = "tidyverse: dplyr::filter()"}
-df_tidy |> 
-  filter(RTlexdec > 600 & RTnaming < 480)
-```
-
-Wir können diese bedingten Anweisungen in `[,]` einfügen, wobei zu beachten ist, dass die Zeilen vor dem Komma und die Spalten nach dem Komma angegeben werden. Wir lassen die Spaltenangabe leer, d. h. wir wollen alle Spalten ausgeben. Wichtig ist, dass wir in den bedingten Anweisungen den Namen des Datenrahmens mit dem Dollarzeichen vor dem Spaltennamen angeben.
-
-```{r filename = "base R: dataframe[,]"}
-#| eval: false
-df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,]
-```
-
-```{r}
-#| echo: false
-df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,] |> 
-  head(10)
-```
-
-
-## Einzelne Datenpunkte auswählen
-
-Wir können bestimmte Zeilen und bestimmte Spalten auf einmal extrahieren. Wenn wir zum Beispiel die relevanten Zeilen wie oben ausgeben wollen, aber nur die Spalten `AgeSubject` und `RTlexdec`, können wir dies mit `filter()` und `select()` tun (was wir bereits zuvor getan haben).
-
-```{r filename = "tidyverse: filter() |> select()"}
-#| eval: false
-df_tidy |> 
-  filter(RTlexdec > 600, RTnaming < 480) |> 
-  select(AgeSubject, RTlexdec)
-```
-
-```{r}
-#| echo: false
-df_tidy |> 
-  filter(RTlexdec > 600, RTnaming < 480) |> 
-  select(AgeSubject, RTlexdec) |> 
-  head(10)
-```
-
-In Basis-R würden wir dies einfach in `[,]` einfügen. Dadurch erhalten wir keinen Vektor mehr, sondern die Datenrahmenstruktur bleibt erhalten. Nicht, dass wir auch die Zeilennummern erhalten.
-
-```{r filename = "base R: dataframe[conditions,columns]"}
-#| eval: false
-df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c("AgeSubject", "RTlexdec")]
-```
-
-```{r}
-#| echo: false
-df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c("AgeSubject", "RTlexdec")] |> 
-  head(10)
-```
-
-Auch hier können Sie die Spaltennamen durch den Indexwert ersetzen.
-
-```{r filename = "base R: dataframe[conditions,index]"}
-#| eval: false
-df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c(1, 6)]
-```
-
-```{r}
-#| echo: false
-df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c(1, 6)] |> 
-  head(10)
-```
-
-## Neue Variablen erstellen
-
-Wir haben gelernt, wie man mit der Funktion `mutate()`, die ebenfalls aus `dplyr` stammt, neue Variablen erstellt oder bestehende Variablen ändert.
-
-```{r filename = "tidyverse: dplyr::mutate()"}
-df_tidy |> 
-  mutate(rt_lexdec_s = RTlexdec/1000)
-```
-
-In Base R geschieht dies, indem wir den Namen der neuen Variablen definieren und ihr mit dem Zuweisungsoperator `<-` einen Wert zuweisen.
-
-```{r filename = "base R"}
-df_base$rt_lexdec_s <- df_base$RTlexdec/1000
-```
-
-## Zusammenfassen
-
-Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht einfach, wenn man eine Gruppe hat, deshalb werden wir das nicht behandeln. 
-
-```{r}
-  df_tidy |> 
-  summarise(
-    mean_lexdec = mean(RTlexdec),
-    sd_lexdec = sd(RTlexdec),
-    mean_naming = mean(RTnaming, na.rm = T),
-    sd_naming = sd(RTnaming, na.rm = T)
+df_eng |> 
+  summarise(mean = mean(rt_lexdec),
+            sd = sd(rt_lexdec),
+            N = n(),
+            .by = c(age_subject)) |> 
+  ggplot(aes(x = age_subject, y = mean, colour = age_subject)) +
+  ## geom_point(data = df_eng, alpha = .4, position = position_jitterdodge(.5), aes(x = age_subject, y = rt_lexdec)) +
+  geom_point(size = 3) +
+  geom_errorbar(width = .5, aes(ymin=mean-sd, ymax=mean+sd)) +
+  labs(title = "Fehlerbalkendiagramm (+/-1SD)",
+    x = "Altersgruppe",
+    y = "LDT-Reaktionszeit (ms)",
+    color = "Altersgruppe"
+  ) +
+  scale_color_colorblind() +
+  theme_bw() +
+  theme(
+    legend.position = "none"
   )
 ```
 
-In Basis-R müssen wir neue Objekte erstellen, die den Wert jeder Operation enthalten, und sie mit der Funktion "data.frame()" zu einem Datenrahmen zusammenfassen.
+Es gibt einige Möglichkeiten, Fehlerbalken-Diagramme zu erstellen, aber wir werden uns auf die Verwendung von `ggplot2` und die Erstellung von zusammenfassenden Statistiken konzentrieren, wie wir sie in @sec-desc-stats mit der Funktion `summarise()` von `dplyr` gesehen haben.
+
+#### Berechnung der zusammenfassenden Statistik
+
+Zunächst müssen wir den Mittelwert und die Standardabweichung berechnen, gruppiert nach den Variablen, die wir visualisieren wollen. Bleiben wir bei `rt_lexdec` nach `age_subject`. Wie können wir den Mittelwert und die Standardabweichung von `rt_lexdec` nach `age_subject` berechnen?
 
 ```{r}
-data.frame(mean_lexdec = mean(df_base$RTlexdec),
-           sd_lexdec = sd(df_base$RTlexdec),
-           mean_naming = mean(df_base$RTnaming, na.rm = T),
-           sd_naming = sd(df_base$RTnaming, na.rm = T))
+#| code-fold: true
+#| code-summary: "Click here to see how"
+df_eng |> 
+  summarise(mean = mean(rt_lexdec),
+            sd = sd(rt_lexdec),
+            N = n(),
+            .by = age_subject) |> 
+  arrange(age_subject)
 ```
 
+Um zusammenfassende Statistiken zu erstellen, können wir entweder den obigen Code direkt in ein `ggplot`-Objekt einfügen, indem wir eine Pipe verwenden, oder wir können die Zusammenfassung als ein Objekt speichern, das wir dann in `ggplot` einfügen. Beide Optionen erzeugen das gleiche Diagramm, wie wir unten sehen.
 
-# Plots
-
-`ggplot2` ist auch bei Leuten beliebt, die sonst nicht die tidyverse-Paketfamilie nutzen. Das liegt daran, dass es einige nützliche Funktionen und ein sauberes Aussehen hat. 
-
-Das Plotten mit Base R kann auch sehr praktisch sein, wenn man einfache Diagramme erstellen will, um einen ersten Blick auf die Daten zu bekommen. Die nützlichsten Funktionen sind `hist()` und `plot()`, die jeweils Histogramme und Streudiagramme erzeugen. Beachten Sie, dass diese Funktionen mit Vektoren arbeiten, weswegen wir `$` verwenden müssen, um die Spalten aus dem Datenrahmen zu extrahieren.
-
+::: {.panel-tabset}
+#### Neues Objekt
 ```{r}
-#| fig-width: 4
-#| fig-asp: 1
-#| dev: png
-#| layout-ncol: 2
-#| label: fig-baser
-#| fig-cap: Histogram and scatterplot with base R
+#| output-location: column-fragment
+## Neues Objekt mit Zusammenfassungen erstellen
+sum_eng <- df_eng |> 
+  summarise(mean = mean(rt_lexdec),
+            sd = sd(rt_lexdec),
+            N = n(),
+            .by = age_subject) |> 
+  arrange(age_subject, age_subject)
 
-# left
-hist(df_base$RTlexdec)
-# right
-plot(df_base$RTlexdec, df_base$RTnaming) 
+## Neues Objekt in ggplot einfügen
+sum_eng |> 
+  ggplot(aes(x = age_subject, y = mean, colour = age_subject)) 
 ```
 
-To achieve the same thing with the tidyverse:
+#### With a pipe
 
 ```{r}
-#| fig-width: 4
-#| fig-asp: 1
-#| dev: png
-#| label: fig-ggplot
-#| fig-cap: Histogram and scatterplot with ggplot2
-
-df_base |> 
+#| output-location: column-fragment
+df_eng |> 
+  summarise(mean = mean(rt_lexdec),
+            sd = sd(rt_lexdec),
+            N = n(),
+            .by = age_subject) |> 
+  arrange(age_subject, age_subject) |> 
+  arrange(age_subject, age_subject) |> 
   ggplot() +
-  aes(x = RTlexdec) +
-  geom_histogram() +
-  df_base |> 
+  aes(x = age_subject, y = mean, colour = age_subject)
+```
+
+:::
+
+Ich neige dazu, eine Mischung aus diesen beiden Optionen zu verwenden. Manchmal erstelle ich ein neues Objekt und manchmal nicht, je nachdem, was für meinen Arbeitsablauf am sinnvollsten ist. In den Fällen, in denen ich die zusammenfassenden Statistiken auch drucken oder im Auge behalten möchte, würde ich ein Objekt erstellen, das die Zusammenfassung enthält. Dies hat den zusätzlichen Vorteil, dass es mit zusätzlichen Formatierungen gedruckt werden kann, um eine schöne Tabelle zu erstellen (wie @tbl-sum_eng).
+
+```{r}
+#| label: tbl-sum_eng
+#| tbl-cap: Formatierte Tabelle von `sum_eng`
+#| echo: false
+
+sum_eng |> 
+  mutate_if(is.numeric, round, 1) |> 
+  knitr::kable(
+    col.names = c("Altersgruppe", "Mittlere LDT (ms)", "SD", "N"),
+  escape = F,
+  full_width = F) |> 
+  kableExtra::kable_styling()
+```
+
+
+
+#### Plotten von Mittelwerten
+
+Aber alles, was wir bis jetzt haben, ist eine leere Leinwand, wir müssen unsere `geom`s hinzufügen. Zuerst fügen wir die Mittelwerte mit `geom_point()` ein.
+
+```{r}
+#| output-location: column-fragment
+sum_eng |> 
   ggplot() +
-  aes(x = RTlexdec, y = RTnaming) +
-  geom_point() +
-  plot_annotation(tag_levels = "A")
-```
-
-# Pipes
-
-For a long time pipes were a feature of the tidyverse, with the `%>%` pipe from the `magrittr` package. Since 2023, R provides a native pipe `|>`. You might've seen both versions (I tend to use `|>`). For our purposes they're interchangable, however there are important differences for more complex cases that we won't cover.
-
-
-```{r filename = "tidyverse: magrittr pipe %>%"}
-df_base$RTlexdec |> 
-  mean()
-```
-
-```{r filename = "base R: native pipe |>"}
-df_base$RTlexdec %>%
-  mean()
-```
-
-
-# Tasks
-
-```{r filename = "In the Console"}
-#| eval: false
-rm(list=ls())
-.rs.restartR()
-```
-
-Convert the following tidyverse code to base R. We will again use the `languageR_english.csv` dataset.
-
-## Read-in
-
-```{r}
-df_eng <- 
-  read_csv(here("daten", "languageR_english.csv"))
-```
-
-## Index
-
-### Selecting columns
-
-```{r}
-#| eval: false
-df_eng |> 
-  select(Word, WrittenFrequency)
-```
-
-```{r}
-#| echo: false
-df_eng |> 
-  select(Word, WrittenFrequency) |> 
-  head(10)
-```
-
-## Filtering rows
-
-```{r}
-#| eval: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6)
-```
-
-```{r}
-#| echo: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6) |> 
-  head(10)
-```
-
-## Selecting rows and columns
-
-```{r}
-#| eval: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6 & AgeSubject == "old") |> 
-  select(AgeSubject, Word, WrittenFrequency) 
-```
-
-```{r}
-#| echo: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6 & AgeSubject == "old") |> 
-  select(AgeSubject, Word, WrittenFrequency) |> 
-  head(10)
-```
-
-### Scatterplot
-
-```{r}
-df_eng |> 
-  ggplot() +
-  aes(x = WrittenFrequency, y = RTlexdec) +
+  aes(x = age_subject, y = mean) +
   geom_point()
 ```
 
-## Tidyverse versus base R
+#### Hinzufügen von Fehlerbalken
 
-What is your impression of base R versus the tidyverse? Based on what you've seen, would you prefer one over the other, or would you prefer one in certain cases only? There's no correct answer here.
+Fügen wir nun unsere Fehlerbalken hinzu, die eine Standardabweichung über und unter dem Mittelwert darstellen. Wir tun dies mit `geom_errorbar()`, das `ymin` und `ymax` als Argumente benötigt. Diese sind jeweils gleich `mean-/+sd`. Wir haben sie der Übersichtlichkeit halber in einen weiteren `aes()`-Aufruf innerhalb von `geom_errorbar()` eingefügt, aber sie könnten auch im ersten `aes()`-Aufruf erscheinen.
+
+```{r}
+#| output-location: column-fragment
+sum_eng |> 
+  ggplot() +
+  aes(x = age_subject, y = mean) +
+  geom_point() +
+  geom_errorbar(aes(ymin = mean-sd, 
+                    ymax = mean+sd)) +
+  theme_bw()
+```
+
+Hier sehen wir also den Mittelwert mit +/-1SD für die älteren und jüngeren Teilnehmergruppen. Und wenn wir einige weitere Anpassungen hinzufügen, erhalten wir @fig-errorbar-custom.
+
+```{r}
+sum_eng |> 
+  ggplot() +
+  aes(x = age_subject, y = mean, colour = age_subject, shape = age_subject) +
+  labs(title = "Mittlere LDT-Zeiten (+/-1SD)",
+    x = "Altersgruppe",
+    y = "Reaktionszeit (ms)",
+    color = "Altersgruppe"
+  ) +
+  geom_point(size = 3) +
+  geom_errorbar(width = .5, aes(ymin=mean-sd, ymax=mean+sd)) +
+  scale_color_colorblind() +
+  theme_bw() +
+  theme(
+    legend.position = "none"
+  )
+```
+
+
+::: {.callout-tip}
+
+### `stat_summary()`
+
+In `ggplot2` gibt es eine weitere nützliche Funktion, mit der zusammenfassende Statistiken visualisiert werden können, ohne dass zuvor mit `dplyr::sumarise()` Zusammenfassungen erstellt werden müssen. Die Funktion `stat_summary()` erlaubt es uns, zusammenfassende Statistiken direkt in unserem `ggplot()`-Objekt zu erstellen, was bedeutet, dass wir mehrere zusammenfassende Statistiken im selben Plot darstellen können (was wir noch nicht tun werden...).
+
+Die Funktion `stat_summary()` benötigt mindestens zwei Argumente: `stat =`, das ist der Typ der Statistik, die man darstellen möchte, und `geom =`, das ist der Typ des `geom`, mit dem man es visualisieren möchte. Wir können Mittelwerte leicht mit Punkten (@fig-stat-point) oder einem Balkenplot (@fig-stat-bar) darstellen, obwohl ich dringend empfehle, Balkenplots zu vermeiden, wenn ein Punktwert wie ein Mittelwert dargestellt werden soll.
+
+```{r}
+#| label: fig-stat-point
+#| fig-cap: '`stat_summary(stat_summary(fun = "mean", geom = "point"))`'
+df_eng |> 
+  ggplot() +
+  aes(x = age_subject, y = rt_lexdec, colour = age_subject) +
+  stat_summary(fun = "mean", geom = "point") +
+  labs(title = 'geom = "point"')
+```
+
+```{r}
+#| label: fig-stat-bar
+#| fig-cap: '`stat_summary(stat_summary(fun = "mean", geom = "bar"))`'
+df_eng |> 
+  ggplot() +
+  aes(x = age_subject, y = rt_lexdec, fill = age_subject) +
+  stat_summary(fun = "mean", geom = "bar") +
+  labs(title = 'geom = "bar"')
+```
+
+Wir können auch Fehlerbalken mit `stat_summary()` einfügen, wie in @fig-stat-error. Dies erzeugt doppelte Standardabweichungen, so dass wir die `fun.args =`-Werte einfügen müssen, um anzugeben, dass wir einfache Standardabweichungen visualisieren wollen.
+
+```{r}
+#| label: fig-stat-error
+#| fig-cap: '`stat_summary(fun.data = "mean_sdl", geom = "errorbar",...`'
+df_eng |> 
+  ggplot() +
+  aes(x = age_subject, y = rt_lexdec, colour = age_subject) +
+  stat_summary(fun = "mean", geom = "point") +
+  stat_summary(fun.data = "mean_sdl",
+               geom = "errorbar",
+               fun.args = list (mult = 1)) +
+  labs(title = 'Fehlerbalken-Darstellung mit `stat_summary()`') +
+  theme_bw()
+```
+
+Wie Sie sehen können, ist das Hinzufügen von Fehlerbalken mit `stat_summary()` etwas weniger einfach, weshalb wir uns für den Weg `summarise() |> ggplot() + ...` entschieden haben. Ein zusätzlicher Vorteil der Verwendung von `summarise()` ist, dass Sie Ihre Zusammenfassung als Tibble (d.h. als Tabelle oder Datenrahmen) speichern können, die zusätzlich zum Plot gedruckt werden kann (wie wir mit @tbl-df_eng gesehen haben). Ich habe erst vor ein oder zwei Jahren begonnen, `dplyr::summarise()` anstelle von `ggplot2::stat_summary()` zu verwenden, und bevorzuge Ersteres, weil ich dann die berechneten Werte vor dem Plotten überprüfen kann. Dies ist eine Frage der persönlichen Vorliebe, wenn Sie also neugierig sind, schlage ich vor, dass Sie `stat_summary()` ausprobieren, um zu sehen, ob Sie eine Vorliebe haben. Wenn Sie mehr über `stat_summary()` erfahren wollen, können Sie `?stat_summary` in der `Console` eingeben oder nach Tutorials oder YouTube-Videos googeln, es gibt viele davon.
+:::
+
+### Balkendiagramm der Mittelwerte: Finger weg!
+
+Ich flehe Sie an, *nicht* Mittelwerte mit Balkendiagramme darzustellen! Sie werden sehr oft Balkendiagramme von Mittelwerten sehen, und andere unterrichten dies vielleicht sogar in anderen Kursen, aber es gibt viele Gründe, warum dies eine schlechte Idee ist!!!
+
+Erstens können sie sehr irreführend sein. Sie beginnen bei 0 und vermitteln den Eindruck, dass die Daten beim Mittelwert enden, obwohl etwa die Hälfte der Daten (normalerweise) über dem Mittelwert liegt. 
+
+Außerdem hat der Balkenplot ein schlechtes Daten-Tinten-Verhältnis, d. h. die Menge der Datentinte geteilt durch die Gesamttinte, die zur Erstellung der Grafik benötigt wird, oder die Menge der Tinte, die entfernt werden kann, ohne dass Informationen verloren gehen. Beispielsweise beginnen Balkenplots normalerweise bei Null und enden beim Mittelwert. Was aber, wenn es nur sehr wenige oder gar keine Beobachtungen in der Nähe von Null gibt? Wir verbrauchen eine Menge Tinte, wo es keine Beobachtungen gibt! Ein ebenso abscheuliches Verbrechen ist, dass der Balken nur den Bereich abdeckt, in dem die untere *Hälfte* der Beobachtungen liegt; ebenso viele Beobachtungen liegen über dem Mittelwert!
+
+Meiner Meinung nach sollten Balkendiagramme nur für Zählungen oder Häufigkeiten verwendet werden. Abgesehen davon sind Fehlerbalken allein nicht die Lösung. Die Darstellung *nur* des Mittelwerts und der Standardabweichung (oder des Standardfehlers/des Konfidenzintervalls/der glaubwürdigen Intervalle) verbirgt eine Menge Informationen über die tatsächliche Streuung und Verteilung der Daten. Erinnern Sie sich an das Paket `datasauRus`, das Datensätze mit ähnlichen Mittelwerten, Standardabweichungen und Anzahl der Beobachtungen, aber *sehr* unterschiedlichen Verteilungen enthält. @fig-dino-barplot zeigt die Verteilung von 5 dieser Datensätze (A), einen Balkenplot des Mittelwerts, der Standardabweichung und der Anzahl der Beobachtungen für die Variablen "x" und "y" (B) sowie einen Fehlerbalkenplot (C). 
+
+```{r}
+#| echo: false
+fig_datasaurus_scatter <- datasauRus::datasaurus_dozen |> 
+  filter(dataset %in% c("away", "bullseye", "circle", "dino", "star")) |> 
+ggplot(aes(x = x, y = y, colour = dataset))+
+  geom_point() +
+  theme_minimal() +
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol = 5)
+
+fig_datasaurus_bar <-
+  datasauRus::datasaurus_dozen |> 
+  filter(dataset %in% c("away", "bullseye", "circle", "dino", "star")) |> 
+  pivot_longer(cols = c(x,y),
+               names_to = "variable",
+               values_to = "value") |> 
+  summarise(mean = mean(value),
+            sd = sd(value),
+            n = n(),
+            .by = c(dataset, variable)) |> 
+  pivot_wider(
+    id_cols = dataset,
+    names_from = variable,
+    values_from = c(mean,sd,n)
+  ) |> 
+    pivot_longer(
+      cols = c(2:7),
+      names_to = "measure",
+      values_to = "value"
+    ) |> 
+ggplot(aes(x = measure, y = value, fill = dataset)) +
+  facet_grid(~dataset) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+
+fig_datasaurus_point <-
+  datasauRus::datasaurus_dozen |> 
+  filter(dataset %in% c("away", "bullseye", "circle", "dino", "star")) |> 
+  pivot_longer(cols = c(x,y),
+               names_to = "variable",
+               values_to = "value") |> 
+  summarise(mean = mean(value),
+            sd = sd(value),
+            n = n(),
+            .by = c(dataset, variable)) |> 
+  pivot_wider(
+    id_cols = dataset,
+    names_from = variable,
+    values_from = c(mean,sd,n)
+  ) |> 
+    pivot_longer(
+      cols = c(2:7),
+      cols_vary = "slowest",
+    names_to = c(".value", "variable"),
+    names_sep = "_"
+    ) |> 
+ggplot(aes(x = variable, y = mean, colour = variable, shape = variable,
+           ymin = mean-sd, ymax = mean+sd)) +
+  labs(y = "value") +
+  facet_grid(~dataset) +
+    geom_point() +
+    geom_errorbar(width = .3) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+
+```
+
+```{r}
+#| fig-width: 8
+#| fig-asp: .9
+#| label: fig-dino-barplot
+#| fig-cap: Datasets with the same means, sds, and Ns, but very different distributions
+#| echo: false
+
+fig_datasaurus_scatter / fig_datasaurus_bar / fig_datasaurus_point +
+  plot_annotation(tag_levels = "A")
+```
+
+Sie werden sehen, dass die Verteilungen sehr unterschiedlich aussehen (in @fig-dino-barplot A), aber @fig-dino-barplot B und C vermitteln das nicht. Aus diesem Grund ist es ein guter Grund, die Rohdatenpunkte *immer* zu visualisieren, unabhängig davon, welche zusammenfassende Darstellung Sie erstellen (z. B. verbergen Errorbar-Plots auch viele Daten). Eine gute Möglichkeit, alle Grundlagen abzudecken, besteht darin, die Verteilung der Daten zusammen mit einer Visualisierung der zusammenfassenden Statistiken darzustellen. Sie werden dies in der Hausaufgabe üben, und in @sec-dataviz4 werden wir sehen, wie man diese zusammen in einem Diagramm visualisiert.
+
+
+## Lernziele 🏁 {.unnumbered .unlisted}
+
+In diesem Kapital haben wir gelernt, wie man...
+
+- Boxplots zu erstellen und zu interpretieren ✅
+- Mittelwerte und Standardabweichungen zu visualisieren ✅
+
+## Hausaufgabe {.unnumbered}
+
+### Boxplot mit Facette {.unnumbered}
+
+::: nicht-inkrementell
+1. Erzeugen Sie einen Plot namens `fig_boxplot`, der ein Boxplot der `df_eng` Daten ist, mit:
+    + `age_subject` auf der `x`-Achse
+    + `rt_naming` auf der `y`-Achse
+    + `age_subject` als `colour` *oder* `fill` (wähle eine, es gibt keine falsche Wahl)
+    + `Wort_Kategorie` in zwei Facetten mit `facet_wrap()` aufgetragen
+    + die von Ihnen gewählte `theme_`-Einstellung (z.B. `theme_bw()`; für weitere Optionen siehe [hier](https://ggplot2.tidyverse.org/reference/ggtheme.html))
+    
+```{r}
+#| echo: false
+fig_boxplot <-
+df_eng |> 
+  ggplot() +
+  aes(x = age_subject, y = rt_naming,
+      colour = age_subject) +
+  facet_wrap(~word_category) +
+  labs(
+    title = "Benennung von RTs nach Altersgruppen",
+    x = "Altersgruppe",
+       y = "Benennungs-RT (ms)") +
+  geom_boxplot() +
+  scale_color_colorblind() +
+  theme_bw() +
+  theme(legend.position = "none") 
+```
+
+:::
+  
+### Errorbar plot {.unnumbered}
+
+::: nonincremental
+2. Versuchen Sie, @fig-error-naming zu reproduzieren. Hinweis: Sie werden die Variable `rt_naming` aus `df_eng` verwenden.
+:::
+```{r}
+#| echo: false
+fig_error_naming <- df_eng |> 
+  drop_na() |> 
+  summarise(
+    mean = mean(rt_naming),
+    sd = sd(rt_naming),
+    .by = age_subject
+  ) |> 
+  ggplot() +
+  aes(x = age_subject, y = mean, 
+             colour = age_subject, shape = age_subject,
+      ymin = mean-sd, ymax = mean+sd) +
+    labs(
+      title = "Mittlere Benennungszeiten (+/-1 SD)",
+      y = "Benennungs-RTs (ms)",
+      x = "Altersgruppe"
+  ) +
+  geom_point(size = 2) +
+  geom_errorbar(width = .3) +
+  scale_colour_colorblind() +
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+```{r}
+#| echo: false
+#| label: fig-error-naming
+#| fig-cap: "Plot to be reproduced"
+#| fig-width: 5
+#| fig-asp: .618
+fig_error_naming
+```
+
+### Patchwork {.unnumbered}
+
+::: nicht-inkrementell
+3. Verwenden Sie das Paket `patchwork`, um Ihren Boxplot und Ihre Fehlerbalkenplots nebeneinander darzustellen. Es sollte ungefähr so aussehen wie @fig-patchwork. Hinweis: Wenn Sie die "tag-level" ("A" und "B") zu den Plots hinzufügen möchten, müssen Sie `+ plot_annotation(tag_level = "A")` aus `patchwork` hinzufügen.
+:::
+
+```{r}
+#| label: fig-patchwork
+#| fig-cap: Combined plots with `patchwork`
+#| echo: false
+#| fig-width: 8
+#| fig-asp: .5
+fig_boxplot + fig_error_naming + plot_annotation(tag_levels = "A")
+```
+
 
 
 ## Session Info {.unnumbered}
@@ -594,13 +738,3 @@ print(sessionInfo(),locale = F)
 
 ::: {#refs custom-style="Bibliography"}
 :::
-
-
-
-
-
-
-
-
-
-
