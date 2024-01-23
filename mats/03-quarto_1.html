@@ -134,6 +134,7 @@ MathJax.Hub.Config({
 </script>
 
 
+<link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 3&nbsp; Dynamic reports with Quarto">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="03-quarto_1_files/figure-html/fig-wiederholung-1.png">
@@ -323,8 +324,21 @@ MathJax.Hub.Config({
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Fortgeschrittene Themen</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Fortgeschrittene Themen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/12-baseR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -841,23 +855,23 @@ Die Bedeutung der Formatierung
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="qicxthzbuc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qicxthzbuc table {
+<div id="czhxfyfsky" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#czhxfyfsky table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qicxthzbuc thead, #qicxthzbuc tbody, #qicxthzbuc tfoot, #qicxthzbuc tr, #qicxthzbuc td, #qicxthzbuc th {
+#czhxfyfsky thead, #czhxfyfsky tbody, #czhxfyfsky tfoot, #czhxfyfsky tr, #czhxfyfsky td, #czhxfyfsky th {
   border-style: none;
 }
 
-#qicxthzbuc p {
+#czhxfyfsky p {
   margin: 0;
   padding: 0;
 }
 
-#qicxthzbuc .gt_table {
+#czhxfyfsky .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -883,12 +897,12 @@ Die Bedeutung der Formatierung
   border-left-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_caption {
+#czhxfyfsky .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qicxthzbuc .gt_title {
+#czhxfyfsky .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -900,7 +914,7 @@ Die Bedeutung der Formatierung
   border-bottom-width: 0;
 }
 
-#qicxthzbuc .gt_subtitle {
+#czhxfyfsky .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -912,7 +926,7 @@ Die Bedeutung der Formatierung
   border-top-width: 0;
 }
 
-#qicxthzbuc .gt_heading {
+#czhxfyfsky .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -924,13 +938,13 @@ Die Bedeutung der Formatierung
   border-right-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_bottom_border {
+#czhxfyfsky .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_col_headings {
+#czhxfyfsky .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -945,7 +959,7 @@ Die Bedeutung der Formatierung
   border-right-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_col_heading {
+#czhxfyfsky .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -965,7 +979,7 @@ Die Bedeutung der Formatierung
   overflow-x: hidden;
 }
 
-#qicxthzbuc .gt_column_spanner_outer {
+#czhxfyfsky .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -977,15 +991,15 @@ Die Bedeutung der Formatierung
   padding-right: 4px;
 }
 
-#qicxthzbuc .gt_column_spanner_outer:first-child {
+#czhxfyfsky .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qicxthzbuc .gt_column_spanner_outer:last-child {
+#czhxfyfsky .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qicxthzbuc .gt_column_spanner {
+#czhxfyfsky .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -997,11 +1011,11 @@ Die Bedeutung der Formatierung
   width: 100%;
 }
 
-#qicxthzbuc .gt_spanner_row {
+#czhxfyfsky .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qicxthzbuc .gt_group_heading {
+#czhxfyfsky .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1027,7 +1041,7 @@ Die Bedeutung der Formatierung
   text-align: left;
 }
 
-#qicxthzbuc .gt_empty_group_heading {
+#czhxfyfsky .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1042,15 +1056,15 @@ Die Bedeutung der Formatierung
   vertical-align: middle;
 }
 
-#qicxthzbuc .gt_from_md > :first-child {
+#czhxfyfsky .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qicxthzbuc .gt_from_md > :last-child {
+#czhxfyfsky .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qicxthzbuc .gt_row {
+#czhxfyfsky .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1069,7 +1083,7 @@ Die Bedeutung der Formatierung
   overflow-x: hidden;
 }
 
-#qicxthzbuc .gt_stub {
+#czhxfyfsky .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1082,7 +1096,7 @@ Die Bedeutung der Formatierung
   padding-right: 5px;
 }
 
-#qicxthzbuc .gt_stub_row_group {
+#czhxfyfsky .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1096,15 +1110,15 @@ Die Bedeutung der Formatierung
   vertical-align: top;
 }
 
-#qicxthzbuc .gt_row_group_first td {
+#czhxfyfsky .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qicxthzbuc .gt_row_group_first th {
+#czhxfyfsky .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qicxthzbuc .gt_summary_row {
+#czhxfyfsky .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1114,16 +1128,16 @@ Die Bedeutung der Formatierung
   padding-right: 5px;
 }
 
-#qicxthzbuc .gt_first_summary_row {
+#czhxfyfsky .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_first_summary_row.thick {
+#czhxfyfsky .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qicxthzbuc .gt_last_summary_row {
+#czhxfyfsky .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1133,7 +1147,7 @@ Die Bedeutung der Formatierung
   border-bottom-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_grand_summary_row {
+#czhxfyfsky .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1143,7 +1157,7 @@ Die Bedeutung der Formatierung
   padding-right: 5px;
 }
 
-#qicxthzbuc .gt_first_grand_summary_row {
+#czhxfyfsky .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1153,7 +1167,7 @@ Die Bedeutung der Formatierung
   border-top-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_last_grand_summary_row_top {
+#czhxfyfsky .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1163,11 +1177,11 @@ Die Bedeutung der Formatierung
   border-bottom-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_striped {
+#czhxfyfsky .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qicxthzbuc .gt_table_body {
+#czhxfyfsky .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1176,7 +1190,7 @@ Die Bedeutung der Formatierung
   border-bottom-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_footnotes {
+#czhxfyfsky .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1190,7 +1204,7 @@ Die Bedeutung der Formatierung
   border-right-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_footnote {
+#czhxfyfsky .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1199,7 +1213,7 @@ Die Bedeutung der Formatierung
   padding-right: 5px;
 }
 
-#qicxthzbuc .gt_sourcenotes {
+#czhxfyfsky .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1213,7 +1227,7 @@ Die Bedeutung der Formatierung
   border-right-color: #D3D3D3;
 }
 
-#qicxthzbuc .gt_sourcenote {
+#czhxfyfsky .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1221,63 +1235,63 @@ Die Bedeutung der Formatierung
   padding-right: 5px;
 }
 
-#qicxthzbuc .gt_left {
+#czhxfyfsky .gt_left {
   text-align: left;
 }
 
-#qicxthzbuc .gt_center {
+#czhxfyfsky .gt_center {
   text-align: center;
 }
 
-#qicxthzbuc .gt_right {
+#czhxfyfsky .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qicxthzbuc .gt_font_normal {
+#czhxfyfsky .gt_font_normal {
   font-weight: normal;
 }
 
-#qicxthzbuc .gt_font_bold {
+#czhxfyfsky .gt_font_bold {
   font-weight: bold;
 }
 
-#qicxthzbuc .gt_font_italic {
+#czhxfyfsky .gt_font_italic {
   font-style: italic;
 }
 
-#qicxthzbuc .gt_super {
+#czhxfyfsky .gt_super {
   font-size: 65%;
 }
 
-#qicxthzbuc .gt_footnote_marks {
+#czhxfyfsky .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qicxthzbuc .gt_asterisk {
+#czhxfyfsky .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qicxthzbuc .gt_indent_1 {
+#czhxfyfsky .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qicxthzbuc .gt_indent_2 {
+#czhxfyfsky .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qicxthzbuc .gt_indent_3 {
+#czhxfyfsky .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qicxthzbuc .gt_indent_4 {
+#czhxfyfsky .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qicxthzbuc .gt_indent_5 {
+#czhxfyfsky .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
