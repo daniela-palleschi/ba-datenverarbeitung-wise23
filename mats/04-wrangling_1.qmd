@@ -58,7 +58,7 @@ Heute werden wir...
 
 ### Lust auf mehr? {.unnumbered .unlisted}
 
-- [Kapital 4 (Data transformation)](https://r4ds.hadley.nz/data-transform.html) in @wickham_r_nodate
+- [Kapital 4 (Data transformation)](https://r4ds.hadley.nz/data-transform.html) in @wickham_r_2023
 - [Kapital 9 (Data wrangling)](https://psyteachr.github.io/ads-v2/09-wrangle.html) in @nordmann_applied_2022
 
 ## Voraussetzungen

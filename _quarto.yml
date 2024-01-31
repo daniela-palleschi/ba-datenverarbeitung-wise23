@@ -46,7 +46,7 @@ book:
     - part: "Fortgeschrittene Themen"
       chapters:
         - mats/12-baseR.qmd
-        # - mats/13-infer_stats_1.qmd
+        - mats/13-dataviz_4.qmd
         # - mats/14-dataviz_3.qmd
         # - berichte/bericht_3.qmd
         # - mats/16-qna.qmd

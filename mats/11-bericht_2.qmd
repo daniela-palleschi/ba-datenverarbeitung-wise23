@@ -8,7 +8,7 @@ lang: de
 date: "01/17/2024"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
-shift-heading-level-by: +1
+## shift-heading-level-by: +1
 code-tools: false
 eval: false
 echo: false
@@ -20,7 +20,7 @@ Der Zweck dieses Berichts ist es, das, was wir in den letzten Wochen gelernt hab
 
 Sie können Ihr eigenes Quarto-Skript von Grund auf erstellen oder ein leeres Skript verwenden, das ich mit den Fragen und den entsprechenden Überschriften erstellt habe. Sie können dieses Skript auf Moodle oder online [hier](https://github.com/daniela-palleschi/r4ling/blob/689c46b15a883d0fb2d001ea50d97fa101e23d62/slides/11-bericht2/empty%20script/student_bericht2.qmd) finden.
 
-### Beschreibung des Datensatzes {.unnumbered}
+#### Beschreibung des Datensatzes {.unnumbered}
 
 Diese Beschreibung soll einen gewissen Kontext zu dem Datensatz liefern. Der Zweck dieses Berichts ist es jedoch, Ihre Fähigkeit zu demonstrieren, die Daten zu laden, zu verarbeiten, zusammenzufassen und darzustellen. Auch wenn Ihnen die Konzepte, die für den Datensatz relevant sind, nicht klar sind, werden Sie in der Lage sein, die Aufgaben zu lösen.
 
@@ -61,11 +61,11 @@ Durch die Untersuchung dieses Datensatzes sind wir an folgenden Fragen interessi
 
 Sie werden Diagramme und zusammenfassende Statistiken erstellen, um diese Fragen zu beantworten.
 
-# Einrichten
+## Einrichten
 
 Führen Sie den folgenden Code aus, um Ihre Umgebung für die folgenden Aufgaben einzurichten.
 
-## Packages {.unnumbered}
+### Packages {.unnumbered}
 
 Führen Sie den folgenden Code aus, um die erforderlichen Pakete zu laden: `tidyverse`, `here`, `janitor`, und `patchwork`.
 
@@ -80,7 +80,7 @@ pacman::p_load(
 )
 ```
 
-## Daten laden {.unnumbered}
+### Daten laden {.unnumbered}
 
 Nachfolgend finden Sie einen Code, der einen Datensatz von @biondo_yesterday_2022 lädt, eine Studie zur Beobachtung von Augenbewegungen beim Lesen. Es gibt einen Kommentar, in dem beschrieben wird, was die einzelnen Zeilen bewirken, falls Sie daran interessiert sind. Dieser Datensatz muss zuerst heruntergeladen und in Ihrem `Daten`-Ordner gespeichert werden. 
 
@@ -88,19 +88,19 @@ Nachfolgend finden Sie einen Code, der einen Datensatz von @biondo_yesterday_202
 #| echo: true
 df_biondo <-
   read_csv(here("daten", "Biondo.Soilemezidi.Mancini_dataset_ET.csv"),
-           # spezielle Formatierung für spanische Zeichen
+           ## spezielle Formatierung für spanische Zeichen
            locale = locale(encoding = "Latin1")) |> 
-  # tidy Variablennamen
+  ## tidy Variablennamen
   clean_names() |> 
-  # Grammatikalität umschlüsseln
+  ## Grammatikalität umschlüsseln
   mutate(gramm = ifelse(gramm == 0, "ungramm", "gramm")) |> 
-  # nur Beobachtungen von deiktischen Adverbien behalten
+  ## nur Beobachtungen von deiktischen Adverbien behalten
   filter(adv_type == "Deic",
-         # und die Satzregionen Adverb (2) und Verb (4)
+         ## und die Satzregionen Adverb (2) und Verb (4)
          roi %in% c(2,4))
 ```
 
-## Datenumwandlung 1: Transformation {.unnumbered}
+### Datenumwandlung 1: Transformation {.unnumbered}
 
 Fügen Sie unter Verwendung von Pipes (`|>`) dem obigen Code-Stück eine Zeile hinzu:
 
@@ -124,7 +124,7 @@ df_biondo <-
   select(roi, label, tense, gramm, fp, tt)
 ```
 
-# Plot-Interpretation: Verteilung
+## Plot-Interpretation: Verteilung
 
 Betrachten Sie @fig-distribution A und B und beschreiben Sie die Diagramme. Beide enthalten nur Daten aus der Verbregion eines Satzes (`roi == 4`). Geben Sie den ungefähren Modus sowie die Minimal- und Maximalwerte für den gesamten Datensatz (@fig-Verteilung A) und den Median, den Minimal- und den Maximalwert pro Bedingung (@fig-Verteilung B) an.
 
@@ -152,7 +152,7 @@ ggsave(here("figures", "bericht3", "fig_distribution.png"), fig_distribution,
        units = "cm",
        scale = .85)
 
-# now in Terminal: push figure to github repo
+## now in Terminal: push figure to github repo
 ```
 
 ```{r}
@@ -165,7 +165,7 @@ fig_distribution + plot_annotation(tag_levels = "A")
 ```
 
 
-# Data wrangling 2: Aufräumen
+## Data wrangling 2: Aufräumen
 
 Verwenden Sie die Funktion `pivot_longer()`, um den Datensatz zu verlängern, wobei die Spalten (`cols =`) `fp` und `tt` zu einer Spalte (`names_to = `) namens `measure` werden und ihre Werte in einer Spalte (`values_to = `) namens `time` gespeichert werden. Speichern Sie das Ergebnis als `df_longer`. Es sollte 15360 Beobachtungen und 6 Spalten enthalten.
 
@@ -184,7 +184,7 @@ df_longer <-
   )
 ```
 
-# Zusammenfassende Statistik
+## Zusammenfassende Statistik
 
 Verwenden Sie die Funktion `summarise()`, um den Mittelwert und die Standardabweichung von `time` zu ermitteln. Gruppieren Sie die Ergebnisse nach `measure`, `tense`, `gramm` und `roi` (entweder mit `.by =` oder `group_by()`).
 
@@ -210,11 +210,11 @@ Drucken Sie die Zusammenfassung.
 sum_et
 ```
 
-# Visualisierung zusammenfassender Statistiken
+## Visualisierung zusammenfassender Statistiken
 
 In dieser Aufgabe erstellen Sie zwei Fehlerdiagramme und drucken sie nebeneinander aus.
 
-## Adverb-Region {.unnumbered}
+### Adverb-Region {.unnumbered}
 
 Erzeugen Sie ein Fehlerdiagramm namens `fig_adverb` für die Region `adverb` (`roi == 2`) der soeben erstellten Zusammenfassung mit folgender Ästhetik:
   + Grammatikalität auf der x-Achse
@@ -229,7 +229,7 @@ Erzeugen Sie ein Fehlerdiagramm namens `fig_adverb` für die Region `adverb` (`r
 fig_adverb <-
 ```
 
-## Verb-Region {.unnumbered}
+### Verb-Region {.unnumbered}
 
 Erzeugen Sie die gleiche Darstellung für die Region `verb` (`roi == 4`) mit dem Namen `fig_verb`.
 
@@ -260,12 +260,12 @@ sum_et |>
 
 
   
-## Plots drucken {.unnumbered}
+### Plots drucken {.unnumbered}
 
 Stellen Sie Ihre beiden Fehlerbalken nebeneinander dar, indem Sie das Paket `patchwork` verwenden
 
 
-# Plot-Interpretation: zusammenfassende Statistiken
+## Plot-Interpretation: zusammenfassende Statistiken
 
 Beschreiben Sie etwaige Unterschiede zwischen den Bedingungen und Regionen auf der Grundlage der von Ihnen erstellten Zusammenfassung und der aus der Zusammenfassung generierten Diagramme.
 
