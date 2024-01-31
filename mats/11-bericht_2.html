@@ -338,6 +338,12 @@ MathJax.Hub.Config({
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/13-dataviz_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -412,7 +418,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mi. den 17.01.2024</p>
+      <p class="date-modified">Mi. den 24.01.2024</p>
     </div>
   </div>
     
@@ -519,15 +525,15 @@ MathJax.Hub.Config({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_biondo <span class="ot">&lt;-</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"Biondo.Soilemezidi.Mancini_dataset_ET.csv"</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           <span class="co"># spezielle Formatierung für spanische Zeichen</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           <span class="do">## spezielle Formatierung für spanische Zeichen</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"Latin1"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidy Variablennamen</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## tidy Variablennamen</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Grammatikalität umschlüsseln</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Grammatikalität umschlüsseln</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gramm =</span> <span class="fu">ifelse</span>(gramm <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"ungramm"</span>, <span class="st">"gramm"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nur Beobachtungen von deiktischen Adverbien behalten</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## nur Beobachtungen von deiktischen Adverbien behalten</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(adv_type <span class="sc">==</span> <span class="st">"Deic"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>         <span class="co"># und die Satzregionen Adverb (2) und Verb (4)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>         <span class="do">## und die Satzregionen Adverb (2) und Verb (4)</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         roi <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
