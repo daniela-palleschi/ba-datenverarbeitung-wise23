@@ -364,11 +364,31 @@ MathJax.Hub.Config({
   <ul>
   <li><a href="#lesungen" id="toc-lesungen" class="nav-link active" data-scroll-target="#lesungen">Lesungen</a></li>
   <li><a href="#lernziele" id="toc-lernziele" class="nav-link" data-scroll-target="#lernziele">Lernziele</a></li>
-  <li><a href="#einrichten" id="toc-einrichten" class="nav-link" data-scroll-target="#einrichten">Einrichten</a></li>
-  <li><a href="#ausweichende-dichteplots" id="toc-ausweichende-dichteplots" class="nav-link" data-scroll-target="#ausweichende-dichteplots"><span class="header-section-number">13.0.1</span> Ausweichende Dichteplots</a></li>
-  <li><a href="#positionierung-von-fehlerbalkenplots" id="toc-positionierung-von-fehlerbalkenplots" class="nav-link" data-scroll-target="#positionierung-von-fehlerbalkenplots"><span class="header-section-number">13.0.2</span> Positionierung von Fehlerbalkenplots</a></li>
-  <li><a href="#anpassungen" id="toc-anpassungen" class="nav-link" data-scroll-target="#anpassungen"><span class="header-section-number">13.0.3</span> Anpassungen</a></li>
-  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">13.0.4</span> Aufgaben</a></li>
+  <li><a href="#einrichten" id="toc-einrichten" class="nav-link" data-scroll-target="#einrichten">Einrichten</a>
+  <ul class="collapse">
+  <li><a href="#pakete" id="toc-pakete" class="nav-link" data-scroll-target="#pakete">Pakete</a></li>
+  <li><a href="#daten" id="toc-daten" class="nav-link" data-scroll-target="#daten">Daten</a></li>
+  </ul></li>
+  <li><a href="#ausweichende-dichteplots" id="toc-ausweichende-dichteplots" class="nav-link" data-scroll-target="#ausweichende-dichteplots"><span class="header-section-number">13.1</span> Ausweichende Dichteplots</a>
+  <ul class="collapse">
+  <li><a href="#hinzufügen-eines-boxplots" id="toc-hinzufügen-eines-boxplots" class="nav-link" data-scroll-target="#hinzufügen-eines-boxplots"><span class="header-section-number">13.1.1</span> Hinzufügen eines Boxplots</a></li>
+  <li><a href="#position_nudge" id="toc-position_nudge" class="nav-link" data-scroll-target="#position_nudge"><span class="header-section-number">13.1.2</span> <code>position_nudge()</code></a></li>
+  <li><a href="#position_jitter-für-scatterplots" id="toc-position_jitter-für-scatterplots" class="nav-link" data-scroll-target="#position_jitter-für-scatterplots"><span class="header-section-number">13.1.3</span> <code>position_jitter()</code> für Scatterplots</a></li>
+  <li><a href="#kombiniert-alle-drei" id="toc-kombiniert-alle-drei" class="nav-link" data-scroll-target="#kombiniert-alle-drei"><span class="header-section-number">13.1.4</span> Kombiniert alle drei</a></li>
+  </ul></li>
+  <li><a href="#positionierung-von-fehlerbalkenplots" id="toc-positionierung-von-fehlerbalkenplots" class="nav-link" data-scroll-target="#positionierung-von-fehlerbalkenplots"><span class="header-section-number">13.2</span> Positionierung von Fehlerbalkenplots</a>
+  <ul class="collapse">
+  <li><a href="#pivot_longer-summarise" id="toc-pivot_longer-summarise" class="nav-link" data-scroll-target="#pivot_longer-summarise"><span class="header-section-number">13.2.1</span> <code>pivot_longer() |&gt; summarise()</code></a></li>
+  <li><a href="#überlappende-fehlerbalken" id="toc-überlappende-fehlerbalken" class="nav-link" data-scroll-target="#überlappende-fehlerbalken"><span class="header-section-number">13.2.2</span> Überlappende Fehlerbalken</a></li>
+  <li><a href="#position_dodge" id="toc-position_dodge" class="nav-link" data-scroll-target="#position_dodge"><span class="header-section-number">13.2.3</span> <code>position_dodge()</code></a></li>
+  <li><a href="#ausweichen-vor-allen-relevanten-geomen" id="toc-ausweichen-vor-allen-relevanten-geomen" class="nav-link" data-scroll-target="#ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">13.2.4</span> Ausweichen vor allen relevanten Geomen</a></li>
+  </ul></li>
+  <li><a href="#anpassungen" id="toc-anpassungen" class="nav-link" data-scroll-target="#anpassungen"><span class="header-section-number">13.3</span> Anpassungen</a>
+  <ul class="collapse">
+  <li><a href="#standardthemen" id="toc-standardthemen" class="nav-link" data-scroll-target="#standardthemen"><span class="header-section-number">13.3.1</span> Standardthemen</a></li>
+  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"><span class="header-section-number">13.3.2</span> theme()</a></li>
+  </ul></li>
+  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">13.4</span> Aufgaben</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session Info</a></li>
   </ul>
 </nav>
@@ -419,12 +439,12 @@ MathJax.Hub.Config({
 
 </header>
 
-<section id="lesungen" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h3>
+<section id="lesungen" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h2>
 <p>Für weitere Lektüre und Übungen zu diesem Thema empfehle ich die Lektüre von <a href="https://r4ds.hadley.nz/communication#sec-themes">Abschnitt 11.5 (Kommunikation: Themen)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> und <a href="https://psyteachr.github.io/introdataviz/representing-summary-statistics.html">Kapitel 4 (Darstellung von zusammenfassenden Statistiken)</a> in <span class="citation" data-cites="nordmann_data_2022">Nordmann et al. (<a href="01-intro_r.html#ref-nordmann_data_2022" role="doc-biblioref">2022</a>)</span>.</p>
 </section>
-<section id="lernziele" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="lernziele">Lernziele</h3>
+<section id="lernziele" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="lernziele">Lernziele</h2>
 <p>In diesem Abschnitt werden wir lernen</p>
 <ul>
 <li>mehrteilige Diagramme zu erstellen</li>
@@ -432,10 +452,10 @@ MathJax.Hub.Config({
 <li>unsere Diagramme für eine bessere Datenkommunikation anzupassen</li>
 </ul>
 </section>
-<section id="einrichten" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="einrichten">Einrichten</h3>
-<section id="pakete" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="pakete">Pakete</h4>
+<section id="einrichten" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="einrichten">Einrichten</h2>
+<section id="pakete" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pakete">Pakete</h3>
 <p>Heute laden wir unsere relevanten <code>tidyverse</code>-Pakete direkt: <code>dplyr</code> und <code>ggplot</code>. Dies sind die einzigen Pakete, die uns beim Laden unserer Daten helfen. Wir laden auch das <code>here</code>-Paket und das <code>janitor</code>-Paket, das für das Aufräumen unserer Daten nützlich ist (z.B. die Funktion <code>clean_names()</code>). Um unsere Diagramme anzupassen, verwenden wir auch die Pakete <code>ggthemes</code> und <code>patchwork</code>. Ersteres hilft uns bei der Erstellung von farbenblindenfreundlichen Plots, während letzteres uns erlaubt, mehrere Plots zusammen zu drucken. Wir brauchen auch ein neues Paket: <code>gghalves</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
@@ -447,8 +467,8 @@ MathJax.Hub.Config({
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="daten" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="daten">Daten</h4>
+<section id="daten" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="daten">Daten</h3>
 <p>Wir arbeiten wieder mit unserer leicht veränderten Version des <code>english</code>-Datensatzes aus dem Paket <code>languageR</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
@@ -465,8 +485,8 @@ MathJax.Hub.Config({
 </div>
 </section>
 </section>
-<section id="ausweichende-dichteplots" class="level3" data-number="13.0.1">
-<h3 data-number="13.0.1" class="anchored" data-anchor-id="ausweichende-dichteplots"><span class="header-section-number">13.0.1</span> Ausweichende Dichteplots</h3>
+<section id="ausweichende-dichteplots" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="ausweichende-dichteplots"><span class="header-section-number">13.1</span> Ausweichende Dichteplots</h2>
 <p>Wir können Dichteplots entlang einer katgorischen Variable erstellen, indem wir <code>geom_half_violin()</code> aus dem Paket <code>gghalves</code> verwenden.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">%&gt;%</span> </span>
@@ -482,8 +502,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-<section id="hinzufügen-eines-boxplots" class="level4" data-number="13.0.1.1">
-<h4 data-number="13.0.1.1" class="anchored" data-anchor-id="hinzufügen-eines-boxplots"><span class="header-section-number">13.0.1.1</span> Hinzufügen eines Boxplots</h4>
+<section id="hinzufügen-eines-boxplots" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="hinzufügen-eines-boxplots"><span class="header-section-number">13.1.1</span> Hinzufügen eines Boxplots</h3>
 <p>Wir können auch ein weiteres Geom hinzufügen, um dem Diagramm weitere Informationen hinzuzufügen. Fügen wir einen Boxplot hinzu.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">%&gt;%</span> </span>
@@ -501,15 +521,15 @@ MathJax.Hub.Config({
 </div>
 </div>
 </section>
-<section id="position_nudge" class="level4" data-number="13.0.1.2">
-<h4 data-number="13.0.1.2" class="anchored" data-anchor-id="position_nudge"><span class="header-section-number">13.0.1.2</span> <code>position_nudge()</code></h4>
+<section id="position_nudge" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="position_nudge"><span class="header-section-number">13.1.2</span> <code>position_nudge()</code></h3>
 <p>Vielleicht wollen wir den Boxplot so verschieben, dass er nicht über den Dichteplots liegt und nicht ganz so breit ist. Wir können dies tun, indem wir <code>position</code> auf <code>position_nudge()</code> und <code>width</code> auf einen Wert kleiner als <code>.75</code> setzen, was die Standardbreite ist.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age_subject, <span class="at">y =</span> rt_lexdec) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_half_violin</span>(<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">3</span>, <span class="do">## make less wide</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">3</span>, <span class="co"># make less wide</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x=</span><span class="fl">0.2</span>)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -522,8 +542,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </section>
-<section id="position_jitter-für-scatterplots" class="level4" data-number="13.0.1.3">
-<h4 data-number="13.0.1.3" class="anchored" data-anchor-id="position_jitter-für-scatterplots"><span class="header-section-number">13.0.1.3</span> <code>position_jitter()</code> für Scatterplots</h4>
+<section id="position_jitter-für-scatterplots" class="level3" data-number="13.1.3">
+<h3 data-number="13.1.3" class="anchored" data-anchor-id="position_jitter-für-scatterplots"><span class="header-section-number">13.1.3</span> <code>position_jitter()</code> für Scatterplots</h3>
 <p>Dies gehört zu einer Familie von Optionen, mit denen man die Position von Geomen verändern kann. Zum Beispiel zeigen <a href="#fig-jitter">Abbildung&nbsp;<span>13.4</span></a> A und B beide genau die gleichen Daten, aber <a href="#fig-jitter">Abbildung&nbsp;<span>13.4</span></a> B enthält <code>position = position_jitter(0.2)</code>, um überlappende Punkte zu verschieben. Auf diese Weise erhalten wir eine gute Vorstellung davon, wie viele Beobachtungen es über die Reaktionszeiten hinweg gab (y-Achse).</p>
 <div class="cell">
 <details>
@@ -552,8 +572,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </section>
-<section id="kombiniert-alle-drei" class="level4" data-number="13.0.1.4">
-<h4 data-number="13.0.1.4" class="anchored" data-anchor-id="kombiniert-alle-drei"><span class="header-section-number">13.0.1.4</span> Kombiniert alle drei</h4>
+<section id="kombiniert-alle-drei" class="level3" data-number="13.1.4">
+<h3 data-number="13.1.4" class="anchored" data-anchor-id="kombiniert-alle-drei"><span class="header-section-number">13.1.4</span> Kombiniert alle drei</h3>
 <p>Wenn wir alle diese Diagramme zusammenfügen, erhalten wir eine <a href="#fig-violin1">Abbildung&nbsp;<span>13.5</span></a>.</p>
 <div class="cell">
 <details>
@@ -583,8 +603,8 @@ MathJax.Hub.Config({
 </div>
 </section>
 </section>
-<section id="positionierung-von-fehlerbalkenplots" class="level3" data-number="13.0.2">
-<h3 data-number="13.0.2" class="anchored" data-anchor-id="positionierung-von-fehlerbalkenplots"><span class="header-section-number">13.0.2</span> Positionierung von Fehlerbalkenplots</h3>
+<section id="positionierung-von-fehlerbalkenplots" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="positionierung-von-fehlerbalkenplots"><span class="header-section-number">13.2</span> Positionierung von Fehlerbalkenplots</h2>
 <p>Im zweiten Bericht haben Sie Fehlerbalkenplots erstellt, aber die Fehlerbalken haben sich überschnitten.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -596,8 +616,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-<section id="pivot_longer-summarise" class="level4" data-number="13.0.2.1">
-<h4 data-number="13.0.2.1" class="anchored" data-anchor-id="pivot_longer-summarise"><span class="header-section-number">13.0.2.1</span> <code>pivot_longer() |&gt; summarise()</code></h4>
+<section id="pivot_longer-summarise" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="pivot_longer-summarise"><span class="header-section-number">13.2.1</span> <code>pivot_longer() |&gt; summarise()</code></h3>
 <p>Lassen Sie uns etwas Ähnliches mit dem Datensatz “Englisch” nachstellen. Zuerst werden wir <code>pivot_longer()</code> verwenden, um unsere Daten zu verlängern, dann erstellen wir eine Zusammenfassung der Reaktionszeiten für die lexikalische Entscheidungsaufgabe und die Benennungsaufgabe pro Altersgruppe.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="ot">&lt;-</span></span>
@@ -615,8 +635,8 @@ MathJax.Hub.Config({
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_subject =</span> <span class="fu">factor</span>(age_subject, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"old"</span>))) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="überlappende-fehlerbalken" class="level4" data-number="13.0.2.2">
-<h4 data-number="13.0.2.2" class="anchored" data-anchor-id="überlappende-fehlerbalken"><span class="header-section-number">13.0.2.2</span> Überlappende Fehlerbalken</h4>
+<section id="überlappende-fehlerbalken" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="überlappende-fehlerbalken"><span class="header-section-number">13.2.2</span> Überlappende Fehlerbalken</h3>
 <p>Wenn wir für diese Daten ein Fehlerbalken-Diagramm erstellen, erhalten wir <a href="#fig-overlap">Abbildung&nbsp;<span>13.7</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
@@ -634,8 +654,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </section>
-<section id="position_dodge" class="level4" data-number="13.0.2.3">
-<h4 data-number="13.0.2.3" class="anchored" data-anchor-id="position_dodge"><span class="header-section-number">13.0.2.3</span> <code>position_dodge()</code></h4>
+<section id="position_dodge" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="position_dodge"><span class="header-section-number">13.2.3</span> <code>position_dodge()</code></h3>
 <p>Wir können <code>position = position_dodge(0.2)</code> hinzufügen, damit sich die Fehlerbalken nicht überlappen. Wir werden auch ihre <code>width</code> anpassen, damit sie nicht so breit sind (jeder Wert unter 0.75).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
@@ -655,8 +675,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </section>
-<section id="ausweichen-vor-allen-relevanten-geomen" class="level4" data-number="13.0.2.4">
-<h4 data-number="13.0.2.4" class="anchored" data-anchor-id="ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">13.0.2.4</span> Ausweichen vor allen relevanten Geomen</h4>
+<section id="ausweichen-vor-allen-relevanten-geomen" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">13.2.4</span> Ausweichen vor allen relevanten Geomen</h3>
 <p>Aber jetzt haben wir die Punkte hinter uns gelassen. Wir müssen auch den Punkten ausweichen, also fügen wir <code>position_dodge()</code> zu <code>geom_point()</code> hinzu und stellen sicher, dass wir den gleichen Wert wie bei <code>geom_errorbar()</code> verwenden.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
@@ -677,8 +697,8 @@ MathJax.Hub.Config({
 </div>
 </section>
 </section>
-<section id="anpassungen" class="level3" data-number="13.0.3">
-<h3 data-number="13.0.3" class="anchored" data-anchor-id="anpassungen"><span class="header-section-number">13.0.3</span> Anpassungen</h3>
+<section id="anpassungen" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="anpassungen"><span class="header-section-number">13.3</span> Anpassungen</h2>
 <p>Welche Anpassungen sehen Sie in den Diagrammen in <a href="#fig-custom">Abbildung&nbsp;<span>13.10</span></a>?</p>
 <div class="cell">
 <details>
@@ -716,7 +736,7 @@ MathJax.Hub.Config({
 <span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_half_violin</span>() <span class="sc">+</span></span>
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
 <span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">outlier.shape =</span> <span class="cn">NA</span>,</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    <span class="do">## aes(color = age_subject),</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># aes(color = age_subject),</span></span>
 <span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> .<span class="dv">3</span>, </span>
 <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>               <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x=</span><span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of reaction times"</span>,</span>
@@ -778,8 +798,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-<section id="standardthemen" class="level4" data-number="13.0.3.1">
-<h4 data-number="13.0.3.1" class="anchored" data-anchor-id="standardthemen"><span class="header-section-number">13.0.3.1</span> Standardthemen</h4>
+<section id="standardthemen" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="standardthemen"><span class="header-section-number">13.3.1</span> Standardthemen</h3>
 <p>Zunächst wurde <code>theme_minimal()</code> zu jedem Plot hinzugefügt, um das allgemeine Aussehen anzupassen. Es gibt eine Vielzahl von benutzerdefinierten Themen, wie <code>theme_bw()</code> oder <code>theme_classic()</code>. Probieren Sie sie aus.</p>
 <div class="cell" data-output-location="fragment">
 <div class="cell-output-display">
@@ -792,8 +812,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </section>
-<section id="theme" class="level4" data-number="13.0.3.2">
-<h4 data-number="13.0.3.2" class="anchored" data-anchor-id="theme"><span class="header-section-number">13.0.3.2</span> theme()</h4>
+<section id="theme" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="theme"><span class="header-section-number">13.3.2</span> theme()</h3>
 <p>Wir können auch einzelne Komponenten des Themas steuern, indem wir Anpassungen mit <code>theme()</code> hinzufügen. Zum Beispiel sehen wir in <a href="#fig-custom">Abbildung&nbsp;<span>13.10</span></a> A, dass die Achsentitel fett gedruckt sind. Dies wurde durch Hinzufügen von <code>theme(axis.title = element_text(face = "bold))</code> erreicht, wobei <code>axis.title =</code> anzeigt, dass wir eine Änderung an den Achsentiteln vornehmen wollen, <code>element_text()</code> zeigt an, dass es ihr Text ist, den wir ändern wollen, und <code>face = "bold"</code> zeigt an, dass wir den Text fett machen wollen. Dasselbe wurde für <code>legend.title =</code> gemacht, um den Titel der Legende fett zu machen.</p>
 <div class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make axis titles</span></span>
@@ -812,8 +832,8 @@ MathJax.Hub.Config({
 </div>
 </section>
 </section>
-<section id="heutige-ziele" class="level3 unnumbered unlisted">
-<h3 class="unnumbered unlisted anchored" data-anchor-id="heutige-ziele">Heutige Ziele 🏁</h3>
+<section id="heutige-ziele" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="heutige-ziele">Heutige Ziele 🏁</h2>
 <p>Wir haben gelernt, wie man…</p>
 <ul>
 <li>mehrteilige Plots erstellen ✅</li>
@@ -821,16 +841,16 @@ MathJax.Hub.Config({
 <li>unsere Plots für eine bessere Datenkommunikation anpassen ✅</li>
 </ul>
 </section>
-<section id="aufgaben" class="level3" data-number="13.0.4">
-<h3 data-number="13.0.4" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">13.0.4</span> Aufgaben</h3>
+<section id="aufgaben" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">13.4</span> Aufgaben</h2>
 <ol type="1">
 <li><p>Mehrteilige Darstellung. Erzeugen von <a href="#fig-dodged">Abbildung&nbsp;<span>13.9</span></a> und <a href="#fig-violin1">Abbildung&nbsp;<span>13.5</span></a> für <code>rt_naming</code> (anstelle von <code>rt_lexdec</code>). Drucken der Plots nebeneinander mit <code>patchwork</code>.</p></li>
 <li><p>Beschriftungen. Benutzen Sie <code>labs()</code>, um Beschriftungen für den Titel, die x- und y-Achse und für die von Ihnen verwendete Ästhetik (Form, Farbe, etc.) hinzuzufügen, die in einer Legende resultieren. Dies sollte damit enden, dass der Titel der Legende auch einen eigenen Namen erhält.</p></li>
 <li><p>Anpassungen. Fügen Sie den beiden Diagrammen Anpassungen hinzu, indem Sie ein Standardthema wählen, gefolgt von <code>theme()</code> mit Anpassungen für die Achsentitel, den Legendentitel und den Diagrammtitel. Sie können <code>face</code>, <code>size</code>, <code>colour</code>, <code>family</code> (d.h. Schriftart) ändern. Sie können <code>?theme</code> in der Konsole eingeben oder googeln, um einige Ideen zu bekommen. Wenn Sie sich nicht kreativ fühlen, versuchen Sie einfach, eine der Anpassungen zu replizieren, die Sie in <a href="#fig-custom">Abbildung&nbsp;<span>13.10</span></a> sehen</p></li>
 </ol>
 </section>
-<section id="session-info" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h3>
+<section id="session-info" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
 <p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.3.0.386 (Cherry Blossom).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -868,8 +888,8 @@ loaded via a namespace (and not attached):
 </div>
 </div>
 </section>
-<section id="literaturverzeichnis" class="level3 unlisted unnumbered" data-visibility="uncounted">
-<h3 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h3>
+<section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
+<h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-nordmann_data_2022" class="csl-entry" role="listitem">
 Nordmann, E., McAleer, P., Toivo, W., Paterson, H., &amp; DeBruine, L. M. (2022). Data <span>Visualization Using R</span> for <span>Researchers Who Do Not Use R</span>. <em>Advances in Methods and Practices in Psychological Science</em>, <em>5</em>(2), 251524592210746. <a href="https://doi.org/10.1177/25152459221074654">https://doi.org/10.1177/25152459221074654</a>
@@ -1316,11 +1336,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="an">shift-heading-level-by:</span><span class="co"> +1</span></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lesungen {.unnumbered}</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lesungen {.unnumbered}</span></span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>Für weitere Lektüre und Übungen zu diesem Thema empfehle ich die Lektüre von <span class="co">[</span><span class="ot">Abschnitt 11.5 (Kommunikation: Themen)</span><span class="co">](https://r4ds.hadley.nz/communication#sec-themes)</span> in @wickham_r_2023 und <span class="co">[</span><span class="ot">Kapitel 4 (Darstellung von zusammenfassenden Statistiken)</span><span class="co">](https://psyteachr.github.io/introdataviz/representing-summary-statistics.html)</span> in @nordmann_data_2022.</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele {.unnumbered}</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lernziele {.unnumbered}</span></span>
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>In diesem Abschnitt werden wir lernen</span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
@@ -1328,9 +1348,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Position von Geomen anzupassen</span>
 <span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>unsere Diagramme für eine bessere Datenkommunikation anzupassen</span>
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einrichten {.unnumbered}</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># Einrichten {.unnumbered}</span></span>
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pakete {.unnumbered}</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pakete {.unnumbered}</span></span>
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>Heute laden wir unsere relevanten <span class="in">`tidyverse`</span>-Pakete direkt: <span class="in">`dplyr`</span> und <span class="in">`ggplot`</span>. Dies sind die einzigen Pakete, die uns beim Laden unserer Daten helfen. Wir laden auch das <span class="in">`here`</span>-Paket und das <span class="in">`janitor`</span>-Paket, das für das Aufräumen unserer Daten nützlich ist (z.B. die Funktion <span class="in">`clean_names()`</span>). Um unsere Diagramme anzupassen, verwenden wir auch die Pakete <span class="in">`ggthemes`</span> und <span class="in">`patchwork`</span>. Ersteres hilft uns bei der Erstellung von farbenblindenfreundlichen Plots, während letzteres uns erlaubt, mehrere Plots zusammen zu drucken. Wir brauchen auch ein neues Paket: <span class="in">`gghalves`</span>.</span>
 <span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
@@ -1346,11 +1366,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a><span class="do">## load magick for the slides</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a><span class="co"># load magick for the slides</span></span>
 <span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(magick)</span>
 <span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### Daten {.unnumbered}</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Daten {.unnumbered}</span></span>
 <span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>Wir arbeiten wieder mit unserer leicht veränderten Version des <span class="in">`english`</span>-Datensatzes aus dem Paket <span class="in">`languageR`</span>.</span>
 <span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
@@ -1368,7 +1388,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ausweichende Dichteplots</span></span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ausweichende Dichteplots</span></span>
 <span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a>Wir können Dichteplots entlang einer katgorischen Variable erstellen, indem wir <span class="in">`geom_half_violin()`</span> aus dem Paket <span class="in">`gghalves`</span> verwenden. </span>
 <span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a></span>
@@ -1382,7 +1402,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_half_violin</span>(<span class="at">alpha =</span> .<span class="dv">8</span>)</span>
 <span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hinzufügen eines Boxplots</span></span>
+<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hinzufügen eines Boxplots</span></span>
 <span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a>Wir können auch ein weiteres Geom hinzufügen, um dem Diagramm weitere Informationen hinzuzufügen. Fügen wir einen Boxplot hinzu.</span>
 <span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a></span>
@@ -1398,7 +1418,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### `position_nudge()`</span></span>
+<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## `position_nudge()`</span></span>
 <span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a>Vielleicht wollen wir den Boxplot so verschieben, dass er nicht über den Dichteplots liegt und nicht ganz so breit ist. Wir können dies tun, indem wir <span class="in">`position`</span> auf <span class="in">`position_nudge()`</span> und <span class="in">`width`</span> auf einen Wert kleiner als <span class="in">`.75`</span> setzen, was die Standardbreite ist.</span>
 <span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a></span>
@@ -1410,12 +1430,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-116"><a href="#cb16-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb16-117"><a href="#cb16-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age_subject, <span class="at">y =</span> rt_lexdec) <span class="sc">+</span></span>
 <span id="cb16-118"><a href="#cb16-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_half_violin</span>(<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb16-119"><a href="#cb16-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">3</span>, <span class="do">## make less wide</span></span>
+<span id="cb16-119"><a href="#cb16-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">3</span>, <span class="co"># make less wide</span></span>
 <span id="cb16-120"><a href="#cb16-120" aria-hidden="true" tabindex="-1"></a>               <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x=</span><span class="fl">0.2</span>)</span>
 <span id="cb16-121"><a href="#cb16-121" aria-hidden="true" tabindex="-1"></a>               )</span>
 <span id="cb16-122"><a href="#cb16-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-123"><a href="#cb16-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-124"><a href="#cb16-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### `position_jitter()` für Scatterplots</span></span>
+<span id="cb16-124"><a href="#cb16-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## `position_jitter()` für Scatterplots</span></span>
 <span id="cb16-125"><a href="#cb16-125" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-126"><a href="#cb16-126" aria-hidden="true" tabindex="-1"></a>Dies gehört zu einer Familie von Optionen, mit denen man die Position von Geomen verändern kann. Zum Beispiel zeigen @fig-jitter A und B beide genau die gleichen Daten, aber @fig-jitter B enthält <span class="in">`position = position_jitter(0.2)`</span>, um überlappende Punkte zu verschieben. Auf diese Weise erhalten wir eine gute Vorstellung davon, wie viele Beobachtungen es über die Reaktionszeiten hinweg gab (y-Achse).</span>
 <span id="cb16-127"><a href="#cb16-127" aria-hidden="true" tabindex="-1"></a></span>
@@ -1439,7 +1459,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-147"><a href="#cb16-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
 <span id="cb16-148"><a href="#cb16-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-149"><a href="#cb16-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-150"><a href="#cb16-150" aria-hidden="true" tabindex="-1"></a><span class="fu">### Kombiniert alle drei</span></span>
+<span id="cb16-150"><a href="#cb16-150" aria-hidden="true" tabindex="-1"></a><span class="fu">## Kombiniert alle drei</span></span>
 <span id="cb16-151"><a href="#cb16-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-152"><a href="#cb16-152" aria-hidden="true" tabindex="-1"></a>Wenn wir alle diese Diagramme zusammenfügen, erhalten wir eine @fig-violin1. </span>
 <span id="cb16-153"><a href="#cb16-153" aria-hidden="true" tabindex="-1"></a></span>
@@ -1471,7 +1491,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-183"><a href="#cb16-183" aria-hidden="true" tabindex="-1"></a>fig_no_colour </span>
 <span id="cb16-184"><a href="#cb16-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-185"><a href="#cb16-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-186"><a href="#cb16-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Positionierung von Fehlerbalkenplots</span></span>
+<span id="cb16-186"><a href="#cb16-186" aria-hidden="true" tabindex="-1"></a><span class="fu"># Positionierung von Fehlerbalkenplots</span></span>
 <span id="cb16-187"><a href="#cb16-187" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-188"><a href="#cb16-188" aria-hidden="true" tabindex="-1"></a>Im zweiten Bericht haben Sie Fehlerbalkenplots erstellt, aber die Fehlerbalken haben sich überschnitten. </span>
 <span id="cb16-189"><a href="#cb16-189" aria-hidden="true" tabindex="-1"></a></span>
@@ -1497,7 +1517,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-211"><a href="#cb16-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-212"><a href="#cb16-212" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-213"><a href="#cb16-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-214"><a href="#cb16-214" aria-hidden="true" tabindex="-1"></a><span class="fu">### `pivot_longer() |&gt; summarise()`</span></span>
+<span id="cb16-214"><a href="#cb16-214" aria-hidden="true" tabindex="-1"></a><span class="fu">## `pivot_longer() |&gt; summarise()`</span></span>
 <span id="cb16-215"><a href="#cb16-215" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-216"><a href="#cb16-216" aria-hidden="true" tabindex="-1"></a>Lassen Sie uns etwas Ähnliches mit dem Datensatz "Englisch" nachstellen. Zuerst werden wir <span class="in">`pivot_longer()`</span> verwenden, um unsere Daten zu verlängern, dann erstellen wir eine Zusammenfassung der Reaktionszeiten für die lexikalische Entscheidungsaufgabe und die Benennungsaufgabe pro Altersgruppe.</span>
 <span id="cb16-217"><a href="#cb16-217" aria-hidden="true" tabindex="-1"></a></span>
@@ -1517,7 +1537,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-233"><a href="#cb16-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_subject =</span> <span class="fu">factor</span>(age_subject, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"old"</span>))) </span>
 <span id="cb16-234"><a href="#cb16-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-235"><a href="#cb16-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-236"><a href="#cb16-236" aria-hidden="true" tabindex="-1"></a><span class="fu">### Überlappende Fehlerbalken</span></span>
+<span id="cb16-236"><a href="#cb16-236" aria-hidden="true" tabindex="-1"></a><span class="fu">## Überlappende Fehlerbalken</span></span>
 <span id="cb16-237"><a href="#cb16-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-238"><a href="#cb16-238" aria-hidden="true" tabindex="-1"></a>Wenn wir für diese Daten ein Fehlerbalken-Diagramm erstellen, erhalten wir @fig-overlap.</span>
 <span id="cb16-239"><a href="#cb16-239" aria-hidden="true" tabindex="-1"></a></span>
@@ -1531,7 +1551,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-249"><a href="#cb16-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean<span class="sc">-</span>sd, <span class="at">ymax =</span> mean<span class="sc">+</span>sd))</span>
 <span id="cb16-250"><a href="#cb16-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-251"><a href="#cb16-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-252"><a href="#cb16-252" aria-hidden="true" tabindex="-1"></a><span class="fu">### `position_dodge()` </span></span>
+<span id="cb16-252"><a href="#cb16-252" aria-hidden="true" tabindex="-1"></a><span class="fu">## `position_dodge()` </span></span>
 <span id="cb16-253"><a href="#cb16-253" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-254"><a href="#cb16-254" aria-hidden="true" tabindex="-1"></a>Wir können <span class="in">`position = position_dodge(0.2)`</span> hinzufügen, damit sich die Fehlerbalken nicht überlappen. Wir werden auch ihre <span class="in">`width`</span> anpassen, damit sie nicht so breit sind (jeder Wert unter 0.75).</span>
 <span id="cb16-255"><a href="#cb16-255" aria-hidden="true" tabindex="-1"></a></span>
@@ -1547,7 +1567,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-267"><a href="#cb16-267" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>)</span>
 <span id="cb16-268"><a href="#cb16-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-269"><a href="#cb16-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-270"><a href="#cb16-270" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ausweichen vor allen relevanten Geomen</span></span>
+<span id="cb16-270"><a href="#cb16-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ausweichen vor allen relevanten Geomen</span></span>
 <span id="cb16-271"><a href="#cb16-271" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-272"><a href="#cb16-272" aria-hidden="true" tabindex="-1"></a>Aber jetzt haben wir die Punkte hinter uns gelassen. Wir müssen auch den Punkten ausweichen, also fügen wir <span class="in">`position_dodge()`</span> zu <span class="in">`geom_point()`</span> hinzu und stellen sicher, dass wir den gleichen Wert wie bei <span class="in">`geom_errorbar()`</span> verwenden.</span>
 <span id="cb16-273"><a href="#cb16-273" aria-hidden="true" tabindex="-1"></a></span>
@@ -1563,7 +1583,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-285"><a href="#cb16-285" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>)</span>
 <span id="cb16-286"><a href="#cb16-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-287"><a href="#cb16-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-288"><a href="#cb16-288" aria-hidden="true" tabindex="-1"></a><span class="fu">## Anpassungen</span></span>
+<span id="cb16-288"><a href="#cb16-288" aria-hidden="true" tabindex="-1"></a><span class="fu"># Anpassungen</span></span>
 <span id="cb16-289"><a href="#cb16-289" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-290"><a href="#cb16-290" aria-hidden="true" tabindex="-1"></a>Welche Anpassungen sehen Sie in den Diagrammen in @fig-custom?</span>
 <span id="cb16-291"><a href="#cb16-291" aria-hidden="true" tabindex="-1"></a></span>
@@ -1603,7 +1623,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-327"><a href="#cb16-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_half_violin</span>() <span class="sc">+</span></span>
 <span id="cb16-328"><a href="#cb16-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
 <span id="cb16-329"><a href="#cb16-329" aria-hidden="true" tabindex="-1"></a>    <span class="at">outlier.shape =</span> <span class="cn">NA</span>,</span>
-<span id="cb16-330"><a href="#cb16-330" aria-hidden="true" tabindex="-1"></a>    <span class="do">## aes(color = age_subject),</span></span>
+<span id="cb16-330"><a href="#cb16-330" aria-hidden="true" tabindex="-1"></a>    <span class="co"># aes(color = age_subject),</span></span>
 <span id="cb16-331"><a href="#cb16-331" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> .<span class="dv">3</span>, </span>
 <span id="cb16-332"><a href="#cb16-332" aria-hidden="true" tabindex="-1"></a>               <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x=</span><span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb16-333"><a href="#cb16-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of reaction times"</span>,</span>
@@ -1665,7 +1685,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-391"><a href="#cb16-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
 <span id="cb16-392"><a href="#cb16-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-393"><a href="#cb16-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-394"><a href="#cb16-394" aria-hidden="true" tabindex="-1"></a><span class="fu">### Standardthemen</span></span>
+<span id="cb16-394"><a href="#cb16-394" aria-hidden="true" tabindex="-1"></a><span class="fu">## Standardthemen</span></span>
 <span id="cb16-395"><a href="#cb16-395" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-396"><a href="#cb16-396" aria-hidden="true" tabindex="-1"></a>Zunächst wurde <span class="in">`theme_minimal()`</span> zu jedem Plot hinzugefügt, um das allgemeine Aussehen anzupassen. Es gibt eine Vielzahl von benutzerdefinierten Themen, wie <span class="in">`theme_bw()`</span> oder <span class="in">`theme_classic()`</span>. Probieren Sie sie aus.</span>
 <span id="cb16-397"><a href="#cb16-397" aria-hidden="true" tabindex="-1"></a></span>
@@ -1685,7 +1705,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-413"><a href="#cb16-413" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb16-414"><a href="#cb16-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-415"><a href="#cb16-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-416"><a href="#cb16-416" aria-hidden="true" tabindex="-1"></a><span class="fu">### theme()</span></span>
+<span id="cb16-416"><a href="#cb16-416" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme()</span></span>
 <span id="cb16-417"><a href="#cb16-417" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-418"><a href="#cb16-418" aria-hidden="true" tabindex="-1"></a>Wir können auch einzelne Komponenten des Themas steuern, indem wir Anpassungen mit <span class="in">`theme()`</span> hinzufügen. Zum Beispiel sehen wir in @fig-custom A, dass die Achsentitel fett gedruckt sind. Dies wurde durch Hinzufügen von <span class="in">`theme(axis.title = element_text(face = "bold))`</span> erreicht, wobei <span class="in">`axis.title =`</span> anzeigt, dass wir eine Änderung an den Achsentiteln vornehmen wollen, <span class="in">`element_text()`</span> zeigt an, dass es ihr Text ist, den wir ändern wollen, und <span class="in">`face = "bold"`</span> zeigt an, dass wir den Text fett machen wollen. Dasselbe wurde für <span class="in">`legend.title =`</span> gemacht, um den Titel der Legende fett zu machen. </span>
 <span id="cb16-419"><a href="#cb16-419" aria-hidden="true" tabindex="-1"></a></span>
@@ -1702,7 +1722,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-432"><a href="#cb16-432" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-433"><a href="#cb16-433" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-434"><a href="#cb16-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-435"><a href="#cb16-435" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heutige Ziele 🏁 {.unnumbered .unlisted}</span></span>
+<span id="cb16-435"><a href="#cb16-435" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heutige Ziele 🏁 {.unnumbered .unlisted}</span></span>
 <span id="cb16-436"><a href="#cb16-436" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-437"><a href="#cb16-437" aria-hidden="true" tabindex="-1"></a>Wir haben gelernt, wie man...</span>
 <span id="cb16-438"><a href="#cb16-438" aria-hidden="true" tabindex="-1"></a></span>
@@ -1710,7 +1730,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-440"><a href="#cb16-440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Position von Geomen anzupassen ✅</span>
 <span id="cb16-441"><a href="#cb16-441" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>unsere Plots für eine bessere Datenkommunikation anpassen ✅</span>
 <span id="cb16-442"><a href="#cb16-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-443"><a href="#cb16-443" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aufgaben</span></span>
+<span id="cb16-443"><a href="#cb16-443" aria-hidden="true" tabindex="-1"></a><span class="fu"># Aufgaben</span></span>
 <span id="cb16-444"><a href="#cb16-444" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-445"><a href="#cb16-445" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Mehrteilige Darstellung. Erzeugen von @fig-dodged und @fig-violin1 für <span class="in">`rt_naming`</span> (anstelle von <span class="in">`rt_lexdec`</span>). Drucken der Plots nebeneinander mit <span class="in">`patchwork`</span>.</span>
 <span id="cb16-446"><a href="#cb16-446" aria-hidden="true" tabindex="-1"></a></span>
@@ -1718,7 +1738,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-448"><a href="#cb16-448" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-449"><a href="#cb16-449" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Anpassungen. Fügen Sie den beiden Diagrammen Anpassungen hinzu, indem Sie ein Standardthema wählen, gefolgt von <span class="in">`theme()`</span> mit Anpassungen für die Achsentitel, den Legendentitel und den Diagrammtitel. Sie können <span class="in">`face`</span>, <span class="in">`size`</span>, <span class="in">`colour`</span>, <span class="in">`family`</span> (d.h. Schriftart) ändern. Sie können <span class="in">`?theme`</span> in der Konsole eingeben oder googeln, um einige Ideen zu bekommen. Wenn Sie sich nicht kreativ fühlen, versuchen Sie einfach, eine der Anpassungen zu replizieren, die Sie in @fig-custom sehen</span>
 <span id="cb16-450"><a href="#cb16-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-451"><a href="#cb16-451" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info {.unnumbered}</span></span>
+<span id="cb16-451"><a href="#cb16-451" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session Info {.unnumbered}</span></span>
 <span id="cb16-452"><a href="#cb16-452" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-455"><a href="#cb16-455" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb16-456"><a href="#cb16-456" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -1733,7 +1753,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-467"><a href="#cb16-467" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span>
 <span id="cb16-468"><a href="#cb16-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-469"><a href="#cb16-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-470"><a href="#cb16-470" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb16-470"><a href="#cb16-470" aria-hidden="true" tabindex="-1"></a><span class="fu"># Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
 <span id="cb16-471"><a href="#cb16-471" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-472"><a href="#cb16-472" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
 <span id="cb16-473"><a href="#cb16-473" aria-hidden="true" tabindex="-1"></a>:::</span>
