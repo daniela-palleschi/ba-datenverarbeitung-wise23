@@ -362,12 +362,36 @@ MathJax.Hub.Config({
     <h2 id="toc-title">Kapitelinhalt</h2>
    
   <ul>
-  <li><a href="#base-r" id="toc-base-r" class="nav-link active" data-scroll-target="#base-r"><span class="header-section-number">12.0.1</span> Base R</a></li>
-  <li><a href="#einrichten" id="toc-einrichten" class="nav-link" data-scroll-target="#einrichten"><span class="header-section-number">12.0.2</span> Einrichten</a></li>
-  <li><a href="#umgang-mit-spalten-und-zeilen" id="toc-umgang-mit-spalten-und-zeilen" class="nav-link" data-scroll-target="#umgang-mit-spalten-und-zeilen"><span class="header-section-number">12.0.3</span> Umgang mit Spalten und Zeilen</a></li>
-  <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes"><span class="header-section-number">12.0.4</span> Pipes</a></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">12.0.5</span> Plots</a></li>
-  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">12.0.6</span> Aufgaben</a></li>
+  <li><a href="#base-r" id="toc-base-r" class="nav-link active" data-scroll-target="#base-r"><span class="header-section-number">12.1</span> Base R</a>
+  <ul class="collapse">
+  <li><a href="#warum-beides-lernen" id="toc-warum-beides-lernen" class="nav-link" data-scroll-target="#warum-beides-lernen"><span class="header-section-number">12.1.1</span> Warum beides lernen?</a></li>
+  </ul></li>
+  <li><a href="#einrichten" id="toc-einrichten" class="nav-link" data-scroll-target="#einrichten"><span class="header-section-number">12.2</span> Einrichten</a>
+  <ul class="collapse">
+  <li><a href="#einlesen" id="toc-einlesen" class="nav-link" data-scroll-target="#einlesen"><span class="header-section-number">12.2.1</span> Einlesen</a></li>
+  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv"><span class="header-section-number">12.2.2</span> CSV</a></li>
+  <li><a href="#andere-begrenzungszeichen" id="toc-andere-begrenzungszeichen" class="nav-link" data-scroll-target="#andere-begrenzungszeichen"><span class="header-section-number">12.2.3</span> Andere Begrenzungszeichen</a></li>
+  <li><a href="#datenrahmen-versus-tibbles" id="toc-datenrahmen-versus-tibbles" class="nav-link" data-scroll-target="#datenrahmen-versus-tibbles"><span class="header-section-number">12.2.4</span> Datenrahmen versus Tibbles</a></li>
+  </ul></li>
+  <li><a href="#umgang-mit-spalten-und-zeilen" id="toc-umgang-mit-spalten-und-zeilen" class="nav-link" data-scroll-target="#umgang-mit-spalten-und-zeilen"><span class="header-section-number">12.3</span> Umgang mit Spalten und Zeilen</a>
+  <ul class="collapse">
+  <li><a href="#variablen-extrahieren" id="toc-variablen-extrahieren" class="nav-link" data-scroll-target="#variablen-extrahieren"><span class="header-section-number">12.3.1</span> Variablen extrahieren</a></li>
+  <li><a href="#beobachtungen-extrahierenfiltern" id="toc-beobachtungen-extrahierenfiltern" class="nav-link" data-scroll-target="#beobachtungen-extrahierenfiltern"><span class="header-section-number">12.3.2</span> Beobachtungen extrahieren/filtern</a></li>
+  <li><a href="#einzelne-datenpunkte-auswählen" id="toc-einzelne-datenpunkte-auswählen" class="nav-link" data-scroll-target="#einzelne-datenpunkte-auswählen"><span class="header-section-number">12.3.3</span> Einzelne Datenpunkte auswählen</a></li>
+  <li><a href="#neue-variablen-erstellen" id="toc-neue-variablen-erstellen" class="nav-link" data-scroll-target="#neue-variablen-erstellen"><span class="header-section-number">12.3.4</span> Neue Variablen erstellen</a></li>
+  <li><a href="#zusammenfassen" id="toc-zusammenfassen" class="nav-link" data-scroll-target="#zusammenfassen"><span class="header-section-number">12.3.5</span> Zusammenfassen</a></li>
+  </ul></li>
+  <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes"><span class="header-section-number">12.4</span> Pipes</a></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">12.5</span> Plots</a></li>
+  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">12.6</span> Aufgaben</a>
+  <ul class="collapse">
+  <li><a href="#read-in" id="toc-read-in" class="nav-link" data-scroll-target="#read-in"><span class="header-section-number">12.6.1</span> Read-in</a></li>
+  <li><a href="#auswahl-der-spalten" id="toc-auswahl-der-spalten" class="nav-link" data-scroll-target="#auswahl-der-spalten"><span class="header-section-number">12.6.2</span> Auswahl der Spalten</a></li>
+  <li><a href="#zeilen-filtern" id="toc-zeilen-filtern" class="nav-link" data-scroll-target="#zeilen-filtern"><span class="header-section-number">12.6.3</span> Zeilen filtern</a></li>
+  <li><a href="#auswahl-von-zeilen-und-spalten" id="toc-auswahl-von-zeilen-und-spalten" class="nav-link" data-scroll-target="#auswahl-von-zeilen-und-spalten"><span class="header-section-number">12.6.4</span> Auswahl von Zeilen und Spalten</a></li>
+  <li><a href="#streudiagramm" id="toc-streudiagramm" class="nav-link" data-scroll-target="#streudiagramm"><span class="header-section-number">12.6.5</span> Streudiagramm</a></li>
+  <li><a href="#tidyverse-versus-base-r" id="toc-tidyverse-versus-base-r" class="nav-link" data-scroll-target="#tidyverse-versus-base-r"><span class="header-section-number">12.6.6</span> Tidyverse versus Base R</a></li>
+  </ul></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session Info</a></li>
   </ul>
 </nav>
@@ -409,7 +433,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mi. den 24.01.2024</p>
+      <p class="date-modified">Mo. den 05.02.2024</p>
     </div>
   </div>
     
@@ -418,12 +442,12 @@ MathJax.Hub.Config({
 
 </header>
 
-<section id="lesungen" class="level3 unnumbered unlisted">
-<h3 class="unnumbered unlisted anchored" data-anchor-id="lesungen">Lesungen</h3>
+<section id="lesungen" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="lesungen">Lesungen</h2>
 <p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/base-r">Kapital 27 (A field guide to Base R)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
 </section>
-<section id="lernziele" class="level3 unnumbered unlisted">
-<h3 class="unnumbered unlisted anchored" data-anchor-id="lernziele">Lernziele</h3>
+<section id="lernziele" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele">Lernziele</h2>
 <p>In diesem Kapitel werden wir…</p>
 <ul>
 <li>lernen, was Base R ist</li>
@@ -431,8 +455,8 @@ MathJax.Hub.Config({
 <li>die Base-R-Äquivalente der Tidyverse-Verben kennenlernen</li>
 </ul>
 </section>
-<section id="base-r" class="level3" data-number="12.0.1">
-<h3 data-number="12.0.1" class="anchored" data-anchor-id="base-r"><span class="header-section-number">12.0.1</span> Base R</h3>
+<section id="base-r" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="base-r"><span class="header-section-number">12.1</span> Base R</h2>
 <p>Die Basissoftware, die die Programmiersprache R enthält, heißt base-R oder natives R. Dieses Basissystem enthält das Paket <code>base</code>, das zum Ausführen von R erforderlich ist. Ähnlich wie tidyverse enthält das Basissystem auch einige Pakete wie <code>utils</code> und <code>stats</code> (unter anderem). Um zu sehen, welche Pakete enthalten sind, gehen Sie einfach auf die Registerkarte <code>Pakete</code> unten rechts in Ihrer RStudio-Sitzung. Unter der Annahme, dass Sie mit einer sauberen Arbeitsumgebung beginnen, sollten nur die Pakete geladen werden, die zum R-Basissystem gehören. Alle diese Pakete werden bei der Installation von R installiert. Mit dieser Sammlung von Paketen können die meisten (wenn nicht alle) der gleichen Ziele wie mit tidyverse erreicht werden, auch wenn beide für bestimmte Ziele vorzuziehen oder besser zu rationalisieren sind.</p>
 <p>Wie wir bereits gelernt haben, ist das <a href="https://www.tidyverse.org/">Tidyverse</a> <span class="citation" data-cites="tidyverse-package">(<a href="01-intro_r.html#ref-tidyverse-package" role="doc-biblioref">Wickham et al., 2019a</a>)</span> eine Familie von R-Paketen, die das Bereinigen und Verwalten von Daten erleichtern sollen. Der Hauptentwickler von Tidyverse ist Hadley Wickham, der Chefwissenschaftler von Posit (ehemals RStudio), dem Softwareunternehmen, das die integrierte Entwicklungsumgebung (IDE) RStudio entwickelt hat. Alle Pakete in Tidyverse “teilen eine High-Level-Design-Philosophie und Low-Level-Grammatik und Datenstrukturen, so dass das Erlernen eines Pakets es einfacher macht, das nächste zu erlernen” <span class="citation" data-cites="wickham_welcome_2019">(<a href="01-intro_r.html#ref-wickham_welcome_2019" role="doc-biblioref">Wickham et al., 2019b</a>)</span>. Allerdings wurde das Tidyverse in der Programmiersprache R geschrieben, sodass die beiden nicht vollständig voneinander getrennt sind.</p>
 <p>Sowohl Base R als auch tidyverse sind Open-Source-Sprachen, die für die Datenwissenschaft geschrieben wurden. Ein Hauptziel von Base R ist die Stabilität, d.&nbsp;h. der Code sollte über viele Jahre hinweg stabil sein. Tidyverse hingegen fügt ständig Funktionen und Argumente hinzu, aktualisiert sie und ändert sie mit neuen Paketversionen im Hinblick auf die Optimierung. Dies bedeutet, dass Tidyverse-Code anfällig für “Brüche” ist: Tidyverse-Code, der heute läuft, läuft vielleicht in ein paar Jahren nicht mehr, wenn einige Funktionen oder Argumente “veraltet” sind. Deshalb ist es so wichtig, dass Sie immer Ihre <code>sessionInfo()</code> mit einem Bericht mitschicken, sie dokumentiert, welche Pakete und deren Versionen Sie verwendet haben.</p>
@@ -447,14 +471,14 @@ What a thing to say when modern R is pretty much synonymous with the tidyverse f
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </center>
 <p>Offensichtlich halte ich das Erlernen des Tidyversums für wichtig, denn ich habe mich entschieden, diesen Kurs auf Tidyversum-Pakete zu stützen. Das liegt daran, dass das Tidyverse den Menschen in den Mittelpunkt stellt, und dieser Kurs ist nicht für Programmierer oder Informatiker gedacht. Wie wir im obigen Tweet sehen, stimmt nicht jeder mit mir überein, aber es gibt auch viele Leute, die das tun.</p>
-<section id="warum-beides-lernen" class="level4" data-number="12.0.1.1">
-<h4 data-number="12.0.1.1" class="anchored" data-anchor-id="warum-beides-lernen"><span class="header-section-number">12.0.1.1</span> Warum beides lernen?</h4>
+<section id="warum-beides-lernen" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="warum-beides-lernen"><span class="header-section-number">12.1.1</span> Warum beides lernen?</h3>
 <p>Ich persönlich lernte Base R Jahre bevor ich Tidyverse lernte. Ich habe nie zurückgeblickt, und mein Code ist seit der Einführung von tidyverse und den dahinter stehenden Philosophien viel sauberer und besser lesbar geworden. Trotzdem gibt es immer noch bestimmte Aufgaben, für die ich Base R verwende, z. B. für einen schnellen Blick auf eine einzelne Variable oder wenn ich mit Listen oder verschachtelten Datenstrukturen arbeite (die wir in diesem Kurs nicht behandeln werden).</p>
 <p>Auch wenn ich persönlich mit ähnlichen Ansichten wie im ursprünglichen Tweet oben nicht einverstanden bin (wie viele andere auch), ist die Kenntnis von Base R eine wichtige Fähigkeit, um Ihre R-Horizonte zu erweitern. Sie werden mit Sicherheit auf Base R-Code stoßen, wenn Sie nach Lösungen für Probleme suchen oder sich den Code von anderen ansehen. Unabhängig davon, ob jemand eine starke Vorliebe für Base R oder Tidyverse hat, ist es eine gute Idee, mit beiden Optionen vertraut zu sein, um das Beste aus der R-Community herauszuholen. Es ist wichtig zu verstehen, dass es so etwas wie perfekten Code nicht gibt, und dass es fast immer mehrere Möglichkeiten gibt, das gleiche Ziel zu erreichen, sogar innerhalb von Base R oder Tidyverse. Was wir heute lernen werden, ist im Wesentlichen, wie wir den Tidyverse-Code, mit dem wir vertraut sind, in Base R übersetzen können.</p>
 </section>
 </section>
-<section id="einrichten" class="level3" data-number="12.0.2">
-<h3 data-number="12.0.2" class="anchored" data-anchor-id="einrichten"><span class="header-section-number">12.0.2</span> Einrichten</h3>
+<section id="einrichten" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="einrichten"><span class="header-section-number">12.2</span> Einrichten</h2>
 <p>Wir werden heute ziemlich minimalistisch arbeiten. Alles was wir brauchen sind die Pakete <code>tidyverse</code> und <code>here</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
@@ -462,12 +486,12 @@ What a thing to say when modern R is pretty much synonymous with the tidyverse f
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  here</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="einlesen" class="level4" data-number="12.0.2.1">
-<h4 data-number="12.0.2.1" class="anchored" data-anchor-id="einlesen"><span class="header-section-number">12.0.2.1</span> Einlesen</h4>
+<section id="einlesen" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="einlesen"><span class="header-section-number">12.2.1</span> Einlesen</h3>
 <p>Wir werden den Datensatz <code>languageR_english.csv</code> einlesen, der sich bereits in Ihrem <code>daten</code>-Ordner befinden sollte. Dieser Datensatz enthält Daten aus einer Benennungs- und lexikalischen Entscheidungsaufgabe in Englisch.</p>
 </section>
-<section id="csv" class="level4" data-number="12.0.2.2">
-<h4 data-number="12.0.2.2" class="anchored" data-anchor-id="csv"><span class="header-section-number">12.0.2.2</span> CSV</h4>
+<section id="csv" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="csv"><span class="header-section-number">12.2.2</span> CSV</h3>
 <p>Wir haben bereits gesehen, wie man die <code>read_()</code> Familie von Funktionen (<code>read_csv()</code>, <code>read_csv2()</code>, <code>read_delim()</code>, etc.) aus dem <code>readr</code> Paket aus dem <code>tidyverse</code> benutzt.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -537,8 +561,8 @@ What a thing to say when modern R is pretty much synonymous with the tidyverse f
 </div>
 <p>Beide haben 4568 Zeilen. Die Datenstruktur ist also identisch.</p>
 </section>
-<section id="andere-begrenzungszeichen" class="level4" data-number="12.0.2.3">
-<h4 data-number="12.0.2.3" class="anchored" data-anchor-id="andere-begrenzungszeichen"><span class="header-section-number">12.0.2.3</span> Andere Begrenzungszeichen</h4>
+<section id="andere-begrenzungszeichen" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="andere-begrenzungszeichen"><span class="header-section-number">12.2.3</span> Andere Begrenzungszeichen</h3>
 <p>Erinnern Sie sich, dass wir mit dem tidyverse-Paket <code>readr</code> <code>read_delim(delim = "")</code> verwenden können, um das Trennzeichen explizit zu definieren. Hier verwenden wir <code>delim = ","</code>, weil wir immer noch eine kommagetrennte Wertedatei verwenden.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -579,16 +603,16 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="datenrahmen-versus-tibbles" class="level4" data-number="12.0.2.4">
-<h4 data-number="12.0.2.4" class="anchored" data-anchor-id="datenrahmen-versus-tibbles"><span class="header-section-number">12.0.2.4</span> Datenrahmen versus Tibbles</h4>
+<section id="datenrahmen-versus-tibbles" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="datenrahmen-versus-tibbles"><span class="header-section-number">12.2.4</span> Datenrahmen versus Tibbles</h3>
 <p>Daten, die mit tidyverse eingelesen werden, werden als Tibble gespeichert, das als eine aufgeräumtere Version eines Datenrahmens gilt. Wichtig ist, dass die Struktur eines Tibbles und die darin enthaltenen Informationen mit denen eines Datenrahmens identisch sind. Im Folgenden werden wir einige Unterschiede zwischen Tibbles und Datenrahmen sehen.</p>
 </section>
 </section>
-<section id="umgang-mit-spalten-und-zeilen" class="level3" data-number="12.0.3">
-<h3 data-number="12.0.3" class="anchored" data-anchor-id="umgang-mit-spalten-und-zeilen"><span class="header-section-number">12.0.3</span> Umgang mit Spalten und Zeilen</h3>
+<section id="umgang-mit-spalten-und-zeilen" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="umgang-mit-spalten-und-zeilen"><span class="header-section-number">12.3</span> Umgang mit Spalten und Zeilen</h2>
 <p>Wir sind bereits mit einer Reihe von <code>dplyr</code>-Verben vertraut, die zum Manipulieren, Filtern und Extrahieren von Zeilen und Spalten verwendet werden. Jetzt sehen wir uns alternative Wege an, um die gleichen Ergebnisse mit Base R zu erzielen.</p>
-<section id="variablen-extrahieren" class="level4" data-number="12.0.3.1">
-<h4 data-number="12.0.3.1" class="anchored" data-anchor-id="variablen-extrahieren"><span class="header-section-number">12.0.3.1</span> Variablen extrahieren</h4>
+<section id="variablen-extrahieren" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="variablen-extrahieren"><span class="header-section-number">12.3.1</span> Variablen extrahieren</h3>
 <p>Wir sind bereits vertraut mit <code>select()</code> aus <code>dplyr</code>:</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -737,8 +761,8 @@ Begrenzungszeichen und Trennzeichen
 10      young   536.38</code></pre>
 </div>
 </div>
-<section id="mischen-von-tibbles-und-datenrahmen" class="level5" data-number="12.0.3.1.1">
-<h5 data-number="12.0.3.1.1" class="anchored" data-anchor-id="mischen-von-tibbles-und-datenrahmen"><span class="header-section-number">12.0.3.1.1</span> Mischen von Tibbles und Datenrahmen</h5>
+<section id="mischen-von-tibbles-und-datenrahmen" class="level4" data-number="12.3.1.1">
+<h4 data-number="12.3.1.1" class="anchored" data-anchor-id="mischen-von-tibbles-und-datenrahmen"><span class="header-section-number">12.3.1.1</span> Mischen von Tibbles und Datenrahmen</h4>
 <p>Die Ausgabe dieser Operationen hängt nicht nur davon ab, ob Sie eine Tidyverse- oder eine R-Basisfunktion verwenden. Es macht auch einen Unterschied, ob die Daten ein Datenrahmen oder ein Tibble sind. Versuchen wir, die Funktion <code>select()</code> von tidyverse auf einen Datenrahmen anzuwenden:</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -784,8 +808,8 @@ Begrenzungszeichen und Trennzeichen
 <p>Dies sollte keine Folgen haben, aber es ist wichtig, die innere Struktur Ihrer Daten zu verstehen, damit Sie entsprechend damit arbeiten können.</p>
 </section>
 </section>
-<section id="beobachtungen-extrahierenfiltern" class="level4" data-number="12.0.3.2">
-<h4 data-number="12.0.3.2" class="anchored" data-anchor-id="beobachtungen-extrahierenfiltern"><span class="header-section-number">12.0.3.2</span> Beobachtungen extrahieren/filtern</h4>
+<section id="beobachtungen-extrahierenfiltern" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="beobachtungen-extrahierenfiltern"><span class="header-section-number">12.3.2</span> Beobachtungen extrahieren/filtern</h3>
 <p>Wir haben bereits die Funktion <code>filter()</code> von <code>dplyr</code> gesehen, die Zeilen extrahiert, die logischen Bedingungen entsprechen.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -849,8 +873,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="einzelne-datenpunkte-auswählen" class="level4" data-number="12.0.3.3">
-<h4 data-number="12.0.3.3" class="anchored" data-anchor-id="einzelne-datenpunkte-auswählen"><span class="header-section-number">12.0.3.3</span> Einzelne Datenpunkte auswählen</h4>
+<section id="einzelne-datenpunkte-auswählen" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="einzelne-datenpunkte-auswählen"><span class="header-section-number">12.3.3</span> Einzelne Datenpunkte auswählen</h3>
 <p>Wir können bestimmte Zeilen und bestimmte Spalten auf einmal extrahieren. Wenn wir zum Beispiel die relevanten Zeilen wie oben ausgeben wollen, aber nur die Spalten <code>AgeSubject</code> und <code>RTlexdec</code>, können wir dies mit <code>filter()</code> und <code>select()</code> tun (was wir bereits zuvor getan haben).</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -928,8 +952,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="neue-variablen-erstellen" class="level4" data-number="12.0.3.4">
-<h4 data-number="12.0.3.4" class="anchored" data-anchor-id="neue-variablen-erstellen"><span class="header-section-number">12.0.3.4</span> Neue Variablen erstellen</h4>
+<section id="neue-variablen-erstellen" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="neue-variablen-erstellen"><span class="header-section-number">12.3.4</span> Neue Variablen erstellen</h3>
 <p>Wir haben gelernt, wie man mit der Funktion <code>mutate()</code>, die ebenfalls aus <code>dplyr</code> stammt, neue Variablen erstellt oder bestehende Variablen ändert.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -967,8 +991,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="zusammenfassen" class="level4" data-number="12.0.3.5">
-<h4 data-number="12.0.3.5" class="anchored" data-anchor-id="zusammenfassen"><span class="header-section-number">12.0.3.5</span> Zusammenfassen</h4>
+<section id="zusammenfassen" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="zusammenfassen"><span class="header-section-number">12.3.5</span> Zusammenfassen</h3>
 <p>Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht einfach, wenn man eine Gruppe hat, deshalb werden wir das nicht behandeln.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -1008,8 +1032,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </section>
 </section>
-<section id="pipes" class="level3" data-number="12.0.4">
-<h3 data-number="12.0.4" class="anchored" data-anchor-id="pipes"><span class="header-section-number">12.0.4</span> Pipes</h3>
+<section id="pipes" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="pipes"><span class="header-section-number">12.4</span> Pipes</h2>
 <p>Lange Zeit waren Pipes ein Feature des Tidyverse, mit der <code>%&gt;%</code> Pipe aus dem <code>magrittr</code> Paket. Seit 2023 bietet R eine native Pipe <code>|&gt;</code>. Sie haben vielleicht schon beide Versionen gesehen (ich tendiere dazu, <code>|&gt;</code> zu benutzen). Für unsere Zwecke sind sie austauschbar, aber es gibt wichtige Unterschiede für komplexere Fälle, die wir nicht behandeln werden.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -1036,8 +1060,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="plots" class="level3" data-number="12.0.5">
-<h3 data-number="12.0.5" class="anchored" data-anchor-id="plots"><span class="header-section-number">12.0.5</span> Plots</h3>
+<section id="plots" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="plots"><span class="header-section-number">12.5</span> Plots</h2>
 <p><code>ggplot2</code> ist auch bei Leuten beliebt, die sonst nicht die tidyverse-Paketfamilie nutzen. Das liegt daran, dass es einige nützliche Funktionen und ein sauberes Aussehen hat.</p>
 <p>Das Plotten mit Base R kann auch sehr praktisch sein, wenn man einfache Diagramme erstellen will, um einen ersten Blick auf die Daten zu bekommen. Die nützlichsten Funktionen sind <code>hist()</code> und <code>plot()</code>, die jeweils Histogramme und Streudiagramme erzeugen. Beachten Sie, dass diese Funktionen mit Vektoren arbeiten, weswegen wir <code>$</code> verwenden müssen, um die Spalten aus dem Datenrahmen zu extrahieren.</p>
 <div class="cell quarto-layout-panel" data-fig.asp="1">
@@ -1103,8 +1127,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="lernziele-1" class="level3 unnumbered unlisted">
-<h3 class="unnumbered unlisted anchored" data-anchor-id="lernziele-1">Lernziele 🏁</h3>
+<section id="lernziele-1" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele-1">Lernziele 🏁</h2>
 <p>In diesem Kapitel werden wir…</p>
 <ul>
 <li>lernen, was Base R ist ✅</li>
@@ -1112,18 +1136,18 @@ Begrenzungszeichen und Trennzeichen
 <li>die Base-R-Äquivalente der Tidyverse-Verben kennenlernen ✅</li>
 </ul>
 </section>
-<section id="aufgaben" class="level3" data-number="12.0.6">
-<h3 data-number="12.0.6" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">12.0.6</span> Aufgaben</h3>
+<section id="aufgaben" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">12.6</span> Aufgaben</h2>
 <p>Konvertieren Sie den folgenden tidyverse-Code in Base R. Wir werden wieder den Datensatz “languageR_english.csv” verwenden.</p>
-<section id="read-in" class="level4" data-number="12.0.6.1">
-<h4 data-number="12.0.6.1" class="anchored" data-anchor-id="read-in"><span class="header-section-number">12.0.6.1</span> Read-in</h4>
+<section id="read-in" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="read-in"><span class="header-section-number">12.6.1</span> Read-in</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="ot">&lt;-</span> </span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="auswahl-der-spalten" class="level4" data-number="12.0.6.2">
-<h4 data-number="12.0.6.2" class="anchored" data-anchor-id="auswahl-der-spalten"><span class="header-section-number">12.0.6.2</span> Auswahl der Spalten</h4>
+<section id="auswahl-der-spalten" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="auswahl-der-spalten"><span class="header-section-number">12.6.2</span> Auswahl der Spalten</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Word, WrittenFrequency)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1146,8 +1170,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="zeilen-filtern" class="level4" data-number="12.0.6.3">
-<h4 data-number="12.0.6.3" class="anchored" data-anchor-id="zeilen-filtern"><span class="header-section-number">12.0.6.3</span> Zeilen filtern</h4>
+<section id="zeilen-filtern" class="level3" data-number="12.6.3">
+<h3 data-number="12.6.3" class="anchored" data-anchor-id="zeilen-filtern"><span class="header-section-number">12.6.3</span> Zeilen filtern</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WrittenFrequency <span class="sc">&gt;</span> <span class="fl">5.6</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1171,8 +1195,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="auswahl-von-zeilen-und-spalten" class="level4" data-number="12.0.6.4">
-<h4 data-number="12.0.6.4" class="anchored" data-anchor-id="auswahl-von-zeilen-und-spalten"><span class="header-section-number">12.0.6.4</span> Auswahl von Zeilen und Spalten</h4>
+<section id="auswahl-von-zeilen-und-spalten" class="level3" data-number="12.6.4">
+<h3 data-number="12.6.4" class="anchored" data-anchor-id="auswahl-von-zeilen-und-spalten"><span class="header-section-number">12.6.4</span> Auswahl von Zeilen und Spalten</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WrittenFrequency <span class="sc">&gt;</span> <span class="fl">5.6</span> <span class="sc">&amp;</span> AgeSubject <span class="sc">==</span> <span class="st">"old"</span>) <span class="sc">|&gt;</span> </span>
@@ -1196,8 +1220,8 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="streudiagramm" class="level4" data-number="12.0.6.5">
-<h4 data-number="12.0.6.5" class="anchored" data-anchor-id="streudiagramm"><span class="header-section-number">12.0.6.5</span> Streudiagramm</h4>
+<section id="streudiagramm" class="level3" data-number="12.6.5">
+<h3 data-number="12.6.5" class="anchored" data-anchor-id="streudiagramm"><span class="header-section-number">12.6.5</span> Streudiagramm</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -1208,13 +1232,13 @@ Begrenzungszeichen und Trennzeichen
 </div>
 </div>
 </section>
-<section id="tidyverse-versus-base-r" class="level4" data-number="12.0.6.6">
-<h4 data-number="12.0.6.6" class="anchored" data-anchor-id="tidyverse-versus-base-r"><span class="header-section-number">12.0.6.6</span> Tidyverse versus Base R</h4>
+<section id="tidyverse-versus-base-r" class="level3" data-number="12.6.6">
+<h3 data-number="12.6.6" class="anchored" data-anchor-id="tidyverse-versus-base-r"><span class="header-section-number">12.6.6</span> Tidyverse versus Base R</h3>
 <p>Wie ist Ihr Eindruck von Base R im Vergleich zu Tidyverse? Würden Sie, basierend auf dem, was Sie gesehen haben, das eine dem anderen vorziehen, oder würden Sie das eine nur in bestimmten Fällen vorziehen? Hier gibt es keine richtige Antwort.</p>
 </section>
 </section>
-<section id="session-info" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h3>
+<section id="session-info" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
 <p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1252,8 +1276,8 @@ loaded via a namespace (and not attached):
 </div>
 </div>
 </section>
-<section id="literaturverzeichnis" class="level3 unlisted unnumbered" data-visibility="uncounted">
-<h3 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h3>
+<section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
+<h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-tidyverse-package" class="csl-entry" role="listitem">
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019a). Welcome to the <span>tidyverse</span>. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>
@@ -1714,18 +1738,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">### evaluate chunks</span></span>
-<span id="cb69-18"><a href="#cb69-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">### 'print code chunk?'</span></span>
-<span id="cb69-19"><a href="#cb69-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">### 'print messages (e.g., warnings)?'</span></span>
-<span id="cb69-20"><a href="#cb69-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> T, <span class="do">### continueeven when error encountered</span></span>
-<span id="cb69-21"><a href="#cb69-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">### don't print warnings</span></span>
+<span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> T, <span class="do">## evaluate chunks</span></span>
+<span id="cb69-18"><a href="#cb69-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> T, <span class="do">## 'print code chunk?'</span></span>
+<span id="cb69-19"><a href="#cb69-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> F, <span class="do">## 'print messages (e.g., warnings)?'</span></span>
+<span id="cb69-20"><a href="#cb69-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">error =</span> T, <span class="do">## continueeven when error encountered</span></span>
+<span id="cb69-21"><a href="#cb69-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> F) <span class="do">## don't print warnings</span></span>
 <span id="cb69-22"><a href="#cb69-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-23"><a href="#cb69-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-24"><a href="#cb69-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lesungen {.unnumbered .unlisted}</span></span>
+<span id="cb69-24"><a href="#cb69-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lesungen {.unnumbered .unlisted}</span></span>
 <span id="cb69-25"><a href="#cb69-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-26"><a href="#cb69-26" aria-hidden="true" tabindex="-1"></a>Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist <span class="co">[</span><span class="ot">Kapital 27 (A field guide to Base R)</span><span class="co">](https://r4ds.hadley.nz/base-r)</span> in @wickham_r_2023.</span>
 <span id="cb69-27"><a href="#cb69-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-28"><a href="#cb69-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele {.unnumbered .unlisted}</span></span>
+<span id="cb69-28"><a href="#cb69-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lernziele {.unnumbered .unlisted}</span></span>
 <span id="cb69-29"><a href="#cb69-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-30"><a href="#cb69-30" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir...</span>
 <span id="cb69-31"><a href="#cb69-31" aria-hidden="true" tabindex="-1"></a></span>
@@ -1733,7 +1757,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-33"><a href="#cb69-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Base R und Tidyverse vergleichen</span>
 <span id="cb69-34"><a href="#cb69-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Base-R-Äquivalente der Tidyverse-Verben kennenlernen</span>
 <span id="cb69-35"><a href="#cb69-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-36"><a href="#cb69-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Base R</span></span>
+<span id="cb69-36"><a href="#cb69-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Base R</span></span>
 <span id="cb69-37"><a href="#cb69-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-38"><a href="#cb69-38" aria-hidden="true" tabindex="-1"></a>Die Basissoftware, die die Programmiersprache R enthält, heißt base-R oder natives R. Dieses Basissystem enthält das Paket <span class="in">`base`</span>, das zum Ausführen von R erforderlich ist. Ähnlich wie tidyverse enthält das Basissystem auch einige Pakete wie <span class="in">`utils`</span> und <span class="in">`stats`</span> (unter anderem). Um zu sehen, welche Pakete enthalten sind, gehen Sie einfach auf die Registerkarte <span class="in">`Pakete`</span> unten rechts in Ihrer RStudio-Sitzung. Unter der Annahme, dass Sie mit einer sauberen Arbeitsumgebung beginnen, sollten nur die Pakete geladen werden, die zum R-Basissystem gehören. Alle diese Pakete werden bei der Installation von R installiert. Mit dieser Sammlung von Paketen können die meisten (wenn nicht alle) der gleichen Ziele wie mit tidyverse erreicht werden, auch wenn beide für bestimmte Ziele vorzuziehen oder besser zu rationalisieren sind.</span>
 <span id="cb69-39"><a href="#cb69-39" aria-hidden="true" tabindex="-1"></a></span>
@@ -1798,13 +1822,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-102"><a href="#cb69-102" aria-hidden="true" tabindex="-1"></a>Offensichtlich halte ich das Erlernen des Tidyversums für wichtig, denn ich habe mich entschieden, diesen Kurs auf Tidyversum-Pakete zu stützen. Das liegt daran, dass das Tidyverse den Menschen in den Mittelpunkt stellt, und dieser Kurs ist nicht für Programmierer oder Informatiker gedacht. Wie wir im obigen Tweet sehen, stimmt nicht jeder mit mir überein, aber es gibt auch viele Leute, die das tun.</span>
 <span id="cb69-103"><a href="#cb69-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-104"><a href="#cb69-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-105"><a href="#cb69-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Warum beides lernen?</span></span>
+<span id="cb69-105"><a href="#cb69-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## Warum beides lernen?</span></span>
 <span id="cb69-106"><a href="#cb69-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-107"><a href="#cb69-107" aria-hidden="true" tabindex="-1"></a>Ich persönlich lernte Base R Jahre bevor ich Tidyverse lernte. Ich habe nie zurückgeblickt, und mein Code ist seit der Einführung von tidyverse und den dahinter stehenden Philosophien viel sauberer und besser lesbar geworden. Trotzdem gibt es immer noch bestimmte Aufgaben, für die ich Base R verwende, z. B. für einen schnellen Blick auf eine einzelne Variable oder wenn ich mit Listen oder verschachtelten Datenstrukturen arbeite (die wir in diesem Kurs nicht behandeln werden). </span>
 <span id="cb69-108"><a href="#cb69-108" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-109"><a href="#cb69-109" aria-hidden="true" tabindex="-1"></a>Auch wenn ich persönlich mit ähnlichen Ansichten wie im ursprünglichen Tweet oben nicht einverstanden bin (wie viele andere auch), ist die Kenntnis von Base R eine wichtige Fähigkeit, um Ihre R-Horizonte zu erweitern. Sie werden mit Sicherheit auf Base R-Code stoßen, wenn Sie nach Lösungen für Probleme suchen oder sich den Code von anderen ansehen. Unabhängig davon, ob jemand eine starke Vorliebe für Base R oder Tidyverse hat, ist es eine gute Idee, mit beiden Optionen vertraut zu sein, um das Beste aus der R-Community herauszuholen. Es ist wichtig zu verstehen, dass es so etwas wie perfekten Code nicht gibt, und dass es fast immer mehrere Möglichkeiten gibt, das gleiche Ziel zu erreichen, sogar innerhalb von Base R oder Tidyverse. Was wir heute lernen werden, ist im Wesentlichen, wie wir den Tidyverse-Code, mit dem wir vertraut sind, in Base R übersetzen können.</span>
 <span id="cb69-110"><a href="#cb69-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-111"><a href="#cb69-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einrichten</span></span>
+<span id="cb69-111"><a href="#cb69-111" aria-hidden="true" tabindex="-1"></a><span class="fu"># Einrichten</span></span>
 <span id="cb69-112"><a href="#cb69-112" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-113"><a href="#cb69-113" aria-hidden="true" tabindex="-1"></a>Wir werden heute ziemlich minimalistisch arbeiten. Alles was wir brauchen sind die Pakete <span class="in">`tidyverse`</span> und <span class="in">`here`</span>.</span>
 <span id="cb69-114"><a href="#cb69-114" aria-hidden="true" tabindex="-1"></a></span>
@@ -1822,11 +1846,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-130"><a href="#cb69-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-131"><a href="#cb69-131" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-132"><a href="#cb69-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-133"><a href="#cb69-133" aria-hidden="true" tabindex="-1"></a><span class="fu">### Einlesen</span></span>
+<span id="cb69-133"><a href="#cb69-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einlesen</span></span>
 <span id="cb69-134"><a href="#cb69-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-135"><a href="#cb69-135" aria-hidden="true" tabindex="-1"></a>Wir werden den Datensatz <span class="in">`languageR_english.csv`</span> einlesen, der sich bereits in Ihrem <span class="in">`daten`</span>-Ordner befinden sollte. Dieser Datensatz enthält Daten aus einer Benennungs- und lexikalischen Entscheidungsaufgabe in Englisch.</span>
 <span id="cb69-136"><a href="#cb69-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-137"><a href="#cb69-137" aria-hidden="true" tabindex="-1"></a><span class="fu">### CSV</span></span>
+<span id="cb69-137"><a href="#cb69-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV</span></span>
 <span id="cb69-138"><a href="#cb69-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-139"><a href="#cb69-139" aria-hidden="true" tabindex="-1"></a>Wir haben bereits gesehen, wie man die <span class="in">`read_()`</span> Familie von Funktionen (<span class="in">`read_csv()`</span>, <span class="in">`read_csv2()`</span>, <span class="in">`read_delim()`</span>, etc.) aus dem <span class="in">`readr`</span> Paket aus dem <span class="in">`tidyverse`</span> benutzt.</span>
 <span id="cb69-140"><a href="#cb69-140" aria-hidden="true" tabindex="-1"></a></span>
@@ -1882,7 +1906,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-202"><a href="#cb69-202" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-203"><a href="#cb69-203" aria-hidden="true" tabindex="-1"></a>Beide haben <span class="in">`r nrow(df_base)`</span> Zeilen. Die Datenstruktur ist also identisch.</span>
 <span id="cb69-204"><a href="#cb69-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-205"><a href="#cb69-205" aria-hidden="true" tabindex="-1"></a><span class="fu">### Andere Begrenzungszeichen</span></span>
+<span id="cb69-205"><a href="#cb69-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## Andere Begrenzungszeichen</span></span>
 <span id="cb69-206"><a href="#cb69-206" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-207"><a href="#cb69-207" aria-hidden="true" tabindex="-1"></a>Erinnern Sie sich, dass wir mit dem tidyverse-Paket <span class="in">`readr`</span> <span class="in">`read_delim(delim = "")`</span> verwenden können, um das Trennzeichen explizit zu definieren. Hier verwenden wir <span class="in">`delim = ","`</span>, weil wir immer noch eine kommagetrennte Wertedatei verwenden. </span>
 <span id="cb69-208"><a href="#cb69-208" aria-hidden="true" tabindex="-1"></a></span>
@@ -1906,22 +1930,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-226"><a href="#cb69-226" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-227"><a href="#cb69-227" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
 <span id="cb69-228"><a href="#cb69-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-229"><a href="#cb69-229" aria-hidden="true" tabindex="-1"></a><span class="fu">### Begrenzungszeichen und Trennzeichen</span></span>
+<span id="cb69-229"><a href="#cb69-229" aria-hidden="true" tabindex="-1"></a><span class="fu">## Begrenzungszeichen und Trennzeichen</span></span>
 <span id="cb69-230"><a href="#cb69-230" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-231"><a href="#cb69-231" aria-hidden="true" tabindex="-1"></a>Versuchen Sie, das Trennzeichen in den obigen Code-Blöcken durch ein Semikolon (<span class="in">`;`</span>) zu ersetzen. Was ändert sich, und warum? Ändern Sie es wieder in ein Komma und führen Sie es erneut aus, bevor Sie fortfahren.</span>
 <span id="cb69-232"><a href="#cb69-232" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-233"><a href="#cb69-233" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb69-234"><a href="#cb69-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-235"><a href="#cb69-235" aria-hidden="true" tabindex="-1"></a><span class="fu">### Datenrahmen versus Tibbles</span></span>
+<span id="cb69-235"><a href="#cb69-235" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datenrahmen versus Tibbles</span></span>
 <span id="cb69-236"><a href="#cb69-236" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-237"><a href="#cb69-237" aria-hidden="true" tabindex="-1"></a>Daten, die mit tidyverse eingelesen werden, werden als Tibble gespeichert, das als eine aufgeräumtere Version eines Datenrahmens gilt. Wichtig ist, dass die Struktur eines Tibbles und die darin enthaltenen Informationen mit denen eines Datenrahmens identisch sind. Im Folgenden werden wir einige Unterschiede zwischen Tibbles und Datenrahmen sehen. </span>
 <span id="cb69-238"><a href="#cb69-238" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-239"><a href="#cb69-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-240"><a href="#cb69-240" aria-hidden="true" tabindex="-1"></a><span class="fu">## Umgang mit Spalten und Zeilen</span></span>
+<span id="cb69-240"><a href="#cb69-240" aria-hidden="true" tabindex="-1"></a><span class="fu"># Umgang mit Spalten und Zeilen</span></span>
 <span id="cb69-241"><a href="#cb69-241" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-242"><a href="#cb69-242" aria-hidden="true" tabindex="-1"></a>Wir sind bereits mit einer Reihe von <span class="in">`dplyr`</span>-Verben vertraut, die zum Manipulieren, Filtern und Extrahieren von Zeilen und Spalten verwendet werden. Jetzt sehen wir uns alternative Wege an, um die gleichen Ergebnisse mit Base R zu erzielen.</span>
 <span id="cb69-243"><a href="#cb69-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-244"><a href="#cb69-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variablen extrahieren</span></span>
+<span id="cb69-244"><a href="#cb69-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variablen extrahieren</span></span>
 <span id="cb69-245"><a href="#cb69-245" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-246"><a href="#cb69-246" aria-hidden="true" tabindex="-1"></a>Wir sind bereits vertraut mit <span class="in">`select()`</span> aus <span class="in">`dplyr`</span>:</span>
 <span id="cb69-247"><a href="#cb69-247" aria-hidden="true" tabindex="-1"></a></span>
@@ -2017,7 +2041,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-347"><a href="#cb69-347" aria-hidden="true" tabindex="-1"></a>df_base[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)] <span class="sc">|&gt;</span>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
 <span id="cb69-348"><a href="#cb69-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-349"><a href="#cb69-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-350"><a href="#cb69-350" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mischen von Tibbles und Datenrahmen</span></span>
+<span id="cb69-350"><a href="#cb69-350" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mischen von Tibbles und Datenrahmen</span></span>
 <span id="cb69-351"><a href="#cb69-351" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-352"><a href="#cb69-352" aria-hidden="true" tabindex="-1"></a>Die Ausgabe dieser Operationen hängt nicht nur davon ab, ob Sie eine Tidyverse- oder eine R-Basisfunktion verwenden. Es macht auch einen Unterschied, ob die Daten ein Datenrahmen oder ein Tibble sind. Versuchen wir, die Funktion <span class="in">`select()`</span> von tidyverse auf einen Datenrahmen anzuwenden:</span>
 <span id="cb69-353"><a href="#cb69-353" aria-hidden="true" tabindex="-1"></a></span>
@@ -2048,7 +2072,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-382"><a href="#cb69-382" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-383"><a href="#cb69-383" aria-hidden="true" tabindex="-1"></a>Dies sollte keine Folgen haben, aber es ist wichtig, die innere Struktur Ihrer Daten zu verstehen, damit Sie entsprechend damit arbeiten können.</span>
 <span id="cb69-384"><a href="#cb69-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-385"><a href="#cb69-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### Beobachtungen extrahieren/filtern</span></span>
+<span id="cb69-385"><a href="#cb69-385" aria-hidden="true" tabindex="-1"></a><span class="fu">## Beobachtungen extrahieren/filtern</span></span>
 <span id="cb69-386"><a href="#cb69-386" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-387"><a href="#cb69-387" aria-hidden="true" tabindex="-1"></a>Wir haben bereits die Funktion <span class="in">`filter()`</span> von <span class="in">`dplyr`</span> gesehen, die Zeilen extrahiert, die logischen Bedingungen entsprechen.</span>
 <span id="cb69-388"><a href="#cb69-388" aria-hidden="true" tabindex="-1"></a></span>
@@ -2071,7 +2095,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-407"><a href="#cb69-407" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-408"><a href="#cb69-408" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-409"><a href="#cb69-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-410"><a href="#cb69-410" aria-hidden="true" tabindex="-1"></a><span class="fu">### Einzelne Datenpunkte auswählen</span></span>
+<span id="cb69-410"><a href="#cb69-410" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einzelne Datenpunkte auswählen</span></span>
 <span id="cb69-411"><a href="#cb69-411" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-412"><a href="#cb69-412" aria-hidden="true" tabindex="-1"></a>Wir können bestimmte Zeilen und bestimmte Spalten auf einmal extrahieren. Wenn wir zum Beispiel die relevanten Zeilen wie oben ausgeben wollen, aber nur die Spalten <span class="in">`AgeSubject`</span> und <span class="in">`RTlexdec`</span>, können wir dies mit <span class="in">`filter()`</span> und <span class="in">`select()`</span> tun (was wir bereits zuvor getan haben).</span>
 <span id="cb69-413"><a href="#cb69-413" aria-hidden="true" tabindex="-1"></a></span>
@@ -2116,7 +2140,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-458"><a href="#cb69-458" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
 <span id="cb69-459"><a href="#cb69-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-460"><a href="#cb69-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-461"><a href="#cb69-461" aria-hidden="true" tabindex="-1"></a><span class="fu">### Neue Variablen erstellen</span></span>
+<span id="cb69-461"><a href="#cb69-461" aria-hidden="true" tabindex="-1"></a><span class="fu">## Neue Variablen erstellen</span></span>
 <span id="cb69-462"><a href="#cb69-462" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-463"><a href="#cb69-463" aria-hidden="true" tabindex="-1"></a>Wir haben gelernt, wie man mit der Funktion <span class="in">`mutate()`</span>, die ebenfalls aus <span class="in">`dplyr`</span> stammt, neue Variablen erstellt oder bestehende Variablen ändert.</span>
 <span id="cb69-464"><a href="#cb69-464" aria-hidden="true" tabindex="-1"></a></span>
@@ -2131,7 +2155,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-473"><a href="#cb69-473" aria-hidden="true" tabindex="-1"></a>df_base<span class="sc">$</span>rt_lexdec_s <span class="ot">&lt;-</span> df_base<span class="sc">$</span>RTlexdec<span class="sc">/</span><span class="dv">1000</span></span>
 <span id="cb69-474"><a href="#cb69-474" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-475"><a href="#cb69-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-476"><a href="#cb69-476" aria-hidden="true" tabindex="-1"></a><span class="fu">### Zusammenfassen</span></span>
+<span id="cb69-476"><a href="#cb69-476" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zusammenfassen</span></span>
 <span id="cb69-477"><a href="#cb69-477" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-478"><a href="#cb69-478" aria-hidden="true" tabindex="-1"></a>Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht einfach, wenn man eine Gruppe hat, deshalb werden wir das nicht behandeln. </span>
 <span id="cb69-479"><a href="#cb69-479" aria-hidden="true" tabindex="-1"></a></span>
@@ -2154,7 +2178,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-496"><a href="#cb69-496" aria-hidden="true" tabindex="-1"></a>           <span class="at">sd_naming =</span> <span class="fu">sd</span>(df_base<span class="sc">$</span>RTnaming, <span class="at">na.rm =</span> T))</span>
 <span id="cb69-497"><a href="#cb69-497" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-498"><a href="#cb69-498" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-499"><a href="#cb69-499" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pipes</span></span>
+<span id="cb69-499"><a href="#cb69-499" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pipes</span></span>
 <span id="cb69-500"><a href="#cb69-500" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-501"><a href="#cb69-501" aria-hidden="true" tabindex="-1"></a>Lange Zeit waren Pipes ein Feature des Tidyverse, mit der <span class="in">`%&gt;%`</span> Pipe aus dem <span class="in">`magrittr`</span> Paket. Seit 2023 bietet R eine native Pipe <span class="in">`|&gt;`</span>. Sie haben vielleicht schon beide Versionen gesehen (ich tendiere dazu, <span class="in">`|&gt;`</span> zu benutzen). Für unsere Zwecke sind sie austauschbar, aber es gibt wichtige Unterschiede für komplexere Fälle, die wir nicht behandeln werden.</span>
 <span id="cb69-502"><a href="#cb69-502" aria-hidden="true" tabindex="-1"></a></span>
@@ -2169,7 +2193,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-511"><a href="#cb69-511" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>()</span>
 <span id="cb69-512"><a href="#cb69-512" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-513"><a href="#cb69-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-514"><a href="#cb69-514" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plots</span></span>
+<span id="cb69-514"><a href="#cb69-514" aria-hidden="true" tabindex="-1"></a><span class="fu"># Plots</span></span>
 <span id="cb69-515"><a href="#cb69-515" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-516"><a href="#cb69-516" aria-hidden="true" tabindex="-1"></a><span class="in">`ggplot2`</span> ist auch bei Leuten beliebt, die sonst nicht die tidyverse-Paketfamilie nutzen. Das liegt daran, dass es einige nützliche Funktionen und ein sauberes Aussehen hat. </span>
 <span id="cb69-517"><a href="#cb69-517" aria-hidden="true" tabindex="-1"></a></span>
@@ -2257,7 +2281,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-601"><a href="#cb69-601" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-602"><a href="#cb69-602" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-603"><a href="#cb69-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-604"><a href="#cb69-604" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lernziele 🏁 {.unnumbered .unlisted}</span></span>
+<span id="cb69-604"><a href="#cb69-604" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lernziele 🏁 {.unnumbered .unlisted}</span></span>
 <span id="cb69-605"><a href="#cb69-605" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-606"><a href="#cb69-606" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir...</span>
 <span id="cb69-607"><a href="#cb69-607" aria-hidden="true" tabindex="-1"></a></span>
@@ -2265,18 +2289,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-609"><a href="#cb69-609" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Base R und Tidyverse vergleichen ✅</span>
 <span id="cb69-610"><a href="#cb69-610" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>die Base-R-Äquivalente der Tidyverse-Verben kennenlernen ✅</span>
 <span id="cb69-611"><a href="#cb69-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-612"><a href="#cb69-612" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aufgaben</span></span>
+<span id="cb69-612"><a href="#cb69-612" aria-hidden="true" tabindex="-1"></a><span class="fu"># Aufgaben</span></span>
 <span id="cb69-613"><a href="#cb69-613" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-614"><a href="#cb69-614" aria-hidden="true" tabindex="-1"></a>Konvertieren Sie den folgenden tidyverse-Code in Base R. Wir werden wieder den Datensatz "languageR_english.csv" verwenden.</span>
 <span id="cb69-615"><a href="#cb69-615" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-616"><a href="#cb69-616" aria-hidden="true" tabindex="-1"></a><span class="fu">### Read-in</span></span>
+<span id="cb69-616"><a href="#cb69-616" aria-hidden="true" tabindex="-1"></a><span class="fu">## Read-in</span></span>
 <span id="cb69-617"><a href="#cb69-617" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-620"><a href="#cb69-620" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-621"><a href="#cb69-621" aria-hidden="true" tabindex="-1"></a>df_eng <span class="ot">&lt;-</span> </span>
 <span id="cb69-622"><a href="#cb69-622" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>))</span>
 <span id="cb69-623"><a href="#cb69-623" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-624"><a href="#cb69-624" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-625"><a href="#cb69-625" aria-hidden="true" tabindex="-1"></a><span class="fu">### Auswahl der Spalten</span></span>
+<span id="cb69-625"><a href="#cb69-625" aria-hidden="true" tabindex="-1"></a><span class="fu">## Auswahl der Spalten</span></span>
 <span id="cb69-626"><a href="#cb69-626" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-629"><a href="#cb69-629" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-630"><a href="#cb69-630" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -2291,7 +2315,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-641"><a href="#cb69-641" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
 <span id="cb69-642"><a href="#cb69-642" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-643"><a href="#cb69-643" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-644"><a href="#cb69-644" aria-hidden="true" tabindex="-1"></a><span class="fu">### Zeilen filtern</span></span>
+<span id="cb69-644"><a href="#cb69-644" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zeilen filtern</span></span>
 <span id="cb69-645"><a href="#cb69-645" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-648"><a href="#cb69-648" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-649"><a href="#cb69-649" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -2306,7 +2330,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-660"><a href="#cb69-660" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
 <span id="cb69-661"><a href="#cb69-661" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-662"><a href="#cb69-662" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-663"><a href="#cb69-663" aria-hidden="true" tabindex="-1"></a><span class="fu">### Auswahl von Zeilen und Spalten</span></span>
+<span id="cb69-663"><a href="#cb69-663" aria-hidden="true" tabindex="-1"></a><span class="fu">## Auswahl von Zeilen und Spalten</span></span>
 <span id="cb69-664"><a href="#cb69-664" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-667"><a href="#cb69-667" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-668"><a href="#cb69-668" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -2323,7 +2347,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-681"><a href="#cb69-681" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
 <span id="cb69-682"><a href="#cb69-682" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-683"><a href="#cb69-683" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-684"><a href="#cb69-684" aria-hidden="true" tabindex="-1"></a><span class="fu">### Streudiagramm</span></span>
+<span id="cb69-684"><a href="#cb69-684" aria-hidden="true" tabindex="-1"></a><span class="fu">## Streudiagramm</span></span>
 <span id="cb69-685"><a href="#cb69-685" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-688"><a href="#cb69-688" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-689"><a href="#cb69-689" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
@@ -2332,12 +2356,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-692"><a href="#cb69-692" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb69-693"><a href="#cb69-693" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-694"><a href="#cb69-694" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-695"><a href="#cb69-695" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tidyverse versus Base R</span></span>
+<span id="cb69-695"><a href="#cb69-695" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tidyverse versus Base R</span></span>
 <span id="cb69-696"><a href="#cb69-696" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-697"><a href="#cb69-697" aria-hidden="true" tabindex="-1"></a>Wie ist Ihr Eindruck von Base R im Vergleich zu Tidyverse? Würden Sie, basierend auf dem, was Sie gesehen haben, das eine dem anderen vorziehen, oder würden Sie das eine nur in bestimmten Fällen vorziehen? Hier gibt es keine richtige Antwort.</span>
 <span id="cb69-698"><a href="#cb69-698" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-699"><a href="#cb69-699" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-700"><a href="#cb69-700" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Info {.unnumbered}</span></span>
+<span id="cb69-700"><a href="#cb69-700" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session Info {.unnumbered}</span></span>
 <span id="cb69-701"><a href="#cb69-701" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-704"><a href="#cb69-704" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb69-705"><a href="#cb69-705" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -2352,7 +2376,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-716"><a href="#cb69-716" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span>
 <span id="cb69-717"><a href="#cb69-717" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-718"><a href="#cb69-718" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-719"><a href="#cb69-719" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb69-719"><a href="#cb69-719" aria-hidden="true" tabindex="-1"></a><span class="fu"># Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
 <span id="cb69-720"><a href="#cb69-720" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-721"><a href="#cb69-721" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
 <span id="cb69-722"><a href="#cb69-722" aria-hidden="true" tabindex="-1"></a>:::</span>
