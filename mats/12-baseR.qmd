@@ -12,18 +12,18 @@ shift-heading-level-by: +1
 
 ```{r}
 #| echo: false
-knitr::opts_chunk$set(eval = T, ### evaluate chunks
-                      echo = T, ### 'print code chunk?'
-                      message = F, ### 'print messages (e.g., warnings)?'
-                      error = T, ### continueeven when error encountered
-                      warning = F) ### don't print warnings
+knitr::opts_chunk$set(eval = T, ## evaluate chunks
+                      echo = T, ## 'print code chunk?'
+                      message = F, ## 'print messages (e.g., warnings)?'
+                      error = T, ## continueeven when error encountered
+                      warning = F) ## don't print warnings
 ```
 
-## Lesungen {.unnumbered .unlisted}
+# Lesungen {.unnumbered .unlisted}
 
 Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kapital 27 (A field guide to Base R)](https://r4ds.hadley.nz/base-r) in @wickham_r_2023.
 
-## Lernziele {.unnumbered .unlisted}
+# Lernziele {.unnumbered .unlisted}
 
 In diesem Kapitel werden wir...
 
@@ -31,7 +31,7 @@ In diesem Kapitel werden wir...
 - Base R und Tidyverse vergleichen
 - die Base-R-Äquivalente der Tidyverse-Verben kennenlernen
 
-## Base R
+# Base R
 
 Die Basissoftware, die die Programmiersprache R enthält, heißt base-R oder natives R. Dieses Basissystem enthält das Paket `base`, das zum Ausführen von R erforderlich ist. Ähnlich wie tidyverse enthält das Basissystem auch einige Pakete wie `utils` und `stats` (unter anderem). Um zu sehen, welche Pakete enthalten sind, gehen Sie einfach auf die Registerkarte `Pakete` unten rechts in Ihrer RStudio-Sitzung. Unter der Annahme, dass Sie mit einer sauberen Arbeitsumgebung beginnen, sollten nur die Pakete geladen werden, die zum R-Basissystem gehören. Alle diese Pakete werden bei der Installation von R installiert. Mit dieser Sammlung von Paketen können die meisten (wenn nicht alle) der gleichen Ziele wie mit tidyverse erreicht werden, auch wenn beide für bestimmte Ziele vorzuziehen oder besser zu rationalisieren sind.
 
@@ -96,13 +96,13 @@ ggarrange(rasterGrob(tweet_bodo, width = .65),
 Offensichtlich halte ich das Erlernen des Tidyversums für wichtig, denn ich habe mich entschieden, diesen Kurs auf Tidyversum-Pakete zu stützen. Das liegt daran, dass das Tidyverse den Menschen in den Mittelpunkt stellt, und dieser Kurs ist nicht für Programmierer oder Informatiker gedacht. Wie wir im obigen Tweet sehen, stimmt nicht jeder mit mir überein, aber es gibt auch viele Leute, die das tun.
 
 
-### Warum beides lernen?
+## Warum beides lernen?
 
 Ich persönlich lernte Base R Jahre bevor ich Tidyverse lernte. Ich habe nie zurückgeblickt, und mein Code ist seit der Einführung von tidyverse und den dahinter stehenden Philosophien viel sauberer und besser lesbar geworden. Trotzdem gibt es immer noch bestimmte Aufgaben, für die ich Base R verwende, z. B. für einen schnellen Blick auf eine einzelne Variable oder wenn ich mit Listen oder verschachtelten Datenstrukturen arbeite (die wir in diesem Kurs nicht behandeln werden). 
 
 Auch wenn ich persönlich mit ähnlichen Ansichten wie im ursprünglichen Tweet oben nicht einverstanden bin (wie viele andere auch), ist die Kenntnis von Base R eine wichtige Fähigkeit, um Ihre R-Horizonte zu erweitern. Sie werden mit Sicherheit auf Base R-Code stoßen, wenn Sie nach Lösungen für Probleme suchen oder sich den Code von anderen ansehen. Unabhängig davon, ob jemand eine starke Vorliebe für Base R oder Tidyverse hat, ist es eine gute Idee, mit beiden Optionen vertraut zu sein, um das Beste aus der R-Community herauszuholen. Es ist wichtig zu verstehen, dass es so etwas wie perfekten Code nicht gibt, und dass es fast immer mehrere Möglichkeiten gibt, das gleiche Ziel zu erreichen, sogar innerhalb von Base R oder Tidyverse. Was wir heute lernen werden, ist im Wesentlichen, wie wir den Tidyverse-Code, mit dem wir vertraut sind, in Base R übersetzen können.
 
-## Einrichten
+# Einrichten
 
 Wir werden heute ziemlich minimalistisch arbeiten. Alles was wir brauchen sind die Pakete `tidyverse` und `here`.
 
@@ -120,11 +120,11 @@ pacman::p_load(janitor,
 ```
 
 
-### Einlesen
+## Einlesen
 
 Wir werden den Datensatz `languageR_english.csv` einlesen, der sich bereits in Ihrem `daten`-Ordner befinden sollte. Dieser Datensatz enthält Daten aus einer Benennungs- und lexikalischen Entscheidungsaufgabe in Englisch.
 
-### CSV
+## CSV
 
 Wir haben bereits gesehen, wie man die `read_()` Familie von Funktionen (`read_csv()`, `read_csv2()`, `read_delim()`, etc.) aus dem `readr` Paket aus dem `tidyverse` benutzt.
 
@@ -180,7 +180,7 @@ nrow(df_base)
 
 Beide haben `r nrow(df_base)` Zeilen. Die Datenstruktur ist also identisch.
 
-### Andere Begrenzungszeichen
+## Andere Begrenzungszeichen
 
 Erinnern Sie sich, dass wir mit dem tidyverse-Paket `readr` `read_delim(delim = "")` verwenden können, um das Trennzeichen explizit zu definieren. Hier verwenden wir `delim = ","`, weil wir immer noch eine kommagetrennte Wertedatei verwenden. 
 
@@ -204,22 +204,22 @@ df_base <-read.table(
 
 ::: {.callout-tip}
 
-### Begrenzungszeichen und Trennzeichen
+## Begrenzungszeichen und Trennzeichen
 
 Versuchen Sie, das Trennzeichen in den obigen Code-Blöcken durch ein Semikolon (`;`) zu ersetzen. Was ändert sich, und warum? Ändern Sie es wieder in ein Komma und führen Sie es erneut aus, bevor Sie fortfahren.
 
 :::
 
-### Datenrahmen versus Tibbles
+## Datenrahmen versus Tibbles
 
 Daten, die mit tidyverse eingelesen werden, werden als Tibble gespeichert, das als eine aufgeräumtere Version eines Datenrahmens gilt. Wichtig ist, dass die Struktur eines Tibbles und die darin enthaltenen Informationen mit denen eines Datenrahmens identisch sind. Im Folgenden werden wir einige Unterschiede zwischen Tibbles und Datenrahmen sehen. 
 
 
-## Umgang mit Spalten und Zeilen
+# Umgang mit Spalten und Zeilen
 
 Wir sind bereits mit einer Reihe von `dplyr`-Verben vertraut, die zum Manipulieren, Filtern und Extrahieren von Zeilen und Spalten verwendet werden. Jetzt sehen wir uns alternative Wege an, um die gleichen Ergebnisse mit Base R zu erzielen.
 
-### Variablen extrahieren
+## Variablen extrahieren
 
 Wir sind bereits vertraut mit `select()` aus `dplyr`:
 
@@ -315,7 +315,7 @@ df_base[,c(1, 6)]
 df_base[,c(1, 6)] |>  head(10)
 ```
 
-#### Mischen von Tibbles und Datenrahmen
+### Mischen von Tibbles und Datenrahmen
 
 Die Ausgabe dieser Operationen hängt nicht nur davon ab, ob Sie eine Tidyverse- oder eine R-Basisfunktion verwenden. Es macht auch einen Unterschied, ob die Daten ein Datenrahmen oder ein Tibble sind. Versuchen wir, die Funktion `select()` von tidyverse auf einen Datenrahmen anzuwenden:
 
@@ -346,7 +346,7 @@ head(df_tidy$AgeSubject, 10)
 
 Dies sollte keine Folgen haben, aber es ist wichtig, die innere Struktur Ihrer Daten zu verstehen, damit Sie entsprechend damit arbeiten können.
 
-### Beobachtungen extrahieren/filtern
+## Beobachtungen extrahieren/filtern
 
 Wir haben bereits die Funktion `filter()` von `dplyr` gesehen, die Zeilen extrahiert, die logischen Bedingungen entsprechen.
 
@@ -369,7 +369,7 @@ df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,] |>
 ```
 
 
-### Einzelne Datenpunkte auswählen
+## Einzelne Datenpunkte auswählen
 
 Wir können bestimmte Zeilen und bestimmte Spalten auf einmal extrahieren. Wenn wir zum Beispiel die relevanten Zeilen wie oben ausgeben wollen, aber nur die Spalten `AgeSubject` und `RTlexdec`, können wir dies mit `filter()` und `select()` tun (was wir bereits zuvor getan haben).
 
@@ -414,7 +414,7 @@ df_base[df_base$RTlexdec > 600 & df_base$RTnaming < 480,c(1, 6)] |>
   head(10)
 ```
 
-### Neue Variablen erstellen
+## Neue Variablen erstellen
 
 Wir haben gelernt, wie man mit der Funktion `mutate()`, die ebenfalls aus `dplyr` stammt, neue Variablen erstellt oder bestehende Variablen ändert.
 
@@ -429,7 +429,7 @@ In Base R geschieht dies, indem wir den Namen der neuen Variablen definieren und
 df_base$rt_lexdec_s <- df_base$RTlexdec/1000
 ```
 
-### Zusammenfassen
+## Zusammenfassen
 
 Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht einfach, wenn man eine Gruppe hat, deshalb werden wir das nicht behandeln. 
 
@@ -452,7 +452,7 @@ data.frame(mean_lexdec = mean(df_base$RTlexdec),
            sd_naming = sd(df_base$RTnaming, na.rm = T))
 ```
 
-## Pipes
+# Pipes
 
 Lange Zeit waren Pipes ein Feature des Tidyverse, mit der `%>%` Pipe aus dem `magrittr` Paket. Seit 2023 bietet R eine native Pipe `|>`. Sie haben vielleicht schon beide Versionen gesehen (ich tendiere dazu, `|>` zu benutzen). Für unsere Zwecke sind sie austauschbar, aber es gibt wichtige Unterschiede für komplexere Fälle, die wir nicht behandeln werden.
 
@@ -467,7 +467,7 @@ df_base$RTlexdec %>%
   mean()
 ```
 
-## Plots
+# Plots
 
 `ggplot2` ist auch bei Leuten beliebt, die sonst nicht die tidyverse-Paketfamilie nutzen. Das liegt daran, dass es einige nützliche Funktionen und ein sauberes Aussehen hat. 
 
@@ -555,7 +555,7 @@ df_base |>
 
 
 
-## Lernziele 🏁 {.unnumbered .unlisted}
+# Lernziele 🏁 {.unnumbered .unlisted}
 
 In diesem Kapitel werden wir...
 
@@ -563,18 +563,18 @@ In diesem Kapitel werden wir...
 - Base R und Tidyverse vergleichen ✅
 - die Base-R-Äquivalente der Tidyverse-Verben kennenlernen ✅
 
-## Aufgaben
+# Aufgaben
 
 Konvertieren Sie den folgenden tidyverse-Code in Base R. Wir werden wieder den Datensatz "languageR_english.csv" verwenden.
 
-### Read-in
+## Read-in
 
 ```{r}
 df_eng <- 
   read_csv(here("daten", "languageR_english.csv"))
 ```
 
-### Auswahl der Spalten
+## Auswahl der Spalten
 
 ```{r}
 #| eval: false
@@ -589,7 +589,7 @@ df_eng |>
   head(10)
 ```
 
-### Zeilen filtern
+## Zeilen filtern
 
 ```{r}
 #| eval: false
@@ -604,7 +604,7 @@ df_eng |>
   head(10)
 ```
 
-### Auswahl von Zeilen und Spalten
+## Auswahl von Zeilen und Spalten
 
 ```{r}
 #| eval: false
@@ -621,7 +621,7 @@ df_eng |>
   head(10)
 ```
 
-### Streudiagramm
+## Streudiagramm
 
 ```{r}
 df_eng |> 
@@ -630,12 +630,12 @@ df_eng |>
   geom_point()
 ```
 
-### Tidyverse versus Base R
+## Tidyverse versus Base R
 
 Wie ist Ihr Eindruck von Base R im Vergleich zu Tidyverse? Würden Sie, basierend auf dem, was Sie gesehen haben, das eine dem anderen vorziehen, oder würden Sie das eine nur in bestimmten Fällen vorziehen? Hier gibt es keine richtige Antwort.
 
 
-## Session Info {.unnumbered}
+# Session Info {.unnumbered}
 
 ```{r}
 #| eval: false
@@ -650,7 +650,7 @@ Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion
 print(sessionInfo(),locale = F)
 ```
 
-## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
+# Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
 
 ::: {#refs custom-style="Bibliography"}
 :::
