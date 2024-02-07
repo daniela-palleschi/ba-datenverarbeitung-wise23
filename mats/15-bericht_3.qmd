@@ -70,6 +70,7 @@ Der Datensatz enthält Stimmeinsatzzeiten in Millisekunden (VOTs; `vot`) für wo
 ## Datenuntersuchung
 
 Machen Sie sich mit dem Datensatz vertraut, wie Sie möchten. Sie müssen Ihre Arbeit für diese Aufgabe nicht zeigen, aber wenn Sie es tun, bedenken Sie bitte, dass, wenn Sie Code im Skript verwenden, der die Daten ausgibt (z.B. einfach `df_vot`), er alle Zeilen (n = `r nrow(df_vot)`) erzeugt, wenn Sie das Dokument rendern, was viele Seiten zu Ihrem gerenderten Dokument hinzufügt. Versuchen Sie deshalb, mit `head()` nur die ersten 6 Zeilen auszudrucken (zuerst in [Chatper 4](https://daniela-palleschi.github.io/r4ling/mats/04-wrangling_1.html#lexdec) besprochen), oder öffnen Sie einfach den Datensatzbetrachter durch Doppelklick auf seinen Namen im Fenster 'Umgebung' ('Environment'). 
+
 # Base R
 
 In diesem Abschnitt werden Sie Code in Base R und/oder Tidyverse interpretieren und schreiben.
