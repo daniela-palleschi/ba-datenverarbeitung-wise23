@@ -17,7 +17,7 @@ output:
 
 > Der Zweck dieses Berichts ist es, das, was wir in den letzten Wochen gelernt haben, mit dem zu konsolidieren, was wir zuvor gelernt haben. Sie werden einen Datensatz aus einer veröffentlichten Arbeit laden, die sich mit der Untersuchung von Stimmbruchzeiten befasst [@sonderegger_medium-term_2017; @sonderegger_regression_2023] und die auf Moodle verfügbar ist. Wenn Sie nicht in diesem Kurs auf Moodle eingeschrieben sind, ist der Datensatz auch frei auf dem Open Science Framework unter [https://osf.io/cmh3p](https://osf.io/cmh3p) verfügbar.
 >
-> Sie können Ihr eigenes Quarto-Skript von Grund auf erstellen oder ein leeres Skript verwenden, das ich mit den Fragen und den entsprechenden Überschriften erstellt habe. Sie können dieses Skript auf Moodle oder online [hier](https://github.com/daniela-palleschi/r4ling/blob/689c46b15a883d0fb2d001ea50d97fa101e23d62/slides/11-bericht3/empty%20script/student_bericht3.qmd) finden.
+> Sie können Ihr eigenes Quarto-Skript von Grund auf erstellen oder ein leeres Skript verwenden, das ich mit den Fragen und den entsprechenden Überschriften erstellt habe. Sie können dieses Skript auf Moodle oder online [hier](https://github.com/daniela-palleschi/r4ling/blob/main/slides/14-bericht3/empty%20script/student_bericht3.qmd) finden.
 
 # Einrichten
 
