@@ -137,7 +137,7 @@
     "href": "mats/01-intro_r.html#literaturverzeichnis",
     "title": "1  Einführung in R und RStudio",
     "section": "Literaturverzeichnis",
-    "text": "Literaturverzeichnis\n\n\nBaayen, R. H. (2008). Analyzing Linguistic Data:\nA Practical Introduction to Statistics using\nR.\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR:\nAnalyzing linguistic data: A practical introduction to statistics.\nhttps://CRAN.R-project.org/package=languageR\n\n\nBiondo, N., Soilemezidi, M., & Mancini, S. (2022). Yesterday is\nhistory, tomorrow is a mystery: An eye-tracking\ninvestigation of the processing of past and future time reference during\nsentence reading. Journal of Experimental Psychology: Learning,\nMemory, and Cognition, 48(7), 1001–1018. https://doi.org/10.1037/xlm0001053\n\n\nDavies, R., Locke, S., & D’Agostino McGowan, L. (2022).\ndatasauRus: Datasets from the datasaurus dozen. https://CRAN.R-project.org/package=datasauRus\n\n\nMüller, K. (2020). Here: A simpler way to find your files. https://CRAN.R-project.org/package=here\n\n\nNordmann, E., & DeBruine, L. (2022). Applied data skills.\nZenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L.\nM. (2022). Data Visualization Using R for Researchers\nWho Do Not Use R. Advances in Methods and Practices in\nPsychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,\nFrançois, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M.,\nPedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J.,\nRobinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019a). Welcome to\nthe tidyverse. Journal of Open Source\nSoftware, 4(43), 1686. https://doi.org/10.21105/joss.01686\n\n\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François,\nR., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen,\nT., Miller, E., Bache, S., Müller, K., Ooms, J., Robinson, D., Seidel,\nD., Spinu, V., … Yutani, H. (2019b). Welcome to the\nTidyverse. Journal of Open Source Software,\n4(43), 1686. https://doi.org/10.21105/joss.01686\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for\nData Science (2nd ed.).\n\n\nWinter, B. (2013). Linear models and linear mixed effects models in\nR: Tutorial 1 (No. arXiv:1308.5499).\n\n\nWinter, B. (2014). A very basic tutorial for performing linear mixed\neffects analyses (Tutorial 2) (No. arXiv:1308.5499).\n\n\nWinter, B. (2019). Statistics for Linguists: An\nIntroduction Using R. In Statistics for Linguists: An\nIntroduction Using R. Routledge. https://doi.org/10.4324/9781315165547\n\n\nXie, Y. (2019). TinyTeX: A lightweight, cross-platform, and\neasy-to-maintain LaTeX distribution based on TeX live. TUGboat,\n40(1), 30–32. https://tug.org/TUGboat/Contents/contents40-1.html\n\n\nXie, Y. (2023). Tinytex: Helper functions to install and maintain\nTeX live, and compile LaTeX documents. https://github.com/rstudio/tinytex"
+    "text": "Literaturverzeichnis\n\n\nBaayen, R. H. (2008). Analyzing Linguistic Data:\nA Practical Introduction to Statistics using\nR.\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR:\nAnalyzing linguistic data: A practical introduction to statistics.\nhttps://CRAN.R-project.org/package=languageR\n\n\nBiondo, N., Soilemezidi, M., & Mancini, S. (2022). Yesterday is\nhistory, tomorrow is a mystery: An eye-tracking\ninvestigation of the processing of past and future time reference during\nsentence reading. Journal of Experimental Psychology: Learning,\nMemory, and Cognition, 48(7), 1001–1018. https://doi.org/10.1037/xlm0001053\n\n\nDavies, R., Locke, S., & D’Agostino McGowan, L. (2022).\ndatasauRus: Datasets from the datasaurus dozen. https://CRAN.R-project.org/package=datasauRus\n\n\nMüller, K. (2020). Here: A simpler way to find your files. https://CRAN.R-project.org/package=here\n\n\nNordmann, E., & DeBruine, L. (2022). Applied data skills.\nZenodo. https://doi.org/10.5281/zenodo.6365078\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L.\nM. (2022). Data Visualization Using R for Researchers\nWho Do Not Use R. Advances in Methods and Practices in\nPsychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nSonderegger, M. (2023). Regression Modeling for\nLinguistic Data.\n\n\nSonderegger, M., Bane, M., & Graff, P. (2017). The medium-term\ndynamics of accents on reality television. Language,\n93(3), 598–640. https://doi.org/10.1353/lan.2017.0038\n\n\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,\nFrançois, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M.,\nPedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J.,\nRobinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019a). Welcome to\nthe tidyverse. Journal of Open Source\nSoftware, 4(43), 1686. https://doi.org/10.21105/joss.01686\n\n\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François,\nR., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen,\nT., Miller, E., Bache, S., Müller, K., Ooms, J., Robinson, D., Seidel,\nD., Spinu, V., … Yutani, H. (2019b). Welcome to the\nTidyverse. Journal of Open Source Software,\n4(43), 1686. https://doi.org/10.21105/joss.01686\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for\nData Science (2nd ed.).\n\n\nWinter, B. (2013). Linear models and linear mixed effects models in\nR: Tutorial 1 (No. arXiv:1308.5499).\n\n\nWinter, B. (2014). A very basic tutorial for performing linear mixed\neffects analyses (Tutorial 2) (No. arXiv:1308.5499).\n\n\nWinter, B. (2019). Statistics for Linguists: An\nIntroduction Using R. In Statistics for Linguists: An\nIntroduction Using R. Routledge. https://doi.org/10.4324/9781315165547\n\n\nXie, Y. (2019). TinyTeX: A lightweight, cross-platform, and\neasy-to-maintain LaTeX distribution based on TeX live. TUGboat,\n40(1), 30–32. https://tug.org/TUGboat/Contents/contents40-1.html\n\n\nXie, Y. (2023). Tinytex: Helper functions to install and maintain\nTeX live, and compile LaTeX documents. https://github.com/rstudio/tinytex"
   },
   {
     "objectID": "mats/02-dataviz_1.html#wiederholung",
@@ -1020,5 +1020,110 @@
     "title": "13  Datenvisualiserung 4",
     "section": "Literaturverzeichnis",
     "text": "Literaturverzeichnis\n\n\nNordmann, E., McAleer, P., Toivo, W., Paterson, H., & DeBruine, L. M. (2022). Data Visualization Using R for Researchers Who Do Not Use R. Advances in Methods and Practices in Psychological Science, 5(2), 251524592210746. https://doi.org/10.1177/25152459221074654\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2. Aufl.)."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html",
+    "href": "mats/15-bericht_3.html",
+    "title": "14  Bericht 3",
+    "section": "",
+    "text": "Bericht 3\nDer Zweck dieses Berichts ist es, das, was wir in den letzten Wochen gelernt haben, mit dem zu konsolidieren, was wir zuvor gelernt haben. Sie werden einen Datensatz aus einer veröffentlichten Arbeit laden, die sich mit der Untersuchung von Stimmbruchzeiten befasst (Sonderegger et al., 2017; Sonderegger, 2023) und die auf Moodle verfügbar ist. Wenn Sie nicht in diesem Kurs auf Moodle eingeschrieben sind, ist der Datensatz auch frei auf dem Open Science Framework unter https://osf.io/cmh3p verfügbar.\nSie können Ihr eigenes Quarto-Skript von Grund auf erstellen oder ein leeres Skript verwenden, das ich mit den Fragen und den entsprechenden Überschriften erstellt habe. Sie können dieses Skript auf Moodle oder online hier finden.\nDieser Bericht wird Ihnen als unvollständiges Quarto-Skript zur Verfügung gestellt. Ihre Aufgabe ist es, die Anweisungen zu befolgen, um das Skript zu vervollständigen. Sie finden das Skript auf Moodle, oder hier.\nFür diese Aufgaben werden Sie zwei Diagramme erstellen, indem Sie Funktionen und Argumente verwenden, die in der Sitzung Datenvisualisierung 4 behandelt wurden.\nReflektieren Sie über Ihre Reise durch diesen Kurs. Was haben Sie besonders interessant gefunden? Was war schwierig? Womit tun Sie sich noch schwer? Könnten Sie sich vorstellen, das Gelernte in Zukunft bei Ihrer Arbeit anzuwenden? Wie könnte der Kurs in Zukunft verbessert werden?"
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#rendern",
+    "href": "mats/15-bericht_3.html#rendern",
+    "title": "14  Bericht 3",
+    "section": "15.1 Rendern",
+    "text": "15.1 Rendern\nBevor Sie fortfahren, überprüfen Sie, ob Sie das Skript als PDF rendern können. Es sollte laufen, auch wenn unten unvollständige Codeabschnitte stehen, da die YAML eval: false enthält."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#yaml",
+    "href": "mats/15-bericht_3.html#yaml",
+    "title": "14  Bericht 3",
+    "section": "15.2 YAML",
+    "text": "15.2 YAML\nÄndern Sie die YAML so, dass:\n\neval: true\nAutor: \"IHR NAME\"\n\nNun können Sie das Dokument erst rendern, wenn alle Code-Bausteine darunter fertiggestellt sind, weil darunter unvollständige Code-Bausteine sind und Sie eval: true gesetzt haben."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#pakete",
+    "href": "mats/15-bericht_3.html#pakete",
+    "title": "14  Bericht 3",
+    "section": "15.3 Pakete",
+    "text": "15.3 Pakete\nLaden Sie die Pakete tidyverse, gghalves, patchwork, und here ein."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#daten-laden",
+    "href": "mats/15-bericht_3.html#daten-laden",
+    "title": "14  Bericht 3",
+    "section": "15.4 Daten laden",
+    "text": "15.4 Daten laden\nNachfolgend ein Codeabschnitt, der einen Datensatz aus Sonderegger et al. (2017) lädt und in Sonderegger (2023) besprochen wird. Wichtig: Sie müssen die Daten bereits heruntergeladen haben, entweder von Moodle oder vom Open Science Framework, und sie in Ihrem ‘daten’-Ordner gespeichert haben.\n\n\n\nKopieren Sie diesen Code und führen Sie ihn aus\n\ndf_vot &lt;-\n  read_csv(here::here(\"daten\", \"vot_rmld_2023.csv\")) \n\n\nDer Datensatz enthält Stimmeinsatzzeiten in Millisekunden (VOTs; vot) für wortanfängliche Stoppkonsonanten (phone: p/t/k/b/d/g) in der Rede von englischen Muttersprachlern, die an der Reality-TV-Show Big Brother UK (2008, Staffel 9) teilnahmen. Wichtig ist, dass “[der Zeitpunkt des Stimmeinsatzes] im Englischen der primäre akustische Hinweis darauf ist, ob ein Stop phonologisch [stimmhaft] (b/d/g) oder [stimmlos] (b/d/g) ist” (Sonderegger, 2023, S. 98). Wir werden die Unterschiede in der VOT als Funktion der Stimmhaftigkeit und des Artikulationsortes (place: alveolar/labial/velar) in einer Untergruppe von Teilnehmern untersuchen."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#datenuntersuchung",
+    "href": "mats/15-bericht_3.html#datenuntersuchung",
+    "title": "14  Bericht 3",
+    "section": "15.5 Datenuntersuchung",
+    "text": "15.5 Datenuntersuchung\nMachen Sie sich mit dem Datensatz vertraut, wie Sie möchten. Sie müssen Ihre Arbeit für diese Aufgabe nicht zeigen, aber wenn Sie es tun, bedenken Sie bitte, dass, wenn Sie Code im Skript verwenden, der die Daten ausgibt (z.B. einfach df_vot), er alle Zeilen (n = 25154) erzeugt, wenn Sie das Dokument rendern, was viele Seiten zu Ihrem gerenderten Dokument hinzufügt. Versuchen Sie deshalb, mit head() nur die ersten 6 Zeilen auszudrucken (zuerst in Chatper 4 besprochen), oder öffnen Sie einfach den Datensatzbetrachter durch Doppelklick auf seinen Namen im Fenster ‘Umgebung’ (‘Environment’). # Base R\nIn diesem Abschnitt werden Sie Code in Base R und/oder Tidyverse interpretieren und schreiben."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#filter",
+    "href": "mats/15-bericht_3.html#filter",
+    "title": "14  Bericht 3",
+    "section": "15.6 Filter",
+    "text": "15.6 Filter\nFiltern Sie mit base R die Daten so, dass nur die Sprecher rex, michael, sara und lisa enthalten sind. Tipp: Verwenden Sie [,], wobei Zeilen links und Spalten rechts definiert sind. Wir wollen alle Spalten, also müssen Sie nichts rechts vom Komma einfügen.\n\n\n\nVervollständigen Sie diesen Code\n\ndf_vot &lt;-\n  ..."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#codebeschreibung",
+    "href": "mats/15-bericht_3.html#codebeschreibung",
+    "title": "14  Bericht 3",
+    "section": "15.7 Codebeschreibung",
+    "text": "15.7 Codebeschreibung\nBeschreiben Sie in Worten, was der folgende R-Basiscode bewirkt:\n\ndf_vot[df_vot$vot &gt; 75 & df_vot$voicing == \"voiced\", 1]"
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#base-r-tidyverse-übersetzung",
+    "href": "mats/15-bericht_3.html#base-r-tidyverse-übersetzung",
+    "title": "14  Bericht 3",
+    "section": "15.8 base R-tidyverse ‘Übersetzung’",
+    "text": "15.8 base R-tidyverse ‘Übersetzung’\nSchreiben Sie nun den gleichen Code in tidyverse und drucken Sie das Ergebnis aus.\n\n\n\nVervollständigen Sie diesen Code\n\ndf_vot |&gt; \n  ..."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#base-r-zusammenfassung",
+    "href": "mats/15-bericht_3.html#base-r-zusammenfassung",
+    "title": "14  Bericht 3",
+    "section": "15.9 base R Zusammenfassung",
+    "text": "15.9 base R Zusammenfassung\nErstellen Sie mit base R eine Zusammenfassung mit dem Namen sum_vot, die den Mittelwert und die Standardabweichung der Stimmausgangszeiten sowie die Anzahl der Beobachtungen (mit length()) des gesamten Datensatzes enthält.\n\n\n\nVervollständigen Sie diesen Code\n\nsum_vot &lt;-\n  ..."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#zusammenfassen-mit-tidyverse",
+    "href": "mats/15-bericht_3.html#zusammenfassen-mit-tidyverse",
+    "title": "14  Bericht 3",
+    "section": "15.10 Zusammenfassen mit tidyverse",
+    "text": "15.10 Zusammenfassen mit tidyverse\nMachen Sie nun dasselbe mit tidyverse, aber produzieren Sie diese Werte nach Sprecher, Telefon, Ort und Stimmlage. Nennen Sie es sum_speaker.\n\n\n\nVervollständigen Sie diesen Code\n\nsum_speaker &lt;-\n  ..."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#mehrteilige-darstellung",
+    "href": "mats/15-bericht_3.html#mehrteilige-darstellung",
+    "title": "14  Bericht 3",
+    "section": "16.1 Mehrteilige Darstellung",
+    "text": "16.1 Mehrteilige Darstellung\nErstellen Sie einen mehrteiligen Plot pro Sprecher (x-Achse) und Sprechzeit (y-Achse), der einen Scatter Plot, Boxplot und ein Dodged Histogram enthält, wobei die Facetten pro Teilnehmer in einer einzigen Zeile angeordnet sind (Hinweis: facet_wrap() hat ein Argument nrow =, mit dem die Anzahl der Zeilen definiert werden kann). Siehe Abbildung in Abschnitt 13.1.4 aus dem Web-Book zur Inspiration. Nennen Sie diese Darstellung fig_vot.\n\n\n\nVervollständigen Sie diesen Code\n\nfig_vot &lt;-\n  ..."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#fehlerbalken-diagramm",
+    "href": "mats/15-bericht_3.html#fehlerbalken-diagramm",
+    "title": "14  Bericht 3",
+    "section": "16.2 Fehlerbalken-Diagramm",
+    "text": "16.2 Fehlerbalken-Diagramm\nErzeugen Sie ein Fehlerdiagramm der Zusammenfassung nach Sprechern, mit Intonation auf der x-Achse, Farbe, Form und Gruppe nach Ort der Artikulation und einer Facette pro Teilnehmer, angeordnet in einer einzigen Zeile (Hinweis: facet_wrap() hat ein Argument nrow =, das die Anzahl der Zeilen festlegen kann). Fügen Sie geom_line() ein, mit der lokalen Ästhetik linetype an Stelle. Stellen Sie sicher, dass Sie position_dodge() verwenden, um sicherzustellen, dass sich die Fehlerbalken nicht überlappen. Sobald Sie die Darstellung erstellt haben, fügen Sie Beschriftungen und Themenanpassungen hinzu, die so gut wie möglich zu Abbildung 10.9 passen. Nennen Sie diese Darstellung fig_vot_error.\n\n\n\nVervollständigen Sie diesen Code\n\nfig_vot_error &lt;-\n  ..."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#plots-drucken",
+    "href": "mats/15-bericht_3.html#plots-drucken",
+    "title": "14  Bericht 3",
+    "section": "16.3 Plots drucken",
+    "text": "16.3 Plots drucken\nDrucken Sie Ihre Diagramme übereinander mit dem Paket patchwork. Fügen Sie die Beschriftungen A und B ein (wir haben gesehen, wie man das zweimal macht: in Kapitel 10 und Kapitel 13). Sie sollten etwa so aussehen wie Abbildung 16.1 A und B.\n\n\n\n\n\nAbbildung 16.1: Reproduce this plot."
+  },
+  {
+    "objectID": "mats/15-bericht_3.html#interpretation-des-plots",
+    "href": "mats/15-bericht_3.html#interpretation-des-plots",
+    "title": "14  Bericht 3",
+    "section": "16.4 Interpretation des Plots",
+    "text": "16.4 Interpretation des Plots\nInterpretieren Sie Ihre Diagramme. Betrachten Sie die Unterschiede zwischen den Sprechern, die Intonation und den Ort der Artikulation (und ob einer dieser Unterschiede in Abhängigkeit von einer anderen Variable variiert, z. B. ob die Unterschiede bei Intonation und Ort der Artikulation für alle Sprecher gleich sind)."
   }
 ]
