@@ -445,7 +445,7 @@ MathJax.Hub.Config({
 
 <section id="bericht-3" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="bericht-3">Bericht 3</h2>
-<p>Der Zweck dieses Berichts ist es, das, was wir in den letzten Wochen gelernt haben, mit dem zu konsolidieren, was wir zuvor gelernt haben. Sie werden einen Datensatz aus einer veröffentlichten Arbeit laden, die sich mit der Untersuchung von Stimmbruchzeiten befasst <span class="citation" data-cites="sonderegger_medium-term_2017 sonderegger_regression_2023">(<a href="01-intro_r.html#ref-sonderegger_medium-term_2017" role="doc-biblioref">Sonderegger et al., 2017</a>; <a href="01-intro_r.html#ref-sonderegger_regression_2023" role="doc-biblioref">Sonderegger, 2023</a>)</span> und die auf Moodle verfügbar ist. Wenn Sie nicht in diesem Kurs auf Moodle eingeschrieben sind, ist der Datensatz auch frei auf dem Open Science Framework unter <a href="https://osf.io/cmh3p">https://osf.io/cmh3p</a> verfügbar.</p>
+<p>Der Zweck dieses Berichts ist es, das, was wir in den letzten Wochen gelernt haben, mit dem zu konsolidieren, was wir zuvor gelernt haben. Sie werden einen Datensatz aus einer veröffentlichten Arbeit laden, die sich mit der Untersuchung von ‘voice onset times’ befasst <span class="citation" data-cites="sonderegger_medium-term_2017 sonderegger_regression_2023">(<a href="01-intro_r.html#ref-sonderegger_medium-term_2017" role="doc-biblioref">Sonderegger et al., 2017</a>; <a href="01-intro_r.html#ref-sonderegger_regression_2023" role="doc-biblioref">Sonderegger, 2023</a>)</span> und die auf Moodle verfügbar ist. Wenn Sie nicht in diesem Kurs auf Moodle eingeschrieben sind, ist der Datensatz auch frei auf dem Open Science Framework unter <a href="https://osf.io/cmh3p">https://osf.io/cmh3p</a> verfügbar.</p>
 <p>Sie können Ihr eigenes Quarto-Skript von Grund auf erstellen oder ein leeres Skript verwenden, das ich mit den Fragen und den entsprechenden Überschriften erstellt habe. Sie können dieses Skript auf Moodle oder online <a href="https://github.com/daniela-palleschi/r4ling/blob/main/slides/14-bericht3/empty%20script/student_bericht3.qmd">hier</a> finden.</p>
 </section>
 <section id="einrichten" class="level2" data-number="14.1">
@@ -453,7 +453,7 @@ MathJax.Hub.Config({
 <p>Dieser Bericht wird Ihnen als unvollständiges Quarto-Skript zur Verfügung gestellt. Ihre Aufgabe ist es, die Anweisungen zu befolgen, um das Skript zu vervollständigen. Sie finden das Skript auf Moodle, oder <a href="https://github.com/daniela-palleschi/r4ling/blob/689c46b15a883d0fb2d001ea50d97fa101e23d62/slides/11-bericht2/empty%20script/student_bericht2.qmd">hier</a>.</p>
 <section id="rendern" class="level3" data-number="14.1.1">
 <h3 data-number="14.1.1" class="anchored" data-anchor-id="rendern"><span class="header-section-number">14.1.1</span> Rendern</h3>
-<p>Bevor Sie fortfahren, überprüfen Sie, ob Sie das Skript als PDF rendern können. Es sollte laufen, auch wenn unten unvollständige Codeabschnitte stehen, da die YAML <code>eval: false</code> enthält.</p>
+<p>Bevor Sie fortfahren, überprüfen Sie, ob Sie das Skript als PDF rendern können. Es sollte laufen, auch wenn unten unvollständige Code-Chunks stehen, da die YAML <code>eval: false</code> enthält.</p>
 </section>
 <section id="yaml" class="level3" data-number="14.1.2">
 <h3 data-number="14.1.2" class="anchored" data-anchor-id="yaml"><span class="header-section-number">14.1.2</span> YAML</h3>
@@ -480,7 +480,7 @@ MathJax.Hub.Config({
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"vot_rmld_2023.csv"</span>)) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Der Datensatz enthält Stimmeinsatzzeiten in Millisekunden (VOTs; <code>vot</code>) für wortanfängliche Stoppkonsonanten (<code>phone</code>: p/t/k/b/d/g) in der Rede von englischen Muttersprachlern, die an der Reality-TV-Show Big Brother UK (2008, Staffel 9) teilnahmen. Wichtig ist, dass “<em>[der Zeitpunkt des Stimmeinsatzes] im Englischen der primäre akustische Hinweis darauf ist, ob ein Stop phonologisch [stimmhaft] (b/d/g) oder [stimmlos] (b/d/g) ist</em>” <span class="citation" data-cites="sonderegger_regression_2023">(<a href="01-intro_r.html#ref-sonderegger_regression_2023" role="doc-biblioref">Sonderegger, 2023, S. 98</a>)</span>. Wir werden die Unterschiede in der VOT als Funktion der Stimmhaftigkeit und des Artikulationsortes (<code>place</code>: alveolar/labial/velar) in einer Untergruppe von Teilnehmern untersuchen.</p>
+<p>Der Datensatz enthält Stimmeinsatzzeiten in Millisekunden (‘voiced onset time’/VOT; <code>vot</code>) für wortanfängliche Stoppkonsonanten (<code>phone</code>: p/t/k/b/d/g) in der Rede von englischen Muttersprachlern, die an der Reality-TV-Show Big Brother UK (2008, Staffel 9) teilnahmen. Wichtig ist, dass “<em>[der Zeitpunkt des Stimmeinsatzes (VOT)] im Englischen der primäre akustische Hinweis darauf ist, ob ein Stop phonologisch [stimmhaft] (b/d/g) oder [stimmlos] (b/d/g) ist</em>” <span class="citation" data-cites="sonderegger_regression_2023">(<a href="01-intro_r.html#ref-sonderegger_regression_2023" role="doc-biblioref">Sonderegger, 2023, S. 98</a>)</span>. Wir werden die Unterschiede in der VOT als Funktion der Stimmhaftigkeit (<code>voicing</code>: voiced/voiceless) und des Artikulationsortes (<code>place</code>: alveolar/labial/velar) in einer Untergruppe von Teilnehmern untersuchen.</p>
 </section>
 <section id="datenuntersuchung" class="level3" data-number="14.1.5">
 <h3 data-number="14.1.5" class="anchored" data-anchor-id="datenuntersuchung"><span class="header-section-number">14.1.5</span> Datenuntersuchung</h3>
@@ -492,7 +492,7 @@ MathJax.Hub.Config({
 <p>In diesem Abschnitt werden Sie Code in Base R und/oder Tidyverse interpretieren und schreiben.</p>
 <section id="filter" class="level3" data-number="14.2.1">
 <h3 data-number="14.2.1" class="anchored" data-anchor-id="filter"><span class="header-section-number">14.2.1</span> Filter</h3>
-<p>Filtern Sie mit base R die Daten so, dass nur die Sprecher <code>rex</code>, <code>michael</code>, <code>sara</code> und <code>lisa</code> enthalten sind. Tipp: Verwenden Sie <code>[,]</code>, wobei Zeilen links und Spalten rechts definiert sind. Wir wollen alle Spalten, also müssen Sie nichts rechts vom Komma einfügen.</p>
+<p>Filtern Sie mit base R die Daten so, dass nur die Sprecher (<code>speaker</code>) <code>rex</code>, <code>michael</code>, <code>sara</code> und <code>lisa</code> enthalten sind. Tipp: Verwenden Sie <code>[,]</code>, wobei Zeilen links und Spalten rechts definiert sind. Wir wollen alle Spalten, also müssen Sie nichts rechts vom Komma einfügen.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -525,7 +525,7 @@ MathJax.Hub.Config({
 </section>
 <section id="base-r-zusammenfassung" class="level3" data-number="14.2.4">
 <h3 data-number="14.2.4" class="anchored" data-anchor-id="base-r-zusammenfassung"><span class="header-section-number">14.2.4</span> base R Zusammenfassung</h3>
-<p>Erstellen Sie mit base R eine Zusammenfassung mit dem Namen <code>sum_vot</code>, die den Mittelwert und die Standardabweichung der Stimmausgangszeiten sowie die Anzahl der Beobachtungen (mit <code>length()</code>) des gesamten Datensatzes enthält.</p>
+<p>Erstellen Sie mit base R eine Zusammenfassung mit dem Namen <code>sum_vot</code>, die den Mittelwert und die Standardabweichung der <code>vot</code> sowie die Anzahl der Beobachtungen (mit <code>length()</code>) des gesamten Datensatzes enthält.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -538,7 +538,7 @@ MathJax.Hub.Config({
 </section>
 <section id="zusammenfassen-mit-tidyverse" class="level3" data-number="14.2.5">
 <h3 data-number="14.2.5" class="anchored" data-anchor-id="zusammenfassen-mit-tidyverse"><span class="header-section-number">14.2.5</span> Zusammenfassen mit tidyverse</h3>
-<p>Machen Sie nun dasselbe mit tidyverse, aber produzieren Sie diese Werte nach Sprecher, Telefon, Ort und Stimmlage. Nennen Sie es <code>sum_speaker</code>.</p>
+<p>Machen Sie nun dasselbe mit tidyverse, aber produzieren Sie diese Werte nach Sprecher (<code>speaker</code>), <code>phone</code>, <code>place</code> und <code>voicing</code>. Nennen Sie es <code>sum_speaker</code>.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -555,7 +555,7 @@ MathJax.Hub.Config({
 <p>Für diese Aufgaben werden Sie zwei Diagramme erstellen, indem Sie Funktionen und Argumente verwenden, die in der Sitzung Datenvisualisierung 4 behandelt wurden.</p>
 <section id="mehrteilige-darstellung" class="level3" data-number="14.3.1">
 <h3 data-number="14.3.1" class="anchored" data-anchor-id="mehrteilige-darstellung"><span class="header-section-number">14.3.1</span> Mehrteilige Darstellung</h3>
-<p>Erstellen Sie einen mehrteiligen Plot pro Sprecher (x-Achse) und Sprechzeit (y-Achse), der einen Scatter Plot, Boxplot und ein Dodged Histogram enthält, wobei die Facetten pro Teilnehmer in einer einzigen Zeile angeordnet sind (Hinweis: <code>facet_wrap()</code> hat ein Argument <code>nrow =</code>, mit dem die Anzahl der Zeilen definiert werden kann). Siehe <a href="https://daniela-palleschi.github.io/r4ling/mats/13-dataviz_4.html#kombiniert-alle-drei">Abbildung in Abschnitt 13.1.4 aus dem Web-Book</a> zur Inspiration. Nennen Sie diese Darstellung <code>fig_vot</code>.</p>
+<p>Erstellen Sie einen mehrteiligen Plot pro Sprecher (<code>speaker</code>) (x-Achse) und <code>vot</code> (y-Achse), der einen Scatter Plot, Boxplot und ein Dodged Histogram enthält, wobei die Facetten pro Sprecher (<code>speaker</code>) in einer einzigen Zeile angeordnet sind (Hinweis: <code>facet_wrap()</code> hat ein Argument <code>nrow =</code>, mit dem die Anzahl der Zeilen definiert werden kann). Siehe <a href="https://daniela-palleschi.github.io/r4ling/mats/13-dataviz_4.html#kombiniert-alle-drei">Abbildung in Abschnitt 13.1.4 aus dem Web-Book</a> zur Inspiration. Nennen Sie diese Darstellung <code>fig_vot</code>.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -568,7 +568,7 @@ MathJax.Hub.Config({
 </section>
 <section id="fehlerbalken-diagramm" class="level3" data-number="14.3.2">
 <h3 data-number="14.3.2" class="anchored" data-anchor-id="fehlerbalken-diagramm"><span class="header-section-number">14.3.2</span> Fehlerbalken-Diagramm</h3>
-<p>Erzeugen Sie ein Fehlerdiagramm der Zusammenfassung nach Sprechern, mit Intonation auf der x-Achse, Farbe, Form und Gruppe nach Ort der Artikulation und einer Facette pro Teilnehmer, angeordnet in einer einzigen Zeile (Hinweis: <code>facet_wrap()</code> hat ein Argument <code>nrow =</code>, das die Anzahl der Zeilen festlegen kann). Fügen Sie <code>geom_line()</code> ein, mit der lokalen Ästhetik <code>linetype</code> an Stelle. Stellen Sie sicher, dass Sie <code>position_dodge()</code> verwenden, um sicherzustellen, dass sich die Fehlerbalken nicht überlappen. Sobald Sie die Darstellung erstellt haben, fügen Sie Beschriftungen und Themenanpassungen hinzu, die so gut wie möglich zu <a href="10-dataviz_3.html#fig-errorbar">Abbildung&nbsp;<span>10.9</span></a> passen. Nennen Sie diese Darstellung <code>fig_vot_error</code>.</p>
+<p>Erzeugen Sie ein Fehlerdiagramm der Zusammenfassung nach Sprecher (<code>sum_speaker</code>), mit <code>voicing</code> auf der x-Achse, <code>colour</code>, <code>shape</code> und <code>group</code> nach Ort der Artikulation (<code>place</code>) und einer Facette pro Sprecher (<code>speaker</code>), angeordnet in einer einzigen Zeile (Hinweis: <code>facet_wrap()</code> hat ein Argument <code>nrow =</code>, das die Anzahl der Zeilen festlegen kann). Fügen Sie <code>geom_line()</code> ein, mit der lokalen Ästhetik <code>linetype</code> an Stelle. Stellen Sie sicher, dass Sie <code>position_dodge()</code> verwenden, um sicherzustellen, dass sich die Fehlerbalken nicht überlappen. Sobald Sie die Darstellung erstellt haben, fügen Sie Beschriftungen und Themenanpassungen hinzu, die so gut wie möglich zu <a href="10-dataviz_3.html#fig-errorbar">Abbildung&nbsp;<span>10.9</span></a> passen. Nennen Sie diese Darstellung <code>fig_vot_error</code>.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -595,7 +595,7 @@ MathJax.Hub.Config({
 </section>
 <section id="interpretation-des-plots" class="level3" data-number="14.3.4">
 <h3 data-number="14.3.4" class="anchored" data-anchor-id="interpretation-des-plots"><span class="header-section-number">14.3.4</span> Interpretation des Plots</h3>
-<p>Interpretieren Sie Ihre Diagramme. Betrachten Sie die Unterschiede zwischen den Sprechern, die Intonation und den Ort der Artikulation (und ob einer dieser Unterschiede in Abhängigkeit von einer anderen Variable variiert, z. B. ob die Unterschiede bei Intonation und Ort der Artikulation für alle Sprecher gleich sind).</p>
+<p>Interpretieren Sie Ihre Diagramme. Betrachten Sie die Unterschiede zwischen den Sprecher (<code>speaker</code>), die Intonation und den Ort der Artikulation (und ob einer dieser Unterschiede in Abhängigkeit von einer anderen Variable variiert, z. B. ob die Unterschiede bei Intonation und Ort der Artikulation für alle Sprecher (<code>speaker</code>) gleich sind).</p>
 </section>
 </section>
 <section id="reflexion" class="level2" data-number="14.4">
