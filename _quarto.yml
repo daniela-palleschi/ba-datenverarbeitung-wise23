@@ -49,7 +49,7 @@ book:
         - mats/13-dataviz_4.qmd
         # - mats/14-dataviz_3.qmd
         - mats/15-bericht_3.qmd
-        # - mats/16-qna.qmd
+        - mats/16-troubleshooting.qmd
     - references.qmd
 
 bibliography: references.bib
