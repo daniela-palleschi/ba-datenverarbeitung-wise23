@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daniela Palleschi">
+
+<title>Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 15&nbsp; Troubleshooting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
+<link href="../mats/15-bericht_3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: {autoNumber: "AMS"} },
+  tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ]}
+});
+</script>
+
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+    tex: {
+      tags: 'ams'  // should be 'ams', 'none', or 'all'
+    }
+  };
+</script>
+
+
+<link rel="stylesheet" href="cutsom.css">
+<meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 15&nbsp; Troubleshooting">
+<meta name="twitter:description" content="Was tun, wenn etwas schief geht?">
+<meta name="twitter:image" content="../media/Horst_error.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+</i> 
+ <span class="menu-text">D. Palleschi</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=124123" rel="" target=""><i class="bi bi-life-preserver" role="img">
+</i> 
+ <span class="menu-text">Moodle</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_ws2324.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/16-troubleshooting.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Troubleshooting</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Kursübersicht</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kursübersicht</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erforderliche Software</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Grundlagen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/01-intro_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einführung in R und RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/02-dataviz_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datenvisualiserung 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/03-quarto_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dynamic reports with Quarto</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/04-wrangling_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Wrangling 1: Transformation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/05-dataviz_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/06-bericht_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bericht 1</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Nächste Stufe</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/07-dateneinlesung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/08-desc_stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/09-wrangling_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/10-dataviz_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/11-bericht_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bericht 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Fortgeschrittene Themen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/12-baseR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/13-dataviz_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/15-bericht_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bericht 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/16-troubleshooting.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Kapitelinhalt</h2>
+   
+  <ul>
+  <li><a href="#ressourcen" id="toc-ressourcen" class="nav-link active" data-scroll-target="#ressourcen"><span class="header-section-number">15.1</span> Ressourcen</a></li>
+  <li><a href="#einrichten" id="toc-einrichten" class="nav-link" data-scroll-target="#einrichten"><span class="header-section-number">15.2</span> Einrichten</a></li>
+  <li><a href="#fehlermeldungen" id="toc-fehlermeldungen" class="nav-link" data-scroll-target="#fehlermeldungen"><span class="header-section-number">15.3</span> Fehlermeldungen</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-syntax-checker" id="toc-rstudio-syntax-checker" class="nav-link" data-scroll-target="#rstudio-syntax-checker"><span class="header-section-number">15.3.1</span> RStudio-Syntax-Checker</a></li>
+  <li><a href="#syntaxfehler" id="toc-syntaxfehler" class="nav-link" data-scroll-target="#syntaxfehler"><span class="header-section-number">15.3.2</span> Syntaxfehler</a></li>
+  </ul></li>
+  <li><a href="#rendering-fehler" id="toc-rendering-fehler" class="nav-link" data-scroll-target="#rendering-fehler"><span class="header-section-number">15.4</span> Rendering-Fehler</a>
+  <ul class="collapse">
+  <li><a href="#rprojects" id="toc-rprojects" class="nav-link" data-scroll-target="#rprojects"><span class="header-section-number">15.4.1</span> RProjects</a></li>
+  <li><a href="#behebung-von-rendering-fehlern" id="toc-behebung-von-rendering-fehlern" class="nav-link" data-scroll-target="#behebung-von-rendering-fehlern"><span class="header-section-number">15.4.2</span> Behebung von Rendering-Fehlern</a></li>
+  </ul></li>
+  <li><a href="#um-hilfe-bitten" id="toc-um-hilfe-bitten" class="nav-link" data-scroll-target="#um-hilfe-bitten"><span class="header-section-number">15.5</span> Um Hilfe bitten</a>
+  <ul class="collapse">
+  <li><a href="#google" id="toc-google" class="nav-link" data-scroll-target="#google"><span class="header-section-number">15.5.1</span> Google</a></li>
+  <li><a href="#stackoverflow" id="toc-stackoverflow" class="nav-link" data-scroll-target="#stackoverflow"><span class="header-section-number">15.5.2</span> Stackoverflow</a></li>
+  <li><a href="#dokumentation" id="toc-dokumentation" class="nav-link" data-scroll-target="#dokumentation"><span class="header-section-number">15.5.3</span> Dokumentation</a></li>
+  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt"><span class="header-section-number">15.5.4</span> ChatGPT</a></li>
+  </ul></li>
+  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session Info</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Troubleshooting</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Was tun, wenn etwas schief geht?</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autor:in</div>
+  <div class="quarto-title-meta-heading">Zugehörigkeit</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Daniela Palleschi </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Humboldt-Universität zu Berlin
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Mi. den 14.02.2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Geändert</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">Mi. den 14.02.2024</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="ressourcen" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="ressourcen"><span class="header-section-number">15.1</span> Ressourcen</h2>
+<p>Die Ressourcen, die ich für dieses Kapitel verwendet habe, waren <a href="https://bookdown.org/yih_huynh/Guide-to-R-Book/trouble.html">Abschnitt 3.6 “Troublshooting Error Messages”</a> aus dem Webbuch <a href="https://bookdown.org/yih_huynh/Guide-to-R-Book/">R for Graduate Students</a> von Wendy Huynh (2019), und <span class="citation" data-cites="perkel_six_2023">Perkel (<a href="01-intro_r.html#ref-perkel_six_2023" role="doc-biblioref">2023</a>)</span>.</p>
+</section>
+<section id="lernziele" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele">Lernziele</h2>
+<p>In diesem Kapitel werden wir lernen…</p>
+<ul>
+<li>wie man mit allgemeinen Warnungen und Fehlermeldungen umgeht</li>
+<li>wie man Fehler beim Rendern von Quarto-Skripten behebt</li>
+<li>wo man Hilfe findet, wenn man mit fehlerhaftem Code nicht weiterkommt</li>
+</ul>
+</section>
+<section id="einrichten" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="einrichten"><span class="header-section-number">15.2</span> Einrichten</h2>
+<p>Das folgende Code-Stück gibt uns den ersten Fehler:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       janitor,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       here)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in p_load(tidyverse, janitor, here): could not find function "p_load"</code></pre>
+</div>
+</div>
+<p>Was ist das Problem mit dem obigen Code? Die Funktion <code>p_load()</code> konnte nicht gefunden werden, weil sie aus dem Paket <code>pacman</code> stammt, aber wir haben dieses Paket noch nicht geladen. Das ist der Grund, warum wir <code>pacman::p_load()</code> schreiben, wenn wir unsere Pakete einladen.</p>
+<div id="tbl-messages" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="List of common messages, the source of the problem, and typical solutions">
+
+</div>
+<p>Um die Funktion <code>p_load()</code> zu benutzen, müssen wir angeben, dass sie aus dem Paket <code>pacman</code> stammt, wie wir es in diesem Buch immer getan haben (oder wir könnten dieser Zeile <code>library(pacman)</code> voranstellen).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               janitor,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               here,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               languageR)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fehlermeldungen" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="fehlermeldungen"><span class="header-section-number">15.3</span> Fehlermeldungen</h2>
+<p>Fehler- oder Warnmeldungen sind bei der Programmierung im Allgemeinen sehr häufig. Programmiersprachen sind sehr wortgetreu, sie versuchen normalerweise nicht zu erraten, was Sie wollen. Das bedeutet, dass selbst der kleinste Fehler Ihren Code zerstören kann. Es kann extrem frustrierend und demotivierend sein, wenn man solche Fehlermeldungen erhält. Es mag ein gewisser Trost sein zu wissen, dass jeder Fehler macht, sogar Profis. Mit zunehmender Erfahrung werden Sie lernen, Codefehler effizienter zu erkennen und zu beheben. Heute lernen wir einige Ressourcen kennen, die Ihnen auf diesem Weg helfen können.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-error" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/Horst_error.png" class="img-fluid figure-img" width="960"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.1: Kunstwerke von Alison Horst</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="rstudio-syntax-checker" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="rstudio-syntax-checker"><span class="header-section-number">15.3.1</span> RStudio-Syntax-Checker</h3>
+<p>RStudio erkennt in der Regel Syntaxfehler und teilt Ihnen vor der Ausführung Ihres Codes mit, ob Sie etwas übersehen haben. Das folgende Code-Stück gibt zum Beispiel eine Fehlermeldung aus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"RT"</span> <span class="st">"Correct"</span>)]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:26: unexpected string constant
+1: lexdec[c("Subject", "RT" "Correct"
+                             ^</code></pre>
+</div>
+</div>
+<p>RStudio erkennt diesen Syntaxfehler und visualisiert ihn für Sie, wie in <a href="#fig-rstudio">Abbildung&nbsp;<span>15.2</span></a>. Wir sehen ein rotes “X” neben der Zeilennummer (<code>42</code>) sowie eine rote Unterstreichung für den problematischen oder unerwarteten Code.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rstudio" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/rstudio_error.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.2: RStudio-Syntaxfehler-Warnung</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Die Syntax von <code>"Correct"</code> selbst ist nicht falsch, aber sie ist unerwartet, weil ein Komma nach der vorherigen Zeichenkette fehlt. Erinnern Sie sich, dass <code>c()</code> eine Liste von Argumenten zu einem Vektor kombiniert, und diese Argumente müssen durch ein Komma getrennt werden. Fehlende Kommas sind ein sehr häufiger Grund für fehlerhaften Code, also halten Sie die Augen offen!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-troubleshooting" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/Horst_troubleshooting.jpeg" class="img-fluid figure-img" width="3364"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.3: Kunstwerke von Alison Horst</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="syntaxfehler" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="syntaxfehler"><span class="header-section-number">15.3.2</span> Syntaxfehler</h3>
+<p>Syntaxfehler sind sehr häufig und treten auf, wenn Sie ein Komma oder eine Klammer ausgelassen haben, ein Objekt, eine Variable oder einen Funktionsnamen falsch geschrieben haben oder sogar eine Funktion aufgerufen haben, ohne vorher das entsprechende Paket zu laden (wie wir es oben mit <code>p_load()</code> getan haben).</p>
+<p>Im Folgenden erhalten wir eine informative Fehlermeldung, die uns sagt, dass eine unerwartete schließende eckige Klammer vorhanden ist.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:36: unexpected ']'
+1: lexdec[c("Subject", "RT", "Correct"]
+                                       ^</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"rt"</span>, <span class="st">"Correct"</span>)]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `[.data.frame`(lexdec, c("Subject", "rt", "Correct")): undefined columns selected</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:36: unexpected ']'
+1: lexdec[c("Subject", "RT", "Correct"]
+                                       ^</code></pre>
+</div>
+</div>
+<p>Wenn wir im Tidyverse arbeiten, erhalten wir etwas andere (und manchmal informativere) Fehlermeldungen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"Subjct"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `select()`:
+! Can't subset columns that don't exist.
+✖ Column `Subjct` doesn't exist.</code></pre>
+</div>
+</div>
+<p>Hier wird uns genau gesagt, wo das Problem liegt: Wir haben keine Variable namens <code>Subjct</code>. Dies ist eindeutig ein Tippfehler. Unten erhalten wir einen ähnlichen Fehler.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `select()`:
+! Can't subset columns that don't exist.
+✖ Column `subject` doesn't exist.</code></pre>
+</div>
+</div>
+<p>Dieses Mal ist der Tippfehler auf die Groß- und Kleinschreibung zurückzuführen, denn unsere Variable “Subjekt” beginnt mit einem großen “S”.</p>
+<p>Einige häufige Syntaxfehler sind:</p>
+<ul>
+<li>falsche Großschreibung (z.B. <code>Lexdec$Subject</code> statt <code>lexdec$Subject</code>)</li>
+<li>Tippfehler (z. B. <code>Länge(lexdec)</code> statt <code>Länge(lexdec)</code>)</li>
+<li>schließende Interpunktion, wie z. B. ein schließendes Anführungszeichen, eine Klammer oder eine eckige Klammer</li>
+<li>fortgesetzte Interpunktion, typischerweise fehlt ein Komma oder eine Pipe</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-typo" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/Horst_typo.png" class="img-fluid figure-img" width="960"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.4: Kunstwerke von Alison Horst</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rendering-fehler" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="rendering-fehler"><span class="header-section-number">15.4</span> Rendering-Fehler</h2>
+<p>Das Rendern eines Quarto-Dokuments kann auch Fehlerwarnungen ausgeben, wenn Ihr Code ausgeführt wurde. Vielleicht lief Ihr Code perfekt, wenn Sie ihn direkt im Skript abgearbeitet haben, aber er funktioniert nicht, wenn er gerendert wird. Diese Fehlerwarnungen sind oft darauf zurückzuführen, dass Ihr Code nicht linear geschrieben wurde (d.h. jeder Codeabschnitt sollte vor dem nächsten ausgeführt werden), oder dass Codeabschnitt-Optionen die Ausführung eines erforderlichen Codeabschnitts blockieren (z.B. durch die Einstellung <code>eval: false</code>). Glücklicherweise enthalten die Fehlerwarnungen Informationen darüber, welcher Codechunk problematisch ist. Manchmal ist der Fehler auf einen Fehler in diesem Codechunk zurückzuführen oder darauf, dass ein vorheriger Codechunk nicht ausgeführt wird, z.B. wenn Quarto ein erforderliches Paket nicht lädt oder Daten nicht lädt oder ein neues Objekt erzeugt. Ein solches Beispiel sehen wir in <a href="#fig-render">Abbildung&nbsp;<span>15.5</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-render" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/render_error.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.5: Kunstwerke von Alison Horst</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Sehen Sie sich zunächst die Codeabschnitte in <a href="#fig-render">Abbildung&nbsp;<span>15.5</span></a> an. Der erste Codeabschnitt enthält die Option <code>eval: false</code>, und wird daher beim Rendern des Skripts nicht ausgeführt. Das bedeutet, dass das Paket <code>languageR</code> nicht geladen wird. Der zweite Codeabschnitt versucht dann, die ersten 6 Zeilen des Datensatzes <code>lexdec</code> zu drucken, der Teil des Pakets <code>languageR</code> ist, aber da dieses Paket beim Rendern nicht geladen wurde, erhalten wir die Warnung: <code>Objekt 'lexdec' nicht gefunden</code>. Dies ist insofern informativ, als es uns sagt, dass es ein Problem beim Finden von <code>lexdec</code> gibt, aber es sagt uns nicht explizit, dass es daran liegt, dass wir das Paket nicht geladen haben. Bei solchen Fehlern müssen wir manchmal nachforschen, indem wir unseren Code untersuchen.</p>
+<p>Schauen wir uns auch die Fehlerwarnung genauer an. In diesem kurzen Skript können wir leicht erkennen, wo das problematische <code>lexdec</code> ist, aber vielleicht haben wir ein sehr langes Skript geschrieben und es ist nicht klar, wo die Quelle des Problems liegt, wenn wir nur den Fehlertext betrachten. Wir erhalten auch Informationen darüber, <em>wo</em> Quarto auf ein Problem gestoßen ist: <code>Qutting from lines 11-12 [unnamed-chunk-2] (Untitled.qmd)</code>. Wir erhalten die Zeilennummer und die Nummer des Codeabschnitts. Dies ist eine sehr nützliche Information, wenn wir ein längeres Skript mit vielen Codeabschnitten haben.</p>
+<section id="rprojects" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="rprojects"><span class="header-section-number">15.4.1</span> RProjects</h3>
+<p>Ein häufiger Fehler beim Laden von Daten ist auf einen falschen Dateipfad zurückzuführen. Da wir in diesem Kurs innerhalb eines RProjekts arbeiten, ist dies häufig darauf zurückzuführen, dass wir nicht innerhalb unseres RProjekts arbeiten. Erinnern Sie sich, dass wir das <code>here</code>-Paket verwenden, weil es das Arbeitsverzeichnis relativ zu dem Ordner setzt, der unser RProjekt enthält. Wenn Sie nicht in einem RProjekt arbeiten oder sich in einem falschen RProjekt befinden, ist der Dateipfad nicht korrekt. In einem solchen Fall kann es zu einer Warnung wie in <a href="#fig-no-rproj">Abbildung&nbsp;<span>15.6</span></a> kommen, wo wir die Warnung <code>"Users/danielapalleschi/daten/langaugeR_english.csv" existiert nicht</code> erhalten. Diese Aussage ist richtig, da dieser Dateipfad auf meinem Rechner tatsächlich nicht existiert. Beachten Sie, dass oben in der Mitte des Bildes “RStudio” steht und rechts daneben “Project: (None)”. Beides bedeutet, dass Sie nicht innerhalb eines RProjekts arbeiten, d.&nbsp;h. Ihr Arbeitsverzeichnis ist nicht relativ zu dem Ordner, der Ihr RProjekt enthält. Wenn Sie feststellen, dass Sie in einem falschen oder gar keinem RProjekt arbeiten, können Sie das richtige RProjekt öffnen, indem Sie auf die Stelle klicken, an der “Project: (None)” steht, wo die letzten RProjekte angezeigt werden.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-no-rproj" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/load_no_rproject.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.6: Kunstwerke von Alison Horst</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Vergleichen Sie dies mit <a href="#fig-rproj">Abbildung&nbsp;<span>15.7</span></a>. Das gleiche Skript wird ohne Warnung ausgeführt, und Sie können sehen, dass wir innerhalb eines RProjekts mit dem Namen <code>r4ling</code> arbeiten (Sie können das <code>main</code> ignorieren, das hängt mit dem Projekt zusammen, das Git verwendet), und die csv-Datei wird ohne Warnung geladen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rproj" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../media/load_rproject.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;15.7: Kunstwerke von Alison Horst</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="behebung-von-rendering-fehlern" class="level3" data-number="15.4.2">
+<h3 data-number="15.4.2" class="anchored" data-anchor-id="behebung-von-rendering-fehlern"><span class="header-section-number">15.4.2</span> Behebung von Rendering-Fehlern</h3>
+<p>Wenn Sie auf Rendering-Probleme stoßen, empfehle ich Ihnen, die folgenden Schritte zu befolgen:</p>
+<ol type="1">
+<li>Prüfen Sie, ob die Fehlerwarnung mit einer Datei zusammenhängt, die “nicht existiert”.
+<ul>
+<li>Stellen Sie sicher, dass Sie im richtigen RProjekt arbeiten.</li>
+<li>Vergewissern Sie sich, dass die Datei tatsächlich existiert (folgen Sie z. B. dem in der Fehlermeldung angegebenen Dateipfad auf Ihrem Computer, um sicherzustellen, dass die Datei tatsächlich in diesem Verzeichnis existiert; achten Sie auf Tippfehler in Ordner- oder Dateinamen).</li>
+</ul></li>
+<li>Schauen Sie sich an, <em>wo</em> das Problem aufgetreten ist (welche Zeile/Codechunk), und gehen Sie zu dem Codechunk.</li>
+<li>Interpretieren Sie den Fehlertext und den Code: Ist sofort klar, wo das Problem liegt?
+<ul>
+<li>Ja: gut, beheben Sie es!</li>
+<li>Nein: weiter</li>
+</ul></li>
+<li>Prüfen Sie die obigen Code-Chunk-Optionen, gibt es irgendetwas mit <code>eval: false</code>, das ausgeführt werden muss?
+<ul>
+<li>Ja: prima, beheben Sie es!</li>
+<li>Nein: weiter</li>
+</ul></li>
+<li>Löschen Sie Ihre R-Sitzung (<code>Session</code> &gt; <code>Restart R</code>)
+<ul>
+<li>Alternativ können Sie die R-Sitzung löschen und dann auf die Schaltfläche “Run &gt; Run All Chunks Above” (Ausführen &gt; Alle Chunks oben ausführen) in der rechten oberen Ecke des Editorfensters klicken (in <a href="#fig-render">Abbildung&nbsp;<span>15.5</span></a>, “Run”). Dieser Schritt befolgt die Code-Chunk-Optionen. Dies sollte zu demselben Fehler führen. Wenn dies nicht der Fall ist, versuchen Sie, R zu schließen und erneut zu öffnen. Wenn der gleiche Fehler auftritt, Sie aber immer noch nicht wissen, was er bedeutet, fahren Sie fort.</li>
+</ul></li>
+<li>Löschen Sie Ihre R-Sitzung (<code>Session</code> &gt; <code>Restart R</code>) und führen Sie jeden Codechunk vom Anfang Ihres Skripts bis zum problematischen Codechunk aus, wobei Sie genau auf die Codechunk-Optionen achten. Sehen Sie, was das Problem ist?
+<ul>
+<li>Ja: beheben</li>
+<li>Nein: weiter</li>
+</ul></li>
+</ol>
+<p>Wenn Sie nach diesen Schritten nicht in der Lage sind, den Fehler zu lokalisieren und zu beheben, würde ich Sie weiterhin um Hilfe bitten. Wir werden uns nun einige Stellen ansehen, an denen Sie Antworten auf Fehler finden können, die Sie nicht ohne weiteres selbst lösen können.</p>
+</section>
+</section>
+<section id="um-hilfe-bitten" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="um-hilfe-bitten"><span class="header-section-number">15.5</span> Um Hilfe bitten</h2>
+<p>Für manche Probleme ist es schwierig, eine Lösung zu finden. Glücklicherweise gibt es eine sehr aktive R-Gemeinschaft im Internet. Es gibt viele Quellen für Hilfe, aber wir werden uns hier die häufigsten und hilfreichsten ansehen.</p>
+<section id="google" class="level3" data-number="15.5.1">
+<h3 data-number="15.5.1" class="anchored" data-anchor-id="google"><span class="header-section-number">15.5.1</span> Google</h3>
+<p>Im Zweifelsfall: Google! Wenn Sie die Fehlermeldung, die Sie erhalten, in Google eingeben, erhalten Sie in der Regel eine Vielzahl von Antworten. Je nachdem, wie häufig dieser Fehler auftritt und wie technisch die Erklärung ist, die Sie finden, können diese Antworten hilfreich sein oder auch nicht. Möglicherweise finden Sie einige Blogbeiträge oder Forenbeiträge, in denen das Problem und mögliche Lösungen diskutiert werden. Dies ist ein guter erster Schritt, um das Problem zu lösen.</p>
+</section>
+<section id="stackoverflow" class="level3" data-number="15.5.2">
+<h3 data-number="15.5.2" class="anchored" data-anchor-id="stackoverflow"><span class="header-section-number">15.5.2</span> Stackoverflow</h3>
+<p>Stack Overflow ist eine Online-Community für Entwickler mit vielen Forenbeiträgen zu R-Programmierproblemen. In der Regel finden Sie einen Thread, in dem jemand das gleiche Problem hatte wie Sie, und mehrere andere antworten mit möglichen Lösungen. Dies kann eine großartige Möglichkeit sein, zu lernen und Lösungen zu finden, und wenn Sie ein Problem googeln, werden Sie normalerweise zu einem Stack Overflow-Thread geführt. Wenn Sie wirklich nicht weiterkommen, können Sie sogar Ihre eigene Frage stellen! Dazu müssen Sie ein Konto erstellen.</p>
+</section>
+<section id="dokumentation" class="level3" data-number="15.5.3">
+<h3 data-number="15.5.3" class="anchored" data-anchor-id="dokumentation"><span class="header-section-number">15.5.3</span> Dokumentation</h3>
+<p>Denken Sie daran, dass es eine Fülle von Dokumentationen für Pakete (und Funktionen) gibt. Wenn Sie bemerken, dass ein Code-Stück einen Fehler auslöst, versuchen Sie, die Hilfeseite für das entsprechende Paket oder die Funktion (<code>?Paket</code> oder <code>?Funktion</code> in der Konsole) aufzurufen. Alternativ können Sie auch den Namen des Pakets oder der Funktion in Google eingeben, um die Online-Dokumentation zu finden, die Ihnen helfen könnte, besser zu verstehen, was die Funktion erwartet, und dies mit dem zu vergleichen, was Sie ihr gegeben haben.</p>
+</section>
+<section id="chatgpt" class="level3" data-number="15.5.4">
+<h3 data-number="15.5.4" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">15.5.4</span> ChatGPT</h3>
+<blockquote class="blockquote">
+<p>Chatbots work best for small, discrete programming tasks, such as loading data, performing basic data manipulations and creating visualizations and websites.</p>
+<p>— <span class="citation" data-cites="perkel_six_2023">Perkel (<a href="01-intro_r.html#ref-perkel_six_2023" role="doc-biblioref">2023</a>)</span></p>
+</blockquote>
+<p>Obwohl ich ChatGPT selbst nicht oft benutze, habe ich von weniger erfahrenen R-Benutzern gehört, dass es beim Auffinden von Syntaxfehlern ein Lebensretter sein kann. Ich schlage ChatGPT erst zum Schluss vor, denn obwohl es bei Syntaxfehlern sehr effizient ist, kann man seinen Code am besten verbessern, wenn man lernt, einfache Fehler schnell zu erkennen und zu lokalisieren, ohne sich auf die KI verlassen zu müssen. Es kann jedoch von großem Vorteil sein, Zeit zu sparen, wenn Sie das Problem in Ihrem Code einfach nicht erkennen können, und ChatGPT liefert detaillierte Beschreibungen dessen, was es für das Problem hält und wie der vorgeschlagene Code das Problem behebt. Dies kann ein wertvolles Lernmittel sein.</p>
+<p>Das Kopieren und Einfügen von Code ist sehr üblich (Sie werden in der Regel nicht ein ganzes Skript von Grund auf neu schreiben). Wichtig ist, dass Sie Ihren Code verstehen, denn das ist der beste Weg, um ihn schnell zu reparieren, wenn etwas schief läuft, und ChatGPT, Google, Stackflow und dergleichen werden Ihnen nicht immer helfen können. ChatGPT wird Ihnen zum Beispiel nicht sagen können, dass Sie einen Variablennamen mit Kamelhülsen geschrieben haben (<code>cameCaseLooksLikeThis</code>), wenn Ihre Variablen mit Schlangenhülsen benannt sind (<code>snake_case_looks_like_this</code>), oder wenn es einen anderen Tippfehler gibt, der nichts mit der Syntax zu tun hat. Wenn Sie in der Lage sind, Fehler-/Warnmeldungen zu interpretieren und die Ursache des Problems ausfindig zu machen, ist das der schnellste Weg zur Lösung.</p>
+<p>Dennoch können Syntaxfehler für neue Programmierer schwierig zu erkennen sein. Wenn man nicht weiterkommt, kann es hilfreich sein, <a href="https://chat.openai.com/">ChatGPT</a> zu benutzen, um nicht nur eine Lösung zu erhalten, sondern auch eine detaillierte Beschreibung der Fehlerquelle und -lösung. Um ChatGPT auszuprobieren, müssen Sie ein Konto haben.</p>
+<center>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+The temptation to copy and paste code snippets from ChatGPT or Stackoverflow is real, but true mastery lies in comprehension. <br><br>I've copied and pasted a lot of code. But as a programmer, it's your duty to understand. <br><br>And to do so, you'll eventually end up in documentation 😉. <a href="https://t.co/HWi09tPz6O">pic.twitter.com/HWi09tPz6O</a>
+</p>
+— Travis Oliphant (<span class="citation" data-cites="teoliphant">(<a href="01-intro_r.html#ref-teoliphant" role="doc-biblioref"><strong>teoliphant?</strong></a>)</span>) <a href="https://twitter.com/teoliphant/status/1715356699203076143?ref_src=twsrc%5Etfw">October 20, 2023</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+<p>Es ist wichtig zu wissen, dass ChatGPT ein Tausendsassa ist, der nichts beherrscht. Das bedeutet, dass es sich mit vielen Themen auskennt, aber kein Experte in einem dieser Themen ist. Der beste Ratschlag in Bezug auf die Verwendung von ChatGPT für Programmierzwecke, den ich gefunden habe, lautet: “Vertrauen, aber überprüfen” <span class="citation" data-cites="perkel_six_2023">(<a href="01-intro_r.html#ref-perkel_six_2023" role="doc-biblioref">Perkel, 2023</a>)</span>. Vertrauen Sie nicht blind auf das, was die KI Ihnen sagt: Sie ist nur so gut wie die Daten, auf denen sie trainiert wurde, und kann überheblich sein und überzeugend klingen. Denken Sie daran, dass “<em>‘[i]m Falle, dass Sie nicht genug wissen, um den Unterschied zwischen etwas Richtigem und etwas, das eigentlich Unsinn ist, zu erkennen, Sie sich in Schwierigkeiten bringen könnten’</em>” <span class="citation" data-cites="perkel_six_2023">(Zitat der Linguistin Emily Morgan von der UC Davis in <a href="01-intro_r.html#ref-perkel_six_2023" role="doc-biblioref">Perkel, 2023</a>)</span>.</p>
+<p>Seien Sie also skeptisch gegenüber den Lösungen, die ChatGPT Ihnen anbietet, vor allem, wenn Ihre Probleme komplexer werden. Testen Sie immer, ob der vorgeschlagene Code nicht nur ohne eine weitere Warnung oder Fehlermeldung läuft, sondern ob er auch das erreicht, was Sie erwarten. Nur weil Sie keine Warnung erhalten, heißt das nicht, dass der Code auch das tut, was Sie wollen!</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Disclaimer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ChatGPT und Datenschutz: Alles, was Sie in ChatGPT eingeben, wird an die Server von OpenAI gesendet und kann für Trainingszwecke verwendet werden. Geben Sie niemals sensible Informationen in ChatGPT ein.</p>
+<p>ChatGPT und akademische Integrität: Denken Sie daran, dass der Einsatz von künstlicher Intelligenz im akademischen Umfeld derzeit eine Grauzone ist. Ich empfehle die Verwendung von ChatGPT zur Fehlersuche in bereits fehlerhaftem Code oder zur Unterstützung bei der Lösung komplexer Programmieraufgaben. Schauen Sie sich unbedingt die <a href="https://www.hu-berlin.de/de/pr/nachrichten/september-2023/hu_empfehlungen_ki-in-pruefungen_20230905.pdf">Empfehlungen für das Umgehen mit Künstlicher Intelligenz in Prüfungen</a> der Humboldt-Universität an .</p>
+<p>Darüber hinaus werden LLM (Large Language Models) auf Daten trainiert, die aktuell sein können oder auch nicht. Zum Beispiel wird ChatGPT vielleicht nicht auf der neuesten Version eines Pakets trainiert und ist sich daher möglicherweise der Probleme mit einem veralteten Argument nicht bewusst.</p>
+<p>Ein weiteres, allgemeineres Problem bei der Verwendung von ChatGPT oder einem anderen LMM (Large Language Model) ist die Frage, ob es ethisch vertretbar ist, sich zu sehr auf künstliche Intelligenz zu verlassen, bei der wiederholt festgestellt wurde, dass sie rassische und geschlechtsspezifische Vorurteile hat (was sich nicht auf Ihren Code auswirken sollte, aber eine größere Frage bezüglich der Fütterung des Modells ist).</p>
+</div>
+</div>
+</section>
+</section>
+<section id="lernziele-1" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele-1">Lernziele 🏁</h2>
+<p>In diesem Kapitel haben wir gelernt…</p>
+<ul>
+<li>wie man mit allgemeinen Warnungen und Fehlermeldungen umgeht ✅</li>
+<li>wie man Fehler beim Rendern von Quarto-Skripten behebt ✅</li>
+<li>wo man Hilfe findet, wenn man mit fehlerhaftem Code nicht weiterkommt ✅</li>
+</ul>
+</section>
+<section id="session-info" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
+<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.3.0 (2023-04-21)
+Platform: aarch64-apple-darwin20 (64-bit)
+Running under: macOS Ventura 13.2.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] languageR_1.5.0 here_1.0.1      janitor_2.2.0   lubridate_1.9.2
+ [5] forcats_1.0.0   stringr_1.5.0   dplyr_1.1.3     purrr_1.0.2    
+ [9] readr_2.1.4     tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.3  
+[13] tidyverse_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] gtable_0.3.4      jsonlite_1.8.7    compiler_4.3.0    tidyselect_1.2.0 
+ [5] snakecase_0.11.0  png_0.1-8         scales_1.2.1      yaml_2.3.7       
+ [9] fastmap_1.1.1     R6_2.5.1          generics_0.1.3    knitr_1.44       
+[13] htmlwidgets_1.6.2 rprojroot_2.0.3   munsell_0.5.0     pillar_1.9.0     
+[17] tzdb_0.4.0        rlang_1.1.3       utf8_1.2.3        stringi_1.7.12   
+[21] xfun_0.39         timechange_0.2.0  cli_3.6.1         withr_2.5.0      
+[25] magrittr_2.0.3    digest_0.6.33     grid_4.3.0        rstudioapi_0.14  
+[29] hms_1.1.3         lifecycle_1.0.3   vctrs_0.6.3       evaluate_0.21    
+[33] glue_1.6.2        fansi_1.0.4       colorspace_2.1-0  pacman_0.5.1     
+[37] rmarkdown_2.22    jpeg_0.1-10       tools_4.3.0       pkgconfig_2.0.3  
+[41] htmltools_0.5.5  </code></pre>
+</div>
+</div>
+</section>
+<section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
+<h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-perkel_six_2023" class="csl-entry" role="listitem">
+Perkel, J. M. (2023). Six Tips for Better Coding with <span>ChatGPT</span>. <em>Nature</em>, <em>618</em>(7964), 422–423. <a href="https://doi.org/10.1038/d41586-023-01833-0">https://doi.org/10.1038/d41586-023-01833-0</a>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script>
+var custom_title = document.querySelectorAll('.custom .theorem-title');
+
+for (let i = 0; i < custom_title.length; i++ ) {
+   var mod_name = custom_title[i].innerHTML;
+   custom_title[i].innerHTML = mod_name.replace("Beispiel", "Aufgabe");
+};
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../mats/15-bericht_3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bericht 3</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link">
+        <span class="nav-page-text">Literaturverzeichnis</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Troubleshooting"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Was tun, wenn etwas schief geht?"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Daniela Palleschi"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="an">institute:</span><span class="co"> Humboldt-Universität zu Berlin</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="an">footer:</span><span class="co"> "Woche 16 - Troubleshooting" </span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "02/14/2024"</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "ddd [den] DD.MM.YYYY"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="an">shift-heading-level-by:</span><span class="co"> +1</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="an">error:</span><span class="co"> true</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> true</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> true</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ressourcen</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>Die Ressourcen, die ich für dieses Kapitel verwendet habe, waren <span class="co">[</span><span class="ot">Abschnitt 3.6 "Troublshooting Error Messages"</span><span class="co">](https://bookdown.org/yih_huynh/Guide-to-R-Book/trouble.html)</span> aus dem Webbuch <span class="co">[</span><span class="ot">R for Graduate Students</span><span class="co">](https://bookdown.org/yih_huynh/Guide-to-R-Book/)</span> von Wendy Huynh (2019), und @perkel_six_2023.</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lernziele {.unnumbered .unlisted}</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>In diesem Kapitel werden wir lernen...</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wie man mit allgemeinen Warnungen und Fehlermeldungen umgeht</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wie man Fehler beim Rendern von Quarto-Skripten behebt</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>wo man Hilfe findet, wenn man mit fehlerhaftem Code nicht weiterkommt</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Einrichten</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>Das folgende Code-Stück gibt uns den ersten Fehler:</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>       janitor,</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>       here)</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>Was ist das Problem mit dem obigen Code? Die Funktion <span class="in">`p_load()`</span> konnte nicht gefunden werden, weil sie aus dem Paket <span class="in">`pacman`</span> stammt, aber wir haben dieses Paket noch nicht geladen. Das ist der Grund, warum wir <span class="in">`pacman::p_load()`</span> schreiben, wenn wir unsere Pakete einladen.</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>       janitor,</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>       here)</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>tab_message <span class="ot">&lt;-</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Message, <span class="sc">~</span>Source, <span class="sc">~</span>Solution,</span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">'`could not find function "xyz"`'</span>, <span class="st">"missing package for function `xyz`"</span>, <span class="st">"load package, or specify package name: `package::xyz()`"</span>,</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"`unexpected string constant`"</span>, <span class="st">"incorrect use of quotation marks, possibly missing punctuation between list of strings"</span>, <span class="st">"check quotation marks/add missing comma"</span></span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-messages</span></span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: List of common messages, the source of the problem, and typical solutions</span></span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>tab_message <span class="sc">|&gt;</span> </span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_markdown</span>()</span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>Um die Funktion <span class="in">`p_load()`</span> zu benutzen, müssen wir angeben, dass sie aus dem Paket <span class="in">`pacman`</span> stammt, wie wir es in diesem Buch immer getan haben (oder wir könnten dieser Zeile <span class="in">`library(pacman)`</span> voranstellen).</span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>               janitor,</span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>               here,</span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>               languageR)</span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a><span class="fu"># Fehlermeldungen</span></span>
+<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a>Fehler- oder Warnmeldungen sind bei der Programmierung im Allgemeinen sehr häufig. Programmiersprachen sind sehr wortgetreu, sie versuchen normalerweise nicht zu erraten, was Sie wollen. Das bedeutet, dass selbst der kleinste Fehler Ihren Code zerstören kann. Es kann extrem frustrierend und demotivierend sein, wenn man solche Fehlermeldungen erhält. Es mag ein gewisser Trost sein zu wissen, dass jeder Fehler macht, sogar Profis. Mit zunehmender Erfahrung werden Sie lernen, Codefehler effizienter zu erkennen und zu beheben. Heute lernen wir einige Ressourcen kennen, die Ihnen auf diesem Weg helfen können.</span>
+<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-error</span></span>
+<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Kunstwerke von Alison Horst</span></span>
+<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_error.png"</span>))</span>
+<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## RStudio-Syntax-Checker</span></span>
+<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>RStudio erkennt in der Regel Syntaxfehler und teilt Ihnen vor der Ausführung Ihres Codes mit, ob Sie etwas übersehen haben. Das folgende Code-Stück gibt zum Beispiel eine Fehlermeldung aus.</span>
+<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"RT"</span> <span class="st">"Correct"</span>)]</span>
+<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a>RStudio erkennt diesen Syntaxfehler und visualisiert ihn für Sie, wie in @fig-rstudio. Wir sehen ein rotes "X" neben der Zeilennummer (<span class="in">`42`</span>) sowie eine rote Unterstreichung für den problematischen oder unerwarteten Code. </span>
+<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-rstudio</span></span>
+<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: RStudio-Syntaxfehler-Warnung</span></span>
+<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"rstudio_error.png"</span>))</span>
+<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a>Die Syntax von <span class="in">`"Correct"`</span> selbst ist nicht falsch, aber sie ist unerwartet, weil ein Komma nach der vorherigen Zeichenkette fehlt. Erinnern Sie sich, dass <span class="in">`c()`</span> eine Liste von Argumenten zu einem Vektor kombiniert, und diese Argumente müssen durch ein Komma getrennt werden. Fehlende Kommas sind ein sehr häufiger Grund für fehlerhaften Code, also halten Sie die Augen offen!</span>
+<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-troubleshooting</span></span>
+<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Kunstwerke von Alison Horst</span></span>
+<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_troubleshooting.jpeg"</span>))</span>
+<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Syntaxfehler</span></span>
+<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a>Syntaxfehler sind sehr häufig und treten auf, wenn Sie ein Komma oder eine Klammer ausgelassen haben, ein Objekt, eine Variable oder einen Funktionsnamen falsch geschrieben haben oder sogar eine Funktion aufgerufen haben, ohne vorher das entsprechende Paket zu laden (wie wir es oben mit <span class="in">`p_load()`</span> getan haben).</span>
+<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>Im Folgenden erhalten wir eine informative Fehlermeldung, die uns sagt, dass eine unerwartete schließende eckige Klammer vorhanden ist. </span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>]</span>
+<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"rt"</span>, <span class="st">"Correct"</span>)]</span>
+<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>lexdec[<span class="fu">c</span>(<span class="st">"Subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>])</span>
+<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a><span class="at">Wenn wir im Tidyverse arbeiten, erhalten wir etwas andere (und manchmal informativere) Fehlermeldungen.</span></span>
+<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"Subjct"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>)</span>
+<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a><span class="at">Hier wird uns genau gesagt, wo das Problem liegt: Wir haben keine Variable namens </span><span class="st">`</span>Subjct<span class="st">`</span><span class="at">. Dies ist eindeutig ein Tippfehler. Unten erhalten wir einen ähnlichen Fehler.</span></span>
+<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a>lexdec <span class="sc">|&gt;</span> </span>
+<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>)</span>
+<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a><span class="at">Dieses Mal ist der Tippfehler auf die Groß- und Kleinschreibung zurückzuführen, denn unsere Variable "Subjekt" beginnt mit einem großen "S".</span></span>
+<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a><span class="at">Einige häufige Syntaxfehler sind:</span></span>
+<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a><span class="at">  - falsche Großschreibung (z.B. </span><span class="st">`</span>Lexdec<span class="sc">$</span>Subject<span class="st">`</span><span class="at"> statt </span><span class="st">`</span>lexdec<span class="sc">$</span>Subject<span class="st">`</span><span class="at">)</span></span>
+<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a><span class="at">  - Tippfehler (z. B. </span><span class="st">`</span>Länge(lexdec)<span class="st">`</span><span class="at"> statt </span><span class="st">`</span>Länge(lexdec)<span class="st">`</span><span class="at">)</span></span>
+<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a><span class="at">  - schließende Interpunktion, wie z. B. ein schließendes Anführungszeichen, eine Klammer oder eine eckige Klammer</span></span>
+<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a><span class="at">  - fortgesetzte Interpunktion, typischerweise fehlt ein Komma oder eine Pipe</span></span>
+<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-typo</span></span>
+<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Kunstwerke von Alison Horst</span></span>
+<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_typo.png"</span>))</span>
+<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="at"># Rendering-Fehler</span></span>
+<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="at">Das Rendern eines Quarto-Dokuments kann auch Fehlerwarnungen ausgeben, wenn Ihr Code ausgeführt wurde. Vielleicht lief Ihr Code perfekt, wenn Sie ihn direkt im Skript abgearbeitet haben, aber er funktioniert nicht, wenn er gerendert wird. Diese Fehlerwarnungen sind oft darauf zurückzuführen, dass Ihr Code nicht linear geschrieben wurde (d.h. jeder Codeabschnitt sollte vor dem nächsten ausgeführt werden), oder dass Codeabschnitt-Optionen die Ausführung eines erforderlichen Codeabschnitts blockieren (z.B. durch die Einstellung </span><span class="st">`</span>eval<span class="sc">:</span> false<span class="st">`</span><span class="at">). Glücklicherweise enthalten die Fehlerwarnungen Informationen darüber, welcher Codechunk problematisch ist. Manchmal ist der Fehler auf einen Fehler in diesem Codechunk zurückzuführen oder darauf, dass ein vorheriger Codechunk nicht ausgeführt wird, z.B. wenn Quarto ein erforderliches Paket nicht lädt oder Daten nicht lädt oder ein neues Objekt erzeugt. Ein solches Beispiel sehen wir in @fig-render.</span></span>
+<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-render</span></span>
+<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Kunstwerke von Alison Horst</span></span>
+<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"render_error.png"</span>))</span>
+<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a><span class="at">Sehen Sie sich zunächst die Codeabschnitte in @fig-render an. Der erste Codeabschnitt enthält die Option </span><span class="st">`</span>eval<span class="sc">:</span> false<span class="st">`</span><span class="at">, und wird daher beim Rendern des Skripts nicht ausgeführt. Das bedeutet, dass das Paket </span><span class="st">`</span>languageR<span class="st">`</span><span class="at"> nicht geladen wird. Der zweite Codeabschnitt versucht dann, die ersten 6 Zeilen des Datensatzes </span><span class="st">`</span>lexdec<span class="st">`</span><span class="at"> zu drucken, der Teil des Pakets </span><span class="st">`</span>languageR<span class="st">`</span><span class="at"> ist, aber da dieses Paket beim Rendern nicht geladen wurde, erhalten wir die Warnung: </span><span class="st">`</span>Objekt <span class="st">'lexdec'</span> nicht gefunden<span class="st">`</span><span class="at">. Dies ist insofern informativ, als es uns sagt, dass es ein Problem beim Finden von </span><span class="st">`</span>lexdec<span class="st">`</span><span class="at"> gibt, aber es sagt uns nicht explizit, dass es daran liegt, dass wir das Paket nicht geladen haben. Bei solchen Fehlern müssen wir manchmal nachforschen, indem wir unseren Code untersuchen.</span></span>
+<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a><span class="at">Schauen wir uns auch die Fehlerwarnung genauer an. In diesem kurzen Skript können wir leicht erkennen, wo das problematische </span><span class="st">`</span>lexdec<span class="st">`</span><span class="at"> ist, aber vielleicht haben wir ein sehr langes Skript geschrieben und es ist nicht klar, wo die Quelle des Problems liegt, wenn wir nur den Fehlertext betrachten. Wir erhalten auch Informationen darüber, *wo* Quarto auf ein Problem gestoßen ist: </span><span class="st">`</span>Qutting from lines <span class="dv">11-12</span> [unnamed<span class="sc">-</span>chunk<span class="dv">-2</span>] (Untitled.qmd)<span class="st">`</span><span class="at">. Wir erhalten die Zeilennummer und die Nummer des Codeabschnitts. Dies ist eine sehr nützliche Information, wenn wir ein längeres Skript mit vielen Codeabschnitten haben.</span></span>
+<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a><span class="at">## RProjects</span></span>
+<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a><span class="at">Ein häufiger Fehler beim Laden von Daten ist auf einen falschen Dateipfad zurückzuführen. Da wir in diesem Kurs innerhalb eines RProjekts arbeiten, ist dies häufig darauf zurückzuführen, dass wir nicht innerhalb unseres RProjekts arbeiten. Erinnern Sie sich, dass wir das </span><span class="st">`</span>here<span class="st">`</span><span class="at">-Paket verwenden, weil es das Arbeitsverzeichnis relativ zu dem Ordner setzt, der unser RProjekt enthält. Wenn Sie nicht in einem RProjekt arbeiten oder sich in einem falschen RProjekt befinden, ist der Dateipfad nicht korrekt. In einem solchen Fall kann es zu einer Warnung wie in @fig-no-rproj kommen, wo wir die Warnung </span><span class="st">`"Users/danielapalleschi/daten/langaugeR_english.csv"</span> existiert nicht<span class="st">`</span><span class="at"> erhalten. Diese Aussage ist richtig, da dieser Dateipfad auf meinem Rechner tatsächlich nicht existiert. Beachten Sie, dass oben in der Mitte des Bildes "RStudio" steht und rechts daneben "Project: (None)". Beides bedeutet, dass Sie nicht innerhalb eines RProjekts arbeiten, d. h. Ihr Arbeitsverzeichnis ist nicht relativ zu dem Ordner, der Ihr RProjekt enthält.  Wenn Sie feststellen, dass Sie in einem falschen oder gar keinem RProjekt arbeiten, können Sie das richtige RProjekt öffnen, indem Sie auf die Stelle klicken, an der "Project: (None)" steht, wo die letzten RProjekte angezeigt werden.</span></span>
+<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-rproj</span></span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Kunstwerke von Alison Horst</span></span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"load_no_rproject.png"</span>))</span>
+<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="at">Vergleichen Sie dies mit @fig-rproj. Das gleiche Skript wird ohne Warnung ausgeführt, und Sie können sehen, dass wir innerhalb eines RProjekts mit dem Namen </span><span class="st">`</span>r4ling<span class="st">`</span><span class="at"> arbeiten (Sie können das </span><span class="st">`</span>main<span class="st">`</span><span class="at"> ignorieren, das hängt mit dem Projekt zusammen, das Git verwendet), und die csv-Datei wird ohne Warnung geladen.</span></span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-rproj</span></span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Kunstwerke von Alison Horst</span></span>
+<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"load_rproject.png"</span>))</span>
+<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a><span class="at">## Behebung von Rendering-Fehlern</span></span>
+<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="at">Wenn Sie auf Rendering-Probleme stoßen, empfehle ich Ihnen, die folgenden Schritte zu befolgen:</span></span>
+<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="at">1. Prüfen Sie, ob die Fehlerwarnung mit einer Datei zusammenhängt, die "nicht existiert".</span></span>
+<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a><span class="at">    + Stellen Sie sicher, dass Sie im richtigen RProjekt arbeiten.</span></span>
+<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a><span class="at">    + Vergewissern Sie sich, dass die Datei tatsächlich existiert (folgen Sie z. B. dem in der Fehlermeldung angegebenen Dateipfad auf Ihrem Computer, um sicherzustellen, dass die Datei tatsächlich in diesem Verzeichnis existiert; achten Sie auf Tippfehler in Ordner- oder Dateinamen).</span></span>
+<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a><span class="at">1. Schauen Sie sich an, *wo* das Problem aufgetreten ist (welche Zeile/Codechunk), und gehen Sie zu dem Codechunk.</span></span>
+<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a><span class="at">2. Interpretieren Sie den Fehlertext und den Code: Ist sofort klar, wo das Problem liegt?</span></span>
+<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a><span class="at">    + Ja: gut, beheben Sie es!</span></span>
+<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a><span class="at">    + Nein: weiter</span></span>
+<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="at">3. Prüfen Sie die obigen Code-Chunk-Optionen, gibt es irgendetwas mit </span><span class="st">`</span>eval<span class="sc">:</span> false<span class="st">`</span><span class="at">, das ausgeführt werden muss?</span></span>
+<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a><span class="at">    + Ja: prima, beheben Sie es!</span></span>
+<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a><span class="at">    + Nein: weiter</span></span>
+<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a><span class="at">4. Löschen Sie Ihre R-Sitzung (</span><span class="st">`</span>Session<span class="st">`</span><span class="at"> &gt; </span><span class="st">`</span>Restart R<span class="st">`</span><span class="at">) </span></span>
+<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a><span class="at">    + Alternativ können Sie die R-Sitzung löschen und dann auf die Schaltfläche "Run &gt; Run All Chunks Above" (Ausführen &gt; Alle Chunks oben ausführen) in der rechten oberen Ecke des Editorfensters klicken (in @fig-render, "Run"). Dieser Schritt befolgt die Code-Chunk-Optionen. Dies sollte zu demselben Fehler führen. Wenn dies nicht der Fall ist, versuchen Sie, R zu schließen und erneut zu öffnen. Wenn der gleiche Fehler auftritt, Sie aber immer noch nicht wissen, was er bedeutet, fahren Sie fort.</span></span>
+<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a><span class="at">5. Löschen Sie Ihre R-Sitzung (</span><span class="st">`</span>Session<span class="st">`</span><span class="at"> &gt; </span><span class="st">`</span>Restart R<span class="st">`</span><span class="at">) und führen Sie jeden Codechunk vom Anfang Ihres Skripts bis zum problematischen Codechunk aus, wobei Sie genau auf die Codechunk-Optionen achten. Sehen Sie, was das Problem ist?</span></span>
+<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a><span class="at">    + Ja: beheben</span></span>
+<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a><span class="at">    + Nein: weiter</span></span>
+<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a><span class="at">Wenn Sie nach diesen Schritten nicht in der Lage sind, den Fehler zu lokalisieren und zu beheben, würde ich Sie weiterhin um Hilfe bitten. Wir werden uns nun einige Stellen ansehen, an denen Sie Antworten auf Fehler finden können, die Sie nicht ohne weiteres selbst lösen können.</span></span>
+<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a><span class="at"># Um Hilfe bitten</span></span>
+<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a><span class="at">Für manche Probleme ist es schwierig, eine Lösung zu finden. Glücklicherweise gibt es eine sehr aktive R-Gemeinschaft im Internet. Es gibt viele Quellen für Hilfe, aber wir werden uns hier die häufigsten und hilfreichsten ansehen.</span></span>
+<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a><span class="at">## Google</span></span>
+<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a><span class="at">Im Zweifelsfall: Google! Wenn Sie die Fehlermeldung, die Sie erhalten, in Google eingeben, erhalten Sie in der Regel eine Vielzahl von Antworten. Je nachdem, wie häufig dieser Fehler auftritt und wie technisch die Erklärung ist, die Sie finden, können diese Antworten hilfreich sein oder auch nicht. Möglicherweise finden Sie einige Blogbeiträge oder Forenbeiträge, in denen das Problem und mögliche Lösungen diskutiert werden. Dies ist ein guter erster Schritt, um das Problem zu lösen.</span></span>
+<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a><span class="at">## Stackoverflow</span></span>
+<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-270"><a href="#cb18-270" aria-hidden="true" tabindex="-1"></a><span class="at">Stack Overflow ist eine Online-Community für Entwickler mit vielen Forenbeiträgen zu R-Programmierproblemen. In der Regel finden Sie einen Thread, in dem jemand das gleiche Problem hatte wie Sie, und mehrere andere antworten mit möglichen Lösungen. Dies kann eine großartige Möglichkeit sein, zu lernen und Lösungen zu finden, und wenn Sie ein Problem googeln, werden Sie normalerweise zu einem Stack Overflow-Thread geführt. Wenn Sie wirklich nicht weiterkommen, können Sie sogar Ihre eigene Frage stellen! Dazu müssen Sie ein Konto erstellen.</span></span>
+<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-272"><a href="#cb18-272" aria-hidden="true" tabindex="-1"></a><span class="at">## Dokumentation</span></span>
+<span id="cb18-273"><a href="#cb18-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-274"><a href="#cb18-274" aria-hidden="true" tabindex="-1"></a><span class="at">Denken Sie daran, dass es eine Fülle von Dokumentationen für Pakete (und Funktionen) gibt. Wenn Sie bemerken, dass ein Code-Stück einen Fehler auslöst, versuchen Sie, die Hilfeseite für das entsprechende Paket oder die Funktion (</span><span class="st">`</span>?Paket<span class="st">`</span><span class="at"> oder </span><span class="st">`</span>?Funktion<span class="st">`</span><span class="at"> in der Konsole) aufzurufen. Alternativ können Sie auch den Namen des Pakets oder der Funktion in Google eingeben, um die Online-Dokumentation zu finden, die Ihnen helfen könnte, besser zu verstehen, was die Funktion erwartet, und dies mit dem zu vergleichen, was Sie ihr gegeben haben.</span></span>
+<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a><span class="at">## ChatGPT</span></span>
+<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Chatbots work best for small, discrete programming tasks, such as loading data, performing basic data manipulations and creating visualizations and websites.</span></span>
+<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; --- @perkel_six_2023</span></span>
+<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a><span class="at">Obwohl ich ChatGPT selbst nicht oft benutze, habe ich von weniger erfahrenen R-Benutzern gehört, dass es beim Auffinden von Syntaxfehlern ein Lebensretter sein kann. Ich schlage ChatGPT erst zum Schluss vor, denn obwohl es bei Syntaxfehlern sehr effizient ist, kann man seinen Code am besten verbessern, wenn man lernt, einfache Fehler schnell zu erkennen und zu lokalisieren, ohne sich auf die KI verlassen zu müssen. Es kann jedoch von großem Vorteil sein, Zeit zu sparen, wenn Sie das Problem in Ihrem Code einfach nicht erkennen können, und ChatGPT liefert detaillierte Beschreibungen dessen, was es für das Problem hält und wie der vorgeschlagene Code das Problem behebt. Dies kann ein wertvolles Lernmittel sein.</span></span>
+<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a><span class="at">Das Kopieren und Einfügen von Code ist sehr üblich (Sie werden in der Regel nicht ein ganzes Skript von Grund auf neu schreiben). Wichtig ist, dass Sie Ihren Code verstehen, denn das ist der beste Weg, um ihn schnell zu reparieren, wenn etwas schief läuft, und ChatGPT, Google, Stackflow und dergleichen werden Ihnen nicht immer helfen können. ChatGPT wird Ihnen zum Beispiel nicht sagen können, dass Sie einen Variablennamen mit Kamelhülsen geschrieben haben (</span><span class="st">`</span>cameCaseLooksLikeThis<span class="st">`</span><span class="at">), wenn Ihre Variablen mit Schlangenhülsen benannt sind (</span><span class="st">`</span>snake_case_looks_like_this<span class="st">`</span><span class="at">), oder wenn es einen anderen Tippfehler gibt, der nichts mit der Syntax zu tun hat. Wenn Sie in der Lage sind, Fehler-/Warnmeldungen zu interpretieren und die Ursache des Problems ausfindig zu machen, ist das der schnellste Weg zur Lösung.</span></span>
+<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a><span class="at">Dennoch können Syntaxfehler für neue Programmierer schwierig zu erkennen sein. Wenn man nicht weiterkommt, kann es hilfreich sein, [ChatGPT](https://chat.openai.com/) zu benutzen, um nicht nur eine Lösung zu erhalten, sondern auch eine detaillierte Beschreibung der Fehlerquelle und -lösung. Um ChatGPT auszuprobieren, müssen Sie ein Konto haben. </span></span>
+<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a><span class="at">::: {.content-visible when-format="html"}</span></span>
+<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a><span class="at">&lt;center&gt;</span></span>
+<span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a><span class="at">&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;The temptation to copy and paste code snippets from ChatGPT or Stackoverflow is real, but true mastery lies in comprehension. &lt;br&gt;&lt;br&gt;I&amp;#39;ve copied and pasted a lot of code. But as a programmer, it&amp;#39;s your duty to understand. &lt;br&gt;&lt;br&gt;And to do so, you&amp;#39;ll eventually end up in documentation 😉. &lt;a href="https://t.co/HWi09tPz6O"&gt;pic.twitter.com/HWi09tPz6O&lt;/a&gt;&lt;/p&gt;&amp;mdash; Travis Oliphant (@teoliphant) &lt;a href="https://twitter.com/teoliphant/status/1715356699203076143?ref_src=twsrc%5Etfw"&gt;October 20, 2023&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span></span>
+<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a><span class="at">&lt;/center&gt;</span></span>
+<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a><span class="at">:::</span></span>
+<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a><span class="at">::: {.content-visible when-format="pdf"}</span></span>
+<span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-299"><a href="#cb18-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-twitter-white</span></span>
+<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Ein Tweet über die Vorteile und Kosten der Verwendung von ChatGPT zur Korrektur von fehlerhaftem Code [Klicken Sie hier, um den Tweet zu sehen.](https://x.com/teoliphant/status/1715356699203076143?s=20)</span></span>
+<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(</span>
+<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"twitter_chatgpt.png"</span>)</span>
+<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a>)  </span>
+<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a><span class="at">:::</span></span>
+<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a><span class="at">Es ist wichtig zu wissen, dass ChatGPT ein Tausendsassa ist, der nichts beherrscht. Das bedeutet, dass es sich mit vielen Themen auskennt, aber kein Experte in einem dieser Themen ist. Der beste Ratschlag in Bezug auf die Verwendung von ChatGPT für Programmierzwecke, den ich gefunden habe, lautet: "Vertrauen, aber überprüfen" [@perkel_six_2023]. Vertrauen Sie nicht blind auf das, was die KI Ihnen sagt: Sie ist nur so gut wie die Daten, auf denen sie trainiert wurde, und kann überheblich sein und überzeugend klingen. Denken Sie daran, dass "*'[i]m Falle, dass Sie nicht genug wissen, um den Unterschied zwischen etwas Richtigem und etwas, das eigentlich Unsinn ist, zu erkennen, Sie sich in Schwierigkeiten bringen könnten'*" [Zitat der Linguistin Emily Morgan von der UC Davis in @perkel_six_2023].</span></span>
+<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a><span class="at">Seien Sie also skeptisch gegenüber den Lösungen, die ChatGPT Ihnen anbietet, vor allem, wenn Ihre Probleme komplexer werden. Testen Sie immer, ob der vorgeschlagene Code nicht nur ohne eine weitere Warnung oder Fehlermeldung läuft, sondern ob er auch das erreicht, was Sie erwarten. Nur weil Sie keine Warnung erhalten, heißt das nicht, dass der Code auch das tut, was Sie wollen!</span></span>
+<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a><span class="at">::: {.callout-warning}</span></span>
+<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a><span class="at"># Disclaimer {.unlisted .uncounted .unnumbered}</span></span>
+<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a><span class="at">ChatGPT und Datenschutz: Alles, was Sie in ChatGPT eingeben, wird an die Server von OpenAI gesendet und kann für Trainingszwecke verwendet werden. Geben Sie niemals sensible Informationen in ChatGPT ein.</span></span>
+<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a><span class="at">ChatGPT und akademische Integrität: Denken Sie daran, dass der Einsatz von künstlicher Intelligenz im akademischen Umfeld derzeit eine Grauzone ist. Ich empfehle die Verwendung von ChatGPT zur Fehlersuche in bereits fehlerhaftem Code oder zur Unterstützung bei der Lösung komplexer Programmieraufgaben. Schauen Sie sich unbedingt die [Empfehlungen für das Umgehen mit Künstlicher Intelligenz in Prüfungen](https://www.hu-berlin.de/de/pr/nachrichten/september-2023/hu_empfehlungen_ki-in-pruefungen_20230905.pdf) der Humboldt-Universität an .</span></span>
+<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a><span class="at">Darüber hinaus werden LLM (Large Language Models) auf Daten trainiert, die aktuell sein können oder auch nicht. Zum Beispiel wird ChatGPT vielleicht nicht auf der neuesten Version eines Pakets trainiert und ist sich daher möglicherweise der Probleme mit einem veralteten Argument nicht bewusst.</span></span>
+<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span>
+<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a><span class="at">Ein weiteres, allgemeineres Problem bei der Verwendung von ChatGPT oder einem anderen LMM (Large Language Model) ist die Frage, ob es ethisch vertretbar ist, sich zu sehr auf künstliche Intelligenz zu verlassen, bei der wiederholt festgestellt wurde, dass sie rassische und geschlechtsspezifische Vorurteile hat (was sich nicht auf Ihren Code auswirken sollte, aber eine größere Frage bezüglich der Fütterung des Modells ist).</span></span>
+<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a><span class="at">:::</span></span>
+<span id="cb18-326"><a href="#cb18-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a><span class="at"># Lernziele 🏁 {.unnumbered .unlisted}</span></span>
+<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-329"><a href="#cb18-329" aria-hidden="true" tabindex="-1"></a><span class="at">In diesem Kapitel haben wir gelernt...</span></span>
+<span id="cb18-330"><a href="#cb18-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a><span class="at">- wie man mit allgemeinen Warnungen und Fehlermeldungen umgeht ✅</span></span>
+<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a><span class="at">- wie man Fehler beim Rendern von Quarto-Skripten behebt ✅</span></span>
+<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a><span class="at">- wo man Hilfe findet, wenn man mit fehlerhaftem Code nicht weiterkommt ✅</span></span>
+<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a><span class="at"># Session Info {.unnumbered}</span></span>
+<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a><span class="fu">RStudio.Version</span>()<span class="sc">$</span>version</span>
+<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a><span class="at">Hergestellt mit </span><span class="st">`</span>r R.version.string<span class="st">`</span><span class="at"> (</span><span class="st">`</span>r R.version<span class="sc">$</span>nickname<span class="st">`</span><span class="at">) und RStudioversion 2023.9.0.463 (Desert Sunflower).</span></span>
+<span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span>
+<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a><span class="at"># Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a><span class="at">::: {#refs custom-style="Bibliography"}</span></span>
+<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a><span class="at">:::</span></span>
+</code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
