@@ -8,7 +8,7 @@
 
 <meta name="author" content="Daniela Palleschi">
 
-<title>Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 13&nbsp; Datenvisualiserung 4</title>
+<title>Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 11&nbsp; Datenvisualiserung 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../mats/15-bericht_3.html" rel="next">
+<link href="../mats/16-troubleshooting.html" rel="next">
 <link href="../mats/12-baseR.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -135,7 +135,7 @@ MathJax.Hub.Config({
 
 
 <link rel="stylesheet" href="cutsom.css">
-<meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 13&nbsp; Datenvisualiserung 4">
+<meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung (WiSe23/24) - 11&nbsp; Datenvisualiserung 4">
 <meta name="twitter:description" content="Mehrteilige Plots und Anpassungen">
 <meta name="twitter:image" content="13-dataviz_4_files/figure-html/fig-density-1.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -175,7 +175,7 @@ MathJax.Hub.Config({
   </li>  
 </ul>
             <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_ws2324.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -186,7 +186,7 @@ MathJax.Hub.Config({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/13-dataviz_4.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/13-dataviz_4.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -219,12 +219,6 @@ MathJax.Hub.Config({
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kursübersicht</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -274,12 +268,6 @@ MathJax.Hub.Config({
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../mats/06-bericht_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bericht 1</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -294,31 +282,25 @@ MathJax.Hub.Config({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/07-dateneinlesung.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/08-desc_stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/09-wrangling_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/10-dataviz_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../mats/11-bericht_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bericht 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></span></a>
   </div>
 </li>
       </ul>
@@ -335,25 +317,36 @@ MathJax.Hub.Config({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/12-baseR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/13-dataviz_4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../mats/15-bericht_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bericht 3</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/16-troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Aufgaben</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mats/00-aufgaben.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Aufgaben</span></span></a>
   </div>
 </li>
       </ul>
@@ -381,26 +374,26 @@ MathJax.Hub.Config({
   <li><a href="#pakete" id="toc-pakete" class="nav-link" data-scroll-target="#pakete">Pakete</a></li>
   <li><a href="#daten" id="toc-daten" class="nav-link" data-scroll-target="#daten">Daten</a></li>
   </ul></li>
-  <li><a href="#ausweichende-dichteplots" id="toc-ausweichende-dichteplots" class="nav-link" data-scroll-target="#ausweichende-dichteplots"><span class="header-section-number">13.1</span> Ausweichende Dichteplots</a>
+  <li><a href="#ausweichende-dichteplots" id="toc-ausweichende-dichteplots" class="nav-link" data-scroll-target="#ausweichende-dichteplots"><span class="header-section-number">11.1</span> Ausweichende Dichteplots</a>
   <ul class="collapse">
-  <li><a href="#hinzufügen-eines-boxplots" id="toc-hinzufügen-eines-boxplots" class="nav-link" data-scroll-target="#hinzufügen-eines-boxplots"><span class="header-section-number">13.1.1</span> Hinzufügen eines Boxplots</a></li>
-  <li><a href="#position_nudge" id="toc-position_nudge" class="nav-link" data-scroll-target="#position_nudge"><span class="header-section-number">13.1.2</span> <code>position_nudge()</code></a></li>
-  <li><a href="#position_jitter-für-scatterplots" id="toc-position_jitter-für-scatterplots" class="nav-link" data-scroll-target="#position_jitter-für-scatterplots"><span class="header-section-number">13.1.3</span> <code>position_jitter()</code> für Scatterplots</a></li>
-  <li><a href="#kombiniert-alle-drei" id="toc-kombiniert-alle-drei" class="nav-link" data-scroll-target="#kombiniert-alle-drei"><span class="header-section-number">13.1.4</span> Kombiniert alle drei</a></li>
+  <li><a href="#hinzufügen-eines-boxplots" id="toc-hinzufügen-eines-boxplots" class="nav-link" data-scroll-target="#hinzufügen-eines-boxplots"><span class="header-section-number">11.1.1</span> Hinzufügen eines Boxplots</a></li>
+  <li><a href="#position_nudge" id="toc-position_nudge" class="nav-link" data-scroll-target="#position_nudge"><span class="header-section-number">11.1.2</span> <code>position_nudge()</code></a></li>
+  <li><a href="#position_jitter-für-scatterplots" id="toc-position_jitter-für-scatterplots" class="nav-link" data-scroll-target="#position_jitter-für-scatterplots"><span class="header-section-number">11.1.3</span> <code>position_jitter()</code> für Scatterplots</a></li>
+  <li><a href="#kombiniert-alle-drei" id="toc-kombiniert-alle-drei" class="nav-link" data-scroll-target="#kombiniert-alle-drei"><span class="header-section-number">11.1.4</span> Kombiniert alle drei</a></li>
   </ul></li>
-  <li><a href="#positionierung-von-fehlerbalkenplots" id="toc-positionierung-von-fehlerbalkenplots" class="nav-link" data-scroll-target="#positionierung-von-fehlerbalkenplots"><span class="header-section-number">13.2</span> Positionierung von Fehlerbalkenplots</a>
+  <li><a href="#positionierung-von-fehlerbalkenplots" id="toc-positionierung-von-fehlerbalkenplots" class="nav-link" data-scroll-target="#positionierung-von-fehlerbalkenplots"><span class="header-section-number">11.2</span> Positionierung von Fehlerbalkenplots</a>
   <ul class="collapse">
-  <li><a href="#pivot_longer-summarise" id="toc-pivot_longer-summarise" class="nav-link" data-scroll-target="#pivot_longer-summarise"><span class="header-section-number">13.2.1</span> <code>pivot_longer() |&gt; summarise()</code></a></li>
-  <li><a href="#überlappende-fehlerbalken" id="toc-überlappende-fehlerbalken" class="nav-link" data-scroll-target="#überlappende-fehlerbalken"><span class="header-section-number">13.2.2</span> Überlappende Fehlerbalken</a></li>
-  <li><a href="#position_dodge" id="toc-position_dodge" class="nav-link" data-scroll-target="#position_dodge"><span class="header-section-number">13.2.3</span> <code>position_dodge()</code></a></li>
-  <li><a href="#ausweichen-vor-allen-relevanten-geomen" id="toc-ausweichen-vor-allen-relevanten-geomen" class="nav-link" data-scroll-target="#ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">13.2.4</span> Ausweichen vor allen relevanten Geomen</a></li>
+  <li><a href="#pivot_longer-summarise" id="toc-pivot_longer-summarise" class="nav-link" data-scroll-target="#pivot_longer-summarise"><span class="header-section-number">11.2.1</span> <code>pivot_longer() |&gt; summarise()</code></a></li>
+  <li><a href="#überlappende-fehlerbalken" id="toc-überlappende-fehlerbalken" class="nav-link" data-scroll-target="#überlappende-fehlerbalken"><span class="header-section-number">11.2.2</span> Überlappende Fehlerbalken</a></li>
+  <li><a href="#position_dodge" id="toc-position_dodge" class="nav-link" data-scroll-target="#position_dodge"><span class="header-section-number">11.2.3</span> <code>position_dodge()</code></a></li>
+  <li><a href="#ausweichen-vor-allen-relevanten-geomen" id="toc-ausweichen-vor-allen-relevanten-geomen" class="nav-link" data-scroll-target="#ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">11.2.4</span> Ausweichen vor allen relevanten Geomen</a></li>
   </ul></li>
-  <li><a href="#anpassungen" id="toc-anpassungen" class="nav-link" data-scroll-target="#anpassungen"><span class="header-section-number">13.3</span> Anpassungen</a>
+  <li><a href="#anpassungen" id="toc-anpassungen" class="nav-link" data-scroll-target="#anpassungen"><span class="header-section-number">11.3</span> Anpassungen</a>
   <ul class="collapse">
-  <li><a href="#standardthemen" id="toc-standardthemen" class="nav-link" data-scroll-target="#standardthemen"><span class="header-section-number">13.3.1</span> Standardthemen</a></li>
-  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"><span class="header-section-number">13.3.2</span> theme()</a></li>
+  <li><a href="#standardthemen" id="toc-standardthemen" class="nav-link" data-scroll-target="#standardthemen"><span class="header-section-number">11.3.1</span> Standardthemen</a></li>
+  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"><span class="header-section-number">11.3.2</span> theme()</a></li>
   </ul></li>
-  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">13.4</span> Aufgaben</a></li>
+  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben"><span class="header-section-number">11.4</span> Aufgaben</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session Info</a></li>
   </ul>
 </nav>
@@ -410,7 +403,7 @@ MathJax.Hub.Config({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
 <p class="subtitle lead">Mehrteilige Plots und Anpassungen</p>
 </div>
 
@@ -497,8 +490,8 @@ MathJax.Hub.Config({
 </div>
 </section>
 </section>
-<section id="ausweichende-dichteplots" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="ausweichende-dichteplots"><span class="header-section-number">13.1</span> Ausweichende Dichteplots</h2>
+<section id="ausweichende-dichteplots" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="ausweichende-dichteplots"><span class="header-section-number">11.1</span> Ausweichende Dichteplots</h2>
 <p>Wir können Dichteplots entlang einer katgorischen Variable erstellen, indem wir <code>geom_half_violin()</code> aus dem Paket <code>gghalves</code> verwenden.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">%&gt;%</span> </span>
@@ -509,13 +502,13 @@ MathJax.Hub.Config({
 <div id="fig-density" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-density-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.1: Dodged density plots with <code>gghalves::geom_half_violin()</code></figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.1: Dodged density plots with <code>gghalves::geom_half_violin()</code></figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="hinzufügen-eines-boxplots" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="hinzufügen-eines-boxplots"><span class="header-section-number">13.1.1</span> Hinzufügen eines Boxplots</h3>
+<section id="hinzufügen-eines-boxplots" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="hinzufügen-eines-boxplots"><span class="header-section-number">11.1.1</span> Hinzufügen eines Boxplots</h3>
 <p>Wir können auch ein weiteres Geom hinzufügen, um dem Diagramm weitere Informationen hinzuzufügen. Fügen wir einen Boxplot hinzu.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">%&gt;%</span> </span>
@@ -527,14 +520,14 @@ MathJax.Hub.Config({
 <div id="fig-boxplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.2: Boxplot on top of our dodged density plot</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.2: Boxplot on top of our dodged density plot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="position_nudge" class="level3" data-number="13.1.2">
-<h3 data-number="13.1.2" class="anchored" data-anchor-id="position_nudge"><span class="header-section-number">13.1.2</span> <code>position_nudge()</code></h3>
+<section id="position_nudge" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="position_nudge"><span class="header-section-number">11.1.2</span> <code>position_nudge()</code></h3>
 <p>Vielleicht wollen wir den Boxplot so verschieben, dass er nicht über den Dichteplots liegt und nicht ganz so breit ist. Wir können dies tun, indem wir <code>position</code> auf <code>position_nudge()</code> und <code>width</code> auf einen Wert kleiner als <code>.75</code> setzen, was die Standardbreite ist.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">%&gt;%</span> </span>
@@ -548,15 +541,15 @@ MathJax.Hub.Config({
 <div id="fig-boxplot-nudge" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-boxplot-nudge-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.3: Boxplot on top of our dodged density plot</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.3: Boxplot on top of our dodged density plot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="position_jitter-für-scatterplots" class="level3" data-number="13.1.3">
-<h3 data-number="13.1.3" class="anchored" data-anchor-id="position_jitter-für-scatterplots"><span class="header-section-number">13.1.3</span> <code>position_jitter()</code> für Scatterplots</h3>
-<p>Dies gehört zu einer Familie von Optionen, mit denen man die Position von Geomen verändern kann. Zum Beispiel zeigen <a href="#fig-jitter">Abbildung&nbsp;<span>13.4</span></a> A und B beide genau die gleichen Daten, aber <a href="#fig-jitter">Abbildung&nbsp;<span>13.4</span></a> B enthält <code>position = position_jitter(0.2)</code>, um überlappende Punkte zu verschieben. Auf diese Weise erhalten wir eine gute Vorstellung davon, wie viele Beobachtungen es über die Reaktionszeiten hinweg gab (y-Achse).</p>
+<section id="position_jitter-für-scatterplots" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="position_jitter-für-scatterplots"><span class="header-section-number">11.1.3</span> <code>position_jitter()</code> für Scatterplots</h3>
+<p>Dies gehört zu einer Familie von Optionen, mit denen man die Position von Geomen verändern kann. Zum Beispiel zeigen <a href="#fig-jitter">Abbildung&nbsp;<span>11.4</span></a> A und B beide genau die gleichen Daten, aber <a href="#fig-jitter">Abbildung&nbsp;<span>11.4</span></a> B enthält <code>position = position_jitter(0.2)</code>, um überlappende Punkte zu verschieben. Auf diese Weise erhalten wir eine gute Vorstellung davon, wie viele Beobachtungen es über die Reaktionszeiten hinweg gab (y-Achse).</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -578,15 +571,15 @@ MathJax.Hub.Config({
 <div id="fig-jitter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-jitter-1.png" class="img-fluid figure-img" width="960"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.4: Plotting points along a categorical variable without (A) and with (B) position = position_jitter(0.2). Plot B also includes alpha = 0.2</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.4: Plotting points along a categorical variable without (A) and with (B) position = position_jitter(0.2). Plot B also includes alpha = 0.2</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="kombiniert-alle-drei" class="level3" data-number="13.1.4">
-<h3 data-number="13.1.4" class="anchored" data-anchor-id="kombiniert-alle-drei"><span class="header-section-number">13.1.4</span> Kombiniert alle drei</h3>
-<p>Wenn wir alle diese Diagramme zusammenfügen, erhalten wir eine <a href="#fig-violin1">Abbildung&nbsp;<span>13.5</span></a>.</p>
+<section id="kombiniert-alle-drei" class="level3" data-number="11.1.4">
+<h3 data-number="11.1.4" class="anchored" data-anchor-id="kombiniert-alle-drei"><span class="header-section-number">11.1.4</span> Kombiniert alle drei</h3>
+<p>Wenn wir alle diese Diagramme zusammenfügen, erhalten wir eine <a href="#fig-violin1">Abbildung&nbsp;<span>11.5</span></a>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -608,28 +601,28 @@ MathJax.Hub.Config({
 <div id="fig-violin1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-violin1-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.5: Density, boxplot, scatterplot</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.5: Density, boxplot, scatterplot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="positionierung-von-fehlerbalkenplots" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="positionierung-von-fehlerbalkenplots"><span class="header-section-number">13.2</span> Positionierung von Fehlerbalkenplots</h2>
+<section id="positionierung-von-fehlerbalkenplots" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="positionierung-von-fehlerbalkenplots"><span class="header-section-number">11.2</span> Positionierung von Fehlerbalkenplots</h2>
 <p>Im zweiten Bericht haben Sie Fehlerbalkenplots erstellt, aber die Fehlerbalken haben sich überschnitten.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-bericht2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-bericht2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.6: Overlapping errorbars</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.6: Overlapping errorbars</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="pivot_longer-summarise" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="pivot_longer-summarise"><span class="header-section-number">13.2.1</span> <code>pivot_longer() |&gt; summarise()</code></h3>
+<section id="pivot_longer-summarise" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="pivot_longer-summarise"><span class="header-section-number">11.2.1</span> <code>pivot_longer() |&gt; summarise()</code></h3>
 <p>Lassen Sie uns etwas Ähnliches mit dem Datensatz “Englisch” nachstellen. Zuerst werden wir <code>pivot_longer()</code> verwenden, um unsere Daten zu verlängern, dann erstellen wir eine Zusammenfassung der Reaktionszeiten für die lexikalische Entscheidungsaufgabe und die Benennungsaufgabe pro Altersgruppe.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="ot">&lt;-</span></span>
@@ -647,9 +640,9 @@ MathJax.Hub.Config({
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_subject =</span> <span class="fu">factor</span>(age_subject, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"old"</span>))) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="überlappende-fehlerbalken" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="überlappende-fehlerbalken"><span class="header-section-number">13.2.2</span> Überlappende Fehlerbalken</h3>
-<p>Wenn wir für diese Daten ein Fehlerbalken-Diagramm erstellen, erhalten wir <a href="#fig-overlap">Abbildung&nbsp;<span>13.7</span></a>.</p>
+<section id="überlappende-fehlerbalken" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="überlappende-fehlerbalken"><span class="header-section-number">11.2.2</span> Überlappende Fehlerbalken</h3>
+<p>Wenn wir für diese Daten ein Fehlerbalken-Diagramm erstellen, erhalten wir <a href="#fig-overlap">Abbildung&nbsp;<span>11.7</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -660,14 +653,14 @@ MathJax.Hub.Config({
 <div id="fig-overlap" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-overlap-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.7: Overlapping errorbar plot</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.7: Overlapping errorbar plot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="position_dodge" class="level3" data-number="13.2.3">
-<h3 data-number="13.2.3" class="anchored" data-anchor-id="position_dodge"><span class="header-section-number">13.2.3</span> <code>position_dodge()</code></h3>
+<section id="position_dodge" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="position_dodge"><span class="header-section-number">11.2.3</span> <code>position_dodge()</code></h3>
 <p>Wir können <code>position = position_dodge(0.2)</code> hinzufügen, damit sich die Fehlerbalken nicht überlappen. Wir werden auch ihre <code>width</code> anpassen, damit sie nicht so breit sind (jeder Wert unter 0.75).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
@@ -681,14 +674,14 @@ MathJax.Hub.Config({
 <div id="fig-miss-points" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-miss-points-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.8: Overlapping errorbar plot</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.8: Overlapping errorbar plot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="ausweichen-vor-allen-relevanten-geomen" class="level3" data-number="13.2.4">
-<h3 data-number="13.2.4" class="anchored" data-anchor-id="ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">13.2.4</span> Ausweichen vor allen relevanten Geomen</h3>
+<section id="ausweichen-vor-allen-relevanten-geomen" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="ausweichen-vor-allen-relevanten-geomen"><span class="header-section-number">11.2.4</span> Ausweichen vor allen relevanten Geomen</h3>
 <p>Aber jetzt haben wir die Punkte hinter uns gelassen. Wir müssen auch den Punkten ausweichen, also fügen wir <code>position_dodge()</code> zu <code>geom_point()</code> hinzu und stellen sicher, dass wir den gleichen Wert wie bei <code>geom_errorbar()</code> verwenden.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
@@ -702,16 +695,16 @@ MathJax.Hub.Config({
 <div id="fig-dodged" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-dodged-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.9: Overlapping errorbar plot</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.9: Overlapping errorbar plot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="anpassungen" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="anpassungen"><span class="header-section-number">13.3</span> Anpassungen</h2>
-<p>Welche Anpassungen sehen Sie in den Diagrammen in <a href="#fig-custom">Abbildung&nbsp;<span>13.10</span></a>?</p>
+<section id="anpassungen" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="anpassungen"><span class="header-section-number">11.3</span> Anpassungen</h2>
+<p>Welche Anpassungen sehen Sie in den Diagrammen in <a href="#fig-custom">Abbildung&nbsp;<span>11.10</span></a>?</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -805,28 +798,28 @@ MathJax.Hub.Config({
 <div id="fig-custom" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-custom-1.png" class="img-fluid figure-img" width="1152"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.10: Customised plots to facilitation data communication.</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.10: Customised plots to facilitation data communication.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="standardthemen" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="standardthemen"><span class="header-section-number">13.3.1</span> Standardthemen</h3>
+<section id="standardthemen" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="standardthemen"><span class="header-section-number">11.3.1</span> Standardthemen</h3>
 <p>Zunächst wurde <code>theme_minimal()</code> zu jedem Plot hinzugefügt, um das allgemeine Aussehen anzupassen. Es gibt eine Vielzahl von benutzerdefinierten Themen, wie <code>theme_bw()</code> oder <code>theme_classic()</code>. Probieren Sie sie aus.</p>
 <div class="cell" data-output-location="fragment">
 <div class="cell-output-display">
 <div id="fig-themes" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-themes-1.png" class="img-fluid figure-img" width="864"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.11: Preset themes</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.11: Preset themes</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="theme" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="theme"><span class="header-section-number">13.3.2</span> theme()</h3>
-<p>Wir können auch einzelne Komponenten des Themas steuern, indem wir Anpassungen mit <code>theme()</code> hinzufügen. Zum Beispiel sehen wir in <a href="#fig-custom">Abbildung&nbsp;<span>13.10</span></a> A, dass die Achsentitel fett gedruckt sind. Dies wurde durch Hinzufügen von <code>theme(axis.title = element_text(face = "bold))</code> erreicht, wobei <code>axis.title =</code> anzeigt, dass wir eine Änderung an den Achsentiteln vornehmen wollen, <code>element_text()</code> zeigt an, dass es ihr Text ist, den wir ändern wollen, und <code>face = "bold"</code> zeigt an, dass wir den Text fett machen wollen. Dasselbe wurde für <code>legend.title =</code> gemacht, um den Titel der Legende fett zu machen.</p>
+<section id="theme" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="theme"><span class="header-section-number">11.3.2</span> theme()</h3>
+<p>Wir können auch einzelne Komponenten des Themas steuern, indem wir Anpassungen mit <code>theme()</code> hinzufügen. Zum Beispiel sehen wir in <a href="#fig-custom">Abbildung&nbsp;<span>11.10</span></a> A, dass die Achsentitel fett gedruckt sind. Dies wurde durch Hinzufügen von <code>theme(axis.title = element_text(face = "bold))</code> erreicht, wobei <code>axis.title =</code> anzeigt, dass wir eine Änderung an den Achsentiteln vornehmen wollen, <code>element_text()</code> zeigt an, dass es ihr Text ist, den wir ändern wollen, und <code>face = "bold"</code> zeigt an, dass wir den Text fett machen wollen. Dasselbe wurde für <code>legend.title =</code> gemacht, um den Titel der Legende fett zu machen.</p>
 <div class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># italicize axis titles</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig_no_colour <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
@@ -837,7 +830,7 @@ MathJax.Hub.Config({
 <div id="fig-italics" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="13-dataviz_4_files/figure-html/fig-italics-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;13.12: Using theme()</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;11.12: Using theme()</figcaption>
 </figure>
 </div>
 </div>
@@ -853,12 +846,12 @@ MathJax.Hub.Config({
 <li>unsere Plots für eine bessere Datenkommunikation anpassen ✅</li>
 </ul>
 </section>
-<section id="aufgaben" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">13.4</span> Aufgaben</h2>
+<section id="aufgaben" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="aufgaben"><span class="header-section-number">11.4</span> Aufgaben</h2>
 <ol type="1">
-<li><p>Mehrteilige Darstellung. Erzeugen von <a href="#fig-dodged">Abbildung&nbsp;<span>13.9</span></a> und <a href="#fig-violin1">Abbildung&nbsp;<span>13.5</span></a> für <code>rt_naming</code> (anstelle von <code>rt_lexdec</code>). Drucken der Plots nebeneinander mit <code>patchwork</code>.</p></li>
+<li><p>Mehrteilige Darstellung. Erzeugen von <a href="#fig-dodged">Abbildung&nbsp;<span>11.9</span></a> und <a href="#fig-violin1">Abbildung&nbsp;<span>11.5</span></a> für <code>rt_naming</code> (anstelle von <code>rt_lexdec</code>). Drucken der Plots nebeneinander mit <code>patchwork</code>.</p></li>
 <li><p>Beschriftungen. Benutzen Sie <code>labs()</code>, um Beschriftungen für den Titel, die x- und y-Achse und für die von Ihnen verwendete Ästhetik (Form, Farbe, etc.) hinzuzufügen, die in einer Legende resultieren. Dies sollte damit enden, dass der Titel der Legende auch einen eigenen Namen erhält.</p></li>
-<li><p>Anpassungen. Fügen Sie den beiden Diagrammen Anpassungen hinzu, indem Sie ein Standardthema wählen, gefolgt von <code>theme()</code> mit Anpassungen für die Achsentitel, den Legendentitel und den Diagrammtitel. Sie können <code>face</code>, <code>size</code>, <code>colour</code>, <code>family</code> (d.h. Schriftart) ändern. Sie können <code>?theme</code> in der Konsole eingeben oder googeln, um einige Ideen zu bekommen. Wenn Sie sich nicht kreativ fühlen, versuchen Sie einfach, eine der Anpassungen zu replizieren, die Sie in <a href="#fig-custom">Abbildung&nbsp;<span>13.10</span></a> sehen</p></li>
+<li><p>Anpassungen. Fügen Sie den beiden Diagrammen Anpassungen hinzu, indem Sie ein Standardthema wählen, gefolgt von <code>theme()</code> mit Anpassungen für die Achsentitel, den Legendentitel und den Diagrammtitel. Sie können <code>face</code>, <code>size</code>, <code>colour</code>, <code>family</code> (d.h. Schriftart) ändern. Sie können <code>?theme</code> in der Konsole eingeben oder googeln, um einige Ideen zu bekommen. Wenn Sie sich nicht kreativ fühlen, versuchen Sie einfach, eine der Anpassungen zu replizieren, die Sie in <a href="#fig-custom">Abbildung&nbsp;<span>11.10</span></a> sehen</p></li>
 </ol>
 </section>
 <section id="session-info" class="level2 unnumbered">
@@ -881,22 +874,22 @@ attached base packages:
 other attached packages:
  [1] magick_2.7.4    gghalves_0.1.4  patchwork_1.1.3 ggthemes_4.2.4 
  [5] janitor_2.2.0   here_1.0.1      lubridate_1.9.2 forcats_1.0.0  
- [9] stringr_1.5.0   dplyr_1.1.3     purrr_1.0.2     readr_2.1.4    
+ [9] stringr_1.5.1   dplyr_1.1.3     purrr_1.0.2     readr_2.1.5    
 [13] tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.3   tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] utf8_1.2.3        generics_0.1.3    stringi_1.7.12    hms_1.1.3        
- [5] digest_0.6.33     magrittr_2.0.3    evaluate_0.21     grid_4.3.0       
- [9] timechange_0.2.0  fastmap_1.1.1     rprojroot_2.0.3   jsonlite_1.8.7   
-[13] fansi_1.0.4       scales_1.2.1      cli_3.6.1         crayon_1.5.2     
-[17] rlang_1.1.3       bit64_4.0.5       munsell_0.5.0     withr_2.5.0      
-[21] yaml_2.3.7        parallel_4.3.0    tools_4.3.0       tzdb_0.4.0       
-[25] colorspace_2.1-0  pacman_0.5.1      vctrs_0.6.3       R6_2.5.1         
-[29] lifecycle_1.0.3   snakecase_0.11.0  bit_4.0.5         htmlwidgets_1.6.2
-[33] vroom_1.6.3       pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4     
-[37] glue_1.6.2        Rcpp_1.0.11       xfun_0.39         tidyselect_1.2.0 
-[41] rstudioapi_0.14   knitr_1.44        farver_2.1.1      htmltools_0.5.5  
-[45] labeling_0.4.3    rmarkdown_2.22    compiler_4.3.0   </code></pre>
+ [1] utf8_1.2.4        generics_0.1.3    stringi_1.8.3     hms_1.1.3        
+ [5] digest_0.6.34     magrittr_2.0.3    evaluate_0.23     grid_4.3.0       
+ [9] timechange_0.2.0  fastmap_1.1.1     rprojroot_2.0.3   jsonlite_1.8.8   
+[13] fansi_1.0.6       scales_1.2.1      cli_3.6.2         crayon_1.5.2     
+[17] rlang_1.1.3       bit64_4.0.5       munsell_0.5.0     withr_3.0.0      
+[21] yaml_2.3.8        parallel_4.3.0    tools_4.3.0       tzdb_0.4.0       
+[25] colorspace_2.1-0  pacman_0.5.1      vctrs_0.6.5       R6_2.5.1         
+[29] lifecycle_1.0.4   snakecase_0.11.0  bit_4.0.5         htmlwidgets_1.6.2
+[33] vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4     
+[37] glue_1.7.0        Rcpp_1.0.11       xfun_0.42         tidyselect_1.2.0 
+[41] rstudioapi_0.15.0 knitr_1.45        farver_2.1.1      htmltools_0.5.7  
+[45] labeling_0.4.3    rmarkdown_2.25    compiler_4.3.0   </code></pre>
 </div>
 </div>
 </section>
@@ -1327,12 +1320,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="../mats/12-baseR.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Base R</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mats/15-bericht_3.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bericht 3</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../mats/16-troubleshooting.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
