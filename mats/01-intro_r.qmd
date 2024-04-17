@@ -1,15 +1,15 @@
 ---
-title: "Einführung in R und RStudio"
-## subtitle: ""
+subtitle: "Pakete, Funktionen und Objekte in R-Skripten"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-date: "10/18/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
 execute:
   echo: true
   code-tools: true
 ---
+
+# Einführung in R und RStudio {#sec-intro_r}
 
 ```{r}
 #| echo: false

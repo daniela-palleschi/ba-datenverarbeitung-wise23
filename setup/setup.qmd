@@ -1,28 +1,3 @@
----
-author: "Daniela Palleschi"
-institute: Humboldt-Universität zu Berlin
-lang: de
-date: "`r Sys.Date()`"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    toc-title: 'Overview'
-    code-link: true
-    code-overflow: wrap
-    code-tools: true
-    number-sections: true
-    self-contained: true
-  pdf:
-    output-file: pdf-setup.pdf
-    toc: true
-    number-sections: false
-    colorlinks: true
-    code-overflow: wrap
-editor_options: 
-  chunk_output_type: console
----
-
 ```{r, echo = F}
 knitr::opts_chunk$set(eval = F, # evaluate = T for REPRODUCIBLE analyses
                       echo = T, # 'print code chunk?'

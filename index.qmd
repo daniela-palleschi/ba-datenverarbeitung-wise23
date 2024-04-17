@@ -1,9 +1,3 @@
----
-lang: de
-bibliography: references.bib
-csl: apa.csl
----
-
 # Kursübersicht {.unnumbered}
 
 Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Visualisierung" an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle [hier](https://moodle.hu-berlin.de/course/view.php?id=124123) (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).

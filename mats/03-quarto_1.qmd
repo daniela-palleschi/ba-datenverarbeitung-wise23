@@ -1,11 +1,7 @@
 ---
-title: "Dynamic reports with Quarto"
-## subtitle: ""
+subtitle: "Überblenden von Code, Ausgabe und Text"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-footer: "Woche 2 - Quarto"
-lang: de
-date: "10/25/2023"
 date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
 execute:
@@ -13,6 +9,7 @@ execute:
   code-tools: true
 ---
 
+# Dynamische Berichte mit Quarto {#sec-quarto}
 
 ```{r}
 #| echo: false

@@ -4,11 +4,11 @@ project:
   type: book
 
 book:
-  title: "Angewandte Datenverarbeitung und Visualisierung (WiSe23/24)"
-  output-file: "r4ling_de_ws2324"
-  subtitle: "WiSe23/24"
+  title: "Angewandte Datenverarbeitung und Visualisierung"
+  output-file: "r4ling_de_sose2024"
+  subtitle: "SoSe2024"
   author: "Daniela Palleschi"
-  date: "10/16/2023"
+  date: "04/15/2024"
   twitter-card: true
   downloads: [pdf]
   navbar:
@@ -26,8 +26,9 @@ book:
     - part: "Kursübersicht"
       chapters:
         - index.qmd
-        - syllabus.qmd
+        # - syllabus.qmd
         - setup/setup.qmd
+        - session_info.qmd
     - part: "Grundlagen"
       chapters:
         - mats/01-intro_r.qmd
@@ -35,21 +36,22 @@ book:
         - mats/03-quarto_1.qmd
         - mats/04-wrangling_1.qmd
         - mats/05-dataviz_2.qmd
-        - mats/06-bericht_1.qmd
+        # - mats/06-bericht_1.qmd
     - part: "Nächste Stufe"
       chapters:
         - mats/07-dateneinlesung.qmd
         - mats/08-desc_stats.qmd
         - mats/09-wrangling_2.qmd
         - mats/10-dataviz_3.qmd
-        - mats/11-bericht_2.qmd
+        # - mats/11-bericht_2.qmd
     - part: "Fortgeschrittene Themen"
       chapters:
         - mats/12-baseR.qmd
         - mats/13-dataviz_4.qmd
-        # - mats/14-dataviz_3.qmd
-        - mats/15-bericht_3.qmd
+        # - mats/15-bericht_3.qmd
         - mats/16-troubleshooting.qmd
+  appendices:
+    - mats/00-aufgaben.qmd
     - references.qmd
 
 bibliography: references.bib

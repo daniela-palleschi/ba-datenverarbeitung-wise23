@@ -1,16 +1,16 @@
 ---
-title: "Datenvisualiserung 1"
 subtitle: "Visualisierung von Verteilungen"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
-footer: "Woche 2 - Datenvisualisierung 1" 
-date: "11/01/2023"
 date-format: "ddd [den] DD.MM.YYYY"
+footer: "Woche 2 - Datenvisualisierung 1" 
 date-modified: last-modified
 execute:
   echo: true
   code-tools: true
 ---
+
+# Datenvisualiserung 1 {#sec-data_viz1}
 
 ```{r}
 #| echo: false
@@ -670,35 +670,6 @@ fig_lexdec_rt / fig_lexdec_l1
 - Wenn wir wissen, was wir visualisieren wollen (z. B. Verteilungen) und welche Art von Variable wir haben (d. h. kontinuierlich, kategorial), können wir entscheiden, welche Art von Diagramm wir erstellen wollen.
 - Oft ist es eine gute Idee, die Darstellung auf Papier zu zeichnen, bevor man in R beginnt (ich mache das auch oft).
 
-## Exercises
-
-Diese Übungen sollten auch in Ihrem Skript enthalten sein, wenn Sie es auf Moodle hochladen. Das Durcharbeiten des Unterrichtsmaterials wird Sie auf diese Aufgaben vorbereiten.
-
-1. Reproduzieren Sie unser Histogramm als *Dichte-Diagramm*, indem Sie `geom_histogram()` durch `geom_density()` ersetzen.
-    + Was zeigt diese Art der Darstellung?
-    
-2. Erstellen Sie ein Balkendiagramm, das die Anzahl der Beobachtungen pro Wortklasse zeigt (Hinweis: Sie benötigen die Variable `Class` aus unserem Datensatz).
-
-## {.uncounted .unnumbered}
-
-3. Drucken Sie Ihren Dichteplot und Ihren Klassen-Balkenplot übereinander mit Hilfe des `patchwork` Pakets
-
-4. Reproduzieren Sie die folgenden Diagramme so genau wie möglich (Hinweis: Sie benötigen das Argument `position = "dodge"`):
-
-```{r}
-#| echo: false
-fig_lexdec_class <-
-  ggplot(data = df_lexdec) +
-  aes(x = Class, fill = NativeLanguage) + ## set aesthetics
-  labs(title = "Observations per word class/native language",
-     x = "Word class") +
-  geom_bar(position = "dodge") +
-  scale_fill_colorblind() + ## make fill colorblind friendly
-  theme_minimal() ## set plot theme
-
-fig_lexdec_class
-```
-
 ## Heutige Ziele {.unnumbered .unlisted}
 
 Heute haben wir gelernt...
@@ -708,18 +679,16 @@ Heute haben wir gelernt...
 - wie man Diagramme mit `ggplot` erstellt
 - die richtige Darstellung für unsere Daten auszuwählen
 
+## Weitere Übungen {.unnumbered .unlisted}
+
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-data_viz1_ex
+
 ## Session Info {.unnumbered}
 
 Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 2023.3.0.386 (Cherry Blossom).
 
 ```{r}
 sessionInfo()
-```
-
-```{r}
-#| eval: false
-#| echo: false
-quarto::datenviz_render(output_format = "all")
 ```
 
 ## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}

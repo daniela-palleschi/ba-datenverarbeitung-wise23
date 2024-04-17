@@ -1,4 +1,4 @@
 # Literaturverzeichnis {.unnumbered}
 
-::: {#refs}
+::: {#refs custom-style="Bibliography"}
 :::
