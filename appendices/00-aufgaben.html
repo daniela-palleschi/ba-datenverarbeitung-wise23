@@ -167,7 +167,7 @@ MathJax.Hub.Config({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/00-aufgaben.html">Anhang</a></li><li class="breadcrumb-item"><a href="../mats/00-aufgaben.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html">Anhang</a></li><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -332,7 +332,7 @@ MathJax.Hub.Config({
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../mats/00-aufgaben.html" class="sidebar-item-text sidebar-link active">
+  <a href="../appendices/00-aufgaben.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></span></a>
   </div>
 </li>
@@ -362,7 +362,11 @@ MathJax.Hub.Config({
   <li><a href="#rechnen-mit-objekte-und-funktionen" id="toc-rechnen-mit-objekte-und-funktionen" class="nav-link" data-scroll-target="#rechnen-mit-objekte-und-funktionen"><span class="header-section-number">A.1.4</span> Rechnen mit Objekte und Funktionen</a></li>
   <li><a href="#vektoren" id="toc-vektoren" class="nav-link" data-scroll-target="#vektoren"><span class="header-section-number">A.1.5</span> Vektoren</a></li>
   </ul></li>
-  <li><a href="#app-data_viz1" id="toc-app-data_viz1" class="nav-link" data-scroll-target="#app-data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</a></li>
+  <li><a href="#app-data_viz1" id="toc-app-data_viz1" class="nav-link" data-scroll-target="#app-data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</a>
+  <ul class="collapse">
+  <li><a href="#kombination-von-plots-mit-patchwork" id="toc-kombination-von-plots-mit-patchwork" class="nav-link" data-scroll-target="#kombination-von-plots-mit-patchwork"><span class="header-section-number">A.2.1</span> Kombination von Plots mit Patchwork</a></li>
+  <li><a href="#reproduzieren-eines-plots" id="toc-reproduzieren-eines-plots" class="nav-link" data-scroll-target="#reproduzieren-eines-plots"><span class="header-section-number">A.2.2</span> Reproduzieren eines Plots</a></li>
+  </ul></li>
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">A.3</span> Quarto</a>
   <ul class="collapse">
   <li><a href="#schreiben-und-formatieren-eines-quarto-dokuments" id="toc-schreiben-und-formatieren-eines-quarto-dokuments" class="nav-link" data-scroll-target="#schreiben-und-formatieren-eines-quarto-dokuments"><span class="header-section-number">A.3.1</span> Schreiben und Formatieren eines Quarto-Dokuments</a></li>
@@ -372,6 +376,11 @@ MathJax.Hub.Config({
   <ul class="collapse">
   <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">A.4.1</span> </a></li>
+  </ul></li>
+  <li><a href="#data-wrangling-1-transformation-1" id="toc-data-wrangling-1-transformation-1" class="nav-link" data-scroll-target="#data-wrangling-1-transformation-1"><span class="header-section-number">A.5</span> Data Wrangling 1: Transformation</a>
+  <ul class="collapse">
+  <li><a href="#aufgaben-1" id="toc-aufgaben-1" class="nav-link" data-scroll-target="#aufgaben-1">Aufgaben</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">A.5.1</span> </a></li>
   </ul></li>
   </ul>
 </nav>
@@ -406,7 +415,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mi. den 17.04.2024</p>
+      <p class="date-modified">Mo. den 22.04.2024</p>
     </div>
   </div>
     
@@ -418,7 +427,7 @@ MathJax.Hub.Config({
 <p>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</p>
 <section id="einführung-in-r-und-rstudio" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="einführung-in-r-und-rstudio"><span class="header-section-number">A.1</span> Einführung in R und RStudio</h2>
-<p>Diese Übungen finden sich auch in <a href="01-intro_r.html"><span>Kapitel&nbsp;1</span></a>.</p>
+<p>Diese Übungen finden sich auch in <a href="../mats/01-intro_r.html"><span>Kapitel&nbsp;1</span></a>.</p>
 <section id="neue-r-skript" class="level3" data-number="A.1.1">
 <h3 data-number="A.1.1" class="anchored" data-anchor-id="neue-r-skript"><span class="header-section-number">A.1.1</span> Neue R-Skript</h3>
 <ol type="1">
@@ -498,7 +507,9 @@ MathJax.Hub.Config({
 </section>
 <section id="app-data_viz1" class="level2" data-number="A.2">
 <h2 data-number="A.2" class="anchored" data-anchor-id="app-data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</h2>
-<p>Diese Übungen finden sich auch in <a href="02-dataviz_1.html"><span>Kapitel&nbsp;2</span></a>.</p>
+<p>Diese Übungen finden sich auch in <a href="../mats/02-dataviz_1.html"><span>Kapitel&nbsp;2</span></a>.</p>
+<section id="kombination-von-plots-mit-patchwork" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="kombination-von-plots-mit-patchwork"><span class="header-section-number">A.2.1</span> Kombination von Plots mit Patchwork</h3>
 <ol type="1">
 <li><p>Reproduzieren Sie unser Histogramm als <em>Dichte-Diagramm</em>, indem Sie <code>geom_histogram()</code> durch <code>geom_density()</code> ersetzen.</p>
 <ul>
@@ -506,7 +517,12 @@ MathJax.Hub.Config({
 </ul></li>
 <li><p>Erstellen Sie ein Balkendiagramm, das die Anzahl der Beobachtungen pro Wortklasse zeigt (Hinweis: Sie benötigen die Variable <code>Class</code> aus unserem Datensatz).</p></li>
 <li><p>Drucken Sie Ihren Dichteplot und Ihren Klassen-Balkenplot übereinander mit Hilfe des <code>patchwork</code> Pakets</p></li>
-<li><p>Reproduzieren Sie die folgenden Diagramme so genau wie möglich (Hinweis: Sie benötigen das Argument <code>position = "dodge"</code>):</p></li>
+</ol>
+</section>
+<section id="reproduzieren-eines-plots" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="reproduzieren-eines-plots"><span class="header-section-number">A.2.2</span> Reproduzieren eines Plots</h3>
+<ol start="4" type="1">
+<li>Reproduzieren Sie die folgenden Diagramme so genau wie möglich (Hinweis: Sie benötigen das Argument <code>position = "dodge"</code>):</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -518,6 +534,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="quarto" class="level2" data-number="A.3">
 <h2 data-number="A.3" class="anchored" data-anchor-id="quarto"><span class="header-section-number">A.3</span> Quarto</h2>
@@ -662,6 +679,36 @@ MathJax.Hub.Config({
 </section>
 <section id="section" class="level3" data-number="A.4.1">
 <h3 data-number="A.4.1" class="anchored" data-anchor-id="section"><span class="header-section-number">A.4.1</span> </h3>
+</section>
+</section>
+<section id="data-wrangling-1-transformation-1" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="data-wrangling-1-transformation-1"><span class="header-section-number">A.5</span> Data Wrangling 1: Transformation</h2>
+<section id="aufgaben-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="aufgaben-1">Aufgaben</h3>
+<ol type="1">
+<li>Drucken Sie in einer einzigen Pipeline <code>df_lexent</code>, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:
+<ul>
+<li>die Reaktionszeiten waren größer als 500ms <em>und</em> kleiner als 550ms</li>
+<li>aus den Wörtern “pear”, “elephant” oder “tortoise” stammen</li>
+</ul></li>
+</ol>
+<ol start="2" type="1">
+<li>Sortiere (<code>arrange()</code>) <code>df_lexent</code> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
+</ol>
+<ol start="3" type="1">
+<li>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <code>df_rz</code>, das <code>df_lexent</code> enthält, <em>und dann</em>:
+<ul>
+<li>Selektieren (<code>select()</code>) Sie die Variablen <code>Teilnehmer</code>, <code>NativeLanguage</code>, <code>Word</code>, <code>rz_s</code>, <code>laenge</code>, und <code>Frequency</code></li>
+<li>Erstelle eine neue Variable <code>rz_s_laenge</code> (<code>mutate()</code>), die <code>rz_s</code> geteilt durch <code>laenge</code> ist
+<ul>
+<li>und wird vor <code>Laenge</code> gesetzt</li>
+</ul></li>
+<li>Benennen (<code>rename</code>()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</li>
+</ul></li>
+</ol>
+</section>
+<section id="section-1" class="level3" data-number="A.5.1">
+<h3 data-number="A.5.1" class="anchored" data-anchor-id="section-1"><span class="header-section-number">A.5.1</span> </h3>
 
 
 <!-- -->
@@ -1102,269 +1149,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Einführung in R und RStudio</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("01-intro.qmd", "02-dataviz1.qmd", "03-quarto.qmd", "04-wrangling1.qmd")}</span></span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>Diese Übungen finden sich auch in @sec-intro_r.</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Neue R-Skript</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Öffnen Sie ein neues R-Skript (<span class="in">`File &gt; New File &gt; R Script`</span>)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>wenn sich oben links ein neues Fenster öffnet: "Datei &gt; Speichern unter...".</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="ss">      + </span>speichern Sie es in Ihrem 'notizen' Ordner</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>schreiben Sie oben in das Skript: <span class="in">`# Angewandte Datenverarbeitung und Visualisierung - Woche 1 (17.04.2023)`</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paket-Installation</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Installieren Sie das <span class="in">`here`</span>-Paket (in der Konsole).</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Führen Sie die Funktion <span class="in">`here()`</span> (in Ihre R-Skript mit <span class="in">`Strg+/Cmd+Eingabe`</span>). Was geschieht in der Konsole?</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rechnen in R</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Versuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">+</span><span class="dv">32</span></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplikation</span></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">*</span><span class="dv">32</span></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraktion</span></span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: false</span></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">/</span><span class="dv">32</span></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Schreiben Sie diese Berechnungen in Ihr Skript, und drücken Sie <span class="in">`Cmd/Strg-Eingabe`</span>, um sie auszuführen. Was passiert?</span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rechnen mit Objekte und Funktionen</span></span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Speichern Sie die Werte 16 und 32 als Objekte namens x bzw. y.</span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Versuchen Sie, die Funktion <span class="in">`mean()`</span> mit Ihren gespeicherten Variablen (<span class="in">`x`</span> und <span class="in">`y`</span>) als "verkettete" Argumente auszuführen (d.h., mit <span class="in">`c()`</span>).</span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Machen Sie dasselbe mit der Funktion <span class="in">`sum()`</span>. Was passiert, wenn Sie <span class="in">`c()`</span> nicht verwenden?</span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vektoren</span></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Erstelle einen Vektor namens <span class="in">`vec1`</span>, der die Werte 12, 183, 56, 25 und 18 enthält</span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Erstellen Sie einen Vektor namens <span class="in">`vec2`</span>, der die Werte 8, 5, 1, 6 und 8 enthält</span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create a vector called <span class="in">`vec3`</span> that contains the values 28, 54, 10, 13, 2, and 81</span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Finde die Summe von <span class="in">`vec1`</span>.</span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Finde die Summe von vec1 plus <span class="in">`vec2`</span>. Wie unterscheidet sich das Ergebnis von dem, das Sie für vec1 allein erhalten haben?</span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Was passiert, wenn du versuchst, die Summe von <span class="in">`vec1`</span> und <span class="in">`vec3`</span> zu finden?</span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="fu"># Datenvisualierung 1 {#app-data_viz1}</span></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>Diese Übungen finden sich auch in @sec-data_viz1.</span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Reproduzieren Sie unser Histogramm als *Dichte-Diagramm*, indem Sie <span class="in">`geom_histogram()`</span> durch <span class="in">`geom_density()`</span> ersetzen.</span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Was zeigt diese Art der Darstellung?</span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Erstellen Sie ein Balkendiagramm, das die Anzahl der Beobachtungen pro Wortklasse zeigt (Hinweis: Sie benötigen die Variable <span class="in">`Class`</span> aus unserem Datensatz).</span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Drucken Sie Ihren Dichteplot und Ihren Klassen-Balkenplot übereinander mit Hilfe des <span class="in">`patchwork`</span> Pakets</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Reproduzieren Sie die folgenden Diagramme so genau wie möglich (Hinweis: Sie benötigen das Argument <span class="in">`position = "dodge"`</span>):</span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bar1</span></span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: zu reproduzierende Abbildung</span></span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, languageR, ggthemes, patchwork)</span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="ot">&lt;-</span> lexdec</span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>fig_lexdec_class <span class="ot">&lt;-</span></span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> df_lexdec) <span class="sc">+</span></span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Class, <span class="at">fill =</span> NativeLanguage) <span class="sc">+</span> <span class="do">## set aesthetics</span></span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Observations per word class/native language"</span>,</span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Word class"</span>) <span class="sc">+</span></span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span> <span class="do">## make fill colorblind friendly</span></span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="do">## set plot theme</span></span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>fig_lexdec_class</span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a><span class="fu"># Quarto</span></span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## Schreiben und Formatieren eines Quarto-Dokuments</span></span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Führen den folgenden Code in der <span class="in">`Konsole`</span> aus: <span class="in">`RStudio.Version()$version`</span></span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>wenn die ausgegebene Version <span class="in">`2022.07`</span> oder höher ist, können Sie Quarto benutzen</span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>wenn nicht, aktualisieren Sie RStudio: <span class="in">`Help &gt; Check for updates`</span></span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Erstellen Sie in Ihrem R-Projekt-Ordner, in dem ihr Ihre Kursunterlagen/Notizen aufbewahren, einen neuen Ordner für Woche 3</span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span><span class="in">`File &gt; New Document &gt; Quarto Document`</span></span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Geben Sie ihm einen Titel wie "Quarto - Woche 3"</span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Deaktivieren Sie die Option "open with Visual Editor".</span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Schauen das neue Skript an, um mehr über Quarto zu erfahren.</span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Klicken Sie auf die Schaltfläche "Render" am oberen Rand des Dokuments</span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Speichern Sie das Dokument in dem Ordner für Woche 3, den Sie gerade erstellt haben.</span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Was geschiehen? Vergleichen die Ausgabe mit dem Quellcode des Dokuments.</span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>Gehen Sie zurück zu Ihrem neuen Ordner <span class="in">`03-quarto`</span></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Was hat sich geändert?</span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>in der YAML...</span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Ändern Sie den Titel, wenn Sie das tun möchten.</span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>Raten Sie, wie man einen "Untertitel" (EN: subtitle) hinzufügen könnte (Hinweis: es ist ähnlich wie beim Hinzufügen eines <span class="in">`title`</span>)</span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Fügen Sie einen Autor hinzu, <span class="in">`Autor: "vorname nachname"`</span> (siehe Beispiel unten)</span>
-<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="ss">11. </span>Füge ein Inhaltsverzeichnis hinzu (EN: Table of Contents, <span class="in">`toc`</span>), indem du <span class="in">`format`</span> so änderst, dass es wie folgt aussieht:</span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Quarto - Woche 3"</span></span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Vorname Nachname"</span></span>
-<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
-<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
-<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="ss">12.  </span>Rendern nun das Dokument. Sehen Sie Ihre Änderungen?</span>
-<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="ss">13.  </span>Fügen Sie Ihrem Dokument einige Überschriften und Texte hinzu, die das Format und die Struktur von Quarto-Dokumenten beschreiben. Fügen Sie beispielsweise eine Überschrift mit dem Titel "YAML" ein, die kurz beschreibt, wie YAML formatiert ist.</span>
-<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Fügen Ihrem <span class="in">`.qmd`</span> Dokumententext eine Textformatierung hinzu.</span>
-<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Fügen eine Aufzählungsliste hinzu</span>
-<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Fügen eine nummerierte Liste hinzu</span>
-<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Rendern Sie das Dokument. Hat es geklappt?</span>
-<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a><span class="fu">## Kodierung in einem Quarto-Dokument</span></span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code chunks</span></span>
-<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Fügen Sie einen Code Chunk zu deiner <span class="in">`.qmd`</span> Datei hinzu</span>
-<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Fügen Sie einige mathematische Operationen ein (Addition, Subtraktion, etc)</span>
-<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Fügen Sie informative Anmerkungen zu Ihrem Code hinzu (z.B. <span class="in">`## Addition`</span>)</span>
-<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Fügen Sie einen Text unter deinem Code-Chunk hinzu, der beschreibt, was der obige Code erreicht hat.</span>
-<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Rendern Sie das Dokument. Hat es geklappt?</span>
-<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a><span class="fu">### Concatenate</span></span>
-<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a>Erinnern Sie sich, dass wir letzte Woche die Funktion <span class="in">`c()`</span> (EN: concatenate) gesehen haben, die mehrere Werte kombiniert (z.B. <span class="in">`mean(c(3,4,25))`</span> ergibt den Mittelwert von 3,4 und 25)</span>
-<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>In einem Code-Stück: Erstellen sie ein Objekt, das eine Liste von Zahlen enthält (z.B. <span class="in">`Objektname &lt;- c(...)`</span>)</span>
-<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Berechnen Sie den Mittelwert dieser Zahlen, indem Sie nur den Objektnamen verwendt.</span>
-<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Speichern Sie den Mittelwert dieser Zahlen als ein Objekt</span>
-<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Rendern Sie das Dokument und seht sich den Abschnitt mit Ihrem Code-Chunk an.</span>
-<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ändern Sie nun im Quellcode die Chunk-Einstellungen auf <span class="in">`echo: false`</span> und rendern das Dokument. Was ändert sich?</span>
-<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Setzen Sie nun <span class="in">`echo: true`</span>, aber <span class="in">`eval: false`</span>. Rendern das Dokument. Was ändert sich?</span>
-<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plots in Quarto</span></span>
-<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Einen neuen Codeabschnitt erstellen und das Balkendiagramm von letzter Woche erzeugen, aber als Objekt speichern</span>
-<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>In einem separaten Codechunk nur den Objektnamen dieses Diagramms angeben</span>
-<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Rendern Sie das Dokument, um zu sehen, wo die Abbildung gedruckt wurde.</span>
-<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ausgabeformate</span></span>
-<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Ersetzen Sie <span class="in">`html`</span> in der YAML durch <span class="in">`revealjs`</span>. Rendert das Dokument.</span>
-<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Schauen Sie den Ordner für die Notizen dieser Woche an. Welche Dateien seht?</span>
-<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Setzen Sie nun <span class="in">`format`</span> auf <span class="in">`pdf`</span>. Rendert das Dokument.</span>
-<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Läuft es?</span>
-<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Versuchen Sie, <span class="in">`pdf`</span> durch den Buchstaben <span class="in">`l`</span> zu ersetzen. R schlägt eine Vervollständigung vor, welche ist es? Wähle sie aus und rendere das Dokument.</span>
-<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Setzen Sie das Format wieder auf <span class="in">`html`</span>. Rendert das Dokument.</span>
-<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Gehen Sie zurück zu Ihrem Ordner mit den Notizen dieser Woche. Welche Dateien seht?</span>
-<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ist die Ausgabe von <span class="in">`revealjs`</span> dort?</span>
-<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a><span class="fu">### SessionInfo</span></span>
-<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Fügen Sie eine "Session Info" Abschnitt am Ende des Dokuments hin.</span>
-<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Wrangling 1: Transformation</span></span>
-<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aufgaben {.unnumbered}</span></span>
-<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Drucken Sie in einer einzigen Pipeline <span class="in">`df_lexent`</span>, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:</span>
-<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>die Reaktionszeiten waren größer als 500ms *und* kleiner als 550ms</span>
-<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>aus den Wörtern "pear", "elephant" oder "tortoise" stammen</span>
-<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(languageR)</span>
-<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a>df_lexdec <span class="ot">&lt;-</span> lexdec <span class="sc">|&gt;</span> </span>
-<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">exp</span>(RT)) <span class="sc">|&gt;</span> </span>
-<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Subject, RT, Trial, Sex, NativeLanguage, Correct, Word, Frequency, Class, Length)</span>
-<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span> </span>
-<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span></span>
-<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">teilnehmer =</span> Subject)</span>
-<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span> </span>
-<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a>  df_lexdec <span class="sc">|&gt;</span> </span>
-<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a> <span class="fu">rename</span>(<span class="at">teilnehmer =</span> Subject,</span>
-<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>        <span class="at">rz_ms =</span> RT,</span>
-<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a>        <span class="at">geschlect =</span> Sex,</span>
-<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a>        <span class="at">laenge =</span> Length)</span>
-<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="ot">&lt;-</span></span>
-<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a>  df_lexent <span class="sc">|&gt;</span> </span>
-<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb10-249"><a href="#cb10-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">rz_s =</span> rz_ms <span class="sc">/</span> <span class="dv">1000</span>,</span>
-<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> rz_ms</span>
-<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span></span>
-<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rz_ms, NativeLanguage, Word) <span class="sc">|&gt;</span> </span>
-<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(rz_ms) <span class="sc">|&gt;</span> </span>
-<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rz_ms <span class="sc">&lt;=</span> <span class="dv">550</span> <span class="sc">&amp;</span> rz_ms <span class="sc">&gt;</span> <span class="dv">500</span>,</span>
-<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>         Word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"tortoise"</span>, <span class="st">"elephant"</span>, <span class="st">"pear"</span>)) </span>
-<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Sortiere (<span class="in">`arrange()`</span>) <span class="in">`df_lexent`</span> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</span>
-<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a>df_lexent <span class="sc">|&gt;</span> </span>
-<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rz_ms)) </span>
-<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <span class="in">`df_rz`</span>, das <span class="in">`df_lexent`</span> enthält, *und dann*:</span>
-<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Selektieren (<span class="in">`select()`</span>) Sie die Variablen <span class="in">`Teilnehmer`</span>, <span class="in">`NativeLanguage`</span>, <span class="in">`Word`</span>, <span class="in">`rz_s`</span>, <span class="in">`laenge`</span>, und <span class="in">`Frequency`</span></span>
-<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Erstelle eine neue Variable <span class="in">`rz_s_laenge`</span> (<span class="in">`mutate()`</span>), die <span class="in">`rz_s`</span> geteilt durch <span class="in">`laenge`</span> ist</span>
-<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a><span class="ss">      + </span>und wird vor <span class="in">`Laenge`</span> gesetzt</span>
-<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>Benennen (<span class="in">`rename`</span>()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</span>
-<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a>df_rz <span class="ot">&lt;-</span> </span>
-<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>  df_lexent <span class="sc">|&gt;</span> </span>
-<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(teilnehmer, NativeLanguage, Word, rz_s, laenge, Frequency) <span class="sc">|&gt;</span> </span>
-<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rz_s_laenge =</span> rz_s<span class="sc">/</span>laenge, <span class="at">.before =</span> laenge) <span class="sc">|&gt;</span> </span>
-<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">muttersprache =</span> NativeLanguage,</span>
-<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a>         <span class="at">wort =</span> Word,</span>
-<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>         <span class="at">frequenz =</span> Frequency) <span class="do">## etcetera</span></span>
-<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a>##</span>
-</code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
