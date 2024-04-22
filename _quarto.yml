@@ -51,7 +51,7 @@ book:
         # - mats/15-bericht_3.qmd
         - mats/16-troubleshooting.qmd
   appendices:
-    - mats/00-aufgaben.qmd
+    - appendices/00-aufgaben.qmd
     - references.qmd
 
 bibliography: references.bib
