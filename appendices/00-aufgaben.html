@@ -375,12 +375,6 @@ MathJax.Hub.Config({
   <li><a href="#data-wrangling-1-transformation" id="toc-data-wrangling-1-transformation" class="nav-link" data-scroll-target="#data-wrangling-1-transformation"><span class="header-section-number">A.4</span> Data Wrangling 1: Transformation</a>
   <ul class="collapse">
   <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">A.4.1</span> </a></li>
-  </ul></li>
-  <li><a href="#data-wrangling-1-transformation-1" id="toc-data-wrangling-1-transformation-1" class="nav-link" data-scroll-target="#data-wrangling-1-transformation-1"><span class="header-section-number">A.5</span> Data Wrangling 1: Transformation</a>
-  <ul class="collapse">
-  <li><a href="#aufgaben-1" id="toc-aufgaben-1" class="nav-link" data-scroll-target="#aufgaben-1">Aufgaben</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">A.5.1</span> </a></li>
   </ul></li>
   </ul>
 </nav>
@@ -415,7 +409,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mo. den 22.04.2024</p>
+      <p class="date-modified">Mi. den 24.04.2024</p>
     </div>
   </div>
     
@@ -676,39 +670,6 @@ MathJax.Hub.Config({
 <li>Benennen (<code>rename</code>()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</li>
 </ul></li>
 </ol>
-</section>
-<section id="section" class="level3" data-number="A.4.1">
-<h3 data-number="A.4.1" class="anchored" data-anchor-id="section"><span class="header-section-number">A.4.1</span> </h3>
-</section>
-</section>
-<section id="data-wrangling-1-transformation-1" class="level2" data-number="A.5">
-<h2 data-number="A.5" class="anchored" data-anchor-id="data-wrangling-1-transformation-1"><span class="header-section-number">A.5</span> Data Wrangling 1: Transformation</h2>
-<section id="aufgaben-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="aufgaben-1">Aufgaben</h3>
-<ol type="1">
-<li>Drucken Sie in einer einzigen Pipeline <code>df_lexent</code>, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:
-<ul>
-<li>die Reaktionszeiten waren größer als 500ms <em>und</em> kleiner als 550ms</li>
-<li>aus den Wörtern “pear”, “elephant” oder “tortoise” stammen</li>
-</ul></li>
-</ol>
-<ol start="2" type="1">
-<li>Sortiere (<code>arrange()</code>) <code>df_lexent</code> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
-</ol>
-<ol start="3" type="1">
-<li>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <code>df_rz</code>, das <code>df_lexent</code> enthält, <em>und dann</em>:
-<ul>
-<li>Selektieren (<code>select()</code>) Sie die Variablen <code>Teilnehmer</code>, <code>NativeLanguage</code>, <code>Word</code>, <code>rz_s</code>, <code>laenge</code>, und <code>Frequency</code></li>
-<li>Erstelle eine neue Variable <code>rz_s_laenge</code> (<code>mutate()</code>), die <code>rz_s</code> geteilt durch <code>laenge</code> ist
-<ul>
-<li>und wird vor <code>Laenge</code> gesetzt</li>
-</ul></li>
-<li>Benennen (<code>rename</code>()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</li>
-</ul></li>
-</ol>
-</section>
-<section id="section-1" class="level3" data-number="A.5.1">
-<h3 data-number="A.5.1" class="anchored" data-anchor-id="section-1"><span class="header-section-number">A.5.1</span> </h3>
 
 
 <!-- -->
@@ -1149,7 +1110,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("01-intro.qmd", "02-dataviz1.qmd", "03-quarto.qmd", "04-wrangling1.qmd")}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd", "exercises/04-wrangling1.qmd")}</span></span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
