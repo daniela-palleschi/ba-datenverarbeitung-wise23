@@ -553,7 +553,7 @@ ggplot(
 labs(title = "Plot title",
      x = "x-axis label",
      y = "y-axis label") +
-  scale_fill_colourblind() +
+  scale_fill_colorblind() +
   theme_minimal()
 ```
 
