@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -103,7 +104,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -112,6 +119,7 @@ div.csl-indent {
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -137,17 +145,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - 12&nbsp; Troubleshooting">
 <meta name="twitter:description" content="Was tun, wenn etwas schief geht?">
-<meta name="twitter:image" content="../media/Horst_error.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -159,51 +166,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/16-troubleshooting.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/16-troubleshooting.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -366,7 +365,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -399,28 +398,28 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/16-troubleshooting.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Was tun, wenn etwas schief geht?</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
@@ -440,7 +439,9 @@ MathJax.Hub.Config({
   </div>
   
 
+
 </header>
+
 
 <section id="ressourcen" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="ressourcen"><span class="header-section-number">12.1</span> Ressourcen</h2>
@@ -467,8 +468,15 @@ MathJax.Hub.Config({
 </div>
 </div>
 <p>Was ist das Problem mit dem obigen Code? Die Funktion <code>p_load()</code> konnte nicht gefunden werden, weil sie aus dem Paket <code>pacman</code> stammt, aber wir haben dieses Paket noch nicht geladen. Das ist der Grund, warum wir <code>pacman::p_load()</code> schreiben, wenn wir unsere Pakete einladen.</p>
-<div id="tbl-messages" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="List of common messages, the source of the problem, and typical solutions">
+<div id="tbl-messages" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-messages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;12.1: List of common messages, the source of the problem, and typical solutions
+</figcaption>
+<div aria-describedby="tbl-messages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
+</div>
+</figure>
 </div>
 <p>Um die Funktion <code>p_load()</code> zu benutzen, müssen wir angeben, dass sie aus dem Paket <code>pacman</code> stammt, wie wir es in diesem Buch immer getan haben (oder wir könnten dieser Zeile <code>library(pacman)</code> voranstellen).</p>
 <div class="cell">
@@ -483,10 +491,14 @@ MathJax.Hub.Config({
 <p>Fehler- oder Warnmeldungen sind bei der Programmierung im Allgemeinen sehr häufig. Programmiersprachen sind sehr wortgetreu, sie versuchen normalerweise nicht zu erraten, was Sie wollen. Das bedeutet, dass selbst der kleinste Fehler Ihren Code zerstören kann. Es kann extrem frustrierend und demotivierend sein, wenn man solche Fehlermeldungen erhält. Es mag ein gewisser Trost sein zu wissen, dass jeder Fehler macht, sogar Profis. Mit zunehmender Erfahrung werden Sie lernen, Codefehler effizienter zu erkennen und zu beheben. Heute lernen wir einige Ressourcen kennen, die Ihnen auf diesem Weg helfen können.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-error" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/Horst_error.png" class="img-fluid figure-img" width="960"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.1: Kunstwerke von Alison Horst</figcaption>
+<div id="fig-error" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/Horst_error.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.1: Kunstwerke von Alison Horst
+</figcaption>
 </figure>
 </div>
 </div>
@@ -502,13 +514,17 @@ MathJax.Hub.Config({
                              ^</code></pre>
 </div>
 </div>
-<p>RStudio erkennt diesen Syntaxfehler und visualisiert ihn für Sie, wie in <a href="#fig-rstudio">Abbildung&nbsp;<span>12.2</span></a>. Wir sehen ein rotes “X” neben der Zeilennummer (<code>42</code>) sowie eine rote Unterstreichung für den problematischen oder unerwarteten Code.</p>
+<p>RStudio erkennt diesen Syntaxfehler und visualisiert ihn für Sie, wie in <a href="#fig-rstudio" class="quarto-xref">Abbildung&nbsp;<span>12.2</span></a>. Wir sehen ein rotes “X” neben der Zeilennummer (<code>42</code>) sowie eine rote Unterstreichung für den problematischen oder unerwarteten Code.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-rstudio" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/rstudio_error.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.2: RStudio-Syntaxfehler-Warnung</figcaption>
+<div id="fig-rstudio" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/rstudio_error.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.2: RStudio-Syntaxfehler-Warnung
+</figcaption>
 </figure>
 </div>
 </div>
@@ -516,10 +532,14 @@ MathJax.Hub.Config({
 <p>Die Syntax von <code>"Correct"</code> selbst ist nicht falsch, aber sie ist unerwartet, weil ein Komma nach der vorherigen Zeichenkette fehlt. Erinnern Sie sich, dass <code>c()</code> eine Liste von Argumenten zu einem Vektor kombiniert, und diese Argumente müssen durch ein Komma getrennt werden. Fehlende Kommas sind ein sehr häufiger Grund für fehlerhaften Code, also halten Sie die Augen offen!</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-troubleshooting" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/Horst_troubleshooting.jpeg" class="img-fluid figure-img" width="3364"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.3: Kunstwerke von Alison Horst</figcaption>
+<div id="fig-troubleshooting" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-troubleshooting-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/Horst_troubleshooting.jpeg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-troubleshooting-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.3: Kunstwerke von Alison Horst
+</figcaption>
 </figure>
 </div>
 </div>
@@ -557,7 +577,7 @@ MathJax.Hub.Config({
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"Subjct"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `select()`:
-! Can't subset columns that don't exist.
+! Can't select columns that don't exist.
 ✖ Column `Subjct` doesn't exist.</code></pre>
 </div>
 </div>
@@ -567,7 +587,7 @@ MathJax.Hub.Config({
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"subject"</span>, <span class="st">"RT"</span>, <span class="st">"Correct"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `select()`:
-! Can't subset columns that don't exist.
+! Can't select columns that don't exist.
 ✖ Column `subject` doesn't exist.</code></pre>
 </div>
 </div>
@@ -581,10 +601,14 @@ MathJax.Hub.Config({
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-typo" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/Horst_typo.png" class="img-fluid figure-img" width="960"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.4: Kunstwerke von Alison Horst</figcaption>
+<div id="fig-typo" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-typo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/Horst_typo.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-typo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.4: Kunstwerke von Alison Horst
+</figcaption>
 </figure>
 </div>
 </div>
@@ -593,39 +617,51 @@ MathJax.Hub.Config({
 </section>
 <section id="rendering-fehler" class="level2" data-number="12.4">
 <h2 data-number="12.4" class="anchored" data-anchor-id="rendering-fehler"><span class="header-section-number">12.4</span> Rendering-Fehler</h2>
-<p>Das Rendern eines Quarto-Dokuments kann auch Fehlerwarnungen ausgeben, wenn Ihr Code ausgeführt wurde. Vielleicht lief Ihr Code perfekt, wenn Sie ihn direkt im Skript abgearbeitet haben, aber er funktioniert nicht, wenn er gerendert wird. Diese Fehlerwarnungen sind oft darauf zurückzuführen, dass Ihr Code nicht linear geschrieben wurde (d.h. jeder Codeabschnitt sollte vor dem nächsten ausgeführt werden), oder dass Codeabschnitt-Optionen die Ausführung eines erforderlichen Codeabschnitts blockieren (z.B. durch die Einstellung <code>eval: false</code>). Glücklicherweise enthalten die Fehlerwarnungen Informationen darüber, welcher Codechunk problematisch ist. Manchmal ist der Fehler auf einen Fehler in diesem Codechunk zurückzuführen oder darauf, dass ein vorheriger Codechunk nicht ausgeführt wird, z.B. wenn Quarto ein erforderliches Paket nicht lädt oder Daten nicht lädt oder ein neues Objekt erzeugt. Ein solches Beispiel sehen wir in <a href="#fig-render">Abbildung&nbsp;<span>12.5</span></a>.</p>
+<p>Das Rendern eines Quarto-Dokuments kann auch Fehlerwarnungen ausgeben, wenn Ihr Code ausgeführt wurde. Vielleicht lief Ihr Code perfekt, wenn Sie ihn direkt im Skript abgearbeitet haben, aber er funktioniert nicht, wenn er gerendert wird. Diese Fehlerwarnungen sind oft darauf zurückzuführen, dass Ihr Code nicht linear geschrieben wurde (d.h. jeder Codeabschnitt sollte vor dem nächsten ausgeführt werden), oder dass Codeabschnitt-Optionen die Ausführung eines erforderlichen Codeabschnitts blockieren (z.B. durch die Einstellung <code>eval: false</code>). Glücklicherweise enthalten die Fehlerwarnungen Informationen darüber, welcher Codechunk problematisch ist. Manchmal ist der Fehler auf einen Fehler in diesem Codechunk zurückzuführen oder darauf, dass ein vorheriger Codechunk nicht ausgeführt wird, z.B. wenn Quarto ein erforderliches Paket nicht lädt oder Daten nicht lädt oder ein neues Objekt erzeugt. Ein solches Beispiel sehen wir in <a href="#fig-render" class="quarto-xref">Abbildung&nbsp;<span>12.5</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-render" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/render_error.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.5: Kunstwerke von Alison Horst</figcaption>
+<div id="fig-render" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-render-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/render_error.png" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-render-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.5: Kunstwerke von Alison Horst
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Sehen Sie sich zunächst die Codeabschnitte in <a href="#fig-render">Abbildung&nbsp;<span>12.5</span></a> an. Der erste Codeabschnitt enthält die Option <code>eval: false</code>, und wird daher beim Rendern des Skripts nicht ausgeführt. Das bedeutet, dass das Paket <code>languageR</code> nicht geladen wird. Der zweite Codeabschnitt versucht dann, die ersten 6 Zeilen des Datensatzes <code>lexdec</code> zu drucken, der Teil des Pakets <code>languageR</code> ist, aber da dieses Paket beim Rendern nicht geladen wurde, erhalten wir die Warnung: <code>Objekt 'lexdec' nicht gefunden</code>. Dies ist insofern informativ, als es uns sagt, dass es ein Problem beim Finden von <code>lexdec</code> gibt, aber es sagt uns nicht explizit, dass es daran liegt, dass wir das Paket nicht geladen haben. Bei solchen Fehlern müssen wir manchmal nachforschen, indem wir unseren Code untersuchen.</p>
+<p>Sehen Sie sich zunächst die Codeabschnitte in <a href="#fig-render" class="quarto-xref">Abbildung&nbsp;<span>12.5</span></a> an. Der erste Codeabschnitt enthält die Option <code>eval: false</code>, und wird daher beim Rendern des Skripts nicht ausgeführt. Das bedeutet, dass das Paket <code>languageR</code> nicht geladen wird. Der zweite Codeabschnitt versucht dann, die ersten 6 Zeilen des Datensatzes <code>lexdec</code> zu drucken, der Teil des Pakets <code>languageR</code> ist, aber da dieses Paket beim Rendern nicht geladen wurde, erhalten wir die Warnung: <code>Objekt 'lexdec' nicht gefunden</code>. Dies ist insofern informativ, als es uns sagt, dass es ein Problem beim Finden von <code>lexdec</code> gibt, aber es sagt uns nicht explizit, dass es daran liegt, dass wir das Paket nicht geladen haben. Bei solchen Fehlern müssen wir manchmal nachforschen, indem wir unseren Code untersuchen.</p>
 <p>Schauen wir uns auch die Fehlerwarnung genauer an. In diesem kurzen Skript können wir leicht erkennen, wo das problematische <code>lexdec</code> ist, aber vielleicht haben wir ein sehr langes Skript geschrieben und es ist nicht klar, wo die Quelle des Problems liegt, wenn wir nur den Fehlertext betrachten. Wir erhalten auch Informationen darüber, <em>wo</em> Quarto auf ein Problem gestoßen ist: <code>Qutting from lines 11-12 [unnamed-chunk-2] (Untitled.qmd)</code>. Wir erhalten die Zeilennummer und die Nummer des Codeabschnitts. Dies ist eine sehr nützliche Information, wenn wir ein längeres Skript mit vielen Codeabschnitten haben.</p>
 <section id="rprojects" class="level3" data-number="12.4.1">
 <h3 data-number="12.4.1" class="anchored" data-anchor-id="rprojects"><span class="header-section-number">12.4.1</span> RProjects</h3>
-<p>Ein häufiger Fehler beim Laden von Daten ist auf einen falschen Dateipfad zurückzuführen. Da wir in diesem Kurs innerhalb eines RProjekts arbeiten, ist dies häufig darauf zurückzuführen, dass wir nicht innerhalb unseres RProjekts arbeiten. Erinnern Sie sich, dass wir das <code>here</code>-Paket verwenden, weil es das Arbeitsverzeichnis relativ zu dem Ordner setzt, der unser RProjekt enthält. Wenn Sie nicht in einem RProjekt arbeiten oder sich in einem falschen RProjekt befinden, ist der Dateipfad nicht korrekt. In einem solchen Fall kann es zu einer Warnung wie in <a href="#fig-no-rproj">Abbildung&nbsp;<span>12.6</span></a> kommen, wo wir die Warnung <code>"Users/danielapalleschi/daten/langaugeR_english.csv" existiert nicht</code> erhalten. Diese Aussage ist richtig, da dieser Dateipfad auf meinem Rechner tatsächlich nicht existiert. Beachten Sie, dass oben in der Mitte des Bildes “RStudio” steht und rechts daneben “Project: (None)”. Beides bedeutet, dass Sie nicht innerhalb eines RProjekts arbeiten, d.&nbsp;h. Ihr Arbeitsverzeichnis ist nicht relativ zu dem Ordner, der Ihr RProjekt enthält. Wenn Sie feststellen, dass Sie in einem falschen oder gar keinem RProjekt arbeiten, können Sie das richtige RProjekt öffnen, indem Sie auf die Stelle klicken, an der “Project: (None)” steht, wo die letzten RProjekte angezeigt werden.</p>
+<p>Ein häufiger Fehler beim Laden von Daten ist auf einen falschen Dateipfad zurückzuführen. Da wir in diesem Kurs innerhalb eines RProjekts arbeiten, ist dies häufig darauf zurückzuführen, dass wir nicht innerhalb unseres RProjekts arbeiten. Erinnern Sie sich, dass wir das <code>here</code>-Paket verwenden, weil es das Arbeitsverzeichnis relativ zu dem Ordner setzt, der unser RProjekt enthält. Wenn Sie nicht in einem RProjekt arbeiten oder sich in einem falschen RProjekt befinden, ist der Dateipfad nicht korrekt. In einem solchen Fall kann es zu einer Warnung wie in <a href="#fig-no-rproj" class="quarto-xref">Abbildung&nbsp;<span>12.6</span></a> kommen, wo wir die Warnung <code>"Users/danielapalleschi/daten/langaugeR_english.csv" existiert nicht</code> erhalten. Diese Aussage ist richtig, da dieser Dateipfad auf meinem Rechner tatsächlich nicht existiert. Beachten Sie, dass oben in der Mitte des Bildes “RStudio” steht und rechts daneben “Project: (None)”. Beides bedeutet, dass Sie nicht innerhalb eines RProjekts arbeiten, d.&nbsp;h. Ihr Arbeitsverzeichnis ist nicht relativ zu dem Ordner, der Ihr RProjekt enthält. Wenn Sie feststellen, dass Sie in einem falschen oder gar keinem RProjekt arbeiten, können Sie das richtige RProjekt öffnen, indem Sie auf die Stelle klicken, an der “Project: (None)” steht, wo die letzten RProjekte angezeigt werden.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-no-rproj" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/load_no_rproject.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.6: Kunstwerke von Alison Horst</figcaption>
+<div id="fig-no-rproj" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-no-rproj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/load_no_rproject.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-no-rproj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.6: Kunstwerke von Alison Horst
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Vergleichen Sie dies mit <a href="#fig-rproj">Abbildung&nbsp;<span>12.7</span></a>. Das gleiche Skript wird ohne Warnung ausgeführt, und Sie können sehen, dass wir innerhalb eines RProjekts mit dem Namen <code>r4ling</code> arbeiten (Sie können das <code>main</code> ignorieren, das hängt mit dem Projekt zusammen, das Git verwendet), und die csv-Datei wird ohne Warnung geladen.</p>
+<p>Vergleichen Sie dies mit <a href="#fig-rproj" class="quarto-xref">Abbildung&nbsp;<span>12.7</span></a>. Das gleiche Skript wird ohne Warnung ausgeführt, und Sie können sehen, dass wir innerhalb eines RProjekts mit dem Namen <code>r4ling</code> arbeiten (Sie können das <code>main</code> ignorieren, das hängt mit dem Projekt zusammen, das Git verwendet), und die csv-Datei wird ohne Warnung geladen.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-rproj" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../media/load_rproject.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;12.7: Kunstwerke von Alison Horst</figcaption>
+<div id="fig-rproj" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rproj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../media/load_rproject.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rproj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;12.7: Kunstwerke von Alison Horst
+</figcaption>
 </figure>
 </div>
 </div>
@@ -653,7 +689,7 @@ MathJax.Hub.Config({
 </ul></li>
 <li>Löschen Sie Ihre R-Sitzung (<code>Session</code> &gt; <code>Restart R</code>)
 <ul>
-<li>Alternativ können Sie die R-Sitzung löschen und dann auf die Schaltfläche “Run &gt; Run All Chunks Above” (Ausführen &gt; Alle Chunks oben ausführen) in der rechten oberen Ecke des Editorfensters klicken (in <a href="#fig-render">Abbildung&nbsp;<span>12.5</span></a>, “Run”). Dieser Schritt befolgt die Code-Chunk-Optionen. Dies sollte zu demselben Fehler führen. Wenn dies nicht der Fall ist, versuchen Sie, R zu schließen und erneut zu öffnen. Wenn der gleiche Fehler auftritt, Sie aber immer noch nicht wissen, was er bedeutet, fahren Sie fort.</li>
+<li>Alternativ können Sie die R-Sitzung löschen und dann auf die Schaltfläche “Run &gt; Run All Chunks Above” (Ausführen &gt; Alle Chunks oben ausführen) in der rechten oberen Ecke des Editorfensters klicken (in <a href="#fig-render" class="quarto-xref">Abbildung&nbsp;<span>12.5</span></a>, “Run”). Dieser Schritt befolgt die Code-Chunk-Optionen. Dies sollte zu demselben Fehler führen. Wenn dies nicht der Fall ist, versuchen Sie, R zu schließen und erneut zu öffnen. Wenn der gleiche Fehler auftritt, Sie aber immer noch nicht wissen, was er bedeutet, fahren Sie fort.</li>
 </ul></li>
 <li>Löschen Sie Ihre R-Sitzung (<code>Session</code> &gt; <code>Restart R</code>) und führen Sie jeden Codechunk vom Anfang Ihres Skripts bis zum problematischen Codechunk aus, wobei Sie genau auf die Codechunk-Optionen achten. Sehen Sie, was das Problem ist?
 <ul>
@@ -728,45 +764,44 @@ Disclaimer
 </section>
 <section id="session-info" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
-<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<p>Hergestellt mit R version 4.4.0 (2024-04-24) (Puppy Cup) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: aarch64-apple-darwin20 (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
 Running under: macOS Ventura 13.2.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] languageR_1.5.0 here_1.0.1      janitor_2.2.0   lubridate_1.9.2
- [5] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.3     purrr_1.0.2    
- [9] readr_2.1.5     tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.3  
+ [1] languageR_1.5.0 here_1.0.1      janitor_2.2.0   lubridate_1.9.3
+ [5] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2    
+ [9] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
 [13] tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] gtable_0.3.4      jsonlite_1.8.8    compiler_4.3.0    tidyselect_1.2.0 
- [5] snakecase_0.11.0  png_0.1-8         scales_1.2.1      yaml_2.3.8       
- [9] fastmap_1.1.1     R6_2.5.1          generics_0.1.3    knitr_1.45       
-[13] htmlwidgets_1.6.2 rprojroot_2.0.3   munsell_0.5.0     pillar_1.9.0     
+ [1] gtable_0.3.5      jsonlite_1.8.8    compiler_4.4.0    renv_1.0.7       
+ [5] tidyselect_1.2.1  snakecase_0.11.1  scales_1.3.0      yaml_2.3.8       
+ [9] fastmap_1.1.1     R6_2.5.1          generics_0.1.3    knitr_1.46       
+[13] htmlwidgets_1.6.4 rprojroot_2.0.4   munsell_0.5.1     pillar_1.9.0     
 [17] tzdb_0.4.0        rlang_1.1.3       utf8_1.2.4        stringi_1.8.3    
-[21] xfun_0.42         timechange_0.2.0  cli_3.6.2         withr_3.0.0      
-[25] magrittr_2.0.3    digest_0.6.34     grid_4.3.0        rstudioapi_0.15.0
+[21] xfun_0.43         timechange_0.3.0  cli_3.6.2         withr_3.0.0      
+[25] magrittr_2.0.3    digest_0.6.35     grid_4.4.0        rstudioapi_0.16.0
 [29] hms_1.1.3         lifecycle_1.0.4   vctrs_0.6.5       evaluate_0.23    
 [33] glue_1.7.0        fansi_1.0.6       colorspace_2.1-0  pacman_0.5.1     
-[37] rmarkdown_2.25    jpeg_0.1-10       tools_4.3.0       pkgconfig_2.0.3  
-[41] htmltools_0.5.7  </code></pre>
+[37] rmarkdown_2.26    tools_4.4.0       pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
 </div>
 </div>
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-perkel_six_2023" class="csl-entry" role="listitem">
 Perkel, J. M. (2023). Six Tips for Better Coding with <span>ChatGPT</span>. <em>Nature</em>, <em>618</em>(7964), 422–423. <a href="https://doi.org/10.1038/d41586-023-01833-0">https://doi.org/10.1038/d41586-023-01833-0</a>
 </div>
@@ -827,6 +862,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -895,13 +957,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1031,10 +1095,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1044,8 +1125,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1057,7 +1147,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1101,6 +1314,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1126,6 +1340,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1187,12 +1427,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/13-dataviz_4.html" class="pagination-link">
+      <a href="../mats/13-dataviz_4.html" class="pagination-link" aria-label="Datenvisualiserung 4">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../appendices/00-aufgaben.html" class="pagination-link">
+      <a href="../appendices/00-aufgaben.html" class="pagination-link" aria-label="Aufgaben">
         <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1515,6 +1755,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

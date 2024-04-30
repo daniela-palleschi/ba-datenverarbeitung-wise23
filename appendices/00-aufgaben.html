@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -118,17 +125,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - Anhang A — Aufgaben">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="00-aufgaben_files/figure-html/fig-bar1-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -140,51 +146,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html">Anhang</a></li><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html">Anhang</a></li><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -347,7 +345,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -362,19 +360,17 @@ MathJax.Hub.Config({
   <li><a href="#rechnen-mit-objekte-und-funktionen" id="toc-rechnen-mit-objekte-und-funktionen" class="nav-link" data-scroll-target="#rechnen-mit-objekte-und-funktionen"><span class="header-section-number">A.1.4</span> Rechnen mit Objekte und Funktionen</a></li>
   <li><a href="#vektoren" id="toc-vektoren" class="nav-link" data-scroll-target="#vektoren"><span class="header-section-number">A.1.5</span> Vektoren</a></li>
   </ul></li>
-  <li><a href="#app-data_viz1" id="toc-app-data_viz1" class="nav-link" data-scroll-target="#app-data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</a>
+  <li><a href="#sec-app_data_viz1" id="toc-sec-app_data_viz1" class="nav-link" data-scroll-target="#sec-app_data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</a>
   <ul class="collapse">
   <li><a href="#kombination-von-plots-mit-patchwork" id="toc-kombination-von-plots-mit-patchwork" class="nav-link" data-scroll-target="#kombination-von-plots-mit-patchwork"><span class="header-section-number">A.2.1</span> Kombination von Plots mit Patchwork</a></li>
   <li><a href="#reproduzieren-eines-plots" id="toc-reproduzieren-eines-plots" class="nav-link" data-scroll-target="#reproduzieren-eines-plots"><span class="header-section-number">A.2.2</span> Reproduzieren eines Plots</a></li>
   </ul></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">A.3</span> Quarto</a>
+  <li><a href="#sec-app_quarto" id="toc-sec-app_quarto" class="nav-link" data-scroll-target="#sec-app_quarto"><span class="header-section-number">A.3</span> Quarto</a>
   <ul class="collapse">
   <li><a href="#schreiben-und-formatieren-eines-quarto-dokuments" id="toc-schreiben-und-formatieren-eines-quarto-dokuments" class="nav-link" data-scroll-target="#schreiben-und-formatieren-eines-quarto-dokuments"><span class="header-section-number">A.3.1</span> Schreiben und Formatieren eines Quarto-Dokuments</a></li>
   <li><a href="#kodierung-in-einem-quarto-dokument" id="toc-kodierung-in-einem-quarto-dokument" class="nav-link" data-scroll-target="#kodierung-in-einem-quarto-dokument"><span class="header-section-number">A.3.2</span> Kodierung in einem Quarto-Dokument</a></li>
-  </ul></li>
-  <li><a href="#data-wrangling-1-transformation" id="toc-data-wrangling-1-transformation" class="nav-link" data-scroll-target="#data-wrangling-1-transformation"><span class="header-section-number">A.4</span> Data Wrangling 1: Transformation</a>
-  <ul class="collapse">
-  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a></li>
+  <li><a href="#plots-in-quarto" id="toc-plots-in-quarto" class="nav-link" data-scroll-target="#plots-in-quarto"><span class="header-section-number">A.3.3</span> Plots in Quarto</a></li>
+  <li><a href="#ausgabeformate" id="toc-ausgabeformate" class="nav-link" data-scroll-target="#ausgabeformate"><span class="header-section-number">A.3.4</span> Ausgabeformate</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -382,46 +378,48 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html">Anhang</a></li><li class="breadcrumb-item"><a href="../appendices/00-aufgaben.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Anhang A — Aufgaben</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
   
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mi. den 24.04.2024</p>
+      <p class="date-modified">Di. den 30.04.2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <p>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</p>
 <section id="einführung-in-r-und-rstudio" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="einführung-in-r-und-rstudio"><span class="header-section-number">A.1</span> Einführung in R und RStudio</h2>
-<p>Diese Übungen finden sich auch in <a href="../mats/01-intro_r.html"><span>Kapitel&nbsp;1</span></a>.</p>
+<p>Diese Übungen finden sich auch in <a href="../mats/01-intro_r.html" class="quarto-xref"><span>Kapitel 1</span></a>.</p>
 <section id="neue-r-skript" class="level3" data-number="A.1.1">
 <h3 data-number="A.1.1" class="anchored" data-anchor-id="neue-r-skript"><span class="header-section-number">A.1.1</span> Neue R-Skript</h3>
 <ol type="1">
@@ -448,28 +446,28 @@ MathJax.Hub.Config({
 <li>Versuchen Sie, die folgenden Berechnungen in der Konsole auszuführen:</li>
 </ol>
 <div class="cell" data-output-location="column-fragment">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">+</span><span class="dv">32</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 48</code></pre>
 </div>
 </div>
 <div class="cell" data-output-location="column-fragment">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplikation</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplikation</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">*</span><span class="dv">32</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 512</code></pre>
 </div>
 </div>
 <div class="cell" data-output-location="column-fragment">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraktion</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraktion</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">16-32</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -16</code></pre>
 </div>
 </div>
 <div class="cell" data-output-location="column-fragment">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">16</span><span class="sc">/</span><span class="dv">32</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
@@ -499,9 +497,9 @@ MathJax.Hub.Config({
 </ol>
 </section>
 </section>
-<section id="app-data_viz1" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="app-data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</h2>
-<p>Diese Übungen finden sich auch in <a href="../mats/02-dataviz_1.html"><span>Kapitel&nbsp;2</span></a>.</p>
+<section id="sec-app_data_viz1" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="sec-app_data_viz1"><span class="header-section-number">A.2</span> Datenvisualierung 1</h2>
+<p>Diese Übungen finden sich auch in <a href="../mats/02-dataviz_1.html" class="quarto-xref"><span>Kapitel 2</span></a>.</p>
 <section id="kombination-von-plots-mit-patchwork" class="level3" data-number="A.2.1">
 <h3 data-number="A.2.1" class="anchored" data-anchor-id="kombination-von-plots-mit-patchwork"><span class="header-section-number">A.2.1</span> Kombination von Plots mit Patchwork</h3>
 <ol type="1">
@@ -520,18 +518,23 @@ MathJax.Hub.Config({
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-bar1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="00-aufgaben_files/figure-html/fig-bar1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;A.1: zu reproduzierende Abbildung</figcaption>
+<div id="fig-bar1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="00-aufgaben_files/figure-html/fig-bar1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;A.1: zu reproduzierende Abbildung
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="quarto" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="quarto"><span class="header-section-number">A.3</span> Quarto</h2>
+<section id="sec-app_quarto" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="sec-app_quarto"><span class="header-section-number">A.3</span> Quarto</h2>
+<p>Diese Übungen finden sich auch in <a href="../mats/03-quarto_1.html" class="quarto-xref"><span>Kapitel 3</span></a>.</p>
 <section id="schreiben-und-formatieren-eines-quarto-dokuments" class="level3" data-number="A.3.1">
 <h3 data-number="A.3.1" class="anchored" data-anchor-id="schreiben-und-formatieren-eines-quarto-dokuments"><span class="header-section-number">A.3.1</span> Schreiben und Formatieren eines Quarto-Dokuments</h3>
 <ol type="1">
@@ -610,16 +613,20 @@ MathJax.Hub.Config({
 </ul></li>
 </ol>
 </section>
-<section id="plots-in-quarto" class="level4" data-number="A.3.2.3">
-<h4 data-number="A.3.2.3" class="anchored" data-anchor-id="plots-in-quarto"><span class="header-section-number">A.3.2.3</span> Plots in Quarto</h4>
+</section>
+<section id="plots-in-quarto" class="level3" data-number="A.3.3">
+<h3 data-number="A.3.3" class="anchored" data-anchor-id="plots-in-quarto"><span class="header-section-number">A.3.3</span> Plots in Quarto</h3>
 <ol type="1">
-<li>Einen neuen Codeabschnitt erstellen und das Balkendiagramm von letzter Woche erzeugen, aber als Objekt speichern</li>
+<li>Einen neuen Codeabschnitt erstellen und das Balkendiagramm von letzter Woche erzeugen, aber als Objekt speichern
+<ul>
+<li>stellen Sie sicher, dass Sie alle erforderlichen Pakete oder Datensätze laden</li>
+</ul></li>
 <li>In einem separaten Codechunk nur den Objektnamen dieses Diagramms angeben</li>
 <li>Rendern Sie das Dokument, um zu sehen, wo die Abbildung gedruckt wurde.</li>
 </ol>
 </section>
-<section id="ausgabeformate" class="level4" data-number="A.3.2.4">
-<h4 data-number="A.3.2.4" class="anchored" data-anchor-id="ausgabeformate"><span class="header-section-number">A.3.2.4</span> Ausgabeformate</h4>
+<section id="ausgabeformate" class="level3" data-number="A.3.4">
+<h3 data-number="A.3.4" class="anchored" data-anchor-id="ausgabeformate"><span class="header-section-number">A.3.4</span> Ausgabeformate</h3>
 <ol type="1">
 <li>Ersetzen Sie <code>html</code> in der YAML durch <code>revealjs</code>. Rendert das Dokument.
 <ul>
@@ -635,40 +642,7 @@ MathJax.Hub.Config({
 <ul>
 <li>Ist die Ausgabe von <code>revealjs</code> dort?</li>
 </ul></li>
-</ol>
-</section>
-<section id="sessioninfo" class="level4" data-number="A.3.2.5">
-<h4 data-number="A.3.2.5" class="anchored" data-anchor-id="sessioninfo"><span class="header-section-number">A.3.2.5</span> SessionInfo</h4>
-<ol type="1">
 <li>Fügen Sie eine “Session Info” Abschnitt am Ende des Dokuments hin.</li>
-</ol>
-</section>
-</section>
-</section>
-<section id="data-wrangling-1-transformation" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="data-wrangling-1-transformation"><span class="header-section-number">A.4</span> Data Wrangling 1: Transformation</h2>
-<section id="aufgaben" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="aufgaben">Aufgaben</h3>
-<ol type="1">
-<li>Drucken Sie in einer einzigen Pipeline <code>df_lexent</code>, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:
-<ul>
-<li>die Reaktionszeiten waren größer als 500ms <em>und</em> kleiner als 550ms</li>
-<li>aus den Wörtern “pear”, “elephant” oder “tortoise” stammen</li>
-</ul></li>
-</ol>
-<ol start="2" type="1">
-<li>Sortiere (<code>arrange()</code>) <code>df_lexent</code> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
-</ol>
-<ol start="3" type="1">
-<li>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <code>df_rz</code>, das <code>df_lexent</code> enthält, <em>und dann</em>:
-<ul>
-<li>Selektieren (<code>select()</code>) Sie die Variablen <code>Teilnehmer</code>, <code>NativeLanguage</code>, <code>Word</code>, <code>rz_s</code>, <code>laenge</code>, und <code>Frequency</code></li>
-<li>Erstelle eine neue Variable <code>rz_s_laenge</code> (<code>mutate()</code>), die <code>rz_s</code> geteilt durch <code>laenge</code> ist
-<ul>
-<li>und wird vor <code>Laenge</code> gesetzt</li>
-</ul></li>
-<li>Benennen (<code>rename</code>()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</li>
-</ul></li>
 </ol>
 
 
@@ -727,6 +701,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -795,13 +796,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -931,10 +934,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -944,8 +964,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -957,7 +986,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1001,6 +1153,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1026,6 +1179,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1087,12 +1266,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/16-troubleshooting.html" class="pagination-link">
+      <a href="../mats/16-troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link">
+      <a href="../references.html" class="pagination-link" aria-label="Literaturverzeichnis">
         <span class="nav-page-text">Literaturverzeichnis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1110,11 +1289,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd", "exercises/04-wrangling1.qmd")}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd")}</span></span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

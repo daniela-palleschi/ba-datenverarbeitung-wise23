@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -103,7 +104,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -112,6 +119,7 @@ div.csl-indent {
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -132,7 +140,6 @@ MathJax.Hub.Config({
     }
   };
 </script>
-
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -140,17 +147,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - 8&nbsp; Data Wrangling 2">
 <meta name="twitter:description" content="Datenbereinigung (Data tidying)">
-<meta name="twitter:image" content="09-wrangling_2_files/figure-html/fig-workflow-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -162,51 +168,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/09-wrangling_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/09-wrangling_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -369,7 +367,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -406,28 +404,28 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/09-wrangling_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
 <p class="subtitle lead">Datenbereinigung (Data tidying)</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
@@ -447,7 +445,9 @@ MathJax.Hub.Config({
   </div>
   
 
+
 </header>
+
 
 <section id="lernziele" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="lernziele">Lernziele</h2>
@@ -489,13 +489,17 @@ MathJax.Hub.Config({
 </section>
 <section id="tidy-arbeitsablauf" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="tidy-arbeitsablauf"><span class="header-section-number">8.3</span> ‘Tidy’ Arbeitsablauf</h2>
-<p><a href="#fig-workflow">Abbildung&nbsp;<span>8.1</span></a> zeigt einen Überblick über den typischen Data-Science-Prozess, bei dem wir unsere Daten importieren, sie bereinigen und dann einen Zyklus von Umwandlung, Visualisierung und Modellierung durchlaufen, bevor wir schließlich unsere Ergebnisse mitteilen.</p>
+<p><a href="#fig-workflow" class="quarto-xref">Abbildung&nbsp;<span>8.1</span></a> zeigt einen Überblick über den typischen Data-Science-Prozess, bei dem wir unsere Daten importieren, sie bereinigen und dann einen Zyklus von Umwandlung, Visualisierung und Modellierung durchlaufen, bevor wir schließlich unsere Ergebnisse mitteilen.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-workflow" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-wrangling_2_files/figure-html/fig-workflow-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;8.1: <a href="https://r4ds.hadley.nz/intro.html">Image source:</a> <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)</figcaption>
+<div id="fig-workflow" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-wrangling_2_files/figure-html/fig-workflow-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;8.1: <a href="https://r4ds.hadley.nz/intro.html">Image source:</a> <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -506,10 +510,15 @@ MathJax.Hub.Config({
 <h2 data-number="8.4" class="anchored" data-anchor-id="tidy-daten"><span class="header-section-number">8.4</span> ‘Tidy’ Daten</h2>
 <p>Dieselben Daten können auf verschiedene Weise dargestellt werden. Die folgenden Datensätze zeigen alle dieselben Werte für vier Variablen: Land, Jahr, Bevölkerungszahl und Anzahl der Tuberkulosefälle. Jeder Datensatz ordnet die Werte anders an. Nehmen Sie sich einen Moment Zeit, um die verschiedenen Optionen zu betrachten. Welche ist am einfachsten zu lesen?</p>
 <div class="cell" data-output-location="fragment">
+<div id="tbl-1" class="cell quarto-float anchored" data-output-location="fragment">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.1: Tabelle 1
+</figcaption>
+<div aria-describedby="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-1" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.1: Tabelle 1</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -557,16 +566,24 @@ MathJax.Hub.Config({
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell" data-output-location="fragment">
+<div id="tbl-2" class="cell quarto-float anchored" data-output-location="fragment">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.2: Tabelle 2
+</figcaption>
+<div aria-describedby="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-2" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.2: Tabelle 2</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -650,16 +667,24 @@ MathJax.Hub.Config({
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell" data-output-location="fragment">
+<div id="tbl-3" class="cell quarto-float anchored" data-output-location="fragment">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.3: Tabelle 3
+</figcaption>
+<div aria-describedby="tbl-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-3" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.3: Tabelle 3</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
@@ -700,12 +725,15 @@ MathJax.Hub.Config({
 </tr>
 </tbody>
 </table>
-</div>
 
 
 </div>
 </div>
-<p>Wahrscheinlich ist <a href="#tbl-1">Tabelle&nbsp;<span>8.1</span></a> für Sie am einfachsten zu lesen. Das liegt daran, dass sie den drei Regeln für aufgeräumte Daten folgt (visualisiert in <a href="#fig-tidy">Abbildung&nbsp;<span>8.2</span></a>):</p>
+</div>
+</figure>
+</div>
+</div>
+<p>Wahrscheinlich ist <a href="#tbl-1" class="quarto-xref">Tabelle&nbsp;<span>8.1</span></a> für Sie am einfachsten zu lesen. Das liegt daran, dass sie den drei Regeln für aufgeräumte Daten folgt (visualisiert in <a href="#fig-tidy" class="quarto-xref">Abbildung&nbsp;<span>8.2</span></a>):</p>
 <ol type="1">
 <li>Jede Variable ist eine Spalte, jede Spalte ist eine Variable</li>
 <li>Jede Beobachtung ist eine Zeile, jede Zeile ist eine Beobachtung</li>
@@ -713,15 +741,19 @@ MathJax.Hub.Config({
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-tidy" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-wrangling_2_files/figure-html/fig-tidy-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;8.2: <a href="https://r4ds.hadley.nz/data-tidy.html">Image source:</a> <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)</figcaption>
+<div id="fig-tidy" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tidy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-wrangling_2_files/figure-html/fig-tidy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;8.2: <a href="https://r4ds.hadley.nz/data-tidy.html">Image source:</a> <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In <a href="#tbl-1">Tabelle&nbsp;<span>8.1</span></a> steht jede Spalte für eine Variable: <code>country</code>, <code>year</code>, <code>population</code> und <code>case</code>. Jede Zeile steht für eine einzelne Beobachtung: ein Land in einem bestimmten Jahr. Und schließlich enthält jede Zelle einen einzigen Wert.</p>
+<p>In <a href="#tbl-1" class="quarto-xref">Tabelle&nbsp;<span>8.1</span></a> steht jede Spalte für eine Variable: <code>country</code>, <code>year</code>, <code>population</code> und <code>case</code>. Jede Zeile steht für eine einzelne Beobachtung: ein Land in einem bestimmten Jahr. Und schließlich enthält jede Zelle einen einzigen Wert.</p>
 <section id="warum-tidy-daten" class="level3" data-number="8.4.1">
 <h3 data-number="8.4.1" class="anchored" data-anchor-id="warum-tidy-daten"><span class="header-section-number">8.4.1</span> Warum ‘tidy’ Daten?</h3>
 <blockquote class="blockquote">
@@ -782,12 +814,12 @@ Rückblick: Vektoren
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-tidy">Aufgabe&nbsp;<span>8.1</span></a>: Tidy data
+<a href="#exm-tidy" class="quarto-xref">Aufgabe&nbsp;<span>8.1</span></a>: Tidy data
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-tidy" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 8.1 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 8.1</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <ol type="1">
 <li>Gehen Sie zurück zu den Tabellen 1-3. Beschreiben Sie für jede Tabelle, was jede Beobachtung und jede Spalte darstellt.</li>
@@ -799,9 +831,9 @@ Rückblick: Vektoren
 <li>die entsprechende Bevölkerung (<code>population</code>) pro Land und Jahr,</li>
 <li>multipliziert mit <code>10000</code></li>
 </ul></li>
-<li>Hinweis: Welches <code>dplyr</code>-Verb erzeugt neue Variablen? (Sehen Sie sich das <a href="04-wrangling_1.html"><span>Kapitel&nbsp;4</span></a> an.)</li>
+<li>Hinweis: Welches <code>dplyr</code>-Verb erzeugt neue Variablen? (Sehen Sie sich das <a href="04-wrangling_1.html" class="quarto-xref"><span>Kapitel 4</span></a> an.)</li>
 </ul></li>
-<li>Schauen Sie die <a href="#tbl-2">Tabelle&nbsp;<span>8.2</span></a> und <a href="#tbl-3">Tabelle&nbsp;<span>8.3</span></a> an. Wäre es so einfach gewesen, die <code>rate</code> mit diesen Datenstrukturen zu berechnen?</li>
+<li>Schauen Sie die <a href="#tbl-2" class="quarto-xref">Tabelle&nbsp;<span>8.2</span></a> und <a href="#tbl-3" class="quarto-xref">Tabelle&nbsp;<span>8.3</span></a> an. Wäre es so einfach gewesen, die <code>rate</code> mit diesen Datenstrukturen zu berechnen?</li>
 </ol>
 </div>
 </div>
@@ -820,12 +852,16 @@ Rückblick: Vektoren
 <li><code>pivot_wider()</code>: lange Daten breiter machen</li>
 </ul>
 <p>Oft müssen wir zwischen diesen Formaten konvertieren, um verschiedene Arten von Zusammenfassungen oder Visualisierungen zu erstellen. Aber was genau sind breite und lange Daten?</p>
-<div class="cell" data-layout-align="center" data-fig-cap-location="bottom">
+<div class="cell fig-cap-location-bottom" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-pivot-html" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-wrangling_2_files/figure-html/fig-pivot-html-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;8.3: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials) (<a href="https://www.youtube.com/watch?v=8w3wmQAMoxQ">Friends</a>)</figcaption>
+<div id="fig-pivot-html" class="quarto-figure quarto-figure-center quarto-float anchored" data-cap-location="bottom" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pivot-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-wrangling_2_files/figure-html/fig-pivot-html-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;8.3: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials) (<a href="https://www.youtube.com/watch?v=8w3wmQAMoxQ">Friends</a>)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -852,10 +888,15 @@ Rückblick: Vektoren
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-df_eng" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-df_eng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.4: df_eng
+</figcaption>
+<div aria-describedby="tbl-df_eng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-df_eng" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.4: df_eng</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">age_subject</th>
@@ -924,13 +965,16 @@ Rückblick: Vektoren
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 <ul>
-<li>Sind diese Daten in <a href="#tbl-df_eng">Tabelle&nbsp;<span>8.4</span></a> aufgeräumt?</li>
+<li>Sind diese Daten in <a href="#tbl-df_eng" class="quarto-xref">Tabelle&nbsp;<span>8.4</span></a> aufgeräumt?</li>
 <li>Sind diese Daten zu breit oder zu lang?</li>
 <li>Wie können wir diese Daten länger machen?</li>
 </ul>
@@ -947,16 +991,21 @@ Rückblick: Vektoren
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"time"</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Die Ausgabe der ersten 12 Zeilen (nach einigen zusätzlichen Formatierungen, um eine hübsche Tabelle zu erstellen) sollte wie <a href="#tbl-longer">Tabelle&nbsp;<span>8.5</span></a> aussehen.</p>
+<p>Die Ausgabe der ersten 12 Zeilen (nach einigen zusätzlichen Formatierungen, um eine hübsche Tabelle zu erstellen) sollte wie <a href="#tbl-longer" class="quarto-xref">Tabelle&nbsp;<span>8.5</span></a> aussehen.</p>
 <div class="cell" data-output-location="column-fragment">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_eng_long <span class="sc">%&gt;%</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">20</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-longer" class="cell quarto-float anchored" data-output-location="column-fragment">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-longer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.5: A pivoted version of <code>df_billboard</code> (first 10 rows)
+</figcaption>
+<div aria-describedby="tbl-longer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-longer" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.5: A pivoted version of <code>df_billboard</code> (first 10 rows)</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">age_subject</th>
@@ -1079,12 +1128,15 @@ Rückblick: Vektoren
 </tr>
 </tbody>
 </table>
-</div>
 
 
 </div>
 </div>
-<p>Nehmen wir uns einen Moment Zeit, um die Werte in <a href="#tbl-longer">Tabelle&nbsp;<span>8.5</span></a> mit denen der ersten 6 Zeilen in <code>df_eng</code> zu vergleichen, die in <a href="#tbl-df_eng">Tabelle&nbsp;<span>8.4</span></a> angegeben sind. Vergleichen Sie die Werte in der <code>df_eng</code>-Variablen <code>rt_lexdec</code> (<a href="#tbl-df_eng">Tabelle&nbsp;<span>8.4</span></a>) mit den <code>time</code>-Werten, wenn <code>response</code> <code>rt_lexdec</code> (<a href="#tbl-longer">Tabelle&nbsp;<span>8.5</span></a>) ist: Sie sind identisch. Was ist nun mit <code>rt_naming</code> sowohl in <a href="#tbl-df_eng">Tabelle&nbsp;<span>8.4</span></a> als auch in <a href="#tbl-longer">Tabelle&nbsp;<span>8.5</span></a>? Sie sind ebenfalls identisch. Dies ist eine wichtige Erkenntnis: Wir haben keine Daten oder Beobachtungswerte geändert, sondern lediglich die Organisation der Datenpunkte neu strukturiert.</p>
+</div>
+</figure>
+</div>
+</div>
+<p>Nehmen wir uns einen Moment Zeit, um die Werte in <a href="#tbl-longer" class="quarto-xref">Tabelle&nbsp;<span>8.5</span></a> mit denen der ersten 6 Zeilen in <code>df_eng</code> zu vergleichen, die in <a href="#tbl-df_eng" class="quarto-xref">Tabelle&nbsp;<span>8.4</span></a> angegeben sind. Vergleichen Sie die Werte in der <code>df_eng</code>-Variablen <code>rt_lexdec</code> (<a href="#tbl-df_eng" class="quarto-xref">Tabelle&nbsp;<span>8.4</span></a>) mit den <code>time</code>-Werten, wenn <code>response</code> <code>rt_lexdec</code> (<a href="#tbl-longer" class="quarto-xref">Tabelle&nbsp;<span>8.5</span></a>) ist: Sie sind identisch. Was ist nun mit <code>rt_naming</code> sowohl in <a href="#tbl-df_eng" class="quarto-xref">Tabelle&nbsp;<span>8.4</span></a> als auch in <a href="#tbl-longer" class="quarto-xref">Tabelle&nbsp;<span>8.5</span></a>? Sie sind ebenfalls identisch. Dies ist eine wichtige Erkenntnis: Wir haben keine Daten oder Beobachtungswerte geändert, sondern lediglich die Organisation der Datenpunkte neu strukturiert.</p>
 <p>Wie hat <code>pivot_longer()</code> das gemacht? Hier ist eine Aufschlüsselung der Argumente, die <code>pivot_longer()</code> benötigt (die Sie auch durch Ausführen von <code>?pivot_longer</code> in der Konsole untersuchen können):</p>
 <ul>
 <li><code>col =</code> gibt an, welche Spalten gepivotet werden müssen (sollte eine kategorische Variable sein)
@@ -1100,10 +1152,14 @@ Rückblick: Vektoren
 <p>Da wir nun die <code>response</code>-Daten in einer Variable und die <code>time</code>-Daten in einer anderen Variable haben, wollen wir versuchen, ein Diagramm zu erstellen, in dem wir <code>age_subject</code> auf der x-Achse, <code>time</code> auf der y-Achse und <code>response</code> auf der y-Achse haben.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-eng" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-wrangling_2_files/figure-html/fig-eng-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;8.4: Response times per age group for the lexical decision task vs.&nbsp;naming task</figcaption>
+<div id="fig-eng" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-wrangling_2_files/figure-html/fig-eng-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;8.4: Response times per age group for the lexical decision task vs.&nbsp;naming task
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1114,14 +1170,14 @@ Rückblick: Vektoren
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-tidy">Aufgabe&nbsp;<span>8.1</span></a>: Tidy data
+<a href="#exm-tidy" class="quarto-xref">Aufgabe&nbsp;<span>8.1</span></a>: Tidy data
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-help" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 8.2 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 8.2</strong></span> &nbsp;</p>
 <div class="nonincremental">
-<p><a href="#fig-eng">Abbildung&nbsp;<span>8.4</span></a> neu erstellen.</p>
+<p><a href="#fig-eng" class="quarto-xref">Abbildung&nbsp;<span>8.4</span></a> neu erstellen.</p>
 </div>
 </div>
 </div>
@@ -1144,7 +1200,7 @@ Rückblick: Vektoren
 </ul>
 <p>Erstellen wir zwei neue Variablen, die ihre Namen von <code>age_subject</code> und ihre Werte von <code>rt_lexdec</code> übernehmen. Das Ergebnis sollte wie <span class="quarto-unresolved-ref">?tbl-eng_wider</span> aussehen.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_eng_wide <span class="ot">&lt;-</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  df_eng <span class="sc">%&gt;%</span>  </span>
@@ -1157,10 +1213,15 @@ Rückblick: Vektoren
 </details>
 </div>
 <div class="cell">
+<div id="tbl-eng_wide" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eng_wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.6: Wider <code>df_eng</code> data
+</figcaption>
+<div aria-describedby="tbl-eng_wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-eng_wide" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.6: Wider <code>df_eng</code> data</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">word</th>
@@ -1222,17 +1283,25 @@ Rückblick: Vektoren
 </tr>
 </tbody>
 </table>
-</div>
 
 
 </div>
 </div>
-<p><a href="#tbl-df_eng-2">Tabelle&nbsp;<span>8.7</span></a> zeigt wieder die ersten 6 Zeilen des Originaldatensatzes. Wie werden die Daten aus <a href="#tbl-eng_wide">Tabelle&nbsp;<span>8.6</span></a> in <a href="#tbl-df_eng-2">Tabelle&nbsp;<span>8.7</span></a> dargestellt?</p>
+</div>
+</figure>
+</div>
+</div>
+<p><a href="#tbl-df_eng-2" class="quarto-xref">Tabelle&nbsp;<span>8.7</span></a> zeigt wieder die ersten 6 Zeilen des Originaldatensatzes. Wie werden die Daten aus <a href="#tbl-eng_wide" class="quarto-xref">Tabelle&nbsp;<span>8.6</span></a> in <a href="#tbl-df_eng-2" class="quarto-xref">Tabelle&nbsp;<span>8.7</span></a> dargestellt?</p>
 <div class="cell">
+<div id="tbl-df_eng-2" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-df_eng-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.7: head(df_eng, n = 6)
+</figcaption>
+<div aria-describedby="tbl-df_eng-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-df_eng-2" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.7: head(df_eng, n = 6)</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">age_subject</th>
@@ -1301,9 +1370,12 @@ Rückblick: Vektoren
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -1319,12 +1391,17 @@ Warnung
 
 </div>
 </div>
-<p>Wo ist <code>rt_naming</code> geblieben? Wir haben es entfernt, weil es ebenfalls einen einzigen Wert pro Wort und Altersgruppe hat. Wenn wir es nicht entfernen, bedeutet das, dass wir die Länge unseres Datensatzes nicht ändern (immer noch eine Zeile pro Wort und Altersgruppe), sondern nur die Breite und die Einführung von <code>NA</code>-Werten für <code>lexdec_young</code> für alte Probanden und <code>NA</code>-Werten für <code>lexdec_old</code> für junge Probanden. Hätten wir sie nicht entfernt, sähen unsere ersten 6 Zeilen wie <a href="#tbl-eng_wider_na">Tabelle&nbsp;<span>8.8</span></a> aus. Vergleichen Sie dies mit der Ausgabe in <a href="#tbl-eng_wide">Tabelle&nbsp;<span>8.6</span></a>, sehen Sie den Unterschied?</p>
+<p>Wo ist <code>rt_naming</code> geblieben? Wir haben es entfernt, weil es ebenfalls einen einzigen Wert pro Wort und Altersgruppe hat. Wenn wir es nicht entfernen, bedeutet das, dass wir die Länge unseres Datensatzes nicht ändern (immer noch eine Zeile pro Wort und Altersgruppe), sondern nur die Breite und die Einführung von <code>NA</code>-Werten für <code>lexdec_young</code> für alte Probanden und <code>NA</code>-Werten für <code>lexdec_old</code> für junge Probanden. Hätten wir sie nicht entfernt, sähen unsere ersten 6 Zeilen wie <a href="#tbl-eng_wider_na" class="quarto-xref">Tabelle&nbsp;<span>8.8</span></a> aus. Vergleichen Sie dies mit der Ausgabe in <a href="#tbl-eng_wide" class="quarto-xref">Tabelle&nbsp;<span>8.6</span></a>, sehen Sie den Unterschied?</p>
 <div class="cell">
+<div id="tbl-eng_wider_na" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eng_wider_na-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;8.8: Wider data with missing values
+</figcaption>
+<div aria-describedby="tbl-eng_wider_na-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-eng_wider_na" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;8.8: Wider data with missing values</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">word</th>
@@ -1393,9 +1470,12 @@ Warnung
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -1414,20 +1494,24 @@ Warnung
 <p>Für diese Aufgaben werden wir mit dem Datensatz <code>df_eng</code> arbeiten.</p>
 <ol type="1">
 <li><p>Verwenden Sie <code>pivot_wider</code>, um mit <code>rt_naming</code> neue Variablen zu erstellen: <code>naming_old</code> und <code>naming_young</code>, die die Reaktionszeiten beim Benennen für alte bzw. junge Teilnehmer enthalten. Hinweis: Sie müssen <code>rt_lexdec</code> entfernen. Der resultierende Datenrahmen sollte 2284 Beobachtungen und 6 Variablen enthalten.</p></li>
-<li><p>Erstellen Sie <a href="#fig-old_young">Abbildung&nbsp;<span>8.5</span></a> neu. Hinweis: Sie benötigen <code>pivot_wider()</code>.</p></li>
+<li><p>Erstellen Sie <a href="#fig-old_young" class="quarto-xref">Abbildung&nbsp;<span>8.5</span></a> neu. Hinweis: Sie benötigen <code>pivot_wider()</code>.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-old_young" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-wrangling_2_files/figure-html/fig-old_young-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;8.5: Scatterplot of lexical decision task response times per word for old versus young participants</figcaption>
+<div id="fig-old_young" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-old_young-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-wrangling_2_files/figure-html/fig-old_young-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-old_young-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;8.5: Scatterplot of lexical decision task response times per word for old versus young participants
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <ol start="3" type="1">
-<li><p>Warum brauchen wir unseren <code>df_eng_wide</code>-Datensatz, um <a href="#fig-old_young">Abbildung&nbsp;<span>8.5</span></a> zu erstellen? Mit anderen Worten, warum ist <code>df_eng_wide</code> die geeignete Struktur, aber nicht <code>df_eng_long</code> für ein solches Streudiagramm?</p></li>
+<li><p>Warum brauchen wir unseren <code>df_eng_wide</code>-Datensatz, um <a href="#fig-old_young" class="quarto-xref">Abbildung&nbsp;<span>8.5</span></a> zu erstellen? Mit anderen Worten, warum ist <code>df_eng_wide</code> die geeignete Struktur, aber nicht <code>df_eng_long</code> für ein solches Streudiagramm?</p></li>
 <li><p>Benutze <code>df_eng_long</code> und die Funktion <code>summarise()</code>, die wir im letzten Abschnitt gesehen haben, und reproduziere die folgende Zusammenfassung:</p></li>
 </ol>
 <div class="cell">
@@ -1443,17 +1527,17 @@ Warnung
 </section>
 <section id="session-info" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
-<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<p>Hergestellt mit R version 4.4.0 (2024-04-24) (Puppy Cup) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: aarch64-apple-darwin20 (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
 Running under: macOS Ventura 13.2.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -1462,34 +1546,34 @@ time zone: Europe/Berlin
 tzcode source: internal
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] janitor_2.2.0   here_1.0.1      lubridate_1.9.2 forcats_1.0.0  
- [5] stringr_1.5.1   dplyr_1.1.3     purrr_1.0.2     readr_2.1.5    
- [9] tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.3   tidyverse_2.0.0
+ [1] janitor_2.2.0   here_1.0.1      lubridate_1.9.3 forcats_1.0.0  
+ [5] stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2     readr_2.1.5    
+ [9] tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1   tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.4        stringi_1.8.3    
- [5] hms_1.1.3         digest_0.6.34     magrittr_2.0.3    evaluate_0.23    
- [9] grid_4.3.0        timechange_0.2.0  fastmap_1.1.1     rprojroot_2.0.3  
-[13] jsonlite_1.8.8    fansi_1.0.6       viridisLite_0.4.2 scales_1.2.1     
-[17] cli_3.6.2         rlang_1.1.3       crayon_1.5.2      bit64_4.0.5      
-[21] munsell_0.5.0     withr_3.0.0       yaml_2.3.8        tools_4.3.0      
-[25] parallel_4.3.0    tzdb_0.4.0        colorspace_2.1-0  pacman_0.5.1     
-[29] kableExtra_1.4.0  vctrs_0.6.5       R6_2.5.1          magick_2.7.4     
-[33] lifecycle_1.0.4   snakecase_0.11.0  htmlwidgets_1.6.2 bit_4.0.5        
-[37] vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4     
-[41] Rcpp_1.0.11       glue_1.7.0        systemfonts_1.0.4 highr_0.10       
-[45] xfun_0.42         tidyselect_1.2.0  rstudioapi_0.15.0 knitr_1.45       
-[49] farver_2.1.1      htmltools_0.5.7   labeling_0.4.3    svglite_2.1.1    
-[53] rmarkdown_2.25    compiler_4.3.0   </code></pre>
+ [1] utf8_1.2.4        generics_0.1.3    renv_1.0.7        xml2_1.3.6       
+ [5] stringi_1.8.3     hms_1.1.3         digest_0.6.35     magrittr_2.0.3   
+ [9] evaluate_0.23     grid_4.4.0        timechange_0.3.0  fastmap_1.1.1    
+[13] rprojroot_2.0.4   jsonlite_1.8.8    fansi_1.0.6       viridisLite_0.4.2
+[17] scales_1.3.0      cli_3.6.2         rlang_1.1.3       crayon_1.5.2     
+[21] bit64_4.0.5       munsell_0.5.1     withr_3.0.0       yaml_2.3.8       
+[25] tools_4.4.0       parallel_4.4.0    tzdb_0.4.0        colorspace_2.1-0 
+[29] pacman_0.5.1      kableExtra_1.4.0  vctrs_0.6.5       R6_2.5.1         
+[33] magick_2.8.3      lifecycle_1.0.4   snakecase_0.11.1  htmlwidgets_1.6.4
+[37] bit_4.0.5         vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0     
+[41] gtable_0.3.5      Rcpp_1.0.12       glue_1.7.0        systemfonts_1.0.6
+[45] highr_0.10        xfun_0.43         tidyselect_1.2.1  rstudioapi_0.16.0
+[49] knitr_1.46        farver_2.1.1      htmltools_0.5.8.1 labeling_0.4.3   
+[53] svglite_2.1.3     rmarkdown_2.26    compiler_4.4.0   </code></pre>
 </div>
 </div>
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-nordmann_applied_2022" class="csl-entry" role="listitem">
 Nordmann, E., &amp; DeBruine, L. (2022). <em>Applied Data Skills</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.6365078">https://doi.org/10.5281/zenodo.6365078</a>
 </div>
@@ -1553,6 +1637,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1621,13 +1732,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1757,10 +1870,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1770,8 +1900,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1783,7 +1922,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1827,6 +2089,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1852,6 +2115,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1913,12 +2202,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/08-desc_stats.html" class="pagination-link">
+      <a href="../mats/08-desc_stats.html" class="pagination-link" aria-label="Deskriptive Statistik">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mats/10-dataviz_3.html" class="pagination-link">
+      <a href="../mats/10-dataviz_3.html" class="pagination-link" aria-label="Datenvisualisierung 3">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2199,19 +2488,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-300"><a href="#cb13-300" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-301"><a href="#cb13-301" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="pdf"}</span>
 <span id="cb13-302"><a href="#cb13-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.align = "center", out.width="100%"}</span></span>
-<span id="cb13-303"><a href="#cb13-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap-location: bottom</span></span>
-<span id="cb13-304"><a href="#cb13-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-pivot-html</span></span>
-<span id="cb13-305"><a href="#cb13-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials) ([Friends](https://www.youtube.com/watch?v=8w3wmQAMoxQ))</span></span>
-<span id="cb13-306"><a href="#cb13-306" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/pivot_friends.jpeg"</span>))</span>
+<span id="cb13-303"><a href="#cb13-303" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap-location: bottom</span></span>
+<span id="cb13-304"><a href="#cb13-304" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-pivot-html</span></span>
+<span id="cb13-305"><a href="#cb13-305" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials) ([Friends](https://www.youtube.com/watch?v=8w3wmQAMoxQ))</span></span>
+<span id="cb13-306"><a href="#cb13-306" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/pivot_friends.jpeg"))</span></span>
 <span id="cb13-307"><a href="#cb13-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb13-308"><a href="#cb13-308" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb13-309"><a href="#cb13-309" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-310"><a href="#cb13-310" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
 <span id="cb13-311"><a href="#cb13-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.align = "center", out.width="50%"}</span></span>
-<span id="cb13-312"><a href="#cb13-312" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap-location: bottom</span></span>
-<span id="cb13-313"><a href="#cb13-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-pivot-pdf</span></span>
-<span id="cb13-314"><a href="#cb13-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials)</span></span>
-<span id="cb13-315"><a href="#cb13-315" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/pivot_friends.jpeg"</span>))</span>
+<span id="cb13-312"><a href="#cb13-312" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap-location: bottom</span></span>
+<span id="cb13-313"><a href="#cb13-313" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-pivot-pdf</span></span>
+<span id="cb13-314"><a href="#cb13-314" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: die berühmteste Verwendung des Wortes Pivot (zumindest für Millenials)</span></span>
+<span id="cb13-315"><a href="#cb13-315" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/pivot_friends.jpeg"))</span></span>
 <span id="cb13-316"><a href="#cb13-316" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb13-317"><a href="#cb13-317" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb13-318"><a href="#cb13-318" aria-hidden="true" tabindex="-1"></a></span>
@@ -2469,6 +2758,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

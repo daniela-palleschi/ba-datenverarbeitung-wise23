@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -103,7 +104,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -112,6 +119,7 @@ div.csl-indent {
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -132,7 +140,6 @@ MathJax.Hub.Config({
     }
   };
 </script>
-
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -140,17 +147,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - 9&nbsp; Datenvisualisierung 3">
 <meta name="twitter:description" content="Darstellung der zusammenfassenden Statistik">
-<meta name="twitter:image" content="10-dataviz_3_files/figure-html/fig-distributions-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -162,51 +168,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/10-dataviz_3.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/10-dataviz_3.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -369,7 +367,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -406,28 +404,28 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/10-dataviz_3.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
 <p class="subtitle lead">Darstellung der zusammenfassenden Statistik</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
@@ -447,7 +445,9 @@ MathJax.Hub.Config({
   </div>
   
 
+
 </header>
+
 
 <section id="lernziele" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="lernziele">Lernziele</h2>
@@ -501,13 +501,17 @@ MathJax.Hub.Config({
 <li>Streudiagramme (2 numerische Variablen)</li>
 <li>Balkendiagramme (kategorische Variablen)</li>
 </ul>
-<p>Schauen Sie sich jede Abbildung in <a href="#fig-distributions">Abbildung&nbsp;<span>9.1</span></a> an. Wie viele Variablen werden jeweils dargestellt, und um welche <em>Typen</em> von Variablen handelt es sich? Welche zusammenfassende(n) Statistik(en) wird/werden in jedem Diagramm dargestellt?</p>
-<div class="cell" data-fig.asp="1">
+<p>Schauen Sie sich jede Abbildung in <a href="#fig-distributions" class="quarto-xref">Abbildung&nbsp;<span>9.1</span></a> an. Wie viele Variablen werden jeweils dargestellt, und um welche <em>Typen</em> von Variablen handelt es sich? Welche zusammenfassende(n) Statistik(en) wird/werden in jedem Diagramm dargestellt?</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-distributions" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-distributions-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.1: Verschiedene Diagrammtypen zur Visualisierung der Verteilung von Rohdaten: Histogramm (A), Dichte-Diagramm (B), Streudiagramm (C), gestapeltes Balkendiagramm (D) und unscharfes Balkendiagramm (E)</figcaption>
+<div id="fig-distributions" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-distributions-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.1: Verschiedene Diagrammtypen zur Visualisierung der Verteilung von Rohdaten: Histogramm (A), Dichte-Diagramm (B), Streudiagramm (C), gestapeltes Balkendiagramm (D) und unscharfes Balkendiagramm (E)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -515,40 +519,52 @@ MathJax.Hub.Config({
 </section>
 <section id="darstellung-von-zusammenfassenden-statistiken" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="darstellung-von-zusammenfassenden-statistiken"><span class="header-section-number">9.2</span> Darstellung von zusammenfassenden Statistiken</h2>
-<p>In <a href="08-desc_stats.html"><span>Kapitel&nbsp;7</span></a> haben wir etwas über zusammenfassende Statistiken gelernt. Wir behandelten Maße der zentralen Tendenz, nämlich Modus, Median und Mittelwert, sowie Maße der Streuung, wie Bereich und Standardabweichung. Wie können wir zusammenfassende Statistiken visualisieren?</p>
+<p>In <a href="08-desc_stats.html" class="quarto-xref"><span>Kapitel 7</span></a> haben wir etwas über zusammenfassende Statistiken gelernt. Wir behandelten Maße der zentralen Tendenz, nämlich Modus, Median und Mittelwert, sowie Maße der Streuung, wie Bereich und Standardabweichung. Wie können wir zusammenfassende Statistiken visualisieren?</p>
 <p>Wir haben bereits gesehen, dass Histogramme, Dichtediagramme und nun auch Geigenplots den Modus (höchster Wert) und den Bereich (niedrigster und höchster Wert) visualisieren. Jetzt lernen wir zwei weitere Arten von Diagrammen kennen, eines zur Darstellung der Verteilung der beobachteten Werte und eines zur Darstellung von Mittelwert und Standardabweichung.</p>
 <section id="boxplot" class="level3 kleiner" data-number="9.2.1">
 <h3 class="kleiner anchored" data-number="9.2.1" data-anchor-id="boxplot"><span class="header-section-number">9.2.1</span> Boxplot</h3>
-<p>Boxplots (manchmal auch Box-and-Whisker-Plots genannt, z. B. <a href="13-dataviz_4.html#fig-boxplot">Abbildung&nbsp;<span>11.2</span></a>) bestehen aus einer Box mit einer Linie in der Mitte (die “Box”) und Linien, die an beiden Enden der Box herausragen (die “Whisker”), sowie manchmal einigen Punkten. Schauen Sie sich <a href="13-dataviz_4.html#fig-boxplot">Abbildung&nbsp;<span>11.2</span></a> an und identifizieren Sie jeden dieser 4 Aspekte der Darstellung. Kannst du erraten, was jeder dieser Aspekte darstellen könnte und wie du die Darstellung interpretieren solltest?</p>
+<p>Boxplots (manchmal auch Box-and-Whisker-Plots genannt, z. B. <a href="13-dataviz_4.html#fig-boxplot" class="quarto-xref">Abbildung&nbsp;<span>11.2</span></a>) bestehen aus einer Box mit einer Linie in der Mitte (die “Box”) und Linien, die an beiden Enden der Box herausragen (die “Whisker”), sowie manchmal einigen Punkten. Schauen Sie sich <a href="13-dataviz_4.html#fig-boxplot" class="quarto-xref">Abbildung&nbsp;<span>11.2</span></a> an und identifizieren Sie jeden dieser 4 Aspekte der Darstellung. Kannst du erraten, was jeder dieser Aspekte darstellen könnte und wie du die Darstellung interpretieren solltest?</p>
 <div class="cell" data-ouput-location="column-fragment">
 <div class="cell-output-display">
-<div id="fig-boxplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.2: Boxplot von <code>df_eng</code> (Körpermasse nach Alter_Proband)</figcaption>
+<div id="fig-boxplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.2: Boxplot von <code>df_eng</code> (Körpermasse nach Alter_Proband)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Die Box und die Whiskers stellen eine Vielzahl von Informationen in einer einzigen Visualisierung dar. Die Linie in der Mitte des Boxplots stellt den <em>Median</em> dar, auch Q2 genannt (2. Quartil; der mittlere Wert, über/unter dem 50% der Daten liegen). Die Box selbst stellt den <em>Interquartilsbereich</em> (IQR; der Wertebereich, der zwischen den mittleren 50% der Daten liegt) dar. Die Grenzen der Box stellen Q1 (1. Quartil, unter dem 25% der Daten liegen) und Q3 (3. Quartil, über dem 25% der Daten liegen) dar. Die Whisker stellen <code>1,5*IQR</code> von Q1 (unterer Whisker) oder Q3 (oberer Whisker) dar. Alle Punkte, die außerhalb der Whisker liegen, stellen Ausreißer dar (d.&nbsp;h. Extremwerte, die außerhalb des IQR liegen).</p>
-<p><a href="#fig-winter-boxplot-hist">Abbildung&nbsp;<span>9.3</span></a> zeigt die Beziehung zwischen der Verteilung einer Variablen, wie sie in einem Histogramm dargestellt wird, und einem Boxplot. Während das Histogramm die Balkenhöhe verwendet, um die Anzahl der Beobachtungen innerhalb eines bestimmten Bereichs anzuzeigen, verwendet der Boxplot die Box und die Whiskers, um die Schwellenwerte anzugeben, in denen bestimmte Anteile der Daten enthalten sind (d.&nbsp;h. der Interquartilsbereich).</p>
-<div class="cell" data-layout-align="center" data-fig-cap-location="bottom">
+<p><a href="#fig-winter-boxplot-hist" class="quarto-xref">Abbildung&nbsp;<span>9.3</span></a> zeigt die Beziehung zwischen der Verteilung einer Variablen, wie sie in einem Histogramm dargestellt wird, und einem Boxplot. Während das Histogramm die Balkenhöhe verwendet, um die Anzahl der Beobachtungen innerhalb eines bestimmten Bereichs anzuzeigen, verwendet der Boxplot die Box und die Whiskers, um die Schwellenwerte anzugeben, in denen bestimmte Anteile der Daten enthalten sind (d.&nbsp;h. der Interquartilsbereich).</p>
+<div class="cell fig-cap-location-bottom" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-winter-boxplot-hist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-winter-boxplot-hist-1.png" class="img-fluid figure-img" width="648"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.3: Image source: <span class="citation" data-cites="winter_statistics_2019">Winter (<a href="01-intro_r.html#ref-winter_statistics_2019" role="doc-biblioref">2019</a>)</span> (all rights reserved)</figcaption>
+<div id="fig-winter-boxplot-hist" class="quarto-figure quarto-figure-center quarto-float anchored" data-cap-location="bottom" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-winter-boxplot-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-winter-boxplot-hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-winter-boxplot-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.3: Image source: <span class="citation" data-cites="winter_statistics_2019">Winter (<a href="01-intro_r.html#ref-winter_statistics_2019" role="doc-biblioref">2019</a>)</span> (all rights reserved)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-wickham-boxplot-hist">Abbildung&nbsp;<span>9.4</span></a> bietet einen ähnlichen Vergleich, wobei die einzelnen Beobachtungen im Streudiagramm auf der linken Seite hinzugefügt wurden.</p>
-<div class="cell" data-layout-align="center" data-fig-cap-location="bottom">
+<p><a href="#fig-wickham-boxplot-hist" class="quarto-xref">Abbildung&nbsp;<span>9.4</span></a> bietet einen ähnlichen Vergleich, wobei die einzelnen Beobachtungen im Streudiagramm auf der linken Seite hinzugefügt wurden.</p>
+<div class="cell fig-cap-location-bottom" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-wickham-boxplot-hist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-wickham-boxplot-hist-1.png" class="img-fluid figure-img" width="1066"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.4: Image source: <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)</figcaption>
+<div id="fig-wickham-boxplot-hist" class="quarto-figure quarto-figure-center quarto-float anchored" data-cap-location="bottom" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wickham-boxplot-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-wickham-boxplot-hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wickham-boxplot-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.4: Image source: <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -556,8 +572,8 @@ MathJax.Hub.Config({
 <p>Ich hoffe, Sie haben jetzt ein wenig verstanden, wie man Boxplots interpretiert. Man braucht etwas Übung, aber das Wichtigste ist, sich daran zu erinnern, dass die mittleren 50% der Daten in der Box enthalten sind, während die “Schwänze” der Daten durch die “Whisker” dargestellt werden.</p>
 <section id="geom_boxplot" class="level4" data-number="9.2.1.1">
 <h4 data-number="9.2.1.1" class="anchored" data-anchor-id="geom_boxplot"><span class="header-section-number">9.2.1.1</span> <code>geom_boxplot()</code></h4>
-<p>Wir können Boxplots mit der Funktion <code>geom_boxplot()</code> von <code>ggplot2</code> erstellen. Zumindest müssen wir eine numerische Variable als <code>x</code> oder <code>y</code> Achse angeben (<a href="#fig-geom-boxplot-y">Abbildung&nbsp;<span>9.5</span></a>). Wenn wir Boxplots für verschiedene Gruppen erstellen wollen, können wir den Namen einer kategorischen Variable auf der anderen Achse angeben (<a href="#fig-geom-boxplot">Abbildung&nbsp;<span>9.6</span></a>).</p>
-<div class="cell" data-output-location="column" data-fig.asp="0.618">
+<p>Wir können Boxplots mit der Funktion <code>geom_boxplot()</code> von <code>ggplot2</code> erstellen. Zumindest müssen wir eine numerische Variable als <code>x</code> oder <code>y</code> Achse angeben (<a href="#fig-geom-boxplot-y" class="quarto-xref">Abbildung&nbsp;<span>9.5</span></a>). Wenn wir Boxplots für verschiedene Gruppen erstellen wollen, können wir den Namen einer kategorischen Variable auf der anderen Achse angeben (<a href="#fig-geom-boxplot" class="quarto-xref">Abbildung&nbsp;<span>9.6</span></a>).</p>
+<div class="cell" data-output-location="column">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> rt_lexdec)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
@@ -565,24 +581,32 @@ MathJax.Hub.Config({
 <span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb3-6"><a href="#cb3-6"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-geom-boxplot-y" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-geom-boxplot-y-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.5: Ein Boxplot für alle Beobachtungen einer kontinuierlichen Variablen</figcaption>
+<div id="fig-geom-boxplot-y" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geom-boxplot-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-geom-boxplot-y-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geom-boxplot-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.5: Ein Boxplot für alle Beobachtungen einer kontinuierlichen Variablen
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-output-location="column" data-fig.asp="0.618">
+<div class="cell" data-output-location="column">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age_subject, <span class="at">y =</span> rt_lexdec)) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">theme_bw</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-geom-boxplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-geom-boxplot-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.6: Ein Boxplot für zwei Gruppen</figcaption>
+<div id="fig-geom-boxplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geom-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-geom-boxplot-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geom-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.6: Ein Boxplot für zwei Gruppen
+</figcaption>
 </figure>
 </div>
 </div>
@@ -606,7 +630,7 @@ MathJax.Hub.Config({
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="10-dataviz_3_files/figure-html/df_boxplot_group-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Ein gruppierter Boxplot</figcaption>
+<figcaption>Ein gruppierter Boxplot</figcaption>
 </figure>
 </div>
 </div>
@@ -625,10 +649,14 @@ Boxplots in R
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(df_eng<span class="sc">$</span>rt_lexdec)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-baser-boxplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-baser-boxplot-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.7: Boxplot erstellt mit Basis R</figcaption>
+<div id="fig-baser-boxplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-baser-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-baser-boxplot-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-baser-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.7: Boxplot erstellt mit Basis R
+</figcaption>
 </figure>
 </div>
 </div>
@@ -637,10 +665,14 @@ Boxplots in R
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(df_eng<span class="sc">$</span>rt_lexdec <span class="sc">~</span> df_eng<span class="sc">$</span>age_subject)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-baser-boxplot-cat" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-baser-boxplot-cat-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.8: Boxplot erstellt mit Basis R</figcaption>
+<div id="fig-baser-boxplot-cat" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-baser-boxplot-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-baser-boxplot-cat-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-baser-boxplot-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.8: Boxplot erstellt mit Basis R
+</figcaption>
 </figure>
 </div>
 </div>
@@ -658,20 +690,24 @@ Boxplots in R
 <p>Fehlerbalkendiagramme werden üblicherweise verwendet, um den Mittelwert und die Standardabweichung mit Hilfe von Fehlerbalken zu visualisieren. Auch hier werden in der Regel Standardfehler oder Konfidenzintervalle (oder glaubwürdige Intervalle) durch Fehlerbalken dargestellt, die wir in diesem Kurs jedoch nicht behandeln werden. Diese Diagramme bestehen aus zwei Teilen: dem Mittelwert, der mit <code>geom_point()</code> dargestellt wird, und der Standardabweichung, die mit <code>geom_errorbar()</code> dargestellt wird. Die Fehlerbalken stellen den Bereich von 1 Standardabweichung über und unter dem Mittelwert dar (Mittelwert +/- 1SD).</p>
 <div class="cell" data-ouput-location="column-fragment">
 <div class="cell-output-display">
-<div id="fig-errorbar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-errorbar-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.9: Fehlerbalken-Diagramm von <code>df_eng</code> (Körpermasse nach Alter_Proband)</figcaption>
+<div id="fig-errorbar" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-errorbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-errorbar-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-errorbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.9: Fehlerbalken-Diagramm von <code>df_eng</code> (Körpermasse nach Alter_Proband)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Es gibt einige Möglichkeiten, Fehlerbalken-Diagramme zu erstellen, aber wir werden uns auf die Verwendung von <code>ggplot2</code> und die Erstellung von zusammenfassenden Statistiken konzentrieren, wie wir sie in <a href="08-desc_stats.html"><span>Kapitel&nbsp;7</span></a> mit der Funktion <code>summarise()</code> von <code>dplyr</code> gesehen haben.</p>
+<p>Es gibt einige Möglichkeiten, Fehlerbalken-Diagramme zu erstellen, aber wir werden uns auf die Verwendung von <code>ggplot2</code> und die Erstellung von zusammenfassenden Statistiken konzentrieren, wie wir sie in <a href="08-desc_stats.html" class="quarto-xref"><span>Kapitel 7</span></a> mit der Funktion <code>summarise()</code> von <code>dplyr</code> gesehen haben.</p>
 <section id="berechnung-der-zusammenfassenden-statistik" class="level4" data-number="9.3.1.1">
 <h4 data-number="9.3.1.1" class="anchored" data-anchor-id="berechnung-der-zusammenfassenden-statistik"><span class="header-section-number">9.3.1.1</span> Berechnung der zusammenfassenden Statistik</h4>
 <p>Zunächst müssen wir den Mittelwert und die Standardabweichung berechnen, gruppiert nach den Variablen, die wir visualisieren wollen. Bleiben wir bei <code>rt_lexdec</code> nach <code>age_subject</code>. Wie können wir den Mittelwert und die Standardabweichung von <code>rt_lexdec</code> nach <code>age_subject</code> berechnen?</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Click here to see how</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rt_lexdec),</span>
@@ -706,7 +742,11 @@ Boxplots in R
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>sum_eng <span class="sc">|&gt;</span> </span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age_subject, <span class="at">y =</span> mean, <span class="at">colour =</span> age_subject)) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -722,18 +762,27 @@ Boxplots in R
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age_subject, <span class="at">y =</span> mean, <span class="at">colour =</span> age_subject)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Ich neige dazu, eine Mischung aus diesen beiden Optionen zu verwenden. Manchmal erstelle ich ein neues Objekt und manchmal nicht, je nachdem, was für meinen Arbeitsablauf am sinnvollsten ist. In den Fällen, in denen ich die zusammenfassenden Statistiken auch drucken oder im Auge behalten möchte, würde ich ein Objekt erstellen, das die Zusammenfassung enthält. Dies hat den zusätzlichen Vorteil, dass es mit zusätzlichen Formatierungen gedruckt werden kann, um eine schöne Tabelle zu erstellen (wie <a href="#tbl-sum_eng">Tabelle&nbsp;<span>9.1</span></a>).</p>
+</div>
+<p>Ich neige dazu, eine Mischung aus diesen beiden Optionen zu verwenden. Manchmal erstelle ich ein neues Objekt und manchmal nicht, je nachdem, was für meinen Arbeitsablauf am sinnvollsten ist. In den Fällen, in denen ich die zusammenfassenden Statistiken auch drucken oder im Auge behalten möchte, würde ich ein Objekt erstellen, das die Zusammenfassung enthält. Dies hat den zusätzlichen Vorteil, dass es mit zusätzlichen Formatierungen gedruckt werden kann, um eine schöne Tabelle zu erstellen (wie <a href="#tbl-sum_eng" class="quarto-xref">Tabelle&nbsp;<span>9.1</span></a>).</p>
 <div class="cell">
+<div id="tbl-sum_eng" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sum_eng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;9.1: Formatierte Tabelle von <code>sum_eng</code>
+</figcaption>
+<div aria-describedby="tbl-sum_eng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-sum_eng" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;9.1: Formatierte Tabelle von <code>sum_eng</code></caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Altersgruppe</th>
@@ -757,9 +806,12 @@ Boxplots in R
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -772,7 +824,11 @@ Boxplots in R
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age_subject, <span class="at">y =</span> mean) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -788,7 +844,11 @@ Boxplots in R
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ymax =</span> mean<span class="sc">+</span>sd)) <span class="sc">+</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hier sehen wir also den Mittelwert mit +/-1SD für die älteren und jüngeren Teilnehmergruppen. Und wenn wir einige weitere Anpassungen hinzufügen, erhalten wir <span class="quarto-unresolved-ref">?fig-errorbar-custom</span>.</p>
@@ -809,7 +869,11 @@ Boxplots in R
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="10-dataviz_3_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -823,7 +887,7 @@ Boxplots in R
 </div>
 <div class="callout-body-container callout-body">
 <p>In <code>ggplot2</code> gibt es eine weitere nützliche Funktion, mit der zusammenfassende Statistiken visualisiert werden können, ohne dass zuvor mit <code>dplyr::sumarise()</code> Zusammenfassungen erstellt werden müssen. Die Funktion <code>stat_summary()</code> erlaubt es uns, zusammenfassende Statistiken direkt in unserem <code>ggplot()</code>-Objekt zu erstellen, was bedeutet, dass wir mehrere zusammenfassende Statistiken im selben Plot darstellen können (was wir noch nicht tun werden…).</p>
-<p>Die Funktion <code>stat_summary()</code> benötigt mindestens zwei Argumente: <code>stat =</code>, das ist der Typ der Statistik, die man darstellen möchte, und <code>geom =</code>, das ist der Typ des <code>geom</code>, mit dem man es visualisieren möchte. Wir können Mittelwerte leicht mit Punkten (<a href="#fig-stat-point">Abbildung&nbsp;<span>9.10</span></a>) oder einem Balkenplot (<a href="#fig-stat-bar">Abbildung&nbsp;<span>9.11</span></a>) darstellen, obwohl ich dringend empfehle, Balkenplots zu vermeiden, wenn ein Punktwert wie ein Mittelwert dargestellt werden soll.</p>
+<p>Die Funktion <code>stat_summary()</code> benötigt mindestens zwei Argumente: <code>stat =</code>, das ist der Typ der Statistik, die man darstellen möchte, und <code>geom =</code>, das ist der Typ des <code>geom</code>, mit dem man es visualisieren möchte. Wir können Mittelwerte leicht mit Punkten (<a href="#fig-stat-point" class="quarto-xref">Abbildung&nbsp;<span>9.10</span></a>) oder einem Balkenplot (<a href="#fig-stat-bar" class="quarto-xref">Abbildung&nbsp;<span>9.11</span></a>) darstellen, obwohl ich dringend empfehle, Balkenplots zu vermeiden, wenn ein Punktwert wie ein Mittelwert dargestellt werden soll.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -831,10 +895,14 @@ Boxplots in R
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'geom = "point"'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-stat-point" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-stat-point-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.10: <code>stat_summary(stat_summary(fun = "mean", geom = "point"))</code></figcaption>
+<div id="fig-stat-point" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stat-point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-stat-point-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stat-point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.10: <code>stat_summary(stat_summary(fun = "mean", geom = "point"))</code>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -846,15 +914,19 @@ Boxplots in R
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>) <span class="sc">+</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'geom = "bar"'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-stat-bar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-stat-bar-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.11: <code>stat_summary(stat_summary(fun = "mean", geom = "bar"))</code></figcaption>
+<div id="fig-stat-bar" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stat-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-stat-bar-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stat-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.11: <code>stat_summary(stat_summary(fun = "mean", geom = "bar"))</code>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Wir können auch Fehlerbalken mit <code>stat_summary()</code> einfügen, wie in <a href="#fig-stat-error">Abbildung&nbsp;<span>9.12</span></a>. Dies erzeugt doppelte Standardabweichungen, so dass wir die <code>fun.args =</code>-Werte einfügen müssen, um anzugeben, dass wir einfache Standardabweichungen visualisieren wollen.</p>
+<p>Wir können auch Fehlerbalken mit <code>stat_summary()</code> einfügen, wie in <a href="#fig-stat-error" class="quarto-xref">Abbildung&nbsp;<span>9.12</span></a>. Dies erzeugt doppelte Standardabweichungen, so dass wir die <code>fun.args =</code>-Werte einfügen müssen, um anzugeben, dass wir einfache Standardabweichungen visualisieren wollen.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -866,15 +938,19 @@ Boxplots in R
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Fehlerbalken-Darstellung mit `stat_summary()`'</span>) <span class="sc">+</span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-stat-error" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-stat-error-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.12: <code>stat_summary(fun.data = "mean_sdl", geom = "errorbar",...</code></figcaption>
+<div id="fig-stat-error" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stat-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-stat-error-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stat-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.12: <code>stat_summary(fun.data = "mean_sdl", geom = "errorbar",...</code>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Wie Sie sehen können, ist das Hinzufügen von Fehlerbalken mit <code>stat_summary()</code> etwas weniger einfach, weshalb wir uns für den Weg <code>summarise() |&gt; ggplot() + ...</code> entschieden haben. Ein zusätzlicher Vorteil der Verwendung von <code>summarise()</code> ist, dass Sie Ihre Zusammenfassung als Tibble (d.h. als Tabelle oder Datenrahmen) speichern können, die zusätzlich zum Plot gedruckt werden kann (wie wir mit <a href="09-wrangling_2.html#tbl-df_eng">Tabelle&nbsp;<span>8.4</span></a> gesehen haben). Ich habe erst vor ein oder zwei Jahren begonnen, <code>dplyr::summarise()</code> anstelle von <code>ggplot2::stat_summary()</code> zu verwenden, und bevorzuge Ersteres, weil ich dann die berechneten Werte vor dem Plotten überprüfen kann. Dies ist eine Frage der persönlichen Vorliebe, wenn Sie also neugierig sind, schlage ich vor, dass Sie <code>stat_summary()</code> ausprobieren, um zu sehen, ob Sie eine Vorliebe haben. Wenn Sie mehr über <code>stat_summary()</code> erfahren wollen, können Sie <code>?stat_summary</code> in der <code>Console</code> eingeben oder nach Tutorials oder YouTube-Videos googeln, es gibt viele davon.</p>
+<p>Wie Sie sehen können, ist das Hinzufügen von Fehlerbalken mit <code>stat_summary()</code> etwas weniger einfach, weshalb wir uns für den Weg <code>summarise() |&gt; ggplot() + ...</code> entschieden haben. Ein zusätzlicher Vorteil der Verwendung von <code>summarise()</code> ist, dass Sie Ihre Zusammenfassung als Tibble (d.h. als Tabelle oder Datenrahmen) speichern können, die zusätzlich zum Plot gedruckt werden kann (wie wir mit <a href="09-wrangling_2.html#tbl-df_eng" class="quarto-xref">Tabelle&nbsp;<span>8.4</span></a> gesehen haben). Ich habe erst vor ein oder zwei Jahren begonnen, <code>dplyr::summarise()</code> anstelle von <code>ggplot2::stat_summary()</code> zu verwenden, und bevorzuge Ersteres, weil ich dann die berechneten Werte vor dem Plotten überprüfen kann. Dies ist eine Frage der persönlichen Vorliebe, wenn Sie also neugierig sind, schlage ich vor, dass Sie <code>stat_summary()</code> ausprobieren, um zu sehen, ob Sie eine Vorliebe haben. Wenn Sie mehr über <code>stat_summary()</code> erfahren wollen, können Sie <code>?stat_summary</code> in der <code>Console</code> eingeben oder nach Tutorials oder YouTube-Videos googeln, es gibt viele davon.</p>
 </div>
 </div>
 </section>
@@ -884,18 +960,22 @@ Boxplots in R
 <p>Ich flehe Sie an, <em>nicht</em> Mittelwerte mit Balkendiagramme darzustellen! Sie werden sehr oft Balkendiagramme von Mittelwerten sehen, und andere unterrichten dies vielleicht sogar in anderen Kursen, aber es gibt viele Gründe, warum dies eine schlechte Idee ist!!!</p>
 <p>Erstens können sie sehr irreführend sein. Sie beginnen bei 0 und vermitteln den Eindruck, dass die Daten beim Mittelwert enden, obwohl etwa die Hälfte der Daten (normalerweise) über dem Mittelwert liegt.</p>
 <p>Außerdem hat der Balkenplot ein schlechtes Daten-Tinten-Verhältnis, d.&nbsp;h. die Menge der Datentinte geteilt durch die Gesamttinte, die zur Erstellung der Grafik benötigt wird, oder die Menge der Tinte, die entfernt werden kann, ohne dass Informationen verloren gehen. Beispielsweise beginnen Balkenplots normalerweise bei Null und enden beim Mittelwert. Was aber, wenn es nur sehr wenige oder gar keine Beobachtungen in der Nähe von Null gibt? Wir verbrauchen eine Menge Tinte, wo es keine Beobachtungen gibt! Ein ebenso abscheuliches Verbrechen ist, dass der Balken nur den Bereich abdeckt, in dem die untere <em>Hälfte</em> der Beobachtungen liegt; ebenso viele Beobachtungen liegen über dem Mittelwert!</p>
-<p>Meiner Meinung nach sollten Balkendiagramme nur für Zählungen oder Häufigkeiten verwendet werden. Abgesehen davon sind Fehlerbalken allein nicht die Lösung. Die Darstellung <em>nur</em> des Mittelwerts und der Standardabweichung (oder des Standardfehlers/des Konfidenzintervalls/der glaubwürdigen Intervalle) verbirgt eine Menge Informationen über die tatsächliche Streuung und Verteilung der Daten. Erinnern Sie sich an das Paket <code>datasauRus</code>, das Datensätze mit ähnlichen Mittelwerten, Standardabweichungen und Anzahl der Beobachtungen, aber <em>sehr</em> unterschiedlichen Verteilungen enthält. <a href="#fig-dino-barplot">Abbildung&nbsp;<span>9.13</span></a> zeigt die Verteilung von 5 dieser Datensätze (A), einen Balkenplot des Mittelwerts, der Standardabweichung und der Anzahl der Beobachtungen für die Variablen “x” und “y” (B) sowie einen Fehlerbalkenplot (C).</p>
-<div class="cell" data-fig.asp="0.9">
+<p>Meiner Meinung nach sollten Balkendiagramme nur für Zählungen oder Häufigkeiten verwendet werden. Abgesehen davon sind Fehlerbalken allein nicht die Lösung. Die Darstellung <em>nur</em> des Mittelwerts und der Standardabweichung (oder des Standardfehlers/des Konfidenzintervalls/der glaubwürdigen Intervalle) verbirgt eine Menge Informationen über die tatsächliche Streuung und Verteilung der Daten. Erinnern Sie sich an das Paket <code>datasauRus</code>, das Datensätze mit ähnlichen Mittelwerten, Standardabweichungen und Anzahl der Beobachtungen, aber <em>sehr</em> unterschiedlichen Verteilungen enthält. <a href="#fig-dino-barplot" class="quarto-xref">Abbildung&nbsp;<span>9.13</span></a> zeigt die Verteilung von 5 dieser Datensätze (A), einen Balkenplot des Mittelwerts, der Standardabweichung und der Anzahl der Beobachtungen für die Variablen “x” und “y” (B) sowie einen Fehlerbalkenplot (C).</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-dino-barplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-dino-barplot-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.13: Datasets with the same means, sds, and Ns, but very different distributions</figcaption>
+<div id="fig-dino-barplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dino-barplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-dino-barplot-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dino-barplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.13: Datasets with the same means, sds, and Ns, but very different distributions
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Sie werden sehen, dass die Verteilungen sehr unterschiedlich aussehen (in <a href="#fig-dino-barplot">Abbildung&nbsp;<span>9.13</span></a> A), aber <a href="#fig-dino-barplot">Abbildung&nbsp;<span>9.13</span></a> B und C vermitteln das nicht. Aus diesem Grund ist es ein guter Grund, die Rohdatenpunkte <em>immer</em> zu visualisieren, unabhängig davon, welche zusammenfassende Darstellung Sie erstellen (z. B. verbergen Errorbar-Plots auch viele Daten). Eine gute Möglichkeit, alle Grundlagen abzudecken, besteht darin, die Verteilung der Daten zusammen mit einer Visualisierung der zusammenfassenden Statistiken darzustellen. Sie werden dies in der Hausaufgabe üben, und in <span class="quarto-unresolved-ref">?sec-dataviz4</span> werden wir sehen, wie man diese zusammen in einem Diagramm visualisiert.</p>
+<p>Sie werden sehen, dass die Verteilungen sehr unterschiedlich aussehen (in <a href="#fig-dino-barplot" class="quarto-xref">Abbildung&nbsp;<span>9.13</span></a> A), aber <a href="#fig-dino-barplot" class="quarto-xref">Abbildung&nbsp;<span>9.13</span></a> B und C vermitteln das nicht. Aus diesem Grund ist es ein guter Grund, die Rohdatenpunkte <em>immer</em> zu visualisieren, unabhängig davon, welche zusammenfassende Darstellung Sie erstellen (z. B. verbergen Errorbar-Plots auch viele Daten). Eine gute Möglichkeit, alle Grundlagen abzudecken, besteht darin, die Verteilung der Daten zusammen mit einer Visualisierung der zusammenfassenden Statistiken darzustellen. Sie werden dies in der Hausaufgabe üben, und in <span class="quarto-unresolved-ref">?sec-dataviz4</span> werden wir sehen, wie man diese zusammen in einem Diagramm visualisiert.</p>
 </section>
 </section>
 <section id="lernziele-1" class="level2 unnumbered unlisted">
@@ -927,15 +1007,19 @@ Boxplots in R
 <h3 class="unnumbered anchored" data-anchor-id="errorbar-plot">Errorbar plot</h3>
 <div class="nonincremental">
 <ol start="2" type="1">
-<li>Versuchen Sie, <a href="#fig-error-naming">Abbildung&nbsp;<span>9.14</span></a> zu reproduzieren. Hinweis: Sie werden die Variable <code>rt_naming</code> aus <code>df_eng</code> verwenden.</li>
+<li>Versuchen Sie, <a href="#fig-error-naming" class="quarto-xref">Abbildung&nbsp;<span>9.14</span></a> zu reproduzieren. Hinweis: Sie werden die Variable <code>rt_naming</code> aus <code>df_eng</code> verwenden.</li>
 </ol>
 </div>
-<div class="cell" data-fig.asp="0.618">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-error-naming" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-error-naming-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.14: Plot to be reproduced</figcaption>
+<div id="fig-error-naming" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-error-naming-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-error-naming-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-error-naming-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.14: Plot to be reproduced
+</figcaption>
 </figure>
 </div>
 </div>
@@ -945,15 +1029,19 @@ Boxplots in R
 <h3 class="unnumbered anchored" data-anchor-id="patchwork">Patchwork</h3>
 <div class="nicht-inkrementell">
 <ol start="3" type="1">
-<li>Verwenden Sie das Paket <code>patchwork</code>, um Ihren Boxplot und Ihre Fehlerbalkenplots nebeneinander darzustellen. Es sollte ungefähr so aussehen wie <a href="#fig-patchwork">Abbildung&nbsp;<span>9.15</span></a>. Hinweis: Wenn Sie die “tag-level” (“A” und “B”) zu den Plots hinzufügen möchten, müssen Sie <code>+ plot_annotation(tag_level = "A")</code> aus <code>patchwork</code> hinzufügen.</li>
+<li>Verwenden Sie das Paket <code>patchwork</code>, um Ihren Boxplot und Ihre Fehlerbalkenplots nebeneinander darzustellen. Es sollte ungefähr so aussehen wie <a href="#fig-patchwork" class="quarto-xref">Abbildung&nbsp;<span>9.15</span></a>. Hinweis: Wenn Sie die “tag-level” (“A” und “B”) zu den Plots hinzufügen möchten, müssen Sie <code>+ plot_annotation(tag_level = "A")</code> aus <code>patchwork</code> hinzufügen.</li>
 </ol>
 </div>
-<div class="cell" data-fig.asp="0.5">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-patchwork" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-dataviz_3_files/figure-html/fig-patchwork-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;9.15: Combined plots with <code>patchwork</code></figcaption>
+<div id="fig-patchwork" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-patchwork-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-dataviz_3_files/figure-html/fig-patchwork-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-patchwork-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;9.15: Combined plots with <code>patchwork</code>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -962,51 +1050,48 @@ Boxplots in R
 </section>
 <section id="session-info" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
-<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<p>Hergestellt mit R version 4.4.0 (2024-04-24) (Puppy Cup) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: aarch64-apple-darwin20 (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
 Running under: macOS Ventura 13.2.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] magick_2.7.4    patchwork_1.2.0 ggthemes_5.1.0  janitor_2.2.0  
- [5] here_1.0.1      lubridate_1.9.2 forcats_1.0.0   stringr_1.5.1  
- [9] dplyr_1.1.3     purrr_1.0.2     readr_2.1.5     tidyr_1.3.0    
-[13] tibble_3.2.1    ggplot2_3.4.3   tidyverse_2.0.0
+ [1] magick_2.8.3    patchwork_1.2.0 ggthemes_5.1.0  janitor_2.2.0  
+ [5] here_1.0.1      lubridate_1.9.3 forcats_1.0.0   stringr_1.5.1  
+ [9] dplyr_1.1.4     purrr_1.0.2     readr_2.1.5     tidyr_1.3.1    
+[13] tibble_3.2.1    ggplot2_3.5.1   tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] gtable_0.3.4      xfun_0.42         htmlwidgets_1.6.2 tzdb_0.4.0       
- [5] vctrs_0.6.5       tools_4.3.0       generics_0.1.3    parallel_4.3.0   
- [9] fansi_1.0.6       cluster_2.1.4     highr_0.10        pacman_0.5.1     
-[13] pkgconfig_2.0.3   data.table_1.14.8 checkmate_2.2.0   lifecycle_1.0.4  
-[17] compiler_4.3.0    farver_2.1.1      munsell_0.5.0     datasauRus_0.1.6 
-[21] snakecase_0.11.0  htmltools_0.5.7   yaml_2.3.8        htmlTable_2.4.1  
-[25] Formula_1.2-5     pillar_1.9.0      crayon_1.5.2      Hmisc_5.1-0      
-[29] rpart_4.1.19      tidyselect_1.2.0  digest_0.6.34     stringi_1.8.3    
-[33] labeling_0.4.3    rprojroot_2.0.3   fastmap_1.1.1     grid_4.3.0       
-[37] colorspace_2.1-0  cli_3.6.2         magrittr_2.0.3    base64enc_0.1-3  
-[41] utf8_1.2.4        foreign_0.8-84    withr_3.0.0       backports_1.4.1  
-[45] scales_1.2.1      bit64_4.0.5       timechange_0.2.0  rmarkdown_2.25   
-[49] nnet_7.3-18       bit_4.0.5         gridExtra_2.3     png_0.1-8        
-[53] hms_1.1.3         kableExtra_1.4.0  evaluate_0.23     knitr_1.45       
-[57] viridisLite_0.4.2 rlang_1.1.3       Rcpp_1.0.11       glue_1.7.0       
-[61] xml2_1.3.4        svglite_2.1.1     rstudioapi_0.15.0 vroom_1.6.5      
-[65] jsonlite_1.8.8    R6_2.5.1          systemfonts_1.0.4</code></pre>
+ [1] utf8_1.2.4        generics_0.1.3    renv_1.0.7        xml2_1.3.6       
+ [5] stringi_1.8.3     hms_1.1.3         digest_0.6.35     magrittr_2.0.3   
+ [9] evaluate_0.23     grid_4.4.0        timechange_0.3.0  fastmap_1.1.1    
+[13] rprojroot_2.0.4   jsonlite_1.8.8    fansi_1.0.6       viridisLite_0.4.2
+[17] scales_1.3.0      cli_3.6.2         crayon_1.5.2      rlang_1.1.3      
+[21] bit64_4.0.5       munsell_0.5.1     withr_3.0.0       yaml_2.3.8       
+[25] parallel_4.4.0    tools_4.4.0       tzdb_0.4.0        colorspace_2.1-0 
+[29] pacman_0.5.1      kableExtra_1.4.0  vctrs_0.6.5       R6_2.5.1         
+[33] lifecycle_1.0.4   snakecase_0.11.1  bit_4.0.5         htmlwidgets_1.6.4
+[37] vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.5     
+[41] glue_1.7.0        Rcpp_1.0.12       systemfonts_1.0.6 highr_0.10       
+[45] xfun_0.43         tidyselect_1.2.1  rstudioapi_0.16.0 knitr_1.46       
+[49] farver_2.1.1      datasauRus_0.1.8  htmltools_0.5.8.1 svglite_2.1.3    
+[53] labeling_0.4.3    rmarkdown_2.26    compiler_4.4.0   </code></pre>
 </div>
 </div>
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-nordmann_data_2022" class="csl-entry" role="listitem">
 Nordmann, E., McAleer, P., Toivo, W., Paterson, H., &amp; DeBruine, L. M. (2022). Data <span>Visualization Using R</span> for <span>Researchers Who Do Not Use R</span>. <em>Advances in Methods and Practices in Psychological Science</em>, <em>5</em>(2), 251524592210746. <a href="https://doi.org/10.1177/25152459221074654">https://doi.org/10.1177/25152459221074654</a>
 </div>
@@ -1081,6 +1166,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1147,13 +1259,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1283,10 +1397,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1296,8 +1427,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1309,7 +1449,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1353,6 +1616,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1378,6 +1642,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1439,12 +1729,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/09-wrangling_2.html" class="pagination-link">
+      <a href="../mats/09-wrangling_2.html" class="pagination-link" aria-label="Data Wrangling 2">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mats/12-baseR.html" class="pagination-link">
+      <a href="../mats/12-baseR.html" class="pagination-link" aria-label="Base R">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1657,21 +1947,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
 <span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.align = "center"}</span></span>
-<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"</span></span>
-<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap-location: bottom</span></span>
+<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"</span></span>
+<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap-location: bottom</span></span>
 <span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a><span class="do">## invert colours for dark mode in slides</span></span>
-<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_negate</span>(magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Winter_2019_boxplot.png"</span>)))</span>
+<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a><span class="in">## invert colours for dark mode in slides</span></span>
+<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_negate(magick::image_read(here::here("media/Winter_2019_boxplot.png")))</span></span>
 <span id="cb20-229"><a href="#cb20-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-230"><a href="#cb20-230" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
 <span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.align = "center"}</span></span>
-<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"</span></span>
-<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap-location: bottom</span></span>
-<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-winter-boxplot-hist</span></span>
-<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Winter_2019_boxplot.png"</span>))</span>
+<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Image source: @winter_statistics_2019 (all rights reserved)"</span></span>
+<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap-location: bottom</span></span>
+<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-winter-boxplot-hist</span></span>
+<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/Winter_2019_boxplot.png"))</span></span>
 <span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a></span>
@@ -1679,22 +1969,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-242"><a href="#cb20-242" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="revealjs"}</span>
 <span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.align = "center"}</span></span>
-<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Image source: @wickham_r_2023 (all rights reserved)"</span></span>
-<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap-location: bottom</span></span>
+<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Image source: @wickham_r_2023 (all rights reserved)"</span></span>
+<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap-location: bottom</span></span>
 <span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a><span class="do">## invert colours for dark mode in slides</span></span>
-<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_boxplot.png"</span>))</span>
+<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a><span class="in">## invert colours for dark mode in slides</span></span>
+<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- magick::image_read(here::here("media/Wickham_boxplot.png"))</span></span>
 <span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_negate</span>(y)</span>
+<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_negate(y)</span></span>
 <span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
 <span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.align = "center"}</span></span>
-<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Image source: @wickham_r_2023 (all rights reserved)"</span></span>
-<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap-location: bottom</span></span>
-<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-wickham-boxplot-hist</span></span>
-<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_boxplot.png"</span>))</span>
+<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Image source: @wickham_r_2023 (all rights reserved)"</span></span>
+<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap-location: bottom</span></span>
+<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-wickham-boxplot-hist</span></span>
+<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/Wickham_boxplot.png"))</span></span>
 <span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a></span>
@@ -2192,6 +2482,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

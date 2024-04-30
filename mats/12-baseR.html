@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -103,7 +104,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -112,6 +119,7 @@ div.csl-indent {
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -137,17 +145,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - 10&nbsp; Base R">
 <meta name="twitter:description" content="Ein Vergleich mit tidyverse">
-<meta name="twitter:image" content="12-baseR_files/figure-html/fig-baser-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -159,51 +166,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/12-baseR.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/12-baseR.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -366,7 +365,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -410,28 +409,28 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/12-baseR.html">Fortgeschrittene Themen</a></li><li class="breadcrumb-item"><a href="../mats/12-baseR.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Base R</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Ein Vergleich mit tidyverse</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
@@ -451,7 +450,9 @@ MathJax.Hub.Config({
   </div>
   
 
+
 </header>
+
 
 <section id="lesungen" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="lesungen">Lesungen</h2>
@@ -1075,9 +1076,12 @@ Begrenzungszeichen und Trennzeichen
 <h2 data-number="10.5" class="anchored" data-anchor-id="plots"><span class="header-section-number">10.5</span> Plots</h2>
 <p><code>ggplot2</code> ist auch bei Leuten beliebt, die sonst nicht die tidyverse-Paketfamilie nutzen. Das liegt daran, dass es einige nützliche Funktionen und ein sauberes Aussehen hat.</p>
 <p>Das Plotten mit Base R kann auch sehr praktisch sein, wenn man einfache Diagramme erstellen will, um einen ersten Blick auf die Daten zu bekommen. Die nützlichsten Funktionen sind <code>hist()</code> und <code>plot()</code>, die jeweils Histogramme und Streudiagramme erzeugen. Beachten Sie, dass diese Funktionen mit Vektoren arbeiten, weswegen wir <code>$</code> verwenden müssen, um die Spalten aus dem Datenrahmen zu extrahieren.</p>
-<div class="cell quarto-layout-panel" data-fig.asp="1">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Base R</strong></pre>
@@ -1088,21 +1092,29 @@ Begrenzungszeichen und Trennzeichen
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_base<span class="sc">$</span>RTlexdec, df_base<span class="sc">$</span>RTnaming) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-baser-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="12-baseR_files/figure-html/fig-baser-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;10.1: Histogram and scatterplot with Base R</figcaption>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-baser-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-baser-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="12-baseR_files/figure-html/fig-baser-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-baser-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;10.1: Histogram and scatterplot with Base R
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-baser-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="12-baseR_files/figure-html/fig-baser-2.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;10.2: Histogram and scatterplot with Base R</figcaption>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-baser-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-baser-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="12-baseR_files/figure-html/fig-baser-2.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-baser-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;10.2: Histogram and scatterplot with Base R
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1127,12 +1139,16 @@ Begrenzungszeichen und Trennzeichen
 <span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div class="cell" data-fig.asp="0.5">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="12-baseR_files/figure-html/fig-ggplot-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;10.3: Histogram and scatterplot with ggplot2</figcaption>
+<div id="fig-ggplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ggplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="12-baseR_files/figure-html/fig-ggplot-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;10.3: Histogram and scatterplot with ggplot2
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1239,7 +1255,11 @@ Begrenzungszeichen und Trennzeichen
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> WrittenFrequency, <span class="at">y =</span> RTlexdec) <span class="sc">+</span></span>
 <span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="12-baseR_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="12-baseR_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1250,46 +1270,46 @@ Begrenzungszeichen und Trennzeichen
 </section>
 <section id="session-info" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
-<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<p>Hergestellt mit R version 4.4.0 (2024-04-24) (Puppy Cup) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: aarch64-apple-darwin20 (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
 Running under: macOS Ventura 13.2.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] patchwork_1.2.0 janitor_2.2.0   here_1.0.1      lubridate_1.9.2
- [5] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.3     purrr_1.0.2    
- [9] readr_2.1.5     tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.3  
+ [1] patchwork_1.2.0 janitor_2.2.0   here_1.0.1      lubridate_1.9.3
+ [5] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2    
+ [9] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
 [13] tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] utf8_1.2.4        generics_0.1.3    stringi_1.8.3     hms_1.1.3        
- [5] digest_0.6.34     magrittr_2.0.3    evaluate_0.23     grid_4.3.0       
- [9] timechange_0.2.0  fastmap_1.1.1     rprojroot_2.0.3   jsonlite_1.8.8   
-[13] fansi_1.0.6       scales_1.2.1      cli_3.6.2         rlang_1.1.3      
-[17] crayon_1.5.2      bit64_4.0.5       munsell_0.5.0     withr_3.0.0      
-[21] yaml_2.3.8        tools_4.3.0       parallel_4.3.0    tzdb_0.4.0       
-[25] colorspace_2.1-0  pacman_0.5.1      vctrs_0.6.5       R6_2.5.1         
-[29] lifecycle_1.0.4   snakecase_0.11.0  htmlwidgets_1.6.2 bit_4.0.5        
-[33] vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4     
-[37] glue_1.7.0        xfun_0.42         tidyselect_1.2.0  rstudioapi_0.15.0
-[41] knitr_1.45        farver_2.1.1      htmltools_0.5.7   labeling_0.4.3   
-[45] rmarkdown_2.25    compiler_4.3.0   </code></pre>
+ [1] utf8_1.2.4        generics_0.1.3    renv_1.0.7        stringi_1.8.3    
+ [5] hms_1.1.3         digest_0.6.35     magrittr_2.0.3    evaluate_0.23    
+ [9] grid_4.4.0        timechange_0.3.0  fastmap_1.1.1     rprojroot_2.0.4  
+[13] jsonlite_1.8.8    fansi_1.0.6       scales_1.3.0      cli_3.6.2        
+[17] crayon_1.5.2      rlang_1.1.3       bit64_4.0.5       munsell_0.5.1    
+[21] withr_3.0.0       yaml_2.3.8        parallel_4.4.0    tools_4.4.0      
+[25] tzdb_0.4.0        colorspace_2.1-0  pacman_0.5.1      vctrs_0.6.5      
+[29] R6_2.5.1          lifecycle_1.0.4   snakecase_0.11.1  htmlwidgets_1.6.4
+[33] bit_4.0.5         vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0     
+[37] gtable_0.3.5      glue_1.7.0        xfun_0.43         tidyselect_1.2.1 
+[41] rstudioapi_0.16.0 knitr_1.46        farver_2.1.1      htmltools_0.5.8.1
+[45] labeling_0.4.3    rmarkdown_2.26    compiler_4.4.0   </code></pre>
 </div>
 </div>
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-tidyverse-package" class="csl-entry" role="listitem">
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019a). Welcome to the <span>tidyverse</span>. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>
 </div>
@@ -1367,6 +1387,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1433,13 +1480,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1569,10 +1618,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1582,8 +1648,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1595,7 +1670,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1639,6 +1837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1664,6 +1863,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1725,12 +1950,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/10-dataviz_3.html" class="pagination-link">
+      <a href="../mats/10-dataviz_3.html" class="pagination-link" aria-label="Datenvisualisierung 3">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung 3</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mats/13-dataviz_4.html" class="pagination-link">
+      <a href="../mats/13-dataviz_4.html" class="pagination-link" aria-label="Datenvisualiserung 4">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1780,9 +2005,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-45"><a href="#cb69-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-46"><a href="#cb69-46" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb69-47"><a href="#cb69-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-48"><a href="#cb69-48" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
-<span id="cb69-49"><a href="#cb69-49" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-tweet"</span><span class="kw">&gt;&lt;p</span> <span class="er">lang</span><span class="ot">=</span><span class="st">"en"</span> <span class="er">dir</span><span class="ot">=</span><span class="st">"ltr"</span><span class="kw">&gt;</span>What a thing to say when modern R is pretty much synonymous with the tidyverse for many in the community!<span class="kw">&lt;br&gt;&lt;br&gt;</span>I was a Base R masochist once too.. but there<span class="dv">&amp;#39;</span>s no need for statements like this when the tidyverse has helped so many of us be more productive and write more readable code.<span class="kw">&lt;/p&gt;</span><span class="dv">&amp;mdash;</span> Bodo Winter (@BodoWinter) <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/BodoWinter/status/1612882152483586049?ref_src=twsrc%5Etfw"</span><span class="kw">&gt;</span>January 10, 2023<span class="kw">&lt;/a&gt;&lt;/blockquote&gt;</span> <span class="kw">&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
-<span id="cb69-50"><a href="#cb69-50" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
+<span id="cb69-48"><a href="#cb69-48" aria-hidden="true" tabindex="-1"></a>&lt;center&gt;</span>
+<span id="cb69-49"><a href="#cb69-49" aria-hidden="true" tabindex="-1"></a>&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;What a thing to say when modern R is pretty much synonymous with the tidyverse for many in the community!&lt;br&gt;&lt;br&gt;I was a Base R masochist once too.. but there<span class="dv">&amp;#39;</span>s no need for statements like this when the tidyverse has helped so many of us be more productive and write more readable code.&lt;/p&gt;<span class="dv">&amp;mdash;</span> Bodo Winter (@BodoWinter) &lt;a href="https://twitter.com/BodoWinter/status/1612882152483586049?ref_src=twsrc%5Etfw"&gt;January 10, 2023&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</span>
+<span id="cb69-50"><a href="#cb69-50" aria-hidden="true" tabindex="-1"></a>&lt;/center&gt;</span>
 <span id="cb69-51"><a href="#cb69-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-52"><a href="#cb69-52" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb69-53"><a href="#cb69-53" aria-hidden="true" tabindex="-1"></a></span>
@@ -1866,19 +2091,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-139"><a href="#cb69-139" aria-hidden="true" tabindex="-1"></a>Wir haben bereits gesehen, wie man die <span class="in">`read_()`</span> Familie von Funktionen (<span class="in">`read_csv()`</span>, <span class="in">`read_csv2()`</span>, <span class="in">`read_delim()`</span>, etc.) aus dem <span class="in">`readr`</span> Paket aus dem <span class="in">`tidyverse`</span> benutzt.</span>
 <span id="cb69-140"><a href="#cb69-140" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-141"><a href="#cb69-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-142"><a href="#cb69-142" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="ot">&lt;-</span></span>
-<span id="cb69-143"><a href="#cb69-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(</span>
-<span id="cb69-144"><a href="#cb69-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>)</span>
-<span id="cb69-145"><a href="#cb69-145" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-142"><a href="#cb69-142" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy &lt;-</span></span>
+<span id="cb69-143"><a href="#cb69-143" aria-hidden="true" tabindex="-1"></a><span class="in">  read_csv(</span></span>
+<span id="cb69-144"><a href="#cb69-144" aria-hidden="true" tabindex="-1"></a><span class="in">    here("daten", "languageR_english.csv")</span></span>
+<span id="cb69-145"><a href="#cb69-145" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb69-146"><a href="#cb69-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-147"><a href="#cb69-147" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-148"><a href="#cb69-148" aria-hidden="true" tabindex="-1"></a>Um einen Datensatz mit kommagetrennten Werten (CSV) einzulesen, können wir die Funktion <span class="in">`read.csv()`</span> verwenden, die eine Version der umfassenderen Funktion <span class="in">`read.table()`</span> aus dem Paket <span class="in">`utils`</span> ist. Das <span class="in">`utils`</span>-Paket ist ein Standard-Installationspaket in R, so wie einige Anwendungen bereits installiert sind, wenn man ein neues Telefon kauft.</span>
 <span id="cb69-149"><a href="#cb69-149" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-150"><a href="#cb69-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-151"><a href="#cb69-151" aria-hidden="true" tabindex="-1"></a>df_base <span class="ot">&lt;-</span></span>
-<span id="cb69-152"><a href="#cb69-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(</span>
-<span id="cb69-153"><a href="#cb69-153" aria-hidden="true" tabindex="-1"></a>    <span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>)</span>
-<span id="cb69-154"><a href="#cb69-154" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-151"><a href="#cb69-151" aria-hidden="true" tabindex="-1"></a><span class="in">df_base &lt;-</span></span>
+<span id="cb69-152"><a href="#cb69-152" aria-hidden="true" tabindex="-1"></a><span class="in">  read.csv(</span></span>
+<span id="cb69-153"><a href="#cb69-153" aria-hidden="true" tabindex="-1"></a><span class="in">    here("daten", "languageR_english.csv")</span></span>
+<span id="cb69-154"><a href="#cb69-154" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb69-155"><a href="#cb69-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-156"><a href="#cb69-156" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-157"><a href="#cb69-157" aria-hidden="true" tabindex="-1"></a>Das erste, was Ihnen vielleicht auffällt, ist, dass wir beim Ausführen von <span class="in">`read_csv()`</span> eine Meldung erhalten haben, die uns die Anzahl der Zeilen und Spalten in den Daten, das verwendete Trennzeichen (bei <span class="in">`read_csv()`</span> immer ein Komma) und den Datentyp, zu dem unsere Variablen gehören, mitteilt. Hier haben wir gesehen, dass wir drei Zeichenvariablen (<span class="in">`chr`</span>) und vier numerische Variablen (<span class="in">`dbl`</span> für "double") haben. Bei der Verwendung von <span class="in">`read.csv()`</span> erhalten wir keine derartige Meldung. Im Allgemeinen ist Tidyverse ein besserer Gesprächspartner als Base R. Sie erhalten mehr Meldungen, und die Warn- oder Fehlermeldungen sind anschaulicher.</span>
@@ -1922,21 +2147,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-207"><a href="#cb69-207" aria-hidden="true" tabindex="-1"></a>Erinnern Sie sich, dass wir mit dem tidyverse-Paket <span class="in">`readr`</span> <span class="in">`read_delim(delim = "")`</span> verwenden können, um das Trennzeichen explizit zu definieren. Hier verwenden wir <span class="in">`delim = ","`</span>, weil wir immer noch eine kommagetrennte Wertedatei verwenden. </span>
 <span id="cb69-208"><a href="#cb69-208" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-209"><a href="#cb69-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-210"><a href="#cb69-210" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="ot">&lt;-</span></span>
-<span id="cb69-211"><a href="#cb69-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_delim</span>(</span>
-<span id="cb69-212"><a href="#cb69-212" aria-hidden="true" tabindex="-1"></a>    <span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>),</span>
-<span id="cb69-213"><a href="#cb69-213" aria-hidden="true" tabindex="-1"></a>    <span class="at">delim =</span> <span class="st">","</span></span>
-<span id="cb69-214"><a href="#cb69-214" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-210"><a href="#cb69-210" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy &lt;-</span></span>
+<span id="cb69-211"><a href="#cb69-211" aria-hidden="true" tabindex="-1"></a><span class="in">  read_delim(</span></span>
+<span id="cb69-212"><a href="#cb69-212" aria-hidden="true" tabindex="-1"></a><span class="in">    here("daten", "languageR_english.csv"),</span></span>
+<span id="cb69-213"><a href="#cb69-213" aria-hidden="true" tabindex="-1"></a><span class="in">    delim = ","</span></span>
+<span id="cb69-214"><a href="#cb69-214" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb69-215"><a href="#cb69-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-216"><a href="#cb69-216" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-217"><a href="#cb69-217" aria-hidden="true" tabindex="-1"></a>Wir können dies mit <span class="in">`read.table(sep = "")`</span> aus dem Paket <span class="in">`utils`</span> tun.</span>
 <span id="cb69-218"><a href="#cb69-218" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-219"><a href="#cb69-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-220"><a href="#cb69-220" aria-hidden="true" tabindex="-1"></a>df_base <span class="ot">&lt;-</span><span class="fu">read.table</span>(</span>
-<span id="cb69-221"><a href="#cb69-221" aria-hidden="true" tabindex="-1"></a>    <span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>),</span>
-<span id="cb69-222"><a href="#cb69-222" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">","</span>,</span>
-<span id="cb69-223"><a href="#cb69-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span></span>
-<span id="cb69-224"><a href="#cb69-224" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-220"><a href="#cb69-220" aria-hidden="true" tabindex="-1"></a><span class="in">df_base &lt;-read.table(</span></span>
+<span id="cb69-221"><a href="#cb69-221" aria-hidden="true" tabindex="-1"></a><span class="in">    here("daten", "languageR_english.csv"),</span></span>
+<span id="cb69-222"><a href="#cb69-222" aria-hidden="true" tabindex="-1"></a><span class="in">    sep = ",",</span></span>
+<span id="cb69-223"><a href="#cb69-223" aria-hidden="true" tabindex="-1"></a><span class="in">    header = TRUE</span></span>
+<span id="cb69-224"><a href="#cb69-224" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb69-225"><a href="#cb69-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-226"><a href="#cb69-226" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-227"><a href="#cb69-227" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
@@ -1961,36 +2186,36 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-246"><a href="#cb69-246" aria-hidden="true" tabindex="-1"></a>Wir sind bereits vertraut mit <span class="in">`select()`</span> aus <span class="in">`dplyr`</span>:</span>
 <span id="cb69-247"><a href="#cb69-247" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-248"><a href="#cb69-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-249"><a href="#cb69-249" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-250"><a href="#cb69-250" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-251"><a href="#cb69-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AgeSubject)</span>
+<span id="cb69-249"><a href="#cb69-249" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-250"><a href="#cb69-250" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy |&gt; </span></span>
+<span id="cb69-251"><a href="#cb69-251" aria-hidden="true" tabindex="-1"></a><span class="in">  select(AgeSubject)</span></span>
 <span id="cb69-252"><a href="#cb69-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-253"><a href="#cb69-253" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-254"><a href="#cb69-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-255"><a href="#cb69-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb69-256"><a href="#cb69-256" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-257"><a href="#cb69-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AgeSubject) <span class="sc">|&gt;</span> </span>
-<span id="cb69-258"><a href="#cb69-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb69-255"><a href="#cb69-255" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb69-256"><a href="#cb69-256" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy |&gt; </span></span>
+<span id="cb69-257"><a href="#cb69-257" aria-hidden="true" tabindex="-1"></a><span class="in">  select(AgeSubject) |&gt; </span></span>
+<span id="cb69-258"><a href="#cb69-258" aria-hidden="true" tabindex="-1"></a><span class="in">  head(10)</span></span>
 <span id="cb69-259"><a href="#cb69-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-260"><a href="#cb69-260" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-261"><a href="#cb69-261" aria-hidden="true" tabindex="-1"></a>In Base R können wir ein Dollarzeichen (<span class="in">`$`</span>) verwenden, um eine Spalte aus einem Datenrahmen (oder Tibble) zu extrahieren. Dadurch erhalten wir einen Vektor, während <span class="in">`dplyr::select()`</span> die Datenrahmen-/Tibble-Attribute der Spalte beibehält.</span>
 <span id="cb69-262"><a href="#cb69-262" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-263"><a href="#cb69-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-264"><a href="#cb69-264" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-265"><a href="#cb69-265" aria-hidden="true" tabindex="-1"></a>df_base<span class="sc">$</span>AgeSubject</span>
+<span id="cb69-264"><a href="#cb69-264" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-265"><a href="#cb69-265" aria-hidden="true" tabindex="-1"></a><span class="in">df_base$AgeSubject</span></span>
 <span id="cb69-266"><a href="#cb69-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-267"><a href="#cb69-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-268"><a href="#cb69-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-269"><a href="#cb69-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb69-270"><a href="#cb69-270" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_base<span class="sc">$</span>AgeSubject,<span class="dv">18</span>)</span>
+<span id="cb69-269"><a href="#cb69-269" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb69-270"><a href="#cb69-270" aria-hidden="true" tabindex="-1"></a><span class="in">head(df_base$AgeSubject,18)</span></span>
 <span id="cb69-271"><a href="#cb69-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-272"><a href="#cb69-272" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-273"><a href="#cb69-273" aria-hidden="true" tabindex="-1"></a>Alternativ kann man auch <span class="in">`dataframe[row,column]`</span> verwenden, um Zeilen und Spalten zu definieren. Wir können den Namen einer Spalte in Anführungszeichen verwenden oder den Index der Spalte angeben, wobei 1 für die erste Spalte steht, 2 für die zweite Spalte usw. Wir konzentrieren uns zunächst auf die Spalten, geben also nicht an, welche Zeile wir wollen, sondern geben alle Zeilen dieser Spalte aus.</span>
 <span id="cb69-274"><a href="#cb69-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-275"><a href="#cb69-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-276"><a href="#cb69-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-277"><a href="#cb69-277" aria-hidden="true" tabindex="-1"></a><span class="co"># using variable name</span></span>
-<span id="cb69-278"><a href="#cb69-278" aria-hidden="true" tabindex="-1"></a>df_base[,<span class="st">"AgeSubject"</span>]</span>
+<span id="cb69-276"><a href="#cb69-276" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-277"><a href="#cb69-277" aria-hidden="true" tabindex="-1"></a><span class="in"># using variable name</span></span>
+<span id="cb69-278"><a href="#cb69-278" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[,"AgeSubject"]</span></span>
 <span id="cb69-279"><a href="#cb69-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-280"><a href="#cb69-280" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-283"><a href="#cb69-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2000,9 +2225,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-287"><a href="#cb69-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-288"><a href="#cb69-288" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-289"><a href="#cb69-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-290"><a href="#cb69-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-291"><a href="#cb69-291" aria-hidden="true" tabindex="-1"></a><span class="co"># using variable index</span></span>
-<span id="cb69-292"><a href="#cb69-292" aria-hidden="true" tabindex="-1"></a>df_base[,<span class="dv">1</span>]</span>
+<span id="cb69-290"><a href="#cb69-290" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-291"><a href="#cb69-291" aria-hidden="true" tabindex="-1"></a><span class="in"># using variable index</span></span>
+<span id="cb69-292"><a href="#cb69-292" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[,1]</span></span>
 <span id="cb69-293"><a href="#cb69-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-294"><a href="#cb69-294" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-297"><a href="#cb69-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2014,9 +2239,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-303"><a href="#cb69-303" aria-hidden="true" tabindex="-1"></a>Ein Hauptunterschied zwischen der Verwendung von tidyverse und Base R zum Extrahieren einer einzelnen Variablen besteht darin, dass Base R einen Vektor extrahiert, während das tidyverse-Verb <span class="in">`select()`</span> die Variable als Tibble behält. Beachten Sie, dass es auch möglich ist, mehrere Variablen mit der Funktion <span class="in">`select()`</span> auszuwählen. Sie können dies auch mit Base R tun, aber Sie müssen die Funktion <span class="in">`c()`</span> verwenden.</span>
 <span id="cb69-304"><a href="#cb69-304" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-305"><a href="#cb69-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-306"><a href="#cb69-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-307"><a href="#cb69-307" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-308"><a href="#cb69-308" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AgeSubject, RTlexdec)</span>
+<span id="cb69-306"><a href="#cb69-306" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-307"><a href="#cb69-307" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy |&gt; </span></span>
+<span id="cb69-308"><a href="#cb69-308" aria-hidden="true" tabindex="-1"></a><span class="in">  select(AgeSubject, RTlexdec)</span></span>
 <span id="cb69-309"><a href="#cb69-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-310"><a href="#cb69-310" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-313"><a href="#cb69-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2027,9 +2252,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-318"><a href="#cb69-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-319"><a href="#cb69-319" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-320"><a href="#cb69-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-321"><a href="#cb69-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-322"><a href="#cb69-322" aria-hidden="true" tabindex="-1"></a><span class="co"># using variable name</span></span>
-<span id="cb69-323"><a href="#cb69-323" aria-hidden="true" tabindex="-1"></a>df_base[,<span class="fu">c</span>(<span class="st">"AgeSubject"</span>, <span class="st">"RTlexdec"</span>)]</span>
+<span id="cb69-321"><a href="#cb69-321" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-322"><a href="#cb69-322" aria-hidden="true" tabindex="-1"></a><span class="in"># using variable name</span></span>
+<span id="cb69-323"><a href="#cb69-323" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[,c("AgeSubject", "RTlexdec")]</span></span>
 <span id="cb69-324"><a href="#cb69-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-325"><a href="#cb69-325" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-328"><a href="#cb69-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2041,9 +2266,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-334"><a href="#cb69-334" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-335"><a href="#cb69-335" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-336"><a href="#cb69-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-337"><a href="#cb69-337" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-338"><a href="#cb69-338" aria-hidden="true" tabindex="-1"></a><span class="co"># using variable index</span></span>
-<span id="cb69-339"><a href="#cb69-339" aria-hidden="true" tabindex="-1"></a>df_base[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span>
+<span id="cb69-337"><a href="#cb69-337" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-338"><a href="#cb69-338" aria-hidden="true" tabindex="-1"></a><span class="in"># using variable index</span></span>
+<span id="cb69-339"><a href="#cb69-339" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[,c(1, 6)]</span></span>
 <span id="cb69-340"><a href="#cb69-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-341"><a href="#cb69-341" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-344"><a href="#cb69-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2057,9 +2282,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-352"><a href="#cb69-352" aria-hidden="true" tabindex="-1"></a>Die Ausgabe dieser Operationen hängt nicht nur davon ab, ob Sie eine Tidyverse- oder eine R-Basisfunktion verwenden. Es macht auch einen Unterschied, ob die Daten ein Datenrahmen oder ein Tibble sind. Versuchen wir, die Funktion <span class="in">`select()`</span> von tidyverse auf einen Datenrahmen anzuwenden:</span>
 <span id="cb69-353"><a href="#cb69-353" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-354"><a href="#cb69-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-355"><a href="#cb69-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-356"><a href="#cb69-356" aria-hidden="true" tabindex="-1"></a>df_base <span class="sc">|&gt;</span> </span>
-<span id="cb69-357"><a href="#cb69-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AgeSubject)</span>
+<span id="cb69-355"><a href="#cb69-355" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-356"><a href="#cb69-356" aria-hidden="true" tabindex="-1"></a><span class="in">df_base |&gt; </span></span>
+<span id="cb69-357"><a href="#cb69-357" aria-hidden="true" tabindex="-1"></a><span class="in">  select(AgeSubject)</span></span>
 <span id="cb69-358"><a href="#cb69-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-359"><a href="#cb69-359" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-362"><a href="#cb69-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2072,8 +2297,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-369"><a href="#cb69-369" aria-hidden="true" tabindex="-1"></a>Base R behandelt Tibbles jedoch genauso wie Datenrahmen und gibt einen Vektor mit allen Werten einer einzelnen Spalte aus.</span>
 <span id="cb69-370"><a href="#cb69-370" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-371"><a href="#cb69-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-372"><a href="#cb69-372" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-373"><a href="#cb69-373" aria-hidden="true" tabindex="-1"></a>df_tidy<span class="sc">$</span>AgeSubject</span>
+<span id="cb69-372"><a href="#cb69-372" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-373"><a href="#cb69-373" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy$AgeSubject</span></span>
 <span id="cb69-374"><a href="#cb69-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-375"><a href="#cb69-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-378"><a href="#cb69-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2088,15 +2313,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-387"><a href="#cb69-387" aria-hidden="true" tabindex="-1"></a>Wir haben bereits die Funktion <span class="in">`filter()`</span> von <span class="in">`dplyr`</span> gesehen, die Zeilen extrahiert, die logischen Bedingungen entsprechen.</span>
 <span id="cb69-388"><a href="#cb69-388" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-389"><a href="#cb69-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-390"><a href="#cb69-390" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-391"><a href="#cb69-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RTlexdec <span class="sc">&gt;</span> <span class="dv">600</span> <span class="sc">&amp;</span> RTnaming <span class="sc">&lt;</span> <span class="dv">480</span>)</span>
+<span id="cb69-390"><a href="#cb69-390" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy |&gt; </span></span>
+<span id="cb69-391"><a href="#cb69-391" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(RTlexdec &gt; 600 &amp; RTnaming &lt; 480)</span></span>
 <span id="cb69-392"><a href="#cb69-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-393"><a href="#cb69-393" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-394"><a href="#cb69-394" aria-hidden="true" tabindex="-1"></a>Wir können diese bedingten Anweisungen in <span class="in">`[,]`</span> einfügen, wobei zu beachten ist, dass die Zeilen vor dem Komma und die Spalten nach dem Komma angegeben werden. Wir lassen die Spaltenangabe leer, d. h. wir wollen alle Spalten ausgeben. Wichtig ist, dass wir in den bedingten Anweisungen den Namen des Datenrahmens mit dem Dollarzeichen vor dem Spaltennamen angeben.</span>
 <span id="cb69-395"><a href="#cb69-395" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-396"><a href="#cb69-396" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-397"><a href="#cb69-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-398"><a href="#cb69-398" aria-hidden="true" tabindex="-1"></a>df_base[df_base<span class="sc">$</span>RTlexdec <span class="sc">&gt;</span> <span class="dv">600</span> <span class="sc">&amp;</span> df_base<span class="sc">$</span>RTnaming <span class="sc">&lt;</span> <span class="dv">480</span>,]</span>
+<span id="cb69-397"><a href="#cb69-397" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-398"><a href="#cb69-398" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[df_base$RTlexdec &gt; 600 &amp; df_base$RTnaming &lt; 480,]</span></span>
 <span id="cb69-399"><a href="#cb69-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-400"><a href="#cb69-400" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-403"><a href="#cb69-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2111,10 +2336,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-412"><a href="#cb69-412" aria-hidden="true" tabindex="-1"></a>Wir können bestimmte Zeilen und bestimmte Spalten auf einmal extrahieren. Wenn wir zum Beispiel die relevanten Zeilen wie oben ausgeben wollen, aber nur die Spalten <span class="in">`AgeSubject`</span> und <span class="in">`RTlexdec`</span>, können wir dies mit <span class="in">`filter()`</span> und <span class="in">`select()`</span> tun (was wir bereits zuvor getan haben).</span>
 <span id="cb69-413"><a href="#cb69-413" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-414"><a href="#cb69-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-415"><a href="#cb69-415" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-416"><a href="#cb69-416" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-417"><a href="#cb69-417" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RTlexdec <span class="sc">&gt;</span> <span class="dv">600</span>, RTnaming <span class="sc">&lt;</span> <span class="dv">480</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb69-418"><a href="#cb69-418" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AgeSubject, RTlexdec)</span>
+<span id="cb69-415"><a href="#cb69-415" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-416"><a href="#cb69-416" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy |&gt; </span></span>
+<span id="cb69-417"><a href="#cb69-417" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(RTlexdec &gt; 600, RTnaming &lt; 480) |&gt; </span></span>
+<span id="cb69-418"><a href="#cb69-418" aria-hidden="true" tabindex="-1"></a><span class="in">  select(AgeSubject, RTlexdec)</span></span>
 <span id="cb69-419"><a href="#cb69-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-420"><a href="#cb69-420" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-423"><a href="#cb69-423" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2128,8 +2353,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-431"><a href="#cb69-431" aria-hidden="true" tabindex="-1"></a>In Base R würden wir dies einfach in <span class="in">`[,]`</span> einfügen. Dadurch erhalten wir keinen Vektor mehr, sondern die Datenrahmenstruktur bleibt erhalten. Nicht, dass wir auch die Zeilennummern erhalten.</span>
 <span id="cb69-432"><a href="#cb69-432" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-433"><a href="#cb69-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-434"><a href="#cb69-434" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-435"><a href="#cb69-435" aria-hidden="true" tabindex="-1"></a>df_base[df_base<span class="sc">$</span>RTlexdec <span class="sc">&gt;</span> <span class="dv">600</span> <span class="sc">&amp;</span> df_base<span class="sc">$</span>RTnaming <span class="sc">&lt;</span> <span class="dv">480</span>,<span class="fu">c</span>(<span class="st">"AgeSubject"</span>, <span class="st">"RTlexdec"</span>)]</span>
+<span id="cb69-434"><a href="#cb69-434" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-435"><a href="#cb69-435" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[df_base$RTlexdec &gt; 600 &amp; df_base$RTnaming &lt; 480,c("AgeSubject", "RTlexdec")]</span></span>
 <span id="cb69-436"><a href="#cb69-436" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-437"><a href="#cb69-437" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-440"><a href="#cb69-440" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2141,8 +2366,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-446"><a href="#cb69-446" aria-hidden="true" tabindex="-1"></a>Auch hier können Sie die Spaltennamen durch den Indexwert ersetzen.</span>
 <span id="cb69-447"><a href="#cb69-447" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-448"><a href="#cb69-448" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-449"><a href="#cb69-449" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb69-450"><a href="#cb69-450" aria-hidden="true" tabindex="-1"></a>df_base[df_base<span class="sc">$</span>RTlexdec <span class="sc">&gt;</span> <span class="dv">600</span> <span class="sc">&amp;</span> df_base<span class="sc">$</span>RTnaming <span class="sc">&lt;</span> <span class="dv">480</span>,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span>
+<span id="cb69-449"><a href="#cb69-449" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb69-450"><a href="#cb69-450" aria-hidden="true" tabindex="-1"></a><span class="in">df_base[df_base$RTlexdec &gt; 600 &amp; df_base$RTnaming &lt; 480,c(1, 6)]</span></span>
 <span id="cb69-451"><a href="#cb69-451" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-452"><a href="#cb69-452" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-455"><a href="#cb69-455" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2156,14 +2381,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-463"><a href="#cb69-463" aria-hidden="true" tabindex="-1"></a>Wir haben gelernt, wie man mit der Funktion <span class="in">`mutate()`</span>, die ebenfalls aus <span class="in">`dplyr`</span> stammt, neue Variablen erstellt oder bestehende Variablen ändert.</span>
 <span id="cb69-464"><a href="#cb69-464" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-465"><a href="#cb69-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-466"><a href="#cb69-466" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-467"><a href="#cb69-467" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rt_lexdec_s =</span> RTlexdec<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb69-466"><a href="#cb69-466" aria-hidden="true" tabindex="-1"></a><span class="in">df_tidy |&gt; </span></span>
+<span id="cb69-467"><a href="#cb69-467" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(rt_lexdec_s = RTlexdec/1000)</span></span>
 <span id="cb69-468"><a href="#cb69-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-469"><a href="#cb69-469" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-470"><a href="#cb69-470" aria-hidden="true" tabindex="-1"></a>In Base R geschieht dies, indem wir den Namen der neuen Variablen definieren und ihr mit dem Zuweisungsoperator <span class="in">`&lt;-`</span> einen Wert zuweisen.</span>
 <span id="cb69-471"><a href="#cb69-471" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-472"><a href="#cb69-472" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-473"><a href="#cb69-473" aria-hidden="true" tabindex="-1"></a>df_base<span class="sc">$</span>rt_lexdec_s <span class="ot">&lt;-</span> df_base<span class="sc">$</span>RTlexdec<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb69-473"><a href="#cb69-473" aria-hidden="true" tabindex="-1"></a><span class="in">df_base$rt_lexdec_s &lt;- df_base$RTlexdec/1000</span></span>
 <span id="cb69-474"><a href="#cb69-474" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-475"><a href="#cb69-475" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-476"><a href="#cb69-476" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zusammenfassen</span></span>
@@ -2171,22 +2396,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-478"><a href="#cb69-478" aria-hidden="true" tabindex="-1"></a>Als Letztes wollen wir lernen, wie man in Base R zusammenfasst. Das ist nicht einfach, wenn man eine Gruppe hat, deshalb werden wir das nicht behandeln. </span>
 <span id="cb69-479"><a href="#cb69-479" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-480"><a href="#cb69-480" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename = "tidyverse"}</span></span>
-<span id="cb69-481"><a href="#cb69-481" aria-hidden="true" tabindex="-1"></a>  df_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb69-482"><a href="#cb69-482" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb69-483"><a href="#cb69-483" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_lexdec =</span> <span class="fu">mean</span>(RTlexdec),</span>
-<span id="cb69-484"><a href="#cb69-484" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_lexdec =</span> <span class="fu">sd</span>(RTlexdec),</span>
-<span id="cb69-485"><a href="#cb69-485" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_naming =</span> <span class="fu">mean</span>(RTnaming, <span class="at">na.rm =</span> T),</span>
-<span id="cb69-486"><a href="#cb69-486" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_naming =</span> <span class="fu">sd</span>(RTnaming, <span class="at">na.rm =</span> T)</span>
-<span id="cb69-487"><a href="#cb69-487" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-481"><a href="#cb69-481" aria-hidden="true" tabindex="-1"></a><span class="in">  df_tidy |&gt; </span></span>
+<span id="cb69-482"><a href="#cb69-482" aria-hidden="true" tabindex="-1"></a><span class="in">  summarise(</span></span>
+<span id="cb69-483"><a href="#cb69-483" aria-hidden="true" tabindex="-1"></a><span class="in">    mean_lexdec = mean(RTlexdec),</span></span>
+<span id="cb69-484"><a href="#cb69-484" aria-hidden="true" tabindex="-1"></a><span class="in">    sd_lexdec = sd(RTlexdec),</span></span>
+<span id="cb69-485"><a href="#cb69-485" aria-hidden="true" tabindex="-1"></a><span class="in">    mean_naming = mean(RTnaming, na.rm = T),</span></span>
+<span id="cb69-486"><a href="#cb69-486" aria-hidden="true" tabindex="-1"></a><span class="in">    sd_naming = sd(RTnaming, na.rm = T)</span></span>
+<span id="cb69-487"><a href="#cb69-487" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb69-488"><a href="#cb69-488" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-489"><a href="#cb69-489" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-490"><a href="#cb69-490" aria-hidden="true" tabindex="-1"></a>In Base R müssen wir neue Objekte erstellen, die den Wert jeder Operation enthalten, und sie mit der Funktion "data.frame()" zu einem Datenrahmen zusammenfassen.</span>
 <span id="cb69-491"><a href="#cb69-491" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-492"><a href="#cb69-492" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename = "Base R"}</span></span>
-<span id="cb69-493"><a href="#cb69-493" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">mean_lexdec =</span> <span class="fu">mean</span>(df_base<span class="sc">$</span>RTlexdec),</span>
-<span id="cb69-494"><a href="#cb69-494" aria-hidden="true" tabindex="-1"></a>           <span class="at">sd_lexdec =</span> <span class="fu">sd</span>(df_base<span class="sc">$</span>RTlexdec),</span>
-<span id="cb69-495"><a href="#cb69-495" aria-hidden="true" tabindex="-1"></a>           <span class="at">mean_naming =</span> <span class="fu">mean</span>(df_base<span class="sc">$</span>RTnaming, <span class="at">na.rm =</span> T),</span>
-<span id="cb69-496"><a href="#cb69-496" aria-hidden="true" tabindex="-1"></a>           <span class="at">sd_naming =</span> <span class="fu">sd</span>(df_base<span class="sc">$</span>RTnaming, <span class="at">na.rm =</span> T))</span>
+<span id="cb69-493"><a href="#cb69-493" aria-hidden="true" tabindex="-1"></a><span class="in">data.frame(mean_lexdec = mean(df_base$RTlexdec),</span></span>
+<span id="cb69-494"><a href="#cb69-494" aria-hidden="true" tabindex="-1"></a><span class="in">           sd_lexdec = sd(df_base$RTlexdec),</span></span>
+<span id="cb69-495"><a href="#cb69-495" aria-hidden="true" tabindex="-1"></a><span class="in">           mean_naming = mean(df_base$RTnaming, na.rm = T),</span></span>
+<span id="cb69-496"><a href="#cb69-496" aria-hidden="true" tabindex="-1"></a><span class="in">           sd_naming = sd(df_base$RTnaming, na.rm = T))</span></span>
 <span id="cb69-497"><a href="#cb69-497" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-498"><a href="#cb69-498" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-499"><a href="#cb69-499" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pipes</span></span>
@@ -2195,13 +2420,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-502"><a href="#cb69-502" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-503"><a href="#cb69-503" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-504"><a href="#cb69-504" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "tidyverse"}</span></span>
-<span id="cb69-505"><a href="#cb69-505" aria-hidden="true" tabindex="-1"></a>df_base<span class="sc">$</span>RTlexdec <span class="sc">|&gt;</span> </span>
-<span id="cb69-506"><a href="#cb69-506" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>()</span>
+<span id="cb69-505"><a href="#cb69-505" aria-hidden="true" tabindex="-1"></a><span class="in">df_base$RTlexdec |&gt; </span></span>
+<span id="cb69-506"><a href="#cb69-506" aria-hidden="true" tabindex="-1"></a><span class="in">  mean()</span></span>
 <span id="cb69-507"><a href="#cb69-507" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-508"><a href="#cb69-508" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-509"><a href="#cb69-509" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename = "Base R"}</span></span>
-<span id="cb69-510"><a href="#cb69-510" aria-hidden="true" tabindex="-1"></a>df_base<span class="sc">$</span>RTlexdec <span class="sc">%&gt;%</span></span>
-<span id="cb69-511"><a href="#cb69-511" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>()</span>
+<span id="cb69-510"><a href="#cb69-510" aria-hidden="true" tabindex="-1"></a><span class="in">df_base$RTlexdec %&gt;%</span></span>
+<span id="cb69-511"><a href="#cb69-511" aria-hidden="true" tabindex="-1"></a><span class="in">  mean()</span></span>
 <span id="cb69-512"><a href="#cb69-512" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-513"><a href="#cb69-513" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-514"><a href="#cb69-514" aria-hidden="true" tabindex="-1"></a><span class="fu"># Plots</span></span>
@@ -2213,39 +2438,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-520"><a href="#cb69-520" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb69-521"><a href="#cb69-521" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-522"><a href="#cb69-522" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename = "Base R"}</span></span>
-<span id="cb69-523"><a href="#cb69-523" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 4</span></span>
-<span id="cb69-524"><a href="#cb69-524" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-asp: 1</span></span>
-<span id="cb69-525"><a href="#cb69-525" aria-hidden="true" tabindex="-1"></a><span class="co">#| dev: png</span></span>
-<span id="cb69-526"><a href="#cb69-526" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 2</span></span>
-<span id="cb69-527"><a href="#cb69-527" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-baser</span></span>
-<span id="cb69-528"><a href="#cb69-528" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Histogram and scatterplot with Base R</span></span>
+<span id="cb69-523"><a href="#cb69-523" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-width: 4</span></span>
+<span id="cb69-524"><a href="#cb69-524" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-asp: 1</span></span>
+<span id="cb69-525"><a href="#cb69-525" aria-hidden="true" tabindex="-1"></a><span class="in">#| dev: png</span></span>
+<span id="cb69-526"><a href="#cb69-526" aria-hidden="true" tabindex="-1"></a><span class="in">#| layout-ncol: 2</span></span>
+<span id="cb69-527"><a href="#cb69-527" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-baser</span></span>
+<span id="cb69-528"><a href="#cb69-528" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: Histogram and scatterplot with Base R</span></span>
 <span id="cb69-529"><a href="#cb69-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-530"><a href="#cb69-530" aria-hidden="true" tabindex="-1"></a><span class="co"># left</span></span>
-<span id="cb69-531"><a href="#cb69-531" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df_base<span class="sc">$</span>RTlexdec)</span>
-<span id="cb69-532"><a href="#cb69-532" aria-hidden="true" tabindex="-1"></a><span class="co"># right</span></span>
-<span id="cb69-533"><a href="#cb69-533" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_base<span class="sc">$</span>RTlexdec, df_base<span class="sc">$</span>RTnaming) </span>
+<span id="cb69-530"><a href="#cb69-530" aria-hidden="true" tabindex="-1"></a><span class="in"># left</span></span>
+<span id="cb69-531"><a href="#cb69-531" aria-hidden="true" tabindex="-1"></a><span class="in">hist(df_base$RTlexdec)</span></span>
+<span id="cb69-532"><a href="#cb69-532" aria-hidden="true" tabindex="-1"></a><span class="in"># right</span></span>
+<span id="cb69-533"><a href="#cb69-533" aria-hidden="true" tabindex="-1"></a><span class="in">plot(df_base$RTlexdec, df_base$RTnaming) </span></span>
 <span id="cb69-534"><a href="#cb69-534" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-535"><a href="#cb69-535" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb69-536"><a href="#cb69-536" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-537"><a href="#cb69-537" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
 <span id="cb69-538"><a href="#cb69-538" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename = "Base R histogram"}</span></span>
-<span id="cb69-539"><a href="#cb69-539" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 4</span></span>
-<span id="cb69-540"><a href="#cb69-540" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-asp: 1.1</span></span>
-<span id="cb69-541"><a href="#cb69-541" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-baser-hist</span></span>
-<span id="cb69-542"><a href="#cb69-542" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Histogram with Base R</span></span>
+<span id="cb69-539"><a href="#cb69-539" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-width: 4</span></span>
+<span id="cb69-540"><a href="#cb69-540" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-asp: 1.1</span></span>
+<span id="cb69-541"><a href="#cb69-541" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-baser-hist</span></span>
+<span id="cb69-542"><a href="#cb69-542" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: Histogram with Base R</span></span>
 <span id="cb69-543"><a href="#cb69-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-544"><a href="#cb69-544" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb69-545"><a href="#cb69-545" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df_base<span class="sc">$</span>RTlexdec)</span>
+<span id="cb69-544"><a href="#cb69-544" aria-hidden="true" tabindex="-1"></a><span class="in"># histogram</span></span>
+<span id="cb69-545"><a href="#cb69-545" aria-hidden="true" tabindex="-1"></a><span class="in">hist(df_base$RTlexdec)</span></span>
 <span id="cb69-546"><a href="#cb69-546" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-547"><a href="#cb69-547" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-548"><a href="#cb69-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename = "Base R histogram"}</span></span>
-<span id="cb69-549"><a href="#cb69-549" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 4</span></span>
-<span id="cb69-550"><a href="#cb69-550" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-asp: 1.1</span></span>
-<span id="cb69-551"><a href="#cb69-551" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-baser-scatter</span></span>
-<span id="cb69-552"><a href="#cb69-552" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Scatterplot with Base R</span></span>
+<span id="cb69-549"><a href="#cb69-549" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-width: 4</span></span>
+<span id="cb69-550"><a href="#cb69-550" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-asp: 1.1</span></span>
+<span id="cb69-551"><a href="#cb69-551" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-baser-scatter</span></span>
+<span id="cb69-552"><a href="#cb69-552" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: Scatterplot with Base R</span></span>
 <span id="cb69-553"><a href="#cb69-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-554"><a href="#cb69-554" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
-<span id="cb69-555"><a href="#cb69-555" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_base<span class="sc">$</span>RTlexdec, df_base<span class="sc">$</span>RTnaming)</span>
+<span id="cb69-554"><a href="#cb69-554" aria-hidden="true" tabindex="-1"></a><span class="in"># scatterplot</span></span>
+<span id="cb69-555"><a href="#cb69-555" aria-hidden="true" tabindex="-1"></a><span class="in">plot(df_base$RTlexdec, df_base$RTnaming)</span></span>
 <span id="cb69-556"><a href="#cb69-556" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-557"><a href="#cb69-557" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-558"><a href="#cb69-558" aria-hidden="true" tabindex="-1"></a></span>
@@ -2254,19 +2479,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-561"><a href="#cb69-561" aria-hidden="true" tabindex="-1"></a>To achieve the same thing with the tidyverse:</span>
 <span id="cb69-562"><a href="#cb69-562" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-563"><a href="#cb69-563" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, filename = "tidyverse"}</span></span>
-<span id="cb69-564"><a href="#cb69-564" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb69-564"><a href="#cb69-564" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
 <span id="cb69-565"><a href="#cb69-565" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-566"><a href="#cb69-566" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb69-567"><a href="#cb69-567" aria-hidden="true" tabindex="-1"></a>df_base <span class="sc">|&gt;</span> </span>
-<span id="cb69-568"><a href="#cb69-568" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb69-569"><a href="#cb69-569" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> RTlexdec) <span class="sc">+</span></span>
-<span id="cb69-570"><a href="#cb69-570" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb69-566"><a href="#cb69-566" aria-hidden="true" tabindex="-1"></a><span class="in"># histogram</span></span>
+<span id="cb69-567"><a href="#cb69-567" aria-hidden="true" tabindex="-1"></a><span class="in">df_base |&gt; </span></span>
+<span id="cb69-568"><a href="#cb69-568" aria-hidden="true" tabindex="-1"></a><span class="in">  ggplot() +</span></span>
+<span id="cb69-569"><a href="#cb69-569" aria-hidden="true" tabindex="-1"></a><span class="in">  aes(x = RTlexdec) +</span></span>
+<span id="cb69-570"><a href="#cb69-570" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_histogram()</span></span>
 <span id="cb69-571"><a href="#cb69-571" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-572"><a href="#cb69-572" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot</span></span>
-<span id="cb69-573"><a href="#cb69-573" aria-hidden="true" tabindex="-1"></a>  df_base <span class="sc">|&gt;</span> </span>
-<span id="cb69-574"><a href="#cb69-574" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb69-575"><a href="#cb69-575" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> RTlexdec, <span class="at">y =</span> RTnaming) <span class="sc">+</span></span>
-<span id="cb69-576"><a href="#cb69-576" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb69-572"><a href="#cb69-572" aria-hidden="true" tabindex="-1"></a><span class="in"># scatter plot</span></span>
+<span id="cb69-573"><a href="#cb69-573" aria-hidden="true" tabindex="-1"></a><span class="in">  df_base |&gt; </span></span>
+<span id="cb69-574"><a href="#cb69-574" aria-hidden="true" tabindex="-1"></a><span class="in">  ggplot() +</span></span>
+<span id="cb69-575"><a href="#cb69-575" aria-hidden="true" tabindex="-1"></a><span class="in">  aes(x = RTlexdec, y = RTnaming) +</span></span>
+<span id="cb69-576"><a href="#cb69-576" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point() </span></span>
 <span id="cb69-577"><a href="#cb69-577" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-578"><a href="#cb69-578" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-581"><a href="#cb69-581" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -2403,6 +2628,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 
