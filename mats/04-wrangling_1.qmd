@@ -11,7 +11,7 @@ echo: true
 code-tools: true
 ---
 
-## Data Wrangling 1: Transformation {#sec-data-transform}
+## Data Wrangling 1: Transformation {#sec-wrangling1}
 
 ### Lesungen {.unnumbered}
 
@@ -61,7 +61,7 @@ Heute werden wir...
 - [Kapital 4 (Data transformation)](https://r4ds.hadley.nz/data-transform.html) in @wickham_r_2023
 - [Kapital 9 (Data wrangling)](https://psyteachr.github.io/ads-v2/09-wrangle.html) in @nordmann_applied_2022
 
-## Voraussetzungen
+## Einrichtung {#sec-wrangling1-setup}
 
 1. Frisches Quarto-Dokument
     - Erstellen Sie ein neues Quarto-Dokument für den heutigen Unterricht
@@ -82,7 +82,7 @@ format:
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### Voraussetzungen {.unlisted .unnumbered}
+### Einrichtung {.unlisted .unnumbered}
 :::
 
 2. Pakete
@@ -96,7 +96,7 @@ library(languageR)
 ```
 
 ::: {.content-visible when-format="revealjs"}
-### Voraussetzungen {.unlisted .unnumbered}
+### Einrichtung {.unlisted .unnumbered}
 :::
 
 3. Daten
@@ -178,8 +178,8 @@ head(df_lexdec, n = 10)
 
 ::: callout-tip
 
-#### [Aufgabe @exm-df_lexent]: `df_lexdec`
-::: {#exm-df_lexent .custom}
+#### [Aufgabe @exm-df_lexdec]: `df_lexdec`
+::: {#exm-df_lexdec .custom}
 ::: nonincremental
 1. Betrachten Sie den Datensatz
     + wie viele Beobachtungen gibt es?
@@ -431,7 +431,7 @@ df_lexdec |>
 ::: nonincremental
 1. Filtere die Daten so, dass sie nur Beobachtungen der "Probanden" M1 und W2 enthalten, *und dann*
 2. Ordnen Sie die Daten nach absteigender Reaktionszeit
-  
+
 ```{r}
 #| eval: false
 #| echo: false
@@ -478,15 +478,19 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
   
 - Versuchen wir, einige der Variablennamen auf Deutsch zu ändern
   + Ich neige dazu, Variablennamen in Kleinbuchstaben zu schreiben, als Kodierungskonvention
-  
+
 ```{r}
+#| eval: false
 ## single variable
-df_lexent <- 
+df_lexdec <- 
   df_lexdec |>
   rename(teilnehmer = Subject)
+```
 
+
+```{r}
 ## or multiple variables at once
-df_lexent <- 
+df_lexdec <- 
   df_lexdec |> 
  rename(teilnehmer = Subject,
         rz_ms = RT,
@@ -501,7 +505,7 @@ df_lexent <-
 
 ```{r}
 #| Ausgabeort: Fragment
-df_lexent |> 
+df_lexdec |> 
   mutate(
     rz_laenge = rz_ms / laenge,
   ) |> 
@@ -518,7 +522,7 @@ df_lexent |>
 
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   mutate(
     rz_laenge = rz_ms / laenge,
     .after = rz_ms
@@ -552,7 +556,7 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 ::: {#exm-mutate .custom}
 ::: nonincremental
 
-1. Create a new variable called `rz_s` in `df_lexent`:
+1. Create a new variable called `rz_s` in `df_lexdec`:
     - equals `rz_ms` divided by 1000 (i.e., converts milliseconds to seconds)
     - appears after `rz_ms`
 2. Render your document
@@ -560,8 +564,8 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 ```{r}
 #| echo: false
 #| eval: true
-df_lexent <-
-  df_lexent |> 
+df_lexdec <-
+  df_lexdec |> 
   mutate(
     rz_s = rz_ms / 1000,
     .after = rz_ms
@@ -582,7 +586,7 @@ df_lexent <-
 
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   select(teilnehmer, rz_ms, Word) |> 
   head()
 ```
@@ -595,7 +599,7 @@ df_lexent |>
 
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   select(rz_ms:geschlect) |> 
   head()
 ```
@@ -608,7 +612,7 @@ df_lexent |>
 
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   select(!rz_s) |> 
   head()
 ```
@@ -627,7 +631,7 @@ df_lexent |>
 ::: {.column width="50%"}
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   select(starts_with("w")) |> 
   head()
 ```
@@ -636,7 +640,7 @@ df_lexent |>
 ::: {.column width="50%"}
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   select(ends_with("er")) |> 
   head()
 ```
@@ -653,9 +657,9 @@ df_lexent |>
 ::: {#exm-select .custom}
 ::: nonincremental
 
-1. Drucke die Spalten in `df_lexent`, die mit "t" beginnen
-2. Drucke die Spalten in `df_lexent`, die "ge" enthalten
-3. Drucke die Spalten in `df_lexent`, die
+1. Drucke die Spalten in `df_lexdec`, die mit "t" beginnen
+2. Drucke die Spalten in `df_lexdec`, die "ge" enthalten
+3. Drucke die Spalten in `df_lexdec`, die
     + mit mit "r" beginnen, und
     + mit "s" enden
 
@@ -668,15 +672,15 @@ df_lexent |>
 #| eval: false
 
 ## 1
-df_lexent |>
+df_lexdec |>
   select(starts_with("t")) |> 
   head()
 ## 2
-df_lexent |>
+df_lexdec |>
   select(contains("ge")) |> 
   head()
 ## 3
-df_lexent |>
+df_lexdec |>
   select(starts_with("r"),
          ends_with("s")) |> 
   head()
@@ -690,7 +694,7 @@ df_lexent |>
 
 ```{r}
 #| output-location: fragment
-df_lexent |> relocate(Trial) |> 
+df_lexdec |> relocate(Trial) |> 
   head()
 ```
 
@@ -702,7 +706,7 @@ df_lexent |> relocate(Trial) |>
 
 ```{r}
 #| output-location: fragment
-df_lexent |> 
+df_lexdec |> 
   relocate(Trial, .after = teilnehmer) |> 
   head()
 ```
@@ -715,7 +719,7 @@ df_lexent |>
 
 ```{r}
 #| eval: false
-df_lexent |> 
+df_lexdec |> 
   ## filter the data
   filter(rz_ms > 120,
          rz_ms > 500) |> 
@@ -746,60 +750,11 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 :::
 
 
-## Aufgaben {.unnumbered}
 
-::: nonincremental
+## Weitere Übungen {.unnumbered}
 
-1. Drucken Sie in einer einzigen Pipeline `df_lexent`, wobei Sie nur die Spalten Reaktionszeiten (in Millisekunden), NativeLanguage und Word für Zeilen auswählen, die jede der folgenden Bedingungen erfüllen, sie in der Reihenfolge der Reaktionszeiten anordnen und so filtern, dass nur diese Zeilen berücksichtigt werden:
-    - die Reaktionszeiten waren größer als 500ms *und* kleiner als 550ms
-    - aus den Wörtern "pear", "elephant" oder "tortoise" stammen
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_wrangling1.
 
-```{r}
-#| eval: false
-#| echo: false
-
-df_lexent |>
-  select(rz_ms, NativeLanguage, Word) |> 
-  arrange(rz_ms) |> 
-  filter(rz_ms <= 550 & rz_ms > 500,
-         Word %in% c("tortoise", "elephant", "pear")) 
-```
-
-
-2. Sortiere (`arrange()`) `df_lexent` in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.
-
-```{r}
-#| eval: false
-#| echo: false
-
-df_lexent |> 
-  arrange(desc(rz_ms)) 
-```
-
-:::
-
-::: {.content-visible when-format="revealjs"}
-### {.unlisted .unnumbered}
-:::
-
-::: nonincremental
-3. Speichern Sie in einer einzigen Pipeline ein neues Objekt namens `df_rz`, das `df_lexent` enthält, *und dann*:
-    + Selektieren (`select()`) Sie die Variablen `Teilnehmer`, `NativeLanguage`, `Word`, `rz_s`, `laenge`, und `Frequency`
-    + Erstelle eine neue Variable `rz_s_laenge` (`mutate()`), die `rz_s` geteilt durch `laenge` ist
-      + und wird vor `Laenge` gesetzt
-    + Benennen (`rename`()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.
-
-```{r}
-#| echo: false
-df_rz <- 
-  df_lexent |> 
-  select(teilnehmer, NativeLanguage, Word, rz_s, laenge, Frequency) |> 
-  mutate(rz_s_laenge = rz_s/laenge, .before = laenge) |> 
-  rename(muttersprache = NativeLanguage,
-         wort = Word,
-         frequenz = Frequency) ## etcetera
-```
-:::
 
 ## Heutige Ziele 🏁 {.unnumbered .unlisted}
 

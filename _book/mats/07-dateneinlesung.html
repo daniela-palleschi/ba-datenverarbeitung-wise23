@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -103,7 +104,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -112,6 +119,7 @@ div.csl-indent {
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -137,17 +145,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - 6&nbsp; Einlesen von Daten">
 <meta name="twitter:description" content="Importieren von Datendateien">
-<meta name="twitter:image" content="07-dateneinlesung_files/figure-html/fig-project-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -159,51 +166,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -366,7 +365,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -409,28 +408,28 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html">Nächste Stufe</a></li><li class="breadcrumb-item"><a href="../mats/07-dateneinlesung.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Importieren von Datendateien</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
@@ -450,7 +449,9 @@ MathJax.Hub.Config({
   </div>
   
 
+
 </header>
+
 
 <section id="lernziele" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele">Lernziele</h2>
@@ -503,40 +504,52 @@ Aufgabe
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie <code>r4ling_student-main</code> oben in Ihrem RStudio (<a href="#fig-project">Abbildung&nbsp;<span>6.1</span></a>).</li>
+<li>Überprüfen Sie, ob Sie tatsächlich in Ihrem RProjekt arbeiten. Wenn dies der Fall ist, sehen Sie <code>r4ling_student-main</code> oben in Ihrem RStudio (<a href="#fig-project" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a>).</li>
 </ol>
 <ul>
-<li>Wenn dies nicht der Fall ist (<a href="#fig-no-project">Abbildung&nbsp;<span>6.2</span></a>), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche “Projekt” oben rechts im RStudio klicken (<a href="#fig-project-open">Abbildung&nbsp;<span>6.3</span></a>; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).</li>
+<li>Wenn dies nicht der Fall ist (<a href="#fig-no-project" class="quarto-xref">Abbildung&nbsp;<span>6.2</span></a>), können Sie zum RProjekt wechseln, indem Sie auf die Schaltfläche “Projekt” oben rechts im RStudio klicken (<a href="#fig-project-open" class="quarto-xref">Abbildung&nbsp;<span>6.3</span></a>; Hinweis: Die Screenshots stammen von einem Mac, auf einem Windows-Rechner sieht es etwas anders aus).</li>
 </ul>
 <ol start="2" type="1">
 <li>Fügen Sie Ihrem RProject-Ordner einen Ordner namens <code>daten</code> hinzu.</li>
 </ol>
 <div class="cell" data-set.cap.width="true">
 <div class="cell-output-display">
-<div id="fig-project" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-dateneinlesung_files/figure-html/fig-project-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;6.1: RStudio will display the RProject name if you are working in an RProject (here: r4ling_student-main).</figcaption>
+<div id="fig-project" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-dateneinlesung_files/figure-html/fig-project-1.png" class="img-fluid figure-img" style="width:100.0%" data-fig-pos="H">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.1: RStudio will display the RProject name if you are working in an RProject (here: r4ling_student-main).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-set.cap.width="true">
 <div class="cell-output-display">
-<div id="fig-no-project" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-dateneinlesung_files/figure-html/fig-no-project-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;6.2: RStudio will display the RProject name if you are working in an RProject.</figcaption>
+<div id="fig-no-project" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-no-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-dateneinlesung_files/figure-html/fig-no-project-1.png" class="img-fluid figure-img" style="width:100.0%" data-fig-pos="H">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-no-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.2: RStudio will display the RProject name if you are working in an RProject.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-set.cap.width="true">
 <div class="cell-output-display">
-<div id="fig-project-open" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-dateneinlesung_files/figure-html/fig-project-open-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;6.3: RStudio will say ‘RStudio’ and ‘Project (none)’ if you are not working in an RProject.</figcaption>
+<div id="fig-project-open" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-project-open-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-dateneinlesung_files/figure-html/fig-project-open-1.png" class="img-fluid figure-img" style="width:100.0%" data-fig-pos="H">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-project-open-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.3: RStudio will say ‘RStudio’ and ‘Project (none)’ if you are not working in an RProject.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -577,13 +590,17 @@ Microsoft Excel
 </div>
 <section id="tidydaten" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="tidydaten"><span class="header-section-number">6.2.1</span> Tidydaten</h3>
-<p>Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie <em>aufgeräumt</em> sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (<a href="#fig-tidy-data">Abbildung&nbsp;<span>6.4</span></a>).</p>
+<p>Unabhängig davon, in welchem Format Ihre Daten vorliegen, sollten sie <em>aufgeräumt</em> sein. Das bedeutet erstens, dass die Daten rechteckig sein sollten und dass jede Spalte eine Variable, jede Zeile eine Beobachtung und jede Zelle einen Datenpunkt darstellt (<a href="#fig-tidy-data" class="quarto-xref">Abbildung&nbsp;<span>6.4</span></a>).</p>
 <div class="cell" data-set.cap.width="true">
 <div class="cell-output-display">
-<div id="fig-tidy-data" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-dateneinlesung_files/figure-html/fig-tidy-data-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;6.4: Source: <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)</figcaption>
+<div id="fig-tidy-data" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-dateneinlesung_files/figure-html/fig-tidy-data-1.png" class="img-fluid figure-img" style="width:100.0%" data-fig-pos="H">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.4: Source: <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span> (all rights reserved)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -598,7 +615,7 @@ Microsoft Excel
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="07-dateneinlesung_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Our spreadsheet</figcaption>
+<figcaption>Our spreadsheet</figcaption>
 </figure>
 </div>
 </div>
@@ -612,12 +629,12 @@ Microsoft Excel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-table1">Aufgabe&nbsp;<span>6.1</span></a>: <code>Speichern einer CSV</code>
+<a href="#exm-table1" class="quarto-xref">Aufgabe&nbsp;<span>6.1</span></a>: <code>Speichern einer CSV</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-table1" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 6.1 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 6.1</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <ol type="1">
 <li>Erstellen Sie einen neuen Ordner mit dem Namen <code>daten</code> in Ihrem Projektordner (falls Sie das nicht schon getan haben).</li>
@@ -629,7 +646,7 @@ Microsoft Excel
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="07-dateneinlesung_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">Download a Google Sheet as a CSV.</figcaption>
+<figcaption>Download a Google Sheet as a CSV.</figcaption>
 </figure>
 </div>
 </div>
@@ -639,7 +656,7 @@ Microsoft Excel
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="07-dateneinlesung_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">Find the CSV file in your file manager.</figcaption>
+<figcaption>Find the CSV file in your file manager.</figcaption>
 </figure>
 </div>
 </div>
@@ -658,10 +675,14 @@ Microsoft Excel
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"groesse_geburtstag.csv"</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
+<div id="tbl-students-table" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-students-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;6.1: Data from the students.csv file as a table.
+</figcaption>
+<div aria-describedby="tbl-students-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-students-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Tabelle&nbsp;6.1: Data from the students.csv file as a table.</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Haustier</th>
@@ -697,6 +718,8 @@ Microsoft Excel
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -704,12 +727,12 @@ Microsoft Excel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-students">Aufgabe&nbsp;<span>6.2</span></a>: <code>df_groesse</code>
+<a href="#exm-students" class="quarto-xref">Aufgabe&nbsp;<span>6.2</span></a>: <code>df_groesse</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-students" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 6.2 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 6.2</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <ol type="1">
 <li>Importieren Sie den Datensatz “groesse_geburtstag.csv” und speichern Sie ihn als Objekt mit dem Namen “df_groesse”.
@@ -744,7 +767,7 @@ Microsoft Excel
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../media/Horst_here.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption class="figure-caption"><a href="https://allisonhorst.com/other-r-fun">Image source: Allison Horst</a> (all rights reserved)</figcaption>
+<figcaption><a href="https://allisonhorst.com/other-r-fun">Image source: Allison Horst</a> (all rights reserved)</figcaption>
 </figure>
 </div>
 </div>
@@ -856,12 +879,12 @@ Microsoft Excel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-pipes">Aufgabe&nbsp;<span>6.3</span></a>: pipes
+<a href="#exm-pipes" class="quarto-xref">Aufgabe&nbsp;<span>6.3</span></a>: pipes
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-pipes" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 6.3 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 6.3</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <ol type="1">
 <li>Laden Sie den Datensatz <code>groesse_geburtstag.csv</code> erneut mit festen <code>NA</code>s <em>und dann</em>
@@ -948,17 +971,17 @@ Microsoft Excel
 </section>
 <section id="session-info" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="session-info">Session Info</h2>
-<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<p>Hergestellt mit R version 4.4.0 (2024-04-24) (Puppy Cup) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: aarch64-apple-darwin20 (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
 Running under: macOS Ventura 13.2.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -967,33 +990,33 @@ time zone: Europe/Berlin
 tzcode source: internal
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] magick_2.7.4    here_1.0.1      janitor_2.2.0   lubridate_1.9.2
- [5] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.3     purrr_1.0.2    
- [9] readr_2.1.5     tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.3  
+ [1] magick_2.8.3    here_1.0.1      janitor_2.2.0   lubridate_1.9.3
+ [5] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2    
+ [9] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
 [13] tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] utf8_1.2.4        generics_0.1.3    stringi_1.8.3     hms_1.1.3        
- [5] digest_0.6.34     magrittr_2.0.3    evaluate_0.23     grid_4.3.0       
- [9] timechange_0.2.0  fastmap_1.1.1     rprojroot_2.0.3   jsonlite_1.8.8   
-[13] fansi_1.0.6       scales_1.2.1      cli_3.6.2         crayon_1.5.2     
-[17] rlang_1.1.3       bit64_4.0.5       munsell_0.5.0     withr_3.0.0      
-[21] yaml_2.3.8        parallel_4.3.0    tools_4.3.0       tzdb_0.4.0       
-[25] colorspace_2.1-0  pacman_0.5.1      vctrs_0.6.5       R6_2.5.1         
-[29] lifecycle_1.0.4   snakecase_0.11.0  htmlwidgets_1.6.2 bit_4.0.5        
-[33] vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4     
-[37] glue_1.7.0        Rcpp_1.0.11       xfun_0.42         tidyselect_1.2.0 
-[41] rstudioapi_0.15.0 knitr_1.45        htmltools_0.5.7   rmarkdown_2.25   
-[45] compiler_4.3.0   </code></pre>
+ [1] utf8_1.2.4        generics_0.1.3    renv_1.0.7        stringi_1.8.3    
+ [5] hms_1.1.3         digest_0.6.35     magrittr_2.0.3    evaluate_0.23    
+ [9] grid_4.4.0        timechange_0.3.0  fastmap_1.1.1     rprojroot_2.0.4  
+[13] jsonlite_1.8.8    fansi_1.0.6       scales_1.3.0      cli_3.6.2        
+[17] crayon_1.5.2      rlang_1.1.3       bit64_4.0.5       munsell_0.5.1    
+[21] withr_3.0.0       yaml_2.3.8        parallel_4.4.0    tools_4.4.0      
+[25] tzdb_0.4.0        colorspace_2.1-0  pacman_0.5.1      vctrs_0.6.5      
+[29] R6_2.5.1          lifecycle_1.0.4   snakecase_0.11.1  htmlwidgets_1.6.4
+[33] bit_4.0.5         vroom_1.6.5       pkgconfig_2.0.3   pillar_1.9.0     
+[37] gtable_0.3.5      glue_1.7.0        Rcpp_1.0.12       xfun_0.43        
+[41] tidyselect_1.2.1  rstudioapi_0.16.0 knitr_1.46        htmltools_0.5.8.1
+[45] rmarkdown_2.26    compiler_4.4.0   </code></pre>
 </div>
 </div>
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-languageR-package" class="csl-entry" role="listitem">
 Baayen, R. H., &amp; Shafaei-Bajestan, E. (2019). <em>languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics</em>. <a href="https://CRAN.R-project.org/package=languageR">https://CRAN.R-project.org/package=languageR</a>
 </div>
@@ -1062,6 +1085,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1128,13 +1178,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1264,10 +1316,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1277,8 +1346,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1290,7 +1368,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1334,6 +1535,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1359,6 +1561,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1420,12 +1648,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/05-dataviz_2.html" class="pagination-link">
+      <a href="../mats/05-dataviz_2.html" class="pagination-link" aria-label="Datenvisualisierung 2">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mats/08-desc_stats.html" class="pagination-link">
+      <a href="../mats/08-desc_stats.html" class="pagination-link" aria-label="Deskriptive Statistik">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1508,27 +1736,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject (here: r4ling_student-main)."}</span></span>
-<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project</span></span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-project</span></span>
 <span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/rstudio_project.png"))</span></span>
 <span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
-<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-project</span></span>
+<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-no-project</span></span>
 <span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/rstudio_project.png"))</span></span>
 <span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}</span></span>
-<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-open</span></span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-project-open</span></span>
 <span id="cb22-103"><a href="#cb22-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_noproject.png"</span>))</span>
+<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/rstudio_noproject.png"))</span></span>
 <span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a></span>
@@ -1536,27 +1764,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="html"}</span>
 <span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
-<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-1</span></span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-project-1</span></span>
 <span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/rstudio_project.png"))</span></span>
 <span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will display the RProject name if you are working in an RProject."}</span></span>
-<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-no-project-1</span></span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-no-project-1</span></span>
 <span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_project.png"</span>))</span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/rstudio_project.png"))</span></span>
 <span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="RStudio will say 'RStudio' and 'Project (none)' if you are not working in an RProject."}</span></span>
-<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-project-open-1</span></span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-project-open-1</span></span>
 <span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/rstudio_noproject.png"</span>))</span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/rstudio_noproject.png"))</span></span>
 <span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a></span>
@@ -1596,22 +1824,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}</span></span>
-<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-tidy-data</span></span>
+<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-tidy-data</span></span>
 <span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_tidydata.png"</span>))</span>
+<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/Wickham_tidydata.png"))</span></span>
 <span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-182"><a href="#cb22-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
 <span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Source: @wickham_r_2023 (all rights reserved)"}</span></span>
-<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-tidy-data-1</span></span>
+<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-tidy-data-1</span></span>
 <span id="cb22-188"><a href="#cb22-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/Wickham_tidydata.png"</span>))</span>
+<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/Wickham_tidydata.png"))</span></span>
 <span id="cb22-191"><a href="#cb22-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-192"><a href="#cb22-192" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-193"><a href="#cb22-193" aria-hidden="true" tabindex="-1"></a></span>
@@ -1623,20 +1851,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-199"><a href="#cb22-199" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-200"><a href="#cb22-200" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb22-201"><a href="#cb22-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="100%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}</span></span>
-<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb22-203"><a href="#cb22-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_googlesheet.png"</span>))</span>
+<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/spreadsheet_googlesheet.png"))</span></span>
 <span id="cb22-206"><a href="#cb22-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-207"><a href="#cb22-207" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-208"><a href="#cb22-208" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-209"><a href="#cb22-209" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-210"><a href="#cb22-210" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
 <span id="cb22-211"><a href="#cb22-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="75%",  fig.pos="H", set.cap.width=T, fig.cap="Our spreadsheet"}</span></span>
-<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb22-213"><a href="#cb22-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-214"><a href="#cb22-214" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_googlesheet.png"</span>))</span>
+<span id="cb22-214"><a href="#cb22-214" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/spreadsheet_googlesheet.png"))</span></span>
 <span id="cb22-216"><a href="#cb22-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-217"><a href="#cb22-217" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-218"><a href="#cb22-218" aria-hidden="true" tabindex="-1"></a></span>
@@ -1659,33 +1887,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
-<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_save.png"</span>))</span>
+<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/spreadsheet_save.png"))</span></span>
 <span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="80%",  fig.pos="H", set.cap.width=T, fig.cap="Find the CSV file in your file manager."}</span></span>
-<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb22-246"><a href="#cb22-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_csv.png"</span>))</span>
+<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/spreadsheet_csv.png"))</span></span>
 <span id="cb22-249"><a href="#cb22-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-250"><a href="#cb22-250" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-251"><a href="#cb22-251" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-252"><a href="#cb22-252" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
 <span id="cb22-253"><a href="#cb22-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
-<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb22-255"><a href="#cb22-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_save.png"</span>))</span>
+<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/spreadsheet_save.png"))</span></span>
 <span id="cb22-258"><a href="#cb22-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-259"><a href="#cb22-259" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-260"><a href="#cb22-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = T, fig.env = "figure", out.width="60%",  fig.pos="H", set.cap.width=T, fig.cap="Download a Google Sheet as a CSV."}</span></span>
-<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb22-262"><a href="#cb22-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media/spreadsheet_csv.png"</span>))</span>
+<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a><span class="in">library(magick)</span></span>
+<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a><span class="in">magick::image_read(here::here("media/spreadsheet_csv.png"))</span></span>
 <span id="cb22-265"><a href="#cb22-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-266"><a href="#cb22-266" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-267"><a href="#cb22-267" aria-hidden="true" tabindex="-1"></a></span>
@@ -1760,13 +1988,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-344"><a href="#cb22-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### `here` package {.unlisted .unnumbered}</span></span>
 <span id="cb22-345"><a href="#cb22-345" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-346"><a href="#cb22-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.env = "figure",out.width="70%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}</span></span>
-<span id="cb22-347"><a href="#cb22-347" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_here.png"</span>))</span>
+<span id="cb22-347"><a href="#cb22-347" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics(here::here("media", "Horst_here.png"))</span></span>
 <span id="cb22-348"><a href="#cb22-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-349"><a href="#cb22-349" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-350"><a href="#cb22-350" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-351"><a href="#cb22-351" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
 <span id="cb22-352"><a href="#cb22-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo = F, fig.env = "figure",out.width="90%", fig.align = "center", set.cap.width=T, fig.cap=" [Image source: Allison Horst](https://allisonhorst.com/other-r-fun) (all rights reserved)"}</span></span>
-<span id="cb22-353"><a href="#cb22-353" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"media"</span>, <span class="st">"Horst_here.png"</span>))</span>
+<span id="cb22-353"><a href="#cb22-353" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics(here::here("media", "Horst_here.png"))</span></span>
 <span id="cb22-354"><a href="#cb22-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-355"><a href="#cb22-355" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb22-356"><a href="#cb22-356" aria-hidden="true" tabindex="-1"></a></span>
@@ -2007,6 +2235,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

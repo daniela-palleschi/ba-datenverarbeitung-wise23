@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -103,7 +104,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -112,6 +119,7 @@ div.csl-indent {
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -132,7 +140,6 @@ MathJax.Hub.Config({
     }
   };
 </script>
-
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -140,17 +147,16 @@ MathJax.Hub.Config({
 <link rel="stylesheet" href="cutsom.css">
 <meta name="twitter:title" content="Angewandte Datenverarbeitung und Visualisierung - 5&nbsp; Datenvisualisierung 2">
 <meta name="twitter:description" content="Visualisierung von Beziehungen">
-<meta name="twitter:image" content="05-dataviz_2_files/figure-html/fig-stacked-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Angewandte Datenverarbeitung und Visualisierung</span>
     </a>
@@ -162,51 +168,43 @@ MathJax.Hub.Config({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://daniela-palleschi.github.io/" rel="" target=""><i class="bi bi-home" role="img">
+    <a class="nav-link" href="https://daniela-palleschi.github.io/"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">D. Palleschi</span></a>
+<span class="menu-text">D. Palleschi</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling" rel="" target=""><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/daniela-palleschi/r4ling"> <i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770" rel="" target=""><i class="bi bi-life-preserver" role="img">
+    <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=127770"> <i class="bi bi-life-preserver" role="img">
 </i> 
- <span class="menu-text">Moodle</span></a>
+<span class="menu-text">Moodle</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="../r4ling_de_sose2024.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../r4ling_de_sose2024.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/01-intro_r.html">Grundlagen</a></li><li class="breadcrumb-item"><a href="../mats/05-dataviz_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/01-intro_r.html">Grundlagen</a></li><li class="breadcrumb-item"><a href="../mats/05-dataviz_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -369,7 +367,7 @@ MathJax.Hub.Config({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -413,28 +411,28 @@ MathJax.Hub.Config({
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mats/01-intro_r.html">Grundlagen</a></li><li class="breadcrumb-item"><a href="../mats/05-dataviz_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datenvisualisierung 2</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Visualisierung von Beziehungen</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Autor:in</div>
   <div class="quarto-title-meta-heading">Zugehörigkeit</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Daniela Palleschi </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Humboldt-Universität zu Berlin
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
@@ -454,7 +452,9 @@ MathJax.Hub.Config({
   </div>
   
 
+
 </header>
+
 
 <section id="lesungen" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="lesungen">Lesungen</h3>
@@ -543,10 +543,15 @@ MathJax.Hub.Config({
 <h4 class="unnumbered smaller anchored" data-anchor-id="english-dataset"><code>english</code> dataset</h4>
 <p>Unsere Variablen von Interesse sind:</p>
 <div class="cell">
+<div id="tbl-english" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-english-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;5.1: english dataset variables of interest
+</figcaption>
+<div aria-describedby="tbl-english-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-english" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;5.1: english dataset variables of interest</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
@@ -597,9 +602,12 @@ MathJax.Hub.Config({
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -703,10 +711,14 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-stacked" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-dataviz_2_files/figure-html/fig-stacked-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;5.1: Visualising relationships in distributions</figcaption>
+<div id="fig-stacked" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stacked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-dataviz_2_files/figure-html/fig-stacked-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stacked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.1: Visualising relationships in distributions
+</figcaption>
 </figure>
 </div>
 </div>
@@ -720,12 +732,16 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <li>Ich finde, dass dies für Balkenplots nützlicher ist</li>
 </ul></li>
 </ul>
-<div class="cell" data-fig.asp="0.8">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-task1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-dataviz_2_files/figure-html/fig-task1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;5.2: Visualising relationships in distributions</figcaption>
+<div id="fig-task1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-task1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-dataviz_2_files/figure-html/fig-task1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-task1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;5.2: Visualising relationships in distributions
+</figcaption>
 </figure>
 </div>
 </div>
@@ -752,7 +768,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> WrittenFrequency, <span class="at">y =</span> RTlexdec) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -764,7 +784,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> WrittenFrequency, <span class="at">y =</span> RTlexdec) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -792,7 +816,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> AgeSubject) <span class="sc">+</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -809,7 +837,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> AgeSubject) <span class="sc">+</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -821,12 +853,12 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-add">Aufgabe&nbsp;<span>5.1</span></a>: <code>Adding another variable</code>
+<a href="#exm-add" class="quarto-xref">Aufgabe&nbsp;<span>5.1</span></a>: <code>Adding another variable</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-add" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 5.1 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 5.1</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <p>Wie könnten Sie eine vierte Variable in die obige Darstellung einfügen? Versuchen Sie, <code>CV</code> hinzuzufügen. Ergibt die Darstellung immer noch eine klare Geschichte?</p>
 </div>
@@ -858,7 +890,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb8-6"><a href="#cb8-6"></a>      <span class="at">shape =</span> AgeSubject) <span class="sc">+</span></span>
 <span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CV) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -873,7 +909,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CV) <span class="sc">+</span></span>
 <span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -898,7 +938,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> AgeSubject) <span class="sc">+</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -907,12 +951,12 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-labels">Aufgabe&nbsp;<span>5.2</span></a>: Plot-Anmerkung
+<a href="#exm-labels" class="quarto-xref">Aufgabe&nbsp;<span>5.2</span></a>: Plot-Anmerkung
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-labels" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 5.2 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 5.2</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <ul>
 <li>Vergessen Sie nicht, Ihre Diagramme mit nützlichen Beschriftungen zu versehen, um dem Leser die Interpretation des Diagramms zu erleichtern</li>
@@ -932,7 +976,11 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="st">"Age group"</span>) <span class="sc">+</span></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="05-dataviz_2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -956,10 +1004,15 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 <li>wichtige Code-Chunk-Optionen:</li>
 </ul>
 <div class="cell">
+<div id="tbl-chunks" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-chunks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;5.2: Most common chunk options
+</figcaption>
+<div aria-describedby="tbl-chunks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-chunks" class="anchored">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Tabelle&nbsp;5.2: Most common chunk options</caption>
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">option</th>
@@ -980,9 +1033,12 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</div>
+</figure>
 </div>
 </div>
 <section id="verwendung-von-code-bausteinen" class="level3" data-number="5.4.1">
@@ -992,13 +1048,13 @@ Aufgabe: Visualisierung von Beziehungen in Verteilungen
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df_english <span class="sc">|&gt;</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> RTlexdec, <span class="at">y =</span> RTnaming,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> AgeSubject,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> AgeSubject) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">df_english |&gt; </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">  ggplot() +</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">  aes(x = RTlexdec, y = RTnaming,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="in">      colour = AgeSubject,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="in">      shape = AgeSubject) +</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point()</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1053,29 +1109,29 @@ Warnung
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="#exm-ggsave">Aufgabe&nbsp;<span>5.3</span></a>: <code>ggsave()</code>
+<a href="#exm-ggsave" class="quarto-xref">Aufgabe&nbsp;<span>5.3</span></a>: <code>ggsave()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div id="exm-ggsave" class="custom theorem example">
-<p><span class="theorem-title"><strong>Beispiel 5.3 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Beispiel 5.3</strong></span> &nbsp;</p>
 <div class="nonincremental">
 <ol type="1">
 <li>Kopieren Sie den unten stehenden Code in einen Codechunk und führen Sie ihn aus. Schauen Sie sich Ihre “Files”-Tab an, was hat sich geändert?</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## required:</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"figures/04-dataviz2/fig_lexdec_rt.png"</span>, </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> fig_lexdec_rt,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## optional:</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">2000</span>,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">1000</span>,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"px"</span>,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale =</span> <span class="dv">1</span>,</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="st">"print"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">ggsave(</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="in">  ## required:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="in">  "figures/04-dataviz2/fig_lexdec_rt.png", </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="in">  plot = fig_lexdec_rt,</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="in">  ## optional:</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="in">  width = 2000,</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="in">  height = 1000,</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="in">  units = "px",</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="in">  scale = 1,</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="in">  dpi = "print")</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
@@ -1105,17 +1161,17 @@ Warnung
 </section>
 <section id="session-info" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="session-info">Session Info</h2>
-<p>Hergestellt mit R version 4.3.0 (2023-04-21) (Already Tomorrow) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
+<p>Hergestellt mit R version 4.4.0 (2024-04-24) (Puppy Cup) und RStudioversion 2023.9.0.463 (Desert Sunflower).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: aarch64-apple-darwin20 (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
 Running under: macOS Ventura 13.2.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -1124,32 +1180,32 @@ time zone: Europe/Berlin
 tzcode source: internal
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] kableExtra_1.4.0 knitr_1.45       languageR_1.5.0  ggthemes_5.1.0  
- [5] patchwork_1.2.0  lubridate_1.9.2  forcats_1.0.0    stringr_1.5.1   
- [9] dplyr_1.1.3      purrr_1.0.2      readr_2.1.5      tidyr_1.3.0     
-[13] tibble_3.2.1     ggplot2_3.4.3    tidyverse_2.0.0 
+ [1] kableExtra_1.4.0 knitr_1.46       languageR_1.5.0  ggthemes_5.1.0  
+ [5] patchwork_1.2.0  lubridate_1.9.3  forcats_1.0.0    stringr_1.5.1   
+ [9] dplyr_1.1.4      purrr_1.0.2      readr_2.1.5      tidyr_1.3.1     
+[13] tibble_3.2.1     ggplot2_3.5.1    tidyverse_2.0.0 
 
 loaded via a namespace (and not attached):
- [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.4        stringi_1.8.3    
- [5] hms_1.1.3         digest_0.6.34     magrittr_2.0.3    evaluate_0.23    
- [9] grid_4.3.0        timechange_0.2.0  fastmap_1.1.1     jsonlite_1.8.8   
-[13] fansi_1.0.6       viridisLite_0.4.2 scales_1.2.1      cli_3.6.2        
-[17] rlang_1.1.3       munsell_0.5.0     withr_3.0.0       yaml_2.3.8       
-[21] tools_4.3.0       tzdb_0.4.0        colorspace_2.1-0  pacman_0.5.1     
-[25] vctrs_0.6.5       R6_2.5.1          lifecycle_1.0.4   htmlwidgets_1.6.2
-[29] pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.4      glue_1.7.0       
-[33] systemfonts_1.0.4 highr_0.10        xfun_0.42         tidyselect_1.2.0 
-[37] rstudioapi_0.15.0 farver_2.1.1      htmltools_0.5.7   labeling_0.4.3   
-[41] rmarkdown_2.25    svglite_2.1.1     compiler_4.3.0   </code></pre>
+ [1] utf8_1.2.4        generics_0.1.3    renv_1.0.7        xml2_1.3.6       
+ [5] stringi_1.8.3     hms_1.1.3         digest_0.6.35     magrittr_2.0.3   
+ [9] evaluate_0.23     grid_4.4.0        timechange_0.3.0  fastmap_1.1.1    
+[13] jsonlite_1.8.8    fansi_1.0.6       viridisLite_0.4.2 scales_1.3.0     
+[17] cli_3.6.2         rlang_1.1.3       munsell_0.5.1     withr_3.0.0      
+[21] yaml_2.3.8        tools_4.4.0       tzdb_0.4.0        colorspace_2.1-0 
+[25] pacman_0.5.1      vctrs_0.6.5       R6_2.5.1          lifecycle_1.0.4  
+[29] htmlwidgets_1.6.4 pkgconfig_2.0.3   pillar_1.9.0      gtable_0.3.5     
+[33] glue_1.7.0        systemfonts_1.0.6 highr_0.10        xfun_0.43        
+[37] tidyselect_1.2.1  rstudioapi_0.16.0 farver_2.1.1      htmltools_0.5.8.1
+[41] labeling_0.4.3    rmarkdown_2.26    svglite_2.1.3     compiler_4.4.0   </code></pre>
 </div>
 </div>
 </section>
 <section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
 <h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-languageR-package" class="csl-entry" role="listitem">
 Baayen, R. H., &amp; Shafaei-Bajestan, E. (2019). <em>languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics</em>. <a href="https://CRAN.R-project.org/package=languageR">https://CRAN.R-project.org/package=languageR</a>
 </div>
@@ -1218,6 +1274,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1284,13 +1367,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1420,10 +1505,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1433,8 +1535,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1446,7 +1557,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1490,6 +1724,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1515,6 +1750,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1576,12 +1837,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/04-wrangling_1.html" class="pagination-link">
+      <a href="../mats/04-wrangling_1.html" class="pagination-link" aria-label="Data Wrangling 1: Transformation">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Wrangling 1: Transformation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mats/07-dateneinlesung.html" class="pagination-link">
+      <a href="../mats/07-dateneinlesung.html" class="pagination-link" aria-label="Einlesen von Daten">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Einlesen von Daten</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2186,6 +2447,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

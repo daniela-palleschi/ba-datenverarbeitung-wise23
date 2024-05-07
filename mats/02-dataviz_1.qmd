@@ -679,9 +679,9 @@ Heute haben wir gelernt...
 - wie man Diagramme mit `ggplot` erstellt
 - die richtige Darstellung für unsere Daten auszuwählen
 
-## Weitere Übungen {.unnumbered .unlisted}
+## Weitere Übungen
 
-Weitere Übungen zu diesem Kapitel finden Sie in @sec-data_viz1_ex
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_data_viz1.
 
 ## Session Info {.unnumbered}
 

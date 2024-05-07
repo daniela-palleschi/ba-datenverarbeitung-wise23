@@ -275,7 +275,7 @@ magick::image_read(here::here("media/notes_folder.png"))
 title: "Quarto - Woche 3"
 author: "Vorname Nachname"
 format:
-  html:
+  pdf:
     toc: true
 ---
 ```
@@ -303,7 +303,7 @@ format:
 title: "Quarto - Woche 3"
 author: "Vorname Nachname"
 format:
-  html:
+  pdf:
     toc: true
 ---
 
@@ -328,7 +328,7 @@ Dies ist ein Text über das Unterthema.
 #### Die Bedeutung der Formatierung
 
 ::: nonincremental
-Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`##Zwischenüberschrift` anstelle von `##Zwischenüberschrift`), um als Überschrift gelesen zu werden. YAML erfordert außerdem einen sehr präzisen Schriftsatz. Da die Abstände in der YAML (und anderswo) so wichtig sind, möchte ich die Leerzeichen sehen und zählen können. Um dies zu tun, geht in RStudio:
+Zwischenüberschriften benötigen ein Leerzeichen nach dem letzten Hashtag (`## Zwischenüberschrift` anstelle von `##Zwischenüberschrift`), um als Überschrift gelesen zu werden. YAML erfordert außerdem einen sehr präzisen Schriftsatz. Da die Abstände in der YAML (und anderswo) so wichtig sind, möchte ich die Leerzeichen sehen und zählen können. Um dies zu tun, geht in RStudio:
 
 -   gehen zu Ihren Globalen Einstellungen (Werkzeuge \> Globale Einstellungen)
 -   unter `Code` (linke Spalte) `> Display` (Tab), markieren das Kästchen `> Show whitespace character`
@@ -571,6 +571,7 @@ df_lexdec <- lexdec
 #| output-location: column-fragment
 
 ### histogram of reaction times by native language
+fig_lexdec_hist <-
   ggplot(data = df_lexdec) +
   aes(x = exp(RT), fill = NativeLanguage) + ### set aesthetics
   geom_histogram(position = "identity", alpha = 0.3) +
@@ -689,6 +690,10 @@ Quarto kann für eine Vielzahl von Zwecken verwendet werden, wie z. B.:
 :::
 :::
 :::
+
+## Weitere Übungen
+
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_quarto
 
 ## Lernziele 🏁 {.unnumbered .unlisted}
 
