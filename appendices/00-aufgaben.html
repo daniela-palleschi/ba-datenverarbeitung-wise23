@@ -372,6 +372,11 @@ MathJax.Hub.Config({
   <li><a href="#plots-in-quarto" id="toc-plots-in-quarto" class="nav-link" data-scroll-target="#plots-in-quarto"><span class="header-section-number">A.3.3</span> Plots in Quarto</a></li>
   <li><a href="#ausgabeformate" id="toc-ausgabeformate" class="nav-link" data-scroll-target="#ausgabeformate"><span class="header-section-number">A.3.4</span> Ausgabeformate</a></li>
   </ul></li>
+  <li><a href="#sec-app_wrangling1" id="toc-sec-app_wrangling1" class="nav-link" data-scroll-target="#sec-app_wrangling1"><span class="header-section-number">A.4</span> Data Wrangling 1: Transformation</a>
+  <ul class="collapse">
+  <li><a href="#pipes-und-zeilen" id="toc-pipes-und-zeilen" class="nav-link" data-scroll-target="#pipes-und-zeilen"><span class="header-section-number">A.4.1</span> Pipes und Zeilen</a></li>
+  <li><a href="#spalten" id="toc-spalten" class="nav-link" data-scroll-target="#spalten"><span class="header-section-number">A.4.2</span> Spalten</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -405,7 +410,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Di. den 30.04.2024</p>
+      <p class="date-modified">Di. den 07.05.2024</p>
     </div>
   </div>
     
@@ -643,6 +648,41 @@ Abbildung&nbsp;A.1: zu reproduzierende Abbildung
 <li>Ist die Ausgabe von <code>revealjs</code> dort?</li>
 </ul></li>
 <li>Fügen Sie eine “Session Info” Abschnitt am Ende des Dokuments hin.</li>
+</ol>
+</section>
+</section>
+<section id="sec-app_wrangling1" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="sec-app_wrangling1"><span class="header-section-number">A.4</span> Data Wrangling 1: Transformation</h2>
+<p>Diese Übungen finden sich auch in <a href="../mats/04-wrangling_1.html" class="quarto-xref"><span>Kapitel 4</span></a>. Befolgen Sie die Einrichtung aus diesem Kapitel, um diese Übungen zu bearbeiten <a href="../mats/04-wrangling_1.html#sec-wrangling1-setup" class="quarto-xref"><span>Kapitel 4.1</span></a>.</p>
+<section id="pipes-und-zeilen" class="level3" data-number="A.4.1">
+<h3 data-number="A.4.1" class="anchored" data-anchor-id="pipes-und-zeilen"><span class="header-section-number">A.4.1</span> Pipes und Zeilen</h3>
+<ol type="1">
+<li>in einer einzigen Pipeline <code>df_lexdec</code> für Zeilen drucken, die jede der folgenden Bedingungen erfüllen:</li>
+</ol>
+<ul>
+<li>die Antwortzeiten waren größer als 500ms <em>und</em> kleiner als 550ms</li>
+<li>aus den Wörtern “Birne”, “Elefant” oder “Schildkröte” stammen</li>
+<li>und ordnen Sie sie in der Reihenfolge der Antwortzeiten (kleinste bis größte)</li>
+</ul>
+<ol start="2" type="1">
+<li>Sortiere (<code>arrange()</code>) <code>df_lexdec</code> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
+</ol>
+</section>
+<section id="spalten" class="level3" data-number="A.4.2">
+<h3 data-number="A.4.2" class="anchored" data-anchor-id="spalten"><span class="header-section-number">A.4.2</span> Spalten</h3>
+<ol start="3" type="1">
+<li>Speichern Sie in einer einzigen Pipeline ein neues Objekt namens <code>df_rz</code>, das <code>df_lexdec</code> enthält, <em>und dann</em>:
+<ul>
+<li>Selektieren (<code>select()</code>) Sie die Variablen <code>Teilnehmer</code>, <code>NativeLanguage</code>, <code>Word</code>, <code>rz_s</code>, <code>laenge</code>, und <code>Frequency</code></li>
+<li>Erstelle eine neue Variable <code>rz_s_laenge</code> (<code>mutate()</code>), die <code>rz_s</code> geteilt durch <code>laenge</code> ist
+<ul>
+<li>und wird vor <code>Laenge</code> gesetzt</li>
+</ul></li>
+<li>Benennen (<code>rename</code>()`) Sie diese Variablen in Englisch um, so dass sie in Deutsch (und mit Kleinbuchstaben) sind.</li>
+</ul></li>
+</ol>
+<ol start="3" type="1">
+<li>Die ersten 6 Zeilen von df_rz ausgeben (Tipp: <code>head()</code> verwenden).</li>
 </ol>
 
 
@@ -1289,7 +1329,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd")}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd", "exercises/04-wrangling1.qmd")}</span></span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
