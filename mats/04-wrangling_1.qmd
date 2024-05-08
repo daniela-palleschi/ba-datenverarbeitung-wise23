@@ -365,7 +365,7 @@ df_lexdec |>
 #### [Aufgabe @exm-filter]: `filter()`
 ::: {#exm-filter .custom}
 ::: nonincremental
-1. Filtern Sie die Daten, um Zeilen aus Versuch 25 und Nicht-Muttersprachler (`andere`) einzuschließen.
+1.  Filtern Sie die Daten, um Zeilen aus `Trial` 25 und Nicht-Muttersprachler (`Other`) einzuschließen.
 2. Wie viele Zeilen gibt es?
 :::
 :::
