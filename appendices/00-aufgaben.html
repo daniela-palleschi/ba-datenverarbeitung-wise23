@@ -660,12 +660,12 @@ Abbildung&nbsp;A.1: zu reproduzierende Abbildung
 <li>in einer einzigen Pipeline <code>df_lexdec</code> für Zeilen drucken, die jede der folgenden Bedingungen erfüllen:</li>
 </ol>
 <ul>
-<li>die Antwortzeiten waren größer als 500ms <em>und</em> kleiner als 550ms</li>
-<li>aus den Wörtern “Birne”, “Elefant” oder “Schildkröte” stammen</li>
-<li>und ordnen Sie sie in der Reihenfolge der Antwortzeiten (kleinste bis größte)</li>
+<li>die Reaktionszeiten (<code>RT</code>) waren größer als 500ms <em>und</em> kleiner als 550ms</li>
+<li>aus den Wörtern (<code>Word</code>) <code>pear</code>, <code>elephant</code> oder <code>tortoise</code> stammen</li>
+<li>und ordnen Sie sie in der Reihenfolge der Reaktionszeiten (<code>RT</code>) (kleinste bis größte)</li>
 </ul>
 <ol start="2" type="1">
-<li>Sortiere (<code>arrange()</code>) <code>df_lexdec</code> in absteigender Reihenfolge, um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
+<li>Sortiere (<code>arrange()</code>) <code>df_lexdec</code> in absteigender Reihenfolge (<code>desc()</code>), um die Versuche mit den längsten Reaktionszeiten zu finden.</li>
 </ol>
 </section>
 <section id="spalten" class="level3" data-number="A.4.2">
