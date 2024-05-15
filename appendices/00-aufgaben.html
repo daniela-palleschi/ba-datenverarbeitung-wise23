@@ -377,6 +377,11 @@ MathJax.Hub.Config({
   <li><a href="#pipes-und-zeilen" id="toc-pipes-und-zeilen" class="nav-link" data-scroll-target="#pipes-und-zeilen"><span class="header-section-number">A.4.1</span> Pipes und Zeilen</a></li>
   <li><a href="#spalten" id="toc-spalten" class="nav-link" data-scroll-target="#spalten"><span class="header-section-number">A.4.2</span> Spalten</a></li>
   </ul></li>
+  <li><a href="#sec-app_dataviz2" id="toc-sec-app_dataviz2" class="nav-link" data-scroll-target="#sec-app_dataviz2"><span class="header-section-number">A.5</span> Datavisualisierung 2: Beziehungen</a>
+  <ul class="collapse">
+  <li><a href="#übungen" id="toc-übungen" class="nav-link" data-scroll-target="#übungen"><span class="header-section-number">A.5.1</span> Übungen</a></li>
+  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"><span class="header-section-number">A.5.2</span> <code>ggsave()</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -410,7 +415,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Di. den 07.05.2024</p>
+      <p class="date-modified">Mo. den 13.05.2024</p>
     </div>
   </div>
     
@@ -688,6 +693,34 @@ Abbildung&nbsp;A.1: zu reproduzierende Abbildung
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_rz)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="sec-app_dataviz2" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="sec-app_dataviz2"><span class="header-section-number">A.5</span> Datavisualisierung 2: Beziehungen</h2>
+<p>Diese Übungen finden sich auch in <a href="../mats/05-dataviz_2.html" class="quarto-xref"><span>Kapitel 5</span></a>. Befolgen Sie die Einrichtung aus diesem Kapitel, um diese Übungen zu bearbeiten <a href="../mats/05-dataviz_2.html#sec-dataviz2-setup" class="quarto-xref"><span>Kapitel 5.1</span></a>.</p>
+<section id="übungen" class="level3" data-number="A.5.1">
+<h3 data-number="A.5.1" class="anchored" data-anchor-id="übungen"><span class="header-section-number">A.5.1</span> Übungen</h3>
+<section id="section" class="level4" data-number="A.5.1.1">
+<h4 data-number="A.5.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">A.5.1.1</span> </h4>
+<ol type="1">
+<li>Zeichnen Sie abweichende Balkenplots von <code>AgeSubject</code> (x-Achse) nach <code>CV</code> (Facetten).
+<ol start="2" type="a">
+<li>Ändern Sie Ihre Code-Chunk-Optionen für den letzten Plot so, dass der Code, aber nicht der Plot, in der Ausgabe gedruckt wird.</li>
+</ol></li>
+</ol>
+<ol start="3" type="1">
+<li>Filtern Sie die Daten, um nur ältere Teilnehmer einzuschließen, und stellen Sie <code>RTlexdec</code> (x-Achse) durch <code>RTnaming</code> (y-Achse) dar. Übertragen Sie <code>CV</code> auf Farbe und Form. Fügen Sie geeignete Beschriftungen hinzu.
+<ol start="2" type="a">
+<li>Ändern Sie die Code-Chunk-Optionen für den letzten Plot so, dass der Plot, aber nicht der Code, in der Ausgabe gedruckt wird.</li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="ggsave" class="level3" data-number="A.5.2">
+<h3 data-number="A.5.2" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">A.5.2</span> <code>ggsave()</code></h3>
+<ol start="4" type="1">
+<li>Speichern Sie den letzten Plot lokal und stellen Sie den Code Chunk so ein, dass er beim Rendern <em>nicht</em> ausgeführt wird.</li>
+</ol>
 
 
 <!-- -->
@@ -1333,7 +1366,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>Hier finden Sie die Aufgaben zu den einzelnen Kapiteln.</span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd", "exercises/04-wrangling1.qmd")}</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = c("exercises/01-intro.qmd", "exercises/02-dataviz1.qmd", "exercises/03-quarto.qmd", "exercises/04-wrangling1.qmd", "exercises/05-dataviz2.qmd")}</span></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
