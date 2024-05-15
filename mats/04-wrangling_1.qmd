@@ -480,7 +480,6 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
   + Ich neige dazu, Variablennamen in Kleinbuchstaben zu schreiben, als Kodierungskonvention
 
 ```{r}
-#| eval: false
 ## single variable
 df_lexdec <- 
   df_lexdec |>
@@ -492,8 +491,7 @@ df_lexdec <-
 ## or multiple variables at once
 df_lexdec <- 
   df_lexdec |> 
- rename(teilnehmer = Subject,
-        rz_ms = RT,
+ rename(rz_ms = RT,
         geschlect = Sex,
         laenge = Length)
 ```
@@ -504,7 +502,6 @@ df_lexdec <-
   + So können wir z.B. einfache Algebra mit den Werten in jeder Spalte durchführen
 
 ```{r}
-#| Ausgabeort: Fragment
 df_lexdec |> 
   mutate(
     rz_laenge = rz_ms / laenge,
@@ -556,10 +553,9 @@ Können Sie das Dokument besser strukturieren? Z. B. durch Hinzufügen von mehr 
 ::: {#exm-mutate .custom}
 ::: nonincremental
 
-1. Create a new variable called `rz_s` in `df_lexdec`:
-    - equals `rz_ms` divided by 1000 (i.e., converts milliseconds to seconds)
-    - appears after `rz_ms`
-2. Render your document
+1. Erstellen Sie eine neue Variable namens `rz_s` in `df_lexdec`, die: 
+    - entspricht `rz_ms` geteilt durch 1000 (d.h. wandelt Millisekunden in Sekunden um)
+    - erscheint nach `rz_ms`. Rendern Sie Ihr Dokument
 
 ```{r}
 #| echo: false
@@ -722,10 +718,10 @@ df_lexdec |>
 df_lexdec |> 
   ## filter the data
   filter(rz_ms > 120,
-         rz_ms > 500) |> 
+         rz_ms < 500) |> 
   ## plot the filtered data
-  ggplot(aes(x = fct_infreq(Correct))) +
-  geom_bar() +
+  ggplot(aes(x = rz_ms, fill = Correct)) +
+  geom_histogram() +
   theme_minimal()
 ```
 
@@ -733,7 +729,7 @@ df_lexdec |>
 
 - wichtig: wir können Pipes (` |> `) verwenden, um zusätzliche Verben/Funktionen mit dem Ergebnis einer vorherigen Codezeile auszuführen
   + Die Funktion `ggplot()` verwendet jedoch `+`, um neue *Ebenen* zur Darstellung hinzuzufügen
-  
+
 ::: {.content-visible when-format="revealjs"}
 ### {.unlisted .unnumbered}
 :::

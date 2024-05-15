@@ -1,5 +1,4 @@
 ---
-title: "Datenvisualisierung 2"
 subtitle: "Visualisierung von Beziehungen"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
@@ -11,6 +10,8 @@ date-modified: last-modified
 echo: true
 code-tools: true
 ---
+
+## Datenvisualisierung 2 {#sec-dataviz2}
 
 ### Lesungen {.unnumbered}
 
@@ -45,7 +46,7 @@ Die **Pflichtlektüre** zur Vorbereitung auf dieses Thema ist [Kap. 2 (Datenvisu
 
 Eine **ergänzende Lektüre** ist [Ch. 3 (Data visualtion)](https://psyteachr.github.io/ads-v2/03-viz.html) in @nordmann_applied_2022.
 
-## Set-up {.unnumbered}
+## Einrichtung {.unnumbered} {#sec-dataviz2-setup}
 
 ### Packages {.unnumbered}
 
@@ -564,18 +565,9 @@ ggsave(
 :::
 :::
 
+## Weitere Übungen {.unnumbered}
 
-## Übungen
-
-1.
-    a. Zeichnen Sie abweichende Balkenplots von `AgeSubject` (x-Achse) nach `CV` (Facetten).
-    b. Ändern Sie Ihre Code-Chunk-Optionen für den letzten Plot so, dass der Code, aber nicht der Plot, in der Ausgabe gedruckt wird.
-3. 
-    a. Filtern Sie die Daten, um nur ältere Teilnehmer einzuschließen, und stellen Sie `RTlexdec` (x-Achse) durch `RTnaming` (y-Achse) dar. Übertragen Sie `CV` auf Farbe und Form. Fügen Sie geeignete Beschriftungen hinzu.
-    b. Ändern Sie die Code-Chunk-Optionen für den letzten Plot so, dass der Plot, aber nicht der Code, in der Ausgabe gedruckt wird.
-4. Speichern Sie den letzten Plot lokal und stellen Sie den Code Chunk so ein, dass er beim Rendern *nicht* ausgeführt wird.
-
-
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_dataviz2.
 
 ## Session Info {.unnumbered .unlisted}
 
