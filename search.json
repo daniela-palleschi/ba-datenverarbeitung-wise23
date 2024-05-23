@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Angewandte Datenverarbeitung und Visualisierung",
     "section": "",
-    "text": "Kursübersicht\nDies ist die Webseite der Lehrveranstaltung “Angewandte Datenverarbeitung und Visualisierung” an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle hier (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).\nJedes Kapitel entspricht einer Vorlesung von einer Woche. Vorerst werden die Materialien auf dieser Website im Bullet-Point-Format erscheinen und genau denselben Inhalt wie die Kursfolien enthalten. Ich plane, die Aufzählungspunkte später in Prosa umzuwandeln und die einzelnen Themen zu vertiefen.",
+    "text": "Kursübersicht\nDies ist die Webseite der Lehrveranstaltung “Angewandte Datenverarbeitung und Visualisierung: R für Linguistik und Sozialwissenschaften” an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Sommersemester 2024. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle hier (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).\nJedes Kapitel entspricht einer Vorlesung von einer Woche. Vorerst werden die Materialien auf dieser Website im Bullet-Point-Format erscheinen und genau denselben Inhalt wie die Kursfolien enthalten. Ich plane, die Aufzählungspunkte später in Prosa umzuwandeln und die einzelnen Themen zu vertiefen.",
     "crumbs": [
       "Kursübersicht",
       "Kursübersicht"
@@ -81,7 +81,7 @@
     "href": "session_info.html",
     "title": "Sitzungsinformationen",
     "section": "",
-    "text": "GitHub repository\ngit2r::repository()\n\nLocal:    main /Users/danielapalleschi/Documents/IdSL/Webbooks/r4ling\nRemote:   main @ origin (git@github.com:daniela-palleschi/r4ling.git)\nHead:     [07c9804] 2024-05-21: update exercises Data Viz 2",
+    "text": "GitHub repository\ngit2r::repository()\n\nLocal:    main /Users/danielapalleschi/Documents/IdSL/Webbooks/r4ling\nRemote:   main @ origin (git@github.com:daniela-palleschi/r4ling.git)\nHead:     [cfa4da5] 2024-05-23: add first report to appendices",
     "crumbs": [
       "Kursübersicht",
       "Sitzungsinformationen"
@@ -1768,6 +1768,61 @@
     "crumbs": [
       "Anhang",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Aufgaben</span>"
+    ]
+  },
+  {
+    "objectID": "berichte/bericht 1/bericht_1_DE.html",
+    "href": "berichte/bericht 1/bericht_1_DE.html",
+    "title": "Anhang B — Bericht 1",
+    "section": "",
+    "text": "B.1 Beschreibung\nDieser Bericht dient als Rückblick auf die Fähigkeiten, die in Kapitel 1 bis Kapitel 5 Ihre Aufgaben umfassen das Laden von Paketen und Daten sowie eine leichte Datenverarbeitung (Kapitel B.3). Außerdem werden Sie 4 Diagramme erstellen (Kapitel B.4) und eine kurze Interpretation zu einem der Diagramme schreiben (Kapitel B.5).\nEin Tipp: Ich empfehle Ihnen, Ihr Dokument häufig zu rendern, um eventuelle Fehler frühzeitig zu erkennen.",
+    "crumbs": [
+      "Anhang",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Bericht 1</span>"
+    ]
+  },
+  {
+    "objectID": "berichte/bericht 1/bericht_1_DE.html#einrichtung",
+    "href": "berichte/bericht 1/bericht_1_DE.html#einrichtung",
+    "title": "Anhang B — Bericht 1",
+    "section": "B.2 Einrichtung",
+    "text": "B.2 Einrichtung\n\nB.2.1 Quarto\nÖffnen Sie ein neues Quarto-Skript und speichern Sie es als nachname_vorname_bericht1.qmd. Ändern Sie das YAML so, dass es einen:\n\neinen aussagekräftigen Titel\nIhren Namen als Autor\nein Inhaltsverzeichnis\n\nAchten Sie darauf, Code Chunks, Prosa und Überschriften zu verwenden, um Ihre Aufgaben angemessen zu dokumentieren. Eine gute Faustregel ist, für jede (Unter-)Überschrift in diesem Dokument eine Überschrift hinzuzufügen.\n\n\nB.2.2 Pakete\nLaden Sie die Pakete tidyverse und languageR ein.\n\n\nB.2.3 Daten\nDer Datensatz durationsGe aus dem languageR-Paket (Baayen & Shafaei-Bajestan, 2019) enthält Dauermessungen zur niederländischen Vorsilbe ge. Eine Beschreibung aller Variablen des Datensatzes findet sich in Tabelle B.1. Ihre Aufgabe ist es:\n\nSpeichern Sie den Datensatz als Objekt df_ge in Ihrer Umgebung (dies kann auf die gleiche Weise geschehen wie bei allen Datensätzen, die wir bisher verwendet haben)\nDrucken Sie die ersten 10 Zeilen des Datensatzes mit der Funktion “head()” aus.\n\n\n\n\n\nTabelle B.1: ‘Data dictionary’ für ‘durationsGe’ aus dem languageR-Paket\n\n\n\n\n\n\n\n\n\n\nVariable\nBeschreibung\n\n\n\n\nWord\nein Faktor mit den Wörtern als Ebenen\n\n\nFrequency\nein numerischer Vektor mit der absoluten Häufigkeit des Wortes im Spoken Dutch Corpus\n\n\nSpeaker\nein numerischer Vektor mit der absoluten Häufigkeit des Wortes im Spoken Dutch Corpus\n\n\nSex\nein Faktor mit den Lautsprechern als Ebenen\n\n\nYearOfBirth\nein numerischer Vektor mit Geburtsjahren\n\n\nDurationOfPrefix\nein numerischer Vektor mit der Dauer des Präfixes -ge in Sekunden.\n\n\nSpeechRate\nein numerischer Vektor, der die Sprechgeschwindigkeit in Anzahl der Silben pro Sekunde kodiert\n\n\nNumberSegmentsOnset\nein numerischer Vektor, der die Sprechgeschwindigkeit in Anzahl der Silben pro Sekunde kodiert",
+    "crumbs": [
+      "Anhang",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Bericht 1</span>"
+    ]
+  },
+  {
+    "objectID": "berichte/bericht 1/bericht_1_DE.html#sec-bericht1_wrangle",
+    "href": "berichte/bericht 1/bericht_1_DE.html#sec-bericht1_wrangle",
+    "title": "Anhang B — Bericht 1",
+    "section": "B.3 Data wrangling",
+    "text": "B.3 Data wrangling\nHier werden Sie die dplyr-Verben aus Woche 4 verwenden. Denken Sie daran, dass Sie den Zuweisungsoperator (&lt;-) nur verwenden müssen, wenn Sie die Änderungen, die Sie vornehmen, als Objekt in der Umgebung speichern wollen. Wenn Sie diese Änderungen nur ausdrucken wollen, brauchen Sie den Zuweisungsoperator nicht.\n\nB.3.1 filter()\nDrucken (aber nicht in Ihrer Umgebung speichern) Sie die Zeilen von df_ge, in denen SpeechRate über 9 liegt, nur mit den Spalten word, speaker und SpeechRate. Es sollten 5 Zeilen sein.\n\n\nB.3.2 mutate()\nFügen Sie eine neue Variable hinzu, duration_ms, die DauerVonPräfix multipliziert mit 1000 (DurationOfPrefix*1000) entspricht. Dies entspricht der Dauer von ge in Millisekunden, statt in Sekunden. Stellen Sie sicher, dass Sie diese neue Variable in Ihrem Datenrahmen speichern (Hinweis: Sie müssen den Zuweisungsoperator &lt;- und das dplyr-Verb mutate() verwenden).\n\n\nB.3.3 Fehlersuche\nWarum läuft dieser Code nicht? Es gibt zwei Probleme mit dem Code, identifizieren und beheben Sie sie.\n\n# Troubleshooting\ndf_ge  |&gt; \n  filter(YearOfBirth == 1978) +\n  select(Frequency, word)",
+    "crumbs": [
+      "Anhang",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Bericht 1</span>"
+    ]
+  },
+  {
+    "objectID": "berichte/bericht 1/bericht_1_DE.html#sec-bericht1_dataviz",
+    "href": "berichte/bericht 1/bericht_1_DE.html#sec-bericht1_dataviz",
+    "title": "Anhang B — Bericht 1",
+    "section": "B.4 Datenvisualisierung",
+    "text": "B.4 Datenvisualisierung\nVerwenden Sie für alle Diagramme labs(title = \"...\"), um entsprechende Diagrammtitel hinzuzufügen.\nOptional: Ändern Sie die x und y Achsenbeschriftungen, wenn Sie wollen, mit labs(x = \"...\", y = \"...\"). Vielleicht möchten Sie auch ein Thema hinzufügen (z.B. theme_minimal()).\n\nB.4.1 Scatterplot\nErstellen Sie ein Streudiagramm mit SpeechRate (x-Achse) und DurationOfPrefix (y-Achse), mit YearOfBirth als Farbe (colour). Ändern Sie die Einstellungen für den Codechunk so, dass das Diagramm beim Rendern des Skripts nicht gedruckt wird, der Code aber schon. Tipp: Sie müssen #| eval: verwenden.\n\n\nB.4.2 Facetten\nFügen Sie Facetten für Sex hinzu (denken Sie daran, die Tilde ~ einzufügen). Ändern Sie die Code-Chunk-Einstellungen so, dass die Darstellung gedruckt wird, wenn das Skript gerendert wird, aber der Code nicht (Sie benötigen echo anstelle von eval).\n\n\nB.4.3 Reproduzieren eines Plots\nReproduzieren Sie die Abbildung B.1 (es muss keine exakte Kopie sein, aber kommen Sie ihr so nahe wie möglich). Stellen Sie sicher, dass sowohl der Code als auch die Darstellung beim Rendern gedruckt werden. Hinweis: Sie müssen filter() sowohl für Frequency als auch für Sex verwenden. Ich würde mich darauf konzentrieren, zuerst das Diagramm zu erstellen und dann zu versuchen, die Daten zu filtern.\n\n\n\n\n\n\n\n\nAbbildung B.1: A figure to be reproduced",
+    "crumbs": [
+      "Anhang",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Bericht 1</span>"
+    ]
+  },
+  {
+    "objectID": "berichte/bericht 1/bericht_1_DE.html#sec-bericht1_interpret",
+    "href": "berichte/bericht 1/bericht_1_DE.html#sec-bericht1_interpret",
+    "title": "Anhang B — Bericht 1",
+    "section": "B.5 Interpretation",
+    "text": "B.5 Interpretation\nBeschreiben Sie die Beziehung zwischen den beiden Variablen, die Sie in Abbildung B.1 sehen.\n\n\n\n\nBaayen, R. H., & Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. https://CRAN.R-project.org/package=languageR",
+    "crumbs": [
+      "Anhang",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Bericht 1</span>"
     ]
   }
 ]
