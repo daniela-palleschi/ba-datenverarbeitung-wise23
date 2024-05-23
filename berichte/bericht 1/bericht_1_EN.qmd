@@ -1,0 +1,197 @@
+---
+title: "Bericht 1"
+author: "Daniela Palleschi"
+institute: Humboldt-Universität zu Berlin
+lang: de
+date: "11/22/2023"
+date-format: "ddd [d]en DD.MM.YYYY"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  eval: false
+  echo: false
+  message: false
+  warning: false
+---
+
+# Description
+
+This report is designed to review and consoldiation what you have already learned up until now. Your tasks entail loading packages and data, as well as doing some light data wrangling (@sec-wrangle). You will also produce 4 plots (@sec-dataviz), and write a short interpretation of one of them (@sec-interpret).
+
+A tip: I recommend rendering your document often in order to catch any errors early.
+
+You only need to submit the Quarto script, which should render on my machine (if it renders on yours, it should render on mine).
+
+# Set-up
+
+## Quarto
+
+Open a new Quarto script and save it as `nachname_vorname_bericht1.qmd`. Change the YAML so that it has:
+
+- a meaninful title
+- your name as `author`
+- a table of contents
+
+Make sure to use code chunks, prose, and headers in order to appropriately document your tasks. A good rule of thumb is to add a header for each (sub)header in this document.
+
+## Packages
+
+Load in the packages tidyverse, patchwork, and languageR.
+
+```{r}
+#| eval: true
+library(tidyverse)
+library(patchwork)
+library(languageR)
+```
+
+```{r}
+#| eval: true
+#| echo: false
+pacman::p_load(
+  knitr,
+  kableExtra
+)
+```
+
+
+## Data
+
+The dataset `durationsGe` from the languageR package [@languageR-package] contains durational measurements on the Dutch prefix *ge*. A description of all the variables in the dataset is given in @tbl-durationGe. Your task is to: 
+
+1. Save the dataset as an object `df_ge` in your Environment (this can be done the same way as all datasets we've used before)
+2. Print the first 10 rows of the dataset using the `head()` function.
+
+```{r}
+#| eval: true
+df_ge <- durationsGe
+```
+
+```{r}
+#| label: tbl-durationGe
+#| tbl-cap: "Data dictionary for 'durationsGe' from the languageR package"
+#| eval: true
+tribble(
+  ~"Variable", ~"Description", ~"Beschreibung",
+  "Word", "a factor with the words as levels", "ein Faktor mit den Wörtern als Ebenen",
+  "Frequency", "a numeric vector with the word’s absolute frequency in the Spoken Dutch Corpus", "ein numerischer Vektor mit der absoluten Häufigkeit des Wortes im Spoken Dutch Corpus",
+  "Speaker", "a factor with the speakers as levels", "ein numerischer Vektor mit der absoluten Häufigkeit des Wortes im Spoken Dutch Corpus",
+  "Sex", "a factor with levels female and male, this information is missing for one speaker", "ein Faktor mit den Lautsprechern als Ebenen",
+  "YearOfBirth", "a numeric vector with years of birth", "ein numerischer Vektor mit Geburtsjahren",
+  "DurationOfPrefix", "a numeric vector with the duration of the prefix -ge in seconds.", "ein numerischer Vektor mit der Dauer des Präfixes -ge in Sekunden.",
+  "SpeechRate", "a numeric vector coding speech rate in number of syllables per second", "ein numerischer Vektor, der die Sprechgeschwindigkeit in Anzahl der Silben pro Sekunde kodiert",
+  "NumberSegmentsOnset", "a numeric vector for the number of segments in the onset of the stem", "ein numerischer Vektor, der die Sprechgeschwindigkeit in Anzahl der Silben pro Sekunde kodiert"
+) |> 
+  select(-Beschreibung) |> 
+  kable() |> 
+  kable_styling(full_width = T)
+```
+
+# Data wrangling {#sec-wrangle}
+
+Here you will be using `dplyr` verbs from week 4. Remember, you need to use the assignment operator (`<-`) only when you want to store the changes you are making as an object the Environment. If you only want to print these changes, you do not need the assignment operator.
+
+## Subsetting
+
+Print (but do not save in your environment) the rows of `df_ge` where SpeechRate is above 9, with only the columns word, speaker, and SpeechRate. There should be 5 rows.
+
+```{r}
+df_ge |> 
+  filter(SpeechRate > 9) |> 
+  select(Word, Speaker, SpeechRate)
+```
+
+## `mutate()`
+
+Add a new variable, `duration_ms`, which equals `DurationOfPrefix` multiplied by 1000 (`DurationOfPrefix*1000`). This will correspond to the duration of *ge* in milliseconds, instead of seconds. Make sure you save this new variable in your dataframe (Hint: you will need to use the assignment operator `<-`, and the `dplyr` verb `mutate()`).
+
+## Troubleshooting
+
+Why does this code chunk not run? There are two problems with the code, identify and fix them.
+
+```{r}
+#| eval: false
+#| echo: true
+# Troubleshooting
+df_ge  |> 
+  select(Frequency, word) +
+  filter(YearOfBirth == 1978)
+```
+
+# Data visualisation {#sec-dataviz}
+
+For all plots, use `labs(title = "...")` to add appropriate plot titles. 
+
+*Optional*: Change the `x` and `y` axis labels if you like using `labs(x = "...", y = "...")`. You may also prefer to add a theme (e.g., `theme_minimal()`).
+
+## Bar plot
+
+Produce a barplot of the observations per `NumberSegmentsOnset` (`x-axis`), per `Sex` (`colour`). Use the argument `position = "dodge"` in the bar geom.
+
+```{r}
+df_ge |> 
+  ggplot() +
+  aes(x = NumberSegmentsOnset, fill = Sex) +
+  geom_bar(position = "dodge") +
+  theme_minimal()
+```
+
+## Scatterplot
+
+Produce a scatterplot with `SpeechRate` (x-axis) and `DurationOfPrefix` (y-axis). Change the code chunk settings so that the plot is *not* printed when the script is rendered, but the code is. Hint: you'll need to use `#| eval:`.
+
+```{r}
+df_ge |> 
+  filter(Sex != "NA") |> 
+  ggplot() +
+  aes(x = SpeechRate, y = DurationOfPrefix, colour = YearOfBirth) +
+  geom_point() +
+  # facet_wrap(~Sex) +
+  theme_bw()
+```
+
+## Facets
+
+Add facets for `Sex` (remember to include the tilde `~`). Change the code chunk settings so that the plot is printed when the script is rendered, but the code is not (you'll need `echo` instead of `eval`).
+
+```{r}
+df_ge |> 
+  filter(Sex != "NA") |> 
+  ggplot() +
+  aes(x = SpeechRate, y = DurationOfPrefix, colour = YearOfBirth) +
+  geom_point() +
+  facet_wrap(~Sex) +
+  theme_bw()
+```
+
+## Reproduce a plot
+
+Reproduce the @fig-reproduce (it does not need to be an exact replica, but get as close as you can). Make sure the code and the plot are both printed when rendering. Hint: you will need to use `filter()` for both `Frequency` and `Sex`. I would focus on producing the plot first, and then trying to filter the data.
+
+```{r}
+#| eval: true
+#| label: fig-reproduce
+#| fig-cap: A figure to be reproduced
+df_ge |> 
+  # drop_na(Sex) |> 
+  # filter(#Sex != "NA"
+  #       # Sex == "male"
+  #        Sex %in% c("male", "female")
+  #        ) |>
+  ggplot() +
+  aes(x = SpeechRate, fill = Sex, colour = Sex) +
+  labs(title = "Verteilung der Sprechgeschwindigkeit nach Geschlecht der Teilnehmer",
+       x = "Sprechgeschwindigkeit",
+       y = "Sprechgeschwindigkeit") +
+  geom_density(alpha = .3) +
+  theme_bw()
+```
+ 
+# Interpretation {#sec-interpret}
+
+Describe the relationship between x and y that you see in @fig-reproduce.
