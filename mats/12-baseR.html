@@ -449,7 +449,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mo. den 05.02.2024</p>
+      <p class="date-modified">Mo. den 27.05.2024</p>
     </div>
   </div>
     
@@ -462,7 +462,7 @@ MathJax.Hub.Config({
 
 <section id="lesungen" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="lesungen">Lesungen</h2>
-<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/base-r">Kapital 27 (A field guide to Base R)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="01-intro_r.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p>Die <strong>Pflichtlektüre</strong> zur Vorbereitung auf dieses Thema ist <a href="https://r4ds.hadley.nz/base-r">Kapital 27 (A field guide to Base R)</a> in <span class="citation" data-cites="wickham_r_2023">Wickham et al. (<a href="../references.html#ref-wickham_r_2023" role="doc-biblioref">2023</a>)</span>.</p>
 </section>
 <section id="lernziele" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="lernziele">Lernziele</h2>
@@ -476,15 +476,15 @@ MathJax.Hub.Config({
 <section id="base-r" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="base-r"><span class="header-section-number">10.1</span> Base R</h2>
 <p>Die Basissoftware, die die Programmiersprache R enthält, heißt base-R oder natives R. Dieses Basissystem enthält das Paket <code>base</code>, das zum Ausführen von R erforderlich ist. Ähnlich wie tidyverse enthält das Basissystem auch einige Pakete wie <code>utils</code> und <code>stats</code> (unter anderem). Um zu sehen, welche Pakete enthalten sind, gehen Sie einfach auf die Registerkarte <code>Pakete</code> unten rechts in Ihrer RStudio-Sitzung. Unter der Annahme, dass Sie mit einer sauberen Arbeitsumgebung beginnen, sollten nur die Pakete geladen werden, die zum R-Basissystem gehören. Alle diese Pakete werden bei der Installation von R installiert. Mit dieser Sammlung von Paketen können die meisten (wenn nicht alle) der gleichen Ziele wie mit tidyverse erreicht werden, auch wenn beide für bestimmte Ziele vorzuziehen oder besser zu rationalisieren sind.</p>
-<p>Wie wir bereits gelernt haben, ist das <a href="https://www.tidyverse.org/">Tidyverse</a> <span class="citation" data-cites="tidyverse-package">(<a href="01-intro_r.html#ref-tidyverse-package" role="doc-biblioref">Wickham et al., 2019a</a>)</span> eine Familie von R-Paketen, die das Bereinigen und Verwalten von Daten erleichtern sollen. Der Hauptentwickler von Tidyverse ist Hadley Wickham, der Chefwissenschaftler von Posit (ehemals RStudio), dem Softwareunternehmen, das die integrierte Entwicklungsumgebung (IDE) RStudio entwickelt hat. Alle Pakete in Tidyverse “teilen eine High-Level-Design-Philosophie und Low-Level-Grammatik und Datenstrukturen, so dass das Erlernen eines Pakets es einfacher macht, das nächste zu erlernen” <span class="citation" data-cites="wickham_welcome_2019">(<a href="01-intro_r.html#ref-wickham_welcome_2019" role="doc-biblioref">Wickham et al., 2019b</a>)</span>. Allerdings wurde das Tidyverse in der Programmiersprache R geschrieben, sodass die beiden nicht vollständig voneinander getrennt sind.</p>
+<p>Wie wir bereits gelernt haben, ist das <a href="https://www.tidyverse.org/">Tidyverse</a> <span class="citation" data-cites="tidyverse-package">(<a href="../references.html#ref-tidyverse-package" role="doc-biblioref">Wickham et al., 2019a</a>)</span> eine Familie von R-Paketen, die das Bereinigen und Verwalten von Daten erleichtern sollen. Der Hauptentwickler von Tidyverse ist Hadley Wickham, der Chefwissenschaftler von Posit (ehemals RStudio), dem Softwareunternehmen, das die integrierte Entwicklungsumgebung (IDE) RStudio entwickelt hat. Alle Pakete in Tidyverse “teilen eine High-Level-Design-Philosophie und Low-Level-Grammatik und Datenstrukturen, so dass das Erlernen eines Pakets es einfacher macht, das nächste zu erlernen” <span class="citation" data-cites="wickham_welcome_2019">(<a href="../references.html#ref-wickham_welcome_2019" role="doc-biblioref">Wickham et al., 2019b</a>)</span>. Allerdings wurde das Tidyverse in der Programmiersprache R geschrieben, sodass die beiden nicht vollständig voneinander getrennt sind.</p>
 <p>Sowohl Base R als auch tidyverse sind Open-Source-Sprachen, die für die Datenwissenschaft geschrieben wurden. Ein Hauptziel von Base R ist die Stabilität, d.&nbsp;h. der Code sollte über viele Jahre hinweg stabil sein. Tidyverse hingegen fügt ständig Funktionen und Argumente hinzu, aktualisiert sie und ändert sie mit neuen Paketversionen im Hinblick auf die Optimierung. Dies bedeutet, dass Tidyverse-Code anfällig für “Brüche” ist: Tidyverse-Code, der heute läuft, läuft vielleicht in ein paar Jahren nicht mehr, wenn einige Funktionen oder Argumente “veraltet” sind. Deshalb ist es so wichtig, dass Sie immer Ihre <code>sessionInfo()</code> mit einem Bericht mitschicken, sie dokumentiert, welche Pakete und deren Versionen Sie verwendet haben.</p>
-<p>In der Debatte zwischen Base R und Tidyverse gibt es in der Regel drei Lager: die starken Befürworter von Base R, die starken Befürworter von Tidyverse und die Agnostiker. In Bezug auf den R-Unterricht gibt es mehrere Arbeiten, in denen die potenziellen Vorteile des Unterrichts von Base R oder des Tidyverse bzw. einer Kombination aus beidem untersucht werden. Einige argumentieren, dass das Lehren der Tidyverse für Schüler intuitiver ist, während andere behaupten, dass Base R der “einzige” Weg ist, um echte R-Kenntnisse zu erlangen. Base R ist z.B. einfacher, wenn es darum geht, eine einzelne Variable zu extrahieren, aber selbst unter standhaften Base R-Nutzern wird das Paket <code>ggplot2</code> oft bevorzugt, um Diagramme zu erstellen. Unten sehen wir einen Tweet von Prof.&nbsp;Christopher Zorn (Penn State), der vorschlägt, dass die Kenntnis des “tidyverse” nicht bedeutet, dass man R kennt, mit einer Antwort von Prof.&nbsp;Bodo Winter (University of Birmingham) zur Unterstützung des tidyverse. Viele andere Antworten wiesen auf die verschiedenen Vorteile des Tidyverse hin, von der Lehre von R bis zur Arbeit in der Industrie. Wichtig (und für Sie als Linguistikstudenten relevant) ist, dass Bodo Winter der Autor von ‘<em>Statistics for Linguists: An Introduction Using R</em>’ <span class="citation" data-cites="winter_statistics_2019">(<a href="01-intro_r.html#ref-winter_statistics_2019" role="doc-biblioref">Winter, 2019</a>)</span>, das ebenfalls tidyverse verwendet. Sein Buch sowie die Tutorien, die er als Doktorand geschrieben hat <span class="citation" data-cites="winter_linear_2013 winter_very_2014">(<a href="01-intro_r.html#ref-winter_linear_2013" role="doc-biblioref">Winter, 2013</a>, <a href="01-intro_r.html#ref-winter_very_2014" role="doc-biblioref">2014</a>)</span>, sind in einer verständlichen Sprache verfasst, die sie für Studierende zugänglich macht. Es ist also kein Wunder, dass er ein Befürworter von tidyverse ist, das auch für Nicht-Programmierer zugänglich sein soll.</p>
+<p>In der Debatte zwischen Base R und Tidyverse gibt es in der Regel drei Lager: die starken Befürworter von Base R, die starken Befürworter von Tidyverse und die Agnostiker. In Bezug auf den R-Unterricht gibt es mehrere Arbeiten, in denen die potenziellen Vorteile des Unterrichts von Base R oder des Tidyverse bzw. einer Kombination aus beidem untersucht werden. Einige argumentieren, dass das Lehren der Tidyverse für Schüler intuitiver ist, während andere behaupten, dass Base R der “einzige” Weg ist, um echte R-Kenntnisse zu erlangen. Base R ist z.B. einfacher, wenn es darum geht, eine einzelne Variable zu extrahieren, aber selbst unter standhaften Base R-Nutzern wird das Paket <code>ggplot2</code> oft bevorzugt, um Diagramme zu erstellen. Unten sehen wir einen Tweet von Prof.&nbsp;Christopher Zorn (Penn State), der vorschlägt, dass die Kenntnis des “tidyverse” nicht bedeutet, dass man R kennt, mit einer Antwort von Prof.&nbsp;Bodo Winter (University of Birmingham) zur Unterstützung des tidyverse. Viele andere Antworten wiesen auf die verschiedenen Vorteile des Tidyverse hin, von der Lehre von R bis zur Arbeit in der Industrie. Wichtig (und für Sie als Linguistikstudenten relevant) ist, dass Bodo Winter der Autor von ‘<em>Statistics for Linguists: An Introduction Using R</em>’ <span class="citation" data-cites="winter_statistics_2019">(<a href="../references.html#ref-winter_statistics_2019" role="doc-biblioref">Winter, 2019</a>)</span>, das ebenfalls tidyverse verwendet. Sein Buch sowie die Tutorien, die er als Doktorand geschrieben hat <span class="citation" data-cites="winter_linear_2013 winter_very_2014">(<a href="../references.html#ref-winter_linear_2013" role="doc-biblioref">Winter, 2013</a>, <a href="../references.html#ref-winter_very_2014" role="doc-biblioref">2014</a>)</span>, sind in einer verständlichen Sprache verfasst, die sie für Studierende zugänglich macht. Es ist also kein Wunder, dass er ein Befürworter von tidyverse ist, das auch für Nicht-Programmierer zugänglich sein soll.</p>
 <center>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
 What a thing to say when modern R is pretty much synonymous with the tidyverse for many in the community!<br><br>I was a Base R masochist once too.. but there's no need for statements like this when the tidyverse has helped so many of us be more productive and write more readable code.
 </p>
-— Bodo Winter (<span class="citation" data-cites="BodoWinter">(<a href="01-intro_r.html#ref-BodoWinter" role="doc-biblioref"><strong>BodoWinter?</strong></a>)</span>) <a href="https://twitter.com/BodoWinter/status/1612882152483586049?ref_src=twsrc%5Etfw">January 10, 2023</a>
+— Bodo Winter (<span class="citation" data-cites="BodoWinter">(<a href="../references.html#ref-BodoWinter" role="doc-biblioref"><strong>BodoWinter?</strong></a>)</span>) <a href="https://twitter.com/BodoWinter/status/1612882152483586049?ref_src=twsrc%5Etfw">January 10, 2023</a>
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </center>
@@ -1312,10 +1312,11 @@ loaded via a namespace (and not attached):
 [45] labeling_0.4.3    rmarkdown_2.26    compiler_4.4.0   </code></pre>
 </div>
 </div>
-</section>
-<section id="literaturverzeichnis" class="level2 unlisted unnumbered" data-visibility="uncounted">
-<h2 class="unlisted unnumbered anchored" data-visibility="uncounted" data-anchor-id="literaturverzeichnis">Literaturverzeichnis</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+
+
+<!-- -->
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-tidyverse-package" class="csl-entry" role="listitem">
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019a). Welcome to the <span>tidyverse</span>. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>
 </div>
@@ -1335,10 +1336,6 @@ Winter, B. (2014). <em>A Very Basic Tutorial for Performing Linear Mixed Effects
 Winter, B. (2019). Statistics for <span>Linguists</span>: <span>An Introduction Using R</span>. In <em>Statistics for Linguists: An Introduction Using R</em>. <span>Routledge</span>. <a href="https://doi.org/10.4324/9781315165547">https://doi.org/10.4324/9781315165547</a>
 </div>
 </div>
-
-
-<!-- -->
-
 </section>
 
 </main> <!-- /main -->
@@ -2618,19 +2615,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-716"><a href="#cb69-716" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(),<span class="at">locale =</span> F)</span>
 <span id="cb69-717"><a href="#cb69-717" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-718"><a href="#cb69-718" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-719"><a href="#cb69-719" aria-hidden="true" tabindex="-1"></a><span class="fu"># Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}</span></span>
+<span id="cb69-719"><a href="#cb69-719" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-720"><a href="#cb69-720" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-721"><a href="#cb69-721" aria-hidden="true" tabindex="-1"></a>::: {#refs custom-style="Bibliography"}</span>
-<span id="cb69-722"><a href="#cb69-722" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb69-721"><a href="#cb69-721" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-722"><a href="#cb69-722" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-723"><a href="#cb69-723" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-724"><a href="#cb69-724" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-725"><a href="#cb69-725" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-726"><a href="#cb69-726" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-727"><a href="#cb69-727" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-728"><a href="#cb69-728" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-729"><a href="#cb69-729" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-730"><a href="#cb69-730" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-731"><a href="#cb69-731" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
