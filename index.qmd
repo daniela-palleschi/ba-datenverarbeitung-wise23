@@ -1,6 +1,6 @@
 # Kursübersicht {.unnumbered}
 
-Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Visualisierung" an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Wintersemester 2023/24. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle [hier](https://moodle.hu-berlin.de/course/view.php?id=124123) (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).
+Dies ist die Webseite der Lehrveranstaltung "Angewandte Datenverarbeitung und Visualisierung: R für Linguistik und Sozialwissenschaften" an der Humboldt-Universität zu Berlin, Institut der deutschen Sprache und Linguistik für das Sommersemester 2024. Wenn Sie für den Kurs eingeschrieben sind, finden Sie alle relevanten Materialien auf dem Kurs Moodle [hier](https://moodle.hu-berlin.de/course/view.php?id=127770) (Moodle-Schlüssel wird in der Vorlesung bereitgestellt).
 
 Jedes Kapitel entspricht einer Vorlesung von einer Woche. Vorerst werden die Materialien auf dieser Website im Bullet-Point-Format erscheinen und genau denselben Inhalt wie die Kursfolien enthalten. Ich plane, die Aufzählungspunkte später in Prosa umzuwandeln und die einzelnen Themen zu vertiefen.
 

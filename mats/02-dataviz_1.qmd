@@ -690,8 +690,3 @@ Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion
 ```{r}
 sessionInfo()
 ```
-
-## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
-
-::: {#refs custom-style="Bibliography"}
-:::

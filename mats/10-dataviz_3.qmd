@@ -733,8 +733,3 @@ Hergestellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion
 ```{r}
 print(sessionInfo(),locale = F)
 ```
-
-## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
-
-::: {#refs custom-style="Bibliography"}
-:::

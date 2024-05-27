@@ -737,8 +737,3 @@ Erstellt mit `r R.version.string` (`r R.version$nickname`) und RStudioversion 20
 ```{r}
 sessionInfo()
 ```
-
-## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
-
-::: {#refs custom-style="Bibliography"}
-:::

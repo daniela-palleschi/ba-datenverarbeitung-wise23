@@ -582,8 +582,3 @@ sessionInfo()
 #| echo: false
 quarto::datenviz_render(output_format = "all")
 ```
-
-## Literaturverzeichnis {.unlisted .unnumbered visibility="uncounted"}
-
-::: {#refs custom-style="Bibliography"}
-:::
