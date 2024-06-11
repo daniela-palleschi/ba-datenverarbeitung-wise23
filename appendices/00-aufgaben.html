@@ -389,6 +389,11 @@ MathJax.Hub.Config({
   <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"><span class="header-section-number">A.5.2</span> <code>ggsave()</code></a></li>
   </ul></li>
   <li><a href="#sec-app_dateneinlesung" id="toc-sec-app_dateneinlesung" class="nav-link" data-scroll-target="#sec-app_dateneinlesung"><span class="header-section-number">A.6</span> Dateneinlesung</a></li>
+  <li><a href="#sec-app_desc_stats" id="toc-sec-app_desc_stats" class="nav-link" data-scroll-target="#sec-app_desc_stats"><span class="header-section-number">A.7</span> Deskriptive Statistik</a>
+  <ul class="collapse">
+  <li><a href="#standardabweichung" id="toc-standardabweichung" class="nav-link" data-scroll-target="#standardabweichung"><span class="header-section-number">A.7.1</span> Standardabweichung</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">A.7.2</span> <code>summary()</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -422,7 +427,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mo. den 03.06.2024</p>
+      <p class="date-modified">Mo. den 10.06.2024</p>
     </div>
   </div>
     
@@ -755,6 +760,44 @@ Abbildung&nbsp;A.1: zu reproduzierende Abbildung
 </ol>
 <ol start="2" type="1">
 <li>Ein Balkendiagramm erstellen, das die Häufigkeit der verschiedenen Haustierarten zeigt. Auf der x-Achse wollen wir <code>haustierart</code>. Um die Visualisierung zu erleichtern, fügen Sie <code>haustierart</code> auch als <code>fill</code> in die Ästhetik ein. Geben Sie geeignete Diagramm- und Achsentitel mit <code>lab(...)</code> an. What is the most frequent pet type?</li>
+</ol>
+</section>
+</section>
+<section id="sec-app_desc_stats" class="level2" data-number="A.7">
+<h2 data-number="A.7" class="anchored" data-anchor-id="sec-app_desc_stats"><span class="header-section-number">A.7</span> Deskriptive Statistik</h2>
+<p>Diese Übungen begleiten <a href="../mats/08-desc_stats.html" class="quarto-xref"><span>Kapitel 7</span></a>. Um diese Aufgaben zu erledigen, müssen Sie die Pakete <code>tidyverse</code>, <code>janitor</code> und <code>here</code> laden, sowie den Datensatz <code>languageR_english.csv</code>, wie es in <a href="../mats/08-desc_stats.html#sec-desc_stats_setup" class="quarto-xref"><span>Kapitel 7.1</span></a>.</p>
+<section id="standardabweichung" class="level3" data-number="A.7.1">
+<h3 data-number="A.7.1" class="anchored" data-anchor-id="standardabweichung"><span class="header-section-number">A.7.1</span> Standardabweichung</h3>
+<ol type="1">
+<li>Berechnen Sie die Standardabweichung der Werte <code>152, 19, 1398, 67, 2111</code>, ohne die Funktion <code>sd()</code> zu benutzen.
+<ul>
+<li>zeige deine Arbeit. Die folgende R-Syntax könnte nützlich sein (je nachdem, wie Sie es machen wollen):
+<ul>
+<li><code>c()</code></li>
+<li><code>mean()</code></li>
+<li><code>x^2</code> berechnet das Quadrat eines Wertes (hier, <code>x</code>)</li>
+<li><code>sqrt()</code> berechnet die Quadratwurzel</li>
+<li><code>length()</code> liefert die Anzahl der Beobachtungen in einem Vektor</li>
+</ul></li>
+</ul></li>
+</ol>
+<ol start="2" type="1">
+<li>Benutze die Funktion <code>sd()</code>, um die Standardabweichung der obigen Werte zu drucken. Haben Sie es richtig gemacht?</li>
+</ol>
+</section>
+<section id="summary" class="level3" data-number="A.7.2">
+<h3 data-number="A.7.2" class="anchored" data-anchor-id="summary"><span class="header-section-number">A.7.2</span> <code>summary()</code></h3>
+<ol start="3" type="1">
+<li>Benutze <code>summarise</code>, um den Mittelwert, die Standardabweichung und die Anzahl der Beobachtungen für <code>rt_naming</code> im <code>df_eng</code> Datenrahmen zu drucken.
+<ul>
+<li>Hinweis: Müssen Sie fehlende Werte (<code>NA</code>) entfernen?</li>
+</ul></li>
+</ol>
+<ol start="4" type="1">
+<li>Machen Sie dasselbe, aber fügen Sie das Argument <code>.by()</code> hinzu, um die mittlere Reaktionszeit der Benennungsaufgabe (<code>rt_naming</code>) pro <code>word_category</code> zu ermitteln
+<ul>
+<li>Ordnen Sie die Ausgabe nach der mittleren Antwortzeit für die Namensgebung an.</li>
+</ul></li>
 </ol>
 
 

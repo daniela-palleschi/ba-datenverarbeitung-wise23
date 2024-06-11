@@ -757,6 +757,27 @@ Tabelle&nbsp;6.1: Data from the students.csv file as a table.
 <td style="text-align: left;">Arvid</td>
 <td style="text-align: left;">Papagei</td>
 </tr>
+<tr class="even">
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Russisch</td>
+<td style="text-align: left;">Narzis</td>
+<td style="text-align: left;">Kater</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">159</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Punjabi</td>
+<td style="text-align: left;">Mimi</td>
+<td style="text-align: left;">Katze</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Deutsch</td>
+<td style="text-align: left;">Percy</td>
+<td style="text-align: left;">Hund</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -886,18 +907,21 @@ Tabelle&nbsp;6.1: Data from the students.csv file as a table.
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clean_names</span>(df_groesse)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9 × 5
-  grosse geburtsmonat l1          haustier was_fur_ein_haustier
-   &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;               
-1    171            5 Englisch    Lola     Hundin              
-2    168           11 Deutsch     keine    keine               
-3    182            4 Deutsch     &lt;NA&gt;     &lt;NA&gt;                
-4    190            8 Deutsch     Knut     Kater               
-5    170           10 Deutsch     Emma     Hundin              
-6    163            2 Deutsch     Üzgür    Kater               
-7    164            7 Italienisch Fipsy    Katze               
-8    167           12 Schwedisch  Anna     Fisch               
-9    189           10 Norwegisch  Arvid    Papagei             </code></pre>
+<pre><code># A tibble: 12 × 5
+   grosse geburtsmonat l1          haustier was_fur_ein_haustier
+    &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;               
+ 1    171            5 Englisch    Lola     Hundin              
+ 2    168           11 Deutsch     keine    keine               
+ 3    182            4 Deutsch     &lt;NA&gt;     &lt;NA&gt;                
+ 4    190            8 Deutsch     Knut     Kater               
+ 5    170           10 Deutsch     Emma     Hundin              
+ 6    163            2 Deutsch     Üzgür    Kater               
+ 7    164            7 Italienisch Fipsy    Katze               
+ 8    167           12 Schwedisch  Anna     Fisch               
+ 9    189           10 Norwegisch  Arvid    Papagei             
+10    163            7 Russisch    Narzis   Kater               
+11    159           11 Punjabi     Mimi     Katze               
+12    173            9 Deutsch     Percy    Hund                </code></pre>
 </div>
 </div>
 <p>Das sieht besser aus! Aber wenn Sie jetzt <code>head(df_groesse)</code> ausführen, sehen Sie dann die bereinigten Spaltennamen?</p>
