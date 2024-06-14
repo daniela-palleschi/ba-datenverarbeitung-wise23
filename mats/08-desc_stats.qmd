@@ -9,7 +9,7 @@ date-modified: last-modified
 code-tools: true
 ---
 
-# Deskriptive Statistik {#sec-desc-stats}
+# Deskriptive Statistik {#sec-desc_stats}
 
 ```{r}
 #| echo: false
@@ -37,7 +37,7 @@ Die **Pflichtlektüre** zur Vorbereitungen auf dieses Thema sind
 
 2. [Bereich 4.5 (Groups)](https://r4ds.hadley.nz/data-transform#groups) in Kapital 4 (Data Transformation) in @wickham_r_2023.
 
-## Einrichten
+## Einrichten {#sec-desc_stats_setup}
 
 ### Umgebung löschen
 
@@ -77,18 +77,22 @@ df_eng <- english |>
          RTnaming = ifelse(Word == "age" & AgeSubject == "young", NA, RTnaming)) 
 
 write_csv(df_eng, here("daten", "languageR_english.csv"))
+```
 
-df_groesse <- read_csv(here("daten", "groesse_geburtstag_ws2324.csv"),
+
+```{r}
+#| eval: false
+#| echo: false
+#| 
+
+df_groesse <- read_csv(here("daten", "groesse_geburtstag.csv"),
                        # fix N/A values
                        na = c("", "N/A")) |> 
   mutate(Größe = ifelse(Größe == 168, 167, Größe)) |> 
   clean_names() |> 
-  rename(groesse = groesse,
-         muttersprache = l1,
-         geburtsmonat = monat_der_geburt,
-         geburtstag = tag)
+  rename(groesse = grosse)
 
-write_csv(df_groesse, here("daten", "groesse_geburtstag_ws2324.csv"))
+write_csv(df_groesse, here("daten", "groesse_geburtstag_sose24.csv"))
 ```
 
 ```{r}
@@ -458,7 +462,7 @@ Sowohl der Mittelwert als auch die Standardabweichung sagen etwas über die Grun
 
 :::
 
-## Zusammenfassende Statistiken mit R
+## Deskriptive Statistiken mit R
 
 Wir haben bereits einige nützliche Funktionen zur Berechnung von zusammenfassenden Statistiken gesehen (z.B. `mean()`, `median()`, `sd()`). In der Regel möchten wir jedoch mehrere zusammenfassende Statistiken auf einmal erstellen und zusammenfassende Statistiken zwischen Gruppen vergleichen. Um dies zu erreichen, bietet das Paket `dplyr` aus dem `tidyverse` einige hilfreiche Funktionen. Lassen Sie uns nun den `df_eng`-Datensatz verwenden, um diese `dplyr`-Verben kennenzulernen.
 
@@ -611,7 +615,7 @@ tidy_anscombe <- anscombe |>
 
 ```{r}
 #| label: tbl-anscombe
-#| tbl-cap: Summary stats of Anscombe's quratet datasets
+#| tbl-cap: "Summary stats of Anscombe's quratet datasets"
 #| echo: false
 tidy_anscombe |>
   group_by(grp) |>
@@ -630,11 +634,14 @@ tidy_anscombe |>
 
 ```{r}
 #| label: fig-anscombe
-#| fig-cap: Plots of Anscombe's quratet distributions
+#| fig-cap: "Plots of Anscombe's quratet distributions"
 #| echo: false
+#| fig-width: 6
+#| fig-asp: 1
+
 tidy_anscombe |>
   ggplot(aes(x, y)) +
-    geom_smooth(method = lm, se = F, color = "darkorange") +
+    geom_smooth(method = lm, se = F, aes(color = grp)) +
     geom_point(size = 2) +
     scale_y_continuous(breaks = scales::pretty_breaks()) +
     scale_x_continuous(breaks = scales::pretty_breaks()) +
@@ -644,7 +651,8 @@ tidy_anscombe |>
     ) +
     facet_wrap(~grp, ncol = 2, scales = "free_x") +
     theme(strip.background = element_rect(fill = "#f2f2f2", colour = "white")) +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 ```
 
 ### DatasaurRus
@@ -660,6 +668,7 @@ pacman::p_load("datasauRus")
 #| tbl-cap: Summary stats of datasauRus datasets
 #| output-location: column-fragment
 datasaurus_dozen |>
+  filter(dataset != "x_shape") |> 
     group_by(dataset) |>
     summarize(
       mean_x    = mean(x),
@@ -677,14 +686,17 @@ Wenn wir die Datensätze grafisch darstellen, sehen sie alle sehr unterschiedlic
 ```{r}
 #| label: fig-datasauRus
 #| fig-cap: Plots of datasauRus dataset distributions
-#| out-width: "50%"
-#| fig-asp: 1
+#| out-width: "100%"
+#| fig-asp: .75
 #| echo: false
-ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+datasaurus_dozen |> 
+  filter(dataset != "x_shape") |> 
+  ggplot() +
+  aes(x = x, y = y, colour = dataset) +
   geom_point() +
   theme_void() +
   theme(legend.position = "none")+
-  facet_wrap(~dataset, ncol = 3)
+  facet_wrap(~dataset, ncol = 4)
 ```
 
 Der Punkt hier ist: ***Stellen Sie Ihre Daten immer grafisch dar*** und betrachten Sie nicht nur die beschreibenden Statistiken!!! Beides ist sehr wichtig für das Verständnis Ihrer Daten. Wir haben bereits gesehen, wie wir unsere Rohdaten mithilfe von Histogrammen, Dichteplots, Balkendiagrammen und Streudiagrammen darstellen können. Nächste Woche werden wir uns ansehen, wie wir unsere zusammenfassenden Statistiken darstellen und wie wir die Rohdaten in die Darstellung mit mehrteiligen Diagrammen einbeziehen können.
@@ -698,30 +710,11 @@ Today we learned...
 - wie man die Funktion `summarise()` von `dplyr` verwendet ✅
 - wie man Zusammenfassungen nach Gruppen erstellt ✅
 
-## Hausaufgaben
+## Weitere Übungen {.unnumbered}
 
-::: nonincremental
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_desc_stats
 
-1. Berechnen Sie die Standardabweichung der Werte `152, 19, 1398, 67, 2111`, ohne die Funktion `sd()` zu benutzen.
-    + zeige deine Arbeit. Die folgende R-Syntax könnte nützlich sein (je nachdem, wie Sie es machen wollen):
-      + `c()`
-      + `mean()`
-      + `x^2` berechnet das Quadrat eines Wertes (hier, `x`) 
-      + `sqrt()` berechnet die Quadratwurzel
-      + `length()` liefert die Anzahl der Beobachtungen in einem Vektor
-      
-```{r}
-#| echo: false
-#| eval: false
-x <- c(152, 19, 1398, 67, 2111)
-sqrt((sum((x-mean(x))^2))/(length(x)-1))
-```
 
-2. Benutze die Funktion `sd()`, um die Standardabweichung der obigen Werte zu drucken. Haben Sie es richtig gemacht?
-3.  Benutze `summarise`, um den Mittelwert, die Standardabweichung und die Anzahl der Beobachtungen für `rt_naming` im `df_lexdec` Datenrahmen zu drucken.
-    - Hinweis: Müssen Sie fehlende Werte (`NA`) entfernen?
-4.  Machen Sie dasselbe, aber fügen Sie das Argument `.by()` hinzu, um die mittlere Reaktionszeit der Benennungsaufgabe (`rt_naming`) pro Monat zu ermitteln
-    - Ordnen Sie die Ausgabe nach der mittleren Antwortzeit für die Namensgebung an.
 
 ## Session Info {.unnumbered}
 

@@ -1,5 +1,4 @@
 ---
-title: "Einlesen von Daten"
 subtitle: "Importieren von Datendateien"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
@@ -9,6 +8,8 @@ date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
 code-tools: true
 ---
+
+## Einlesen von Daten {#sec-dateneinlesung}
 
 ```{r}
 #| echo: false
@@ -38,7 +39,7 @@ Eine **ergänzende Lektüre** ist [Ch. 4 (Data Import)](https://psyteachr.github
 
 Im letzten Kapitel haben wir das Gelernte in die Praxis umgesetzt. Wir haben einen Datensatz aus dem `languageR`-Paket [@languageR-package] eingelesen, ihn mit dem `dplyr`-Paket aus dem `tidyverse` verarbeitet und mehrere Diagramme mit dem `ggplot2`-Paket aus dem `tidyverse` erstellt. All dies wurde mit einem Quarto-Skript durchgeführt.
 
-## Einrichtung
+## Einrichtung {#sec-dateneinlesung-setup}
 
 ### Pakete mit `pacman`
 
@@ -468,7 +469,7 @@ Um sicherzustellen, dass eine Variable als Faktor gespeichert wird, können wir 
 
 
 ```{r}
-df_groesse$monat_der_geburt <- as_factor(df_groesse$monat_der_geburt)
+df_groesse$geburtsmonat <- as_factor(df_groesse$geburtsmonat)
 ```
 
 Or we can use `tidyverse` syntax and the `mutate()` function.
@@ -476,7 +477,7 @@ Or we can use `tidyverse` syntax and the `mutate()` function.
 ```{r}
 df_groesse <-
   df_groesse |> 
-  mutate(monat_der_geburt = as_factor(monat_der_geburt))
+  mutate(geburtsmonat = as_factor(geburtsmonat))
 ```
 
 ## Andere Dateitypen und Begrenzungszeichen
@@ -493,54 +494,9 @@ Die Funktion `read_tsv()` liest Tabulator-getrennte Dateien. Die Funktion `read_
 - `read_table()` liest eine gängige Variante von Dateien mit fester Breite, bei der die Spalten durch Leerzeichen getrennt sind
 - `read_log()` liest Log-Dateien im Apache-Stil
 
-## Übungen {.unnummeriert}
+## Weitere Übungen {.unnumbered}
 
-Nun wollen wir üben, das Paket `readr` zu benutzen und mit unseren Daten zu arbeiten.
-
-### `readr` Funktionen {.unnumbered}
-
-1.  Welche Funktion würdest du benutzen, um eine Datei zu lesen, in der die Felder mit "`|`" getrennt sind?
-2.  Welche Argumente haben `read_csv()` und `read_tsv()` gemeinsam?
-3.  Welche Funktion(en) könnten Sie verwenden, um einen Datensatz mit einem Semikolon (`;`) als Trennzeichen einzulesen?
-
-### Data wrangling {.unnumbered}
-
-Laden Sie die Datei `groesse_geburtstag.csv` erneut. Benutzen Sie Pipes, um auch die Funktion `clean_names` zu benutzen, und um die folgenden Änderungen im Objekt `df_groesse` vorzunehmen.
-
-1. Umwandlung der Variablen `l1` in einen Faktor.
-2. Umbenennen von 
-  + `grosse` in `groesse`
-  + `monat_der_geburt` in `geburtsmonat`
-  
-```{r}
-#| echo: false
-df_groesse <-
-  read_csv(here("daten/groesse_geburtstag.csv")) |> 
-  clean_names() |> 
-  rename(
-    groesse = grosse,
-    geburtsmonat = monat_der_geburt
-  ) |> 
-  mutate(l1 = as_factor(l1))
-```
-
-### Plots {.unnumbered}
-
-Erstelle ein Streudiagramm mit unserem `df_groesse`-Datensatz, das die Beziehung zwischen unserem Geburtsdatum und unseren Geburtstagen visualisiert (es macht keinen Sinn, dies zu vergleichen, aber es ist nur eine Übung). Suchen Sie Ihren Geburtstag in der Grafik. Stellen Sie die Farbe und die Form so ein, dass sie "L1" entsprechen. Fügen Sie einen Titel für die Grafik hinzu.
-
-```{r}
-#| echo: false
-#| eval: false
-df_groesse |> 
-  ggplot() +
-  aes(x = geburtsmonat, y = tag, colour = l1, shape = l1) +
-  labs(title = "Geburtsmonat und Geburtstag",
-       y = "Geburtsag",
-       x = "Geburtsmonat") +
-  geom_point() +
-  theme_bw()
-```
-
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_dateneinlesung.
 
 ## Lernziele 🏁 {.unnumbered .unlisted}
 

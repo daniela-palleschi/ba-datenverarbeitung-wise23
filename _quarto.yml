@@ -41,8 +41,8 @@ book:
       chapters:
         - mats/07-dateneinlesung.qmd
         - mats/08-desc_stats.qmd
-        - mats/09-wrangling_2.qmd
-        - mats/10-dataviz_3.qmd
+        - mats/09-dataviz_3.qmd
+        - mats/10-wrangling_2.qmd
         # - mats/11-bericht_2.qmd
     - part: "Fortgeschrittene Themen"
       chapters:
