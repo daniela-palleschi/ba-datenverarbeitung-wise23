@@ -285,7 +285,7 @@ MathJax.Hub.Config({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/10-wrangling_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Wrangling 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Wrangling 2: Tidying</span></span></a>
   </div>
 </li>
       </ul>
@@ -400,6 +400,11 @@ MathJax.Hub.Config({
   <li><a href="#errorbar-plot" id="toc-errorbar-plot" class="nav-link" data-scroll-target="#errorbar-plot"><span class="header-section-number">A.8.2</span> Errorbar plot</a></li>
   <li><a href="#patchwork" id="toc-patchwork" class="nav-link" data-scroll-target="#patchwork"><span class="header-section-number">A.8.3</span> Patchwork</a></li>
   </ul></li>
+  <li><a href="#sec-app_wrangling2" id="toc-sec-app_wrangling2" class="nav-link" data-scroll-target="#sec-app_wrangling2"><span class="header-section-number">A.9</span> Data Wrangling 2</a>
+  <ul class="collapse">
+  <li><a href="#pivot_longer-summarise" id="toc-pivot_longer-summarise" class="nav-link" data-scroll-target="#pivot_longer-summarise"><span class="header-section-number">A.9.1</span> <code>pivot_longer() |&gt; summarise()</code></a></li>
+  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"><span class="header-section-number">A.9.2</span> <code>pivot_wider()</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -433,7 +438,7 @@ MathJax.Hub.Config({
     <div>
     <div class="quarto-title-meta-heading">Geändert</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">den 14.06.2024</p>
+      <p class="date-modified">den 25.06.2024</p>
     </div>
   </div>
     
@@ -862,6 +867,52 @@ Abbildung&nbsp;A.3: Combined plots with <code>patchwork</code>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="sec-app_wrangling2" class="level2" data-number="A.9">
+<h2 data-number="A.9" class="anchored" data-anchor-id="sec-app_wrangling2"><span class="header-section-number">A.9</span> Data Wrangling 2</h2>
+<p>Diese Übungen begleiten <a href="../mats/10-wrangling_2.html" class="quarto-xref"><span>Kapitel 9</span></a>. Um diese Aufgaben zu erledigen, müssen Sie die Pakete <code>tidyverse</code>, <code>janitor</code> und <code>here</code> laden, sowie den Datensatz <code>languageR_english.csv</code> (<code>df_eng</code>), wie es in <a href="../mats/10-wrangling_2.html#sec-wrangling2_setup" class="quarto-xref"><span>Kapitel 9.1</span></a>.</p>
+<section id="pivot_longer-summarise" class="level3" data-number="A.9.1">
+<h3 data-number="A.9.1" class="anchored" data-anchor-id="pivot_longer-summarise"><span class="header-section-number">A.9.1</span> <code>pivot_longer() |&gt; summarise()</code></h3>
+<ol type="1">
+<li>Erstellen Sie <code>df_eng_long</code> (wie in <a href="../mats/10-wrangling_2.html#sec-pivot_longer" class="quarto-xref"><span>Kapitel 9.5.1</span></a>). Verwenden Sie dann die Funktion <code>summarise()</code>, um die folgenden zusammenfassenden Statistiken zu erstellen:</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  response   mean    sd
+  &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1 rt_lexdec  708.  115.
+2 rt_naming  566.  101.</code></pre>
+</div>
+</div>
+<p>Hinweis: Müssen Sie <code>NA</code> entfernen (wir haben im letzten Kapital gesehen, wie man das macht)?</p>
+</section>
+<section id="pivot_wider" class="level3" data-number="A.9.2">
+<h3 data-number="A.9.2" class="anchored" data-anchor-id="pivot_wider"><span class="header-section-number">A.9.2</span> <code>pivot_wider()</code></h3>
+<ol type="1">
+<li>Verwenden Sie <code>pivot_wider</code>, um mit <code>rt_naming</code> neue Variablen zu erstellen: <code>naming_old</code> und <code>naming_young</code>, die die Reaktionszeiten beim Benennen für alte bzw. junge Teilnehmer enthalten. Hinweis: Sie müssen <code>rt_lexdec</code> entfernen. Speichern Sie den Datenrahmen als <code>df_eng_wider</code> als Objekt. Der resultierende Datenrahmen sollte 2284 Beobachtungen und 6 Variablen enthalten.</li>
+</ol>
+<ol start="2" type="1">
+<li>Erstellen Sie <a href="#fig-old_young" class="quarto-xref">Abbildung&nbsp;<span>A.4</span></a> mit <code>df_eng_wider</code>.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-old_young" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-old_young-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="00-aufgaben_files/figure-html/fig-old_young-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-old_young-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;A.4: Scatterplot of naming task reaction times per word for old versus young participants
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Warum brauchen wir unseren <code>df_eng_wide</code>-Datensatz, um <a href="#fig-old_young" class="quarto-xref">Abbildung&nbsp;<span>A.4</span></a> zu erstellen? Mit anderen Worten, warum ist <code>df_eng_wide</code> die geeignete Struktur, aber nicht <code>df_eng_long</code> für ein solches Streudiagramm?</li>
+</ol>
 
 
 </section>
