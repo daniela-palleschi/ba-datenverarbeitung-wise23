@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../berichte/bericht 1/bericht_1_DE.html" rel="next">
-<link href="../mats/16-troubleshooting.html" rel="prev">
+<link href="../references.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -308,7 +307,7 @@ MathJax.Hub.Config({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mats/13-dataviz_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualiserung 4</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualisierung 4</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -322,7 +321,7 @@ MathJax.Hub.Config({
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Anhang</span></a>
+ <span class="menu-text">Berichte</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -330,20 +329,37 @@ MathJax.Hub.Config({
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendices/00-aufgaben.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></span></a>
+  <a href="../berichte/bericht 1/bericht_1_DE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bericht 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../berichte/bericht 1/bericht_1_DE.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Bericht 1</span></span></a>
+  <a href="../berichte/bericht 2/bericht_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bericht 2</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literaturverzeichnis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/00-aufgaben.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Aufgaben</span></span></a>
   </div>
 </li>
       </ul>
@@ -404,6 +420,16 @@ MathJax.Hub.Config({
   <ul class="collapse">
   <li><a href="#pivot_longer-summarise" id="toc-pivot_longer-summarise" class="nav-link" data-scroll-target="#pivot_longer-summarise"><span class="header-section-number">A.9.1</span> <code>pivot_longer() |&gt; summarise()</code></a></li>
   <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"><span class="header-section-number">A.9.2</span> <code>pivot_wider()</code></a></li>
+  </ul></li>
+  <li><a href="#sec-app_baseR" id="toc-sec-app_baseR" class="nav-link" data-scroll-target="#sec-app_baseR"><span class="header-section-number">A.10</span> base R</a>
+  <ul class="collapse">
+  <li><a href="#tidyverse-zur-base-r" id="toc-tidyverse-zur-base-r" class="nav-link" data-scroll-target="#tidyverse-zur-base-r"><span class="header-section-number">A.10.1</span> <code>tidyverse</code> zur base R</a></li>
+  </ul></li>
+  <li><a href="#sec-app_dataviz4" id="toc-sec-app_dataviz4" class="nav-link" data-scroll-target="#sec-app_dataviz4"><span class="header-section-number">A.11</span> Datenvisualisierung 4</a>
+  <ul class="collapse">
+  <li><a href="#mehrteilige-darstellung" id="toc-mehrteilige-darstellung" class="nav-link" data-scroll-target="#mehrteilige-darstellung"><span class="header-section-number">A.11.1</span> Mehrteilige Darstellung</a></li>
+  <li><a href="#beschriftungen" id="toc-beschriftungen" class="nav-link" data-scroll-target="#beschriftungen"><span class="header-section-number">A.11.2</span> Beschriftungen</a></li>
+  <li><a href="#anpassungen" id="toc-anpassungen" class="nav-link" data-scroll-target="#anpassungen"><span class="header-section-number">A.11.3</span> Anpassungen</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -912,6 +938,137 @@ Abbildung&nbsp;A.4: Scatterplot of naming task reaction times per word for old v
 </div>
 <ol start="3" type="1">
 <li>Warum brauchen wir unseren <code>df_eng_wide</code>-Datensatz, um <a href="#fig-old_young" class="quarto-xref">Abbildung&nbsp;<span>A.4</span></a> zu erstellen? Mit anderen Worten, warum ist <code>df_eng_wide</code> die geeignete Struktur, aber nicht <code>df_eng_long</code> für ein solches Streudiagramm?</li>
+</ol>
+</section>
+</section>
+<section id="sec-app_baseR" class="level2" data-number="A.10">
+<h2 data-number="A.10" class="anchored" data-anchor-id="sec-app_baseR"><span class="header-section-number">A.10</span> base R</h2>
+<p>Diese Übungen begleiten <a href="../mats/12-baseR.html" class="quarto-xref"><span>Kapitel 10</span></a>. Sie brauchen keine Pakete zu laden, da diese Übungen die Verwendung von Basis-R voraussetzen. Sie sollten jedoch <code>tidyverse</code> laden, wenn Sie den Beispielcode ausführen wollen.</p>
+<section id="tidyverse-zur-base-r" class="level3" data-number="A.10.1">
+<h3 data-number="A.10.1" class="anchored" data-anchor-id="tidyverse-zur-base-r"><span class="header-section-number">A.10.1</span> <code>tidyverse</code> zur base R</h3>
+<p>Konvertieren Sie den folgenden tidyverse-Code in Base R. Wir werden wieder den Datensatz <code>languageR_english.csv</code> verwenden.</p>
+<section id="einlesung" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="einlesung">Einlesung</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"daten"</span>, <span class="st">"languageR_english.csv"</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="auswahl-der-spalten" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="auswahl-der-spalten">Auswahl der Spalten</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Word, WrittenFrequency)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   Word   WrittenFrequency
+   &lt;chr&gt;             &lt;dbl&gt;
+ 1 doe                3.91
+ 2 whore              4.52
+ 3 stress             6.51
+ 4 pork               5.02
+ 5 plug               4.89
+ 6 prop               4.77
+ 7 dawn               6.38
+ 8 dog                7.16
+ 9 arc                4.89
+10 skirt              5.93</code></pre>
+</div>
+</div>
+</section>
+<section id="zeilen-filtern" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="zeilen-filtern">Zeilen filtern</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WrittenFrequency <span class="sc">&gt;</span> <span class="fl">5.6</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 7
+   AgeSubject Word   LengthInLetters WrittenFrequency WordCategory RTlexdec
+   &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
+ 1 young      stress               6             6.51 N                547.
+ 2 young      dawn                 4             6.38 N                584.
+ 3 young      dog                  3             7.16 N                527.
+ 4 young      skirt                5             5.93 N                536.
+ 5 young      are                  3            11.3  N                611.
+ 6 young      pipe                 4             6.00 N                563.
+ 7 young      guard                5             6.59 N                559.
+ 8 young      slope                5             5.80 N                633.
+ 9 young      pile                 4             6.16 N                595.
+10 young      tide                 4             6.08 N                598.
+# ℹ 1 more variable: RTnaming &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="auswahl-von-zeilen-und-spalten" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="auswahl-von-zeilen-und-spalten">Auswahl von Zeilen und Spalten</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WrittenFrequency <span class="sc">&gt;</span> <span class="fl">5.6</span> <span class="sc">&amp;</span> AgeSubject <span class="sc">==</span> <span class="st">"old"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AgeSubject, Word, WrittenFrequency) </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   AgeSubject Word   WrittenFrequency
+   &lt;chr&gt;      &lt;chr&gt;             &lt;dbl&gt;
+ 1 old        stress             6.51
+ 2 old        dawn               6.38
+ 3 old        dog                7.16
+ 4 old        skirt              5.93
+ 5 old        are               11.3 
+ 6 old        pipe               6.00
+ 7 old        guard              6.59
+ 8 old        slope              5.80
+ 9 old        pile               6.16
+10 old        tide               6.08</code></pre>
+</div>
+</div>
+</section>
+<section id="streudiagramm" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="streudiagramm">Streudiagramm</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_eng <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> WrittenFrequency, <span class="at">y =</span> RTlexdec) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="00-aufgaben_files/figure-html/unnamed-chunk-89-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tidyverse-versus-base-r" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tidyverse-versus-base-r">Tidyverse versus Base R</h4>
+<p>Wie ist Ihr Eindruck von Base R im Vergleich zu Tidyverse? Würden Sie, basierend auf dem, was Sie gesehen haben, das eine dem anderen vorziehen, oder würden Sie das eine nur in bestimmten Fällen vorziehen? Hier gibt es keine richtige Antwort.</p>
+</section>
+</section>
+</section>
+<section id="sec-app_dataviz4" class="level2" data-number="A.11">
+<h2 data-number="A.11" class="anchored" data-anchor-id="sec-app_dataviz4"><span class="header-section-number">A.11</span> Datenvisualisierung 4</h2>
+<p>Diese Übungen begleiten <a href="../mats/13-dataviz_4.html" class="quarto-xref"><span>Kapitel 11</span></a>. Um diese Aufgaben zu erledigen, müssen Sie die Pakete <code>tidyverse</code>, <code>janitor</code>, <code>here</code>, und <code>patchwork</code> laden, sowie den Datensatz <code>languageR_english.csv</code> (<code>df_eng</code>), wie es in <a href="../mats/13-dataviz_4.html#sec-dataviz4_setup" class="quarto-xref"><span>Kapitel 11.1</span></a>.</p>
+<section id="mehrteilige-darstellung" class="level3" data-number="A.11.1">
+<h3 data-number="A.11.1" class="anchored" data-anchor-id="mehrteilige-darstellung"><span class="header-section-number">A.11.1</span> Mehrteilige Darstellung</h3>
+<ol type="1">
+<li>Erzeugen von <a href="../mats/13-dataviz_4.html#fig-dodged" class="quarto-xref">Abbildung&nbsp;<span>11.9</span></a> und <a href="../mats/13-dataviz_4.html#fig-violin1" class="quarto-xref">Abbildung&nbsp;<span>11.5</span></a> für <code>rt_naming</code> (anstelle von <code>rt_lexdec</code>). Drucken der Plots nebeneinander mit <code>patchwork</code>.</li>
+</ol>
+</section>
+<section id="beschriftungen" class="level3" data-number="A.11.2">
+<h3 data-number="A.11.2" class="anchored" data-anchor-id="beschriftungen"><span class="header-section-number">A.11.2</span> Beschriftungen</h3>
+<ol start="2" type="1">
+<li>Benutzen Sie <code>labs()</code>, um Beschriftungen für den Titel, die x- und y-Achse und für die von Ihnen verwendete Ästhetik (Form, Farbe, etc.) hinzuzufügen, die in einer Legende resultieren. Dies sollte damit enden, dass der Titel der Legende auch einen eigenen Namen erhält.</li>
+</ol>
+</section>
+<section id="anpassungen" class="level3" data-number="A.11.3">
+<h3 data-number="A.11.3" class="anchored" data-anchor-id="anpassungen"><span class="header-section-number">A.11.3</span> Anpassungen</h3>
+<ol start="3" type="1">
+<li>Fügen Sie den beiden Diagrammen Anpassungen hinzu, indem Sie ein Standardthema wählen, gefolgt von <code>theme()</code> mit Anpassungen für die Achsentitel, den Legendentitel und den Diagrammtitel. Sie können <code>face</code>, <code>size</code>, <code>colour</code>, <code>family</code> (d.h. Schriftart) ändern. Sie können <code>?theme</code> in der Konsole eingeben oder googeln, um einige Ideen zu bekommen. Wenn Sie sich nicht kreativ fühlen, versuchen Sie einfach, eine der Anpassungen zu replizieren, die Sie in <a href="../mats/13-dataviz_4.html#fig-custom" class="quarto-xref">Abbildung&nbsp;<span>11.10</span></a> sehen</li>
 </ol>
 
 
@@ -1482,14 +1639,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../mats/16-troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span>
+      <a href="../references.html" class="pagination-link" aria-label="Literaturverzeichnis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Literaturverzeichnis</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../berichte/bericht 1/bericht_1_DE.html" class="pagination-link" aria-label="Bericht 1">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Bericht 1</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
