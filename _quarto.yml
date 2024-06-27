@@ -50,10 +50,13 @@ book:
         - mats/13-dataviz_4.qmd
         # - mats/15-bericht_3.qmd
         - mats/16-troubleshooting.qmd
+    - part: "Berichte"
+      chapters:
+      - "berichte/bericht 1/bericht_1_DE.qmd"
+      - "berichte/bericht 2/bericht_2.qmd"
+    - references.qmd
   appendices:
     - appendices/00-aufgaben.qmd
-    - "berichte/bericht 1/bericht_1_DE.qmd"
-    - references.qmd
 
 bibliography: references.bib
 csl: apa.csl

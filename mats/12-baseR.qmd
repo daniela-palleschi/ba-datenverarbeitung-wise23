@@ -1,5 +1,5 @@
 ---
-title: "Base R"
+# title: "Base R"
 subtitle: "Ein Vergleich mit tidyverse"
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
@@ -9,6 +9,8 @@ date-format: "ddd [den] DD.MM.YYYY"
 date-modified: last-modified
 shift-heading-level-by: +1
 ---
+
+# Base R {#sec-baseR}
 
 ```{r}
 #| echo: false
@@ -102,7 +104,7 @@ Ich persönlich lernte Base R Jahre bevor ich Tidyverse lernte. Ich habe nie zur
 
 Auch wenn ich persönlich mit ähnlichen Ansichten wie im ursprünglichen Tweet oben nicht einverstanden bin (wie viele andere auch), ist die Kenntnis von Base R eine wichtige Fähigkeit, um Ihre R-Horizonte zu erweitern. Sie werden mit Sicherheit auf Base R-Code stoßen, wenn Sie nach Lösungen für Probleme suchen oder sich den Code von anderen ansehen. Unabhängig davon, ob jemand eine starke Vorliebe für Base R oder Tidyverse hat, ist es eine gute Idee, mit beiden Optionen vertraut zu sein, um das Beste aus der R-Community herauszuholen. Es ist wichtig zu verstehen, dass es so etwas wie perfekten Code nicht gibt, und dass es fast immer mehrere Möglichkeiten gibt, das gleiche Ziel zu erreichen, sogar innerhalb von Base R oder Tidyverse. Was wir heute lernen werden, ist im Wesentlichen, wie wir den Tidyverse-Code, mit dem wir vertraut sind, in Base R übersetzen können.
 
-# Einrichten
+# Einrichten {.unnumbered} {#sec-baseR_setup}
 
 Wir werden heute ziemlich minimalistisch arbeiten. Alles was wir brauchen sind die Pakete `tidyverse` und `here`.
 
@@ -563,77 +565,9 @@ In diesem Kapitel werden wir...
 - Base R und Tidyverse vergleichen ✅
 - die Base-R-Äquivalente der Tidyverse-Verben kennenlernen ✅
 
-# Aufgaben
+# Weitere Übungen {.unnumbered}
 
-Konvertieren Sie den folgenden tidyverse-Code in Base R. Wir werden wieder den Datensatz "languageR_english.csv" verwenden.
-
-## Read-in
-
-```{r}
-df_eng <- 
-  read_csv(here("daten", "languageR_english.csv"))
-```
-
-## Auswahl der Spalten
-
-```{r}
-#| eval: false
-df_eng |> 
-  select(Word, WrittenFrequency)
-```
-
-```{r}
-#| echo: false
-df_eng |> 
-  select(Word, WrittenFrequency) |> 
-  head(10)
-```
-
-## Zeilen filtern
-
-```{r}
-#| eval: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6)
-```
-
-```{r}
-#| echo: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6) |> 
-  head(10)
-```
-
-## Auswahl von Zeilen und Spalten
-
-```{r}
-#| eval: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6 & AgeSubject == "old") |> 
-  select(AgeSubject, Word, WrittenFrequency) 
-```
-
-```{r}
-#| echo: false
-df_eng |> 
-  filter(WrittenFrequency > 5.6 & AgeSubject == "old") |> 
-  select(AgeSubject, Word, WrittenFrequency) |> 
-  head(10)
-```
-
-## Streudiagramm
-
-```{r}
-df_eng |> 
-  ggplot() +
-  aes(x = WrittenFrequency, y = RTlexdec) +
-  geom_point()
-```
-
-## Tidyverse versus Base R
-
-Wie ist Ihr Eindruck von Base R im Vergleich zu Tidyverse? Würden Sie, basierend auf dem, was Sie gesehen haben, das eine dem anderen vorziehen, oder würden Sie das eine nur in bestimmten Fällen vorziehen? Hier gibt es keine richtige Antwort.
-
+Weitere Übungen zu diesem Kapitel finden Sie in @sec-app_baseR
 
 # Session Info {.unnumbered}
 
